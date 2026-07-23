@@ -8,7 +8,7 @@ This is an unofficial SDK for the Shieldconex Management public API, generated b
 
 Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
-> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
+> TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
 ## Entities, not endpoints
 
@@ -84,6 +84,171 @@ local client = sdk.test()
 local results, err = client:Partner():list()
 ```
 
+### C
+
+```c
+#include "core/api.h"
+
+BluefinShieldconexMgmtSDK* client = test_sdk(NULL, NULL);
+PNError* err = NULL;
+Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+voxgig_value* partners = partner->vt->list(partner, NULL, NULL, &err);
+printf("%s\n", voxgig_to_json(partners));
+```
+
+### Clojure
+
+```clojure
+(require '[sdk.api :as api]
+         '[sdk.entity.partner :as e-partner]
+         '[voxgig.struct :as vs])
+
+(def client (api/test-sdk nil nil))
+(def partners (e-partner/list (api/partner client nil) nil nil))
+(println partners)
+```
+
+### C++
+
+```cpp
+auto client = BluefinShieldconexMgmtSDK::testSDK();
+Value partners = client->partner()->list(Value::undef(), Value::undef());
+std::cout << Struct::jsonify(partners) << std::endl;
+```
+
+### C#
+
+```csharp
+var client = BluefinShieldconexMgmtSDK.TestSDK(null, null);
+var partnerList = client.Partner().List(null);
+Console.WriteLine(partnerList);
+```
+
+### Dart
+
+```dart
+import 'package:bluefin_shieldconex_mgmt_sdk/BluefinShieldconexMgmtSDK.dart';
+
+Future<void> main() async {
+  final client = BluefinShieldconexMgmtSDK.test();
+  final partners = await client.Partner().list();
+  print(partners);
+}
+```
+
+### Elixir
+
+```elixir
+alias BluefinShieldconexMgmt.Helpers, as: H
+
+sdk = BluefinShieldconexMgmt.test()
+partner = BluefinShieldconexMgmt.partner(sdk)
+records = BluefinShieldconexMgmt.Entity.Partner.list(partner, H.deep(%{}))
+IO.inspect(records)
+```
+
+### Haskell
+
+```haskell
+import qualified SdkClient as Sdk
+import VoxgigStruct (Value (..), emptyMap)
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  sdk <- Sdk.testSdk0
+  ent <- Sdk.partner sdk VNoval
+  arg <- emptyMap
+  ctrl <- emptyMap
+  partners <- Sdk.eList ent arg ctrl
+  print partners
+```
+
+### Java
+
+```java
+BluefinShieldconexMgmtSDK client = BluefinShieldconexMgmtSDK.testSDK(null, null);
+Object partnerList = client.partner(null).list(null, null);
+System.out.println(partnerList);
+```
+
+### JavaScript
+
+```js
+const client = BluefinShieldconexMgmtSDK.test()
+const partners = await client.Partner().list()
+// partners is an array of bare entities populated with mock data
+console.log(partners)
+```
+
+### Kotlin
+
+```kotlin
+val client = BluefinShieldconexMgmtSDK.testSDK(null, null)
+val partnerList = client.partner(null).list(null, null)
+println(partnerList)
+```
+
+### OCaml
+
+```ocaml
+let () =
+  let client = Sdk_client.test () in
+  let result = (Sdk_client.partner client Noval).e_list (empty_map ()) Noval in
+  print_endline (stringify result)
+```
+
+### Perl
+
+```perl
+use lib 'perl/lib';
+use BluefinShieldconexMgmtSDK;
+
+my $client = BluefinShieldconexMgmtSDK->test(undef, undef);
+my $partners = $client->Partner->list();
+print scalar(@$partners), " records\n";
+```
+
+### Rust
+
+```rust
+use bluefin_shieldconex_mgmt_sdk::{jo, test_sdk, Value};
+
+let client = test_sdk(Value::Noval, Value::Noval);
+let partners = client.partner(Value::Noval).list(Value::Noval, Value::Noval).unwrap();
+println!("{:?}", partners);
+```
+
+### Scala
+
+```scala
+val client = BluefinShieldconexMgmtSDK.testSDK(null, null)
+val partnerList = client.partner(null).list(null, null)
+println(partnerList)
+```
+
+### Swift
+
+```swift
+let client = BluefinShieldconexMgmtSDK.testSDK(nil, nil)
+let partnerList = try client.Partner().list(nil, nil)
+print(partnerList)
+```
+
+### Zig
+
+```zig
+const std = @import("std");
+const sdk = @import("sdk");
+const h = sdk.h;
+
+const client = sdk.test_sdk(h.vnull(), h.vnull());
+switch (client.partner(h.vnull()).list(h.vnull(), h.vnull())) {
+    .ok => |partners| std.debug.print("{s}\n", .{h.stringify(partners)}),
+    .err => |e| std.debug.print("list failed: {s}\n", .{e.msg}),
+}
+```
+
 ## Packages
 
 | Language | Package | Install |
@@ -94,6 +259,22 @@ local results, err = client:Partner():list()
 | Golang | `github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go` | `go get github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go@latest` |
 | Ruby | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Lua | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| C | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Clojure | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| C++ | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| C# | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Dart | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Elixir | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Haskell | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Java | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| JavaScript | `@voxgig-sdk/bluefin-shieldconex-mgmt-js` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Kotlin | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| OCaml | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Perl | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Rust | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Scala | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Swift | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Zig | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Go CLI | `github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go-cli` | `go install github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go-cli/cmd/bluefin-shieldconex-mgmt@latest` |
 | Go MCP server | `github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go-mcp` | `go get github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go-mcp@latest` |
 
@@ -121,7 +302,7 @@ See the [TypeScript README](ts/README.md) for the full guide.
 
 | Surface | Path |
 | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig) | `ts/` `py/` `php/` `go/` `rb/` `lua/` `c/` `clojure/` `cpp/` `csharp/` `dart/` `elixir/` `haskell/` `java/` `js/` `kotlin/` `ocaml/` `perl/` `rust/` `scala/` `swift/` `zig/` |
 | **CLI** | `go-cli/` |
 | **MCP server** | `go-mcp/` |
 
@@ -258,6 +439,333 @@ local client_, err = client:Client():load({ id = "example_id" })
 print(client_)
 ```
 
+### C
+
+```c
+#include "core/api.h"
+
+BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(1,
+    "apikey", v_str(getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))));
+PNError* err = NULL;
+
+Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+
+// List all clients (returns a List, sets *err on failure)
+voxgig_value* clients = client->vt->list(client, NULL, NULL, &err);
+for (size_t i = 0; i < (size_t)voxgig_size(clients); i++) {
+    printf("%s\n", voxgig_to_json(voxgig_getelem(clients, v_int(i), NULL)));
+}
+
+// Load a specific client (returns the record, sets *err on failure)
+voxgig_value* client_rec = client->vt->load(client, cmap(1, "id", v_str("example_id")), NULL, &err);
+printf("%s\n", voxgig_to_json(client_rec));
+```
+
+### Clojure
+
+```clojure
+(require '[sdk.api :as api]
+         '[sdk.entity.client :as e-client]
+         '[voxgig.struct :as vs])
+
+(def client (api/make-sdk (vs/jm "apikey" (System/getenv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))))
+
+;; List all clients (returns a vector, raises on error)
+(doseq [client (e-client/list (api/client client nil) nil nil)]
+  (println client))
+
+;; Load a specific client (returns the record, raises on error)
+(def client (e-client/load (api/client client nil) (vs/jm "id" "example_id") nil))
+(println client)
+```
+
+### C++
+
+```cpp
+#include <cstdlib>
+#include "core/sdk.hpp"
+
+using namespace sdk;
+
+const char* apikey = std::getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY");
+auto client = std::make_shared<BluefinShieldconexMgmtSDK>(vmap({
+    {"apikey", Value(apikey ? apikey : "")},
+}));
+
+// List all clients (returns a Value list, throws on error)
+Value clients = client->client()->list(Value::undef(), Value::undef());
+for (const auto& client : *clients.as_list()) {
+  std::cout << Struct::jsonify(client) << std::endl;
+}
+
+// Load a specific client (returns the record, throws on error)
+Value client = client->client()->load(vmap({{"id", Value("example_id")}}), Value::undef());
+std::cout << Struct::jsonify(client) << std::endl;
+```
+
+### C#
+
+```csharp
+using BluefinShieldconexMgmtSdk;
+
+var client = new BluefinShieldconexMgmtSDK(new Dictionary<string, object?>
+{
+    ["apikey"] = Environment.GetEnvironmentVariable("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"),
+});
+
+// List all clients (returns object?, an aggregate list; raises on error)
+var clientList = client.Client().List(null);
+Console.WriteLine(clientList);
+
+// Load a specific client (returns the record, raises on error)
+var client = client.Client().Load(new Dictionary<string, object?> { ["id"] = "example_id" });
+Console.WriteLine(client);
+```
+
+### Dart
+
+```dart
+import 'dart:io';
+import 'package:bluefin_shieldconex_mgmt_sdk/BluefinShieldconexMgmtSDK.dart';
+
+Future<void> main() async {
+  final client = BluefinShieldconexMgmtSDK({
+    'apikey': Platform.environment['BLUEFIN_SHIELDCONEX_MGMT_APIKEY'],
+  });
+
+  // List all clients (returns a list of entities, throws on error)
+  final client_s = await client.Client().list();
+  for (final item in client_s) {
+    print(item.data());
+  }
+
+  // Load a specific client (returns the record, throws on error)
+  final client_ = await client.Client().load({'id': 'example_id'});
+  print(client_);
+}
+```
+
+### Elixir
+
+```elixir
+alias BluefinShieldconexMgmt.Helpers, as: H
+
+sdk = BluefinShieldconexMgmt.new(H.deep(%{"apikey" => System.get_env("BLUEFIN_SHIELDCONEX_MGMT_APIKEY")}))
+
+client = BluefinShieldconexMgmt.client(sdk)
+
+# List all client records (raises on error)
+records = BluefinShieldconexMgmt.Entity.Client.list(client)
+IO.inspect(records)
+
+# Load a specific client (returns the record, raises on error)
+record = BluefinShieldconexMgmt.Entity.Client.load(client, H.deep(%{"id" => "example_id"}))
+IO.inspect(record)
+```
+
+### Haskell
+
+```haskell
+import System.Environment (lookupEnv)
+import qualified SdkClient as Sdk
+import VoxgigStruct (Value (..), emptyMap)
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  mkey <- lookupEnv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"
+  opts <- jo [("apikey", maybe VNoval VStr mkey)]
+  sdk <- Sdk.newSdk opts
+
+  -- List all clients (returns a list Value, raises on error)
+  ent <- Sdk.client sdk VNoval
+  match <- emptyMap
+  ctrl <- emptyMap
+  clients <- Sdk.eList ent match ctrl
+  print clients
+
+  -- Load a specific client (returns the record, raises on error)
+  ent2 <- Sdk.client sdk VNoval
+  m <- jo [("id", VStr "example_id")]
+  ctrl2 <- emptyMap
+  client <- Sdk.eLoad ent2 m ctrl2
+  print client
+```
+
+### Java
+
+```java
+import voxgig.bluefinshieldconexmgmtsdk.core.BluefinShieldconexMgmtSDK;
+
+Map<String, Object> options = new java.util.LinkedHashMap<>();
+options.put("apikey", System.getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"));
+BluefinShieldconexMgmtSDK client = new BluefinShieldconexMgmtSDK(options);
+
+// List all clients (returns Object, an aggregate list; raises on error)
+Object clientList = client.client(null).list(null, null);
+System.out.println(clientList);
+
+// Load a specific client (returns the record, raises on error)
+Object client = client.client(null).load(Map.of("id", "example_id"), null);
+System.out.println(client);
+```
+
+### JavaScript
+
+```js
+const { BluefinShieldconexMgmtSDK } = require('@voxgig-sdk/bluefin-shieldconex-mgmt-js')
+
+const client = new BluefinShieldconexMgmtSDK({
+  apikey: process.env.BLUEFIN_SHIELDCONEX_MGMT_APIKEY,
+})
+
+// List all clients (returns an array)
+const client_s = await client.Client().list()
+for (const client_ of client_s) {
+  console.log(client_)
+}
+```
+
+### Kotlin
+
+```kotlin
+import voxgig.bluefinshieldconexmgmtsdk.core.BluefinShieldconexMgmtSDK
+
+val client = BluefinShieldconexMgmtSDK(mutableMapOf<String, Any?>(
+    "apikey" to System.getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"),
+))
+
+// List all clients (returns Any?, an aggregate list; raises on error)
+val clientList = client.client(null).list(null, null)
+println(clientList)
+
+// Load a specific client (returns the record, raises on error)
+val client = client.client(null).load(mutableMapOf<String, Any?>("id" to "example_id"), null)
+println(client)
+```
+
+### OCaml
+
+```ocaml
+open Voxgig_struct
+open Sdk_helpers
+
+let () =
+  let client = Sdk_client.make (jo [("apikey", Str (Sys.getenv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))]) in
+  (* List all client records (returns a List value; raises on error) *)
+  let clients = (Sdk_client.client client Noval).e_list (empty_map ()) Noval in
+  (match clients with List items -> List.iter (fun r -> print_endline (stringify r)) !items | _ -> ());
+  (* Load a specific client (returns the record; raises on error) *)
+  let client = (Sdk_client.client client Noval).e_load (jo [("id", (Str "example_id"))]) Noval in
+  print_endline (stringify client)
+```
+
+### Perl
+
+```perl
+use lib 'perl/lib';
+use BluefinShieldconexMgmtSDK;
+
+my $client = BluefinShieldconexMgmtSDK->new({
+    'apikey' => $ENV{'BLUEFIN_SHIELDCONEX_MGMT_APIKEY'},
+});
+
+# List all clients (returns an arrayref; dies on error)
+my $clients = $client->Client->list;
+for my $client (@$clients) {
+    print "$client->{id}\n";
+}
+
+# Load a specific client (returns the bare record; dies on error)
+my $client = $client->Client->load({ 'id' => 'example_id' });
+print "$client->{id}\n";
+```
+
+### Rust
+
+```rust
+use bluefin_shieldconex_mgmt_sdk::{jo, BluefinShieldconexMgmtSDK, Value};
+
+let client = BluefinShieldconexMgmtSDK::new(jo(vec![
+    ("apikey", Value::str(std::env::var("BLUEFIN_SHIELDCONEX_MGMT_APIKEY").unwrap_or_default())),
+]));
+
+// List all clients (returns a Value::List, Err on failure)
+let clients = client.client(Value::Noval).list(Value::Noval, Value::Noval).unwrap();
+if let Value::List(items) = &clients {
+    for client in items.borrow().iter() {
+        println!("{:?}", client);
+    }
+}
+
+// Load a specific client (returns the record, Err on failure)
+let client = client.client(Value::Noval).load(jo(vec![("id", Value::str("example_id"))]), Value::Noval).unwrap();
+println!("{:?}", client);
+```
+
+### Scala
+
+```scala
+import voxgig.bluefinshieldconexmgmtsdk.core.BluefinShieldconexMgmtSDK
+
+val options = new java.util.LinkedHashMap[String, Object]()
+options.put("apikey", System.getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))
+val client = new BluefinShieldconexMgmtSDK(options)
+
+// List all clients (returns Object, an aggregate list; raises on error)
+val clientList = client.client(null).list(null, null)
+println(clientList)
+
+// Load a specific client (returns the record, raises on error)
+val client = client.client(null).load(java.util.Map.of("id", "example_id"), null)
+println(client)
+```
+
+### Swift
+
+```swift
+import BluefinShieldconexMgmtSdk
+
+let options = VMap()
+options.entries["apikey"] = .string(
+    ProcessInfo.processInfo.environment["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] ?? "")
+let client = BluefinShieldconexMgmtSDK(options)
+
+// List all clients (returns a Value list, throws on error)
+let clientList = try client.Client().list(nil, nil)
+for client in clientList.asList?.items ?? [] {
+    print(client)
+}
+
+// Load a specific client (returns the record, throws on error)
+let client = try client.Client().load(VMap([("id", .string("example_id"))]), nil)
+print(client)
+```
+
+### Zig
+
+```zig
+const std = @import("std");
+const sdk = @import("sdk");
+const h = sdk.h;
+
+const client = sdk.BluefinShieldconexMgmtSDK.new(h.jo(&.{
+    .{ "apikey", h.vstr(std.posix.getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY") orelse "") },
+}));
+
+// List all clients (Ok is a Value array, .err on failure)
+switch (client.client(h.vnull()).list(h.vnull(), h.vnull())) {
+    .ok => |clients| std.debug.print("{s}\n", .{h.stringify(clients)}),
+    .err => |e| std.debug.print("list failed: {s}\n", .{e.msg}),
+}
+
+// Load a specific client (Ok is the record, .err on failure)
+switch (client.client(h.vnull()).load(h.jo(&.{.{ "id", h.vstr("example_id") }}), h.vnull())) {
+    .ok => |client| std.debug.print("{s}\n", .{h.stringify(client)}),
+    .err => |e| std.debug.print("load failed: {s}\n", .{e.msg}),
+}
+```
+
 ## Direct and prepare
 
 For endpoints the entity model doesn't cover, use the low-level methods:
@@ -336,6 +844,160 @@ local result, err = client:direct({
 })
 ```
 
+**C:**
+```c
+PNError* err = NULL;
+voxgig_value* result = sdk_direct(client, cmap(3,
+    "path", v_str("/api/resource/{id}"),
+    "method", v_str("GET"),
+    "params", cmap(1, "id", v_str("example"))), &err);
+```
+
+**Clojure:**
+```clojure
+(def result
+  (api/direct client
+    (vs/jm "path" "/api/resource/{id}"
+           "method" "GET"
+           "params" (vs/jm "id" "example"))))
+```
+
+**C++:**
+```cpp
+Value result = client->direct(vmap({
+    {"path", Value("/api/resource/{id}")},
+    {"method", Value("GET")},
+    {"params", vmap({{"id", Value("example")}})},
+}));
+```
+
+**C#:**
+```csharp
+var result = client.Direct(new Dictionary<string, object?>
+{
+    ["path"] = "/api/resource/{id}",
+    ["method"] = "GET",
+    ["params"] = new Dictionary<string, object?> { ["id"] = "example" },
+});
+```
+
+**Dart:**
+```dart
+final result = await client.direct({
+  'path': '/api/resource/{id}',
+  'method': 'GET',
+  'params': {'id': 'example'},
+});
+```
+
+**Elixir:**
+```elixir
+result = BluefinShieldconexMgmt.direct(sdk, BluefinShieldconexMgmt.Helpers.deep(%{
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => %{"id" => "example"}
+}))
+```
+
+**Haskell:**
+```haskell
+import qualified SdkClient as Sdk
+import qualified SdkFeatures as F
+import VoxgigStruct (Value (..))
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  sdk <- Sdk.newSdk0
+  params <- jo [("id", VStr "example")]
+  args <- jo [("path", VStr "/api/resource/{id}"), ("method", VStr "GET"), ("params", params)]
+  result <- F.direct sdk args
+  print result
+```
+
+**Java:**
+```java
+Map<String, Object> result = client.direct(Map.of(
+    "path", "/api/resource/{id}",
+    "method", "GET",
+    "params", Map.of("id", "example")));
+```
+
+**JavaScript:**
+```js
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
+})
+if (result instanceof Error) {
+  throw result
+}
+console.log(result.data)
+```
+
+**Kotlin:**
+```kotlin
+val result = client.direct(mutableMapOf<String, Any?>(
+    "path" to "/api/resource/{id}",
+    "method" to "GET",
+    "params" to mapOf("id" to "example")))
+```
+
+**OCaml:**
+```ocaml
+let result = Sdk_client.direct client (jo [
+    ("path", Str "/api/resource/{id}");
+    ("method", Str "GET");
+    ("params", jo [("id", Str "example")]);
+]) in
+ignore result
+```
+
+**Perl:**
+```perl
+my $result = $client->direct({
+    'path' => '/api/resource/{id}',
+    'method' => 'GET',
+    'params' => { 'id' => 'example' },
+});
+```
+
+**Rust:**
+```rust
+let result = client.direct(jo(vec![
+    ("path", Value::str("/api/resource/{id}")),
+    ("method", Value::str("GET")),
+    ("params", jo(vec![("id", Value::str("example"))])),
+]));
+```
+
+**Scala:**
+```scala
+val result = client.direct(java.util.Map.of(
+    "path", "/api/resource/{id}",
+    "method", "GET",
+    "params", java.util.Map.of("id", "example")))
+```
+
+**Swift:**
+```swift
+let result = client.direct(VMap([
+    ("path", .string("/api/resource/{id}")),
+    ("method", .string("GET")),
+    ("params", .map([("id", .string("example"))])),
+]))
+```
+
+**Zig:**
+```zig
+const result = client.direct(h.jo(&.{
+    .{ "path", h.vstr("/api/resource/{id}") },
+    .{ "method", h.vstr("GET") },
+    .{ "params", h.jo(&.{.{ "id", h.vstr("example") }}) },
+}));
+```
+
 ## Advanced
 
 > Everyday use only needs the sections above. This explains the internals
@@ -369,6 +1031,22 @@ Pass custom features via the `extend` option at construction time.
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
+- [C](c/README.md)
+- [Clojure](clojure/README.md)
+- [C++](cpp/README.md)
+- [C#](csharp/README.md)
+- [Dart](dart/README.md)
+- [Elixir](elixir/README.md)
+- [Haskell](haskell/README.md)
+- [Java](java/README.md)
+- [JavaScript](js/README.md)
+- [Kotlin](kotlin/README.md)
+- [OCaml](ocaml/README.md)
+- [Perl](perl/README.md)
+- [Rust](rust/README.md)
+- [Scala](scala/README.md)
+- [Swift](swift/README.md)
+- [Zig](zig/README.md)
 
 ## Upstream API
 
