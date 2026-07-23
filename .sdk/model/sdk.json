@@ -3037,7 +3037,7 @@
         }
       },
       "info": {
-        "description": "",
+        "description": "The Shieldconex Management Api.",
         "security": {
           "in": "header",
           "name": "Authorization",

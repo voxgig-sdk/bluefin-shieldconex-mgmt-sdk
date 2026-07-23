@@ -82,8 +82,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const client_s = await client.Client().list()
-  console.log(client_s)
+  const partners = await client.Partner().list()
+  console.log(partners)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -149,9 +149,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = BluefinShieldconexMgmtSDK.test()
 
-const client_ = await client.Client().list()
-// client_ is a bare entity populated with mock response data
-console.log(client_)
+const partner = await client.Partner().list()
+// partner is a bare entity populated with mock response data
+console.log(partner)
 ```
 
 You can also use the instance method:
@@ -166,7 +166,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Client()
+const entity = client.Partner()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -851,11 +851,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const client_ = client.Client()
-await client_.list()
+const partner = client.Partner()
+await partner.list()
 
-// client_.data() now returns the client_ data from the last `list`
-// client_.match() returns the last match criteria
+// partner.data() now returns the partner data from the last `list`
+// partner.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -77,7 +77,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $client_s = $client->Client()->list();
+    $partners = $client->Partner()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -149,12 +149,12 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = BluefinShieldconexMgmtSDK::test([
-    "entity" => ["client" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["partner" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // Entity ops return the bare mock record (throws on error).
-$client = $client->Client()->list();
-print_r($client);
+$partner = $client->Partner()->list();
+print_r($partner);
 ```
 
 ### Use a custom fetch function
@@ -823,11 +823,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$client_ = $client->Client();
-$client_->list();
+$partner = $client->Partner();
+$partner->list();
 
-// $client_->data_get() now returns the client_ data from the last list
-// $client_->match_get() returns the last match criteria
+// $partner->data_get() now returns the partner data from the last list
+// $partner->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -82,8 +82,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    client_s = client.Client().list()
-    print(client_s)
+    partners = client.Partner().list()
+    print(partners)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -150,8 +150,8 @@ Create a mock client for unit testing — no server required:
 client = BluefinShieldconexMgmtSDK.test()
 
 # Entity ops return the bare record and raise on error.
-client_ = client.Client().list()
-# client_ contains the mock response record
+partner = client.Partner().list()
+# partner contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -806,11 +806,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-client_ = client.Client()
-client_.list()
+partner = client.Partner()
+partner.list()
 
-# client_.data_get() now returns the client_ data from the last list
-# client_.match_get() returns the last match criteria
+# partner.data_get() now returns the partner data from the last list
+# partner.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

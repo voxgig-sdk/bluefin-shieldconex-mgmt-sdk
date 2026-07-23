@@ -35,17 +35,17 @@ network, and no credentials:
 
 ```ts
 const client = BluefinShieldconexMgmtSDK.test()
-const client_s = await client.Client().list()
-// client_s is an array of bare Client records populated with mock data
-console.log(client_s)
+const partners = await client.Partner().list()
+// partners is an array of bare Partner records populated with mock data
+console.log(partners)
 ```
 
 ### Python
 
 ```python
 client = BluefinShieldconexMgmtSDK.test()
-client_s = client.Client().list()
-print(client_s)
+partners = client.Partner().list()
+print(partners)
 ```
 
 ### PHP
@@ -53,16 +53,16 @@ print(client_s)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = BluefinShieldconexMgmtSDK::test([
-    "entity" => ["client" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["partner" => ["test01" => ["id" => "test01"]]],
 ]);
-$clients = $client->Client()->list();
+$partners = $client->Partner()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Client(nil).List(
+result, err := client.Partner(nil).List(
     nil, nil,
 )
 ```
@@ -72,16 +72,16 @@ result, err := client.Client(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = BluefinShieldconexMgmtSDK.test({
-  "entity" => { "client" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "partner" => { "test01" => { "id" => "test01" } } },
 })
-client_s = client.Client.list()
+partners = client.Partner.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Client():list()
+local results, err = client:Partner():list()
 ```
 
 ## Packages
