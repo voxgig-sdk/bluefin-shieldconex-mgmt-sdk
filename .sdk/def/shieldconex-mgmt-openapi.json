@@ -1,0 +1,5211 @@
+{
+ "openapi": "3.0.1",
+ "info": {
+  "title": "Shieldconex Management Api",
+  "description": "",
+  "version": "1.0.0"
+ },
+ "servers": [
+  {
+   "url": "https://portal-cert.shieldconex.com:4010/api/v1"
+  }
+ ],
+ "security": [
+  {
+   "basic": []
+  }
+ ],
+ "tags": [
+  {
+   "name": "Users",
+   "description": ""
+  },
+  {
+   "name": "Partners",
+   "description": ""
+  },
+  {
+   "name": "Clients",
+   "description": ""
+  },
+  {
+   "name": "Transactions",
+   "description": ""
+  },
+  {
+   "name": "Templates",
+   "description": ""
+  }
+ ],
+ "paths": {
+  "/users": {
+   "get": {
+    "tags": [
+     "Users"
+    ],
+    "summary": "Get User List",
+    "description": "This endpoint returns a summarised list of all Users assigned to a Partner's account. To view a User's complete dataset, a call must be made to the get a single User endpoint. A partner can lookup a Client's Users by including the client id or name as a request parameter. Other filters will limit the Users in the response by Partner. Use the 'skip' and 'take' parameters to implement pagination.",
+    "operationId": "list-users",
+    "parameters": [
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Filter the list by Partner. The parameter value can be either the Partner's ID or Name. This parameter is only available to System and Parner-level roles. Similarly, the partner will not be returned in the response for Client-level roles.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "client",
+      "in": "query",
+      "description": "Filter the list by Client. The parameter value can be either the Client's ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "take",
+      "in": "query",
+      "description": "The number of entries to include in the list.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 10
+      }
+     },
+     {
+      "name": "skip",
+      "in": "query",
+      "description": "The number of results to skip before listing entries.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 0
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Users list",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserList"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "Users"
+    ],
+    "summary": "Create a User",
+    "description": "This endpoint creates a User for either a Partner or a Client. To create a user for a Client, both the Partner and Client references must be included.",
+    "operationId": "create-user",
+    "parameters": [
+     {
+      "name": "username",
+      "in": "query",
+      "description": "The unique Username used to login.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": true
+     },
+     {
+      "name": "firstName",
+      "in": "query",
+      "description": "The user's first name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": true
+     },
+     {
+      "name": "lastName",
+      "in": "query",
+      "description": "The user's last name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": true
+     },
+     {
+      "name": "email",
+      "in": "query",
+      "description": "The user's email address.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": true
+     },
+     {
+      "name": "phone",
+      "in": "query",
+      "description": "The user's phone number. Must be a valid phone number.",
+      "schema": {
+       "type": "integer",
+       "maxLength": 32
+      },
+      "required": true
+     },
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "The partner under which the user should be created. Required for creating users that have the Partner-level roles.",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "id": {
+         "type": "string",
+         "description": "The Partner ID of the Partner under which the user will be created."
+        },
+        "name": {
+         "type": "string",
+         "description": "The Partner Name of the Partner under which the user will be created."
+        }
+       }
+      }
+     },
+     {
+      "name": "client",
+      "in": "query",
+      "description": "The partner under which the user should be created. Required for creating users that have the Client-level roles.",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "id": {
+         "type": "string",
+         "description": "The Client ID of the Client under which the user will be created."
+        },
+        "name": {
+         "type": "string",
+         "description": "The Client Name of the Client under which the user will be created."
+        }
+       }
+      }
+     },
+     {
+      "name": "userRole",
+      "in": "query",
+      "description": "The role the user will be created with. Cannot be a higher permission level than the role creating it.",
+      "schema": {
+       "$ref": "#/components/schemas/UserRoleReference"
+      },
+      "required": true
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "description": "The activation status of the user being created. Only active users are able to access ShieldConex.",
+      "schema": {
+       "type": "boolean"
+      },
+      "required": true
+     },
+     {
+      "name": "sendWelcomeEmail",
+      "in": "query",
+      "description": "When this flag is set to true, the new user will recieve a welcome email upon successful creation of a user. It is recommended to set this to true only for active users.",
+      "schema": {
+       "type": "boolean"
+      },
+      "required": true
+     }
+    ],
+    "requestBody": {
+     "description": "User to be created.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/UserCreate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "User create response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "user"
+   }
+  },
+  "/users/{id}": {
+   "get": {
+    "tags": [
+     "Users"
+    ],
+    "summary": "Get User Details",
+    "description": "This endpoint returns an object that contains all the User's details. In the case of the Client Level role, instead of returning the partner - it provides the client field as Client Level users cannot look into their clients' partners.",
+    "operationId": "get-user",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The User's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "User details",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserDetails"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "Users"
+    ],
+    "summary": "Update a User",
+    "description": "This endpoint updates an existing User resource. It is not neccessary to include the complete replacement object in the API call; an object containing the properties that are to be changed will suffice.",
+    "operationId": "update-user",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The unique identifier of the User to update.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     },
+     {
+      "name": "username",
+      "in": "query",
+      "description": "The unique Username used to login.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": false
+     },
+     {
+      "name": "firstName",
+      "in": "query",
+      "description": "The user's first name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": false
+     },
+     {
+      "name": "lastName",
+      "in": "query",
+      "description": "The user's last name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": false
+     },
+     {
+      "name": "email",
+      "in": "query",
+      "description": "The user's email address.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      },
+      "required": false
+     },
+     {
+      "name": "phone",
+      "in": "query",
+      "description": "The user's phone number. Must be a valid phone number.",
+      "schema": {
+       "type": "integer",
+       "maxLength": 32
+      },
+      "required": false
+     },
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "The partner under which the user should be created. Required for creating users that have the Partner-level roles.",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "id": {
+         "type": "string",
+         "description": "The Partner ID of the Partner under which the user will be created."
+        },
+        "name": {
+         "type": "string",
+         "description": "The Partner Name of the Partner under which the user will be created."
+        }
+       }
+      }
+     },
+     {
+      "name": "client",
+      "in": "query",
+      "description": "The partner under which the user should be created. Required for creating users that have the Client-level roles.",
+      "schema": {
+       "type": "object",
+       "properties": {
+        "id": {
+         "type": "string",
+         "description": "The Client ID of the Client under which the user will be created."
+        },
+        "name": {
+         "type": "string",
+         "description": "The Client Name of the Client under which the user will be created."
+        }
+       }
+      }
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "description": "The activation status of the user being created. Only active users are able to access ShieldConex.",
+      "schema": {
+       "type": "boolean"
+      },
+      "required": false
+     },
+     {
+      "name": "sendWelcomeEmail",
+      "in": "query",
+      "description": "When this flag is set to true, the new user will recieve a welcome email upon successful creation of a user. It is recommended to set this to true only for active users.",
+      "schema": {
+       "type": "boolean"
+      },
+      "required": false
+     }
+    ],
+    "requestBody": {
+     "description": "User to be updated.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/UserUpdate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "User update response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UpdateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "user"
+   }
+  },
+  "/partners": {
+   "get": {
+    "tags": [
+     "Partners"
+    ],
+    "summary": "List Partners",
+    "description": "This endpoint returns a summarised list of Partners and Sub-Partners. The list of partners can be filtered by including the partner ID in the request parameters. However, when a Partner User makes the same API call, the results are restriced to their Partner account and Sub-Partners.",
+    "operationId": "list-partners",
+    "parameters": [
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Filter the list by Partner. The parameter value can be either a Partner ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "take",
+      "in": "query",
+      "description": "The number of entries to include in the list.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 10
+      }
+     },
+     {
+      "name": "skip",
+      "in": "query",
+      "description": "The number of results to skip before listing entries.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 0
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Partners list",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PartnerList"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "Partners"
+    ],
+    "summary": "Create a Partner",
+    "description": "This will let a Partner create a (sub) Partner. Typically, this is an organization construct used to group Clients. For example, the Partner may want to create a (sub) Partner to group together 10 Clients so they are logically grouped for reporting purposes.",
+    "operationId": "create-partner",
+    "parameters": [
+     {
+      "name": "name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the entity."
+     },
+     {
+      "name": "reference",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "A reference identifier for the entity. It's recommended that uuidv4 format be used."
+     },
+     {
+      "name": "billingId",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Billing identifier associated with the entity."
+     },
+     {
+      "name": "verificationPhrase",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "A phrase used for verification purposes when calling to request a change to the Partner."
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Status indicating if the Partner is active."
+     },
+     {
+      "name": "parent.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Identifier of the parent Partner."
+     },
+     {
+      "name": "parent.name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Name of the parent Partner."
+     },
+     {
+      "name": "contact.userName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Username of the contact."
+     },
+     {
+      "name": "contact.firstName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "First name of the contact."
+     },
+     {
+      "name": "contact.lastName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Last name of the contact."
+     },
+     {
+      "name": "contact.email",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "format": "email"
+      },
+      "description": "Email address of the contact."
+     },
+     {
+      "name": "contact.phone",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Phone number of the contact."
+     },
+     {
+      "name": "contact.userRole",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "Partner Supervisor"
+       ]
+      },
+      "description": "Role of the contact within the organization."
+     },
+     {
+      "name": "contact.isActive",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the contact is currently active."
+     },
+     {
+      "name": "contact.sendWelcomeEmail",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if a welcome email should be sent to the contact."
+     }
+    ],
+    "requestBody": {
+     "description": "Partner to be created.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PartnerCreate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Partner create response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "partner"
+   }
+  },
+  "/partners/{id}": {
+   "get": {
+    "tags": [
+     "Partners"
+    ],
+    "summary": "Get Partner Details",
+    "description": "This call will return the detailed information about any Partner.",
+    "operationId": "get-partner",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "Partner id.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Partner details",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PartnerDetails"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "Partners"
+    ],
+    "summary": "Update a Partner",
+    "description": "This endpoint updates an existing Partner resource. It is not neccessary to include the complete replacement object in the API call; an object containing the properties that are to be changed will suffice.",
+    "operationId": "update-partner",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "Partner id.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the partner."
+     },
+     {
+      "name": "reference",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "A reference identifier for the partner."
+     },
+     {
+      "name": "billingId",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Billing identifier associated with the partner."
+     },
+     {
+      "name": "verificationPhrase",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Verification phrase for security purposes."
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the partner is active."
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Version number for the partner record."
+     },
+     {
+      "name": "parent.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Identifier of the parent partner entity."
+     },
+     {
+      "name": "parent.name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Name of the parent partner entity."
+     },
+     {
+      "name": "contact.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Identifier of the contact person for the partner."
+     }
+    ],
+    "requestBody": {
+     "description": "Partner to be updated.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PartnerUpdate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Partner update response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UpdateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "partner"
+   }
+  },
+  "/clients": {
+   "get": {
+    "tags": [
+     "Clients"
+    ],
+    "summary": "List Clients",
+    "description": "This endpoint returns a summarised list of Clients. The list of Clients can be filtered by including the partner ID in the request parameters.",
+    "operationId": "list-clients",
+    "parameters": [
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Filter the list by Partner. The parameter value can be either a Partner ID or Name.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "take",
+      "in": "query",
+      "description": "The number of entries to include in the list.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 10
+      }
+     },
+     {
+      "name": "skip",
+      "in": "query",
+      "description": "The number of results to skip before listing entries.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 0
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Clients list",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ClientList"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "Clients"
+    ],
+    "summary": "Create a Client",
+    "description": "This endpoint allows a Partner to create a Client resource. When creating a Client, a contact and location must also be created. A direct Partner account must also be referenced.",
+    "operationId": "create-client",
+    "parameters": [
+     {
+      "name": "name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the client."
+     },
+     {
+      "name": "billingId",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Billing identifier associated with the client."
+     },
+     {
+      "name": "mid",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Merchant ID associated with the client."
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the client is active."
+     },
+     {
+      "name": "directPartner.id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Identifier of the direct partner associated with the client."
+     },
+     {
+      "name": "directPartner.name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Name of the direct partner associated with the client."
+     },
+     {
+      "name": "contact.userName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Username of the primary contact."
+     },
+     {
+      "name": "contact.firstName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "First name of the primary contact."
+     },
+     {
+      "name": "contact.lastName",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Last name of the primary contact."
+     },
+     {
+      "name": "contact.email",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "format": "email"
+      },
+      "description": "Email address of the primary contact."
+     },
+     {
+      "name": "contact.phone",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Phone number of the primary contact."
+     },
+     {
+      "name": "contact.userRole",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "Partner Supervisor"
+       ]
+      },
+      "description": "Role of the primary contact within the organization."
+     },
+     {
+      "name": "contact.isActive",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the primary contact is active."
+     },
+     {
+      "name": "contact.sendWelcomeEmail",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if a welcome email should be sent to the contact."
+     }
+    ],
+    "requestBody": {
+     "description": "Client to be created.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ClientCreate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Client create response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "client"
+   }
+  },
+  "/clients/{id}": {
+   "get": {
+    "tags": [
+     "Clients"
+    ],
+    "summary": "Get CLient Details",
+    "description": "This endpoint returns an object that contains all the Client's details.",
+    "operationId": "get-client",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Client's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Client details",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ClientDetails"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Clients"
+    ],
+    "summary": "Delete a CLient",
+    "description": "This endpoint deletes a Client resource.",
+    "operationId": "delete-client",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Client's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Client has been deleted successfully",
+      "content": {},
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "Clients"
+    ],
+    "summary": "Update a Client",
+    "description": "This endpoint updates an existing Client resource. It is not neccessary to include the complete replacement object in the API call; an object containing the properties that are to be changed will suffice.",
+    "operationId": "update-client",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Client's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the client."
+     },
+     {
+      "name": "billingId",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The billing identifier associated with the client."
+     },
+     {
+      "name": "mid",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The Merchant ID (MID) for the client."
+     },
+     {
+      "name": "isActive",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates whether the client is active."
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The version of the client record."
+     },
+     {
+      "name": "directPartner.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The identifier of the direct partner associated with the client."
+     },
+     {
+      "name": "directPartner.name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the direct partner associated with the client."
+     },
+     {
+      "name": "contact.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The identifier of the contact associated with the client."
+     }
+    ],
+    "requestBody": {
+     "description": "Client to be updated.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ClientUpdate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Client update response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UpdateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "client"
+   }
+  },
+  "/transactions": {
+   "get": {
+    "tags": [
+     "Transactions"
+    ],
+    "summary": "List Transactions",
+    "description": "GET transactions will return summary information regarding transactions based upon filter criteria. For example, the Partner may wish to receive all tokenization transactions for a particular Client. By default the paging.mode is set to nocount, this means that the list total count will not be included in the response. Setting the paging.mode parameter to full will enable the total count. However, we urge Partners to exercise caution when including the total count on the Transaction list endpoint. The total number of Transactions can grow significantly and counting them can become taxing on the system. Paging.mode full is likely to result in high latency, therefore we suggest that you adopt a pagination strategy that does not require the total count.",
+    "operationId": "list-transactions",
+    "parameters": [
+     {
+      "name": "transactionType",
+      "in": "query",
+      "description": "Transaction Type. Detokenization = 4, Tokenization = 5, 3DS = 6, Other = empty",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "4",
+        "5",
+        "6"
+       ]
+      }
+     },
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Filter the list by Partner. The parameter value can be either a Partner ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "client",
+      "in": "query",
+      "description": "Filter the list by Client. The parameter value can be either a Client ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "success",
+      "in": "query",
+      "description": "Filter the list by success indicator.",
+      "schema": {
+       "type": "boolean",
+       "enum": [
+        true,
+        false
+       ]
+      }
+     },
+     {
+      "name": "dateFrom",
+      "in": "query",
+      "description": "Filter the list by transaction date. Only show transactions that were processed after this date.",
+      "schema": {
+       "type": "string",
+       "format": "date-time"
+      }
+     },
+     {
+      "name": "dateTo",
+      "in": "query",
+      "description": "Filter the list by transaction date. Only show transactions that were processed before this date.",
+      "schema": {
+       "type": "string",
+       "format": "date-time"
+      }
+     },
+     {
+      "name": "messageId",
+      "in": "query",
+      "description": "Filter the list by Message ID.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "reference",
+      "in": "query",
+      "description": "Filter the list by Reference ID.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "take",
+      "in": "query",
+      "description": "The number of entries to include in the list.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 10
+      }
+     },
+     {
+      "name": "skip",
+      "in": "query",
+      "description": "The number of results to skip before listing entries.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 0
+      }
+     },
+     {
+      "name": "paging.mode",
+      "in": "query",
+      "description": "Toggles the total count in the response.",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "nocount",
+        "full"
+       ]
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Transactions list",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TransactionList"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/transactions/{id}": {
+   "get": {
+    "tags": [
+     "Transactions"
+    ],
+    "summary": "Get Transaction Detials",
+    "description": "Return information about a specific record.",
+    "operationId": "get-transaction",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "Transaction id.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     },
+     {
+      "name": "transactionType",
+      "in": "query",
+      "description": "Transaction Type. Detokenization = 4, Tokenization = 5, 3DS = 6, Other = empty",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "4",
+        "5",
+        "6"
+       ]
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Transaction details",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TransactionDetails"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/templates": {
+   "get": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "List Templates",
+    "description": "GET templates will return templates based upon filter criteria.",
+    "operationId": "list-templates",
+    "parameters": [
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Filter the list by Partner. The parameter value can be either a Partner ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "client",
+      "in": "query",
+      "description": "Filter the list by Client. The parameter value can be either a Client ID or Name.",
+      "schema": {
+       "type": "string",
+       "maxLength": 255
+      }
+     },
+     {
+      "name": "take",
+      "in": "query",
+      "description": "The number of entries to include in the list.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 10
+      }
+     },
+     {
+      "name": "skip",
+      "in": "query",
+      "description": "The number of results to skip before listing entries.",
+      "schema": {
+       "type": "integer",
+       "format": "int32",
+       "default": 0
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Templates list",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TemplateList"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "Create a Template",
+    "description": "This endpoint allows to create Template.",
+    "operationId": "create-template",
+    "parameters": [
+     {
+      "name": "name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The system name of the template. Should not include spaces or special characters except underscores."
+     },
+     {
+      "name": "reference",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "A reference identifier for the template."
+     },
+     {
+      "name": "active",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the template is published. Once set to true, the template is no longer editable.\""
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Version number of the template."
+     },
+     {
+      "name": "partner.id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The ID of the partner associated with this template."
+     },
+     {
+      "name": "partner.name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the partner associated with this template."
+     },
+     {
+      "name": "client.id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The ID of the client associated with this template."
+     },
+     {
+      "name": "client.name",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the client associated with this template."
+     },
+     {
+      "name": "fieldTemplates",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "method": {
+          "type": "string",
+          "enum": [
+           "FPE",
+           "FPT"
+          ],
+          "description": "The tokenization method. Must be either \"FPE\" or \"FPT\". Relevant to all template types.\n"
+         },
+         "sortOrder": {
+          "type": "integer",
+          "description": "Determines the order in which the field appears in the iFrame. This has no impact on API calls. Relevant to all template types.\n"
+         },
+         "required": {
+          "type": "boolean",
+          "description": "Specifies if the field is required for tokenization. Impacts tokenization and iFrame but not detokenization. Relevant to all template types.\n"
+         },
+         "width": {
+          "type": "string",
+          "description": "Defines the display width of the field in the iFrame. Relevant to all template types.\n"
+         },
+         "templateType": {
+          "type": "string",
+          "enum": [
+           "field",
+           "date",
+           "phone",
+           "card",
+           "address",
+           "email",
+           "bank",
+           "routing"
+          ],
+          "description": "Specifies the type of field template. Relevant to all template types.\n"
+         },
+         "name": {
+          "type": "string",
+          "description": "The System Name of the field. Used in code and API calls. Must not contain spaces. Recommended to use only characters and underscores. Relevant to all template types.\n"
+         },
+         "format": {
+          "type": "string",
+          "description": "Specifies the input format for the field. Relevant to all template types.\n",
+          "enum": [
+           "NONE",
+           "LAST_FOUR",
+           "FIRST_SIX",
+           "FIRST_SIX_LAST_FOUR",
+           "FIRST_TWO_LAST_FOUR"
+          ]
+         },
+         "alphabet": {
+          "type": "string",
+          "enum": [
+           "CARD10",
+           "CARD62"
+          ],
+          "description": "Specifies the allowed characters. CARD10 is numeric only, CARD62 is alphanumeric. Relevant to \"field\".\n"
+         },
+         "placeholder": {
+          "type": "string",
+          "description": "Specifies the example value displayed in the iFrame. Disappears when the user begins typing. Optional. Relevant to iFrame rendering for all template types.\n"
+         },
+         "label": {
+          "type": "string",
+          "description": "Specifies the name displayed above the input in the iFrame. Relevant to iFrame rendering for all template types.\n"
+         },
+         "nonIdempotentTokens": {
+          "type": "boolean",
+          "description": "Determines if the same input always generates the same token. Only relevant for \"FPT\". Relevant to \"field\".\n"
+         },
+         "inputType": {
+          "type": "string",
+          "enum": [
+           "input",
+           "select",
+           "password"
+          ],
+          "description": "Specifies the input type for the iFrame. Relevant to \"field\".\n"
+         },
+         "inputValues": {
+          "type": "string",
+          "description": "Comma-separated values for dropdown inputs. Relevant to \"field\" with \"dropdown\" inputType.\n"
+         },
+         "minLength": {
+          "type": "integer",
+          "minimum": 2,
+          "description": "Specifies the minimum number of characters allowed. Relevant to \"field\".\n"
+         },
+         "maxLength": {
+          "type": "integer",
+          "maximum": 128,
+          "description": "Specifies the maximum number of characters allowed. Maximum is 56 for \"FPE\" and 128 for \"FPT\". Relevant to \"field\".\n"
+         },
+         "pattern": {
+          "type": "string",
+          "description": "Regular expression for custom input validation. Relevant to \"field\".\n"
+         },
+         "patternMessage": {
+          "type": "string",
+          "description": "Error message displayed when the input does not match the pattern. Relevant to \"field\".\n"
+         },
+         "dateFormat": {
+          "type": "string",
+          "description": "Specifies the date format. E.g., \"MM-DD-YYYY\". Relevant to \"date\".\n"
+         },
+         "dateSeparator": {
+          "type": "string",
+          "description": "Specifies the separator used in date fields. Relevant to \"date\".\n"
+         },
+         "countryCode": {
+          "type": "boolean",
+          "description": "Indicates if a country code should be included in the phone field. Relevant to \"phone\".\n"
+         },
+         "phoneInputMasking": {
+          "type": "string",
+          "description": "Specifies the input masking format for phone numbers. Relevant to \"phone\".\n"
+         },
+         "cardNumberFormat": {
+          "type": "string",
+          "description": "Specifies the format for card numbers. Relevant to \"card\".\n"
+         },
+         "cardNumberName": {
+          "type": "string",
+          "description": "System name for the card number field. Relevant to \"card\".\n"
+         },
+         "cardNumberPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the card number field. Relevant to \"card\".\n"
+         },
+         "cardNumberLabel": {
+          "type": "string",
+          "description": "Label for the card number field. Relevant to \"card\".\n"
+         },
+         "cvvEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the CVV field is enabled. Relevant to \"card\".\n"
+         },
+         "cvvName": {
+          "type": "string",
+          "description": "System name for the CVV field. Relevant to \"card\".\n"
+         },
+         "cvvPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the CVV field. Relevant to \"card\".\n"
+         },
+         "cvvLabel": {
+          "type": "string",
+          "description": "Label for the CVV field. Relevant to \"card\".\n"
+         },
+         "expirationEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the expiration date field is enabled. Relevant to \"card\".\n"
+         },
+         "expirationName": {
+          "type": "string",
+          "description": "System name for the expiration date field. Relevant to \"card\".\n"
+         },
+         "expirationPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the expiration date field. Relevant to \"card\".\n"
+         },
+         "expirationLabel": {
+          "type": "string",
+          "description": "Label for the expiration date field. Relevant to \"card\".\n"
+         },
+         "cardholderEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the cardholder name field is enabled. Relevant to \"card\".\n"
+         },
+         "cardholderName": {
+          "type": "string",
+          "description": "System name for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "cardholderPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "cardholderLabel": {
+          "type": "string",
+          "description": "Label for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "threeDsAddress": {
+          "type": "string",
+          "description": "Specifies 3D Secure address settings. Relevant to \"address\".\n"
+         },
+         "addressLine1Enabled": {
+          "type": "boolean",
+          "description": "Indicates if Address Line 1 is enabled. Relevant to \"address\".\n"
+         },
+         "addressLine1Name": {
+          "type": "string",
+          "description": "System name for Address Line 1. Relevant to \"address\".\n"
+         },
+         "addressLine1Placeholder": {
+          "type": "string",
+          "description": "Placeholder for Address Line 1 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine1Label": {
+          "type": "string",
+          "description": "Label for Address Line 1 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine2Enabled": {
+          "type": "boolean",
+          "description": "Indicates if Address Line 2 is enabled. Relevant to \"address\".\n"
+         },
+         "addressLine2Name": {
+          "type": "string",
+          "description": "System name for Address Line 2. Relevant to \"address\".\n"
+         },
+         "addressLine2Placeholder": {
+          "type": "string",
+          "description": "Placeholder for Address Line 2 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine2Label": {
+          "type": "string",
+          "description": "Label for Address Line 2 in the iFrame. Relevant to \"address\".\n"
+         },
+         "cityEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the City field is enabled. Relevant to \"address\".\n"
+         },
+         "cityName": {
+          "type": "string",
+          "description": "System name for the City field. Relevant to \"address\".\n"
+         },
+         "cityPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the City field in the iFrame. Relevant to \"address\".\n"
+         },
+         "cityLabel": {
+          "type": "string",
+          "description": "Label for the City field in the iFrame. Relevant to \"address\".\n"
+         },
+         "stateEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the State field is enabled. Relevant to \"address\".\n"
+         },
+         "stateName": {
+          "type": "string",
+          "description": "System name for the State field. Relevant to \"address\".\n"
+         },
+         "statePlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the State field in the iFrame. Relevant to \"address\".\n"
+         },
+         "stateLabel": {
+          "type": "string",
+          "description": "Label for the State field in the iFrame. Relevant to \"address\".\n"
+         },
+         "postalCodeEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the Postal Code field is enabled. Relevant to \"address\".\n"
+         },
+         "postalCodeName": {
+          "type": "string",
+          "description": "System name for the Postal Code field. Relevant to \"address\".\n"
+         },
+         "postalCodePlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the Postal Code field in the iFrame. Relevant to \"address\".\n"
+         },
+         "postalCodeLabel": {
+          "type": "string",
+          "description": "Label for the Postal Code field in the iFrame. Relevant to \"address\".\n"
+         },
+         "countryEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the Country field is enabled. Relevant to \"address\".\n"
+         },
+         "countryName": {
+          "type": "string",
+          "description": "System name for the Country field. Relevant to \"address\".\n"
+         },
+         "countryPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the Country field in the iFrame. Relevant to \"address\".\n"
+         },
+         "countryLabel": {
+          "type": "string",
+          "description": "Label for the Country field in the iFrame. Relevant to \"address\".\n"
+         }
+        }
+       }
+      }
+     },
+     {
+      "name": "type",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "userDefined",
+        "preDefined"
+       ]
+      },
+      "description": "Specifies if the template type is user-defined or pre-defined."
+     },
+     {
+      "name": "accessMode",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "specific",
+        "general"
+       ]
+      },
+      "description": "Access mode of the template, e.g., specific to certain domains."
+     },
+     {
+      "name": "options.customStyles",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Custom styles applied to the iFrame. Should be in CSS format."
+     },
+     {
+      "name": "options.customStyleFile",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "File path to custom style file for the iFrame."
+     },
+     {
+      "name": "options.domains",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "description": "List of allowed domains for the template."
+     },
+     {
+      "name": "options.security.irreversible",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if tokens generated by the template are irreversible."
+     },
+     {
+      "name": "options.security.active.from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "ISO 8601"
+      },
+      "description": "The duration from the time of tokenization until the token can be detokenized. This is specified in ISO 8601 format."
+     },
+     {
+      "name": "options.security.active.to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date-time"
+      },
+      "description": "The duration from the time of tokenization (not the time of activation) until the token can no longer be detokenized. This is specified in ISO 8601 format. Should be greater than the 'active from' setting. If not the token will be effectively irreversible."
+     }
+    ],
+    "requestBody": {
+     "description": "Template to be created.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TemplateCreate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Template create response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "client"
+   }
+  },
+  "/templates/{id}": {
+   "get": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "Get Template Details",
+    "description": "This endpoint returns an object that contains all the Template's details.",
+    "operationId": "get-template",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Template's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Template details",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TemplateDetails"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "Delete a Template",
+    "description": "This endpoint deletes a Template resource. Deleting a Template resource is only possible if template hasn't been publiched yet",
+    "operationId": "delete-template",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Template's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Template has been deleted successfully",
+      "content": {},
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "Update a Template",
+    "description": "This endpoint updates an existing Template resource. It is not neccessary to include the complete replacement object in the API call; an object containing the properties that are to be changed will suffice.",
+    "operationId": "update-template",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Template's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The system name of the template. Should not include spaces or special characters except underscores."
+     },
+     {
+      "name": "reference",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "A reference identifier for the template."
+     },
+     {
+      "name": "active",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if the template is published. Once set to true, the template is no longer editable.\""
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "Version number of the template."
+     },
+     {
+      "name": "partner.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The ID of the partner associated with this template."
+     },
+     {
+      "name": "partner.name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the partner associated with this template."
+     },
+     {
+      "name": "client.id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "description": "The ID of the client associated with this template."
+     },
+     {
+      "name": "client.name",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "The name of the client associated with this template."
+     },
+     {
+      "name": "fieldTemplates",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "method": {
+          "type": "string",
+          "enum": [
+           "FPE",
+           "FPT"
+          ],
+          "description": "The tokenization method. Must be either \"FPE\" or \"FPT\". Relevant to all template types.\n"
+         },
+         "sortOrder": {
+          "type": "integer",
+          "description": "Determines the order in which the field appears in the iFrame. This has no impact on API calls. Relevant to all template types.\n"
+         },
+         "required": {
+          "type": "boolean",
+          "description": "Specifies if the field is required for tokenization. Impacts tokenization and iFrame but not detokenization. Relevant to all template types.\n"
+         },
+         "width": {
+          "type": "string",
+          "description": "Defines the display width of the field in the iFrame. Relevant to all template types.\n"
+         },
+         "templateType": {
+          "type": "string",
+          "enum": [
+           "field",
+           "date",
+           "phone",
+           "card",
+           "address",
+           "email",
+           "bank",
+           "routing"
+          ],
+          "description": "Specifies the type of field template. Relevant to all template types.\n"
+         },
+         "name": {
+          "type": "string",
+          "description": "The System Name of the field. Used in code and API calls. Must not contain spaces. Recommended to use only characters and underscores. Relevant to all template types.\n"
+         },
+         "format": {
+          "type": "string",
+          "description": "Specifies the input format for the field. Relevant to all template types.\n",
+          "enum": [
+           "NONE",
+           "LAST_FOUR",
+           "FIRST_SIX",
+           "FIRST_SIX_LAST_FOUR",
+           "FIRST_TWO_LAST_FOUR"
+          ]
+         },
+         "alphabet": {
+          "type": "string",
+          "enum": [
+           "CARD10",
+           "CARD62"
+          ],
+          "description": "Specifies the allowed characters. CARD10 is numeric only, CARD62 is alphanumeric. Relevant to \"field\".\n"
+         },
+         "placeholder": {
+          "type": "string",
+          "description": "Specifies the example value displayed in the iFrame. Disappears when the user begins typing. Optional. Relevant to iFrame rendering for all template types.\n"
+         },
+         "label": {
+          "type": "string",
+          "description": "Specifies the name displayed above the input in the iFrame. Relevant to iFrame rendering for all template types.\n"
+         },
+         "nonIdempotentTokens": {
+          "type": "boolean",
+          "description": "Determines if the same input always generates the same token. Only relevant for \"FPT\". Relevant to \"field\".\n"
+         },
+         "inputType": {
+          "type": "string",
+          "enum": [
+           "input",
+           "select",
+           "password"
+          ],
+          "description": "Specifies the input type for the iFrame. Relevant to \"field\".\n"
+         },
+         "inputValues": {
+          "type": "string",
+          "description": "Comma-separated values for dropdown inputs. Relevant to \"field\" with \"dropdown\" inputType.\n"
+         },
+         "minLength": {
+          "type": "integer",
+          "minimum": 2,
+          "description": "Specifies the minimum number of characters allowed. Relevant to \"field\".\n"
+         },
+         "maxLength": {
+          "type": "integer",
+          "maximum": 128,
+          "description": "Specifies the maximum number of characters allowed. Maximum is 56 for \"FPE\" and 128 for \"FPT\". Relevant to \"field\".\n"
+         },
+         "pattern": {
+          "type": "string",
+          "description": "Regular expression for custom input validation. Relevant to \"field\".\n"
+         },
+         "patternMessage": {
+          "type": "string",
+          "description": "Error message displayed when the input does not match the pattern. Relevant to \"field\".\n"
+         },
+         "dateFormat": {
+          "type": "string",
+          "description": "Specifies the date format. E.g., \"MM-DD-YYYY\". Relevant to \"date\".\n"
+         },
+         "dateSeparator": {
+          "type": "string",
+          "description": "Specifies the separator used in date fields. Relevant to \"date\".\n"
+         },
+         "countryCode": {
+          "type": "boolean",
+          "description": "Indicates if a country code should be included in the phone field. Relevant to \"phone\".\n"
+         },
+         "phoneInputMasking": {
+          "type": "string",
+          "description": "Specifies the input masking format for phone numbers. Relevant to \"phone\".\n"
+         },
+         "cardNumberFormat": {
+          "type": "string",
+          "description": "Specifies the format for card numbers. Relevant to \"card\".\n"
+         },
+         "cardNumberName": {
+          "type": "string",
+          "description": "System name for the card number field. Relevant to \"card\".\n"
+         },
+         "cardNumberPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the card number field. Relevant to \"card\".\n"
+         },
+         "cardNumberLabel": {
+          "type": "string",
+          "description": "Label for the card number field. Relevant to \"card\".\n"
+         },
+         "cvvEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the CVV field is enabled. Relevant to \"card\".\n"
+         },
+         "cvvName": {
+          "type": "string",
+          "description": "System name for the CVV field. Relevant to \"card\".\n"
+         },
+         "cvvPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the CVV field. Relevant to \"card\".\n"
+         },
+         "cvvLabel": {
+          "type": "string",
+          "description": "Label for the CVV field. Relevant to \"card\".\n"
+         },
+         "expirationEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the expiration date field is enabled. Relevant to \"card\".\n"
+         },
+         "expirationName": {
+          "type": "string",
+          "description": "System name for the expiration date field. Relevant to \"card\".\n"
+         },
+         "expirationPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the expiration date field. Relevant to \"card\".\n"
+         },
+         "expirationLabel": {
+          "type": "string",
+          "description": "Label for the expiration date field. Relevant to \"card\".\n"
+         },
+         "cardholderEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the cardholder name field is enabled. Relevant to \"card\".\n"
+         },
+         "cardholderName": {
+          "type": "string",
+          "description": "System name for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "cardholderPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "cardholderLabel": {
+          "type": "string",
+          "description": "Label for the cardholder name field. Relevant to \"card\".\n"
+         },
+         "threeDsAddress": {
+          "type": "string",
+          "description": "Specifies 3D Secure address settings. Relevant to \"address\".\n"
+         },
+         "addressLine1Enabled": {
+          "type": "boolean",
+          "description": "Indicates if Address Line 1 is enabled. Relevant to \"address\".\n"
+         },
+         "addressLine1Name": {
+          "type": "string",
+          "description": "System name for Address Line 1. Relevant to \"address\".\n"
+         },
+         "addressLine1Placeholder": {
+          "type": "string",
+          "description": "Placeholder for Address Line 1 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine1Label": {
+          "type": "string",
+          "description": "Label for Address Line 1 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine2Enabled": {
+          "type": "boolean",
+          "description": "Indicates if Address Line 2 is enabled. Relevant to \"address\".\n"
+         },
+         "addressLine2Name": {
+          "type": "string",
+          "description": "System name for Address Line 2. Relevant to \"address\".\n"
+         },
+         "addressLine2Placeholder": {
+          "type": "string",
+          "description": "Placeholder for Address Line 2 in the iFrame. Relevant to \"address\".\n"
+         },
+         "addressLine2Label": {
+          "type": "string",
+          "description": "Label for Address Line 2 in the iFrame. Relevant to \"address\".\n"
+         },
+         "cityEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the City field is enabled. Relevant to \"address\".\n"
+         },
+         "cityName": {
+          "type": "string",
+          "description": "System name for the City field. Relevant to \"address\".\n"
+         },
+         "cityPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the City field in the iFrame. Relevant to \"address\".\n"
+         },
+         "cityLabel": {
+          "type": "string",
+          "description": "Label for the City field in the iFrame. Relevant to \"address\".\n"
+         },
+         "stateEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the State field is enabled. Relevant to \"address\".\n"
+         },
+         "stateName": {
+          "type": "string",
+          "description": "System name for the State field. Relevant to \"address\".\n"
+         },
+         "statePlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the State field in the iFrame. Relevant to \"address\".\n"
+         },
+         "stateLabel": {
+          "type": "string",
+          "description": "Label for the State field in the iFrame. Relevant to \"address\".\n"
+         },
+         "postalCodeEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the Postal Code field is enabled. Relevant to \"address\".\n"
+         },
+         "postalCodeName": {
+          "type": "string",
+          "description": "System name for the Postal Code field. Relevant to \"address\".\n"
+         },
+         "postalCodePlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the Postal Code field in the iFrame. Relevant to \"address\".\n"
+         },
+         "postalCodeLabel": {
+          "type": "string",
+          "description": "Label for the Postal Code field in the iFrame. Relevant to \"address\".\n"
+         },
+         "countryEnabled": {
+          "type": "boolean",
+          "description": "Indicates if the Country field is enabled. Relevant to \"address\".\n"
+         },
+         "countryName": {
+          "type": "string",
+          "description": "System name for the Country field. Relevant to \"address\".\n"
+         },
+         "countryPlaceholder": {
+          "type": "string",
+          "description": "Placeholder for the Country field in the iFrame. Relevant to \"address\".\n"
+         },
+         "countryLabel": {
+          "type": "string",
+          "description": "Label for the Country field in the iFrame. Relevant to \"address\".\n"
+         }
+        }
+       }
+      }
+     },
+     {
+      "name": "type",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "userDefined",
+        "preDefined"
+       ]
+      },
+      "description": "Specifies if the template type is user-defined or pre-defined."
+     },
+     {
+      "name": "accessMode",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "specific",
+        "general"
+       ]
+      },
+      "description": "Access mode of the template, e.g., specific to certain domains."
+     },
+     {
+      "name": "options.customStyles",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Custom styles applied to the iFrame. Should be in CSS format."
+     },
+     {
+      "name": "options.customStyleFile",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string"
+      },
+      "description": "File path to custom style file for the iFrame."
+     },
+     {
+      "name": "options.domains",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "description": "List of allowed domains for the template."
+     },
+     {
+      "name": "options.security.irreversible",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      },
+      "description": "Indicates if tokens generated by the template are irreversible."
+     },
+     {
+      "name": "options.security.active.from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "ISO 8601"
+      },
+      "description": "The duration from the time of tokenization until the token can be detokenized. This is specified in ISO 8601 format."
+     },
+     {
+      "name": "options.security.active.to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date-time"
+      },
+      "description": "The duration from the time of tokenization (not the time of activation) until the token can no longer be detokenized. This is specified in ISO 8601 format. Should be greater than the 'active from' setting. If not the token will be effectively irreversible."
+     }
+    ],
+    "requestBody": {
+     "description": "Template to be updated.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TemplateUpdate"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Template update response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UpdateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "404": {
+      "description": "Not found",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "template"
+   }
+  },
+  "/templates/{id}/clone": {
+   "post": {
+    "tags": [
+     "Templates"
+    ],
+    "summary": "Clone a Template",
+    "description": "This endpoint allows to clone Template.",
+    "operationId": "clone-template",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "description": "The Template's unique identifier.",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "maxLength": 20
+      }
+     }
+    ],
+    "requestBody": {
+     "description": "Template to be created.",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TemplateClone"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Template create response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CreateResult"
+        }
+       }
+      },
+      "headers": {
+       "X-RateLimit-Limit": {
+        "$ref": "#/components/headers/X-RateLimit-Limit"
+       },
+       "X-RateLimit-Remaining": {
+        "$ref": "#/components/headers/X-RateLimit-Remaining"
+       },
+       "X-RateLimit-Reset": {
+        "$ref": "#/components/headers/X-RateLimit-Reset"
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {}
+     },
+     "403": {
+      "description": "Forbidden",
+      "content": {}
+     },
+     "409": {
+      "description": "Invalid data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorValidation"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal server error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorServer"
+        }
+       }
+      }
+     }
+    },
+    "x-codegen-request-body-name": "client"
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "ListPaging": {
+    "type": "object",
+    "properties": {
+     "take": {
+      "type": "integer",
+      "description": "The number of entries to include in the list.",
+      "format": "int32"
+     },
+     "skip": {
+      "type": "integer",
+      "description": "The number of results to skip before listing entries.",
+      "format": "int32"
+     }
+    }
+   },
+   "ObjectIdentifierProperties": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     }
+    }
+   },
+   "ObjectModifierProperties": {
+    "type": "object",
+    "properties": {
+     "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp in ISO 8601 format."
+     },
+     "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modified timestamp."
+     }
+    }
+   },
+   "PartnerReference": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "The referenced Partner's ID.",
+      "format": "int64"
+     },
+     "name": {
+      "type": "string",
+      "description": "The referenced Partner's name."
+     }
+    },
+    "description": "Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated."
+   },
+   "ClientReference": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "The referenced Client's ID.",
+      "format": "int64"
+     },
+     "name": {
+      "type": "string",
+      "description": "The referenced Client's name."
+     }
+    },
+    "description": "Reference to the associated Client resource. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated."
+   },
+   "UserReference": {
+    "required": [
+     "id"
+    ],
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "User Id",
+      "format": "int64"
+     }
+    },
+    "description": ""
+   },
+   "UserDetailsReference": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "User Id",
+      "format": "int64"
+     },
+     "firstName": {
+      "type": "string",
+      "description": "First name"
+     },
+     "lastName": {
+      "type": "string",
+      "description": "Last name"
+     },
+     "email": {
+      "type": "string",
+      "description": "Email"
+     }
+    },
+    "description": ""
+   },
+   "UserRoleReference": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string",
+      "description": "Role name.",
+      "enum": [
+       "System Admin",
+       "System User",
+       "Partner Supervisor",
+       "Partner User",
+       "Client Admin",
+       "Client User"
+      ]
+     }
+    },
+    "description": "Reference to the associated User Role."
+   },
+   "CreateResult": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "Unique identifier of newly added element.",
+      "format": "int64"
+     }
+    }
+   },
+   "UpdateResult": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "description": "Unique identifier of updated element.",
+      "format": "int64"
+     }
+    }
+   },
+   "ErrorValidation": {
+    "type": "object",
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "example": false,
+      "default": false
+     },
+     "errorCode": {
+      "type": "integer"
+     },
+     "message": {
+      "type": "string"
+     },
+     "errors": {
+      "type": "object",
+      "properties": {
+       "[attribute name]": {
+        "$ref": "#/components/schemas/ErrorValidationItem"
+       }
+      }
+     }
+    },
+    "description": ""
+   },
+   "ErrorValidationItem": {
+    "type": "object",
+    "properties": {
+     "attribute": {
+      "type": "string",
+      "description": "Invalid attribute name"
+     },
+     "message": {
+      "type": "string",
+      "description": "Invalid attribute description"
+     },
+     "errorCode": {
+      "type": "integer",
+      "description": "Error code"
+     }
+    },
+    "description": ""
+   },
+   "ErrorServer": {
+    "type": "object",
+    "properties": {
+     "errorCode": {
+      "type": "integer"
+     },
+     "message": {
+      "type": "string"
+     }
+    },
+    "description": ""
+   },
+   "UserList": {
+    "type": "object",
+    "properties": {
+     "total": {
+      "type": "integer",
+      "description": "Total number of users available"
+     },
+     "data": {
+      "type": "array",
+      "description": "User list items",
+      "items": {
+       "$ref": "#/components/schemas/UserListItem"
+      }
+     }
+    }
+   },
+   "UserListItem": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "userName": {
+      "type": "string",
+      "description": "The User's unique username."
+     },
+     "firstName": {
+      "type": "string",
+      "description": "The User's name."
+     },
+     "lastName": {
+      "type": "string",
+      "description": "The User's Surname."
+     },
+     "email": {
+      "type": "string",
+      "description": "The User's email address."
+     },
+     "phone": {
+      "type": "string",
+      "description": "The User's phone number without dashes, spaces, or brackets."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "userRole": {
+      "$ref": "#/components/schemas/UserRoleReference"
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     }
+    }
+   },
+   "UserDetails": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "userName": {
+      "type": "string"
+     },
+     "firstName": {
+      "type": "string"
+     },
+     "lastName": {
+      "type": "string"
+     },
+     "email": {
+      "type": "string"
+     },
+     "phone": {
+      "type": "string"
+     },
+     "isActive": {
+      "type": "boolean"
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "userRole": {
+      "$ref": "#/components/schemas/UserRoleReference"
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp in ISO 8601 format."
+     },
+     "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modified timestamp."
+     }
+    }
+   },
+   "UserCreate": {
+    "required": [
+     "email",
+     "firstName",
+     "lastName",
+     "phone",
+     "userName",
+     "userRole"
+    ],
+    "type": "object",
+    "properties": {
+     "userName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's unique username."
+     },
+     "firstName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's name."
+     },
+     "lastName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's Surname."
+     },
+     "email": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's email address."
+     },
+     "phone": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's phone number without dashes, spaces, or brackets (e.g. +14155552671)."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "userRole": {
+      "$ref": "#/components/schemas/UserRoleReference"
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive."
+     },
+     "sendWelcomeEmail": {
+      "type": "boolean",
+      "description": "If this property is set to 'true' the newly created user will be sent a welcome email."
+     }
+    }
+   },
+   "UserCreateInline": {
+    "required": [
+     "email",
+     "firstName",
+     "lastName",
+     "phone",
+     "userName"
+    ],
+    "type": "object",
+    "properties": {
+     "userName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's unique username."
+     },
+     "firstName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's name."
+     },
+     "lastName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's Surname."
+     },
+     "email": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's email address."
+     },
+     "phone": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's phone number without dashes, spaces, or brackets (e.g. +14155552671)."
+     },
+     "userRole": {
+      "type": "string",
+      "enum": [
+       "Partner Supervisor",
+       "Partner User",
+       "Client Admin",
+       "Client User"
+      ],
+      "description": "Reference to the associated User Role."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive."
+     },
+     "sendWelcomeEmail": {
+      "type": "boolean",
+      "description": "If this property is set to 'true' the newly created user will be sent a welcome email."
+     }
+    }
+   },
+   "UserUpdate": {
+    "type": "object",
+    "properties": {
+     "userName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's unique username."
+     },
+     "firstName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's name."
+     },
+     "lastName": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's Surname."
+     },
+     "email": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's email address."
+     },
+     "phone": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The User's phone number without dashes, spaces, or brackets (e.g. +14155552671)."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "userRole": {
+      "$ref": "#/components/schemas/UserRoleReference"
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive."
+     },
+     "sendWelcomeEmail": {
+      "type": "boolean",
+      "description": "If this property is set to 'true' the newly created user will be sent a welcome email."
+     }
+    }
+   },
+   "PartnerList": {
+    "type": "object",
+    "properties": {
+     "total": {
+      "type": "integer",
+      "description": "Total number of partners available"
+     },
+     "data": {
+      "type": "array",
+      "description": "Partner list items",
+      "items": {
+       "$ref": "#/components/schemas/PartnerListItem"
+      }
+     }
+    }
+   },
+   "PartnerListItem": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "name": {
+      "type": "string",
+      "description": "The Partner's name."
+     },
+     "reference": {
+      "type": "string",
+      "description": "The Partner's reference string. This reference is used in to identify the Partner on the Decryption APIs. It equates to the Partner ID."
+     },
+     "billingId": {
+      "type": "string",
+      "description": "The Partner's billing identifier."
+     },
+     "verificationPhrase": {
+      "type": "string",
+      "description": "The verification phrase is a message that the Partner creates. It can be used as a mechanism to authorize a partner when they initiate communication over the phone."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Parter account is active or disabled. It is not possible to delete a Partner account, however their account can be set to inactive."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "parent": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserReference"
+     }
+    }
+   },
+   "PartnerDetails": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "name": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's name."
+     },
+     "reference": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's reference string. This reference is used in to identify the Partner on the Decryption APIs. It equates to the Partner ID."
+     },
+     "billingId": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The Partner's billing identifier."
+     },
+     "verificationPhrase": {
+      "type": "string",
+      "description": "The verification phrase is a message that the Partner creates. It can be used as a mechanism to authorize a partner when they initiate communication over the phone."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Parter account is active or disabled."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "parent": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserDetailsReference"
+     },
+     "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp in ISO 8601 format."
+     },
+     "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modified timestamp."
+     }
+    }
+   },
+   "PartnerCreate": {
+    "required": [
+     "contact",
+     "name",
+     "parent"
+    ],
+    "type": "object",
+    "properties": {
+     "name": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's name."
+     },
+     "reference": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's reference string. This reference is used in to identify the Partner on the Decryption APIs. It equates to the Partner ID."
+     },
+     "billingId": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The Partner's billing identifier."
+     },
+     "verificationPhrase": {
+      "type": "string",
+      "description": "The verification phrase is a message that the Partner creates. It can be used as a mechanism to authorize a partner when they initiate communication over the phone."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Parter account is active or disabled."
+     },
+     "parent": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserCreateInline"
+     }
+    }
+   },
+   "PartnerUpdate": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's name."
+     },
+     "reference": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Partner's reference string. This reference is used in to identify the Partner on the Decryption APIs. It equates to the Partner ID."
+     },
+     "billingId": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The Partner's billing identifier."
+     },
+     "verificationPhrase": {
+      "type": "string",
+      "description": "The verification phrase is a message that the Partner creates. It can be used as a mechanism to authorize a partner when they initiate communication over the phone."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Parter account is active or disabled."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "parent": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserReference"
+     }
+    }
+   },
+   "ClientList": {
+    "type": "object",
+    "properties": {
+     "total": {
+      "type": "integer",
+      "description": "Total number of clients available"
+     },
+     "data": {
+      "type": "array",
+      "description": "Client list items",
+      "items": {
+       "$ref": "#/components/schemas/ClientListItem"
+      }
+     }
+    }
+   },
+   "ClientListItem": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "name": {
+      "type": "string"
+     },
+     "billingId": {
+      "type": "string"
+     },
+     "mid": {
+      "type": "string"
+     },
+     "isActive": {
+      "type": "boolean"
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserReference"
+     }
+    }
+   },
+   "ClientDetails": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "name": {
+      "type": "string",
+      "description": "The Client's name."
+     },
+     "billingId": {
+      "type": "string"
+     },
+     "mid": {
+      "type": "string",
+      "description": "Some Partners will have an merchant ids on their own software offerings. This is an open field that allows those Partner associate a Client resource with their Merchant Identifier."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Client account is active or disabled. It is not possible to delete Clients, however their account can be set to inactive."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserDetailsReference"
+     },
+     "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp in ISO 8601 format."
+     },
+     "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modified timestamp."
+     }
+    }
+   },
+   "ClientCreate": {
+    "required": [
+     "contact",
+     "directPartner",
+     "name"
+    ],
+    "type": "object",
+    "properties": {
+     "name": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Client's name."
+     },
+     "billingId": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "Billing ID"
+     },
+     "mid": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "Some Partners will have an merchant ids on their own software offerings. This is an open field that allows those Partner associate a Client resource with their Merchant Identifier."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Client account is active or disabled. It is not possible to delete Clients, however their account can be set to inactive."
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserCreateInline"
+     }
+    }
+   },
+   "ClientUpdate": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The Client's name."
+     },
+     "billingId": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "Billing ID"
+     },
+     "mid": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "Some Partners will have an merchant ids on their own software offerings. This is an open field that allows those Partner associate a Client resource with their Merchant Identifier."
+     },
+     "isActive": {
+      "type": "boolean",
+      "description": "This property indicates if the Client account is active or disabled. It is not possible to delete Clients, however their account can be set to inactive."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "contact": {
+      "$ref": "#/components/schemas/UserReference"
+     }
+    }
+   },
+   "TransactionList": {
+    "type": "object",
+    "properties": {
+     "total": {
+      "type": "integer",
+      "description": "Total number of transactions available"
+     },
+     "data": {
+      "type": "array",
+      "description": "Transaction list items",
+      "items": {
+       "$ref": "#/components/schemas/TransactionListItem"
+      }
+     }
+    }
+   },
+   "TransactionListItem": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "templateId": {
+      "type": "integer",
+      "format": "int32",
+      "description": "A Template's unique identifier."
+     },
+     "bfid": {
+      "type": "string",
+      "description": "BFID"
+     },
+     "success": {
+      "type": "boolean",
+      "description": "The success indicator."
+     },
+     "messageId": {
+      "type": "string",
+      "description": "Message ID."
+     },
+     "reference": {
+      "type": "string",
+      "description": "The reference property that the Client includes in the decrypt API call."
+     },
+     "completeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the transaction."
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     }
+    }
+   },
+   "TransactionDetails": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "templateId": {
+      "type": "string",
+      "description": "The Template's unique identifier."
+     },
+     "bfid": {
+      "type": "string",
+      "description": "BFID"
+     },
+     "success": {
+      "type": "boolean",
+      "description": "The success indicator."
+     },
+     "messageId": {
+      "type": "string",
+      "description": "Message ID."
+     },
+     "reference": {
+      "type": "string",
+      "description": "The reference property that the Client includes in the decrypt API call."
+     },
+     "errMessage": {
+      "type": "string",
+      "description": "The error messge that is sent in response to a failed decrypt API call."
+     },
+     "errCode": {
+      "maxLength": 255,
+      "type": "string",
+      "description": "The error code that is sent in response to a failed decrypt API call."
+     },
+     "ipAddress": {
+      "type": "string",
+      "description": "The IP address of the http client that makes the decrypt API call."
+     },
+     "completeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp from the beginning of the transaction."
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "directPartner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     }
+    }
+   },
+   "TemplateList": {
+    "type": "object",
+    "properties": {
+     "total": {
+      "type": "integer",
+      "description": "Total number of Templates available"
+     },
+     "data": {
+      "type": "array",
+      "description": "Template list items",
+      "items": {
+       "$ref": "#/components/schemas/TemplateListItem"
+      }
+     }
+    }
+   },
+   "TemplateListItem": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "name": {
+      "type": "string",
+      "description": "The Template's name."
+     },
+     "reference": {
+      "type": "string",
+      "description": "The Template's unique reference."
+     },
+     "active": {
+      "type": "boolean",
+      "description": "This property indicates if the Template is active or inactive. In the UI this is referred to as published and when set to true the template cannot be modified."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "type": {
+      "type": "string",
+      "description": "The Template's type. TODO provide description",
+      "enum": [
+       "userDefined",
+       "templatePayConexTokenPayments",
+       "templatePayConexTokenization",
+       "templateMyChartCardTransaction",
+       "templateMyChartAchTransaction"
+      ]
+     },
+     "accessMode": {
+      "type": "string",
+      "description": "The Template's access mode. TODO provide description",
+      "enum": [
+       "specific",
+       "restricted",
+       "unrestricted"
+      ]
+     }
+    }
+   },
+   "TemplateBaseDetails": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string",
+      "description": "The Template's name."
+     },
+     "reference": {
+      "type": "string",
+      "description": "The Template's unique reference."
+     },
+     "active": {
+      "type": "boolean",
+      "description": "This property indicates if the Template is active or inactive. In the UI this is referred to as published and when set to true the template cannot be modified."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     },
+     "partner": {
+      "$ref": "#/components/schemas/PartnerReference"
+     },
+     "client": {
+      "$ref": "#/components/schemas/ClientReference"
+     },
+     "fieldTemplates": {
+      "type": "array",
+      "description": "Field Template list items",
+      "items": {
+       "oneOf": [
+        {
+         "$ref": "#/components/schemas/FieldTemplateFieldDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateDateDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplatePhoneDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateCardDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateAddressDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateEmailDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateBankDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateRoutingDetails"
+        },
+        {
+         "$ref": "#/components/schemas/FieldTemplateTaxDetails"
+        }
+       ]
+      }
+     },
+     "type": {
+      "type": "string",
+      "description": "The Template's type. TODO provide description",
+      "enum": [
+       "userDefined",
+       "templatePayConexTokenPayments",
+       "templatePayConexTokenization",
+       "templateMyChartCardTransaction",
+       "templateMyChartAchTransaction"
+      ]
+     },
+     "accessMode": {
+      "description": "The Template's access mode. TODO provide description",
+      "enum": [
+       "specific",
+       "restricted",
+       "unrestricted"
+      ]
+     },
+     "options": {
+      "$ref": "#/components/schemas/TemplateOptions"
+     }
+    }
+   },
+   "TemplateCreate": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/TemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {}
+   },
+   "TemplateUpdate": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/TemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     }
+    }
+   },
+   "TemplateClone": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string",
+      "description": "Name of Template"
+     }
+    }
+   },
+   "TemplateDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/TemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "This resource's unique identifier."
+     },
+     "version": {
+      "type": "integer",
+      "description": "The number of times that this resource has been updated."
+     }
+    }
+   },
+   "TemplateOptions": {
+    "type": "object",
+    "properties": {
+     "customStyles": {
+      "type": "string",
+      "description": "Template custom styles in css format."
+     },
+     "customStyleFile": {
+      "type": "string",
+      "description": "URL pointing to the template's custom style file."
+     },
+     "domains": {
+      "type": "array",
+      "description": "Template's whitelist domains. Access will not be limited by domain if not set.",
+      "items": {
+       "type": "string"
+      }
+     },
+     "security": {
+      "type": "object",
+      "properties": {
+       "irreversible": {
+        "type": "boolean",
+        "description": "Irreversible Detokenization. If the Irreversible Tokens feature is enabled, tokens cannot be detokenized."
+       },
+       "active": {
+        "type": "object",
+        "properties": {
+         "from": {
+          "type": "string",
+          "description": "Duration Until Token Activation starting from the time of tokenizatioin. ISO 8601 duration format."
+         },
+         "to": {
+          "type": "string",
+          "description": "Duration Until Token Deactivation. ISO 8601 duration format. Should be greater than the `active.from` setting. If not, the token will be effectively irreversible."
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "FieldTemplateBaseDetails": {
+    "type": "object",
+    "properties": {
+     "method": {
+      "type": "string",
+      "description": "Field template's method. FPE is Format-Preserving encryption. FPE supports values up to 56 characters and cannot be idempotent. FPT supports values up to 128 characters and does support idempotency.",
+      "enum": [
+       "FPE",
+       "FPT"
+      ]
+     },
+     "sortOrder": {
+      "type": "integer",
+      "description": "Field template's sort order. This is only relevant to the iFrame and dertermines the order in which the fields will appear.",
+      "format": "int32"
+     },
+     "required": {
+      "type": "boolean",
+      "description": "Whether or not the field template is required. This does not affect detokenization"
+     },
+     "width": {
+      "type": "string",
+      "description": "Field template's width in percentage relative to whole area size. Only applicable to the iFrame.",
+      "enum": [
+       "25",
+       "50",
+       "75",
+       "100"
+      ]
+     }
+    }
+   },
+   "FieldTemplateFieldDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type. In this case `field` is an alias for the \"Custom Field\" type featured in ShieldConex's UI.",
+      "enum": [
+       "field"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format. Determines which characters are left untokenized.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "alphabet": {
+      "type": "string",
+      "description": "Field template's alphabet. CARD10 supports '0-9' and CARD62 supports '0-9', 'a-z' & 'A-Z'.",
+      "enum": [
+       "CARD10",
+       "CARD62"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "nonIdempotentTokens": {
+      "type": "boolean",
+      "description": "Determines if identical values should produce identical tokens. When set to ture, each token will be unique regardless of the data that was tokenized."
+     },
+     "inputType": {
+      "type": "string",
+      "description": "Field template's input type.",
+      "enum": [
+       "input",
+       "select",
+       "password"
+      ]
+     },
+     "inputValues": {
+      "type": "string",
+      "description": "Comma separated input values for inpytType=select"
+     },
+     "minLength": {
+      "type": "integer",
+      "description": "Field template's min length. The lowest allowed value is 2.",
+      "format": "int32"
+     },
+     "maxLength": {
+      "type": "integer",
+      "description": "Field template's max length. The maximum value is 56 if the protection type is set to FPE and 128 if set to FPT.",
+      "format": "int32"
+     },
+     "pattern": {
+      "type": "string",
+      "description": "Regular expression (RegEx) for custom input validation. Relevant to \"field\"."
+     },
+     "patternMessage": {
+      "type": "string",
+      "description": "Invalid pattern error message that displays when the input can't be matched by the RegEx."
+     }
+    }
+   },
+   "FieldTemplateDateDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "date"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "dateFormat": {
+      "type": "string",
+      "description": "Field template's date format.",
+      "enum": [
+       "MM-DD-YYYY",
+       "DD-MM-YYYY",
+       "YYYY-MM-DD"
+      ]
+     },
+     "dateSeparator": {
+      "type": "string",
+      "description": "Field template's date separator.",
+      "enum": [
+       "-",
+       "/"
+      ]
+     }
+    }
+   },
+   "FieldTemplatePhoneDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "phone"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "countryCode": {
+      "type": "boolean",
+      "description": "Phone Number's country code."
+     },
+     "phoneInputMasking": {
+      "type": "string",
+      "description": "Phone Number's input format in the iFrame.",
+      "enum": [
+       "### ### ####",
+       "###-###-####"
+      ]
+     }
+    }
+   },
+   "FieldTemplateCardDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "card"
+      ]
+     },
+     "cardNumberFormat": {
+      "type": "string",
+      "description": "Field template's card number format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "cardNumberName": {
+      "type": "string",
+      "description": "The Card Number field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "cardNumberPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "cardNumberLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "cvvEnabled": {
+      "type": "boolean",
+      "description": "Field template's cvv enable flag. The field will be omitted from the template if set to false."
+     },
+     "cvvName": {
+      "type": "string",
+      "description": "The CVV field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "cvvPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "cvvLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "expirationEnabled": {
+      "type": "boolean",
+      "description": "Field template's expiration enable flag. The field will be omitted from the template if set to false."
+     },
+     "expirationName": {
+      "type": "string",
+      "description": "The card expiration date field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "expirationPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "expirationLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "cardholderEnabled": {
+      "type": "boolean",
+      "description": "Field template's cardholder enable flag. The field will be omitted from the template if set to false."
+     },
+     "cardholderName": {
+      "type": "string",
+      "description": "The cardholder field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "cardholderPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "cardholderLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   },
+   "FieldTemplateAddressDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "address"
+      ]
+     },
+     "threeDsAddress": {
+      "type": "string",
+      "description": "Field template's card number format.",
+      "enum": [
+       "none",
+       "shipping",
+       "billing"
+      ]
+     },
+     "addressLine1Enabled": {
+      "type": "boolean",
+      "description": "Field template's address line 1 enable flag. The field will be omitted from the template if set to false."
+     },
+     "addressLine1Name": {
+      "type": "string",
+      "description": "The address line 1 field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "addressLine1Placeholder": {
+      "type": "string",
+      "description": "FOnly relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "addressLine1Label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "addressLine2Enabled": {
+      "type": "boolean",
+      "description": "Field template's address line 2 enable flag. The field will be omitted from the template if set to false."
+     },
+     "addressLine2Name": {
+      "type": "string",
+      "description": "The address line 2 field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "addressLine2Placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "addressLine2Label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "cityEnabled": {
+      "type": "boolean",
+      "description": "Field template's city enable flag. The field will be omitted from the template if set to false."
+     },
+     "cityName": {
+      "type": "string",
+      "description": "The city field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "cityPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "cityLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "countryEnabled": {
+      "type": "boolean",
+      "description": "Field template's city enable flag. The field will be omitted from the template if set to false."
+     },
+     "countryName": {
+      "type": "string",
+      "description": "The country field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "countryPlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "countryLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "postalCodeEnabled": {
+      "type": "boolean",
+      "description": "Field template's postalCode enabled flag flag. The field will be omitted from the template if set to false."
+     },
+     "postalCodeName": {
+      "type": "string",
+      "description": "The postalCode field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "postalCodePlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "postalCodeLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     },
+     "stateEnabled": {
+      "type": "boolean",
+      "description": "Field template's state enable flag. The field will be omitted from the template if set to false."
+     },
+     "stateName": {
+      "type": "string",
+      "description": "The state field's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "statePlaceholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "stateLabel": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   },
+   "FieldTemplateEmailDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "email"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   },
+   "FieldTemplateBankDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "bank"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   },
+   "FieldTemplateRoutingDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "routing"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   },
+   "FieldTemplateTaxDetails": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/FieldTemplateBaseDetails"
+     }
+    ],
+    "type": "object",
+    "properties": {
+     "templateType": {
+      "type": "string",
+      "description": "Field template's type.",
+      "enum": [
+       "bank"
+      ]
+     },
+     "name": {
+      "type": "string",
+      "description": "Field template's unique system name. Used to refer to the field in code and API calls. It is recommended to avoid using spaces and numbers."
+     },
+     "format": {
+      "type": "string",
+      "description": "Field template's format.",
+      "enum": [
+       "NONE",
+       "LAST_FOUR",
+       "FIRST_SIX",
+       "FIRST_SIX_LAST_FOUR",
+       "FIRST_TWO_LAST_FOUR"
+      ]
+     },
+     "placeholder": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This value appears within the input on the iFrame, and will disappear when the user begins entering a value."
+     },
+     "label": {
+      "type": "string",
+      "description": "Only relevant to the iFrame. This is the field label and defaultly appears above the corresponding field."
+     }
+    }
+   }
+  },
+  "responses": {
+   "401": {
+    "description": "Unauthorized",
+    "content": {}
+   },
+   "403": {
+    "description": "Forbidden",
+    "content": {}
+   },
+   "404": {
+    "description": "Not found",
+    "content": {}
+   },
+   "409": {
+    "description": "Invalid data",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/ErrorValidation"
+      }
+     }
+    }
+   },
+   "500": {
+    "description": "Internal server error",
+    "content": {
+     "application/json": {
+      "schema": {
+       "$ref": "#/components/schemas/ErrorServer"
+      }
+     }
+    }
+   }
+  },
+  "securitySchemes": {
+   "basic": {
+    "type": "http",
+    "scheme": "basic"
+   }
+  },
+  "headers": {
+   "X-RateLimit-Limit": {
+    "schema": {
+     "type": "integer"
+    },
+    "description": "Request limit per hour."
+   },
+   "X-RateLimit-Remaining": {
+    "schema": {
+     "type": "integer"
+    },
+    "description": "The number of requests left for the time window."
+   },
+   "X-RateLimit-Reset": {
+    "schema": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "description": "The UTC date/time at which the current rate limit window resets."
+   }
+  }
+ },
+ "x-readme": {
+  "explorer-enabled": true,
+  "proxy-enabled": true
+ }
+}
