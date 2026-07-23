@@ -204,37 +204,37 @@ voxgig_value* sdk_direct(BluefinShieldconexMgmtSDK* sdk, voxgig_value* fetchargs
 
 
 // Client entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_client(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_client(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return client_entity_new(client, entopts);
 }
 
 // Clone entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_clone(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_clone(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return clone_entity_new(client, entopts);
 }
 
 // Partner entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_partner(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_partner(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return partner_entity_new(client, entopts);
 }
 
 // Template entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_template(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_template(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return template_entity_new(client, entopts);
 }
 
 // Transaction entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_transaction(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_transaction(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return transaction_entity_new(client, entopts);
 }
 
 // UpdateResult entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_update_result(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_update_result(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return update_result_entity_new(client, entopts);
 }
 
 // User entity bound to this client.
-Entity* bluefin_shieldconex_mgmt_user(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
+Entity* bluefinshieldconexmgmt_user(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts) {
   return user_entity_new(client, entopts);
 }
 

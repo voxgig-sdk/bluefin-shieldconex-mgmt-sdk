@@ -10,7 +10,7 @@ Complete API reference for the BluefinShieldconexMgmt C SDK.
 ```c
 #include "core/api.h"
 
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(options);
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(options);
 ```
 
 Create a new SDK client instance. `options` is a `voxgig_value*` map
@@ -43,37 +43,37 @@ BluefinShieldconexMgmtSDK* client = test_sdk(NULL, NULL);
 
 ### Entity Accessors
 
-#### `Entity* bluefin_shieldconex_mgmt_client(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_client(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `Client` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_clone(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_clone(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `Clone` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_partner(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_partner(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `Partner` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_template(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_template(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `Template` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_transaction(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_transaction(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `Transaction` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_update_result(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_update_result(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `UpdateResult` entity instance. Pass `NULL` for no initial
 options.
 
-#### `Entity* bluefin_shieldconex_mgmt_user(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
+#### `Entity* bluefinshieldconexmgmt_user(BluefinShieldconexMgmtSDK* client, voxgig_value* entopts)`
 
 Create a new `User` entity instance. Pass `NULL` for no initial
 options.
@@ -107,7 +107,7 @@ Prepare a fetch definition without sending. Returns the fetchdef and sets
 ## Client
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 ```
 
 ### Fields
@@ -149,7 +149,7 @@ Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
 Create a new entity with the given data. Returns the created entity data and sets `*err` on failure.
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* result = client->vt->create(client, NULL, NULL, &err);
 ```
 
@@ -158,7 +158,7 @@ voxgig_value* result = client->vt->create(client, NULL, NULL, &err);
 List entities matching the given criteria. The match is optional — pass `NULL` to list all records. Returns a List.
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* results = client->vt->list(client, NULL, NULL, &err);
 for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
     printf("%s\n", voxgig_to_json(voxgig_getelem(results, v_int(i), NULL)));
@@ -170,7 +170,7 @@ for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
 Load a single entity matching the given criteria. Returns the entity data and sets `*err` on failure.
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* result = client->vt->load(client, cmap(1, "id", v_str("client_id")), NULL, &err);
 ```
 
@@ -179,7 +179,7 @@ voxgig_value* result = client->vt->load(client, cmap(1, "id", v_str("client_id")
 Remove the entity matching the given criteria. Sets `*err` on failure.
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* result = client->vt->remove(client, cmap(1, "id", v_str("client_id")), NULL, &err);
 ```
 
@@ -207,7 +207,7 @@ Return the entity name.
 ## Clone
 
 ```c
-Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL);
+Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);
 ```
 
 ### Fields
@@ -224,7 +224,7 @@ Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL);
 Create a new entity with the given data. Returns the created entity data and sets `*err` on failure.
 
 ```c
-Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL);
+Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);
 voxgig_value* result = clone->vt->create(clone, cmap(1,
     "template_id", v_str("example_template_id"))  // char*
 , NULL, &err);
@@ -254,7 +254,7 @@ Return the entity name.
 ## Partner
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 ```
 
 ### Fields
@@ -296,7 +296,7 @@ Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
 Create a new entity with the given data. Returns the created entity data and sets `*err` on failure.
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* result = partner->vt->create(partner, NULL, NULL, &err);
 ```
 
@@ -305,7 +305,7 @@ voxgig_value* result = partner->vt->create(partner, NULL, NULL, &err);
 List entities matching the given criteria. The match is optional — pass `NULL` to list all records. Returns a List.
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* results = partner->vt->list(partner, NULL, NULL, &err);
 for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
     printf("%s\n", voxgig_to_json(voxgig_getelem(results, v_int(i), NULL)));
@@ -317,7 +317,7 @@ for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
 Load a single entity matching the given criteria. Returns the entity data and sets `*err` on failure.
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* result = partner->vt->load(partner, cmap(1, "id", v_str("partner_id")), NULL, &err);
 ```
 
@@ -345,7 +345,7 @@ Return the entity name.
 ## Template
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 ```
 
 ### Fields
@@ -371,7 +371,7 @@ Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
 Create a new entity with the given data. Returns the created entity data and sets `*err` on failure.
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* result = template->vt->create(template, NULL, NULL, &err);
 ```
 
@@ -380,7 +380,7 @@ voxgig_value* result = template->vt->create(template, NULL, NULL, &err);
 List entities matching the given criteria. The match is optional — pass `NULL` to list all records. Returns a List.
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* results = template->vt->list(template, NULL, NULL, &err);
 for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
     printf("%s\n", voxgig_to_json(voxgig_getelem(results, v_int(i), NULL)));
@@ -392,7 +392,7 @@ for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
 Load a single entity matching the given criteria. Returns the entity data and sets `*err` on failure.
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* result = template->vt->load(template, cmap(1, "id", v_str("template_id")), NULL, &err);
 ```
 
@@ -401,7 +401,7 @@ voxgig_value* result = template->vt->load(template, cmap(1, "id", v_str("templat
 Remove the entity matching the given criteria. Sets `*err` on failure.
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* result = template->vt->remove(template, cmap(1, "id", v_str("template_id")), NULL, &err);
 ```
 
@@ -429,7 +429,7 @@ Return the entity name.
 ## Transaction
 
 ```c
-Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
+Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 ```
 
 ### Fields
@@ -457,7 +457,7 @@ Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
 List entities matching the given criteria. The match is optional — pass `NULL` to list all records. Returns a List.
 
 ```c
-Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
+Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 voxgig_value* results = transaction->vt->list(transaction, NULL, NULL, &err);
 for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
     printf("%s\n", voxgig_to_json(voxgig_getelem(results, v_int(i), NULL)));
@@ -469,7 +469,7 @@ for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
 Load a single entity matching the given criteria. Returns the entity data and sets `*err` on failure.
 
 ```c
-Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
+Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 voxgig_value* result = transaction->vt->load(transaction, cmap(1, "id", v_str("transaction_id")), NULL, &err);
 ```
 
@@ -497,7 +497,7 @@ Return the entity name.
 ## UpdateResult
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 ```
 
 ### Fields
@@ -557,7 +557,7 @@ Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
 Create a new entity with the given data. Returns the created entity data and sets `*err` on failure.
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* result = update_result->vt->create(update_result, cmap(7,
     "contact", v_map(),  // voxgig_value* (map)
     "email", v_str("example_email"),  // char*
@@ -574,7 +574,7 @@ voxgig_value* result = update_result->vt->create(update_result, cmap(7,
 List entities matching the given criteria. The match is optional — pass `NULL` to list all records. Returns a List.
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* results = update_result->vt->list(update_result, NULL, NULL, &err);
 for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
     printf("%s\n", voxgig_to_json(voxgig_getelem(results, v_int(i), NULL)));
@@ -586,7 +586,7 @@ for (size_t i = 0; i < (size_t)voxgig_size(results); i++) {
 Update an existing entity. The data must include the entity id. Returns the updated entity data.
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* result = update_result->vt->update(update_result, cmap(1, "id", v_str("id")), NULL, &err);
 ```
 
@@ -614,7 +614,7 @@ Return the entity name.
 ## User
 
 ```c
-Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);
+Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 ```
 
 ### Fields
@@ -642,7 +642,7 @@ Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);
 Load a single entity matching the given criteria. Returns the entity data and sets `*err` on failure.
 
 ```c
-Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);
+Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 voxgig_value* result = user->vt->load(user, cmap(1, "id", v_str("user_id")), NULL, &err);
 ```
 
@@ -677,7 +677,7 @@ Return the entity name.
 Features are activated via the `feature` option:
 
 ```c
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(1,
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(1,
     "feature", cmap(1,
         "test", cmap(1, "active", v_bool(true)))
 ));

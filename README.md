@@ -91,7 +91,7 @@ local results, err = client:Partner():list()
 
 BluefinShieldconexMgmtSDK* client = test_sdk(NULL, NULL);
 PNError* err = NULL;
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* partners = partner->vt->list(partner, NULL, NULL, &err);
 printf("%s\n", voxgig_to_json(partners));
 ```
@@ -444,11 +444,11 @@ print(client_)
 ```c
 #include "core/api.h"
 
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(1,
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(1,
     "apikey", v_str(getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))));
 PNError* err = NULL;
 
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 
 // List all clients (returns a List, sets *err on failure)
 voxgig_value* clients = client->vt->list(client, NULL, NULL, &err);

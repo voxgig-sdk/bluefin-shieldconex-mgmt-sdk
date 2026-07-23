@@ -29,6 +29,9 @@ object TransactionEntityTest {
       idmap.put("transaction02", "TRANSACTION02")
       idmap.put("transaction03", "TRANSACTION03")
       val now = System.currentTimeMillis()
+      val transactionRef01DataRaw = Struct.items(Helpers.toMapAny(
+          Struct.getpath(entityData, "existing.transaction")))
+      val transactionRef01Data = Helpers.toMapAny(transactionRef01DataRaw.get(0).get(1))
 
       // LIST
       val transactionRef01Ent = client.transaction(null)

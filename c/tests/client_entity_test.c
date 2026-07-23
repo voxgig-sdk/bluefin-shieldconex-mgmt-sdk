@@ -6,7 +6,7 @@ int main(void) {
   BluefinShieldconexMgmtSDK* sdk = test_sdk(NULL, NULL);
   CHECK(sdk != NULL, "sdk constructed");
 
-  Entity* e = bluefin_shieldconex_mgmt_client(sdk, NULL);
+  Entity* e = bluefinshieldconexmgmt_client(sdk, NULL);
   CHECK(e != NULL, "entity instance");
   CHECK_STR_EQ(e->vt->get_name(e), "client", "entity get_name");
 
@@ -24,7 +24,7 @@ int main(void) {
       cmap(1, "streaming", cmap(1, "active", v_bool(true))));
 
     BluefinShieldconexMgmtSDK* strsdk = test_sdk(seed, sdkopts);
-    Entity* se = bluefin_shieldconex_mgmt_client(strsdk, NULL);
+    Entity* se = bluefinshieldconexmgmt_client(strsdk, NULL);
     PNError* serr = NULL;
     voxgig_value* items = client_stream(se, "list", NULL, NULL, &serr);
     CHECK(serr == NULL, "stream: no error");
@@ -33,7 +33,7 @@ int main(void) {
 
     // Fallback: streaming inactive still yields both materialised items.
     BluefinShieldconexMgmtSDK* plainsdk = test_sdk(seed, NULL);
-    Entity* pe = bluefin_shieldconex_mgmt_client(plainsdk, NULL);
+    Entity* pe = bluefinshieldconexmgmt_client(plainsdk, NULL);
     PNError* perr = NULL;
     voxgig_value* pitems = client_stream(pe, "list", NULL, NULL, &perr);
     CHECK(perr == NULL, "stream fallback: no error");

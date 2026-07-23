@@ -28,7 +28,7 @@ static BluefinShieldconexMgmtSDK* user_direct_setup(voxgig_value* mockres) {
   voxgig_value* opts = cmap(2,
     "base", v_str("http://localhost:8080"),
     "system", cmap(1, "fetch", vfn(user_mock, mockres)));
-  return bluefin_shieldconex_mgmt_sdk_new(opts);
+  return bluefinshieldconexmgmt_sdk_new(opts);
 }
 
 int main(void) {
@@ -58,5 +58,5 @@ int main(void) {
     CHECK(strstr(LAST_URL, "direct01") != NULL, "load: url has direct01");
   }
 
-  TEST_SUMMARY("bluefin_shieldconex_mgmt_user_direct");
+  TEST_SUMMARY("bluefinshieldconexmgmt_user_direct");
 }

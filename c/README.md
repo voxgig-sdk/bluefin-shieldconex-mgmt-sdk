@@ -4,7 +4,7 @@
 
 The C SDK for the BluefinShieldconexMgmt API — an entity-oriented client following idiomatic C conventions (explicit structs, function-pointer vtables, and a trailing `PNError**` out-param for errors).
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `bluefin_shieldconex_mgmt_client(client, NULL)` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `bluefinshieldconexmgmt_client(client, NULL)` — each
 carrying a small, uniform set of operations (`list`, `load`, `create`, `update`, `remove`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -43,7 +43,7 @@ loading a specific record.
 ```c
 #include "core/api.h"
 
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(1,
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(1,
     "apikey", v_str(getenv("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))));
 PNError* err = NULL;
 ```
@@ -54,7 +54,7 @@ PNError* err = NULL;
 `err` after the call.
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* clients = client->vt->list(client, NULL, NULL, &err);
 if (err) {
     fprintf(stderr, "list failed: %s\n", err->msg);
@@ -167,7 +167,7 @@ BluefinShieldconexMgmtSDK* client = test_sdk(NULL, NULL);
 PNError* err = NULL;
 
 // Entity ops return the bare record and set *err on failure.
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* partner_rec = partner->vt->list(partner, NULL, NULL, &err);
 // partner_rec contains the mock response record
 ```
@@ -187,7 +187,7 @@ static voxgig_value* mock_fetch(void* ud, voxgig_value* args) {
         "json", json_thunk(cmap(1, "id", v_str("mock01"))));
 }
 
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(2,
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(2,
     "base", v_str("http://localhost:8080"),
     "system", cmap(1, "fetch", vfn(mock_fetch, NULL))));
 ```
@@ -197,7 +197,7 @@ BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(2,
 Override the base URL to reach a local or staging server:
 
 ```c
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(cmap(1,
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(1,
     "base", v_str("http://localhost:8080")));
 ```
 
@@ -224,7 +224,7 @@ cd c && make test
 ```c
 #include "core/api.h"
 
-BluefinShieldconexMgmtSDK* client = bluefin_shieldconex_mgmt_sdk_new(options);
+BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(options);
 ```
 
 Creates a new SDK client. `options` is a `voxgig_value*` map (`NULL` for
@@ -254,13 +254,13 @@ Creates a test-mode client with mock transport. Both arguments may be
 | --- | --- | --- |
 | `sdk_prepare` | `(BluefinShieldconexMgmtSDK*, fetchargs, PNError**) -> voxgig_value*` | Build an HTTP request definition without sending. |
 | `sdk_direct` | `(BluefinShieldconexMgmtSDK*, fetchargs, PNError**) -> voxgig_value*` | Build and send an HTTP request. Returns a result map (branch on `ok`). |
-| `bluefin_shieldconex_mgmt_client` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Client entity instance. |
-| `bluefin_shieldconex_mgmt_clone` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Clone entity instance. |
-| `bluefin_shieldconex_mgmt_partner` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Partner entity instance. |
-| `bluefin_shieldconex_mgmt_template` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Template entity instance. |
-| `bluefin_shieldconex_mgmt_transaction` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Transaction entity instance. |
-| `bluefin_shieldconex_mgmt_update_result` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create an UpdateResult entity instance. |
-| `bluefin_shieldconex_mgmt_user` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create an User entity instance. |
+| `bluefinshieldconexmgmt_client` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Client entity instance. |
+| `bluefinshieldconexmgmt_clone` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Clone entity instance. |
+| `bluefinshieldconexmgmt_partner` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Partner entity instance. |
+| `bluefinshieldconexmgmt_template` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Template entity instance. |
+| `bluefinshieldconexmgmt_transaction` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create a Transaction entity instance. |
+| `bluefinshieldconexmgmt_update_result` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create an UpdateResult entity instance. |
+| `bluefinshieldconexmgmt_user` | `(BluefinShieldconexMgmtSDK*, entopts) -> Entity*` | Create an User entity instance. |
 
 ### Entity interface (vtable)
 
@@ -450,7 +450,7 @@ API path: `/users/{id}`
 
 ### Client
 
-Create an instance: `Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);`
+Create an instance: `Entity* client = bluefinshieldconexmgmt_client(client, NULL);`
 
 #### Operations
 
@@ -480,28 +480,28 @@ Create an instance: `Entity* client = bluefin_shieldconex_mgmt_client(client, NU
 #### Example: Load
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* client_rec = client->vt->load(client, cmap(1, "id", v_str("client_id")), NULL, &err);
 ```
 
 #### Example: List
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* clients = client->vt->list(client, NULL, NULL, &err);
 ```
 
 #### Example: Create
 
 ```c
-Entity* client = bluefin_shieldconex_mgmt_client(client, NULL);
+Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 voxgig_value* client_rec = client->vt->create(client, NULL, NULL, &err);
 ```
 
 
 ### Clone
 
-Create an instance: `Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL);`
+Create an instance: `Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);`
 
 #### Operations
 
@@ -519,7 +519,7 @@ Create an instance: `Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL
 #### Example: Create
 
 ```c
-Entity* clone = bluefin_shieldconex_mgmt_clone(client, NULL);
+Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);
 voxgig_value* clone_rec = clone->vt->create(clone, cmap(1,
     "template_id", v_str("example_template_id"))  // char*
 , NULL, &err);
@@ -528,7 +528,7 @@ voxgig_value* clone_rec = clone->vt->create(clone, cmap(1,
 
 ### Partner
 
-Create an instance: `Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);`
+Create an instance: `Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);`
 
 #### Operations
 
@@ -557,28 +557,28 @@ Create an instance: `Entity* partner = bluefin_shieldconex_mgmt_partner(client, 
 #### Example: Load
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* partner_rec = partner->vt->load(partner, cmap(1, "id", v_str("partner_id")), NULL, &err);
 ```
 
 #### Example: List
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* partners = partner->vt->list(partner, NULL, NULL, &err);
 ```
 
 #### Example: Create
 
 ```c
-Entity* partner = bluefin_shieldconex_mgmt_partner(client, NULL);
+Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 voxgig_value* partner_rec = partner->vt->create(partner, NULL, NULL, &err);
 ```
 
 
 ### Template
 
-Create an instance: `Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);`
+Create an instance: `Entity* template = bluefinshieldconexmgmt_template(client, NULL);`
 
 #### Operations
 
@@ -608,28 +608,28 @@ Create an instance: `Entity* template = bluefin_shieldconex_mgmt_template(client
 #### Example: Load
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* template_rec = template->vt->load(template, cmap(1, "id", v_str("template_id")), NULL, &err);
 ```
 
 #### Example: List
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* templates = template->vt->list(template, NULL, NULL, &err);
 ```
 
 #### Example: Create
 
 ```c
-Entity* template = bluefin_shieldconex_mgmt_template(client, NULL);
+Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 voxgig_value* template_rec = template->vt->create(template, NULL, NULL, &err);
 ```
 
 
 ### Transaction
 
-Create an instance: `Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);`
+Create an instance: `Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);`
 
 #### Operations
 
@@ -659,21 +659,21 @@ Create an instance: `Entity* transaction = bluefin_shieldconex_mgmt_transaction(
 #### Example: Load
 
 ```c
-Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
+Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 voxgig_value* transaction_rec = transaction->vt->load(transaction, cmap(1, "id", v_str("transaction_id")), NULL, &err);
 ```
 
 #### Example: List
 
 ```c
-Entity* transaction = bluefin_shieldconex_mgmt_transaction(client, NULL);
+Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 voxgig_value* transactions = transaction->vt->list(transaction, NULL, NULL, &err);
 ```
 
 
 ### UpdateResult
 
-Create an instance: `Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);`
+Create an instance: `Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);`
 
 #### Operations
 
@@ -711,14 +711,14 @@ Create an instance: `Entity* update_result = bluefin_shieldconex_mgmt_update_res
 #### Example: List
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* update_results = update_result->vt->list(update_result, NULL, NULL, &err);
 ```
 
 #### Example: Create
 
 ```c
-Entity* update_result = bluefin_shieldconex_mgmt_update_result(client, NULL);
+Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* update_result_rec = update_result->vt->create(update_result, cmap(7,
     "contact", v_map(),  // voxgig_value* (map)
     "email", v_str("example_email"),  // char*
@@ -733,7 +733,7 @@ voxgig_value* update_result_rec = update_result->vt->create(update_result, cmap(
 
 ### User
 
-Create an instance: `Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);`
+Create an instance: `Entity* user = bluefinshieldconexmgmt_user(client, NULL);`
 
 #### Operations
 
@@ -762,7 +762,7 @@ Create an instance: `Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);
 #### Example: Load
 
 ```c
-Entity* user = bluefin_shieldconex_mgmt_user(client, NULL);
+Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 voxgig_value* user_rec = user->vt->load(user, cmap(1, "id", v_str("user_id")), NULL, &err);
 ```
 

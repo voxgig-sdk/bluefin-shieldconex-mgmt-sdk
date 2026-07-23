@@ -28,7 +28,7 @@ static BluefinShieldconexMgmtSDK* update_result_direct_setup(voxgig_value* mockr
   voxgig_value* opts = cmap(2,
     "base", v_str("http://localhost:8080"),
     "system", cmap(1, "fetch", vfn(update_result_mock, mockres)));
-  return bluefin_shieldconex_mgmt_sdk_new(opts);
+  return bluefinshieldconexmgmt_sdk_new(opts);
 }
 
 int main(void) {
@@ -56,5 +56,5 @@ int main(void) {
     CHECK_INT_EQ(CALLS, 1, "list: one call");
   }
 
-  TEST_SUMMARY("bluefin_shieldconex_mgmt_update_result_direct");
+  TEST_SUMMARY("bluefinshieldconexmgmt_update_result_direct");
 }
