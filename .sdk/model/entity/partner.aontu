@@ -1,0 +1,325 @@
+# Entity: partner
+
+main: kit: entity: partner: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "billing_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "contact"
+      op: {
+        create: {
+          req: true
+          type: "`$OBJECT`"
+        }
+        list: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "created"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "is_active"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "modified"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "parent"
+      op: {
+        create: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "reference"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "verification_phrase"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "version"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "partner"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "billing_id"
+                orig: "billing_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_email"
+                orig: "contact_email"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_first_name"
+                orig: "contact_first_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_is_active"
+                orig: "contact_is_active"
+                reqd: true
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "contact_last_name"
+                orig: "contact_last_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_phone"
+                orig: "contact_phone"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_send_welcome_email"
+                orig: "contact_send_welcome_email"
+                reqd: true
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "contact_user_name"
+                orig: "contact_user_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contact_user_role"
+                orig: "contact_user_role"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "is_active"
+                orig: "is_active"
+                reqd: true
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "parent_id"
+                orig: "parent_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "parent_name"
+                orig: "parent_name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "reference"
+                orig: "reference"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "verification_phrase"
+                orig: "verification_phrase"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/partners"
+          parts: [
+            "partners"
+          ]
+          select: {
+            exist: [
+              "billing_id"
+              "contact_email"
+              "contact_first_name"
+              "contact_is_active"
+              "contact_last_name"
+              "contact_phone"
+              "contact_send_welcome_email"
+              "contact_user_name"
+              "contact_user_role"
+              "is_active"
+              "name"
+              "parent_id"
+              "parent_name"
+              "reference"
+              "verification_phrase"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "partner"
+                orig: "partner"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "skip"
+                orig: "skip"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "take"
+                orig: "take"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/partners"
+          parts: [
+            "partners"
+          ]
+          select: {
+            exist: [
+              "partner"
+              "skip"
+              "take"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/partners/{id}"
+          parts: [
+            "partners"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

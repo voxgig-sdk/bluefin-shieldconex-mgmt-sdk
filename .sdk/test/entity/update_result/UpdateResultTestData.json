@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "update_result": {
+      "UPDATE_RESULT00": {
+        "billing_id": "BILLING01",
+        "client": {},
+        "contact": {},
+        "direct_partner": {},
+        "email": "scc",
+        "first_name": "scd",
+        "id": "UPDATE_RESULT00",
+        "is_active": false,
+        "last_name": "sd0",
+        "mid": "sd1",
+        "name": "sd2",
+        "parent": {},
+        "partner": {},
+        "phone": "sd5",
+        "reference": "sd6",
+        "send_welcome_email": false,
+        "user_name": "sd8",
+        "user_role": {},
+        "verification_phrase": "sda",
+        "version": "sdb"
+      },
+      "UPDATE_RESULT01": {
+        "billing_id": "BILLING01",
+        "client": {},
+        "contact": {},
+        "direct_partner": {},
+        "email": "s194",
+        "first_name": "s195",
+        "id": "UPDATE_RESULT01",
+        "is_active": false,
+        "last_name": "s198",
+        "mid": "s199",
+        "name": "s19a",
+        "parent": {},
+        "partner": {},
+        "phone": "s19d",
+        "reference": "s19e",
+        "send_welcome_email": false,
+        "user_name": "s1a0",
+        "user_role": {},
+        "verification_phrase": "s1a2",
+        "version": "s1a3"
+      },
+      "UPDATE_RESULT02": {
+        "billing_id": "BILLING01",
+        "client": {},
+        "contact": {},
+        "direct_partner": {},
+        "email": "s25c",
+        "first_name": "s25d",
+        "id": "UPDATE_RESULT02",
+        "is_active": false,
+        "last_name": "s260",
+        "mid": "s261",
+        "name": "s262",
+        "parent": {},
+        "partner": {},
+        "phone": "s265",
+        "reference": "s266",
+        "send_welcome_email": false,
+        "user_name": "s268",
+        "user_role": {},
+        "verification_phrase": "s26a",
+        "version": "s26b"
+      }
+    }
+  },
+  "new": {
+    "update_result": {
+      "update_result_ref01": {
+        "billing_id": "BILLING01",
+        "client": {},
+        "contact": {},
+        "direct_partner": {},
+        "email": "s324",
+        "first_name": "s325",
+        "is_active": false,
+        "last_name": "s328",
+        "mid": "s329",
+        "name": "s32a",
+        "parent": {},
+        "partner": {},
+        "phone": "s32d",
+        "reference": "s32e",
+        "send_welcome_email": false,
+        "user_name": "s330",
+        "user_role": {},
+        "verification_phrase": "s332",
+        "version": "s333"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "existing": {
+    "clone": {
+      "CLONE00": {
+        "id": "CLONE00",
+        "name": "s15",
+        "template_id": "TEMPLATE01"
+      },
+      "CLONE01": {
+        "id": "CLONE01",
+        "name": "s29",
+        "template_id": "TEMPLATE01"
+      },
+      "CLONE02": {
+        "id": "CLONE02",
+        "name": "s3d",
+        "template_id": "TEMPLATE01"
+      }
+    }
+  },
+  "new": {
+    "clone": {
+      "clone_ref01": {
+        "name": "s51"
+      }
+    }
+  }
+}

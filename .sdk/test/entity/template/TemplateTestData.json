@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "template": {
+      "TEMPLATE00": {
+        "access_mode": "s6e",
+        "active": false,
+        "client": {},
+        "field_template": [],
+        "id": "TEMPLATE00",
+        "name": "s73",
+        "option": {},
+        "partner": {},
+        "reference": "s76",
+        "type": "s77",
+        "version": "s78"
+      },
+      "TEMPLATE01": {
+        "access_mode": "sdc",
+        "active": false,
+        "client": {},
+        "field_template": [],
+        "id": "TEMPLATE01",
+        "name": "se1",
+        "option": {},
+        "partner": {},
+        "reference": "se4",
+        "type": "se5",
+        "version": "se6"
+      },
+      "TEMPLATE02": {
+        "access_mode": "s14a",
+        "active": false,
+        "client": {},
+        "field_template": [],
+        "id": "TEMPLATE02",
+        "name": "s14f",
+        "option": {},
+        "partner": {},
+        "reference": "s152",
+        "type": "s153",
+        "version": "s154"
+      }
+    }
+  },
+  "new": {
+    "template": {
+      "template_ref01": {
+        "access_mode": "s1b8",
+        "active": false,
+        "client": {},
+        "field_template": [],
+        "name": "s1bd",
+        "option": {},
+        "partner": {},
+        "reference": "s1c0",
+        "type": "s1c1",
+        "version": "s1c2"
+      }
+    }
+  }
+}

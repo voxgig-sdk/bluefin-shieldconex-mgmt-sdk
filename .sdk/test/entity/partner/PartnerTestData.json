@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "partner": {
+      "PARTNER00": {
+        "billing_id": "BILLING01",
+        "contact": {},
+        "created": "s70",
+        "id": "PARTNER00",
+        "is_active": true,
+        "modified": "s73",
+        "name": "s74",
+        "parent": {},
+        "reference": "s76",
+        "verification_phrase": "s77",
+        "version": "s78"
+      },
+      "PARTNER01": {
+        "billing_id": "BILLING01",
+        "contact": {},
+        "created": "sde",
+        "id": "PARTNER01",
+        "is_active": true,
+        "modified": "se1",
+        "name": "se2",
+        "parent": {},
+        "reference": "se4",
+        "verification_phrase": "se5",
+        "version": "se6"
+      },
+      "PARTNER02": {
+        "billing_id": "BILLING01",
+        "contact": {},
+        "created": "s14c",
+        "id": "PARTNER02",
+        "is_active": true,
+        "modified": "s14f",
+        "name": "s150",
+        "parent": {},
+        "reference": "s152",
+        "verification_phrase": "s153",
+        "version": "s154"
+      }
+    }
+  },
+  "new": {
+    "partner": {
+      "partner_ref01": {
+        "billing_id": "BILLING01",
+        "contact": {},
+        "created": "s1ba",
+        "is_active": true,
+        "modified": "s1bd",
+        "name": "s1be",
+        "parent": {},
+        "reference": "s1c0",
+        "verification_phrase": "s1c1",
+        "version": "s1c2"
+      }
+    }
+  }
+}

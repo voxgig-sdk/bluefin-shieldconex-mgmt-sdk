@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "client": {},
+        "created": "s83",
+        "email": "s84",
+        "first_name": "s85",
+        "id": "USER00",
+        "is_active": false,
+        "last_name": "s88",
+        "modified": "s89",
+        "partner": {},
+        "phone": "s8b",
+        "user_name": "s8c",
+        "user_role": {},
+        "version": "s8e"
+      },
+      "USER01": {
+        "client": {},
+        "created": "s105",
+        "email": "s106",
+        "first_name": "s107",
+        "id": "USER01",
+        "is_active": false,
+        "last_name": "s10a",
+        "modified": "s10b",
+        "partner": {},
+        "phone": "s10d",
+        "user_name": "s10e",
+        "user_role": {},
+        "version": "s110"
+      },
+      "USER02": {
+        "client": {},
+        "created": "s187",
+        "email": "s188",
+        "first_name": "s189",
+        "id": "USER02",
+        "is_active": false,
+        "last_name": "s18c",
+        "modified": "s18d",
+        "partner": {},
+        "phone": "s18f",
+        "user_name": "s190",
+        "user_role": {},
+        "version": "s192"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "client": {},
+        "created": "s209",
+        "email": "s20a",
+        "first_name": "s20b",
+        "is_active": false,
+        "last_name": "s20e",
+        "modified": "s20f",
+        "partner": {},
+        "phone": "s211",
+        "user_name": "s212",
+        "user_role": {},
+        "version": "s214"
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+# Entity: clone
+
+main: kit: entity: clone: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "clone"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "template_id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/templates/{id}/clone"
+          parts: [
+            "templates"
+            "{template_id}"
+            "clone"
+          ]
+          rename: {
+            param: {
+              id: "template_id"
+            }
+          }
+          select: {
+            exist: [
+              "template_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "template"
+      ]
+    ]
+  }
+
+
+
+}

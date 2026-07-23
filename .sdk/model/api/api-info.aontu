@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: ""
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Basic"
+        scheme: "basic"
+        type: "http"
+      }
+      servers: [
+        {
+          url: "https://portal-cert.shieldconex.com:4010/api/v1"
+        }
+      ]
+      title: "Shieldconex Management Api"
+      version: "1.0.0"
+      website: "https://portal-cert.shieldconex.com"
+    }
+  }
+}
+

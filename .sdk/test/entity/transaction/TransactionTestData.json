@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "transaction": {
+      "TRANSACTION00": {
+        "bfid": "s82",
+        "client": {},
+        "complete_date": "s84",
+        "direct_partner": {},
+        "err_code": "s86",
+        "err_message": "s87",
+        "id": "TRANSACTION00",
+        "ip_address": "s89",
+        "message_id": "MESSAGE01",
+        "partner": {},
+        "reference": "s8c",
+        "success": false,
+        "template_id": "TEMPLATE01"
+      },
+      "TRANSACTION01": {
+        "bfid": "s104",
+        "client": {},
+        "complete_date": "s106",
+        "direct_partner": {},
+        "err_code": "s108",
+        "err_message": "s109",
+        "id": "TRANSACTION01",
+        "ip_address": "s10b",
+        "message_id": "MESSAGE01",
+        "partner": {},
+        "reference": "s10e",
+        "success": false,
+        "template_id": "TEMPLATE01"
+      },
+      "TRANSACTION02": {
+        "bfid": "s186",
+        "client": {},
+        "complete_date": "s188",
+        "direct_partner": {},
+        "err_code": "s18a",
+        "err_message": "s18b",
+        "id": "TRANSACTION02",
+        "ip_address": "s18d",
+        "message_id": "MESSAGE01",
+        "partner": {},
+        "reference": "s190",
+        "success": false,
+        "template_id": "TEMPLATE01"
+      }
+    }
+  },
+  "new": {
+    "transaction": {
+      "transaction_ref01": {
+        "bfid": "s208",
+        "client": {},
+        "complete_date": "s20a",
+        "direct_partner": {},
+        "err_code": "s20c",
+        "err_message": "s20d",
+        "ip_address": "s20f",
+        "message_id": "MESSAGE01",
+        "partner": {},
+        "reference": "s212",
+        "success": false,
+        "template_id": "TEMPLATE01"
+      }
+    }
+  }
+}

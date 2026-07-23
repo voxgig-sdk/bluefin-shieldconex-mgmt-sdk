@@ -1,0 +1,81 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 11
+  metrics: count: method: 21
+
+  entity: client: {
+    path: "/clients": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/clients/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: clone: {
+    path: "/templates/{id}/clone": {
+      rename: param: "id": *"template_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: partner: {
+    path: "/partners": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/partners/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: template: {
+    path: "/templates": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/templates/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: transaction: {
+    path: "/transactions": {
+      op: list: method: *GET
+    }
+    path: "/transactions/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: update_result: {
+    path: "/clients/{id}": {
+      op: patch: method: *PATCH
+    }
+    path: "/partners/{id}": {
+      op: patch: method: *PATCH
+    }
+    path: "/templates/{id}": {
+      op: patch: method: *PATCH
+    }
+    path: "/users": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/users/{id}": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: user: {
+    path: "/users/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}
