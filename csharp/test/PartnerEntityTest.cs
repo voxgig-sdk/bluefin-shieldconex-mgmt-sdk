@@ -35,7 +35,7 @@ public class PartnerEntityTest
         }
         // The basic flow consumes synthetic IDs from the fixture. In live
         // mode without an *_ENTID env override, those IDs hit the live API
-        // and 4xx; set BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID JSON to run live.
+        // and 4xx; set BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID JSON to run live.
         if (setup.SyntheticOnly)
         {
             return;
@@ -49,7 +49,7 @@ public class PartnerEntityTest
             "partner_ref01"));
 
         var partnerRef01DataResult = partnerRef01Ent.Create(partnerRef01Data, null);
-        partnerRef01Data = Helpers.ToMapAny(partnerRef01DataResult);
+        partnerRef01Data = Helpers.ToMapAny(partnerRef01DataResult is IEntity ce ? ce.Data() : partnerRef01DataResult);
         Assert.True(partnerRef01Data != null, "expected create result to be a map");
         Assert.True(partnerRef01Data!["id"] != null, "expected created entity to have an id");
 
@@ -73,7 +73,7 @@ public class PartnerEntityTest
             ["id"] = partnerRef01Data!["id"],
         };
         var partnerRef01DataDt0Loaded = partnerRef01Ent.Load(partnerRef01MatchDt0, null);
-        var partnerRef01DataDt0LoadResult = Helpers.ToMapAny(partnerRef01DataDt0Loaded);
+        var partnerRef01DataDt0LoadResult = Helpers.ToMapAny(partnerRef01DataDt0Loaded is IEntity le ? le.Data() : partnerRef01DataDt0Loaded);
         Assert.True(partnerRef01DataDt0LoadResult != null, "expected load result to be a map");
         Assert.True(StructRunner.DeepEqual(partnerRef01DataDt0LoadResult!["id"], partnerRef01Data["id"]),
             "expected load result id to match");
@@ -165,43 +165,43 @@ public class PartnerEntityTest
         // live mode is on without a real override, the basic test runs
         // against synthetic IDs from the fixture and 4xx's.
         var entidEnvRaw = Environment.GetEnvironmentVariable(
-            "BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID") ?? "";
+            "BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID") ?? "";
         var idmapOverridden = entidEnvRaw != "" &&
             entidEnvRaw.Trim().StartsWith("{");
 
         var env = TestRunner.EnvOverride(new Dictionary<string, object?>
         {
-            ["BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID"] = idmap,
-            ["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE",
-            ["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = "FALSE",
-            ["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID"] = idmap,
+            ["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = "FALSE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE",
         });
 
-        var idmapResolved = Helpers.ToMapAny(env["BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID"])
+        var idmapResolved = Helpers.ToMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID"])
             ?? Helpers.ToMapAny(idmap)
             ?? new Dictionary<string, object?>();
 
-        if (Equals(env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"], "TRUE"))
+        if (Equals(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"], "TRUE"))
         {
             var mergedOpts = StructUtils.Merge(new List<object?>
             {
                 new Dictionary<string, object?>
                 {
-                    ["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+                    ["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
                 },
                 extra,
             });
             client = new BluefinShieldconexMgmtSDK(Helpers.ToMapAny(mergedOpts));
         }
 
-        var live = Equals(env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"], "TRUE");
+        var live = Equals(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"], "TRUE");
         return new EntityTestSetup
         {
             Client = client,
             Data = entityData,
             Idmap = idmapResolved,
             Env = env,
-            Explain = Equals(env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"], "TRUE"),
+            Explain = Equals(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"], "TRUE"),
             Live = live,
             SyntheticOnly = live && !idmapOverridden,
             Now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),

@@ -41,7 +41,7 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("billing_id") },
+                        .{ "name", h.vstr("billingId") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(0) },
@@ -72,7 +72,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("direct_partner") },
+                        .{ "name", h.vstr("directPartner") },
                         .{ "op", h.jo(&.{
                             .{ "create", h.jo(&.{
                                 .{ "req", h.vbool(true) },
@@ -92,7 +92,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("is_active") },
+                        .{ "name", h.vstr("isActive") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                         .{ "index$", h.vnum(5) },
@@ -263,6 +263,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("POST") },
                                 .{ "orig", h.vstr("/clients") },
                                 .{ "parts", h.ja(&.{
@@ -331,6 +332,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/clients") },
                                 .{ "parts", h.ja(&.{
@@ -371,6 +373,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/clients/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -410,6 +413,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("DELETE") },
                                 .{ "orig", h.vstr("/clients/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -473,6 +477,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("POST") },
                                 .{ "orig", h.vstr("/templates/{id}/clone") },
                                 .{ "parts", h.ja(&.{
@@ -512,7 +517,7 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("billing_id") },
+                        .{ "name", h.vstr("billingId") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(0) },
@@ -550,7 +555,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("is_active") },
+                        .{ "name", h.vstr("isActive") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                         .{ "index$", h.vnum(4) },
@@ -597,7 +602,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("verification_phrase") },
+                        .{ "name", h.vstr("verificationPhrase") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(9) },
@@ -742,6 +747,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("POST") },
                                 .{ "orig", h.vstr("/partners") },
                                 .{ "parts", h.ja(&.{
@@ -811,6 +817,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/partners") },
                                 .{ "parts", h.ja(&.{
@@ -851,6 +858,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/partners/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -880,7 +888,7 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("access_mode") },
+                        .{ "name", h.vstr("accessMode") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$ANY`") },
                         .{ "index$", h.vnum(0) },
@@ -901,7 +909,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("field_template") },
+                        .{ "name", h.vstr("fieldTemplates") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$ARRAY`") },
                         .{ "index$", h.vnum(3) },
@@ -922,7 +930,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("option") },
+                        .{ "name", h.vstr("options") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$OBJECT`") },
                         .{ "index$", h.vnum(6) },
@@ -1104,6 +1112,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("POST") },
                                 .{ "orig", h.vstr("/templates") },
                                 .{ "parts", h.ja(&.{
@@ -1183,6 +1192,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/templates") },
                                 .{ "parts", h.ja(&.{
@@ -1224,6 +1234,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/templates/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -1263,6 +1274,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("DELETE") },
                                 .{ "orig", h.vstr("/templates/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -1306,28 +1318,28 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("complete_date") },
+                        .{ "name", h.vstr("completeDate") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(2) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("direct_partner") },
+                        .{ "name", h.vstr("directPartner") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$OBJECT`") },
                         .{ "index$", h.vnum(3) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("err_code") },
+                        .{ "name", h.vstr("errCode") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(4) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("err_message") },
+                        .{ "name", h.vstr("errMessage") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(5) },
@@ -1341,14 +1353,14 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("ip_address") },
+                        .{ "name", h.vstr("ipAddress") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(7) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("message_id") },
+                        .{ "name", h.vstr("messageId") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(8) },
@@ -1376,7 +1388,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("template_id") },
+                        .{ "name", h.vstr("templateId") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(12) },
@@ -1484,6 +1496,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/transactions") },
                                 .{ "parts", h.ja(&.{
@@ -1542,6 +1555,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/transactions/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -1572,7 +1586,7 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("billing_id") },
+                        .{ "name", h.vstr("billingId") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(0) },
@@ -1593,7 +1607,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("direct_partner") },
+                        .{ "name", h.vstr("directPartner") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$OBJECT`") },
                         .{ "index$", h.vnum(3) },
@@ -1617,7 +1631,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("first_name") },
+                        .{ "name", h.vstr("firstName") },
                         .{ "op", h.jo(&.{
                             .{ "list", h.jo(&.{
                                 .{ "req", h.vbool(false) },
@@ -1641,14 +1655,14 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("is_active") },
+                        .{ "name", h.vstr("isActive") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                         .{ "index$", h.vnum(7) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("last_name") },
+                        .{ "name", h.vstr("lastName") },
                         .{ "op", h.jo(&.{
                             .{ "list", h.jo(&.{
                                 .{ "req", h.vbool(false) },
@@ -1717,14 +1731,14 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("send_welcome_email") },
+                        .{ "name", h.vstr("sendWelcomeEmail") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                         .{ "index$", h.vnum(15) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("user_name") },
+                        .{ "name", h.vstr("userName") },
                         .{ "op", h.jo(&.{
                             .{ "list", h.jo(&.{
                                 .{ "req", h.vbool(false) },
@@ -1741,7 +1755,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("user_role") },
+                        .{ "name", h.vstr("userRole") },
                         .{ "op", h.jo(&.{
                             .{ "list", h.jo(&.{
                                 .{ "req", h.vbool(false) },
@@ -1758,7 +1772,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("verification_phrase") },
+                        .{ "name", h.vstr("verificationPhrase") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(18) },
@@ -1863,6 +1877,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("POST") },
                                 .{ "orig", h.vstr("/users") },
                                 .{ "parts", h.ja(&.{
@@ -1935,6 +1950,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/users") },
                                 .{ "parts", h.ja(&.{
@@ -2114,6 +2130,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("PATCH") },
                                 .{ "orig", h.vstr("/templates/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -2237,6 +2254,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("PATCH") },
                                 .{ "orig", h.vstr("/partners/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -2352,6 +2370,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("PATCH") },
                                 .{ "orig", h.vstr("/users/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -2459,6 +2478,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("PATCH") },
                                 .{ "orig", h.vstr("/clients/{id}") },
                                 .{ "parts", h.ja(&.{
@@ -2517,7 +2537,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("first_name") },
+                        .{ "name", h.vstr("firstName") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(3) },
@@ -2531,14 +2551,14 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("is_active") },
+                        .{ "name", h.vstr("isActive") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                         .{ "index$", h.vnum(5) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("last_name") },
+                        .{ "name", h.vstr("lastName") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(6) },
@@ -2566,14 +2586,14 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("user_name") },
+                        .{ "name", h.vstr("userName") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$STRING`") },
                         .{ "index$", h.vnum(10) },
                     }),
                     h.jo(&.{
                         .{ "active", h.vbool(true) },
-                        .{ "name", h.vstr("user_role") },
+                        .{ "name", h.vstr("userRole") },
                         .{ "req", h.vbool(false) },
                         .{ "type", h.vstr("`$OBJECT`") },
                         .{ "index$", h.vnum(11) },
@@ -2607,6 +2627,7 @@ pub fn make_config() Value {
                                         }),
                                     }) },
                                 }) },
+                                .{ "kind", h.vstr("http") },
                                 .{ "method", h.vstr("GET") },
                                 .{ "orig", h.vstr("/users/{id}") },
                                 .{ "parts", h.ja(&.{

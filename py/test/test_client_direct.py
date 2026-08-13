@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from bluefinshieldconexmgmt_sdk.utility.voxgig_struct import voxgig_struct as vs
 from bluefinshieldconexmgmt_sdk import BluefinShieldconexMgmtSDK
-from core import helpers
+from bluefinshieldconexmgmt_sdk.core import helpers
 from test import runner
 
 
@@ -105,16 +105,16 @@ def _client_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID": {},
-        "BLUEFINSHIELDCONEXMGMT_TEST_LIVE": "FALSE",
-        "BLUEFINSHIELDCONEXMGMT_APIKEY": "NONE",
+        "BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID": {},
+        "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE": "FALSE",
+        "BLUEFIN_SHIELDCONEX_MGMT_APIKEY": "NONE",
     })
 
-    live = env.get("BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == "TRUE"
+    live = env.get("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("BLUEFINSHIELDCONEXMGMT_APIKEY"),
+            "apikey": env.get("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"),
         }
         client = BluefinShieldconexMgmtSDK(merged_opts)
         return {

@@ -44,8 +44,8 @@ function makeCtrl(explain) {
 // Overrides configuration values with environment variables if available
 function envOverride(m) {
   if (
-    'TRUE' === process.env.BLUEFINSHIELDCONEXMGMT_TEST_LIVE ||
-    'TRUE' === process.env.BLUEFINSHIELDCONEXMGMT_TEST_OVERRIDE
+    'TRUE' === process.env.BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE ||
+    'TRUE' === process.env.BLUEFIN_SHIELDCONEX_MGMT_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -56,7 +56,7 @@ function envOverride(m) {
     })
   }
 
-  m.BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN = process.env.BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN || m.BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN
+  m.BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN = process.env.BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN || m.BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN
 
   return m
 }

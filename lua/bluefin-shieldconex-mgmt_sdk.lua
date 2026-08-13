@@ -181,7 +181,41 @@ function BluefinShieldconexMgmtSDK:prepare(fetchargs)
 end
 
 
+-- Raw endpoint access is operator-controllable, like every entity op.
+-- Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+-- either one reaches the same endpoint.
 function BluefinShieldconexMgmtSDK:direct(fetchargs)
+  if not self:_op_allowed("direct") then
+    return self:_op_denied("direct"), nil
+  end
+
+  return self:_raw_request(fetchargs)
+end
+
+
+-- Is this raw-access op permitted by the SDK's allow.op option?
+function BluefinShieldconexMgmtSDK:_op_allowed(op)
+  local allow = vs.getpath(self.options, "allow.op")
+  return type(allow) == "string" and allow:find(op, 1, true) ~= nil
+end
+
+
+function BluefinShieldconexMgmtSDK:_op_denied(op)
+  local allow = vs.getpath(self.options, "allow.op")
+  if type(allow) ~= "string" then allow = "" end
+  return {
+    ok = false,
+    err = "BluefinShieldconexMgmtSDK: " .. op .. ": operation not allowed by" ..
+      " SDK option allow.op value: \"" .. allow .. "\"",
+  }
+end
+
+
+-- Ungated request path shared by direct and graphql, each of which checks its
+-- own allow.op token first. Private, rather than a flag on fetchargs: a
+-- caller-supplied marker would let anyone opt straight back out of the gate
+-- by passing it.
+function BluefinShieldconexMgmtSDK:_raw_request(fetchargs)
   local utility = self._utility
 
   local fetchdef, err = self:prepare(fetchargs)
@@ -250,16 +284,67 @@ function BluefinShieldconexMgmtSDK:direct(fetchargs)
 end
 
 
+-- Raw GraphQL access: the pressure valve that makes the generated surface's
+-- deliberate omissions (per-call selection sets, typed filter builders,
+-- batching, subscriptions) livable — the whole schema stays reachable.
+--
+-- Thin wrapper over the same prepare/fetch path direct uses, with the one
+-- thing raw direct cannot do for GraphQL: a GraphQL failure rides HTTP 200 as
+-- a top-level `errors` array, so status alone would report a failed query as
+-- ok.
+--
+-- NOTE: like direct, this bypasses the feature pipeline — no retry, ratelimit
+-- or paging features apply.
+function BluefinShieldconexMgmtSDK:graphql(query, variables, ctrl)
+  if not self:_op_allowed("graphql") then
+    return self:_op_denied("graphql"), nil
+  end
+
+  local res, err = self:_raw_request({
+    method = "POST",
+    headers = { ["content-type"] = "application/json" },
+    body = {
+      query = query,
+      variables = type(variables) == "table" and variables or {},
+    },
+    ctrl = type(ctrl) == "table" and ctrl or {},
+  })
+
+  if err ~= nil or type(res) ~= "table" then
+    return res, err
+  end
+
+  -- Errors are read BEFORE any status check: a GraphQL parse or validation
+  -- failure comes back as HTTP 400 carrying the standard { errors = {...} }
+  -- body, and the raw path represents a non-2xx as ok=false with no err — so
+  -- returning early on status would discard the server's own diagnostics,
+  -- which are the only useful part of that response.
+  local errors = vs.getpath(res, "data.errors")
+
+  if type(errors) == "table" and 0 < #errors then
+    local msg = vs.getprop(errors[1], "message")
+    if type(msg) ~= "string" or msg == "" then
+      msg = "graphql error"
+    end
+    res.ok = false
+    res.err = "BluefinShieldconexMgmtSDK: graphql: " .. msg
+    res.graphql = errors
+  end
+
+  return res, nil
+end
+
+
 
 -- Idiomatic facade: client:Client():list() / client:Client():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function BluefinShieldconexMgmtSDK:Client(data)
   local EntityMod = require("entity.client_entity")
   if data == nil then
-    if self._client == nil then
-      self._client = EntityMod.new(self, nil)
+    if self._client_ == nil then
+      self._client_ = EntityMod.new(self, nil)
     end
-    return self._client
+    return self._client_
   end
   return EntityMod.new(self, data)
 end

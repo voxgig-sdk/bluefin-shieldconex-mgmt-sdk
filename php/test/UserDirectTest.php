@@ -75,16 +75,16 @@ function user_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "BLUEFINSHIELDCONEXMGMT_TEST_USER_ENTID" => [],
-        "BLUEFINSHIELDCONEXMGMT_TEST_LIVE" => "FALSE",
-        "BLUEFINSHIELDCONEXMGMT_APIKEY" => "NONE",
+        "BLUEFIN_SHIELDCONEX_MGMT_TEST_USER_ENTID" => [],
+        "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE" => "FALSE",
+        "BLUEFIN_SHIELDCONEX_MGMT_APIKEY" => "NONE",
     ]);
 
-    $live = $env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] === "TRUE";
+    $live = $env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+            "apikey" => $env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
         ];
         $client = new BluefinShieldconexMgmtSDK($merged_opts);
         return [

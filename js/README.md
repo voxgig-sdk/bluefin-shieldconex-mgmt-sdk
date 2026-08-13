@@ -53,7 +53,7 @@ for (const client_ of client_s) {
 
 ```js
 const created = await client.Client().create({
-  billing_id: 'example_billing_id',
+  billingId: 'example_billingId',
   contact: {},
 })
 console.log(created)
@@ -156,7 +156,8 @@ Create a mock client for unit testing — no server required:
 const client = BluefinShieldconexMgmtSDK.test()
 
 const partner = await client.Partner().list()
-// partner is a bare entity populated with mock response data
+// partner is the entity, populated with mock response data
+// — call partner.data() for the record itself
 console.log(partner)
 ```
 
@@ -329,12 +330,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -360,16 +361,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, load.
@@ -380,13 +381,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -402,17 +403,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: list, load.
 
@@ -422,25 +423,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, update.
@@ -454,15 +455,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: load.
@@ -491,12 +492,12 @@ Create an instance: `const client_ = client.Client()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `Object` |  |
 | `created` | `string` |  |
-| `direct_partner` | `Object` |  |
+| `directPartner` | `Object` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -565,16 +566,16 @@ Create an instance: `const partner = client.Partner()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `Object` |  |
 | `created` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `Object` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `number` |  |
 
 #### Example: Load
@@ -614,13 +615,13 @@ Create an instance: `const template = client.Template()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `*` |  |
+| `accessMode` | `*` |  |
 | `active` | `boolean` |  |
 | `client` | `Object` |  |
-| `field_template` | `Array` |  |
+| `fieldTemplates` | `Array` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `option` | `Object` |  |
+| `options` | `Object` |  |
 | `partner` | `Object` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -663,17 +664,17 @@ Create an instance: `const transaction = client.Transaction()`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `Object` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `Object` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `Object` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `number` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `Object` |  |
 | `reference` | `string` |  |
 | `success` | `boolean` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
@@ -704,25 +705,25 @@ Create an instance: `const update_result = client.UpdateResult()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `Object` |  |
 | `contact` | `Object` |  |
-| `direct_partner` | `Object` |  |
+| `directPartner` | `Object` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `Object` |  |
 | `partner` | `Object` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `boolean` |  |
-| `user_name` | `string` |  |
-| `user_role` | `Object` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `boolean` |  |
+| `userName` | `string` |  |
+| `userRole` | `Object` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `number` |  |
 
 #### Example: List
@@ -737,11 +738,11 @@ const update_results = await client.UpdateResult().list()
 const update_result = await client.UpdateResult().create({
   contact: {},
   email: 'example_email',
-  first_name: 'example_first_name',
-  last_name: 'example_last_name',
+  firstName: 'example_firstName',
+  lastName: 'example_lastName',
   phone: 'example_phone',
-  user_name: 'example_user_name',
-  user_role: {},
+  userName: 'example_userName',
+  userRole: {},
 })
 ```
 
@@ -763,15 +764,15 @@ Create an instance: `const user = client.User()`
 | `client` | `Object` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `Object` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `Object` |  |
+| `userName` | `string` |  |
+| `userRole` | `Object` |  |
 | `version` | `number` |  |
 
 #### Example: Load

@@ -23,8 +23,8 @@ module BluefinShieldconexMgmtTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("BLUEFINSHIELDCONEXMGMT_TEST_LIVE")
-    override = getenv("BLUEFINSHIELDCONEXMGMT_TEST_OVERRIDE")
+    live = getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE")
+    override = getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module BluefinShieldconexMgmtTestRunner
       end
     end
 
-    explain = getenv("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN")
-    m["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN")
+    m["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

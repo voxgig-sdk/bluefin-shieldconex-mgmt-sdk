@@ -112,12 +112,12 @@ client_ = client.Client()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `str` | No |  |
+| `billingId` | `str` | No |  |
 | `contact` | `dict` | No |  |
 | `created` | `str` | No |  |
-| `direct_partner` | `dict` | No |  |
+| `directPartner` | `dict` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `str` | No |  |
 | `modified` | `str` | No |  |
 | `name` | `str` | No |  |
@@ -128,12 +128,12 @@ client_ = client.Client()
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -270,32 +270,32 @@ partner = client.Partner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `str` | No |  |
+| `billingId` | `str` | No |  |
 | `contact` | `dict` | No |  |
 | `created` | `str` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `str` | No |  |
 | `name` | `str` | No |  |
 | `parent` | `dict` | No |  |
 | `reference` | `str` | No |  |
-| `verification_phrase` | `str` | No |  |
+| `verificationPhrase` | `str` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -366,13 +366,13 @@ template = client.Template()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Any` | No |  |
+| `accessMode` | `Any` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `dict` | No |  |
-| `field_template` | `list` | No |  |
+| `fieldTemplates` | `list` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `option` | `dict` | No |  |
+| `options` | `dict` | No |  |
 | `partner` | `dict` | No |  |
 | `reference` | `str` | No |  |
 | `type` | `str` | No |  |
@@ -456,17 +456,17 @@ transaction = client.Transaction()
 | --- | --- | --- | --- |
 | `bfid` | `str` | No |  |
 | `client` | `dict` | No |  |
-| `complete_date` | `str` | No |  |
-| `direct_partner` | `dict` | No |  |
-| `err_code` | `str` | No |  |
-| `err_message` | `str` | No |  |
+| `completeDate` | `str` | No |  |
+| `directPartner` | `dict` | No |  |
+| `errCode` | `str` | No |  |
+| `errMessage` | `str` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `str` | No |  |
-| `message_id` | `str` | No |  |
+| `ipAddress` | `str` | No |  |
+| `messageId` | `str` | No |  |
 | `partner` | `dict` | No |  |
 | `reference` | `str` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `str` | No |  |
+| `templateId` | `str` | No |  |
 
 ### Operations
 
@@ -527,50 +527,50 @@ update_result = client.UpdateResult()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `str` | No |  |
+| `billingId` | `str` | No |  |
 | `client` | `dict` | No |  |
 | `contact` | `dict` | Yes |  |
-| `direct_partner` | `dict` | No |  |
+| `directPartner` | `dict` | No |  |
 | `email` | `str` | Yes |  |
-| `first_name` | `str` | Yes |  |
+| `firstName` | `str` | Yes |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `str` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `str` | Yes |  |
 | `mid` | `str` | No |  |
 | `name` | `str` | No |  |
 | `parent` | `dict` | No |  |
 | `partner` | `dict` | No |  |
 | `phone` | `str` | Yes |  |
 | `reference` | `str` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `str` | Yes |  |
-| `user_role` | `dict` | Yes |  |
-| `verification_phrase` | `str` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `str` | Yes |  |
+| `userRole` | `dict` | Yes |  |
+| `verificationPhrase` | `str` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -583,11 +583,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.UpdateResult().create({
     "contact": {},  # dict
     "email": "example_email",  # str
-    "first_name": "example_first_name",  # str
-    "last_name": "example_last_name",  # str
+    "firstName": "example_firstName",  # str
+    "lastName": "example_lastName",  # str
     "phone": "example_phone",  # str
-    "user_name": "example_user_name",  # str
-    "user_role": {},  # dict
+    "userName": "example_userName",  # str
+    "userRole": {},  # dict
 })
 ```
 
@@ -654,15 +654,15 @@ user = client.User()
 | `client` | `dict` | No |  |
 | `created` | `str` | No |  |
 | `email` | `str` | No |  |
-| `first_name` | `str` | No |  |
+| `firstName` | `str` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `str` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `str` | No |  |
 | `modified` | `str` | No |  |
 | `partner` | `dict` | No |  |
 | `phone` | `str` | No |  |
-| `user_name` | `str` | No |  |
-| `user_role` | `dict` | No |  |
+| `userName` | `str` | No |  |
+| `userRole` | `dict` | No |  |
 | `version` | `int` | No |  |
 
 ### Operations

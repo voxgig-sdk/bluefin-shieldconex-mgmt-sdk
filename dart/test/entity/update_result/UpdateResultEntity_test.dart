@@ -87,14 +87,14 @@ test('stream', (t) async {
       final update_result_ref01_ent = client.UpdateResult();
       dynamic update_result_ref01_data = setup['data']['new']['update_result']['update_result_ref01'];
 
-      update_result_ref01_data = await update_result_ref01_ent.create(update_result_ref01_data);
+      update_result_ref01_data = (await update_result_ref01_ent.create(update_result_ref01_data)).data();
       ok(null != update_result_ref01_data['id']);
 
 
       // LIST
       final update_result_ref01_match = <String, dynamic>{};
 
-      final update_result_ref01_list = await update_result_ref01_ent.list(update_result_ref01_match);
+      final update_result_ref01_list = (await update_result_ref01_ent.list(update_result_ref01_match)).map((e) => e.data()).toList();
 
       ok(!isempty(select(
           (update_result_ref01_list as List).map((e) => e.data()).toList(),
@@ -106,12 +106,12 @@ test('stream', (t) async {
       update_result_ref01_data_up0['id'] = update_result_ref01_data['id'];
 
       final update_result_ref01_markdef_up0 = <String, dynamic>{
-        'name': 'billing_id',
+        'name': 'billingId',
         'value': 'Mark01-update_result_ref01_' + setup['now'].toString(),
       };
       update_result_ref01_data_up0[update_result_ref01_markdef_up0['name']] = update_result_ref01_markdef_up0['value'];
 
-      final update_result_ref01_resdata_up0 = await update_result_ref01_ent.update(update_result_ref01_data_up0);
+      final update_result_ref01_resdata_up0 = (await update_result_ref01_ent.update(update_result_ref01_data_up0)).data();
       ok(update_result_ref01_resdata_up0['id'] == update_result_ref01_data_up0['id']);
 
       ok(update_result_ref01_resdata_up0[update_result_ref01_markdef_up0['name']] == update_result_ref01_markdef_up0['value']);

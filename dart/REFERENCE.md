@@ -111,12 +111,12 @@ final client_ = client.Client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Map<String, dynamic>` | No |  |
 | `created` | `String` | No |  |
-| `direct_partner` | `Map<String, dynamic>` | No |  |
+| `directPartner` | `Map<String, dynamic>` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -127,12 +127,12 @@ final client_ = client.Client();
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -254,32 +254,32 @@ final partner = client.Partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Map<String, dynamic>` | No |  |
 | `created` | `String` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Map<String, dynamic>` | No |  |
 | `reference` | `String` | No |  |
-| `verification_phrase` | `String` | No |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -343,13 +343,13 @@ final template = client.Template();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `dynamic` | No |  |
+| `accessMode` | `dynamic` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `Map<String, dynamic>` | No |  |
-| `field_template` | `List<dynamic>` | No |  |
+| `fieldTemplates` | `List<dynamic>` | No |  |
 | `id` | `int` | No |  |
 | `name` | `String` | No |  |
-| `option` | `Map<String, dynamic>` | No |  |
+| `options` | `Map<String, dynamic>` | No |  |
 | `partner` | `Map<String, dynamic>` | No |  |
 | `reference` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -426,17 +426,17 @@ final transaction = client.Transaction();
 | --- | --- | --- | --- |
 | `bfid` | `String` | No |  |
 | `client` | `Map<String, dynamic>` | No |  |
-| `complete_date` | `String` | No |  |
-| `direct_partner` | `Map<String, dynamic>` | No |  |
-| `err_code` | `String` | No |  |
-| `err_message` | `String` | No |  |
+| `completeDate` | `String` | No |  |
+| `directPartner` | `Map<String, dynamic>` | No |  |
+| `errCode` | `String` | No |  |
+| `errMessage` | `String` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `String` | No |  |
-| `message_id` | `String` | No |  |
+| `ipAddress` | `String` | No |  |
+| `messageId` | `String` | No |  |
 | `partner` | `Map<String, dynamic>` | No |  |
 | `reference` | `String` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `String` | No |  |
+| `templateId` | `String` | No |  |
 
 ### Operations
 
@@ -490,50 +490,50 @@ final update_result = client.UpdateResult();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `client` | `Map<String, dynamic>` | No |  |
 | `contact` | `Map<String, dynamic>` | Yes |  |
-| `direct_partner` | `Map<String, dynamic>` | No |  |
+| `directPartner` | `Map<String, dynamic>` | No |  |
 | `email` | `String` | Yes |  |
-| `first_name` | `String` | Yes |  |
+| `firstName` | `String` | Yes |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `String` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `String` | Yes |  |
 | `mid` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Map<String, dynamic>` | No |  |
 | `partner` | `Map<String, dynamic>` | No |  |
 | `phone` | `String` | Yes |  |
 | `reference` | `String` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `String` | Yes |  |
-| `user_role` | `Map<String, dynamic>` | Yes |  |
-| `verification_phrase` | `String` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `String` | Yes |  |
+| `userRole` | `Map<String, dynamic>` | Yes |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -546,11 +546,11 @@ Create a new entity with the given data. Returns the created entity data and thr
 final result = await client.UpdateResult().create({
   'contact': <String, dynamic>{},  // Map<String, dynamic>
   'email': 'example_email',  // String
-  'first_name': 'example_first_name',  // String
-  'last_name': 'example_last_name',  // String
+  'firstName': 'example_firstName',  // String
+  'lastName': 'example_lastName',  // String
   'phone': 'example_phone',  // String
-  'user_name': 'example_user_name',  // String
-  'user_role': <String, dynamic>{},  // Map<String, dynamic>
+  'userName': 'example_userName',  // String
+  'userRole': <String, dynamic>{},  // Map<String, dynamic>
 });
 ```
 
@@ -610,15 +610,15 @@ final user = client.User();
 | `client` | `Map<String, dynamic>` | No |  |
 | `created` | `String` | No |  |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `String` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `partner` | `Map<String, dynamic>` | No |  |
 | `phone` | `String` | No |  |
-| `user_name` | `String` | No |  |
-| `user_role` | `Map<String, dynamic>` | No |  |
+| `userName` | `String` | No |  |
+| `userRole` | `Map<String, dynamic>` | No |  |
 | `version` | `int` | No |  |
 
 ### Operations

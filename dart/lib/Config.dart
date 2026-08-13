@@ -19,7 +19,7 @@ class Config {
   }
 
   final Map<String, dynamic> main = <String, dynamic>{
-    'name': 'ProjectName',
+    'name': 'BluefinShieldconexMgmt',
   };
 
   final Map<String, dynamic> feature = <String, dynamic>{
@@ -59,7 +59,7 @@ class Config {
       'fields': <dynamic>[
         <String, dynamic>{
           'active': true,
-          'name': 'billing_id',
+          'name': 'billingId',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 0,
@@ -90,7 +90,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'direct_partner',
+          'name': 'directPartner',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
               'req': true,
@@ -110,7 +110,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'is_active',
+          'name': 'isActive',
           'req': false,
           'type': '`\$BOOLEAN`',
           'index\$': 5,
@@ -281,6 +281,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'POST',
               'orig': '/clients',
               'parts': <dynamic>[
@@ -349,6 +350,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/clients',
               'parts': <dynamic>[
@@ -389,6 +391,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/clients/{id}',
               'parts': <dynamic>[
@@ -428,6 +431,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'DELETE',
               'orig': '/clients/{id}',
               'parts': <dynamic>[
@@ -491,6 +495,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'POST',
               'orig': '/templates/{id}/clone',
               'parts': <dynamic>[
@@ -530,7 +535,7 @@ class Config {
       'fields': <dynamic>[
         <String, dynamic>{
           'active': true,
-          'name': 'billing_id',
+          'name': 'billingId',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 0,
@@ -568,7 +573,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'is_active',
+          'name': 'isActive',
           'req': false,
           'type': '`\$BOOLEAN`',
           'index\$': 4,
@@ -615,7 +620,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'verification_phrase',
+          'name': 'verificationPhrase',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 9,
@@ -760,6 +765,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'POST',
               'orig': '/partners',
               'parts': <dynamic>[
@@ -829,6 +835,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/partners',
               'parts': <dynamic>[
@@ -869,6 +876,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/partners/{id}',
               'parts': <dynamic>[
@@ -898,7 +906,7 @@ class Config {
       'fields': <dynamic>[
         <String, dynamic>{
           'active': true,
-          'name': 'access_mode',
+          'name': 'accessMode',
           'req': false,
           'type': '`\$ANY`',
           'index\$': 0,
@@ -919,7 +927,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'field_template',
+          'name': 'fieldTemplates',
           'req': false,
           'type': '`\$ARRAY`',
           'index\$': 3,
@@ -940,7 +948,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'option',
+          'name': 'options',
           'req': false,
           'type': '`\$OBJECT`',
           'index\$': 6,
@@ -1122,6 +1130,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'POST',
               'orig': '/templates',
               'parts': <dynamic>[
@@ -1201,6 +1210,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/templates',
               'parts': <dynamic>[
@@ -1242,6 +1252,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/templates/{id}',
               'parts': <dynamic>[
@@ -1281,6 +1292,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'DELETE',
               'orig': '/templates/{id}',
               'parts': <dynamic>[
@@ -1324,28 +1336,28 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'complete_date',
+          'name': 'completeDate',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 2,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'direct_partner',
+          'name': 'directPartner',
           'req': false,
           'type': '`\$OBJECT`',
           'index\$': 3,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'err_code',
+          'name': 'errCode',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 4,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'err_message',
+          'name': 'errMessage',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 5,
@@ -1359,14 +1371,14 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'ip_address',
+          'name': 'ipAddress',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 7,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'message_id',
+          'name': 'messageId',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 8,
@@ -1394,7 +1406,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'template_id',
+          'name': 'templateId',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 12,
@@ -1502,6 +1514,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/transactions',
               'parts': <dynamic>[
@@ -1560,6 +1573,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/transactions/{id}',
               'parts': <dynamic>[
@@ -1590,7 +1604,7 @@ class Config {
       'fields': <dynamic>[
         <String, dynamic>{
           'active': true,
-          'name': 'billing_id',
+          'name': 'billingId',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 0,
@@ -1611,7 +1625,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'direct_partner',
+          'name': 'directPartner',
           'req': false,
           'type': '`\$OBJECT`',
           'index\$': 3,
@@ -1635,7 +1649,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'first_name',
+          'name': 'firstName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
               'req': false,
@@ -1659,14 +1673,14 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'is_active',
+          'name': 'isActive',
           'req': false,
           'type': '`\$BOOLEAN`',
           'index\$': 7,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'last_name',
+          'name': 'lastName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
               'req': false,
@@ -1735,14 +1749,14 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'send_welcome_email',
+          'name': 'sendWelcomeEmail',
           'req': false,
           'type': '`\$BOOLEAN`',
           'index\$': 15,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'user_name',
+          'name': 'userName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
               'req': false,
@@ -1759,7 +1773,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'user_role',
+          'name': 'userRole',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
               'req': false,
@@ -1776,7 +1790,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'verification_phrase',
+          'name': 'verificationPhrase',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 18,
@@ -1881,6 +1895,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'POST',
               'orig': '/users',
               'parts': <dynamic>[
@@ -1953,6 +1968,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/users',
               'parts': <dynamic>[
@@ -2132,6 +2148,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'PATCH',
               'orig': '/templates/{id}',
               'parts': <dynamic>[
@@ -2255,6 +2272,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'PATCH',
               'orig': '/partners/{id}',
               'parts': <dynamic>[
@@ -2370,6 +2388,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'PATCH',
               'orig': '/users/{id}',
               'parts': <dynamic>[
@@ -2477,6 +2496,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'PATCH',
               'orig': '/clients/{id}',
               'parts': <dynamic>[
@@ -2535,7 +2555,7 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'first_name',
+          'name': 'firstName',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 3,
@@ -2549,14 +2569,14 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'is_active',
+          'name': 'isActive',
           'req': false,
           'type': '`\$BOOLEAN`',
           'index\$': 5,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'last_name',
+          'name': 'lastName',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 6,
@@ -2584,14 +2604,14 @@ class Config {
         },
         <String, dynamic>{
           'active': true,
-          'name': 'user_name',
+          'name': 'userName',
           'req': false,
           'type': '`\$STRING`',
           'index\$': 10,
         },
         <String, dynamic>{
           'active': true,
-          'name': 'user_role',
+          'name': 'userRole',
           'req': false,
           'type': '`\$OBJECT`',
           'index\$': 11,
@@ -2625,6 +2645,7 @@ class Config {
                   },
                 ],
               },
+              'kind': 'http',
               'method': 'GET',
               'orig': '/users/{id}',
               'parts': <dynamic>[

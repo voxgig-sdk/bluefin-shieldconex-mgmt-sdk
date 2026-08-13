@@ -115,12 +115,12 @@ auto client = client->client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `std::string` | No |  |
+| `billingId` | `std::string` | No |  |
 | `contact` | `std::map<std::string, Value>` | No |  |
 | `created` | `std::string` | No |  |
-| `direct_partner` | `std::map<std::string, Value>` | No |  |
+| `directPartner` | `std::map<std::string, Value>` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `std::string` | No |  |
 | `modified` | `std::string` | No |  |
 | `name` | `std::string` | No |  |
@@ -131,12 +131,12 @@ auto client = client->client();
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -258,32 +258,32 @@ auto partner = client->partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `std::string` | No |  |
+| `billingId` | `std::string` | No |  |
 | `contact` | `std::map<std::string, Value>` | No |  |
 | `created` | `std::string` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `std::string` | No |  |
 | `name` | `std::string` | No |  |
 | `parent` | `std::map<std::string, Value>` | No |  |
 | `reference` | `std::string` | No |  |
-| `verification_phrase` | `std::string` | No |  |
+| `verificationPhrase` | `std::string` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -347,13 +347,13 @@ auto template_ = client->template_();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Value` | No |  |
+| `accessMode` | `Value` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `std::map<std::string, Value>` | No |  |
-| `field_template` | `std::vector<Value>` | No |  |
+| `fieldTemplates` | `std::vector<Value>` | No |  |
 | `id` | `int64_t` | No |  |
 | `name` | `std::string` | No |  |
-| `option` | `std::map<std::string, Value>` | No |  |
+| `options` | `std::map<std::string, Value>` | No |  |
 | `partner` | `std::map<std::string, Value>` | No |  |
 | `reference` | `std::string` | No |  |
 | `type` | `std::string` | No |  |
@@ -430,17 +430,17 @@ auto transaction = client->transaction();
 | --- | --- | --- | --- |
 | `bfid` | `std::string` | No |  |
 | `client` | `std::map<std::string, Value>` | No |  |
-| `complete_date` | `std::string` | No |  |
-| `direct_partner` | `std::map<std::string, Value>` | No |  |
-| `err_code` | `std::string` | No |  |
-| `err_message` | `std::string` | No |  |
+| `completeDate` | `std::string` | No |  |
+| `directPartner` | `std::map<std::string, Value>` | No |  |
+| `errCode` | `std::string` | No |  |
+| `errMessage` | `std::string` | No |  |
 | `id` | `int64_t` | No |  |
-| `ip_address` | `std::string` | No |  |
-| `message_id` | `std::string` | No |  |
+| `ipAddress` | `std::string` | No |  |
+| `messageId` | `std::string` | No |  |
 | `partner` | `std::map<std::string, Value>` | No |  |
 | `reference` | `std::string` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `std::string` | No |  |
+| `templateId` | `std::string` | No |  |
 
 ### Operations
 
@@ -494,50 +494,50 @@ auto update_result = client->update_result();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `std::string` | No |  |
+| `billingId` | `std::string` | No |  |
 | `client` | `std::map<std::string, Value>` | No |  |
 | `contact` | `std::map<std::string, Value>` | Yes |  |
-| `direct_partner` | `std::map<std::string, Value>` | No |  |
+| `directPartner` | `std::map<std::string, Value>` | No |  |
 | `email` | `std::string` | Yes |  |
-| `first_name` | `std::string` | Yes |  |
+| `firstName` | `std::string` | Yes |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `std::string` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `std::string` | Yes |  |
 | `mid` | `std::string` | No |  |
 | `name` | `std::string` | No |  |
 | `parent` | `std::map<std::string, Value>` | No |  |
 | `partner` | `std::map<std::string, Value>` | No |  |
 | `phone` | `std::string` | Yes |  |
 | `reference` | `std::string` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `std::string` | Yes |  |
-| `user_role` | `std::map<std::string, Value>` | Yes |  |
-| `verification_phrase` | `std::string` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `std::string` | Yes |  |
+| `userRole` | `std::map<std::string, Value>` | Yes |  |
+| `verificationPhrase` | `std::string` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -550,11 +550,11 @@ Create a new entity with the given data. Returns the created entity data and thr
 Value result = client->update_result()->create(vmap({
     {"contact", vmap()},  // std::map<std::string, Value>
     {"email", Value("example_email")},  // std::string
-    {"first_name", Value("example_first_name")},  // std::string
-    {"last_name", Value("example_last_name")},  // std::string
+    {"firstName", Value("example_firstName")},  // std::string
+    {"lastName", Value("example_lastName")},  // std::string
     {"phone", Value("example_phone")},  // std::string
-    {"user_name", Value("example_user_name")},  // std::string
-    {"user_role", vmap()},  // std::map<std::string, Value>
+    {"userName", Value("example_userName")},  // std::string
+    {"userRole", vmap()},  // std::map<std::string, Value>
 }), Value::undef());
 ```
 
@@ -614,15 +614,15 @@ auto user = client->user();
 | `client` | `std::map<std::string, Value>` | No |  |
 | `created` | `std::string` | No |  |
 | `email` | `std::string` | No |  |
-| `first_name` | `std::string` | No |  |
+| `firstName` | `std::string` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `std::string` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `std::string` | No |  |
 | `modified` | `std::string` | No |  |
 | `partner` | `std::map<std::string, Value>` | No |  |
 | `phone` | `std::string` | No |  |
-| `user_name` | `std::string` | No |  |
-| `user_role` | `std::map<std::string, Value>` | No |  |
+| `userName` | `std::string` | No |  |
+| `userRole` | `std::map<std::string, Value>` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Operations

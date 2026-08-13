@@ -115,12 +115,12 @@ local client_ = client:Client(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `table` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `table` | No |  |
+| `directPartner` | `table` | No |  |
 | `id` | `number` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -131,12 +131,12 @@ local client_ = client:Client(nil)
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -273,32 +273,32 @@ local partner = client:Partner(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `table` | No |  |
 | `created` | `string` | No |  |
 | `id` | `number` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `table` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `number` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -368,13 +368,13 @@ local template = client:Template(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `any` | No |  |
+| `accessMode` | `any` | No |  |
 | `active` | `boolean` | No |  |
 | `client` | `table` | No |  |
-| `field_template` | `table` | No |  |
+| `fieldTemplates` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `option` | `table` | No |  |
+| `options` | `table` | No |  |
 | `partner` | `table` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -457,17 +457,17 @@ local transaction = client:Transaction(nil)
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `table` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `table` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `table` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `number` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `table` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `boolean` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
@@ -527,50 +527,50 @@ local update_result = client:UpdateResult(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `table` | No |  |
 | `contact` | `table` | Yes |  |
-| `direct_partner` | `table` | No |  |
+| `directPartner` | `table` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `number` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `table` | No |  |
 | `partner` | `table` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `boolean` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `table` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `boolean` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `table` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `number` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -583,11 +583,11 @@ Create a new entity with the given data.
 local result, err = client:UpdateResult():create({
   contact = --[[ table ]],
   email = --[[ string ]],
-  first_name = --[[ string ]],
-  last_name = --[[ string ]],
+  firstName = --[[ string ]],
+  lastName = --[[ string ]],
   phone = --[[ string ]],
-  user_name = --[[ string ]],
-  user_role = --[[ table ]],
+  userName = --[[ string ]],
+  userRole = --[[ table ]],
 })
 ```
 
@@ -653,15 +653,15 @@ local user = client:User(nil)
 | `client` | `table` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `number` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `table` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `table` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `table` | No |  |
 | `version` | `number` | No |  |
 
 ### Operations

@@ -70,7 +70,7 @@ try {
 
 ### 3. Load a client
 
-`load()` returns the bare record (a `Map`) and throws on error.
+`load()` returns the ENTITY — call data() for the record — and throws on error.
 
 ```dart
 try {
@@ -84,11 +84,11 @@ try {
 ### 4. Create, update, and remove
 
 ```dart
-// Create — returns the bare created record (a Map)
-final created = await client.Client().create({'billing_id': 'example_billing_id', 'contact': <String, dynamic>{}});
+// Create — returns the ENTITY (call data() for the record)
+final created = await client.Client().create({'billingId': 'example_billingId', 'contact': <String, dynamic>{}});
 
 // Remove
-await client.Client().remove({'id': created['id']});
+await client.Client().remove({'id': created.data()['id']});
 ```
 
 
@@ -168,7 +168,8 @@ Create a mock client for unit testing — no server required:
 ```dart
 final client = BluefinShieldconexMgmtSDK.test();
 
-// Entity ops return the bare record and throw on error.
+// Entity ops return the ENTITY and throws on error;
+// call data() for the record.
 final partner = await client.Partner().list();
 // partner contains the mock response record
 print(partner);
@@ -277,7 +278,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `Map` for single-entity
+Entity operations return the ENTITY (call data() for the record) (a `Map` for single-entity
 ops, a `List` of entity instances for `list`) and throw on error. Wrap calls
 in `try`/`catch` to handle failures.
 
@@ -299,12 +300,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -330,16 +331,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -350,13 +351,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -372,17 +373,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -392,25 +393,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -424,15 +425,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -461,12 +462,12 @@ Create an instance: `final client_ = client.Client();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Map<String, dynamic>` |  |
 | `created` | `String` |  |
-| `direct_partner` | `Map<String, dynamic>` |  |
+| `directPartner` | `Map<String, dynamic>` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -535,16 +536,16 @@ Create an instance: `final partner = client.Partner();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Map<String, dynamic>` |  |
 | `created` | `String` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Map<String, dynamic>` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `int` |  |
 
 #### Example: Load
@@ -584,13 +585,13 @@ Create an instance: `final template = client.Template();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `dynamic` |  |
+| `accessMode` | `dynamic` |  |
 | `active` | `bool` |  |
 | `client` | `Map<String, dynamic>` |  |
-| `field_template` | `List<dynamic>` |  |
+| `fieldTemplates` | `List<dynamic>` |  |
 | `id` | `int` |  |
 | `name` | `String` |  |
-| `option` | `Map<String, dynamic>` |  |
+| `options` | `Map<String, dynamic>` |  |
 | `partner` | `Map<String, dynamic>` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -633,17 +634,17 @@ Create an instance: `final transaction = client.Transaction();`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `Map<String, dynamic>` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `Map<String, dynamic>` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `Map<String, dynamic>` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `int` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `Map<String, dynamic>` |  |
 | `reference` | `String` |  |
 | `success` | `bool` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
@@ -674,25 +675,25 @@ Create an instance: `final update_result = client.UpdateResult();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `Map<String, dynamic>` |  |
 | `contact` | `Map<String, dynamic>` |  |
-| `direct_partner` | `Map<String, dynamic>` |  |
+| `directPartner` | `Map<String, dynamic>` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Map<String, dynamic>` |  |
 | `partner` | `Map<String, dynamic>` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Map<String, dynamic>` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `String` |  |
+| `userRole` | `Map<String, dynamic>` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `int` |  |
 
 #### Example: List
@@ -707,11 +708,11 @@ final update_results = await client.UpdateResult().list();
 final update_result = await client.UpdateResult().create({
   'contact': <String, dynamic>{},  // Map<String, dynamic>
   'email': 'example_email',  // String
-  'first_name': 'example_first_name',  // String
-  'last_name': 'example_last_name',  // String
+  'firstName': 'example_firstName',  // String
+  'lastName': 'example_lastName',  // String
   'phone': 'example_phone',  // String
-  'user_name': 'example_user_name',  // String
-  'user_role': <String, dynamic>{},  // Map<String, dynamic>
+  'userName': 'example_userName',  // String
+  'userRole': <String, dynamic>{},  // Map<String, dynamic>
 });
 ```
 
@@ -733,15 +734,15 @@ Create an instance: `final user = client.User();`
 | `client` | `Map<String, dynamic>` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `Map<String, dynamic>` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Map<String, dynamic>` |  |
+| `userName` | `String` |  |
+| `userRole` | `Map<String, dynamic>` |  |
 | `version` | `int` |  |
 
 #### Example: Load

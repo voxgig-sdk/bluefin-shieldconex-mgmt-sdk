@@ -114,12 +114,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `map` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `map` | No |  |
+| `directPartner` | `map` | No |  |
 | `id` | `long` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -130,12 +130,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -285,32 +285,32 @@ Return the entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `map` | No |  |
 | `created` | `string` | No |  |
 | `id` | `long` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `map` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `long` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -387,13 +387,13 @@ Return the entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `any` | No |  |
+| `accessMode` | `any` | No |  |
 | `active` | `boolean` | No |  |
 | `client` | `map` | No |  |
-| `field_template` | `vector` | No |  |
+| `fieldTemplates` | `vector` | No |  |
 | `id` | `long` | No |  |
 | `name` | `string` | No |  |
-| `option` | `map` | No |  |
+| `options` | `map` | No |  |
 | `partner` | `map` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -483,17 +483,17 @@ Return the entity name.
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `map` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `map` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `map` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `long` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `map` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `boolean` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
@@ -557,50 +557,50 @@ Return the entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `map` | No |  |
 | `contact` | `map` | Yes |  |
-| `direct_partner` | `map` | No |  |
+| `directPartner` | `map` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `long` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `map` | No |  |
 | `partner` | `map` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `boolean` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `map` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `boolean` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `map` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `long` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -615,11 +615,11 @@ Create a new entity with the given data. Returns the created entity data and rai
     (vs/jm
       "contact" (vs/jm)  ;; map
       "email" "example_email"  ;; string
-      "first_name" "example_first_name"  ;; string
-      "last_name" "example_last_name"  ;; string
+      "firstName" "example_firstName"  ;; string
+      "lastName" "example_lastName"  ;; string
       "phone" "example_phone"  ;; string
-      "user_name" "example_user_name"  ;; string
-      "user_role" (vs/jm)  ;; map
+      "userName" "example_userName"  ;; string
+      "userRole" (vs/jm)  ;; map
       )
     nil))
 ```
@@ -693,15 +693,15 @@ Return the entity name.
 | `client` | `map` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `long` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `map` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `map` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `map` | No |  |
 | `version` | `long` | No |  |
 
 ### Operations

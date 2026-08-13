@@ -120,12 +120,12 @@ val client = client.client(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String?` | No |  |
+| `billingId` | `String?` | No |  |
 | `contact` | `Map<String, Any?>?` | No |  |
 | `created` | `String?` | No |  |
-| `direct_partner` | `Map<String, Any?>?` | No |  |
+| `directPartner` | `Map<String, Any?>?` | No |  |
 | `id` | `Long?` | No |  |
-| `is_active` | `Boolean?` | No |  |
+| `isActive` | `Boolean?` | No |  |
 | `mid` | `String?` | No |  |
 | `modified` | `String?` | No |  |
 | `name` | `String?` | No |  |
@@ -136,12 +136,12 @@ val client = client.client(null)
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -261,32 +261,32 @@ val partner = client.partner(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String?` | No |  |
+| `billingId` | `String?` | No |  |
 | `contact` | `Map<String, Any?>?` | No |  |
 | `created` | `String?` | No |  |
 | `id` | `Long?` | No |  |
-| `is_active` | `Boolean?` | No |  |
+| `isActive` | `Boolean?` | No |  |
 | `modified` | `String?` | No |  |
 | `name` | `String?` | No |  |
 | `parent` | `Map<String, Any?>?` | No |  |
 | `reference` | `String?` | No |  |
-| `verification_phrase` | `String?` | No |  |
+| `verificationPhrase` | `String?` | No |  |
 | `version` | `Long?` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -348,13 +348,13 @@ val template = client.template(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Any?` | No |  |
+| `accessMode` | `Any?` | No |  |
 | `active` | `Boolean?` | No |  |
 | `client` | `Map<String, Any?>?` | No |  |
-| `field_template` | `List<Any?>?` | No |  |
+| `fieldTemplates` | `List<Any?>?` | No |  |
 | `id` | `Long?` | No |  |
 | `name` | `String?` | No |  |
-| `option` | `Map<String, Any?>?` | No |  |
+| `options` | `Map<String, Any?>?` | No |  |
 | `partner` | `Map<String, Any?>?` | No |  |
 | `reference` | `String?` | No |  |
 | `type` | `String?` | No |  |
@@ -429,17 +429,17 @@ val transaction = client.transaction(null)
 | --- | --- | --- | --- |
 | `bfid` | `String?` | No |  |
 | `client` | `Map<String, Any?>?` | No |  |
-| `complete_date` | `String?` | No |  |
-| `direct_partner` | `Map<String, Any?>?` | No |  |
-| `err_code` | `String?` | No |  |
-| `err_message` | `String?` | No |  |
+| `completeDate` | `String?` | No |  |
+| `directPartner` | `Map<String, Any?>?` | No |  |
+| `errCode` | `String?` | No |  |
+| `errMessage` | `String?` | No |  |
 | `id` | `Long?` | No |  |
-| `ip_address` | `String?` | No |  |
-| `message_id` | `String?` | No |  |
+| `ipAddress` | `String?` | No |  |
+| `messageId` | `String?` | No |  |
 | `partner` | `Map<String, Any?>?` | No |  |
 | `reference` | `String?` | No |  |
 | `success` | `Boolean?` | No |  |
-| `template_id` | `String?` | No |  |
+| `templateId` | `String?` | No |  |
 
 ### Operations
 
@@ -491,50 +491,50 @@ val updateResult = client.updateResult(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String?` | No |  |
+| `billingId` | `String?` | No |  |
 | `client` | `Map<String, Any?>?` | No |  |
 | `contact` | `Map<String, Any?>?` | Yes |  |
-| `direct_partner` | `Map<String, Any?>?` | No |  |
+| `directPartner` | `Map<String, Any?>?` | No |  |
 | `email` | `String?` | Yes |  |
-| `first_name` | `String?` | Yes |  |
+| `firstName` | `String?` | Yes |  |
 | `id` | `Long?` | No |  |
-| `is_active` | `Boolean?` | No |  |
-| `last_name` | `String?` | Yes |  |
+| `isActive` | `Boolean?` | No |  |
+| `lastName` | `String?` | Yes |  |
 | `mid` | `String?` | No |  |
 | `name` | `String?` | No |  |
 | `parent` | `Map<String, Any?>?` | No |  |
 | `partner` | `Map<String, Any?>?` | No |  |
 | `phone` | `String?` | Yes |  |
 | `reference` | `String?` | No |  |
-| `send_welcome_email` | `Boolean?` | No |  |
-| `user_name` | `String?` | Yes |  |
-| `user_role` | `Map<String, Any?>?` | Yes |  |
-| `verification_phrase` | `String?` | No |  |
+| `sendWelcomeEmail` | `Boolean?` | No |  |
+| `userName` | `String?` | Yes |  |
+| `userRole` | `Map<String, Any?>?` | Yes |  |
+| `verificationPhrase` | `String?` | No |  |
 | `version` | `Long?` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -547,11 +547,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 val result = client.updateResult(null).create(mutableMapOf<String, Any?>(
     "contact" to mapOf<String, Any?>(),  // Map<String, Any?>?
     "email" to "example_email",  // String?
-    "first_name" to "example_first_name",  // String?
-    "last_name" to "example_last_name",  // String?
+    "firstName" to "example_firstName",  // String?
+    "lastName" to "example_lastName",  // String?
     "phone" to "example_phone",  // String?
-    "user_name" to "example_user_name",  // String?
-    "user_role" to mapOf<String, Any?>()  // Map<String, Any?>?
+    "userName" to "example_userName",  // String?
+    "userRole" to mapOf<String, Any?>()  // Map<String, Any?>?
 ), null)
 ```
 
@@ -608,15 +608,15 @@ val user = client.user(null)
 | `client` | `Map<String, Any?>?` | No |  |
 | `created` | `String?` | No |  |
 | `email` | `String?` | No |  |
-| `first_name` | `String?` | No |  |
+| `firstName` | `String?` | No |  |
 | `id` | `Long?` | No |  |
-| `is_active` | `Boolean?` | No |  |
-| `last_name` | `String?` | No |  |
+| `isActive` | `Boolean?` | No |  |
+| `lastName` | `String?` | No |  |
 | `modified` | `String?` | No |  |
 | `partner` | `Map<String, Any?>?` | No |  |
 | `phone` | `String?` | No |  |
-| `user_name` | `String?` | No |  |
-| `user_role` | `Map<String, Any?>?` | No |  |
+| `userName` | `String?` | No |  |
+| `userRole` | `Map<String, Any?>?` | No |  |
 | `version` | `Long?` | No |  |
 
 ### Operations

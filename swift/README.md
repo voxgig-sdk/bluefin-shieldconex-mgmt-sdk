@@ -69,7 +69,7 @@ catch {
 
 ### 3. Load a client
 
-`load()` returns the bare record (a `Value`) and throws on error.
+`load()` returns the ENTITY — call data() for the record — and throws on error.
 
 ```swift
 do {
@@ -84,8 +84,8 @@ catch {
 ### 4. Create, update, and remove
 
 ```swift
-// Create — returns the bare created record (a Value)
-let created = try client.Client().create(VMap([("billing_id", .string("example_billing_id")), ("contact", .map(VMap()))]), nil)
+// Create — returns the ENTITY (call data() for the record)
+let created = try client.Client().create(VMap([("billingId", .string("example_billingId")), ("contact", .map(VMap()))]), nil)
 
 // Remove
 _ = try client.Client().remove(VMap([("id", .string("example_id"))]), nil)
@@ -168,7 +168,8 @@ Create a mock client for unit testing — no server required:
 ```swift
 let client = BluefinShieldconexMgmtSDK.testSDK(nil, nil)
 
-// Entity ops return the bare record and throw on error.
+// Entity ops return the ENTITY and throws on error;
+// call data() for the record.
 let partner = try client.Partner().list(nil, nil)
 // partner holds the mock response record
 print(partner)
@@ -274,7 +275,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `Value` map for
+Entity operations return the ENTITY (call data() for the record) (a `Value` map for
 single-entity ops, a `Value` list for `list`) and throw on error. Wrap
 calls in `do`/`catch` to handle failures.
 
@@ -296,12 +297,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -327,16 +328,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -347,13 +348,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -369,17 +370,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -389,25 +390,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -421,15 +422,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -458,12 +459,12 @@ Create an instance: `let client = client.Client()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `VMap` |  |
 | `created` | `String` |  |
-| `direct_partner` | `VMap` |  |
+| `directPartner` | `VMap` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
+| `isActive` | `Bool` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -532,16 +533,16 @@ Create an instance: `let partner = client.Partner()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `VMap` |  |
 | `created` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
+| `isActive` | `Bool` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `VMap` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Int` |  |
 
 #### Example: Load
@@ -581,13 +582,13 @@ Create an instance: `let template = client.Template()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Value` |  |
+| `accessMode` | `Value` |  |
 | `active` | `Bool` |  |
 | `client` | `VMap` |  |
-| `field_template` | `[Value]` |  |
+| `fieldTemplates` | `[Value]` |  |
 | `id` | `Int` |  |
 | `name` | `String` |  |
-| `option` | `VMap` |  |
+| `options` | `VMap` |  |
 | `partner` | `VMap` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -630,17 +631,17 @@ Create an instance: `let transaction = client.Transaction()`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `VMap` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `VMap` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `VMap` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `Int` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `VMap` |  |
 | `reference` | `String` |  |
 | `success` | `Bool` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
@@ -671,25 +672,25 @@ Create an instance: `let updateResult = client.UpdateResult()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `VMap` |  |
 | `contact` | `VMap` |  |
-| `direct_partner` | `VMap` |  |
+| `directPartner` | `VMap` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Bool` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `VMap` |  |
 | `partner` | `VMap` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `Bool` |  |
-| `user_name` | `String` |  |
-| `user_role` | `VMap` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `Bool` |  |
+| `userName` | `String` |  |
+| `userRole` | `VMap` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Int` |  |
 
 #### Example: List
@@ -704,11 +705,11 @@ let updateResultList = try client.UpdateResult().list(nil, nil)
 let updateResult = try client.UpdateResult().create(VMap([
     ("contact", .map(VMap())),  // VMap
     ("email", .string("example_email")),  // String
-    ("first_name", .string("example_first_name")),  // String
-    ("last_name", .string("example_last_name")),  // String
+    ("firstName", .string("example_firstName")),  // String
+    ("lastName", .string("example_lastName")),  // String
     ("phone", .string("example_phone")),  // String
-    ("user_name", .string("example_user_name")),  // String
-    ("user_role", .map(VMap()))  // VMap
+    ("userName", .string("example_userName")),  // String
+    ("userRole", .map(VMap()))  // VMap
 ]), nil)
 ```
 
@@ -730,15 +731,15 @@ Create an instance: `let user = client.User()`
 | `client` | `VMap` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Bool` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `VMap` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `VMap` |  |
+| `userName` | `String` |  |
+| `userRole` | `VMap` |  |
 | `version` | `Int` |  |
 
 #### Example: Load

@@ -87,14 +87,14 @@ test('stream', (t) async {
       final partner_ref01_ent = client.Partner();
       dynamic partner_ref01_data = setup['data']['new']['partner']['partner_ref01'];
 
-      partner_ref01_data = await partner_ref01_ent.create(partner_ref01_data);
+      partner_ref01_data = (await partner_ref01_ent.create(partner_ref01_data)).data();
       ok(null != partner_ref01_data['id']);
 
 
       // LIST
       final partner_ref01_match = <String, dynamic>{};
 
-      final partner_ref01_list = await partner_ref01_ent.list(partner_ref01_match);
+      final partner_ref01_list = (await partner_ref01_ent.list(partner_ref01_match)).map((e) => e.data()).toList();
 
       ok(!isempty(select(
           (partner_ref01_list as List).map((e) => e.data()).toList(),
@@ -104,7 +104,7 @@ test('stream', (t) async {
       // LOAD
       final partner_ref01_match_dt0 = <String, dynamic>{};
       partner_ref01_match_dt0['id'] = partner_ref01_data['id'];
-      final partner_ref01_data_dt0 = await partner_ref01_ent.load(partner_ref01_match_dt0);
+      final partner_ref01_data_dt0 = (await partner_ref01_ent.load(partner_ref01_match_dt0)).data();
       ok(partner_ref01_data_dt0['id'] == partner_ref01_data['id']);
 
 

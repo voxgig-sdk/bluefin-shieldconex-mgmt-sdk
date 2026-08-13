@@ -6,7 +6,7 @@ main: kit: entity: template: {
 
   fields: [
     {
-      name: "access_mode"
+      name: "accessMode"
       req: false
       type: "`$ANY`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: template: {
       type: "`$OBJECT`"
     }
     {
-      name: "field_template"
+      name: "fieldTemplates"
       req: false
       type: "`$ARRAY`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: template: {
       type: "`$STRING`"
     }
     {
-      name: "option"
+      name: "options"
       req: false
       type: "`$OBJECT`"
     }

@@ -14,6 +14,8 @@ typedef struct clone_entity {
   voxgig_value* data;     // Map
   voxgig_value* mtch;     // Map
   Context* entctx;
+  // Set once a successful `remove` resolves on this instance.
+  bool deleted;
 } clone_entity;
 
 typedef void (*clone_postdone_fn)(clone_entity* self, Context* ctx);
@@ -24,11 +26,14 @@ static const char* clone_get_name(Entity* e);
 static Entity* clone_make(Entity* e);
 static voxgig_value* clone_data(Entity* e, voxgig_value* args);
 static voxgig_value* clone_matchv(Entity* e, voxgig_value* args);
-static voxgig_value* clone_load(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
-static voxgig_value* clone_list(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
-static voxgig_value* clone_create(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err);
-static voxgig_value* clone_update(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err);
-static voxgig_value* clone_remove(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
+// Ops resolve to the ENTITY (`list` to a NULL-terminated array of them).
+static Entity* clone_load(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
+static Entity** clone_list(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
+static Entity* clone_create(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err);
+static Entity* clone_update(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err);
+static Entity* clone_remove(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err);
+static void clone_mark_deleted(Entity* e);
+static bool clone_deleted(Entity* e);
 
 static Context* clone_ent_ctx(clone_entity* self) {
   return self->entctx;
@@ -236,13 +241,13 @@ static voxgig_value* clone_matchv(Entity* e, voxgig_value* args) {
   return voxgig_clone(self->mtch);
 }
 
-static voxgig_value* clone_load(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
+static Entity* clone_load(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
   (void)e; (void)reqarg; (void)ctrl;
   *err = unsupported_op("load", "clone");
   return NULL;
 }
 
-static voxgig_value* clone_list(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
+static Entity** clone_list(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
   (void)e; (void)reqarg; (void)ctrl;
   *err = unsupported_op("list", "clone");
   return NULL;
@@ -260,7 +265,7 @@ static void clone_create_postdone(clone_entity* self, Context* ctx) {
   }
 }
 
-static voxgig_value* clone_create(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err) {
+static Entity* clone_create(Entity* e, voxgig_value* reqdata, voxgig_value* ctrl, PNError** err) {
   clone_entity* self = (clone_entity*)e;
   CtxSpec cs;
   memset(&cs, 0, sizeof(cs));
@@ -270,20 +275,38 @@ static voxgig_value* clone_create(Entity* e, voxgig_value* reqdata, voxgig_value
   cs.data = self->data;
   cs.reqdata = reqdata;
   Context* ctx = make_context_util(cs, clone_ent_ctx(self));
-  return clone_run_op(self, ctx, clone_create_postdone, err);
+  clone_run_op(self, ctx, clone_create_postdone, err);
+  if (*err) return NULL;
+
+  // The operation resolves to THIS entity: run_op has just absorbed the
+  // result into it, and the caller reaches the record through vt->data.
+  // See AGENTS.md "Entity operations return ENTITIES".
+
+  return e;
 }
 
 
-static voxgig_value* clone_update(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
+static Entity* clone_update(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
   (void)e; (void)reqarg; (void)ctrl;
   *err = unsupported_op("update", "clone");
   return NULL;
 }
 
-static voxgig_value* clone_remove(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
+static Entity* clone_remove(Entity* e, voxgig_value* reqarg, voxgig_value* ctrl, PNError** err) {
   (void)e; (void)reqarg; (void)ctrl;
   *err = unsupported_op("remove", "clone");
   return NULL;
+}
+
+// `remove` resolves to the entity, marked. The instance KEEPS the data it
+// held - a caller can still read what was deleted - but it is no longer a
+// live record.
+static void clone_mark_deleted(Entity* e) {
+  ((clone_entity*)e)->deleted = true;
+}
+
+static bool clone_deleted(Entity* e) {
+  return ((clone_entity*)e)->deleted;
 }
 
 static const EntityVT clone_VT = {
@@ -291,6 +314,8 @@ static const EntityVT clone_VT = {
   clone_make,
   clone_data,
   clone_matchv,
+  clone_mark_deleted,
+  clone_deleted,
   clone_load,
   clone_list,
   clone_create,

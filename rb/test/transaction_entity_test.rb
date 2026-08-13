@@ -62,7 +62,7 @@ class TransactionEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class TransactionEntityTest < Minitest::Test
       "id" => transaction_ref01_data["id"],
     }
     transaction_ref01_data_dt0_loaded = transaction_ref01_ent.load(transaction_ref01_match_dt0, nil)
-    transaction_ref01_data_dt0_load_result = Helpers.to_map(transaction_ref01_data_dt0_loaded)
+    transaction_ref01_data_dt0_load_result = Helpers.to_map(transaction_ref01_data_dt0_loaded.respond_to?(:data_get) ? transaction_ref01_data_dt0_loaded.data_get : transaction_ref01_data_dt0_loaded)
     assert !transaction_ref01_data_dt0_load_result.nil?
     assert_equal transaction_ref01_data_dt0_load_result["id"], transaction_ref01_data["id"]
 
@@ -120,39 +120,39 @@ def transaction_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID"]
+  entid_env_raw = ENV["BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID" => idmap,
-    "BLUEFINSHIELDCONEXMGMT_TEST_LIVE" => "FALSE",
-    "BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN" => "FALSE",
-    "BLUEFINSHIELDCONEXMGMT_APIKEY" => "NONE",
+    "BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID" => idmap,
+    "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE" => "FALSE",
+    "BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN" => "FALSE",
+    "BLUEFIN_SHIELDCONEX_MGMT_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID"])
+    env["BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE"
+  if env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+        "apikey" => env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
       },
       extra || {},
     ])
     client = BluefinShieldconexMgmtSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE"
+  live = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] == "TRUE",
+    explain: env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

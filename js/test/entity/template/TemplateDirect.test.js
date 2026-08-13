@@ -17,6 +17,10 @@ describe('TemplateDirect', async () => {
 
   test('direct-exists', async () => {
     const sdk = new BluefinShieldconexMgmtSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -97,19 +101,19 @@ function directSetup(mockres) {
   const calls = []
 
   const env = envOverride({
-    'BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID': {},
-    'BLUEFINSHIELDCONEXMGMT_TEST_LIVE': 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_APIKEY': 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID': {},
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE': 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.BLUEFINSHIELDCONEXMGMT_TEST_LIVE
+  const live = 'TRUE' === env.BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE
 
   if (live) {
     const client = new BluefinShieldconexMgmtSDK({
-      apikey: env.BLUEFINSHIELDCONEXMGMT_APIKEY,
+      apikey: env.BLUEFIN_SHIELDCONEX_MGMT_APIKEY,
     })
 
-    let idmap = env['BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID']
+    let idmap = env['BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

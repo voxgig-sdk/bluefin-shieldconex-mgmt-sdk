@@ -15,12 +15,12 @@ namespace BluefinShieldconexMgmtSdk.Types;
 
 public record Client
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? mid { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
@@ -35,12 +35,12 @@ public record ClientLoadMatch
 
 public record ClientListMatch
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? mid { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
@@ -50,12 +50,12 @@ public record ClientListMatch
 
 public record ClientCreateData
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? mid { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
@@ -77,20 +77,22 @@ public record Clone
 public record CloneCreateData
 {
     public string template_id { get; init; }
+    public long? id { get; init; }
+    public string? name { get; init; }
 }
 
 public record Partner
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public string? reference { get; init; }
-    public string? verification_phrase { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
@@ -101,43 +103,43 @@ public record PartnerLoadMatch
 
 public record PartnerListMatch
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public string? reference { get; init; }
-    public string? verification_phrase { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
 public record PartnerCreateData
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
     public string? created { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
+    public bool? isActive { get; init; }
     public string? modified { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public string? reference { get; init; }
-    public string? verification_phrase { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
 public record Template
 {
-    public object? access_mode { get; init; }
+    public object? accessMode { get; init; }
     public bool? active { get; init; }
     public Dictionary<string, object?>? client { get; init; }
-    public List<object?>? field_template { get; init; }
+    public List<object?>? fieldTemplates { get; init; }
     public long? id { get; init; }
     public string? name { get; init; }
-    public Dictionary<string, object?>? option { get; init; }
+    public Dictionary<string, object?>? options { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? reference { get; init; }
     public string? type { get; init; }
@@ -151,13 +153,13 @@ public record TemplateLoadMatch
 
 public record TemplateListMatch
 {
-    public object? access_mode { get; init; }
+    public object? accessMode { get; init; }
     public bool? active { get; init; }
     public Dictionary<string, object?>? client { get; init; }
-    public List<object?>? field_template { get; init; }
+    public List<object?>? fieldTemplates { get; init; }
     public long? id { get; init; }
     public string? name { get; init; }
-    public Dictionary<string, object?>? option { get; init; }
+    public Dictionary<string, object?>? options { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? reference { get; init; }
     public string? type { get; init; }
@@ -166,13 +168,13 @@ public record TemplateListMatch
 
 public record TemplateCreateData
 {
-    public object? access_mode { get; init; }
+    public object? accessMode { get; init; }
     public bool? active { get; init; }
     public Dictionary<string, object?>? client { get; init; }
-    public List<object?>? field_template { get; init; }
+    public List<object?>? fieldTemplates { get; init; }
     public long? id { get; init; }
     public string? name { get; init; }
-    public Dictionary<string, object?>? option { get; init; }
+    public Dictionary<string, object?>? options { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? reference { get; init; }
     public string? type { get; init; }
@@ -188,17 +190,17 @@ public record Transaction
 {
     public string? bfid { get; init; }
     public Dictionary<string, object?>? client { get; init; }
-    public string? complete_date { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
-    public string? err_code { get; init; }
-    public string? err_message { get; init; }
+    public string? completeDate { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
+    public string? errCode { get; init; }
+    public string? errMessage { get; init; }
     public long? id { get; init; }
-    public string? ip_address { get; init; }
-    public string? message_id { get; init; }
+    public string? ipAddress { get; init; }
+    public string? messageId { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? reference { get; init; }
     public bool? success { get; init; }
-    public string? template_id { get; init; }
+    public string? templateId { get; init; }
 }
 
 public record TransactionLoadMatch
@@ -210,94 +212,113 @@ public record TransactionListMatch
 {
     public string? bfid { get; init; }
     public Dictionary<string, object?>? client { get; init; }
-    public string? complete_date { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
-    public string? err_code { get; init; }
-    public string? err_message { get; init; }
+    public string? completeDate { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
+    public string? errCode { get; init; }
+    public string? errMessage { get; init; }
     public long? id { get; init; }
-    public string? ip_address { get; init; }
-    public string? message_id { get; init; }
+    public string? ipAddress { get; init; }
+    public string? messageId { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? reference { get; init; }
     public bool? success { get; init; }
-    public string? template_id { get; init; }
+    public string? templateId { get; init; }
 }
 
 public record UpdateResult
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? client { get; init; }
     public Dictionary<string, object?> contact { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public string email { get; init; }
-    public string first_name { get; init; }
+    public string firstName { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
-    public string last_name { get; init; }
+    public bool? isActive { get; init; }
+    public string lastName { get; init; }
     public string? mid { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string phone { get; init; }
     public string? reference { get; init; }
-    public bool? send_welcome_email { get; init; }
-    public string user_name { get; init; }
-    public Dictionary<string, object?> user_role { get; init; }
-    public string? verification_phrase { get; init; }
+    public bool? sendWelcomeEmail { get; init; }
+    public string userName { get; init; }
+    public Dictionary<string, object?> userRole { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
 public record UpdateResultListMatch
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? client { get; init; }
     public Dictionary<string, object?>? contact { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public string? email { get; init; }
-    public string? first_name { get; init; }
+    public string? firstName { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
-    public string? last_name { get; init; }
+    public bool? isActive { get; init; }
+    public string? lastName { get; init; }
     public string? mid { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? phone { get; init; }
     public string? reference { get; init; }
-    public bool? send_welcome_email { get; init; }
-    public string? user_name { get; init; }
-    public Dictionary<string, object?>? user_role { get; init; }
-    public string? verification_phrase { get; init; }
+    public bool? sendWelcomeEmail { get; init; }
+    public string? userName { get; init; }
+    public Dictionary<string, object?>? userRole { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
 public record UpdateResultCreateData
 {
-    public string? billing_id { get; init; }
+    public string? billingId { get; init; }
     public Dictionary<string, object?>? client { get; init; }
     public Dictionary<string, object?> contact { get; init; }
-    public Dictionary<string, object?>? direct_partner { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
     public string email { get; init; }
-    public string first_name { get; init; }
+    public string firstName { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
-    public string last_name { get; init; }
+    public bool? isActive { get; init; }
+    public string lastName { get; init; }
     public string? mid { get; init; }
     public string? name { get; init; }
     public Dictionary<string, object?>? parent { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string phone { get; init; }
     public string? reference { get; init; }
-    public bool? send_welcome_email { get; init; }
-    public string user_name { get; init; }
-    public Dictionary<string, object?> user_role { get; init; }
-    public string? verification_phrase { get; init; }
+    public bool? sendWelcomeEmail { get; init; }
+    public string userName { get; init; }
+    public Dictionary<string, object?> userRole { get; init; }
+    public string? verificationPhrase { get; init; }
     public long? version { get; init; }
 }
 
 public record UpdateResultUpdateData
 {
     public string id { get; init; }
+    public string? billingId { get; init; }
+    public Dictionary<string, object?>? client { get; init; }
+    public Dictionary<string, object?>? contact { get; init; }
+    public Dictionary<string, object?>? directPartner { get; init; }
+    public string? email { get; init; }
+    public string? firstName { get; init; }
+    public bool? isActive { get; init; }
+    public string? lastName { get; init; }
+    public string? mid { get; init; }
+    public string? name { get; init; }
+    public Dictionary<string, object?>? parent { get; init; }
+    public Dictionary<string, object?>? partner { get; init; }
+    public string? phone { get; init; }
+    public string? reference { get; init; }
+    public bool? sendWelcomeEmail { get; init; }
+    public string? userName { get; init; }
+    public Dictionary<string, object?>? userRole { get; init; }
+    public string? verificationPhrase { get; init; }
+    public long? version { get; init; }
 }
 
 public record User
@@ -305,15 +326,15 @@ public record User
     public Dictionary<string, object?>? client { get; init; }
     public string? created { get; init; }
     public string? email { get; init; }
-    public string? first_name { get; init; }
+    public string? firstName { get; init; }
     public long? id { get; init; }
-    public bool? is_active { get; init; }
-    public string? last_name { get; init; }
+    public bool? isActive { get; init; }
+    public string? lastName { get; init; }
     public string? modified { get; init; }
     public Dictionary<string, object?>? partner { get; init; }
     public string? phone { get; init; }
-    public string? user_name { get; init; }
-    public Dictionary<string, object?>? user_role { get; init; }
+    public string? userName { get; init; }
+    public Dictionary<string, object?>? userRole { get; init; }
     public long? version { get; init; }
 }
 

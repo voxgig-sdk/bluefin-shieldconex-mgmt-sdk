@@ -132,16 +132,16 @@ sub partner_direct_setup {
   my $calls = [];
 
   my $env = BluefinShieldconexMgmtTestRunner::env_override({
-    'BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID' => {},
-    'BLUEFINSHIELDCONEXMGMT_TEST_LIVE' => 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_APIKEY' => 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID' => {},
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE' => 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY' => 'NONE',
   });
 
-  my $live = ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
+  my $live = ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
 
   if ($live) {
     my $client = BluefinShieldconexMgmtSDK->new({
-      'apikey' => $env->{'BLUEFINSHIELDCONEXMGMT_APIKEY'},
+      'apikey' => $env->{'BLUEFIN_SHIELDCONEX_MGMT_APIKEY'},
     });
     return {
       'client' => $client,

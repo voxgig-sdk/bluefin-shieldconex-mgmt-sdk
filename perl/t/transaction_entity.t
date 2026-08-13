@@ -33,7 +33,7 @@ BASIC_FLOW: {
   # The basic flow consumes synthetic IDs from the fixture. In live mode
   # without an *_ENTID env override, those IDs hit the live API and 4xx.
   if ($setup->{synthetic_only}) {
-    note('live entity test uses synthetic IDs from fixture - set BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID JSON to run live');
+    note('live entity test uses synthetic IDs from fixture - set BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID JSON to run live');
     pass('transaction: basic flow skipped (synthetic IDs only)');
     last BASIC_FLOW;
   }
@@ -60,7 +60,7 @@ BASIC_FLOW: {
     'id' => $V{transaction_ref01_data}{id},
   };
   $V{transaction_ref01_data_dt0_loaded} = $V{transaction_ref01_ent}->load($V{transaction_ref01_match_dt0}, undef);
-  $V{transaction_ref01_data_dt0_load_result} = BluefinShieldconexMgmtHelpers::to_map($V{transaction_ref01_data_dt0_loaded});
+  $V{transaction_ref01_data_dt0_load_result} = BluefinShieldconexMgmtHelpers::to_map(ref($V{transaction_ref01_data_dt0_loaded}) && $V{transaction_ref01_data_dt0_loaded}->can('data_get') ? $V{transaction_ref01_data_dt0_loaded}->data_get : $V{transaction_ref01_data_dt0_loaded});
   ok(defined $V{transaction_ref01_data_dt0_load_result}, 'transaction load: data');
   is($V{transaction_ref01_data_dt0_load_result}{id}, $V{transaction_ref01_data}{id}, 'transaction load: id');
 
@@ -98,38 +98,38 @@ sub transaction_basic_setup {
   # mode is on without a real override, the basic test runs against
   # synthetic IDs from the fixture and 4xx's. Surface this so the test can
   # skip.
-  my $entid_env_raw = $ENV{'BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID'};
+  my $entid_env_raw = $ENV{'BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID'};
   my $idmap_overridden = (defined $entid_env_raw && $entid_env_raw =~ /^\s*\{/) ? 1 : 0;
 
   my $env = BluefinShieldconexMgmtTestRunner::env_override({
-    'BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID' => $idmap,
-    'BLUEFINSHIELDCONEXMGMT_TEST_LIVE' => 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN' => 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_APIKEY' => 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID' => $idmap,
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE' => 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN' => 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY' => 'NONE',
   });
 
-  my $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($env->{'BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID'});
+  my $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID'});
   if (!defined $idmap_resolved) {
     $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($idmap);
   }
 
-  if ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_LIVE'}) || '') eq 'TRUE') {
+  if ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') {
     my $merged_opts = Voxgig::Struct::merge([
       {
-        'apikey' => $env->{'BLUEFINSHIELDCONEXMGMT_APIKEY'},
+        'apikey' => $env->{'BLUEFIN_SHIELDCONEX_MGMT_APIKEY'},
       },
       (Voxgig::Struct::ismap($extra) ? $extra : {}),
     ]);
     $client = BluefinShieldconexMgmtSDK->new(BluefinShieldconexMgmtHelpers::to_map($merged_opts));
   }
 
-  my $live = ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
+  my $live = ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
   return {
     'client' => $client,
     'data' => $entity_data,
     'idmap' => $idmap_resolved,
     'env' => $env,
-    'explain' => ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN'}) || '') eq 'TRUE') ? 1 : 0,
+    'explain' => ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN'}) || '') eq 'TRUE') ? 1 : 0,
     'live' => $live,
     'synthetic_only' => ($live && !$idmap_overridden) ? 1 : 0,
     'now' => BluefinShieldconexMgmtHelpers::now_ms(),

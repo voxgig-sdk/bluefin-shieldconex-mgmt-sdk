@@ -40,7 +40,7 @@ try {
     // list() returns an array of Client records — iterate directly.
     $clients = $client->Client()->list();
     foreach ($clients as $item) {
-        echo $item["id"] . " " . $item["billing_id"] . "\n";
+        echo $item["id"] . " " . $item["billingId"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Client record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Client record (throws on error).
     $client = $client->Client()->load(["id" => "example_id"]);
     print_r($client);
 } catch (\Throwable $err) {
@@ -62,11 +62,11 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created Client record.
-$created = $client->Client()->create(["billing_id" => "example_billing_id", "contact" => []]);
+// create() returns the ENTITY — call data_get() for the created Client record.
+$created = $client->Client()->create(["billingId" => "example_billingId", "contact" => []]);
 
 // Remove
-$client->Client()->remove(["id" => $created["id"]]);
+$client->Client()->remove(["id" => $created->data_get()["id"]]);
 ```
 
 
@@ -152,7 +152,8 @@ $client = BluefinShieldconexMgmtSDK::test([
     "entity" => ["partner" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $partner = $client->Partner()->list();
 print_r($partner);
 ```
@@ -263,7 +264,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -285,12 +286,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -316,16 +317,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -336,13 +337,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -358,17 +359,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -378,25 +379,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -410,15 +411,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -447,12 +448,12 @@ Create an instance: `$client = $client->Client();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `array` |  |
 | `created` | `string` |  |
-| `direct_partner` | `array` |  |
+| `directPartner` | `array` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -462,7 +463,7 @@ Create an instance: `$client = $client->Client();`
 #### Example: Load
 
 ```php
-// load() returns the bare Client record (throws on error).
+// load() returns the ENTITY — call data_get() for the Client record (throws on error).
 $client = $client->Client()->load(["id" => "client_id"]);
 ```
 
@@ -523,22 +524,22 @@ Create an instance: `$partner = $client->Partner();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `array` |  |
 | `created` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `array` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Partner record (throws on error).
+// load() returns the ENTITY — call data_get() for the Partner record (throws on error).
 $partner = $client->Partner()->load(["id" => "partner_id"]);
 ```
 
@@ -574,13 +575,13 @@ Create an instance: `$template = $client->Template();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `mixed` |  |
+| `accessMode` | `mixed` |  |
 | `active` | `bool` |  |
 | `client` | `array` |  |
-| `field_template` | `array` |  |
+| `fieldTemplates` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `option` | `array` |  |
+| `options` | `array` |  |
 | `partner` | `array` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -589,7 +590,7 @@ Create an instance: `$template = $client->Template();`
 #### Example: Load
 
 ```php
-// load() returns the bare Template record (throws on error).
+// load() returns the ENTITY — call data_get() for the Template record (throws on error).
 $template = $client->Template()->load(["id" => "template_id"]);
 ```
 
@@ -625,22 +626,22 @@ Create an instance: `$transaction = $client->Transaction();`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `array` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `array` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `array` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `int` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `array` |  |
 | `reference` | `string` |  |
 | `success` | `bool` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Transaction record (throws on error).
+// load() returns the ENTITY — call data_get() for the Transaction record (throws on error).
 $transaction = $client->Transaction()->load(["id" => "transaction_id"]);
 ```
 
@@ -668,25 +669,25 @@ Create an instance: `$update_result = $client->UpdateResult();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `array` |  |
 | `contact` | `array` |  |
-| `direct_partner` | `array` |  |
+| `directPartner` | `array` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `array` |  |
 | `partner` | `array` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `string` |  |
-| `user_role` | `array` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `string` |  |
+| `userRole` | `array` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `int` |  |
 
 #### Example: List
@@ -702,11 +703,11 @@ $update_results = $client->UpdateResult()->list();
 $update_result = $client->UpdateResult()->create([
     "contact" => null, // array
     "email" => null, // string
-    "first_name" => null, // string
-    "last_name" => null, // string
+    "firstName" => null, // string
+    "lastName" => null, // string
     "phone" => null, // string
-    "user_name" => null, // string
-    "user_role" => null, // array
+    "userName" => null, // string
+    "userRole" => null, // array
 ]);
 ```
 
@@ -728,21 +729,21 @@ Create an instance: `$user = $client->User();`
 | `client` | `array` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `array` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `array` |  |
+| `userName` | `string` |  |
+| `userRole` | `array` |  |
 | `version` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare User record (throws on error).
+// load() returns the ENTITY — call data_get() for the User record (throws on error).
 $user = $client->User()->load(["id" => "user_id"]);
 ```
 

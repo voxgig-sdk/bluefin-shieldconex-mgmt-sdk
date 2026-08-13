@@ -31,7 +31,8 @@ defmodule BluefinShieldconexMgmt.CloneEntityTest do
   test "should create then read back" do
     sdk = BluefinShieldconexMgmt.test(S.jm(["entity", S.jm(["clone", S.jm([])])]))
     ent = BluefinShieldconexMgmt.clone(sdk)
-    made = BluefinShieldconexMgmt.Entity.Clone.create(ent, S.jm(["name", "test-create"]))
+    created = BluefinShieldconexMgmt.Entity.Clone.create(ent, S.jm(["name", "test-create"]))
+    made = BluefinShieldconexMgmt.EntityBase.data_get(created)
     assert S.ismap(made)
     assert S.getprop(made, "id") != nil
   end

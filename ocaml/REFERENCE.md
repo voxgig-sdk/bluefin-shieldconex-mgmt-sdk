@@ -111,12 +111,12 @@ let client = Sdk_client.client client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `value map` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `value map` | No |  |
+| `directPartner` | `value map` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -127,12 +127,12 @@ let client = Sdk_client.client client Noval
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -141,40 +141,42 @@ let client = Sdk_client.client client Noval
 
 ### Operations
 
-#### `e_create reqdata ctrl : value`
+#### `e_create reqdata ctrl : entity_obj`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.client client Noval).e_create (jo [
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_list reqmatch ctrl : value`
+#### `e_list reqmatch ctrl : entity_obj list`
 
-List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Returns a List and raises on error.
+List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Resolves to one ENTITY per record and raises on error.
 
 ```ocaml
+(* One ENTITY per record; the record is reached with e_data_get. *)
 let results = (Sdk_client.client client Noval).e_list (empty_map ()) Noval in
-(match results with
- | List items -> List.iter (fun r -> print_endline (stringify r)) !items
- | _ -> ())
+List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
-#### `e_load reqmatch ctrl : value`
+#### `e_load reqmatch ctrl : entity_obj`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.client client Noval).e_load (jo [("id", (Str "client_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_remove reqmatch ctrl : value`
+#### `e_remove reqmatch ctrl : entity_obj`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Resolves to the ENTITY, marked deleted (`e_deleted`); it keeps the data it held. Raises on error.
 
 ```ocaml
 let result = (Sdk_client.client client Noval).e_remove (jo [("id", (Str "client_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -221,14 +223,15 @@ let clone = Sdk_client.clone client Noval
 
 ### Operations
 
-#### `e_create reqdata ctrl : value`
+#### `e_create reqdata ctrl : entity_obj`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.clone client Noval).e_create (jo [
     ("template_id", (Str "example_template_id"));  (* string *)
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -270,62 +273,63 @@ let partner = Sdk_client.partner client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `value map` | No |  |
 | `created` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `value map` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
 
-#### `e_create reqdata ctrl : value`
+#### `e_create reqdata ctrl : entity_obj`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.partner client Noval).e_create (jo [
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_list reqmatch ctrl : value`
+#### `e_list reqmatch ctrl : entity_obj list`
 
-List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Returns a List and raises on error.
+List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Resolves to one ENTITY per record and raises on error.
 
 ```ocaml
+(* One ENTITY per record; the record is reached with e_data_get. *)
 let results = (Sdk_client.partner client Noval).e_list (empty_map ()) Noval in
-(match results with
- | List items -> List.iter (fun r -> print_endline (stringify r)) !items
- | _ -> ())
+List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
-#### `e_load reqmatch ctrl : value`
+#### `e_load reqmatch ctrl : entity_obj`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.partner client Noval).e_load (jo [("id", (Str "partner_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -367,13 +371,13 @@ let template = Sdk_client.template client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `value` | No |  |
+| `accessMode` | `value` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `value map` | No |  |
-| `field_template` | `value list` | No |  |
+| `fieldTemplates` | `value list` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `option` | `value map` | No |  |
+| `options` | `value map` | No |  |
 | `partner` | `value map` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -381,40 +385,42 @@ let template = Sdk_client.template client Noval
 
 ### Operations
 
-#### `e_create reqdata ctrl : value`
+#### `e_create reqdata ctrl : entity_obj`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.template client Noval).e_create (jo [
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_list reqmatch ctrl : value`
+#### `e_list reqmatch ctrl : entity_obj list`
 
-List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Returns a List and raises on error.
+List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Resolves to one ENTITY per record and raises on error.
 
 ```ocaml
+(* One ENTITY per record; the record is reached with e_data_get. *)
 let results = (Sdk_client.template client Noval).e_list (empty_map ()) Noval in
-(match results with
- | List items -> List.iter (fun r -> print_endline (stringify r)) !items
- | _ -> ())
+List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
-#### `e_load reqmatch ctrl : value`
+#### `e_load reqmatch ctrl : entity_obj`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.template client Noval).e_load (jo [("id", (Str "template_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_remove reqmatch ctrl : value`
+#### `e_remove reqmatch ctrl : entity_obj`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Resolves to the ENTITY, marked deleted (`e_deleted`); it keeps the data it held. Raises on error.
 
 ```ocaml
 let result = (Sdk_client.template client Noval).e_remove (jo [("id", (Str "template_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -458,37 +464,37 @@ let transaction = Sdk_client.transaction client Noval
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `value map` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `value map` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `value map` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `value map` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
-#### `e_list reqmatch ctrl : value`
+#### `e_list reqmatch ctrl : entity_obj list`
 
-List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Returns a List and raises on error.
+List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Resolves to one ENTITY per record and raises on error.
 
 ```ocaml
+(* One ENTITY per record; the record is reached with e_data_get. *)
 let results = (Sdk_client.transaction client Noval).e_list (empty_map ()) Noval in
-(match results with
- | List items -> List.iter (fun r -> print_endline (stringify r)) !items
- | _ -> ())
+List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
-#### `e_load reqmatch ctrl : value`
+#### `e_load reqmatch ctrl : entity_obj`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.transaction client Noval).e_load (jo [("id", (Str "transaction_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -530,90 +536,91 @@ let update_result = Sdk_client.update_result client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `value map` | No |  |
 | `contact` | `value map` | Yes |  |
-| `direct_partner` | `value map` | No |  |
+| `directPartner` | `value map` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `value map` | No |  |
 | `partner` | `value map` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `value map` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `value map` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
 
-#### `e_create reqdata ctrl : value`
+#### `e_create reqdata ctrl : entity_obj`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.update_result client Noval).e_create (jo [
     ("contact", (empty_map ()));  (* value map *)
     ("email", (Str "example_email"));  (* string *)
-    ("first_name", (Str "example_first_name"));  (* string *)
-    ("last_name", (Str "example_last_name"));  (* string *)
+    ("firstName", (Str "example_firstName"));  (* string *)
+    ("lastName", (Str "example_lastName"));  (* string *)
     ("phone", (Str "example_phone"));  (* string *)
-    ("user_name", (Str "example_user_name"));  (* string *)
-    ("user_role", (empty_map ()));  (* value map *)
+    ("userName", (Str "example_userName"));  (* string *)
+    ("userRole", (empty_map ()));  (* value map *)
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
-#### `e_list reqmatch ctrl : value`
+#### `e_list reqmatch ctrl : entity_obj list`
 
-List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Returns a List and raises on error.
+List entities matching the given criteria. The match is optional — pass `(empty_map ())` to list all records. Resolves to one ENTITY per record and raises on error.
 
 ```ocaml
+(* One ENTITY per record; the record is reached with e_data_get. *)
 let results = (Sdk_client.update_result client Noval).e_list (empty_map ()) Noval in
-(match results with
- | List items -> List.iter (fun r -> print_endline (stringify r)) !items
- | _ -> ())
+List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
-#### `e_update reqdata ctrl : value`
+#### `e_update reqdata ctrl : entity_obj`
 
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+Update an existing entity. The data must include the entity `id`. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.update_result client Noval).e_update (jo [
     ("id", (Str "id"));
     (* Fields to update *)
 ]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields
@@ -658,25 +665,26 @@ let user = Sdk_client.user client Noval
 | `client` | `value map` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `value map` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `value map` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `value map` | No |  |
 | `version` | `int` | No |  |
 
 ### Operations
 
-#### `e_load reqmatch ctrl : value`
+#### `e_load reqmatch ctrl : entity_obj`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Resolves to the ENTITY (read the record with `e_data_get`) and raises on error.
 
 ```ocaml
 let result = (Sdk_client.user client Noval).e_load (jo [("id", (Str "user_id"))]) Noval
+let result_data = result.e_data_get ()
 ```
 
 ### Common Fields

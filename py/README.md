@@ -55,7 +55,7 @@ except Exception as err:
 
 ### 3. Load a client
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -68,11 +68,11 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.Client().create({"billing_id": "example_billing_id", "contact": {}})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.Client().create({"billingId": "example_billingId", "contact": {}})
 
 # Remove
-client.Client().remove({"id": created["id"]})
+client.Client().remove({"id": created.data_get()["id"]})
 ```
 
 
@@ -149,7 +149,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = BluefinShieldconexMgmtSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 partner = client.Partner().list()
 # partner contains the mock response record
 ```
@@ -257,7 +258,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -279,12 +280,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -310,16 +311,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -330,13 +331,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -352,17 +353,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -372,25 +373,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -404,15 +405,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -441,12 +442,12 @@ Create an instance: `client_ = client.Client()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `str` |  |
+| `billingId` | `str` |  |
 | `contact` | `dict` |  |
 | `created` | `str` |  |
-| `direct_partner` | `dict` |  |
+| `directPartner` | `dict` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `str` |  |
 | `modified` | `str` |  |
 | `name` | `str` |  |
@@ -515,16 +516,16 @@ Create an instance: `partner = client.Partner()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `str` |  |
+| `billingId` | `str` |  |
 | `contact` | `dict` |  |
 | `created` | `str` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `str` |  |
 | `name` | `str` |  |
 | `parent` | `dict` |  |
 | `reference` | `str` |  |
-| `verification_phrase` | `str` |  |
+| `verificationPhrase` | `str` |  |
 | `version` | `int` |  |
 
 #### Example: Load
@@ -564,13 +565,13 @@ Create an instance: `template = client.Template()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Any` |  |
+| `accessMode` | `Any` |  |
 | `active` | `bool` |  |
 | `client` | `dict` |  |
-| `field_template` | `list` |  |
+| `fieldTemplates` | `list` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `option` | `dict` |  |
+| `options` | `dict` |  |
 | `partner` | `dict` |  |
 | `reference` | `str` |  |
 | `type` | `str` |  |
@@ -613,17 +614,17 @@ Create an instance: `transaction = client.Transaction()`
 | --- | --- | --- |
 | `bfid` | `str` |  |
 | `client` | `dict` |  |
-| `complete_date` | `str` |  |
-| `direct_partner` | `dict` |  |
-| `err_code` | `str` |  |
-| `err_message` | `str` |  |
+| `completeDate` | `str` |  |
+| `directPartner` | `dict` |  |
+| `errCode` | `str` |  |
+| `errMessage` | `str` |  |
 | `id` | `int` |  |
-| `ip_address` | `str` |  |
-| `message_id` | `str` |  |
+| `ipAddress` | `str` |  |
+| `messageId` | `str` |  |
 | `partner` | `dict` |  |
 | `reference` | `str` |  |
 | `success` | `bool` |  |
-| `template_id` | `str` |  |
+| `templateId` | `str` |  |
 
 #### Example: Load
 
@@ -654,25 +655,25 @@ Create an instance: `update_result = client.UpdateResult()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `str` |  |
+| `billingId` | `str` |  |
 | `client` | `dict` |  |
 | `contact` | `dict` |  |
-| `direct_partner` | `dict` |  |
+| `directPartner` | `dict` |  |
 | `email` | `str` |  |
-| `first_name` | `str` |  |
+| `firstName` | `str` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `str` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `str` |  |
 | `mid` | `str` |  |
 | `name` | `str` |  |
 | `parent` | `dict` |  |
 | `partner` | `dict` |  |
 | `phone` | `str` |  |
 | `reference` | `str` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `str` |  |
-| `user_role` | `dict` |  |
-| `verification_phrase` | `str` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `str` |  |
+| `userRole` | `dict` |  |
+| `verificationPhrase` | `str` |  |
 | `version` | `int` |  |
 
 #### Example: List
@@ -687,11 +688,11 @@ update_results = client.UpdateResult().list()
 update_result = client.UpdateResult().create({
     "contact": {},  # dict
     "email": "example_email",  # str
-    "first_name": "example_first_name",  # str
-    "last_name": "example_last_name",  # str
+    "firstName": "example_firstName",  # str
+    "lastName": "example_lastName",  # str
     "phone": "example_phone",  # str
-    "user_name": "example_user_name",  # str
-    "user_role": {},  # dict
+    "userName": "example_userName",  # str
+    "userRole": {},  # dict
 })
 ```
 
@@ -713,15 +714,15 @@ Create an instance: `user = client.User()`
 | `client` | `dict` |  |
 | `created` | `str` |  |
 | `email` | `str` |  |
-| `first_name` | `str` |  |
+| `firstName` | `str` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `str` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `str` |  |
 | `modified` | `str` |  |
 | `partner` | `dict` |  |
 | `phone` | `str` |  |
-| `user_name` | `str` |  |
-| `user_role` | `dict` |  |
+| `userName` | `str` |  |
+| `userRole` | `dict` |  |
 | `version` | `int` |  |
 
 #### Example: Load

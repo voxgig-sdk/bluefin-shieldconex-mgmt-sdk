@@ -10,7 +10,7 @@
           (vs/jm
             "active" true
             "index$" 0
-            "name" "billing_id"
+            "name" "billingId"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -35,7 +35,7 @@
           (vs/jm
             "active" true
             "index$" 3
-            "name" "direct_partner"
+            "name" "directPartner"
             "op" (vs/jm
               "create" (vs/jm
                 "req" true
@@ -51,7 +51,7 @@
           (vs/jm
             "active" true
             "index$" 5
-            "name" "is_active"
+            "name" "isActive"
             "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
@@ -198,6 +198,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "POST"
                 "orig" "/clients"
                 "parts" (vs/jt
@@ -254,6 +255,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/clients"
                 "parts" (vs/jt
@@ -284,6 +286,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/clients/{id}"
                 "parts" (vs/jt
@@ -313,6 +316,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "DELETE"
                 "orig" "/clients/{id}"
                 "parts" (vs/jt
@@ -360,6 +364,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "POST"
                 "orig" "/templates/{id}/clone"
                 "parts" (vs/jt
@@ -384,7 +389,7 @@
           (vs/jm
             "active" true
             "index$" 0
-            "name" "billing_id"
+            "name" "billingId"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -415,7 +420,7 @@
           (vs/jm
             "active" true
             "index$" 4
-            "name" "is_active"
+            "name" "isActive"
             "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
@@ -453,7 +458,7 @@
           (vs/jm
             "active" true
             "index$" 9
-            "name" "verification_phrase"
+            "name" "verificationPhrase"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -579,6 +584,7 @@
                       "reqd" false
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "POST"
                 "orig" "/partners"
                 "parts" (vs/jt
@@ -636,6 +642,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/partners"
                 "parts" (vs/jt
@@ -666,6 +673,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/partners/{id}"
                 "parts" (vs/jt
@@ -684,7 +692,7 @@
           (vs/jm
             "active" true
             "index$" 0
-            "name" "access_mode"
+            "name" "accessMode"
             "req" false
             "type" "`$ANY`")
           (vs/jm
@@ -702,7 +710,7 @@
           (vs/jm
             "active" true
             "index$" 3
-            "name" "field_template"
+            "name" "fieldTemplates"
             "req" false
             "type" "`$ARRAY`")
           (vs/jm
@@ -720,7 +728,7 @@
           (vs/jm
             "active" true
             "index$" 6
-            "name" "option"
+            "name" "options"
             "req" false
             "type" "`$OBJECT`")
           (vs/jm
@@ -878,6 +886,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "POST"
                 "orig" "/templates"
                 "parts" (vs/jt
@@ -944,6 +953,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/templates"
                 "parts" (vs/jt
@@ -975,6 +985,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/templates/{id}"
                 "parts" (vs/jt
@@ -1004,6 +1015,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "DELETE"
                 "orig" "/templates/{id}"
                 "parts" (vs/jt
@@ -1034,25 +1046,25 @@
           (vs/jm
             "active" true
             "index$" 2
-            "name" "complete_date"
+            "name" "completeDate"
             "req" false
             "type" "`$STRING`")
           (vs/jm
             "active" true
             "index$" 3
-            "name" "direct_partner"
+            "name" "directPartner"
             "req" false
             "type" "`$OBJECT`")
           (vs/jm
             "active" true
             "index$" 4
-            "name" "err_code"
+            "name" "errCode"
             "req" false
             "type" "`$STRING`")
           (vs/jm
             "active" true
             "index$" 5
-            "name" "err_message"
+            "name" "errMessage"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -1064,13 +1076,13 @@
           (vs/jm
             "active" true
             "index$" 7
-            "name" "ip_address"
+            "name" "ipAddress"
             "req" false
             "type" "`$STRING`")
           (vs/jm
             "active" true
             "index$" 8
-            "name" "message_id"
+            "name" "messageId"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -1094,7 +1106,7 @@
           (vs/jm
             "active" true
             "index$" 12
-            "name" "template_id"
+            "name" "templateId"
             "req" false
             "type" "`$STRING`"))
         "name" "transaction"
@@ -1188,6 +1200,7 @@
                       "reqd" false
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/transactions"
                 "parts" (vs/jt
@@ -1234,6 +1247,7 @@
                       "reqd" false
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/transactions/{id}"
                 "parts" (vs/jt
@@ -1253,7 +1267,7 @@
           (vs/jm
             "active" true
             "index$" 0
-            "name" "billing_id"
+            "name" "billingId"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -1271,7 +1285,7 @@
           (vs/jm
             "active" true
             "index$" 3
-            "name" "direct_partner"
+            "name" "directPartner"
             "req" false
             "type" "`$OBJECT`")
           (vs/jm
@@ -1290,7 +1304,7 @@
           (vs/jm
             "active" true
             "index$" 5
-            "name" "first_name"
+            "name" "firstName"
             "op" (vs/jm
               "list" (vs/jm
                 "req" false
@@ -1309,13 +1323,13 @@
           (vs/jm
             "active" true
             "index$" 7
-            "name" "is_active"
+            "name" "isActive"
             "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
             "active" true
             "index$" 8
-            "name" "last_name"
+            "name" "lastName"
             "op" (vs/jm
               "list" (vs/jm
                 "req" false
@@ -1371,13 +1385,13 @@
           (vs/jm
             "active" true
             "index$" 15
-            "name" "send_welcome_email"
+            "name" "sendWelcomeEmail"
             "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
             "active" true
             "index$" 16
-            "name" "user_name"
+            "name" "userName"
             "op" (vs/jm
               "list" (vs/jm
                 "req" false
@@ -1390,7 +1404,7 @@
           (vs/jm
             "active" true
             "index$" 17
-            "name" "user_role"
+            "name" "userRole"
             "op" (vs/jm
               "list" (vs/jm
                 "req" false
@@ -1403,7 +1417,7 @@
           (vs/jm
             "active" true
             "index$" 18
-            "name" "verification_phrase"
+            "name" "verificationPhrase"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -1494,6 +1508,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "POST"
                 "orig" "/users"
                 "parts" (vs/jt
@@ -1553,6 +1568,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/users"
                 "parts" (vs/jt
@@ -1704,6 +1720,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 0
+                "kind" "http"
                 "method" "PATCH"
                 "orig" "/templates/{id}"
                 "parts" (vs/jt
@@ -1809,6 +1826,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 1
+                "kind" "http"
                 "method" "PATCH"
                 "orig" "/partners/{id}"
                 "parts" (vs/jt
@@ -1906,6 +1924,7 @@
                       "reqd" false
                       "type" "`$STRING`")))
                 "index$" 2
+                "kind" "http"
                 "method" "PATCH"
                 "orig" "/users/{id}"
                 "parts" (vs/jt
@@ -1996,6 +2015,7 @@
                       "reqd" false
                       "type" "`$INTEGER`")))
                 "index$" 3
+                "kind" "http"
                 "method" "PATCH"
                 "orig" "/clients/{id}"
                 "parts" (vs/jt
@@ -2040,7 +2060,7 @@
           (vs/jm
             "active" true
             "index$" 3
-            "name" "first_name"
+            "name" "firstName"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -2052,13 +2072,13 @@
           (vs/jm
             "active" true
             "index$" 5
-            "name" "is_active"
+            "name" "isActive"
             "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
             "active" true
             "index$" 6
-            "name" "last_name"
+            "name" "lastName"
             "req" false
             "type" "`$STRING`")
           (vs/jm
@@ -2082,13 +2102,13 @@
           (vs/jm
             "active" true
             "index$" 10
-            "name" "user_name"
+            "name" "userName"
             "req" false
             "type" "`$STRING`")
           (vs/jm
             "active" true
             "index$" 11
-            "name" "user_role"
+            "name" "userRole"
             "req" false
             "type" "`$OBJECT`")
           (vs/jm
@@ -2117,6 +2137,7 @@
                       "reqd" true
                       "type" "`$STRING`")))
                 "index$" 0
+                "kind" "http"
                 "method" "GET"
                 "orig" "/users/{id}"
                 "parts" (vs/jt

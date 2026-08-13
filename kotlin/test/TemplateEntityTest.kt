@@ -40,7 +40,7 @@ class TemplateEntityTest {
     }
     Assumptions.assumeFalse(
       setup.syntheticOnly,
-      "live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID JSON to run live",
+      "live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID JSON to run live",
     )
     val client = setup.client
 
@@ -50,7 +50,7 @@ class TemplateEntityTest {
         Struct.getpath(setup.data, "new.template"), "template_ref01")) ?: linkedMapOf())
 
     val templateRef01DataResult = templateRef01Ent.create(templateRef01Data, null)
-    templateRef01Data = Helpers.toMapAny(templateRef01DataResult) ?: linkedMapOf()
+    templateRef01Data = Helpers.toMapAny(if (templateRef01DataResult is SdkEntity) templateRef01DataResult.data() else templateRef01DataResult) ?: linkedMapOf()
     assertNotNull(templateRef01Data, "expected create result to be a map")
     assertNotNull(templateRef01Data["id"], "expected created entity to have an id")
 
@@ -71,7 +71,7 @@ class TemplateEntityTest {
     val templateRef01MatchDt0 = linkedMapOf<String, Any?>()
     templateRef01MatchDt0["id"] = templateRef01Data["id"]
     val templateRef01DataDt0Loaded = templateRef01Ent.load(templateRef01MatchDt0, null)
-    val templateRef01DataDt0LoadResult = Helpers.toMapAny(templateRef01DataDt0Loaded) ?: linkedMapOf()
+    val templateRef01DataDt0LoadResult = Helpers.toMapAny(if (templateRef01DataDt0Loaded is SdkEntity) templateRef01DataDt0Loaded.data() else templateRef01DataDt0Loaded) ?: linkedMapOf()
     assertNotNull(templateRef01DataDt0LoadResult, "expected load result to be a map")
     assertEquals(templateRef01Data["id"], templateRef01DataDt0LoadResult["id"],
         "expected load result id to match")
@@ -159,25 +159,25 @@ class TemplateEntityTest {
           "}]}"))
 
       // Detect ENTID env override before envOverride consumes it.
-      val entidEnvRaw = RunnerSupport.getenv("BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID")
+      val entidEnvRaw = RunnerSupport.getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID")
       val idmapOverridden = entidEnvRaw != null && entidEnvRaw.trim().startsWith("{")
 
       val envm = linkedMapOf<String, Any?>()
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID"] = idmap
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID"] = idmap
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE"
       val env = RunnerSupport.envOverride(envm)
 
-      var idmapResolved = Helpers.toMapAny(env["BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID"])
+      var idmapResolved = Helpers.toMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID"])
       if (idmapResolved == null) {
         idmapResolved = Helpers.toMapAny(idmap) ?: linkedMapOf()
       }
 
-      val live = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"]
+      val live = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"]
       if (live) {
         val liveOpts = linkedMapOf<String, Any?>()
-        liveOpts["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"]
+        liveOpts["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"]
         val mergedOpts = Struct.merge(Struct.jt(liveOpts, extra))
         client = BluefinShieldconexMgmtSDK(Helpers.toMapAny(mergedOpts))
       }
@@ -187,7 +187,7 @@ class TemplateEntityTest {
       setup.data = entityData
       setup.idmap = idmapResolved
       setup.env = env
-      setup.explain = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"]
+      setup.explain = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"]
       setup.live = live
       setup.syntheticOnly = live && !idmapOverridden
       setup.now = System.currentTimeMillis()

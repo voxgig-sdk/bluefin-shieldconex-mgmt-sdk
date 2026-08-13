@@ -35,7 +35,7 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("active", (Bool true));
-            ("name", (Str "billing_id"));
+            ("name", (Str "billingId"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (0.))) ]);
@@ -60,7 +60,7 @@ let make_config () : value =
             ("index$", (Num (2.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "direct_partner"));
+            ("name", (Str "directPartner"));
             ("op", (jo [
               ("create", (jo [
                 ("req", (Bool true));
@@ -76,7 +76,7 @@ let make_config () : value =
             ("index$", (Num (4.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "is_active"));
+            ("name", (Str "isActive"));
             ("req", (Bool false));
             ("type", (Str "`$BOOLEAN`"));
             ("index$", (Num (5.))) ]);
@@ -222,6 +222,7 @@ let make_config () : value =
                       ("orig", (Str "name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/clients"));
                 ("parts", (ja [
@@ -278,6 +279,7 @@ let make_config () : value =
                       ("orig", (Str "take"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/clients"));
                 ("parts", (ja [
@@ -308,6 +310,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/clients/{id}"));
                 ("parts", (ja [
@@ -337,6 +340,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/clients/{id}"));
                 ("parts", (ja [
@@ -384,6 +388,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/templates/{id}/clone"));
                 ("parts", (ja [
@@ -409,7 +414,7 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("active", (Bool true));
-            ("name", (Str "billing_id"));
+            ("name", (Str "billingId"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (0.))) ]);
@@ -440,7 +445,7 @@ let make_config () : value =
             ("index$", (Num (3.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "is_active"));
+            ("name", (Str "isActive"));
             ("req", (Bool false));
             ("type", (Str "`$BOOLEAN`"));
             ("index$", (Num (4.))) ]);
@@ -478,7 +483,7 @@ let make_config () : value =
             ("index$", (Num (8.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "verification_phrase"));
+            ("name", (Str "verificationPhrase"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (9.))) ]);
@@ -603,6 +608,7 @@ let make_config () : value =
                       ("orig", (Str "verification_phrase"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/partners"));
                 ("parts", (ja [
@@ -660,6 +666,7 @@ let make_config () : value =
                       ("orig", (Str "take"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/partners"));
                 ("parts", (ja [
@@ -690,6 +697,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/partners/{id}"));
                 ("parts", (ja [
@@ -709,7 +717,7 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("active", (Bool true));
-            ("name", (Str "access_mode"));
+            ("name", (Str "accessMode"));
             ("req", (Bool false));
             ("type", (Str "`$ANY`"));
             ("index$", (Num (0.))) ]);
@@ -727,7 +735,7 @@ let make_config () : value =
             ("index$", (Num (2.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "field_template"));
+            ("name", (Str "fieldTemplates"));
             ("req", (Bool false));
             ("type", (Str "`$ARRAY`"));
             ("index$", (Num (3.))) ]);
@@ -745,7 +753,7 @@ let make_config () : value =
             ("index$", (Num (5.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "option"));
+            ("name", (Str "options"));
             ("req", (Bool false));
             ("type", (Str "`$OBJECT`"));
             ("index$", (Num (6.))) ]);
@@ -902,6 +910,7 @@ let make_config () : value =
                       ("orig", (Str "version"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/templates"));
                 ("parts", (ja [
@@ -968,6 +977,7 @@ let make_config () : value =
                       ("orig", (Str "take"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/templates"));
                 ("parts", (ja [
@@ -999,6 +1009,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/templates/{id}"));
                 ("parts", (ja [
@@ -1028,6 +1039,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/templates/{id}"));
                 ("parts", (ja [
@@ -1059,25 +1071,25 @@ let make_config () : value =
             ("index$", (Num (1.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "complete_date"));
+            ("name", (Str "completeDate"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (2.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "direct_partner"));
+            ("name", (Str "directPartner"));
             ("req", (Bool false));
             ("type", (Str "`$OBJECT`"));
             ("index$", (Num (3.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "err_code"));
+            ("name", (Str "errCode"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (4.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "err_message"));
+            ("name", (Str "errMessage"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (5.))) ]);
@@ -1089,13 +1101,13 @@ let make_config () : value =
             ("index$", (Num (6.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "ip_address"));
+            ("name", (Str "ipAddress"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (7.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "message_id"));
+            ("name", (Str "messageId"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (8.))) ]);
@@ -1119,7 +1131,7 @@ let make_config () : value =
             ("index$", (Num (11.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "template_id"));
+            ("name", (Str "templateId"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (12.))) ]) ]));
@@ -1212,6 +1224,7 @@ let make_config () : value =
                       ("orig", (Str "transaction_type"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/transactions"));
                 ("parts", (ja [
@@ -1258,6 +1271,7 @@ let make_config () : value =
                       ("orig", (Str "transaction_type"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/transactions/{id}"));
                 ("parts", (ja [
@@ -1278,7 +1292,7 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("active", (Bool true));
-            ("name", (Str "billing_id"));
+            ("name", (Str "billingId"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (0.))) ]);
@@ -1296,7 +1310,7 @@ let make_config () : value =
             ("index$", (Num (2.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "direct_partner"));
+            ("name", (Str "directPartner"));
             ("req", (Bool false));
             ("type", (Str "`$OBJECT`"));
             ("index$", (Num (3.))) ]);
@@ -1315,7 +1329,7 @@ let make_config () : value =
             ("index$", (Num (4.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "first_name"));
+            ("name", (Str "firstName"));
             ("op", (jo [
               ("list", (jo [
                 ("req", (Bool false));
@@ -1334,13 +1348,13 @@ let make_config () : value =
             ("index$", (Num (6.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "is_active"));
+            ("name", (Str "isActive"));
             ("req", (Bool false));
             ("type", (Str "`$BOOLEAN`"));
             ("index$", (Num (7.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "last_name"));
+            ("name", (Str "lastName"));
             ("op", (jo [
               ("list", (jo [
                 ("req", (Bool false));
@@ -1396,13 +1410,13 @@ let make_config () : value =
             ("index$", (Num (14.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "send_welcome_email"));
+            ("name", (Str "sendWelcomeEmail"));
             ("req", (Bool false));
             ("type", (Str "`$BOOLEAN`"));
             ("index$", (Num (15.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "user_name"));
+            ("name", (Str "userName"));
             ("op", (jo [
               ("list", (jo [
                 ("req", (Bool false));
@@ -1415,7 +1429,7 @@ let make_config () : value =
             ("index$", (Num (16.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "user_role"));
+            ("name", (Str "userRole"));
             ("op", (jo [
               ("list", (jo [
                 ("req", (Bool false));
@@ -1428,7 +1442,7 @@ let make_config () : value =
             ("index$", (Num (17.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "verification_phrase"));
+            ("name", (Str "verificationPhrase"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (18.))) ]);
@@ -1518,6 +1532,7 @@ let make_config () : value =
                       ("orig", (Str "username"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/users"));
                 ("parts", (ja [
@@ -1577,6 +1592,7 @@ let make_config () : value =
                       ("orig", (Str "take"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/users"));
                 ("parts", (ja [
@@ -1728,6 +1744,7 @@ let make_config () : value =
                       ("orig", (Str "version"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/templates/{id}"));
                 ("parts", (ja [
@@ -1833,6 +1850,7 @@ let make_config () : value =
                       ("orig", (Str "version"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/partners/{id}"));
                 ("parts", (ja [
@@ -1930,6 +1948,7 @@ let make_config () : value =
                       ("orig", (Str "username"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/users/{id}"));
                 ("parts", (ja [
@@ -2020,6 +2039,7 @@ let make_config () : value =
                       ("orig", (Str "version"));
                       ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/clients/{id}"));
                 ("parts", (ja [
@@ -2065,7 +2085,7 @@ let make_config () : value =
             ("index$", (Num (2.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "first_name"));
+            ("name", (Str "firstName"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (3.))) ]);
@@ -2077,13 +2097,13 @@ let make_config () : value =
             ("index$", (Num (4.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "is_active"));
+            ("name", (Str "isActive"));
             ("req", (Bool false));
             ("type", (Str "`$BOOLEAN`"));
             ("index$", (Num (5.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "last_name"));
+            ("name", (Str "lastName"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (6.))) ]);
@@ -2107,13 +2127,13 @@ let make_config () : value =
             ("index$", (Num (9.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "user_name"));
+            ("name", (Str "userName"));
             ("req", (Bool false));
             ("type", (Str "`$STRING`"));
             ("index$", (Num (10.))) ]);
           (jo [
             ("active", (Bool true));
-            ("name", (Str "user_role"));
+            ("name", (Str "userRole"));
             ("req", (Bool false));
             ("type", (Str "`$OBJECT`"));
             ("index$", (Num (11.))) ]);
@@ -2141,6 +2161,7 @@ let make_config () : value =
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`"));
                       ("index$", (Num (0.))) ]) ])) ]));
+                ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/users/{id}"));
                 ("parts", (ja [

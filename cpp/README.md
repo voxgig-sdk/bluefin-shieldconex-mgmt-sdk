@@ -91,7 +91,7 @@ try {
 
 ```cpp
 // Create — returns the bare created record.
-Value created = client->client()->create(vmap({{"billing_id", Value("example_billing_id")}, {"contact", vmap()}}), Value::undef());
+Value created = client->client()->create(vmap({{"billingId", Value("example_billingId")}, {"contact", vmap()}}), Value::undef());
 
 // Remove
 client->client()->remove(vmap({{"id", getp(created, "id")}}), Value::undef());
@@ -292,12 +292,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -323,16 +323,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -343,13 +343,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -365,17 +365,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -385,25 +385,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -417,15 +417,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -454,12 +454,12 @@ Create an instance: `auto client = client->client();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `std::string` |  |
+| `billingId` | `std::string` |  |
 | `contact` | `std::map<std::string, Value>` |  |
 | `created` | `std::string` |  |
-| `direct_partner` | `std::map<std::string, Value>` |  |
+| `directPartner` | `std::map<std::string, Value>` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `std::string` |  |
 | `modified` | `std::string` |  |
 | `name` | `std::string` |  |
@@ -528,16 +528,16 @@ Create an instance: `auto partner = client->partner();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `std::string` |  |
+| `billingId` | `std::string` |  |
 | `contact` | `std::map<std::string, Value>` |  |
 | `created` | `std::string` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `std::string` |  |
 | `name` | `std::string` |  |
 | `parent` | `std::map<std::string, Value>` |  |
 | `reference` | `std::string` |  |
-| `verification_phrase` | `std::string` |  |
+| `verificationPhrase` | `std::string` |  |
 | `version` | `int64_t` |  |
 
 #### Example: Load
@@ -577,13 +577,13 @@ Create an instance: `auto template_ = client->template_();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Value` |  |
+| `accessMode` | `Value` |  |
 | `active` | `bool` |  |
 | `client` | `std::map<std::string, Value>` |  |
-| `field_template` | `std::vector<Value>` |  |
+| `fieldTemplates` | `std::vector<Value>` |  |
 | `id` | `int64_t` |  |
 | `name` | `std::string` |  |
-| `option` | `std::map<std::string, Value>` |  |
+| `options` | `std::map<std::string, Value>` |  |
 | `partner` | `std::map<std::string, Value>` |  |
 | `reference` | `std::string` |  |
 | `type` | `std::string` |  |
@@ -626,17 +626,17 @@ Create an instance: `auto transaction = client->transaction();`
 | --- | --- | --- |
 | `bfid` | `std::string` |  |
 | `client` | `std::map<std::string, Value>` |  |
-| `complete_date` | `std::string` |  |
-| `direct_partner` | `std::map<std::string, Value>` |  |
-| `err_code` | `std::string` |  |
-| `err_message` | `std::string` |  |
+| `completeDate` | `std::string` |  |
+| `directPartner` | `std::map<std::string, Value>` |  |
+| `errCode` | `std::string` |  |
+| `errMessage` | `std::string` |  |
 | `id` | `int64_t` |  |
-| `ip_address` | `std::string` |  |
-| `message_id` | `std::string` |  |
+| `ipAddress` | `std::string` |  |
+| `messageId` | `std::string` |  |
 | `partner` | `std::map<std::string, Value>` |  |
 | `reference` | `std::string` |  |
 | `success` | `bool` |  |
-| `template_id` | `std::string` |  |
+| `templateId` | `std::string` |  |
 
 #### Example: Load
 
@@ -667,25 +667,25 @@ Create an instance: `auto update_result = client->update_result();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `std::string` |  |
+| `billingId` | `std::string` |  |
 | `client` | `std::map<std::string, Value>` |  |
 | `contact` | `std::map<std::string, Value>` |  |
-| `direct_partner` | `std::map<std::string, Value>` |  |
+| `directPartner` | `std::map<std::string, Value>` |  |
 | `email` | `std::string` |  |
-| `first_name` | `std::string` |  |
+| `firstName` | `std::string` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `std::string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `std::string` |  |
 | `mid` | `std::string` |  |
 | `name` | `std::string` |  |
 | `parent` | `std::map<std::string, Value>` |  |
 | `partner` | `std::map<std::string, Value>` |  |
 | `phone` | `std::string` |  |
 | `reference` | `std::string` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `std::string` |  |
-| `user_role` | `std::map<std::string, Value>` |  |
-| `verification_phrase` | `std::string` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `std::string` |  |
+| `userRole` | `std::map<std::string, Value>` |  |
+| `verificationPhrase` | `std::string` |  |
 | `version` | `int64_t` |  |
 
 #### Example: List
@@ -700,11 +700,11 @@ Value update_results = client->update_result()->list(Value::undef(), Value::unde
 Value update_result = client->update_result()->create(vmap({
     {"contact", vmap()},  // std::map<std::string, Value>
     {"email", Value("example_email")},  // std::string
-    {"first_name", Value("example_first_name")},  // std::string
-    {"last_name", Value("example_last_name")},  // std::string
+    {"firstName", Value("example_firstName")},  // std::string
+    {"lastName", Value("example_lastName")},  // std::string
     {"phone", Value("example_phone")},  // std::string
-    {"user_name", Value("example_user_name")},  // std::string
-    {"user_role", vmap()},  // std::map<std::string, Value>
+    {"userName", Value("example_userName")},  // std::string
+    {"userRole", vmap()},  // std::map<std::string, Value>
 }), Value::undef());
 ```
 
@@ -726,15 +726,15 @@ Create an instance: `auto user = client->user();`
 | `client` | `std::map<std::string, Value>` |  |
 | `created` | `std::string` |  |
 | `email` | `std::string` |  |
-| `first_name` | `std::string` |  |
+| `firstName` | `std::string` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `std::string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `std::string` |  |
 | `modified` | `std::string` |  |
 | `partner` | `std::map<std::string, Value>` |  |
 | `phone` | `std::string` |  |
-| `user_name` | `std::string` |  |
-| `user_role` | `std::map<std::string, Value>` |  |
+| `userName` | `std::string` |  |
+| `userRole` | `std::map<std::string, Value>` |  |
 | `version` | `int64_t` |  |
 
 #### Example: Load

@@ -26,8 +26,8 @@ import {
 describe('CloneEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BLUEFINSHIELDCONEXMGMT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BLUEFINSHIELDCONEXMGMT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BluefinShieldconexMgmtSDK.test()
@@ -63,7 +63,7 @@ describe('CloneEntity', async () => {
     let clone_ref01_data = setup.data.new.clone['clone_ref01']
     clone_ref01_data['template_id'] = setup.idmap['template01']
 
-    clone_ref01_data = await clone_ref01_ent.create(clone_ref01_data)
+    clone_ref01_data = (await clone_ref01_ent.create(clone_ref01_data)).data()
     assert(null != clone_ref01_data.id)
 
 

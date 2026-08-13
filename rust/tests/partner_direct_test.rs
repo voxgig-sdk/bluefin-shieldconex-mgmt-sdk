@@ -27,16 +27,16 @@ fn partner_direct_setup(mockres: Value) -> PartnerDirectSetup {
     let calls: Rc<RefCell<Vec<Value>>> = Rc::new(RefCell::new(Vec::new()));
 
     let env = env_override(jo(vec![
-        ("BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID", Value::empty_map()),
-        ("BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value::str("FALSE")),
-        ("BLUEFINSHIELDCONEXMGMT_APIKEY", Value::str("NONE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID", Value::empty_map()),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value::str("FALSE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_APIKEY", Value::str("NONE")),
     ]));
 
-    let live = getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value::str("TRUE");
+    let live = getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value::str("TRUE");
 
     if live {
-        let client = BluefinShieldconexMgmtSDK::new(jo(vec![("apikey", getp(&env, "BLUEFINSHIELDCONEXMGMT_APIKEY"))]));
-        let idmap = match to_map(&getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_PARTNER_ENTID")) {
+        let client = BluefinShieldconexMgmtSDK::new(jo(vec![("apikey", getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))]));
+        let idmap = match to_map(&getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_PARTNER_ENTID")) {
             Value::Map(m) => Value::Map(m),
             _ => Value::empty_map(),
         };

@@ -33,7 +33,7 @@ BASIC_FLOW: {
   # The basic flow consumes synthetic IDs from the fixture. In live mode
   # without an *_ENTID env override, those IDs hit the live API and 4xx.
   if ($setup->{synthetic_only}) {
-    note('live entity test uses synthetic IDs from fixture - set BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID JSON to run live');
+    note('live entity test uses synthetic IDs from fixture - set BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID JSON to run live');
     pass('client: basic flow skipped (synthetic IDs only)');
     last BASIC_FLOW;
   }
@@ -46,7 +46,7 @@ BASIC_FLOW: {
     BluefinShieldconexMgmtHelpers::gpath($setup->{data}, 'new.client'), 'client_ref01'));
 
   $V{client_ref01_data_result} = $V{client_ref01_ent}->create($V{client_ref01_data}, undef);
-  $V{client_ref01_data} = BluefinShieldconexMgmtHelpers::to_map($V{client_ref01_data_result});
+  $V{client_ref01_data} = BluefinShieldconexMgmtHelpers::to_map(ref($V{client_ref01_data_result}) && $V{client_ref01_data_result}->can('data_get') ? $V{client_ref01_data_result}->data_get : $V{client_ref01_data_result});
   ok(defined $V{client_ref01_data}, 'client create: data');
   ok(defined $V{client_ref01_data}{id}, 'client create: id');
 
@@ -66,7 +66,7 @@ BASIC_FLOW: {
     'id' => $V{client_ref01_data}{id},
   };
   $V{client_ref01_data_dt0_loaded} = $V{client_ref01_ent}->load($V{client_ref01_match_dt0}, undef);
-  $V{client_ref01_data_dt0_load_result} = BluefinShieldconexMgmtHelpers::to_map($V{client_ref01_data_dt0_loaded});
+  $V{client_ref01_data_dt0_load_result} = BluefinShieldconexMgmtHelpers::to_map(ref($V{client_ref01_data_dt0_loaded}) && $V{client_ref01_data_dt0_loaded}->can('data_get') ? $V{client_ref01_data_dt0_loaded}->data_get : $V{client_ref01_data_dt0_loaded});
   ok(defined $V{client_ref01_data_dt0_load_result}, 'client load: data');
   is($V{client_ref01_data_dt0_load_result}{id}, $V{client_ref01_data}{id}, 'client load: id');
 
@@ -122,38 +122,38 @@ sub client_basic_setup {
   # mode is on without a real override, the basic test runs against
   # synthetic IDs from the fixture and 4xx's. Surface this so the test can
   # skip.
-  my $entid_env_raw = $ENV{'BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID'};
+  my $entid_env_raw = $ENV{'BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID'};
   my $idmap_overridden = (defined $entid_env_raw && $entid_env_raw =~ /^\s*\{/) ? 1 : 0;
 
   my $env = BluefinShieldconexMgmtTestRunner::env_override({
-    'BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID' => $idmap,
-    'BLUEFINSHIELDCONEXMGMT_TEST_LIVE' => 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN' => 'FALSE',
-    'BLUEFINSHIELDCONEXMGMT_APIKEY' => 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID' => $idmap,
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE' => 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN' => 'FALSE',
+    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY' => 'NONE',
   });
 
-  my $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($env->{'BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID'});
+  my $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID'});
   if (!defined $idmap_resolved) {
     $idmap_resolved = BluefinShieldconexMgmtHelpers::to_map($idmap);
   }
 
-  if ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_LIVE'}) || '') eq 'TRUE') {
+  if ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') {
     my $merged_opts = Voxgig::Struct::merge([
       {
-        'apikey' => $env->{'BLUEFINSHIELDCONEXMGMT_APIKEY'},
+        'apikey' => $env->{'BLUEFIN_SHIELDCONEX_MGMT_APIKEY'},
       },
       (Voxgig::Struct::ismap($extra) ? $extra : {}),
     ]);
     $client = BluefinShieldconexMgmtSDK->new(BluefinShieldconexMgmtHelpers::to_map($merged_opts));
   }
 
-  my $live = ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
+  my $live = ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
   return {
     'client' => $client,
     'data' => $entity_data,
     'idmap' => $idmap_resolved,
     'env' => $env,
-    'explain' => ((($env->{'BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN'}) || '') eq 'TRUE') ? 1 : 0,
+    'explain' => ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN'}) || '') eq 'TRUE') ? 1 : 0,
     'live' => $live,
     'synthetic_only' => ($live && !$idmap_overridden) ? 1 : 0,
     'now' => BluefinShieldconexMgmtHelpers::now_ms(),

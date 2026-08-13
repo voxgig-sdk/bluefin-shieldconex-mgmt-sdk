@@ -2,12 +2,12 @@
   "existing": {
     "client": {
       "CLIENT00": {
-        "billing_id": "BILLING01",
+        "billingId": "s6e",
         "contact": {},
         "created": "s70",
-        "direct_partner": {},
+        "directPartner": {},
         "id": "CLIENT00",
-        "is_active": false,
+        "isActive": false,
         "mid": "s74",
         "modified": "s75",
         "name": "s76",
@@ -15,12 +15,12 @@
         "version": "s78"
       },
       "CLIENT01": {
-        "billing_id": "BILLING01",
+        "billingId": "sdc",
         "contact": {},
         "created": "sde",
-        "direct_partner": {},
+        "directPartner": {},
         "id": "CLIENT01",
-        "is_active": false,
+        "isActive": false,
         "mid": "se2",
         "modified": "se3",
         "name": "se4",
@@ -28,12 +28,12 @@
         "version": "se6"
       },
       "CLIENT02": {
-        "billing_id": "BILLING01",
+        "billingId": "s14a",
         "contact": {},
         "created": "s14c",
-        "direct_partner": {},
+        "directPartner": {},
         "id": "CLIENT02",
-        "is_active": false,
+        "isActive": false,
         "mid": "s150",
         "modified": "s151",
         "name": "s152",
@@ -45,11 +45,11 @@
   "new": {
     "client": {
       "client_ref01": {
-        "billing_id": "BILLING01",
+        "billingId": "s1b8",
         "contact": {},
         "created": "s1ba",
-        "direct_partner": {},
-        "is_active": false,
+        "directPartner": {},
+        "isActive": false,
         "mid": "s1be",
         "modified": "s1bf",
         "name": "s1c0",

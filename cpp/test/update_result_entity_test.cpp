@@ -38,15 +38,15 @@ static UpdateResultSetup update_result_basic_setup(const Value& extra) {
   if (!idmap.is_map()) idmap = vmap();
 
   Value env = env_override(vmap({
-    {"BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID", idmap},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value("FALSE")},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", Value("FALSE")}
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID", idmap},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value("FALSE")},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", Value("FALSE")}
   }));
 
-  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID"));
+  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID"));
   if (!idmap_resolved.is_map()) idmap_resolved = idmap;
 
-  bool live = getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value("TRUE");
+  bool live = getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value("TRUE");
 
   UpdateResultSetup s;
   s.client = client;
@@ -64,6 +64,7 @@ static void update_result_entity_instance() {
   auto ent = testsdk->update_result();
   ASSERT_EQ(ent->getName(), std::string("update_result"), "entity name");
 }
+
 
 static void update_result_entity_stream() {
   // stream() runs the list op through the full pipeline and returns the
@@ -100,7 +101,7 @@ static void update_result_entity_basic() {
   Value update_result_ref01_data = Helpers::toMapAny(getp(Struct::getpath(setup.data, {"new", "update_result"}), "update_result_ref01"));
   if (!update_result_ref01_data.is_map()) update_result_ref01_data = vmap();
   {
-    Value update_result_ref01_data_result = update_result_ref01_ent->create(Struct::clone(update_result_ref01_data), Value::undef());
+    Value update_result_ref01_data_result = update_result_ref01_ent->create(Struct::clone(update_result_ref01_data), Value::undef())->data();
     update_result_ref01_data = Helpers::toMapAny(update_result_ref01_data_result);
     if (!update_result_ref01_data.is_map()) update_result_ref01_data = vmap();
     ASSERT_TRUE(update_result_ref01_data.is_map(), "expected create result to be a map");
@@ -109,7 +110,10 @@ static void update_result_entity_basic() {
 
   // LIST
   Value update_result_ref01_match = vmap();
-  Value update_result_ref01_list = update_result_ref01_ent->list(Struct::clone(update_result_ref01_match), Value::undef());
+  auto update_result_ref01_list_ents = update_result_ref01_ent->list(Struct::clone(update_result_ref01_match), Value::undef());
+  // list resolves to one ENTITY per record; the flow asserts on the records.
+  Value update_result_ref01_list = vlist();
+  for (const auto& e : update_result_ref01_list_ents) { update_result_ref01_list.as_list()->push_back(e->data()); }
   ASSERT_TRUE(update_result_ref01_list.is_list(), "expected list result to be an array");
   {
     std::vector<Value> found = Struct::select(entity_list_to_data(update_result_ref01_list), vmap({{"id", getp(update_result_ref01_data, "id")}}));
@@ -120,13 +124,13 @@ static void update_result_entity_basic() {
   Value update_result_ref01_data_up0_up = vmap();
   setp(update_result_ref01_data_up0_up, "id", getp(update_result_ref01_data, "id"));
   std::string update_result_ref01_data_up0_markval = std::string("Mark01-update_result_ref01_") + std::to_string(setup.now);
-  setp(update_result_ref01_data_up0_up, "billing_id", Value(update_result_ref01_data_up0_markval));
-  Value update_result_ref01_resdata_up0_result = update_result_ref01_ent->update(Struct::clone(update_result_ref01_data_up0_up), Value::undef());
+  setp(update_result_ref01_data_up0_up, "billingId", Value(update_result_ref01_data_up0_markval));
+  Value update_result_ref01_resdata_up0_result = update_result_ref01_ent->update(Struct::clone(update_result_ref01_data_up0_up), Value::undef())->data();
   Value update_result_ref01_resdata_up0 = Helpers::toMapAny(update_result_ref01_resdata_up0_result);
   if (!update_result_ref01_resdata_up0.is_map()) update_result_ref01_resdata_up0 = vmap();
   ASSERT_TRUE(update_result_ref01_resdata_up0.is_map(), "expected update result to be a map");
   ASSERT_EQ_VAL(getp(update_result_ref01_resdata_up0, "id"), getp(update_result_ref01_data_up0_up, "id"), "expected update result id to match");
-  ASSERT_EQ_VAL(getp(update_result_ref01_resdata_up0, "billing_id"), Value(update_result_ref01_data_up0_markval), "expected billing_id to be updated");
+  ASSERT_EQ_VAL(getp(update_result_ref01_resdata_up0, "billingId"), Value(update_result_ref01_data_up0_markval), "expected billingId to be updated");
 
 }
 

@@ -89,13 +89,13 @@ test('stream', (t) async {
       final transaction_ref01_ent = client.Transaction();
       final transaction_ref01_match = <String, dynamic>{};
 
-      final transaction_ref01_list = await transaction_ref01_ent.list(transaction_ref01_match);
+      final transaction_ref01_list = (await transaction_ref01_ent.list(transaction_ref01_match)).map((e) => e.data()).toList();
 
 
       // LOAD
       final transaction_ref01_match_dt0 = <String, dynamic>{};
       transaction_ref01_match_dt0['id'] = transaction_ref01_data['id'];
-      final transaction_ref01_data_dt0 = await transaction_ref01_ent.load(transaction_ref01_match_dt0);
+      final transaction_ref01_data_dt0 = (await transaction_ref01_ent.load(transaction_ref01_match_dt0)).data();
       ok(transaction_ref01_data_dt0['id'] == transaction_ref01_data['id']);
 
 

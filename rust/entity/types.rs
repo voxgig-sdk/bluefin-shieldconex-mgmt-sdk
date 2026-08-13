@@ -14,12 +14,12 @@ use crate::utility::voxgigstruct::Value;
 /// Client is the typed data model for the client entity.
 #[derive(Debug, Clone)]
 pub struct Client {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub mid: Option<String>,
     pub modified: Option<String>,
     pub name: Option<String>,
@@ -36,12 +36,12 @@ pub struct ClientLoadMatch {
 /// ClientListMatch is the typed request payload for Client.list.
 #[derive(Debug, Clone)]
 pub struct ClientListMatch {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub mid: Option<String>,
     pub modified: Option<String>,
     pub name: Option<String>,
@@ -52,12 +52,12 @@ pub struct ClientListMatch {
 /// ClientCreateData is the typed request payload for Client.create.
 #[derive(Debug, Clone)]
 pub struct ClientCreateData {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub mid: Option<String>,
     pub modified: Option<String>,
     pub name: Option<String>,
@@ -82,21 +82,23 @@ pub struct Clone {
 #[derive(Debug, Clone)]
 pub struct CloneCreateData {
     pub template_id: String,
+    pub id: Option<i64>,
+    pub name: Option<String>,
 }
 
 /// Partner is the typed data model for the partner entity.
 #[derive(Debug, Clone)]
 pub struct Partner {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub modified: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
-    pub verification_phrase: Option<String>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
@@ -109,45 +111,45 @@ pub struct PartnerLoadMatch {
 /// PartnerListMatch is the typed request payload for Partner.list.
 #[derive(Debug, Clone)]
 pub struct PartnerListMatch {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub modified: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
-    pub verification_phrase: Option<String>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
 /// PartnerCreateData is the typed request payload for Partner.create.
 #[derive(Debug, Clone)]
 pub struct PartnerCreateData {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
+    pub isactive: Option<bool>,
     pub modified: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
-    pub verification_phrase: Option<String>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
 /// Template is the typed data model for the template entity.
 #[derive(Debug, Clone)]
 pub struct Template {
-    pub access_mode: Option<Value>,
+    pub accessmode: Option<Value>,
     pub active: Option<bool>,
     pub client: Option<std::collections::HashMap<String, Value>>,
-    pub field_template: Option<Vec<Value>>,
+    pub fieldtemplates: Option<Vec<Value>>,
     pub id: Option<i64>,
     pub name: Option<String>,
-    pub option: Option<std::collections::HashMap<String, Value>>,
+    pub options: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
     pub type_: Option<String>,
@@ -163,13 +165,13 @@ pub struct TemplateLoadMatch {
 /// TemplateListMatch is the typed request payload for Template.list.
 #[derive(Debug, Clone)]
 pub struct TemplateListMatch {
-    pub access_mode: Option<Value>,
+    pub accessmode: Option<Value>,
     pub active: Option<bool>,
     pub client: Option<std::collections::HashMap<String, Value>>,
-    pub field_template: Option<Vec<Value>>,
+    pub fieldtemplates: Option<Vec<Value>>,
     pub id: Option<i64>,
     pub name: Option<String>,
-    pub option: Option<std::collections::HashMap<String, Value>>,
+    pub options: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
     pub type_: Option<String>,
@@ -179,13 +181,13 @@ pub struct TemplateListMatch {
 /// TemplateCreateData is the typed request payload for Template.create.
 #[derive(Debug, Clone)]
 pub struct TemplateCreateData {
-    pub access_mode: Option<Value>,
+    pub accessmode: Option<Value>,
     pub active: Option<bool>,
     pub client: Option<std::collections::HashMap<String, Value>>,
-    pub field_template: Option<Vec<Value>>,
+    pub fieldtemplates: Option<Vec<Value>>,
     pub id: Option<i64>,
     pub name: Option<String>,
-    pub option: Option<std::collections::HashMap<String, Value>>,
+    pub options: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
     pub type_: Option<String>,
@@ -203,17 +205,17 @@ pub struct TemplateRemoveMatch {
 pub struct Transaction {
     pub bfid: Option<String>,
     pub client: Option<std::collections::HashMap<String, Value>>,
-    pub complete_date: Option<String>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
-    pub err_code: Option<String>,
-    pub err_message: Option<String>,
+    pub completedate: Option<String>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
+    pub errcode: Option<String>,
+    pub errmessage: Option<String>,
     pub id: Option<i64>,
-    pub ip_address: Option<String>,
-    pub message_id: Option<String>,
+    pub ipaddress: Option<String>,
+    pub messageid: Option<String>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
     pub success: Option<bool>,
-    pub template_id: Option<String>,
+    pub templateid: Option<String>,
 }
 
 /// TransactionLoadMatch is the typed request payload for Transaction.load.
@@ -227,91 +229,91 @@ pub struct TransactionLoadMatch {
 pub struct TransactionListMatch {
     pub bfid: Option<String>,
     pub client: Option<std::collections::HashMap<String, Value>>,
-    pub complete_date: Option<String>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
-    pub err_code: Option<String>,
-    pub err_message: Option<String>,
+    pub completedate: Option<String>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
+    pub errcode: Option<String>,
+    pub errmessage: Option<String>,
     pub id: Option<i64>,
-    pub ip_address: Option<String>,
-    pub message_id: Option<String>,
+    pub ipaddress: Option<String>,
+    pub messageid: Option<String>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub reference: Option<String>,
     pub success: Option<bool>,
-    pub template_id: Option<String>,
+    pub templateid: Option<String>,
 }
 
 /// UpdateResult is the typed data model for the update_result entity.
 #[derive(Debug, Clone)]
 pub struct UpdateResult {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub client: Option<std::collections::HashMap<String, Value>>,
     pub contact: std::collections::HashMap<String, Value>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub email: String,
-    pub first_name: String,
+    pub firstname: String,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
-    pub last_name: String,
+    pub isactive: Option<bool>,
+    pub lastname: String,
     pub mid: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub phone: String,
     pub reference: Option<String>,
-    pub send_welcome_email: Option<bool>,
-    pub user_name: String,
-    pub user_role: std::collections::HashMap<String, Value>,
-    pub verification_phrase: Option<String>,
+    pub sendwelcomeemail: Option<bool>,
+    pub username: String,
+    pub userrole: std::collections::HashMap<String, Value>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
 /// UpdateResultListMatch is the typed request payload for UpdateResult.list.
 #[derive(Debug, Clone)]
 pub struct UpdateResultListMatch {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub client: Option<std::collections::HashMap<String, Value>>,
     pub contact: Option<std::collections::HashMap<String, Value>>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub email: Option<String>,
-    pub first_name: Option<String>,
+    pub firstname: Option<String>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
-    pub last_name: Option<String>,
+    pub isactive: Option<bool>,
+    pub lastname: Option<String>,
     pub mid: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub phone: Option<String>,
     pub reference: Option<String>,
-    pub send_welcome_email: Option<bool>,
-    pub user_name: Option<String>,
-    pub user_role: Option<std::collections::HashMap<String, Value>>,
-    pub verification_phrase: Option<String>,
+    pub sendwelcomeemail: Option<bool>,
+    pub username: Option<String>,
+    pub userrole: Option<std::collections::HashMap<String, Value>>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
 /// UpdateResultCreateData is the typed request payload for UpdateResult.create.
 #[derive(Debug, Clone)]
 pub struct UpdateResultCreateData {
-    pub billing_id: Option<String>,
+    pub billingid: Option<String>,
     pub client: Option<std::collections::HashMap<String, Value>>,
     pub contact: std::collections::HashMap<String, Value>,
-    pub direct_partner: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
     pub email: String,
-    pub first_name: String,
+    pub firstname: String,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
-    pub last_name: String,
+    pub isactive: Option<bool>,
+    pub lastname: String,
     pub mid: Option<String>,
     pub name: Option<String>,
     pub parent: Option<std::collections::HashMap<String, Value>>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub phone: String,
     pub reference: Option<String>,
-    pub send_welcome_email: Option<bool>,
-    pub user_name: String,
-    pub user_role: std::collections::HashMap<String, Value>,
-    pub verification_phrase: Option<String>,
+    pub sendwelcomeemail: Option<bool>,
+    pub username: String,
+    pub userrole: std::collections::HashMap<String, Value>,
+    pub verificationphrase: Option<String>,
     pub version: Option<i64>,
 }
 
@@ -319,6 +321,25 @@ pub struct UpdateResultCreateData {
 #[derive(Debug, Clone)]
 pub struct UpdateResultUpdateData {
     pub id: String,
+    pub billingid: Option<String>,
+    pub client: Option<std::collections::HashMap<String, Value>>,
+    pub contact: Option<std::collections::HashMap<String, Value>>,
+    pub directpartner: Option<std::collections::HashMap<String, Value>>,
+    pub email: Option<String>,
+    pub firstname: Option<String>,
+    pub isactive: Option<bool>,
+    pub lastname: Option<String>,
+    pub mid: Option<String>,
+    pub name: Option<String>,
+    pub parent: Option<std::collections::HashMap<String, Value>>,
+    pub partner: Option<std::collections::HashMap<String, Value>>,
+    pub phone: Option<String>,
+    pub reference: Option<String>,
+    pub sendwelcomeemail: Option<bool>,
+    pub username: Option<String>,
+    pub userrole: Option<std::collections::HashMap<String, Value>>,
+    pub verificationphrase: Option<String>,
+    pub version: Option<i64>,
 }
 
 /// User is the typed data model for the user entity.
@@ -327,15 +348,15 @@ pub struct User {
     pub client: Option<std::collections::HashMap<String, Value>>,
     pub created: Option<String>,
     pub email: Option<String>,
-    pub first_name: Option<String>,
+    pub firstname: Option<String>,
     pub id: Option<i64>,
-    pub is_active: Option<bool>,
-    pub last_name: Option<String>,
+    pub isactive: Option<bool>,
+    pub lastname: Option<String>,
     pub modified: Option<String>,
     pub partner: Option<std::collections::HashMap<String, Value>>,
     pub phone: Option<String>,
-    pub user_name: Option<String>,
-    pub user_role: Option<std::collections::HashMap<String, Value>>,
+    pub username: Option<String>,
+    pub userrole: Option<std::collections::HashMap<String, Value>>,
     pub version: Option<i64>,
 }
 

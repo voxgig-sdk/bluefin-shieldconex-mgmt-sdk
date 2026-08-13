@@ -40,7 +40,7 @@ public enum SdkConfig {
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -71,7 +71,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "op": {
             "create": {
               "req": true,
@@ -91,7 +91,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 5
@@ -262,6 +262,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/clients",
               "parts": [
@@ -330,6 +331,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/clients",
               "parts": [
@@ -370,6 +372,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/clients/{id}",
               "parts": [
@@ -409,6 +412,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/clients/{id}",
               "parts": [
@@ -472,6 +476,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/templates/{id}/clone",
               "parts": [
@@ -511,7 +516,7 @@ public enum SdkConfig {
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -549,7 +554,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 4
@@ -596,7 +601,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "verification_phrase",
+          "name": "verificationPhrase",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
@@ -741,6 +746,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/partners",
               "parts": [
@@ -810,6 +816,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partners",
               "parts": [
@@ -850,6 +857,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partners/{id}",
               "parts": [
@@ -879,7 +887,7 @@ public enum SdkConfig {
       "fields": [
         {
           "active": true,
-          "name": "access_mode",
+          "name": "accessMode",
           "req": false,
           "type": "`$ANY`",
           "index$": 0
@@ -900,7 +908,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "field_template",
+          "name": "fieldTemplates",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 3
@@ -921,7 +929,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "option",
+          "name": "options",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 6
@@ -1103,6 +1111,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/templates",
               "parts": [
@@ -1182,6 +1191,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/templates",
               "parts": [
@@ -1223,6 +1233,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/templates/{id}",
               "parts": [
@@ -1262,6 +1273,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/templates/{id}",
               "parts": [
@@ -1305,28 +1317,28 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "complete_date",
+          "name": "completeDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "err_code",
+          "name": "errCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "err_message",
+          "name": "errMessage",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
@@ -1340,14 +1352,14 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "ip_address",
+          "name": "ipAddress",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "message_id",
+          "name": "messageId",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -1375,7 +1387,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "template_id",
+          "name": "templateId",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
@@ -1483,6 +1495,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/transactions",
               "parts": [
@@ -1541,6 +1554,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/transactions/{id}",
               "parts": [
@@ -1571,7 +1585,7 @@ public enum SdkConfig {
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -1592,7 +1606,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
@@ -1616,7 +1630,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "op": {
             "list": {
               "req": false,
@@ -1640,14 +1654,14 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "op": {
             "list": {
               "req": false,
@@ -1716,14 +1730,14 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "send_welcome_email",
+          "name": "sendWelcomeEmail",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "user_name",
+          "name": "userName",
           "op": {
             "list": {
               "req": false,
@@ -1740,7 +1754,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "user_role",
+          "name": "userRole",
           "op": {
             "list": {
               "req": false,
@@ -1757,7 +1771,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "verification_phrase",
+          "name": "verificationPhrase",
           "req": false,
           "type": "`$STRING`",
           "index$": 18
@@ -1862,6 +1876,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/users",
               "parts": [
@@ -1934,6 +1949,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/users",
               "parts": [
@@ -2113,6 +2129,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/templates/{id}",
               "parts": [
@@ -2236,6 +2253,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/partners/{id}",
               "parts": [
@@ -2351,6 +2369,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/users/{id}",
               "parts": [
@@ -2458,6 +2477,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/clients/{id}",
               "parts": [
@@ -2516,7 +2536,7 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -2530,14 +2550,14 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
@@ -2565,14 +2585,14 @@ public enum SdkConfig {
         },
         {
           "active": true,
-          "name": "user_name",
+          "name": "userName",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "user_role",
+          "name": "userRole",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 11
@@ -2606,6 +2626,7 @@ public enum SdkConfig {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/users/{id}",
               "parts": [

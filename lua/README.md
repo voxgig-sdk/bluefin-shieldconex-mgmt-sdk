@@ -45,7 +45,7 @@ local client_s, err = client:Client():list()
 if err then error(err) end
 
 for _, item in ipairs(client_s) do
-  print(item["id"], item["billing_id"])
+  print(item["id"], item["billingId"])
 end
 ```
 
@@ -61,11 +61,11 @@ print(client_)
 
 ```lua
 -- Create
-local created, err = client:Client():create({ billing_id = "example_billing_id", contact = {} })
+local created, err = client:Client():create({ billingId = "example_billingId", contact = {} })
 if err then error(err) end
 
 -- Remove
-client:Client():remove({ id = created["id"] })
+client:Client():remove({ id = created:data_get()["id"] })
 ```
 
 
@@ -265,12 +265,12 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -296,16 +296,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -316,13 +316,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -338,17 +338,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -358,25 +358,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -390,15 +390,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -427,12 +427,12 @@ Create an instance: `local client_ = client:Client(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `table` |  |
 | `created` | `string` |  |
-| `direct_partner` | `table` |  |
+| `directPartner` | `table` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -501,16 +501,16 @@ Create an instance: `local partner = client:Partner(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `table` |  |
 | `created` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `table` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `number` |  |
 
 #### Example: Load
@@ -550,13 +550,13 @@ Create an instance: `local template = client:Template(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `any` |  |
+| `accessMode` | `any` |  |
 | `active` | `boolean` |  |
 | `client` | `table` |  |
-| `field_template` | `table` |  |
+| `fieldTemplates` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `option` | `table` |  |
+| `options` | `table` |  |
 | `partner` | `table` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -599,17 +599,17 @@ Create an instance: `local transaction = client:Transaction(nil)`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `table` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `table` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `table` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `number` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `table` |  |
 | `reference` | `string` |  |
 | `success` | `boolean` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
@@ -640,25 +640,25 @@ Create an instance: `local update_result = client:UpdateResult(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `table` |  |
 | `contact` | `table` |  |
-| `direct_partner` | `table` |  |
+| `directPartner` | `table` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `table` |  |
 | `partner` | `table` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `boolean` |  |
-| `user_name` | `string` |  |
-| `user_role` | `table` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `boolean` |  |
+| `userName` | `string` |  |
+| `userRole` | `table` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `number` |  |
 
 #### Example: List
@@ -673,11 +673,11 @@ local update_results, err = client:UpdateResult():list()
 local update_result, err = client:UpdateResult():create({
   contact = {}, -- table
   email = "example_email", -- string
-  first_name = "example_first_name", -- string
-  last_name = "example_last_name", -- string
+  firstName = "example_firstName", -- string
+  lastName = "example_lastName", -- string
   phone = "example_phone", -- string
-  user_name = "example_user_name", -- string
-  user_role = {}, -- table
+  userName = "example_userName", -- string
+  userRole = {}, -- table
 })
 ```
 
@@ -699,15 +699,15 @@ Create an instance: `local user = client:User(nil)`
 | `client` | `table` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `table` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `table` |  |
+| `userName` | `string` |  |
+| `userRole` | `table` |  |
 | `version` | `number` |  |
 
 #### Example: Load

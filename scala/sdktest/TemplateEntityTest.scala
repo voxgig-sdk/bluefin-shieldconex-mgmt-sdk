@@ -35,7 +35,7 @@ object TemplateEntityTest {
       var templateRef01Data = Helpers.toMapAny(Struct.getprop(
           Struct.getpath(entityData, "new.template"), "template_ref01"))
       val templateRef01DataResult = templateRef01Ent.create(templateRef01Data, null)
-      templateRef01Data = Helpers.toMapAny(templateRef01DataResult)
+      templateRef01Data = Helpers.toMapAny(templateRef01DataResult match { case e: SdkEntity => e.data(); case o => o })
       rep.check("template.create.map", templateRef01Data != null, "expected create result to be a map")
       rep.check("template.create.id", templateRef01Data != null && templateRef01Data.get("id") != null, "expected created entity to have an id")
 
@@ -52,7 +52,7 @@ object TemplateEntityTest {
       val templateRef01MatchDt0 = new LinkedHashMap[String, Object]()
       templateRef01MatchDt0.put("id", templateRef01Data.get("id"))
       val templateRef01DataDt0Loaded = templateRef01Ent.load(templateRef01MatchDt0, null)
-      val templateRef01DataDt0LoadResult = Helpers.toMapAny(templateRef01DataDt0Loaded)
+      val templateRef01DataDt0LoadResult = Helpers.toMapAny(templateRef01DataDt0Loaded match { case e: SdkEntity => e.data(); case o => o })
       rep.check("template.load.map", templateRef01DataDt0LoadResult != null, "expected load result to be a map")
       rep.eq("template.load.id", templateRef01Data.get("id"), templateRef01DataDt0LoadResult.get("id"))
 

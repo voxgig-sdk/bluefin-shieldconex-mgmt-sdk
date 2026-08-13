@@ -119,12 +119,12 @@ let client = client.Client()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `VMap` | No |  |
 | `created` | `String` | No |  |
-| `direct_partner` | `VMap` | No |  |
+| `directPartner` | `VMap` | No |  |
 | `id` | `Int` | No |  |
-| `is_active` | `Bool` | No |  |
+| `isActive` | `Bool` | No |  |
 | `mid` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -135,12 +135,12 @@ let client = client.Client()
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -260,32 +260,32 @@ let partner = client.Partner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `VMap` | No |  |
 | `created` | `String` | No |  |
 | `id` | `Int` | No |  |
-| `is_active` | `Bool` | No |  |
+| `isActive` | `Bool` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `VMap` | No |  |
 | `reference` | `String` | No |  |
-| `verification_phrase` | `String` | No |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -347,13 +347,13 @@ let template = client.Template()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Value` | No |  |
+| `accessMode` | `Value` | No |  |
 | `active` | `Bool` | No |  |
 | `client` | `VMap` | No |  |
-| `field_template` | `[Value]` | No |  |
+| `fieldTemplates` | `[Value]` | No |  |
 | `id` | `Int` | No |  |
 | `name` | `String` | No |  |
-| `option` | `VMap` | No |  |
+| `options` | `VMap` | No |  |
 | `partner` | `VMap` | No |  |
 | `reference` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -428,17 +428,17 @@ let transaction = client.Transaction()
 | --- | --- | --- | --- |
 | `bfid` | `String` | No |  |
 | `client` | `VMap` | No |  |
-| `complete_date` | `String` | No |  |
-| `direct_partner` | `VMap` | No |  |
-| `err_code` | `String` | No |  |
-| `err_message` | `String` | No |  |
+| `completeDate` | `String` | No |  |
+| `directPartner` | `VMap` | No |  |
+| `errCode` | `String` | No |  |
+| `errMessage` | `String` | No |  |
 | `id` | `Int` | No |  |
-| `ip_address` | `String` | No |  |
-| `message_id` | `String` | No |  |
+| `ipAddress` | `String` | No |  |
+| `messageId` | `String` | No |  |
 | `partner` | `VMap` | No |  |
 | `reference` | `String` | No |  |
 | `success` | `Bool` | No |  |
-| `template_id` | `String` | No |  |
+| `templateId` | `String` | No |  |
 
 ### Operations
 
@@ -490,50 +490,50 @@ let updateResult = client.UpdateResult()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `client` | `VMap` | No |  |
 | `contact` | `VMap` | Yes |  |
-| `direct_partner` | `VMap` | No |  |
+| `directPartner` | `VMap` | No |  |
 | `email` | `String` | Yes |  |
-| `first_name` | `String` | Yes |  |
+| `firstName` | `String` | Yes |  |
 | `id` | `Int` | No |  |
-| `is_active` | `Bool` | No |  |
-| `last_name` | `String` | Yes |  |
+| `isActive` | `Bool` | No |  |
+| `lastName` | `String` | Yes |  |
 | `mid` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `VMap` | No |  |
 | `partner` | `VMap` | No |  |
 | `phone` | `String` | Yes |  |
 | `reference` | `String` | No |  |
-| `send_welcome_email` | `Bool` | No |  |
-| `user_name` | `String` | Yes |  |
-| `user_role` | `VMap` | Yes |  |
-| `verification_phrase` | `String` | No |  |
+| `sendWelcomeEmail` | `Bool` | No |  |
+| `userName` | `String` | Yes |  |
+| `userRole` | `VMap` | Yes |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -546,11 +546,11 @@ Create a new entity with the given data. Returns the created entity data and thr
 let result = try client.UpdateResult().create(VMap([
     ("contact", .map(VMap())),  // VMap
     ("email", .string("example_email")),  // String
-    ("first_name", .string("example_first_name")),  // String
-    ("last_name", .string("example_last_name")),  // String
+    ("firstName", .string("example_firstName")),  // String
+    ("lastName", .string("example_lastName")),  // String
     ("phone", .string("example_phone")),  // String
-    ("user_name", .string("example_user_name")),  // String
-    ("user_role", .map(VMap()))  // VMap
+    ("userName", .string("example_userName")),  // String
+    ("userRole", .map(VMap()))  // VMap
 ]), nil)
 ```
 
@@ -607,15 +607,15 @@ let user = client.User()
 | `client` | `VMap` | No |  |
 | `created` | `String` | No |  |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `Int` | No |  |
-| `is_active` | `Bool` | No |  |
-| `last_name` | `String` | No |  |
+| `isActive` | `Bool` | No |  |
+| `lastName` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `partner` | `VMap` | No |  |
 | `phone` | `String` | No |  |
-| `user_name` | `String` | No |  |
-| `user_role` | `VMap` | No |  |
+| `userName` | `String` | No |  |
+| `userRole` | `VMap` | No |  |
 | `version` | `Int` | No |  |
 
 ### Operations

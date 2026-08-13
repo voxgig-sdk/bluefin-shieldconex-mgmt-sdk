@@ -87,14 +87,14 @@ test('stream', (t) async {
       final template_ref01_ent = client.Template();
       dynamic template_ref01_data = setup['data']['new']['template']['template_ref01'];
 
-      template_ref01_data = await template_ref01_ent.create(template_ref01_data);
+      template_ref01_data = (await template_ref01_ent.create(template_ref01_data)).data();
       ok(null != template_ref01_data['id']);
 
 
       // LIST
       final template_ref01_match = <String, dynamic>{};
 
-      final template_ref01_list = await template_ref01_ent.list(template_ref01_match);
+      final template_ref01_list = (await template_ref01_ent.list(template_ref01_match)).map((e) => e.data()).toList();
 
       ok(!isempty(select(
           (template_ref01_list as List).map((e) => e.data()).toList(),
@@ -104,7 +104,7 @@ test('stream', (t) async {
       // LOAD
       final template_ref01_match_dt0 = <String, dynamic>{};
       template_ref01_match_dt0['id'] = template_ref01_data['id'];
-      final template_ref01_data_dt0 = await template_ref01_ent.load(template_ref01_match_dt0);
+      final template_ref01_data_dt0 = (await template_ref01_ent.load(template_ref01_match_dt0)).data();
       ok(template_ref01_data_dt0['id'] == template_ref01_data['id']);
 
 
@@ -116,7 +116,7 @@ test('stream', (t) async {
       // LIST
       final template_ref01_match_rt0 = <String, dynamic>{};
 
-      final template_ref01_list_rt0 = await template_ref01_ent.list(template_ref01_match_rt0);
+      final template_ref01_list_rt0 = (await template_ref01_ent.list(template_ref01_match_rt0)).map((e) => e.data()).toList();
 
       ok(isempty(select(
           (template_ref01_list_rt0 as List).map((e) => e.data()).toList(),

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# BluefinShieldconexMgmt SDK exists test
 
 import pytest
 from bluefinshieldconexmgmt_sdk import BluefinShieldconexMgmtSDK

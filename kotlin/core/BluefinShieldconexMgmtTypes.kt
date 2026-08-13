@@ -16,53 +16,53 @@ package voxgig.bluefinshieldconexmgmtsdk.core
 @Suppress("unused")
 object BluefinShieldconexMgmtTypes {
 
-  data class Client(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val direct_partner: Map<String, Any?>?, val id: Long?, val is_active: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
+  data class Client(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val directPartner: Map<String, Any?>?, val id: Long?, val isActive: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
 
   data class ClientLoadMatch(val id: String?)
 
-  data class ClientListMatch(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val direct_partner: Map<String, Any?>?, val id: Long?, val is_active: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
+  data class ClientListMatch(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val directPartner: Map<String, Any?>?, val id: Long?, val isActive: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
 
-  data class ClientCreateData(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val direct_partner: Map<String, Any?>?, val id: Long?, val is_active: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
+  data class ClientCreateData(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val directPartner: Map<String, Any?>?, val id: Long?, val isActive: Boolean?, val mid: String?, val modified: String?, val name: String?, val partner: Map<String, Any?>?, val version: Long?)
 
   data class ClientRemoveMatch(val id: String?)
 
   data class Clone(val id: Long?, val name: String?)
 
-  data class CloneCreateData(val template_id: String?)
+  data class CloneCreateData(val template_id: String?, val id: Long?, val name: String?)
 
-  data class Partner(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val is_active: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verification_phrase: String?, val version: Long?)
+  data class Partner(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val isActive: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verificationPhrase: String?, val version: Long?)
 
   data class PartnerLoadMatch(val id: String?)
 
-  data class PartnerListMatch(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val is_active: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verification_phrase: String?, val version: Long?)
+  data class PartnerListMatch(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val isActive: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verificationPhrase: String?, val version: Long?)
 
-  data class PartnerCreateData(val billing_id: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val is_active: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verification_phrase: String?, val version: Long?)
+  data class PartnerCreateData(val billingId: String?, val contact: Map<String, Any?>?, val created: String?, val id: Long?, val isActive: Boolean?, val modified: String?, val name: String?, val parent: Map<String, Any?>?, val reference: String?, val verificationPhrase: String?, val version: Long?)
 
-  data class Template(val access_mode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val field_template: List<Any?>?, val id: Long?, val name: String?, val option: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
+  data class Template(val accessMode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val fieldTemplates: List<Any?>?, val id: Long?, val name: String?, val options: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
 
   data class TemplateLoadMatch(val id: String?)
 
-  data class TemplateListMatch(val access_mode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val field_template: List<Any?>?, val id: Long?, val name: String?, val option: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
+  data class TemplateListMatch(val accessMode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val fieldTemplates: List<Any?>?, val id: Long?, val name: String?, val options: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
 
-  data class TemplateCreateData(val access_mode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val field_template: List<Any?>?, val id: Long?, val name: String?, val option: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
+  data class TemplateCreateData(val accessMode: Any?, val active: Boolean?, val client: Map<String, Any?>?, val fieldTemplates: List<Any?>?, val id: Long?, val name: String?, val options: Map<String, Any?>?, val partner: Map<String, Any?>?, val reference: String?, val type: String?, val version: Long?)
 
   data class TemplateRemoveMatch(val id: String?)
 
-  data class Transaction(val bfid: String?, val client: Map<String, Any?>?, val complete_date: String?, val direct_partner: Map<String, Any?>?, val err_code: String?, val err_message: String?, val id: Long?, val ip_address: String?, val message_id: String?, val partner: Map<String, Any?>?, val reference: String?, val success: Boolean?, val template_id: String?)
+  data class Transaction(val bfid: String?, val client: Map<String, Any?>?, val completeDate: String?, val directPartner: Map<String, Any?>?, val errCode: String?, val errMessage: String?, val id: Long?, val ipAddress: String?, val messageId: String?, val partner: Map<String, Any?>?, val reference: String?, val success: Boolean?, val templateId: String?)
 
   data class TransactionLoadMatch(val id: String?)
 
-  data class TransactionListMatch(val bfid: String?, val client: Map<String, Any?>?, val complete_date: String?, val direct_partner: Map<String, Any?>?, val err_code: String?, val err_message: String?, val id: Long?, val ip_address: String?, val message_id: String?, val partner: Map<String, Any?>?, val reference: String?, val success: Boolean?, val template_id: String?)
+  data class TransactionListMatch(val bfid: String?, val client: Map<String, Any?>?, val completeDate: String?, val directPartner: Map<String, Any?>?, val errCode: String?, val errMessage: String?, val id: Long?, val ipAddress: String?, val messageId: String?, val partner: Map<String, Any?>?, val reference: String?, val success: Boolean?, val templateId: String?)
 
-  data class UpdateResult(val billing_id: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val direct_partner: Map<String, Any?>?, val email: String?, val first_name: String?, val id: Long?, val is_active: Boolean?, val last_name: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val send_welcome_email: Boolean?, val user_name: String?, val user_role: Map<String, Any?>?, val verification_phrase: String?, val version: Long?)
+  data class UpdateResult(val billingId: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val directPartner: Map<String, Any?>?, val email: String?, val firstName: String?, val id: Long?, val isActive: Boolean?, val lastName: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val sendWelcomeEmail: Boolean?, val userName: String?, val userRole: Map<String, Any?>?, val verificationPhrase: String?, val version: Long?)
 
-  data class UpdateResultListMatch(val billing_id: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val direct_partner: Map<String, Any?>?, val email: String?, val first_name: String?, val id: Long?, val is_active: Boolean?, val last_name: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val send_welcome_email: Boolean?, val user_name: String?, val user_role: Map<String, Any?>?, val verification_phrase: String?, val version: Long?)
+  data class UpdateResultListMatch(val billingId: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val directPartner: Map<String, Any?>?, val email: String?, val firstName: String?, val id: Long?, val isActive: Boolean?, val lastName: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val sendWelcomeEmail: Boolean?, val userName: String?, val userRole: Map<String, Any?>?, val verificationPhrase: String?, val version: Long?)
 
-  data class UpdateResultCreateData(val billing_id: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val direct_partner: Map<String, Any?>?, val email: String?, val first_name: String?, val id: Long?, val is_active: Boolean?, val last_name: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val send_welcome_email: Boolean?, val user_name: String?, val user_role: Map<String, Any?>?, val verification_phrase: String?, val version: Long?)
+  data class UpdateResultCreateData(val billingId: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val directPartner: Map<String, Any?>?, val email: String?, val firstName: String?, val id: Long?, val isActive: Boolean?, val lastName: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val sendWelcomeEmail: Boolean?, val userName: String?, val userRole: Map<String, Any?>?, val verificationPhrase: String?, val version: Long?)
 
-  data class UpdateResultUpdateData(val id: String?)
+  data class UpdateResultUpdateData(val id: String?, val billingId: String?, val client: Map<String, Any?>?, val contact: Map<String, Any?>?, val directPartner: Map<String, Any?>?, val email: String?, val firstName: String?, val isActive: Boolean?, val lastName: String?, val mid: String?, val name: String?, val parent: Map<String, Any?>?, val partner: Map<String, Any?>?, val phone: String?, val reference: String?, val sendWelcomeEmail: Boolean?, val userName: String?, val userRole: Map<String, Any?>?, val verificationPhrase: String?, val version: Long?)
 
-  data class User(val client: Map<String, Any?>?, val created: String?, val email: String?, val first_name: String?, val id: Long?, val is_active: Boolean?, val last_name: String?, val modified: String?, val partner: Map<String, Any?>?, val phone: String?, val user_name: String?, val user_role: Map<String, Any?>?, val version: Long?)
+  data class User(val client: Map<String, Any?>?, val created: String?, val email: String?, val firstName: String?, val id: Long?, val isActive: Boolean?, val lastName: String?, val modified: String?, val partner: Map<String, Any?>?, val phone: String?, val userName: String?, val userRole: Map<String, Any?>?, val version: Long?)
 
   data class UserLoadMatch(val id: String?)
 

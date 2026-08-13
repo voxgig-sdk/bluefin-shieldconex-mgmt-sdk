@@ -113,12 +113,12 @@ my $client = $client->Client;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `hashref` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `hashref` | No |  |
+| `directPartner` | `hashref` | No |  |
 | `id` | `integer` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -129,12 +129,12 @@ my $client = $client->Client;
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -272,32 +272,32 @@ my $partner = $client->Partner;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `hashref` | No |  |
 | `created` | `string` | No |  |
 | `id` | `integer` | No |  |
-| `is_active` | `boolean` | No |  |
+| `isActive` | `boolean` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `hashref` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `integer` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -369,13 +369,13 @@ my $template = $client->Template;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `scalar` | No |  |
+| `accessMode` | `scalar` | No |  |
 | `active` | `boolean` | No |  |
 | `client` | `hashref` | No |  |
-| `field_template` | `arrayref` | No |  |
+| `fieldTemplates` | `arrayref` | No |  |
 | `id` | `integer` | No |  |
 | `name` | `string` | No |  |
-| `option` | `hashref` | No |  |
+| `options` | `hashref` | No |  |
 | `partner` | `hashref` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -460,17 +460,17 @@ my $transaction = $client->Transaction;
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `hashref` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `hashref` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `hashref` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `integer` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `hashref` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `boolean` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
@@ -532,50 +532,50 @@ my $update_result = $client->UpdateResult;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `hashref` | No |  |
 | `contact` | `hashref` | Yes |  |
-| `direct_partner` | `hashref` | No |  |
+| `directPartner` | `hashref` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `integer` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `hashref` | No |  |
 | `partner` | `hashref` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `boolean` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `hashref` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `boolean` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `hashref` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `integer` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -588,11 +588,11 @@ Create a new entity with the given data. Returns the created entity data and die
 my $result = $client->UpdateResult->create({
     'contact' => {},  # hashref
     'email' => 'example_email',  # string
-    'first_name' => 'example_first_name',  # string
-    'last_name' => 'example_last_name',  # string
+    'firstName' => 'example_firstName',  # string
+    'lastName' => 'example_lastName',  # string
     'phone' => 'example_phone',  # string
-    'user_name' => 'example_user_name',  # string
-    'user_role' => {},  # hashref
+    'userName' => 'example_userName',  # string
+    'userRole' => {},  # hashref
 });
 ```
 
@@ -660,15 +660,15 @@ my $user = $client->User;
 | `client` | `hashref` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `integer` | No |  |
-| `is_active` | `boolean` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `boolean` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `hashref` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `hashref` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `hashref` | No |  |
 | `version` | `integer` | No |  |
 
 ### Operations

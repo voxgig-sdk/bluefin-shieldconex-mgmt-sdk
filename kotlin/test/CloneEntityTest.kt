@@ -40,7 +40,7 @@ class CloneEntityTest {
     }
     Assumptions.assumeFalse(
       setup.syntheticOnly,
-      "live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID JSON to run live",
+      "live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID JSON to run live",
     )
     val client = setup.client
 
@@ -51,7 +51,7 @@ class CloneEntityTest {
     cloneRef01Data["template_id"] = setup.idmap!!["template01"]
 
     val cloneRef01DataResult = cloneRef01Ent.create(cloneRef01Data, null)
-    cloneRef01Data = Helpers.toMapAny(cloneRef01DataResult) ?: linkedMapOf()
+    cloneRef01Data = Helpers.toMapAny(if (cloneRef01DataResult is SdkEntity) cloneRef01DataResult.data() else cloneRef01DataResult) ?: linkedMapOf()
     assertNotNull(cloneRef01Data, "expected create result to be a map")
     assertNotNull(cloneRef01Data["id"], "expected created entity to have an id")
 
@@ -90,25 +90,25 @@ class CloneEntityTest {
           "}]}"))
 
       // Detect ENTID env override before envOverride consumes it.
-      val entidEnvRaw = RunnerSupport.getenv("BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID")
+      val entidEnvRaw = RunnerSupport.getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID")
       val idmapOverridden = entidEnvRaw != null && entidEnvRaw.trim().startsWith("{")
 
       val envm = linkedMapOf<String, Any?>()
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID"] = idmap
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID"] = idmap
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE"
       val env = RunnerSupport.envOverride(envm)
 
-      var idmapResolved = Helpers.toMapAny(env["BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID"])
+      var idmapResolved = Helpers.toMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID"])
       if (idmapResolved == null) {
         idmapResolved = Helpers.toMapAny(idmap) ?: linkedMapOf()
       }
 
-      val live = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"]
+      val live = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"]
       if (live) {
         val liveOpts = linkedMapOf<String, Any?>()
-        liveOpts["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"]
+        liveOpts["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"]
         val mergedOpts = Struct.merge(Struct.jt(liveOpts, extra))
         client = BluefinShieldconexMgmtSDK(Helpers.toMapAny(mergedOpts))
       }
@@ -118,7 +118,7 @@ class CloneEntityTest {
       setup.data = entityData
       setup.idmap = idmapResolved
       setup.env = env
-      setup.explain = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"]
+      setup.explain = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"]
       setup.live = live
       setup.syntheticOnly = live && !idmapOverridden
       setup.now = System.currentTimeMillis()

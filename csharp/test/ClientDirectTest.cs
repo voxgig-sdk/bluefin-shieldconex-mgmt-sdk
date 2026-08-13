@@ -174,22 +174,22 @@ public class ClientDirectTest
 
         var env = TestRunner.EnvOverride(new Dictionary<string, object?>
         {
-            ["BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID"] = new Dictionary<string, object?>(),
-            ["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE",
-            ["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID"] = new Dictionary<string, object?>(),
+            ["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE",
         });
 
-        var live = Equals(env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"], "TRUE");
+        var live = Equals(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"], "TRUE");
 
         if (live)
         {
             var liveClient = new BluefinShieldconexMgmtSDK(new Dictionary<string, object?>
             {
-                ["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+                ["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
             });
 
             var idmap = new Dictionary<string, object?>();
-            var entidRaw = env["BLUEFINSHIELDCONEXMGMT_TEST_CLIENT_ENTID"];
+            var entidRaw = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID"];
             if (entidRaw is string entidStr && entidStr.StartsWith("{"))
             {
                 try

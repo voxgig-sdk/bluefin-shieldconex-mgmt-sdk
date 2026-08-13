@@ -59,7 +59,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"billing_id\",");
+    b.append("     \"name\": \"billingId\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 0");
@@ -90,7 +90,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"direct_partner\",");
+    b.append("     \"name\": \"directPartner\",");
     b.append("     \"op\": {");
     b.append("      \"create\": {");
     b.append("       \"req\": true,");
@@ -110,7 +110,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"is_active\",");
+    b.append("     \"name\": \"isActive\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$BOOLEAN`\",");
     b.append("     \"index$\": 5");
@@ -281,6 +281,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/clients\",");
     b.append("       \"parts\": [");
@@ -349,6 +350,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/clients\",");
     b.append("       \"parts\": [");
@@ -389,6 +391,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/clients/{id}\",");
     b.append("       \"parts\": [");
@@ -428,6 +431,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"DELETE\",");
     b.append("       \"orig\": \"/clients/{id}\",");
     b.append("       \"parts\": [");
@@ -491,6 +495,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/templates/{id}/clone\",");
     b.append("       \"parts\": [");
@@ -530,7 +535,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"billing_id\",");
+    b.append("     \"name\": \"billingId\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 0");
@@ -568,7 +573,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"is_active\",");
+    b.append("     \"name\": \"isActive\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$BOOLEAN`\",");
     b.append("     \"index$\": 4");
@@ -615,7 +620,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"verification_phrase\",");
+    b.append("     \"name\": \"verificationPhrase\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 9");
@@ -760,6 +765,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/partners\",");
     b.append("       \"parts\": [");
@@ -829,6 +835,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/partners\",");
     b.append("       \"parts\": [");
@@ -869,6 +876,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/partners/{id}\",");
     b.append("       \"parts\": [");
@@ -898,7 +906,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"access_mode\",");
+    b.append("     \"name\": \"accessMode\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$ANY`\",");
     b.append("     \"index$\": 0");
@@ -919,7 +927,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"field_template\",");
+    b.append("     \"name\": \"fieldTemplates\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$ARRAY`\",");
     b.append("     \"index$\": 3");
@@ -940,7 +948,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"option\",");
+    b.append("     \"name\": \"options\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$OBJECT`\",");
     b.append("     \"index$\": 6");
@@ -1122,6 +1130,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/templates\",");
     b.append("       \"parts\": [");
@@ -1201,6 +1210,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/templates\",");
     b.append("       \"parts\": [");
@@ -1242,6 +1252,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/templates/{id}\",");
     b.append("       \"parts\": [");
@@ -1281,6 +1292,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"DELETE\",");
     b.append("       \"orig\": \"/templates/{id}\",");
     b.append("       \"parts\": [");
@@ -1324,28 +1336,28 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"complete_date\",");
+    b.append("     \"name\": \"completeDate\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 2");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"direct_partner\",");
+    b.append("     \"name\": \"directPartner\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$OBJECT`\",");
     b.append("     \"index$\": 3");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"err_code\",");
+    b.append("     \"name\": \"errCode\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 4");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"err_message\",");
+    b.append("     \"name\": \"errMessage\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 5");
@@ -1359,14 +1371,14 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"ip_address\",");
+    b.append("     \"name\": \"ipAddress\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 7");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"message_id\",");
+    b.append("     \"name\": \"messageId\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 8");
@@ -1394,7 +1406,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"template_id\",");
+    b.append("     \"name\": \"templateId\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 12");
@@ -1502,6 +1514,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/transactions\",");
     b.append("       \"parts\": [");
@@ -1560,6 +1573,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/transactions/{id}\",");
     b.append("       \"parts\": [");
@@ -1590,7 +1604,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"billing_id\",");
+    b.append("     \"name\": \"billingId\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 0");
@@ -1611,7 +1625,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"direct_partner\",");
+    b.append("     \"name\": \"directPartner\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$OBJECT`\",");
     b.append("     \"index$\": 3");
@@ -1635,7 +1649,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"first_name\",");
+    b.append("     \"name\": \"firstName\",");
     b.append("     \"op\": {");
     b.append("      \"list\": {");
     b.append("       \"req\": false,");
@@ -1659,14 +1673,14 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"is_active\",");
+    b.append("     \"name\": \"isActive\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$BOOLEAN`\",");
     b.append("     \"index$\": 7");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"last_name\",");
+    b.append("     \"name\": \"lastName\",");
     b.append("     \"op\": {");
     b.append("      \"list\": {");
     b.append("       \"req\": false,");
@@ -1735,14 +1749,14 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"send_welcome_email\",");
+    b.append("     \"name\": \"sendWelcomeEmail\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$BOOLEAN`\",");
     b.append("     \"index$\": 15");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"user_name\",");
+    b.append("     \"name\": \"userName\",");
     b.append("     \"op\": {");
     b.append("      \"list\": {");
     b.append("       \"req\": false,");
@@ -1759,7 +1773,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"user_role\",");
+    b.append("     \"name\": \"userRole\",");
     b.append("     \"op\": {");
     b.append("      \"list\": {");
     b.append("       \"req\": false,");
@@ -1776,7 +1790,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"verification_phrase\",");
+    b.append("     \"name\": \"verificationPhrase\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 18");
@@ -1881,6 +1895,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/users\",");
     b.append("       \"parts\": [");
@@ -1953,6 +1968,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/users\",");
     b.append("       \"parts\": [");
@@ -2132,6 +2148,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/templates/{id}\",");
     b.append("       \"parts\": [");
@@ -2255,6 +2272,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/partners/{id}\",");
     b.append("       \"parts\": [");
@@ -2370,6 +2388,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/users/{id}\",");
     b.append("       \"parts\": [");
@@ -2477,6 +2496,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/clients/{id}\",");
     b.append("       \"parts\": [");
@@ -2535,7 +2555,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"first_name\",");
+    b.append("     \"name\": \"firstName\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 3");
@@ -2549,14 +2569,14 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"is_active\",");
+    b.append("     \"name\": \"isActive\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$BOOLEAN`\",");
     b.append("     \"index$\": 5");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"last_name\",");
+    b.append("     \"name\": \"lastName\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 6");
@@ -2584,14 +2604,14 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"user_name\",");
+    b.append("     \"name\": \"userName\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$STRING`\",");
     b.append("     \"index$\": 10");
     b.append("    },");
     b.append("    {");
     b.append("     \"active\": true,");
-    b.append("     \"name\": \"user_role\",");
+    b.append("     \"name\": \"userRole\",");
     b.append("     \"req\": false,");
     b.append("     \"type\": \"`$OBJECT`\",");
     b.append("     \"index$\": 11");
@@ -2625,6 +2645,7 @@ public final class Config {
     b.append("         }");
     b.append("        ]");
     b.append("       },");
+    b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/users/{id}\",");
     b.append("       \"parts\": [");

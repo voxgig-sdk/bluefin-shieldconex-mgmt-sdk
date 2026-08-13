@@ -123,12 +123,12 @@ let client = client.client(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `std::collections::HashMap<String, Value>` | No |  |
 | `created` | `String` | No |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` | No |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -139,12 +139,12 @@ let client = client.client(Value::Noval);
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -268,32 +268,32 @@ let partner = client.partner(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `std::collections::HashMap<String, Value>` | No |  |
 | `created` | `String` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `std::collections::HashMap<String, Value>` | No |  |
 | `reference` | `String` | No |  |
-| `verification_phrase` | `String` | No |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `i64` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -359,13 +359,13 @@ let template = client.template(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Value` | No |  |
+| `accessMode` | `Value` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `std::collections::HashMap<String, Value>` | No |  |
-| `field_template` | `Vec<Value>` | No |  |
+| `fieldTemplates` | `Vec<Value>` | No |  |
 | `id` | `i64` | No |  |
 | `name` | `String` | No |  |
-| `option` | `std::collections::HashMap<String, Value>` | No |  |
+| `options` | `std::collections::HashMap<String, Value>` | No |  |
 | `partner` | `std::collections::HashMap<String, Value>` | No |  |
 | `reference` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -444,17 +444,17 @@ let transaction = client.transaction(Value::Noval);
 | --- | --- | --- | --- |
 | `bfid` | `String` | No |  |
 | `client` | `std::collections::HashMap<String, Value>` | No |  |
-| `complete_date` | `String` | No |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` | No |  |
-| `err_code` | `String` | No |  |
-| `err_message` | `String` | No |  |
+| `completeDate` | `String` | No |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
+| `errCode` | `String` | No |  |
+| `errMessage` | `String` | No |  |
 | `id` | `i64` | No |  |
-| `ip_address` | `String` | No |  |
-| `message_id` | `String` | No |  |
+| `ipAddress` | `String` | No |  |
+| `messageId` | `String` | No |  |
 | `partner` | `std::collections::HashMap<String, Value>` | No |  |
 | `reference` | `String` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `String` | No |  |
+| `templateId` | `String` | No |  |
 
 ### Operations
 
@@ -510,50 +510,50 @@ let update_result = client.update_result(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `client` | `std::collections::HashMap<String, Value>` | No |  |
 | `contact` | `std::collections::HashMap<String, Value>` | Yes |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` | No |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
 | `email` | `String` | Yes |  |
-| `first_name` | `String` | Yes |  |
+| `firstName` | `String` | Yes |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `String` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `String` | Yes |  |
 | `mid` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `std::collections::HashMap<String, Value>` | No |  |
 | `partner` | `std::collections::HashMap<String, Value>` | No |  |
 | `phone` | `String` | Yes |  |
 | `reference` | `String` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `String` | Yes |  |
-| `user_role` | `std::collections::HashMap<String, Value>` | Yes |  |
-| `verification_phrase` | `String` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `String` | Yes |  |
+| `userRole` | `std::collections::HashMap<String, Value>` | Yes |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `i64` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -566,11 +566,11 @@ Create a new entity with the given data. Returns the created entity data on `Ok`
 let result = client.update_result(Value::Noval).create(jo(vec![
     ("contact", Value::empty_map()),  // std::collections::HashMap<String, Value>
     ("email", Value::str("example_email")),  // String
-    ("first_name", Value::str("example_first_name")),  // String
-    ("last_name", Value::str("example_last_name")),  // String
+    ("firstName", Value::str("example_firstName")),  // String
+    ("lastName", Value::str("example_lastName")),  // String
     ("phone", Value::str("example_phone")),  // String
-    ("user_name", Value::str("example_user_name")),  // String
-    ("user_role", Value::empty_map()),  // std::collections::HashMap<String, Value>
+    ("userName", Value::str("example_userName")),  // String
+    ("userRole", Value::empty_map()),  // std::collections::HashMap<String, Value>
 ]), Value::Noval).unwrap();
 ```
 
@@ -632,15 +632,15 @@ let user = client.user(Value::Noval);
 | `client` | `std::collections::HashMap<String, Value>` | No |  |
 | `created` | `String` | No |  |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `String` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `partner` | `std::collections::HashMap<String, Value>` | No |  |
 | `phone` | `String` | No |  |
-| `user_name` | `String` | No |  |
-| `user_role` | `std::collections::HashMap<String, Value>` | No |  |
+| `userName` | `String` | No |  |
+| `userRole` | `std::collections::HashMap<String, Value>` | No |  |
 | `version` | `i64` | No |  |
 
 ### Operations

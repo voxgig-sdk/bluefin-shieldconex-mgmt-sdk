@@ -93,7 +93,7 @@ func TestUpdateResultEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -107,7 +107,7 @@ func TestUpdateResultEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		updateResultRef01Data = core.ToMapAny(updateResultRef01DataResult)
+		updateResultRef01Data = core.ToMapAny(entityData(updateResultRef01DataResult))
 		if updateResultRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -137,7 +137,7 @@ func TestUpdateResultEntity(t *testing.T) {
 			"id": updateResultRef01Data["id"],
 		}
 
-		updateResultRef01MarkdefUp0Name := "billing_id"
+		updateResultRef01MarkdefUp0Name := "billingId"
 		updateResultRef01MarkdefUp0Value := fmt.Sprintf("Mark01-update_result_ref01_%d", setup.now)
 		updateResultRef01DataUp0Up[updateResultRef01MarkdefUp0Name] = updateResultRef01MarkdefUp0Value
 
@@ -145,7 +145,7 @@ func TestUpdateResultEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		updateResultRef01ResdataUp0 := core.ToMapAny(updateResultRef01ResdataUp0Result)
+		updateResultRef01ResdataUp0 := core.ToMapAny(entityData(updateResultRef01ResdataUp0Result))
 		if updateResultRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -196,38 +196,38 @@ func update_resultBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID")
+	entidEnvRaw := os.Getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID": idmap,
-		"BLUEFINSHIELDCONEXMGMT_TEST_LIVE":      "FALSE",
-		"BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN":   "FALSE",
-		"BLUEFINSHIELDCONEXMGMT_APIKEY":         "NONE",
+		"BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID": idmap,
+		"BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE":      "FALSE",
+		"BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN":   "FALSE",
+		"BLUEFIN_SHIELDCONEX_MGMT_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID"])
+	idmapResolved := core.ToMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE" {
+	if env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+				"apikey": env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewBluefinShieldconexMgmtSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE"
+	live := env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

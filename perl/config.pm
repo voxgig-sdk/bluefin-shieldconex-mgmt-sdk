@@ -49,7 +49,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -80,7 +80,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "op": {
             "create": {
               "req": true,
@@ -100,7 +100,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 5
@@ -271,6 +271,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/clients",
               "parts": [
@@ -339,6 +340,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/clients",
               "parts": [
@@ -379,6 +381,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/clients/{id}",
               "parts": [
@@ -418,6 +421,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/clients/{id}",
               "parts": [
@@ -481,6 +485,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/templates/{id}/clone",
               "parts": [
@@ -520,7 +525,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -558,7 +563,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 4
@@ -605,7 +610,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "verification_phrase",
+          "name": "verificationPhrase",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
@@ -750,6 +755,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/partners",
               "parts": [
@@ -819,6 +825,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partners",
               "parts": [
@@ -859,6 +866,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/partners/{id}",
               "parts": [
@@ -888,7 +896,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "active": true,
-          "name": "access_mode",
+          "name": "accessMode",
           "req": false,
           "type": "`$ANY`",
           "index$": 0
@@ -909,7 +917,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "field_template",
+          "name": "fieldTemplates",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 3
@@ -930,7 +938,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "option",
+          "name": "options",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 6
@@ -1112,6 +1120,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/templates",
               "parts": [
@@ -1191,6 +1200,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/templates",
               "parts": [
@@ -1232,6 +1242,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/templates/{id}",
               "parts": [
@@ -1271,6 +1282,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/templates/{id}",
               "parts": [
@@ -1314,28 +1326,28 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "complete_date",
+          "name": "completeDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "err_code",
+          "name": "errCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "err_message",
+          "name": "errMessage",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
@@ -1349,14 +1361,14 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "ip_address",
+          "name": "ipAddress",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "message_id",
+          "name": "messageId",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -1384,7 +1396,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "template_id",
+          "name": "templateId",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
@@ -1492,6 +1504,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/transactions",
               "parts": [
@@ -1550,6 +1563,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/transactions/{id}",
               "parts": [
@@ -1580,7 +1594,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "active": true,
-          "name": "billing_id",
+          "name": "billingId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -1601,7 +1615,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "direct_partner",
+          "name": "directPartner",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
@@ -1625,7 +1639,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "op": {
             "list": {
               "req": false,
@@ -1649,14 +1663,14 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "op": {
             "list": {
               "req": false,
@@ -1725,14 +1739,14 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "send_welcome_email",
+          "name": "sendWelcomeEmail",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "user_name",
+          "name": "userName",
           "op": {
             "list": {
               "req": false,
@@ -1749,7 +1763,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "user_role",
+          "name": "userRole",
           "op": {
             "list": {
               "req": false,
@@ -1766,7 +1780,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "verification_phrase",
+          "name": "verificationPhrase",
           "req": false,
           "type": "`$STRING`",
           "index$": 18
@@ -1871,6 +1885,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/users",
               "parts": [
@@ -1943,6 +1958,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/users",
               "parts": [
@@ -2122,6 +2138,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/templates/{id}",
               "parts": [
@@ -2245,6 +2262,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/partners/{id}",
               "parts": [
@@ -2360,6 +2378,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/users/{id}",
               "parts": [
@@ -2467,6 +2486,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/clients/{id}",
               "parts": [
@@ -2525,7 +2545,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -2539,14 +2559,14 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "is_active",
+          "name": "isActive",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
@@ -2574,14 +2594,14 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "active": true,
-          "name": "user_name",
+          "name": "userName",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "user_role",
+          "name": "userRole",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 11
@@ -2615,6 +2635,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/users/{id}",
               "parts": [

@@ -26,8 +26,8 @@ import {
 describe('ClientEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BLUEFINSHIELDCONEXMGMT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BLUEFINSHIELDCONEXMGMT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BluefinShieldconexMgmtSDK.test()
@@ -62,14 +62,14 @@ describe('ClientEntity', async () => {
     const client_ref01_ent = client.Client()
     let client_ref01_data = setup.data.new.client['client_ref01']
 
-    client_ref01_data = await client_ref01_ent.create(client_ref01_data)
+    client_ref01_data = (await client_ref01_ent.create(client_ref01_data)).data()
     assert(null != client_ref01_data.id)
 
 
     // LIST
     const client_ref01_match: any = {}
 
-    const client_ref01_list = await client_ref01_ent.list(client_ref01_match)
+    const client_ref01_list = (await client_ref01_ent.list(client_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(client_ref01_list, { id: client_ref01_data.id })))
 
@@ -77,7 +77,7 @@ describe('ClientEntity', async () => {
     // LOAD
     const client_ref01_match_dt0: any = {}
     client_ref01_match_dt0.id = client_ref01_data.id
-    const client_ref01_data_dt0 = await client_ref01_ent.load(client_ref01_match_dt0)
+    const client_ref01_data_dt0 = (await client_ref01_ent.load(client_ref01_match_dt0)).data()
     assert(client_ref01_data_dt0.id === client_ref01_data.id)
 
 
@@ -89,7 +89,7 @@ describe('ClientEntity', async () => {
     // LIST
     const client_ref01_match_rt0: any = {}
 
-    const client_ref01_list_rt0 = await client_ref01_ent.list(client_ref01_match_rt0)
+    const client_ref01_list_rt0 = (await client_ref01_ent.list(client_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(client_ref01_list_rt0, { id: client_ref01_data.id })))
 

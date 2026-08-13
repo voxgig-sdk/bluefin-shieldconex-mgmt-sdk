@@ -48,7 +48,7 @@ void tests() {
       dynamic clone_ref01_data = setup['data']['new']['clone']['clone_ref01'];
       clone_ref01_data['template_id'] = setup['idmap']['template01'];
 
-      clone_ref01_data = await clone_ref01_ent.create(clone_ref01_data);
+      clone_ref01_data = (await clone_ref01_ent.create(clone_ref01_data)).data();
       ok(null != clone_ref01_data['id']);
 
 

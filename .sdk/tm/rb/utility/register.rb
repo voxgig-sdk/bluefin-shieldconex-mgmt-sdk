@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ BluefinShieldconexMgmtUtility.registrar = ->(u) {
   u.prepare_params = BluefinShieldconexMgmtUtilities::PrepareParams
   u.prepare_path = BluefinShieldconexMgmtUtilities::PreparePath
   u.prepare_query = BluefinShieldconexMgmtUtilities::PrepareQuery
+  u.graphql_body = BluefinShieldconexMgmtUtilities::GraphqlBody
+  u.graphql_errors = BluefinShieldconexMgmtUtilities::GraphqlErrors
   u.result_basic = BluefinShieldconexMgmtUtilities::ResultBasic
   u.result_body = BluefinShieldconexMgmtUtilities::ResultBody
   u.result_headers = BluefinShieldconexMgmtUtilities::ResultHeaders

@@ -70,7 +70,7 @@ func main() {
     fmt.Println(client_)
 
     // Create a client_.
-    created, err := client.Client(nil).Create(map[string]any{"billing_id": "example_billing_id", "contact": map[string]any{}}, nil)
+    created, err := client.Client(nil).Create(map[string]any{"billingId": "example_billingId", "contact": map[string]any{}}, nil)
     if err != nil {
         panic(err)
     }
@@ -297,12 +297,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"billing_id"` |  |
+| `"billingId"` |  |
 | `"contact"` |  |
 | `"created"` |  |
-| `"direct_partner"` |  |
+| `"directPartner"` |  |
 | `"id"` |  |
-| `"is_active"` |  |
+| `"isActive"` |  |
 | `"mid"` |  |
 | `"modified"` |  |
 | `"name"` |  |
@@ -328,16 +328,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `"billing_id"` |  |
+| `"billingId"` |  |
 | `"contact"` |  |
 | `"created"` |  |
 | `"id"` |  |
-| `"is_active"` |  |
+| `"isActive"` |  |
 | `"modified"` |  |
 | `"name"` |  |
 | `"parent"` |  |
 | `"reference"` |  |
-| `"verification_phrase"` |  |
+| `"verificationPhrase"` |  |
 | `"version"` |  |
 
 Operations: Create, List, Load.
@@ -348,13 +348,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `"access_mode"` |  |
+| `"accessMode"` |  |
 | `"active"` |  |
 | `"client"` |  |
-| `"field_template"` |  |
+| `"fieldTemplates"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"option"` |  |
+| `"options"` |  |
 | `"partner"` |  |
 | `"reference"` |  |
 | `"type"` |  |
@@ -370,17 +370,17 @@ API path: `/templates`
 | --- | --- |
 | `"bfid"` |  |
 | `"client"` |  |
-| `"complete_date"` |  |
-| `"direct_partner"` |  |
-| `"err_code"` |  |
-| `"err_message"` |  |
+| `"completeDate"` |  |
+| `"directPartner"` |  |
+| `"errCode"` |  |
+| `"errMessage"` |  |
 | `"id"` |  |
-| `"ip_address"` |  |
-| `"message_id"` |  |
+| `"ipAddress"` |  |
+| `"messageId"` |  |
 | `"partner"` |  |
 | `"reference"` |  |
 | `"success"` |  |
-| `"template_id"` |  |
+| `"templateId"` |  |
 
 Operations: List, Load.
 
@@ -390,25 +390,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `"billing_id"` |  |
+| `"billingId"` |  |
 | `"client"` |  |
 | `"contact"` |  |
-| `"direct_partner"` |  |
+| `"directPartner"` |  |
 | `"email"` |  |
-| `"first_name"` |  |
+| `"firstName"` |  |
 | `"id"` |  |
-| `"is_active"` |  |
-| `"last_name"` |  |
+| `"isActive"` |  |
+| `"lastName"` |  |
 | `"mid"` |  |
 | `"name"` |  |
 | `"parent"` |  |
 | `"partner"` |  |
 | `"phone"` |  |
 | `"reference"` |  |
-| `"send_welcome_email"` |  |
-| `"user_name"` |  |
-| `"user_role"` |  |
-| `"verification_phrase"` |  |
+| `"sendWelcomeEmail"` |  |
+| `"userName"` |  |
+| `"userRole"` |  |
+| `"verificationPhrase"` |  |
 | `"version"` |  |
 
 Operations: Create, List, Update.
@@ -422,15 +422,15 @@ API path: `/users`
 | `"client"` |  |
 | `"created"` |  |
 | `"email"` |  |
-| `"first_name"` |  |
+| `"firstName"` |  |
 | `"id"` |  |
-| `"is_active"` |  |
-| `"last_name"` |  |
+| `"isActive"` |  |
+| `"lastName"` |  |
 | `"modified"` |  |
 | `"partner"` |  |
 | `"phone"` |  |
-| `"user_name"` |  |
-| `"user_role"` |  |
+| `"userName"` |  |
+| `"userRole"` |  |
 | `"version"` |  |
 
 Operations: Load.
@@ -459,12 +459,12 @@ Create an instance: `client_ := client.Client(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `map[string]any` |  |
 | `created` | `string` |  |
-| `direct_partner` | `map[string]any` |  |
+| `directPartner` | `map[string]any` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -549,16 +549,16 @@ Create an instance: `partner := client.Partner(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `map[string]any` |  |
 | `created` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `map[string]any` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `int` |  |
 
 #### Example: Load
@@ -610,13 +610,13 @@ Create an instance: `template := client.Template(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `any` |  |
+| `accessMode` | `any` |  |
 | `active` | `bool` |  |
 | `client` | `map[string]any` |  |
-| `field_template` | `[]any` |  |
+| `fieldTemplates` | `[]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `option` | `map[string]any` |  |
+| `options` | `map[string]any` |  |
 | `partner` | `map[string]any` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -671,17 +671,17 @@ Create an instance: `transaction := client.Transaction(nil)`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `map[string]any` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `map[string]any` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `map[string]any` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `int` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `map[string]any` |  |
 | `reference` | `string` |  |
 | `success` | `bool` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
@@ -720,25 +720,25 @@ Create an instance: `updateResult := client.UpdateResult(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `map[string]any` |  |
 | `contact` | `map[string]any` |  |
-| `direct_partner` | `map[string]any` |  |
+| `directPartner` | `map[string]any` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `map[string]any` |  |
 | `partner` | `map[string]any` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `string` |  |
-| `user_role` | `map[string]any` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `string` |  |
+| `userRole` | `map[string]any` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `int` |  |
 
 #### Example: List
@@ -757,11 +757,11 @@ fmt.Println(updateResults) // the array of records
 result, err := client.UpdateResult(nil).Create(map[string]any{
     "contact": map[string]any{},
     "email": "example_email",
-    "first_name": "example_first_name",
-    "last_name": "example_last_name",
+    "firstName": "example_firstName",
+    "lastName": "example_lastName",
     "phone": "example_phone",
-    "user_name": "example_user_name",
-    "user_role": map[string]any{},
+    "userName": "example_userName",
+    "userRole": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -787,15 +787,15 @@ Create an instance: `user := client.User(nil)`
 | `client` | `map[string]any` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `string` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `map[string]any` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `map[string]any` |  |
+| `userName` | `string` |  |
+| `userRole` | `map[string]any` |  |
 | `version` | `int` |  |
 
 #### Example: Load

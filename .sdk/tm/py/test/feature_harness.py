@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import BluefinShieldconexMgmtControl
-from core.error import BluefinShieldconexMgmtError
-from core.result import BluefinShieldconexMgmtResult
-from core.spec import BluefinShieldconexMgmtSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import BluefinShieldconexMgmtControl
+from projectname_sdk.core.error import BluefinShieldconexMgmtError
+from projectname_sdk.core.result import BluefinShieldconexMgmtResult
+from projectname_sdk.core.spec import BluefinShieldconexMgmtSpec
 
 
 # True when this SDK was generated with the named feature.

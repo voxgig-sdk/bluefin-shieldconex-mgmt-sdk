@@ -31,7 +31,7 @@ main: kit: flow: BasicUpdateResultFlow:
         ref: "update_result_ref01",
         srcdatavar: "update_result_ref01_data",
         suffix: "_up0",
-        textfield: "billing_id"
+        textfield: "billingId"
       }
 
       op: "update",

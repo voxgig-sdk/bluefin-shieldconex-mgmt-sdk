@@ -31,8 +31,15 @@ defmodule BluefinShieldconexMgmt.TransactionEntityTest do
   test "should list records" do
     sdk = mk_sdk()
     ent = BluefinShieldconexMgmt.transaction(sdk)
+    # The op resolves to one ENTITY per record; the record is reached with
+    # data_get. See AGENTS.md "Entity operations return ENTITIES".
     result = BluefinShieldconexMgmt.Entity.Transaction.list(ent, S.jm([]))
     assert S.islist(result)
+    if S.size(result) > 0 do
+      Enum.each(0..(S.size(result) - 1), fn i ->
+        assert S.ismap(BluefinShieldconexMgmt.EntityBase.data_get(S.getelem(result, i)))
+      end)
+    end
   end
 
   test "should load an existing record" do
@@ -41,7 +48,8 @@ defmodule BluefinShieldconexMgmt.TransactionEntityTest do
     if id != nil do
       sdk = mk_sdk()
       ent = BluefinShieldconexMgmt.transaction(sdk)
-      rec = BluefinShieldconexMgmt.Entity.Transaction.load(ent, S.jm(["id", id]))
+      loaded = BluefinShieldconexMgmt.Entity.Transaction.load(ent, S.jm(["id", id]))
+      rec = BluefinShieldconexMgmt.EntityBase.data_get(loaded)
       assert S.ismap(rec)
       assert S.getprop(rec, "id") == id
     end

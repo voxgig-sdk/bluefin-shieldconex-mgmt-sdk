@@ -39,7 +39,7 @@ begin
   # list returns an Array of Client records — iterate directly.
   client_s = client.Client.list
   client_s.each do |item|
-    puts "#{item["id"]} #{item["billing_id"]}"
+    puts "#{item["id"]} #{item["billingId"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,7 +50,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Client record (raises on error).
+  # load returns the ENTITY — call data_get for the Client record (raises on error).
   client_ = client.Client.load({ "id" => "example_id" })
   puts client_
 rescue => err
@@ -61,11 +61,11 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created Client record.
-created = client.Client.create({ "billing_id" => "example_billing_id", "contact" => {} })
+# create returns the ENTITY — call data_get for the created Client record.
+created = client.Client.create({ "billingId" => "example_billingId", "contact" => {} })
 
 # Remove
-client.Client.remove({ "id" => created["id"] })
+client.Client.remove({ "id" => created.data_get["id"] })
 ```
 
 
@@ -146,7 +146,8 @@ client = BluefinShieldconexMgmtSDK.test({
   "entity" => { "partner" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 partner = client.Partner.list()
 puts partner
 ```
@@ -275,12 +276,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -306,16 +307,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -326,13 +327,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -348,17 +349,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -368,25 +369,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -400,15 +401,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -437,12 +438,12 @@ Create an instance: `client_ = client.Client`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Hash` |  |
 | `created` | `String` |  |
-| `direct_partner` | `Hash` |  |
+| `directPartner` | `Hash` |  |
 | `id` | `Integer` |  |
-| `is_active` | `Boolean` |  |
+| `isActive` | `Boolean` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -452,7 +453,7 @@ Create an instance: `client_ = client.Client`
 #### Example: Load
 
 ```ruby
-# load returns the bare Client record (raises on error).
+# load returns the ENTITY — call data_get for the Client record (raises on error).
 client_ = client.Client.load({ "id" => "client_id" })
 ```
 
@@ -513,22 +514,22 @@ Create an instance: `partner = client.Partner`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Hash` |  |
 | `created` | `String` |  |
 | `id` | `Integer` |  |
-| `is_active` | `Boolean` |  |
+| `isActive` | `Boolean` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Hash` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Partner record (raises on error).
+# load returns the ENTITY — call data_get for the Partner record (raises on error).
 partner = client.Partner.load({ "id" => "partner_id" })
 ```
 
@@ -564,13 +565,13 @@ Create an instance: `template = client.Template`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Object` |  |
+| `accessMode` | `Object` |  |
 | `active` | `Boolean` |  |
 | `client` | `Hash` |  |
-| `field_template` | `Array` |  |
+| `fieldTemplates` | `Array` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `option` | `Hash` |  |
+| `options` | `Hash` |  |
 | `partner` | `Hash` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -579,7 +580,7 @@ Create an instance: `template = client.Template`
 #### Example: Load
 
 ```ruby
-# load returns the bare Template record (raises on error).
+# load returns the ENTITY — call data_get for the Template record (raises on error).
 template = client.Template.load({ "id" => "template_id" })
 ```
 
@@ -615,22 +616,22 @@ Create an instance: `transaction = client.Transaction`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `Hash` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `Hash` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `Hash` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `Integer` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `Hash` |  |
 | `reference` | `String` |  |
 | `success` | `Boolean` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Transaction record (raises on error).
+# load returns the ENTITY — call data_get for the Transaction record (raises on error).
 transaction = client.Transaction.load({ "id" => "transaction_id" })
 ```
 
@@ -658,25 +659,25 @@ Create an instance: `update_result = client.UpdateResult`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `Hash` |  |
 | `contact` | `Hash` |  |
-| `direct_partner` | `Hash` |  |
+| `directPartner` | `Hash` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Integer` |  |
-| `is_active` | `Boolean` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Boolean` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Hash` |  |
 | `partner` | `Hash` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `Boolean` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Hash` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `Boolean` |  |
+| `userName` | `String` |  |
+| `userRole` | `Hash` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Integer` |  |
 
 #### Example: List
@@ -692,11 +693,11 @@ update_results = client.UpdateResult.list
 update_result = client.UpdateResult.create({
   "contact" => {}, # Hash
   "email" => "example_email", # String
-  "first_name" => "example_first_name", # String
-  "last_name" => "example_last_name", # String
+  "firstName" => "example_firstName", # String
+  "lastName" => "example_lastName", # String
   "phone" => "example_phone", # String
-  "user_name" => "example_user_name", # String
-  "user_role" => {}, # Hash
+  "userName" => "example_userName", # String
+  "userRole" => {}, # Hash
 })
 ```
 
@@ -718,21 +719,21 @@ Create an instance: `user = client.User`
 | `client` | `Hash` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Integer` |  |
-| `is_active` | `Boolean` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Boolean` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `Hash` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Hash` |  |
+| `userName` | `String` |  |
+| `userRole` | `Hash` |  |
 | `version` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare User record (raises on error).
+# load returns the ENTITY — call data_get for the User record (raises on error).
 user = client.User.load({ "id" => "user_id" })
 ```
 

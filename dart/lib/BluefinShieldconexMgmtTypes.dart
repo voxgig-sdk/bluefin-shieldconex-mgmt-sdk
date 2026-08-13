@@ -10,17 +10,17 @@
 
 class Client {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
   String? created;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? mid;
   /// STRING
@@ -33,12 +33,12 @@ class Client {
   int? version;
 
   Client({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
-    this.direct_partner,
+    this.directPartner,
     this.id,
-    this.is_active,
+    this.isActive,
     this.mid,
     this.modified,
     this.name,
@@ -47,12 +47,12 @@ class Client {
   });
 
   factory Client.fromMap(Map<String, dynamic> m) => Client(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
@@ -62,8 +62,8 @@ class Client {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -71,14 +71,14 @@ class Client {
     if (null != created) {
       m['created'] = created;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -122,17 +122,17 @@ class ClientLoadMatch {
 
 class ClientListMatch {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
   String? created;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? mid;
   /// STRING
@@ -145,12 +145,12 @@ class ClientListMatch {
   int? version;
 
   ClientListMatch({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
-    this.direct_partner,
+    this.directPartner,
     this.id,
-    this.is_active,
+    this.isActive,
     this.mid,
     this.modified,
     this.name,
@@ -159,12 +159,12 @@ class ClientListMatch {
   });
 
   factory ClientListMatch.fromMap(Map<String, dynamic> m) => ClientListMatch(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
@@ -174,8 +174,8 @@ class ClientListMatch {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -183,14 +183,14 @@ class ClientListMatch {
     if (null != created) {
       m['created'] = created;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -213,17 +213,17 @@ class ClientListMatch {
 
 class ClientCreateData {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
   String? created;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? mid;
   /// STRING
@@ -236,12 +236,12 @@ class ClientCreateData {
   int? version;
 
   ClientCreateData({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
-    this.direct_partner,
+    this.directPartner,
     this.id,
-    this.is_active,
+    this.isActive,
     this.mid,
     this.modified,
     this.name,
@@ -250,12 +250,12 @@ class ClientCreateData {
   });
 
   factory ClientCreateData.fromMap(Map<String, dynamic> m) => ClientCreateData(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
@@ -265,8 +265,8 @@ class ClientCreateData {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -274,14 +274,14 @@ class ClientCreateData {
     if (null != created) {
       m['created'] = created;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -354,13 +354,21 @@ class Clone {
 class CloneCreateData {
   /// STRING (required at the API)
   String? template_id;
+  /// INTEGER
+  int? id;
+  /// STRING
+  String? name;
 
   CloneCreateData({
     this.template_id,
+    this.id,
+    this.name,
   });
 
   factory CloneCreateData.fromMap(Map<String, dynamic> m) => CloneCreateData(
         template_id: m['template_id'] is String ? m['template_id'] : null,
+        id: m['id'] is int ? m['id'] : null,
+        name: m['name'] is String ? m['name'] : null,
       );
 
   Map<String, dynamic> toMap() {
@@ -368,13 +376,19 @@ class CloneCreateData {
     if (null != template_id) {
       m['template_id'] = template_id;
     }
+    if (null != id) {
+      m['id'] = id;
+    }
+    if (null != name) {
+      m['name'] = name;
+    }
     return m;
   }
 }
 
 class Partner {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
@@ -382,7 +396,7 @@ class Partner {
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? modified;
   /// STRING
@@ -392,42 +406,42 @@ class Partner {
   /// STRING
   String? reference;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   Partner({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
     this.id,
-    this.is_active,
+    this.isActive,
     this.modified,
     this.name,
     this.parent,
     this.reference,
-    this.verification_phrase,
+    this.verificationPhrase,
     this.version,
   });
 
   factory Partner.fromMap(Map<String, dynamic> m) => Partner(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -438,8 +452,8 @@ class Partner {
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != modified) {
       m['modified'] = modified;
@@ -453,8 +467,8 @@ class Partner {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -486,7 +500,7 @@ class PartnerLoadMatch {
 
 class PartnerListMatch {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
@@ -494,7 +508,7 @@ class PartnerListMatch {
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? modified;
   /// STRING
@@ -504,42 +518,42 @@ class PartnerListMatch {
   /// STRING
   String? reference;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   PartnerListMatch({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
     this.id,
-    this.is_active,
+    this.isActive,
     this.modified,
     this.name,
     this.parent,
     this.reference,
-    this.verification_phrase,
+    this.verificationPhrase,
     this.version,
   });
 
   factory PartnerListMatch.fromMap(Map<String, dynamic> m) => PartnerListMatch(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -550,8 +564,8 @@ class PartnerListMatch {
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != modified) {
       m['modified'] = modified;
@@ -565,8 +579,8 @@ class PartnerListMatch {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -577,7 +591,7 @@ class PartnerListMatch {
 
 class PartnerCreateData {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// STRING
@@ -585,7 +599,7 @@ class PartnerCreateData {
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
   String? modified;
   /// STRING
@@ -595,42 +609,42 @@ class PartnerCreateData {
   /// STRING
   String? reference;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   PartnerCreateData({
-    this.billing_id,
+    this.billingId,
     this.contact,
     this.created,
     this.id,
-    this.is_active,
+    this.isActive,
     this.modified,
     this.name,
     this.parent,
     this.reference,
-    this.verification_phrase,
+    this.verificationPhrase,
     this.version,
   });
 
   factory PartnerCreateData.fromMap(Map<String, dynamic> m) => PartnerCreateData(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
         created: m['created'] is String ? m['created'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != contact) {
       m['contact'] = contact;
@@ -641,8 +655,8 @@ class PartnerCreateData {
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
     if (null != modified) {
       m['modified'] = modified;
@@ -656,8 +670,8 @@ class PartnerCreateData {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -668,19 +682,19 @@ class PartnerCreateData {
 
 class Template {
   /// ANY
-  dynamic access_mode;
+  dynamic accessMode;
   /// BOOLEAN
   bool? active;
   /// OBJECT
   Map<String, dynamic>? client;
   /// ARRAY
-  List<dynamic>? field_template;
+  List<dynamic>? fieldTemplates;
   /// INTEGER
   int? id;
   /// STRING
   String? name;
   /// OBJECT
-  Map<String, dynamic>? option;
+  Map<String, dynamic>? options;
   /// OBJECT
   Map<String, dynamic>? partner;
   /// STRING
@@ -691,13 +705,13 @@ class Template {
   int? version;
 
   Template({
-    this.access_mode,
+    this.accessMode,
     this.active,
     this.client,
-    this.field_template,
+    this.fieldTemplates,
     this.id,
     this.name,
-    this.option,
+    this.options,
     this.partner,
     this.reference,
     this.type,
@@ -705,13 +719,13 @@ class Template {
   });
 
   factory Template.fromMap(Map<String, dynamic> m) => Template(
-        access_mode: m['access_mode'],
+        accessMode: m['accessMode'],
         active: m['active'] is bool ? m['active'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
-        field_template: m['field_template'] is List<dynamic> ? m['field_template'] : null,
+        fieldTemplates: m['fieldTemplates'] is List<dynamic> ? m['fieldTemplates'] : null,
         id: m['id'] is int ? m['id'] : null,
         name: m['name'] is String ? m['name'] : null,
-        option: m['option'] is Map<String, dynamic> ? m['option'] : null,
+        options: m['options'] is Map<String, dynamic> ? m['options'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
         type: m['type'] is String ? m['type'] : null,
@@ -720,8 +734,8 @@ class Template {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != access_mode) {
-      m['access_mode'] = access_mode;
+    if (null != accessMode) {
+      m['accessMode'] = accessMode;
     }
     if (null != active) {
       m['active'] = active;
@@ -729,8 +743,8 @@ class Template {
     if (null != client) {
       m['client'] = client;
     }
-    if (null != field_template) {
-      m['field_template'] = field_template;
+    if (null != fieldTemplates) {
+      m['fieldTemplates'] = fieldTemplates;
     }
     if (null != id) {
       m['id'] = id;
@@ -738,8 +752,8 @@ class Template {
     if (null != name) {
       m['name'] = name;
     }
-    if (null != option) {
-      m['option'] = option;
+    if (null != options) {
+      m['options'] = options;
     }
     if (null != partner) {
       m['partner'] = partner;
@@ -780,19 +794,19 @@ class TemplateLoadMatch {
 
 class TemplateListMatch {
   /// ANY
-  dynamic access_mode;
+  dynamic accessMode;
   /// BOOLEAN
   bool? active;
   /// OBJECT
   Map<String, dynamic>? client;
   /// ARRAY
-  List<dynamic>? field_template;
+  List<dynamic>? fieldTemplates;
   /// INTEGER
   int? id;
   /// STRING
   String? name;
   /// OBJECT
-  Map<String, dynamic>? option;
+  Map<String, dynamic>? options;
   /// OBJECT
   Map<String, dynamic>? partner;
   /// STRING
@@ -803,13 +817,13 @@ class TemplateListMatch {
   int? version;
 
   TemplateListMatch({
-    this.access_mode,
+    this.accessMode,
     this.active,
     this.client,
-    this.field_template,
+    this.fieldTemplates,
     this.id,
     this.name,
-    this.option,
+    this.options,
     this.partner,
     this.reference,
     this.type,
@@ -817,13 +831,13 @@ class TemplateListMatch {
   });
 
   factory TemplateListMatch.fromMap(Map<String, dynamic> m) => TemplateListMatch(
-        access_mode: m['access_mode'],
+        accessMode: m['accessMode'],
         active: m['active'] is bool ? m['active'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
-        field_template: m['field_template'] is List<dynamic> ? m['field_template'] : null,
+        fieldTemplates: m['fieldTemplates'] is List<dynamic> ? m['fieldTemplates'] : null,
         id: m['id'] is int ? m['id'] : null,
         name: m['name'] is String ? m['name'] : null,
-        option: m['option'] is Map<String, dynamic> ? m['option'] : null,
+        options: m['options'] is Map<String, dynamic> ? m['options'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
         type: m['type'] is String ? m['type'] : null,
@@ -832,8 +846,8 @@ class TemplateListMatch {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != access_mode) {
-      m['access_mode'] = access_mode;
+    if (null != accessMode) {
+      m['accessMode'] = accessMode;
     }
     if (null != active) {
       m['active'] = active;
@@ -841,8 +855,8 @@ class TemplateListMatch {
     if (null != client) {
       m['client'] = client;
     }
-    if (null != field_template) {
-      m['field_template'] = field_template;
+    if (null != fieldTemplates) {
+      m['fieldTemplates'] = fieldTemplates;
     }
     if (null != id) {
       m['id'] = id;
@@ -850,8 +864,8 @@ class TemplateListMatch {
     if (null != name) {
       m['name'] = name;
     }
-    if (null != option) {
-      m['option'] = option;
+    if (null != options) {
+      m['options'] = options;
     }
     if (null != partner) {
       m['partner'] = partner;
@@ -871,19 +885,19 @@ class TemplateListMatch {
 
 class TemplateCreateData {
   /// ANY
-  dynamic access_mode;
+  dynamic accessMode;
   /// BOOLEAN
   bool? active;
   /// OBJECT
   Map<String, dynamic>? client;
   /// ARRAY
-  List<dynamic>? field_template;
+  List<dynamic>? fieldTemplates;
   /// INTEGER
   int? id;
   /// STRING
   String? name;
   /// OBJECT
-  Map<String, dynamic>? option;
+  Map<String, dynamic>? options;
   /// OBJECT
   Map<String, dynamic>? partner;
   /// STRING
@@ -894,13 +908,13 @@ class TemplateCreateData {
   int? version;
 
   TemplateCreateData({
-    this.access_mode,
+    this.accessMode,
     this.active,
     this.client,
-    this.field_template,
+    this.fieldTemplates,
     this.id,
     this.name,
-    this.option,
+    this.options,
     this.partner,
     this.reference,
     this.type,
@@ -908,13 +922,13 @@ class TemplateCreateData {
   });
 
   factory TemplateCreateData.fromMap(Map<String, dynamic> m) => TemplateCreateData(
-        access_mode: m['access_mode'],
+        accessMode: m['accessMode'],
         active: m['active'] is bool ? m['active'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
-        field_template: m['field_template'] is List<dynamic> ? m['field_template'] : null,
+        fieldTemplates: m['fieldTemplates'] is List<dynamic> ? m['fieldTemplates'] : null,
         id: m['id'] is int ? m['id'] : null,
         name: m['name'] is String ? m['name'] : null,
-        option: m['option'] is Map<String, dynamic> ? m['option'] : null,
+        options: m['options'] is Map<String, dynamic> ? m['options'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
         type: m['type'] is String ? m['type'] : null,
@@ -923,8 +937,8 @@ class TemplateCreateData {
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != access_mode) {
-      m['access_mode'] = access_mode;
+    if (null != accessMode) {
+      m['accessMode'] = accessMode;
     }
     if (null != active) {
       m['active'] = active;
@@ -932,8 +946,8 @@ class TemplateCreateData {
     if (null != client) {
       m['client'] = client;
     }
-    if (null != field_template) {
-      m['field_template'] = field_template;
+    if (null != fieldTemplates) {
+      m['fieldTemplates'] = fieldTemplates;
     }
     if (null != id) {
       m['id'] = id;
@@ -941,8 +955,8 @@ class TemplateCreateData {
     if (null != name) {
       m['name'] = name;
     }
-    if (null != option) {
-      m['option'] = option;
+    if (null != options) {
+      m['options'] = options;
     }
     if (null != partner) {
       m['partner'] = partner;
@@ -987,19 +1001,19 @@ class Transaction {
   /// OBJECT
   Map<String, dynamic>? client;
   /// STRING
-  String? complete_date;
+  String? completeDate;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// STRING
-  String? err_code;
+  String? errCode;
   /// STRING
-  String? err_message;
+  String? errMessage;
   /// INTEGER
   int? id;
   /// STRING
-  String? ip_address;
+  String? ipAddress;
   /// STRING
-  String? message_id;
+  String? messageId;
   /// OBJECT
   Map<String, dynamic>? partner;
   /// STRING
@@ -1007,38 +1021,38 @@ class Transaction {
   /// BOOLEAN
   bool? success;
   /// STRING
-  String? template_id;
+  String? templateId;
 
   Transaction({
     this.bfid,
     this.client,
-    this.complete_date,
-    this.direct_partner,
-    this.err_code,
-    this.err_message,
+    this.completeDate,
+    this.directPartner,
+    this.errCode,
+    this.errMessage,
     this.id,
-    this.ip_address,
-    this.message_id,
+    this.ipAddress,
+    this.messageId,
     this.partner,
     this.reference,
     this.success,
-    this.template_id,
+    this.templateId,
   });
 
   factory Transaction.fromMap(Map<String, dynamic> m) => Transaction(
         bfid: m['bfid'] is String ? m['bfid'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
-        complete_date: m['complete_date'] is String ? m['complete_date'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
-        err_code: m['err_code'] is String ? m['err_code'] : null,
-        err_message: m['err_message'] is String ? m['err_message'] : null,
+        completeDate: m['completeDate'] is String ? m['completeDate'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
+        errCode: m['errCode'] is String ? m['errCode'] : null,
+        errMessage: m['errMessage'] is String ? m['errMessage'] : null,
         id: m['id'] is int ? m['id'] : null,
-        ip_address: m['ip_address'] is String ? m['ip_address'] : null,
-        message_id: m['message_id'] is String ? m['message_id'] : null,
+        ipAddress: m['ipAddress'] is String ? m['ipAddress'] : null,
+        messageId: m['messageId'] is String ? m['messageId'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
         success: m['success'] is bool ? m['success'] : null,
-        template_id: m['template_id'] is String ? m['template_id'] : null,
+        templateId: m['templateId'] is String ? m['templateId'] : null,
       );
 
   Map<String, dynamic> toMap() {
@@ -1049,26 +1063,26 @@ class Transaction {
     if (null != client) {
       m['client'] = client;
     }
-    if (null != complete_date) {
-      m['complete_date'] = complete_date;
+    if (null != completeDate) {
+      m['completeDate'] = completeDate;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
-    if (null != err_code) {
-      m['err_code'] = err_code;
+    if (null != errCode) {
+      m['errCode'] = errCode;
     }
-    if (null != err_message) {
-      m['err_message'] = err_message;
+    if (null != errMessage) {
+      m['errMessage'] = errMessage;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != ip_address) {
-      m['ip_address'] = ip_address;
+    if (null != ipAddress) {
+      m['ipAddress'] = ipAddress;
     }
-    if (null != message_id) {
-      m['message_id'] = message_id;
+    if (null != messageId) {
+      m['messageId'] = messageId;
     }
     if (null != partner) {
       m['partner'] = partner;
@@ -1079,8 +1093,8 @@ class Transaction {
     if (null != success) {
       m['success'] = success;
     }
-    if (null != template_id) {
-      m['template_id'] = template_id;
+    if (null != templateId) {
+      m['templateId'] = templateId;
     }
     return m;
   }
@@ -1113,19 +1127,19 @@ class TransactionListMatch {
   /// OBJECT
   Map<String, dynamic>? client;
   /// STRING
-  String? complete_date;
+  String? completeDate;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// STRING
-  String? err_code;
+  String? errCode;
   /// STRING
-  String? err_message;
+  String? errMessage;
   /// INTEGER
   int? id;
   /// STRING
-  String? ip_address;
+  String? ipAddress;
   /// STRING
-  String? message_id;
+  String? messageId;
   /// OBJECT
   Map<String, dynamic>? partner;
   /// STRING
@@ -1133,38 +1147,38 @@ class TransactionListMatch {
   /// BOOLEAN
   bool? success;
   /// STRING
-  String? template_id;
+  String? templateId;
 
   TransactionListMatch({
     this.bfid,
     this.client,
-    this.complete_date,
-    this.direct_partner,
-    this.err_code,
-    this.err_message,
+    this.completeDate,
+    this.directPartner,
+    this.errCode,
+    this.errMessage,
     this.id,
-    this.ip_address,
-    this.message_id,
+    this.ipAddress,
+    this.messageId,
     this.partner,
     this.reference,
     this.success,
-    this.template_id,
+    this.templateId,
   });
 
   factory TransactionListMatch.fromMap(Map<String, dynamic> m) => TransactionListMatch(
         bfid: m['bfid'] is String ? m['bfid'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
-        complete_date: m['complete_date'] is String ? m['complete_date'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
-        err_code: m['err_code'] is String ? m['err_code'] : null,
-        err_message: m['err_message'] is String ? m['err_message'] : null,
+        completeDate: m['completeDate'] is String ? m['completeDate'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
+        errCode: m['errCode'] is String ? m['errCode'] : null,
+        errMessage: m['errMessage'] is String ? m['errMessage'] : null,
         id: m['id'] is int ? m['id'] : null,
-        ip_address: m['ip_address'] is String ? m['ip_address'] : null,
-        message_id: m['message_id'] is String ? m['message_id'] : null,
+        ipAddress: m['ipAddress'] is String ? m['ipAddress'] : null,
+        messageId: m['messageId'] is String ? m['messageId'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
         success: m['success'] is bool ? m['success'] : null,
-        template_id: m['template_id'] is String ? m['template_id'] : null,
+        templateId: m['templateId'] is String ? m['templateId'] : null,
       );
 
   Map<String, dynamic> toMap() {
@@ -1175,26 +1189,26 @@ class TransactionListMatch {
     if (null != client) {
       m['client'] = client;
     }
-    if (null != complete_date) {
-      m['complete_date'] = complete_date;
+    if (null != completeDate) {
+      m['completeDate'] = completeDate;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
-    if (null != err_code) {
-      m['err_code'] = err_code;
+    if (null != errCode) {
+      m['errCode'] = errCode;
     }
-    if (null != err_message) {
-      m['err_message'] = err_message;
+    if (null != errMessage) {
+      m['errMessage'] = errMessage;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != ip_address) {
-      m['ip_address'] = ip_address;
+    if (null != ipAddress) {
+      m['ipAddress'] = ipAddress;
     }
-    if (null != message_id) {
-      m['message_id'] = message_id;
+    if (null != messageId) {
+      m['messageId'] = messageId;
     }
     if (null != partner) {
       m['partner'] = partner;
@@ -1205,8 +1219,8 @@ class TransactionListMatch {
     if (null != success) {
       m['success'] = success;
     }
-    if (null != template_id) {
-      m['template_id'] = template_id;
+    if (null != templateId) {
+      m['templateId'] = templateId;
     }
     return m;
   }
@@ -1214,23 +1228,23 @@ class TransactionListMatch {
 
 class UpdateResult {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? client;
   /// OBJECT (required at the API)
   Map<String, dynamic>? contact;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// STRING (required at the API)
   String? email;
   /// STRING (required at the API)
-  String? first_name;
+  String? firstName;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING (required at the API)
-  String? last_name;
+  String? lastName;
   /// STRING
   String? mid;
   /// STRING
@@ -1244,66 +1258,66 @@ class UpdateResult {
   /// STRING
   String? reference;
   /// BOOLEAN
-  bool? send_welcome_email;
+  bool? sendWelcomeEmail;
   /// STRING (required at the API)
-  String? user_name;
+  String? userName;
   /// OBJECT (required at the API)
-  Map<String, dynamic>? user_role;
+  Map<String, dynamic>? userRole;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   UpdateResult({
-    this.billing_id,
+    this.billingId,
     this.client,
     this.contact,
-    this.direct_partner,
+    this.directPartner,
     this.email,
-    this.first_name,
+    this.firstName,
     this.id,
-    this.is_active,
-    this.last_name,
+    this.isActive,
+    this.lastName,
     this.mid,
     this.name,
     this.parent,
     this.partner,
     this.phone,
     this.reference,
-    this.send_welcome_email,
-    this.user_name,
-    this.user_role,
-    this.verification_phrase,
+    this.sendWelcomeEmail,
+    this.userName,
+    this.userRole,
+    this.verificationPhrase,
     this.version,
   });
 
   factory UpdateResult.fromMap(Map<String, dynamic> m) => UpdateResult(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         email: m['email'] is String ? m['email'] : null,
-        first_name: m['first_name'] is String ? m['first_name'] : null,
+        firstName: m['firstName'] is String ? m['firstName'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
-        last_name: m['last_name'] is String ? m['last_name'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
+        lastName: m['lastName'] is String ? m['lastName'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         phone: m['phone'] is String ? m['phone'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        send_welcome_email: m['send_welcome_email'] is bool ? m['send_welcome_email'] : null,
-        user_name: m['user_name'] is String ? m['user_name'] : null,
-        user_role: m['user_role'] is Map<String, dynamic> ? m['user_role'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        sendWelcomeEmail: m['sendWelcomeEmail'] is bool ? m['sendWelcomeEmail'] : null,
+        userName: m['userName'] is String ? m['userName'] : null,
+        userRole: m['userRole'] is Map<String, dynamic> ? m['userRole'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != client) {
       m['client'] = client;
@@ -1311,23 +1325,23 @@ class UpdateResult {
     if (null != contact) {
       m['contact'] = contact;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != email) {
       m['email'] = email;
     }
-    if (null != first_name) {
-      m['first_name'] = first_name;
+    if (null != firstName) {
+      m['firstName'] = firstName;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
-    if (null != last_name) {
-      m['last_name'] = last_name;
+    if (null != lastName) {
+      m['lastName'] = lastName;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -1347,17 +1361,17 @@ class UpdateResult {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != send_welcome_email) {
-      m['send_welcome_email'] = send_welcome_email;
+    if (null != sendWelcomeEmail) {
+      m['sendWelcomeEmail'] = sendWelcomeEmail;
     }
-    if (null != user_name) {
-      m['user_name'] = user_name;
+    if (null != userName) {
+      m['userName'] = userName;
     }
-    if (null != user_role) {
-      m['user_role'] = user_role;
+    if (null != userRole) {
+      m['userRole'] = userRole;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -1368,23 +1382,23 @@ class UpdateResult {
 
 class UpdateResultListMatch {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? client;
   /// OBJECT
   Map<String, dynamic>? contact;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// STRING
   String? email;
   /// STRING
-  String? first_name;
+  String? firstName;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
-  String? last_name;
+  String? lastName;
   /// STRING
   String? mid;
   /// STRING
@@ -1398,66 +1412,66 @@ class UpdateResultListMatch {
   /// STRING
   String? reference;
   /// BOOLEAN
-  bool? send_welcome_email;
+  bool? sendWelcomeEmail;
   /// STRING
-  String? user_name;
+  String? userName;
   /// OBJECT
-  Map<String, dynamic>? user_role;
+  Map<String, dynamic>? userRole;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   UpdateResultListMatch({
-    this.billing_id,
+    this.billingId,
     this.client,
     this.contact,
-    this.direct_partner,
+    this.directPartner,
     this.email,
-    this.first_name,
+    this.firstName,
     this.id,
-    this.is_active,
-    this.last_name,
+    this.isActive,
+    this.lastName,
     this.mid,
     this.name,
     this.parent,
     this.partner,
     this.phone,
     this.reference,
-    this.send_welcome_email,
-    this.user_name,
-    this.user_role,
-    this.verification_phrase,
+    this.sendWelcomeEmail,
+    this.userName,
+    this.userRole,
+    this.verificationPhrase,
     this.version,
   });
 
   factory UpdateResultListMatch.fromMap(Map<String, dynamic> m) => UpdateResultListMatch(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         email: m['email'] is String ? m['email'] : null,
-        first_name: m['first_name'] is String ? m['first_name'] : null,
+        firstName: m['firstName'] is String ? m['firstName'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
-        last_name: m['last_name'] is String ? m['last_name'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
+        lastName: m['lastName'] is String ? m['lastName'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         phone: m['phone'] is String ? m['phone'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        send_welcome_email: m['send_welcome_email'] is bool ? m['send_welcome_email'] : null,
-        user_name: m['user_name'] is String ? m['user_name'] : null,
-        user_role: m['user_role'] is Map<String, dynamic> ? m['user_role'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        sendWelcomeEmail: m['sendWelcomeEmail'] is bool ? m['sendWelcomeEmail'] : null,
+        userName: m['userName'] is String ? m['userName'] : null,
+        userRole: m['userRole'] is Map<String, dynamic> ? m['userRole'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != client) {
       m['client'] = client;
@@ -1465,23 +1479,23 @@ class UpdateResultListMatch {
     if (null != contact) {
       m['contact'] = contact;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != email) {
       m['email'] = email;
     }
-    if (null != first_name) {
-      m['first_name'] = first_name;
+    if (null != firstName) {
+      m['firstName'] = firstName;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
-    if (null != last_name) {
-      m['last_name'] = last_name;
+    if (null != lastName) {
+      m['lastName'] = lastName;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -1501,17 +1515,17 @@ class UpdateResultListMatch {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != send_welcome_email) {
-      m['send_welcome_email'] = send_welcome_email;
+    if (null != sendWelcomeEmail) {
+      m['sendWelcomeEmail'] = sendWelcomeEmail;
     }
-    if (null != user_name) {
-      m['user_name'] = user_name;
+    if (null != userName) {
+      m['userName'] = userName;
     }
-    if (null != user_role) {
-      m['user_role'] = user_role;
+    if (null != userRole) {
+      m['userRole'] = userRole;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -1522,23 +1536,23 @@ class UpdateResultListMatch {
 
 class UpdateResultCreateData {
   /// STRING
-  String? billing_id;
+  String? billingId;
   /// OBJECT
   Map<String, dynamic>? client;
   /// OBJECT (required at the API)
   Map<String, dynamic>? contact;
   /// OBJECT
-  Map<String, dynamic>? direct_partner;
+  Map<String, dynamic>? directPartner;
   /// STRING (required at the API)
   String? email;
   /// STRING (required at the API)
-  String? first_name;
+  String? firstName;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING (required at the API)
-  String? last_name;
+  String? lastName;
   /// STRING
   String? mid;
   /// STRING
@@ -1552,66 +1566,66 @@ class UpdateResultCreateData {
   /// STRING
   String? reference;
   /// BOOLEAN
-  bool? send_welcome_email;
+  bool? sendWelcomeEmail;
   /// STRING (required at the API)
-  String? user_name;
+  String? userName;
   /// OBJECT (required at the API)
-  Map<String, dynamic>? user_role;
+  Map<String, dynamic>? userRole;
   /// STRING
-  String? verification_phrase;
+  String? verificationPhrase;
   /// INTEGER
   int? version;
 
   UpdateResultCreateData({
-    this.billing_id,
+    this.billingId,
     this.client,
     this.contact,
-    this.direct_partner,
+    this.directPartner,
     this.email,
-    this.first_name,
+    this.firstName,
     this.id,
-    this.is_active,
-    this.last_name,
+    this.isActive,
+    this.lastName,
     this.mid,
     this.name,
     this.parent,
     this.partner,
     this.phone,
     this.reference,
-    this.send_welcome_email,
-    this.user_name,
-    this.user_role,
-    this.verification_phrase,
+    this.sendWelcomeEmail,
+    this.userName,
+    this.userRole,
+    this.verificationPhrase,
     this.version,
   });
 
   factory UpdateResultCreateData.fromMap(Map<String, dynamic> m) => UpdateResultCreateData(
-        billing_id: m['billing_id'] is String ? m['billing_id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
         contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
-        direct_partner: m['direct_partner'] is Map<String, dynamic> ? m['direct_partner'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
         email: m['email'] is String ? m['email'] : null,
-        first_name: m['first_name'] is String ? m['first_name'] : null,
+        firstName: m['firstName'] is String ? m['firstName'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
-        last_name: m['last_name'] is String ? m['last_name'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
+        lastName: m['lastName'] is String ? m['lastName'] : null,
         mid: m['mid'] is String ? m['mid'] : null,
         name: m['name'] is String ? m['name'] : null,
         parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         phone: m['phone'] is String ? m['phone'] : null,
         reference: m['reference'] is String ? m['reference'] : null,
-        send_welcome_email: m['send_welcome_email'] is bool ? m['send_welcome_email'] : null,
-        user_name: m['user_name'] is String ? m['user_name'] : null,
-        user_role: m['user_role'] is Map<String, dynamic> ? m['user_role'] : null,
-        verification_phrase: m['verification_phrase'] is String ? m['verification_phrase'] : null,
+        sendWelcomeEmail: m['sendWelcomeEmail'] is bool ? m['sendWelcomeEmail'] : null,
+        userName: m['userName'] is String ? m['userName'] : null,
+        userRole: m['userRole'] is Map<String, dynamic> ? m['userRole'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
-    if (null != billing_id) {
-      m['billing_id'] = billing_id;
+    if (null != billingId) {
+      m['billingId'] = billingId;
     }
     if (null != client) {
       m['client'] = client;
@@ -1619,23 +1633,23 @@ class UpdateResultCreateData {
     if (null != contact) {
       m['contact'] = contact;
     }
-    if (null != direct_partner) {
-      m['direct_partner'] = direct_partner;
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
     }
     if (null != email) {
       m['email'] = email;
     }
-    if (null != first_name) {
-      m['first_name'] = first_name;
+    if (null != firstName) {
+      m['firstName'] = firstName;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
-    if (null != last_name) {
-      m['last_name'] = last_name;
+    if (null != lastName) {
+      m['lastName'] = lastName;
     }
     if (null != mid) {
       m['mid'] = mid;
@@ -1655,17 +1669,17 @@ class UpdateResultCreateData {
     if (null != reference) {
       m['reference'] = reference;
     }
-    if (null != send_welcome_email) {
-      m['send_welcome_email'] = send_welcome_email;
+    if (null != sendWelcomeEmail) {
+      m['sendWelcomeEmail'] = sendWelcomeEmail;
     }
-    if (null != user_name) {
-      m['user_name'] = user_name;
+    if (null != userName) {
+      m['userName'] = userName;
     }
-    if (null != user_role) {
-      m['user_role'] = user_role;
+    if (null != userRole) {
+      m['userRole'] = userRole;
     }
-    if (null != verification_phrase) {
-      m['verification_phrase'] = verification_phrase;
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
     }
     if (null != version) {
       m['version'] = version;
@@ -1677,19 +1691,152 @@ class UpdateResultCreateData {
 class UpdateResultUpdateData {
   /// STRING (required at the API)
   String? id;
+  /// STRING
+  String? billingId;
+  /// OBJECT
+  Map<String, dynamic>? client;
+  /// OBJECT
+  Map<String, dynamic>? contact;
+  /// OBJECT
+  Map<String, dynamic>? directPartner;
+  /// STRING
+  String? email;
+  /// STRING
+  String? firstName;
+  /// BOOLEAN
+  bool? isActive;
+  /// STRING
+  String? lastName;
+  /// STRING
+  String? mid;
+  /// STRING
+  String? name;
+  /// OBJECT
+  Map<String, dynamic>? parent;
+  /// OBJECT
+  Map<String, dynamic>? partner;
+  /// STRING
+  String? phone;
+  /// STRING
+  String? reference;
+  /// BOOLEAN
+  bool? sendWelcomeEmail;
+  /// STRING
+  String? userName;
+  /// OBJECT
+  Map<String, dynamic>? userRole;
+  /// STRING
+  String? verificationPhrase;
+  /// INTEGER
+  int? version;
 
   UpdateResultUpdateData({
     this.id,
+    this.billingId,
+    this.client,
+    this.contact,
+    this.directPartner,
+    this.email,
+    this.firstName,
+    this.isActive,
+    this.lastName,
+    this.mid,
+    this.name,
+    this.parent,
+    this.partner,
+    this.phone,
+    this.reference,
+    this.sendWelcomeEmail,
+    this.userName,
+    this.userRole,
+    this.verificationPhrase,
+    this.version,
   });
 
   factory UpdateResultUpdateData.fromMap(Map<String, dynamic> m) => UpdateResultUpdateData(
         id: m['id'] is String ? m['id'] : null,
+        billingId: m['billingId'] is String ? m['billingId'] : null,
+        client: m['client'] is Map<String, dynamic> ? m['client'] : null,
+        contact: m['contact'] is Map<String, dynamic> ? m['contact'] : null,
+        directPartner: m['directPartner'] is Map<String, dynamic> ? m['directPartner'] : null,
+        email: m['email'] is String ? m['email'] : null,
+        firstName: m['firstName'] is String ? m['firstName'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
+        lastName: m['lastName'] is String ? m['lastName'] : null,
+        mid: m['mid'] is String ? m['mid'] : null,
+        name: m['name'] is String ? m['name'] : null,
+        parent: m['parent'] is Map<String, dynamic> ? m['parent'] : null,
+        partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
+        phone: m['phone'] is String ? m['phone'] : null,
+        reference: m['reference'] is String ? m['reference'] : null,
+        sendWelcomeEmail: m['sendWelcomeEmail'] is bool ? m['sendWelcomeEmail'] : null,
+        userName: m['userName'] is String ? m['userName'] : null,
+        userRole: m['userRole'] is Map<String, dynamic> ? m['userRole'] : null,
+        verificationPhrase: m['verificationPhrase'] is String ? m['verificationPhrase'] : null,
+        version: m['version'] is int ? m['version'] : null,
       );
 
   Map<String, dynamic> toMap() {
     final m = <String, dynamic>{};
     if (null != id) {
       m['id'] = id;
+    }
+    if (null != billingId) {
+      m['billingId'] = billingId;
+    }
+    if (null != client) {
+      m['client'] = client;
+    }
+    if (null != contact) {
+      m['contact'] = contact;
+    }
+    if (null != directPartner) {
+      m['directPartner'] = directPartner;
+    }
+    if (null != email) {
+      m['email'] = email;
+    }
+    if (null != firstName) {
+      m['firstName'] = firstName;
+    }
+    if (null != isActive) {
+      m['isActive'] = isActive;
+    }
+    if (null != lastName) {
+      m['lastName'] = lastName;
+    }
+    if (null != mid) {
+      m['mid'] = mid;
+    }
+    if (null != name) {
+      m['name'] = name;
+    }
+    if (null != parent) {
+      m['parent'] = parent;
+    }
+    if (null != partner) {
+      m['partner'] = partner;
+    }
+    if (null != phone) {
+      m['phone'] = phone;
+    }
+    if (null != reference) {
+      m['reference'] = reference;
+    }
+    if (null != sendWelcomeEmail) {
+      m['sendWelcomeEmail'] = sendWelcomeEmail;
+    }
+    if (null != userName) {
+      m['userName'] = userName;
+    }
+    if (null != userRole) {
+      m['userRole'] = userRole;
+    }
+    if (null != verificationPhrase) {
+      m['verificationPhrase'] = verificationPhrase;
+    }
+    if (null != version) {
+      m['version'] = version;
     }
     return m;
   }
@@ -1703,13 +1850,13 @@ class User {
   /// STRING
   String? email;
   /// STRING
-  String? first_name;
+  String? firstName;
   /// INTEGER
   int? id;
   /// BOOLEAN
-  bool? is_active;
+  bool? isActive;
   /// STRING
-  String? last_name;
+  String? lastName;
   /// STRING
   String? modified;
   /// OBJECT
@@ -1717,9 +1864,9 @@ class User {
   /// STRING
   String? phone;
   /// STRING
-  String? user_name;
+  String? userName;
   /// OBJECT
-  Map<String, dynamic>? user_role;
+  Map<String, dynamic>? userRole;
   /// INTEGER
   int? version;
 
@@ -1727,15 +1874,15 @@ class User {
     this.client,
     this.created,
     this.email,
-    this.first_name,
+    this.firstName,
     this.id,
-    this.is_active,
-    this.last_name,
+    this.isActive,
+    this.lastName,
     this.modified,
     this.partner,
     this.phone,
-    this.user_name,
-    this.user_role,
+    this.userName,
+    this.userRole,
     this.version,
   });
 
@@ -1743,15 +1890,15 @@ class User {
         client: m['client'] is Map<String, dynamic> ? m['client'] : null,
         created: m['created'] is String ? m['created'] : null,
         email: m['email'] is String ? m['email'] : null,
-        first_name: m['first_name'] is String ? m['first_name'] : null,
+        firstName: m['firstName'] is String ? m['firstName'] : null,
         id: m['id'] is int ? m['id'] : null,
-        is_active: m['is_active'] is bool ? m['is_active'] : null,
-        last_name: m['last_name'] is String ? m['last_name'] : null,
+        isActive: m['isActive'] is bool ? m['isActive'] : null,
+        lastName: m['lastName'] is String ? m['lastName'] : null,
         modified: m['modified'] is String ? m['modified'] : null,
         partner: m['partner'] is Map<String, dynamic> ? m['partner'] : null,
         phone: m['phone'] is String ? m['phone'] : null,
-        user_name: m['user_name'] is String ? m['user_name'] : null,
-        user_role: m['user_role'] is Map<String, dynamic> ? m['user_role'] : null,
+        userName: m['userName'] is String ? m['userName'] : null,
+        userRole: m['userRole'] is Map<String, dynamic> ? m['userRole'] : null,
         version: m['version'] is int ? m['version'] : null,
       );
 
@@ -1766,17 +1913,17 @@ class User {
     if (null != email) {
       m['email'] = email;
     }
-    if (null != first_name) {
-      m['first_name'] = first_name;
+    if (null != firstName) {
+      m['firstName'] = firstName;
     }
     if (null != id) {
       m['id'] = id;
     }
-    if (null != is_active) {
-      m['is_active'] = is_active;
+    if (null != isActive) {
+      m['isActive'] = isActive;
     }
-    if (null != last_name) {
-      m['last_name'] = last_name;
+    if (null != lastName) {
+      m['lastName'] = lastName;
     }
     if (null != modified) {
       m['modified'] = modified;
@@ -1787,11 +1934,11 @@ class User {
     if (null != phone) {
       m['phone'] = phone;
     }
-    if (null != user_name) {
-      m['user_name'] = user_name;
+    if (null != userName) {
+      m['userName'] = userName;
     }
-    if (null != user_role) {
-      m['user_role'] = user_role;
+    if (null != userRole) {
+      m['userRole'] = userRole;
     }
     if (null != version) {
       m['version'] = version;

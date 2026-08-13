@@ -55,7 +55,7 @@ catch (err: RuntimeException) {
 
 ### 3. Load a client
 
-`load()` returns the bare record (as `Any?`) and raises on error.
+`load()` returns the ENTITY — call data() for the record — and raises on error.
 
 ```kotlin
 try {
@@ -70,8 +70,8 @@ catch (err: RuntimeException) {
 ### 4. Create, update, and remove
 
 ```kotlin
-// Create — returns the bare created record (as Any?)
-val created = client.client(null).create(mutableMapOf<String, Any?>("billing_id" to "example_billing_id", "contact" to mapOf<String, Any?>()), null)
+// Create — returns the ENTITY (call data() for the record)
+val created = client.client(null).create(mutableMapOf<String, Any?>("billingId" to "example_billingId", "contact" to mapOf<String, Any?>()), null)
 
 // Remove
 client.client(null).remove(mutableMapOf<String, Any?>("id" to "example_id"), null)
@@ -152,7 +152,8 @@ Create a mock client for unit testing — no server required:
 ```kotlin
 val client = BluefinShieldconexMgmtSDK.testSDK(null, null)
 
-// Entity ops return the bare record and raise on error.
+// Entity ops return the ENTITY and raises on error;
+// call data() for the record.
 val partner = client.partner(null).list(null, null)
 // partner holds the mock response record
 println(partner)
@@ -256,7 +257,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `Map` for single-entity
+Entity operations return the ENTITY (call data() for the record) (a `Map` for single-entity
 ops, an aggregate `List` for `list`) as `Any?` and raise on error. Wrap
 calls in `try`/`catch` to handle failures.
 
@@ -278,12 +279,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -309,16 +310,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, load.
@@ -329,13 +330,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -351,17 +352,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: list, load.
 
@@ -371,25 +372,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, update.
@@ -403,15 +404,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: load.
@@ -440,12 +441,12 @@ Create an instance: `val client = client.client(null)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String?` |  |
+| `billingId` | `String?` |  |
 | `contact` | `Map<String, Any?>?` |  |
 | `created` | `String?` |  |
-| `direct_partner` | `Map<String, Any?>?` |  |
+| `directPartner` | `Map<String, Any?>?` |  |
 | `id` | `Long?` |  |
-| `is_active` | `Boolean?` |  |
+| `isActive` | `Boolean?` |  |
 | `mid` | `String?` |  |
 | `modified` | `String?` |  |
 | `name` | `String?` |  |
@@ -514,16 +515,16 @@ Create an instance: `val partner = client.partner(null)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String?` |  |
+| `billingId` | `String?` |  |
 | `contact` | `Map<String, Any?>?` |  |
 | `created` | `String?` |  |
 | `id` | `Long?` |  |
-| `is_active` | `Boolean?` |  |
+| `isActive` | `Boolean?` |  |
 | `modified` | `String?` |  |
 | `name` | `String?` |  |
 | `parent` | `Map<String, Any?>?` |  |
 | `reference` | `String?` |  |
-| `verification_phrase` | `String?` |  |
+| `verificationPhrase` | `String?` |  |
 | `version` | `Long?` |  |
 
 #### Example: Load
@@ -563,13 +564,13 @@ Create an instance: `val template = client.template(null)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Any?` |  |
+| `accessMode` | `Any?` |  |
 | `active` | `Boolean?` |  |
 | `client` | `Map<String, Any?>?` |  |
-| `field_template` | `List<Any?>?` |  |
+| `fieldTemplates` | `List<Any?>?` |  |
 | `id` | `Long?` |  |
 | `name` | `String?` |  |
-| `option` | `Map<String, Any?>?` |  |
+| `options` | `Map<String, Any?>?` |  |
 | `partner` | `Map<String, Any?>?` |  |
 | `reference` | `String?` |  |
 | `type` | `String?` |  |
@@ -612,17 +613,17 @@ Create an instance: `val transaction = client.transaction(null)`
 | --- | --- | --- |
 | `bfid` | `String?` |  |
 | `client` | `Map<String, Any?>?` |  |
-| `complete_date` | `String?` |  |
-| `direct_partner` | `Map<String, Any?>?` |  |
-| `err_code` | `String?` |  |
-| `err_message` | `String?` |  |
+| `completeDate` | `String?` |  |
+| `directPartner` | `Map<String, Any?>?` |  |
+| `errCode` | `String?` |  |
+| `errMessage` | `String?` |  |
 | `id` | `Long?` |  |
-| `ip_address` | `String?` |  |
-| `message_id` | `String?` |  |
+| `ipAddress` | `String?` |  |
+| `messageId` | `String?` |  |
 | `partner` | `Map<String, Any?>?` |  |
 | `reference` | `String?` |  |
 | `success` | `Boolean?` |  |
-| `template_id` | `String?` |  |
+| `templateId` | `String?` |  |
 
 #### Example: Load
 
@@ -653,25 +654,25 @@ Create an instance: `val updateResult = client.updateResult(null)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String?` |  |
+| `billingId` | `String?` |  |
 | `client` | `Map<String, Any?>?` |  |
 | `contact` | `Map<String, Any?>?` |  |
-| `direct_partner` | `Map<String, Any?>?` |  |
+| `directPartner` | `Map<String, Any?>?` |  |
 | `email` | `String?` |  |
-| `first_name` | `String?` |  |
+| `firstName` | `String?` |  |
 | `id` | `Long?` |  |
-| `is_active` | `Boolean?` |  |
-| `last_name` | `String?` |  |
+| `isActive` | `Boolean?` |  |
+| `lastName` | `String?` |  |
 | `mid` | `String?` |  |
 | `name` | `String?` |  |
 | `parent` | `Map<String, Any?>?` |  |
 | `partner` | `Map<String, Any?>?` |  |
 | `phone` | `String?` |  |
 | `reference` | `String?` |  |
-| `send_welcome_email` | `Boolean?` |  |
-| `user_name` | `String?` |  |
-| `user_role` | `Map<String, Any?>?` |  |
-| `verification_phrase` | `String?` |  |
+| `sendWelcomeEmail` | `Boolean?` |  |
+| `userName` | `String?` |  |
+| `userRole` | `Map<String, Any?>?` |  |
+| `verificationPhrase` | `String?` |  |
 | `version` | `Long?` |  |
 
 #### Example: List
@@ -686,11 +687,11 @@ val updateResultList = client.updateResult(null).list(null, null)
 val updateResult = client.updateResult(null).create(mutableMapOf<String, Any?>(
     "contact" to mapOf<String, Any?>(),  // Map<String, Any?>?
     "email" to "example_email",  // String?
-    "first_name" to "example_first_name",  // String?
-    "last_name" to "example_last_name",  // String?
+    "firstName" to "example_firstName",  // String?
+    "lastName" to "example_lastName",  // String?
     "phone" to "example_phone",  // String?
-    "user_name" to "example_user_name",  // String?
-    "user_role" to mapOf<String, Any?>()  // Map<String, Any?>?
+    "userName" to "example_userName",  // String?
+    "userRole" to mapOf<String, Any?>()  // Map<String, Any?>?
 ), null)
 ```
 
@@ -712,15 +713,15 @@ Create an instance: `val user = client.user(null)`
 | `client` | `Map<String, Any?>?` |  |
 | `created` | `String?` |  |
 | `email` | `String?` |  |
-| `first_name` | `String?` |  |
+| `firstName` | `String?` |  |
 | `id` | `Long?` |  |
-| `is_active` | `Boolean?` |  |
-| `last_name` | `String?` |  |
+| `isActive` | `Boolean?` |  |
+| `lastName` | `String?` |  |
 | `modified` | `String?` |  |
 | `partner` | `Map<String, Any?>?` |  |
 | `phone` | `String?` |  |
-| `user_name` | `String?` |  |
-| `user_role` | `Map<String, Any?>?` |  |
+| `userName` | `String?` |  |
+| `userRole` | `Map<String, Any?>?` |  |
 | `version` | `Long?` |  |
 
 #### Example: Load

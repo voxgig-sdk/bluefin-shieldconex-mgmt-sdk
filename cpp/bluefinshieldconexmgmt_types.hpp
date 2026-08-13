@@ -22,12 +22,12 @@ namespace sdk {
 namespace types {
 
 struct Client {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string mid;  // optional
   std::string modified;  // optional
   std::string name;  // optional
@@ -40,12 +40,12 @@ struct ClientLoadMatch {
 };
 
 struct ClientListMatch {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string mid;  // optional
   std::string modified;  // optional
   std::string name;  // optional
@@ -54,12 +54,12 @@ struct ClientListMatch {
 };
 
 struct ClientCreateData {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string mid;  // optional
   std::string modified;  // optional
   std::string name;  // optional
@@ -78,19 +78,21 @@ struct Clone {
 
 struct CloneCreateData {
   std::string template_id;
+  int64_t id;  // optional
+  std::string name;  // optional
 };
 
 struct Partner {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string modified;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::string reference;  // optional
-  std::string verification_phrase;  // optional
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
@@ -99,41 +101,41 @@ struct PartnerLoadMatch {
 };
 
 struct PartnerListMatch {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string modified;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::string reference;  // optional
-  std::string verification_phrase;  // optional
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
 struct PartnerCreateData {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> contact;  // optional
   std::string created;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
+  bool isActive;  // optional
   std::string modified;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::string reference;  // optional
-  std::string verification_phrase;  // optional
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
 struct Template {
-  Value access_mode;  // optional
+  Value accessMode;  // optional
   bool active;  // optional
   std::map<std::string, Value> client;  // optional
-  std::vector<Value> field_template;  // optional
+  std::vector<Value> fieldTemplates;  // optional
   int64_t id;  // optional
   std::string name;  // optional
-  std::map<std::string, Value> option;  // optional
+  std::map<std::string, Value> options;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string reference;  // optional
   std::string type;  // optional
@@ -145,13 +147,13 @@ struct TemplateLoadMatch {
 };
 
 struct TemplateListMatch {
-  Value access_mode;  // optional
+  Value accessMode;  // optional
   bool active;  // optional
   std::map<std::string, Value> client;  // optional
-  std::vector<Value> field_template;  // optional
+  std::vector<Value> fieldTemplates;  // optional
   int64_t id;  // optional
   std::string name;  // optional
-  std::map<std::string, Value> option;  // optional
+  std::map<std::string, Value> options;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string reference;  // optional
   std::string type;  // optional
@@ -159,13 +161,13 @@ struct TemplateListMatch {
 };
 
 struct TemplateCreateData {
-  Value access_mode;  // optional
+  Value accessMode;  // optional
   bool active;  // optional
   std::map<std::string, Value> client;  // optional
-  std::vector<Value> field_template;  // optional
+  std::vector<Value> fieldTemplates;  // optional
   int64_t id;  // optional
   std::string name;  // optional
-  std::map<std::string, Value> option;  // optional
+  std::map<std::string, Value> options;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string reference;  // optional
   std::string type;  // optional
@@ -179,17 +181,17 @@ struct TemplateRemoveMatch {
 struct Transaction {
   std::string bfid;  // optional
   std::map<std::string, Value> client;  // optional
-  std::string complete_date;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
-  std::string err_code;  // optional
-  std::string err_message;  // optional
+  std::string completeDate;  // optional
+  std::map<std::string, Value> directPartner;  // optional
+  std::string errCode;  // optional
+  std::string errMessage;  // optional
   int64_t id;  // optional
-  std::string ip_address;  // optional
-  std::string message_id;  // optional
+  std::string ipAddress;  // optional
+  std::string messageId;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string reference;  // optional
   bool success;  // optional
-  std::string template_id;  // optional
+  std::string templateId;  // optional
 };
 
 struct TransactionLoadMatch {
@@ -199,105 +201,124 @@ struct TransactionLoadMatch {
 struct TransactionListMatch {
   std::string bfid;  // optional
   std::map<std::string, Value> client;  // optional
-  std::string complete_date;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
-  std::string err_code;  // optional
-  std::string err_message;  // optional
+  std::string completeDate;  // optional
+  std::map<std::string, Value> directPartner;  // optional
+  std::string errCode;  // optional
+  std::string errMessage;  // optional
   int64_t id;  // optional
-  std::string ip_address;  // optional
-  std::string message_id;  // optional
+  std::string ipAddress;  // optional
+  std::string messageId;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string reference;  // optional
   bool success;  // optional
-  std::string template_id;  // optional
+  std::string templateId;  // optional
 };
 
 struct UpdateResult {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> client;  // optional
   std::map<std::string, Value> contact;
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   std::string email;
-  std::string first_name;
+  std::string firstName;
   int64_t id;  // optional
-  bool is_active;  // optional
-  std::string last_name;
+  bool isActive;  // optional
+  std::string lastName;
   std::string mid;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string phone;
   std::string reference;  // optional
-  bool send_welcome_email;  // optional
-  std::string user_name;
-  std::map<std::string, Value> user_role;
-  std::string verification_phrase;  // optional
+  bool sendWelcomeEmail;  // optional
+  std::string userName;
+  std::map<std::string, Value> userRole;
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
 struct UpdateResultListMatch {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> client;  // optional
   std::map<std::string, Value> contact;  // optional
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   std::string email;  // optional
-  std::string first_name;  // optional
+  std::string firstName;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
-  std::string last_name;  // optional
+  bool isActive;  // optional
+  std::string lastName;  // optional
   std::string mid;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string phone;  // optional
   std::string reference;  // optional
-  bool send_welcome_email;  // optional
-  std::string user_name;  // optional
-  std::map<std::string, Value> user_role;  // optional
-  std::string verification_phrase;  // optional
+  bool sendWelcomeEmail;  // optional
+  std::string userName;  // optional
+  std::map<std::string, Value> userRole;  // optional
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
 struct UpdateResultCreateData {
-  std::string billing_id;  // optional
+  std::string billingId;  // optional
   std::map<std::string, Value> client;  // optional
   std::map<std::string, Value> contact;
-  std::map<std::string, Value> direct_partner;  // optional
+  std::map<std::string, Value> directPartner;  // optional
   std::string email;
-  std::string first_name;
+  std::string firstName;
   int64_t id;  // optional
-  bool is_active;  // optional
-  std::string last_name;
+  bool isActive;  // optional
+  std::string lastName;
   std::string mid;  // optional
   std::string name;  // optional
   std::map<std::string, Value> parent;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string phone;
   std::string reference;  // optional
-  bool send_welcome_email;  // optional
-  std::string user_name;
-  std::map<std::string, Value> user_role;
-  std::string verification_phrase;  // optional
+  bool sendWelcomeEmail;  // optional
+  std::string userName;
+  std::map<std::string, Value> userRole;
+  std::string verificationPhrase;  // optional
   int64_t version;  // optional
 };
 
 struct UpdateResultUpdateData {
   std::string id;
+  std::string billingId;  // optional
+  std::map<std::string, Value> client;  // optional
+  std::map<std::string, Value> contact;  // optional
+  std::map<std::string, Value> directPartner;  // optional
+  std::string email;  // optional
+  std::string firstName;  // optional
+  bool isActive;  // optional
+  std::string lastName;  // optional
+  std::string mid;  // optional
+  std::string name;  // optional
+  std::map<std::string, Value> parent;  // optional
+  std::map<std::string, Value> partner;  // optional
+  std::string phone;  // optional
+  std::string reference;  // optional
+  bool sendWelcomeEmail;  // optional
+  std::string userName;  // optional
+  std::map<std::string, Value> userRole;  // optional
+  std::string verificationPhrase;  // optional
+  int64_t version;  // optional
 };
 
 struct User {
   std::map<std::string, Value> client;  // optional
   std::string created;  // optional
   std::string email;  // optional
-  std::string first_name;  // optional
+  std::string firstName;  // optional
   int64_t id;  // optional
-  bool is_active;  // optional
-  std::string last_name;  // optional
+  bool isActive;  // optional
+  std::string lastName;  // optional
   std::string modified;  // optional
   std::map<std::string, Value> partner;  // optional
   std::string phone;  // optional
-  std::string user_name;  // optional
-  std::map<std::string, Value> user_role;  // optional
+  std::string userName;  // optional
+  std::map<std::string, Value> userRole;  // optional
   int64_t version;  // optional
 };
 

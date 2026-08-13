@@ -70,7 +70,7 @@ describe("TemplateEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -82,7 +82,7 @@ describe("TemplateEntity", function()
 
     local template_ref01_data_result, err = template_ref01_ent:create(template_ref01_data, nil)
     assert.is_nil(err)
-    template_ref01_data = helpers.to_map(template_ref01_data_result)
+    template_ref01_data = helpers.to_map(type(template_ref01_data_result) == 'table' and template_ref01_data_result.data_get and template_ref01_data_result:data_get() or template_ref01_data_result)
     assert.is_not_nil(template_ref01_data)
     assert.is_not_nil(template_ref01_data["id"])
 
@@ -104,7 +104,7 @@ describe("TemplateEntity", function()
     }
     local template_ref01_data_dt0_loaded, err = template_ref01_ent:load(template_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local template_ref01_data_dt0_load_result = helpers.to_map(template_ref01_data_dt0_loaded)
+    local template_ref01_data_dt0_load_result = helpers.to_map(type(template_ref01_data_dt0_loaded) == 'table' and template_ref01_data_dt0_loaded.data_get and template_ref01_data_dt0_loaded:data_get() or template_ref01_data_dt0_loaded)
     assert.is_not_nil(template_ref01_data_dt0_load_result)
     assert.are.equal(template_ref01_data_dt0_load_result["id"], template_ref01_data["id"])
 
@@ -162,39 +162,39 @@ function template_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID")
+  local entid_env_raw = os.getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID"] = idmap,
-    ["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE",
-    ["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = "FALSE",
-    ["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE",
+    ["BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID"] = idmap,
+    ["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE",
+    ["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = "FALSE",
+    ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID"])
+    env["BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE" then
+  if env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+        apikey = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
       },
       extra or {},
     })
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE"
+  local live = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] == "TRUE",
+    explain = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

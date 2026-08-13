@@ -34,7 +34,8 @@ defmodule BluefinShieldconexMgmt.UserEntityTest do
     if id != nil do
       sdk = mk_sdk()
       ent = BluefinShieldconexMgmt.user(sdk)
-      rec = BluefinShieldconexMgmt.Entity.User.load(ent, S.jm(["id", id]))
+      loaded = BluefinShieldconexMgmt.Entity.User.load(ent, S.jm(["id", id]))
+      rec = BluefinShieldconexMgmt.EntityBase.data_get(loaded)
       assert S.ismap(rec)
       assert S.getprop(rec, "id") == id
     end

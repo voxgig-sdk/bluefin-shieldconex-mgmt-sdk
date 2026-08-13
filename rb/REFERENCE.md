@@ -118,12 +118,12 @@ client_ = client.Client
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Hash` | No |  |
 | `created` | `String` | No |  |
-| `direct_partner` | `Hash` | No |  |
+| `directPartner` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
-| `is_active` | `Boolean` | No |  |
+| `isActive` | `Boolean` | No |  |
 | `mid` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -134,12 +134,12 @@ client_ = client.Client
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -276,32 +276,32 @@ partner = client.Partner
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Hash` | No |  |
 | `created` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `is_active` | `Boolean` | No |  |
+| `isActive` | `Boolean` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Hash` | No |  |
 | `reference` | `String` | No |  |
-| `verification_phrase` | `String` | No |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Integer` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -371,13 +371,13 @@ template = client.Template
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Object` | No |  |
+| `accessMode` | `Object` | No |  |
 | `active` | `Boolean` | No |  |
 | `client` | `Hash` | No |  |
-| `field_template` | `Array` | No |  |
+| `fieldTemplates` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `option` | `Hash` | No |  |
+| `options` | `Hash` | No |  |
 | `partner` | `Hash` | No |  |
 | `reference` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -460,17 +460,17 @@ transaction = client.Transaction
 | --- | --- | --- | --- |
 | `bfid` | `String` | No |  |
 | `client` | `Hash` | No |  |
-| `complete_date` | `String` | No |  |
-| `direct_partner` | `Hash` | No |  |
-| `err_code` | `String` | No |  |
-| `err_message` | `String` | No |  |
+| `completeDate` | `String` | No |  |
+| `directPartner` | `Hash` | No |  |
+| `errCode` | `String` | No |  |
+| `errMessage` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `ip_address` | `String` | No |  |
-| `message_id` | `String` | No |  |
+| `ipAddress` | `String` | No |  |
+| `messageId` | `String` | No |  |
 | `partner` | `Hash` | No |  |
 | `reference` | `String` | No |  |
 | `success` | `Boolean` | No |  |
-| `template_id` | `String` | No |  |
+| `templateId` | `String` | No |  |
 
 ### Operations
 
@@ -530,50 +530,50 @@ update_result = client.UpdateResult
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `client` | `Hash` | No |  |
 | `contact` | `Hash` | Yes |  |
-| `direct_partner` | `Hash` | No |  |
+| `directPartner` | `Hash` | No |  |
 | `email` | `String` | Yes |  |
-| `first_name` | `String` | Yes |  |
+| `firstName` | `String` | Yes |  |
 | `id` | `Integer` | No |  |
-| `is_active` | `Boolean` | No |  |
-| `last_name` | `String` | Yes |  |
+| `isActive` | `Boolean` | No |  |
+| `lastName` | `String` | Yes |  |
 | `mid` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Hash` | No |  |
 | `partner` | `Hash` | No |  |
 | `phone` | `String` | Yes |  |
 | `reference` | `String` | No |  |
-| `send_welcome_email` | `Boolean` | No |  |
-| `user_name` | `String` | Yes |  |
-| `user_role` | `Hash` | Yes |  |
-| `verification_phrase` | `String` | No |  |
+| `sendWelcomeEmail` | `Boolean` | No |  |
+| `userName` | `String` | Yes |  |
+| `userRole` | `Hash` | Yes |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Integer` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -586,11 +586,11 @@ Create a new entity with the given data. Raises on error.
 result = client.UpdateResult.create({
   "contact" => {}, # Hash
   "email" => "example_email", # String
-  "first_name" => "example_first_name", # String
-  "last_name" => "example_last_name", # String
+  "firstName" => "example_firstName", # String
+  "lastName" => "example_lastName", # String
   "phone" => "example_phone", # String
-  "user_name" => "example_user_name", # String
-  "user_role" => {}, # Hash
+  "userName" => "example_userName", # String
+  "userRole" => {}, # Hash
 })
 ```
 
@@ -656,15 +656,15 @@ user = client.User
 | `client` | `Hash` | No |  |
 | `created` | `String` | No |  |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `is_active` | `Boolean` | No |  |
-| `last_name` | `String` | No |  |
+| `isActive` | `Boolean` | No |  |
+| `lastName` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `partner` | `Hash` | No |  |
 | `phone` | `String` | No |  |
-| `user_name` | `String` | No |  |
-| `user_role` | `Hash` | No |  |
+| `userName` | `String` | No |  |
+| `userRole` | `Hash` | No |  |
 | `version` | `Integer` | No |  |
 
 ### Operations

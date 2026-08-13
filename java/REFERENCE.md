@@ -120,12 +120,12 @@ SdkEntity client = client.client(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Map<String, Object>` | No |  |
 | `created` | `String` | No |  |
-| `direct_partner` | `Map<String, Object>` | No |  |
+| `directPartner` | `Map<String, Object>` | No |  |
 | `id` | `Long` | No |  |
-| `is_active` | `Boolean` | No |  |
+| `isActive` | `Boolean` | No |  |
 | `mid` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -136,12 +136,12 @@ SdkEntity client = client.client(null);
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -261,32 +261,32 @@ SdkEntity partner = client.partner(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `contact` | `Map<String, Object>` | No |  |
 | `created` | `String` | No |  |
 | `id` | `Long` | No |  |
-| `is_active` | `Boolean` | No |  |
+| `isActive` | `Boolean` | No |  |
 | `modified` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Map<String, Object>` | No |  |
 | `reference` | `String` | No |  |
-| `verification_phrase` | `String` | No |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Long` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -348,13 +348,13 @@ SdkEntity template = client.template(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Object` | No |  |
+| `accessMode` | `Object` | No |  |
 | `active` | `Boolean` | No |  |
 | `client` | `Map<String, Object>` | No |  |
-| `field_template` | `List<Object>` | No |  |
+| `fieldTemplates` | `List<Object>` | No |  |
 | `id` | `Long` | No |  |
 | `name` | `String` | No |  |
-| `option` | `Map<String, Object>` | No |  |
+| `options` | `Map<String, Object>` | No |  |
 | `partner` | `Map<String, Object>` | No |  |
 | `reference` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -429,17 +429,17 @@ SdkEntity transaction = client.transaction(null);
 | --- | --- | --- | --- |
 | `bfid` | `String` | No |  |
 | `client` | `Map<String, Object>` | No |  |
-| `complete_date` | `String` | No |  |
-| `direct_partner` | `Map<String, Object>` | No |  |
-| `err_code` | `String` | No |  |
-| `err_message` | `String` | No |  |
+| `completeDate` | `String` | No |  |
+| `directPartner` | `Map<String, Object>` | No |  |
+| `errCode` | `String` | No |  |
+| `errMessage` | `String` | No |  |
 | `id` | `Long` | No |  |
-| `ip_address` | `String` | No |  |
-| `message_id` | `String` | No |  |
+| `ipAddress` | `String` | No |  |
+| `messageId` | `String` | No |  |
 | `partner` | `Map<String, Object>` | No |  |
 | `reference` | `String` | No |  |
 | `success` | `Boolean` | No |  |
-| `template_id` | `String` | No |  |
+| `templateId` | `String` | No |  |
 
 ### Operations
 
@@ -491,50 +491,50 @@ SdkEntity updateResult = client.updateResult(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String` | No |  |
+| `billingId` | `String` | No |  |
 | `client` | `Map<String, Object>` | No |  |
 | `contact` | `Map<String, Object>` | Yes |  |
-| `direct_partner` | `Map<String, Object>` | No |  |
+| `directPartner` | `Map<String, Object>` | No |  |
 | `email` | `String` | Yes |  |
-| `first_name` | `String` | Yes |  |
+| `firstName` | `String` | Yes |  |
 | `id` | `Long` | No |  |
-| `is_active` | `Boolean` | No |  |
-| `last_name` | `String` | Yes |  |
+| `isActive` | `Boolean` | No |  |
+| `lastName` | `String` | Yes |  |
 | `mid` | `String` | No |  |
 | `name` | `String` | No |  |
 | `parent` | `Map<String, Object>` | No |  |
 | `partner` | `Map<String, Object>` | No |  |
 | `phone` | `String` | Yes |  |
 | `reference` | `String` | No |  |
-| `send_welcome_email` | `Boolean` | No |  |
-| `user_name` | `String` | Yes |  |
-| `user_role` | `Map<String, Object>` | Yes |  |
-| `verification_phrase` | `String` | No |  |
+| `sendWelcomeEmail` | `Boolean` | No |  |
+| `userName` | `String` | Yes |  |
+| `userRole` | `Map<String, Object>` | Yes |  |
+| `verificationPhrase` | `String` | No |  |
 | `version` | `Long` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -547,11 +547,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 Object result = client.updateResult(null).create(Map.of(
     "contact", Map.of(),  // Map<String, Object>
     "email", "example_email",  // String
-    "first_name", "example_first_name",  // String
-    "last_name", "example_last_name",  // String
+    "firstName", "example_firstName",  // String
+    "lastName", "example_lastName",  // String
     "phone", "example_phone",  // String
-    "user_name", "example_user_name",  // String
-    "user_role", Map.of()  // Map<String, Object>
+    "userName", "example_userName",  // String
+    "userRole", Map.of()  // Map<String, Object>
 ), null);
 ```
 
@@ -608,15 +608,15 @@ SdkEntity user = client.user(null);
 | `client` | `Map<String, Object>` | No |  |
 | `created` | `String` | No |  |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `Long` | No |  |
-| `is_active` | `Boolean` | No |  |
-| `last_name` | `String` | No |  |
+| `isActive` | `Boolean` | No |  |
+| `lastName` | `String` | No |  |
 | `modified` | `String` | No |  |
 | `partner` | `Map<String, Object>` | No |  |
 | `phone` | `String` | No |  |
-| `user_name` | `String` | No |  |
-| `user_role` | `Map<String, Object>` | No |  |
+| `userName` | `String` | No |  |
+| `userRole` | `Map<String, Object>` | No |  |
 | `version` | `Long` | No |  |
 
 ### Operations

@@ -26,8 +26,8 @@ import {
 describe('UpdateResultEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BLUEFINSHIELDCONEXMGMT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BLUEFINSHIELDCONEXMGMT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BluefinShieldconexMgmtSDK.test()
@@ -62,14 +62,14 @@ describe('UpdateResultEntity', async () => {
     const update_result_ref01_ent = client.UpdateResult()
     let update_result_ref01_data = setup.data.new.update_result['update_result_ref01']
 
-    update_result_ref01_data = await update_result_ref01_ent.create(update_result_ref01_data)
+    update_result_ref01_data = (await update_result_ref01_ent.create(update_result_ref01_data)).data()
     assert(null != update_result_ref01_data.id)
 
 
     // LIST
     const update_result_ref01_match: any = {}
 
-    const update_result_ref01_list = await update_result_ref01_ent.list(update_result_ref01_match)
+    const update_result_ref01_list = (await update_result_ref01_ent.list(update_result_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(update_result_ref01_list, { id: update_result_ref01_data.id })))
 
@@ -78,10 +78,10 @@ describe('UpdateResultEntity', async () => {
     const update_result_ref01_data_up0: any = {}
     update_result_ref01_data_up0.id = update_result_ref01_data.id
 
-    const update_result_ref01_markdef_up0 = { name: 'billing_id', value: 'Mark01-update_result_ref01_' + setup.now }
+    const update_result_ref01_markdef_up0 = { name: 'billingId', value: 'Mark01-update_result_ref01_' + setup.now }
     ;(update_result_ref01_data_up0 as any)[update_result_ref01_markdef_up0.name] = update_result_ref01_markdef_up0.value
 
-    const update_result_ref01_resdata_up0 = await update_result_ref01_ent.update(update_result_ref01_data_up0)
+    const update_result_ref01_resdata_up0 = (await update_result_ref01_ent.update(update_result_ref01_data_up0)).data()
     assert(update_result_ref01_resdata_up0.id === update_result_ref01_data_up0.id)
 
     assert((update_result_ref01_resdata_up0 as any)[update_result_ref01_markdef_up0.name] === update_result_ref01_markdef_up0.value)

@@ -10,7 +10,7 @@
 
 # Client entity data model.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -19,13 +19,13 @@
 # @!attribute [rw] created
 #   @return [String, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] mid
@@ -43,12 +43,12 @@
 # @!attribute [rw] version
 #   @return [Integer, nil]
 Client = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
-  :direct_partner,
+  :directPartner,
   :id,
-  :is_active,
+  :isActive,
   :mid,
   :modified,
   :name,
@@ -68,7 +68,7 @@ ClientLoadMatch = Struct.new(
 
 # Request payload for Client#list.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -77,13 +77,13 @@ ClientLoadMatch = Struct.new(
 # @!attribute [rw] created
 #   @return [String, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] mid
@@ -101,12 +101,12 @@ ClientLoadMatch = Struct.new(
 # @!attribute [rw] version
 #   @return [Integer, nil]
 ClientListMatch = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
-  :direct_partner,
+  :directPartner,
   :id,
-  :is_active,
+  :isActive,
   :mid,
   :modified,
   :name,
@@ -117,7 +117,7 @@ ClientListMatch = Struct.new(
 
 # Request payload for Client#create.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -126,13 +126,13 @@ ClientListMatch = Struct.new(
 # @!attribute [rw] created
 #   @return [String, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] mid
@@ -150,12 +150,12 @@ ClientListMatch = Struct.new(
 # @!attribute [rw] version
 #   @return [Integer, nil]
 ClientCreateData = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
-  :direct_partner,
+  :directPartner,
   :id,
-  :is_active,
+  :isActive,
   :mid,
   :modified,
   :name,
@@ -190,14 +190,22 @@ Clone = Struct.new(
 #
 # @!attribute [rw] template_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
 CloneCreateData = Struct.new(
   :template_id,
+  :id,
+  :name,
   keyword_init: true
 )
 
 # Partner entity data model.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -209,7 +217,7 @@ CloneCreateData = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] modified
@@ -224,22 +232,22 @@ CloneCreateData = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 Partner = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
   :id,
-  :is_active,
+  :isActive,
   :modified,
   :name,
   :parent,
   :reference,
-  :verification_phrase,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
@@ -255,7 +263,7 @@ PartnerLoadMatch = Struct.new(
 
 # Request payload for Partner#list.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -267,7 +275,7 @@ PartnerLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] modified
@@ -282,29 +290,29 @@ PartnerLoadMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 PartnerListMatch = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
   :id,
-  :is_active,
+  :isActive,
   :modified,
   :name,
   :parent,
   :reference,
-  :verification_phrase,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
 
 # Request payload for Partner#create.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] contact
@@ -316,7 +324,7 @@ PartnerListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] modified
@@ -331,29 +339,29 @@ PartnerListMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 PartnerCreateData = Struct.new(
-  :billing_id,
+  :billingId,
   :contact,
   :created,
   :id,
-  :is_active,
+  :isActive,
   :modified,
   :name,
   :parent,
   :reference,
-  :verification_phrase,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
 
 # Template entity data model.
 #
-# @!attribute [rw] access_mode
+# @!attribute [rw] accessMode
 #   @return [Object, nil]
 #
 # @!attribute [rw] active
@@ -362,7 +370,7 @@ PartnerCreateData = Struct.new(
 # @!attribute [rw] client
 #   @return [Hash, nil]
 #
-# @!attribute [rw] field_template
+# @!attribute [rw] fieldTemplates
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -371,7 +379,7 @@ PartnerCreateData = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] option
+# @!attribute [rw] options
 #   @return [Hash, nil]
 #
 # @!attribute [rw] partner
@@ -386,13 +394,13 @@ PartnerCreateData = Struct.new(
 # @!attribute [rw] version
 #   @return [Integer, nil]
 Template = Struct.new(
-  :access_mode,
+  :accessMode,
   :active,
   :client,
-  :field_template,
+  :fieldTemplates,
   :id,
   :name,
-  :option,
+  :options,
   :partner,
   :reference,
   :type,
@@ -411,7 +419,7 @@ TemplateLoadMatch = Struct.new(
 
 # Request payload for Template#list.
 #
-# @!attribute [rw] access_mode
+# @!attribute [rw] accessMode
 #   @return [Object, nil]
 #
 # @!attribute [rw] active
@@ -420,7 +428,7 @@ TemplateLoadMatch = Struct.new(
 # @!attribute [rw] client
 #   @return [Hash, nil]
 #
-# @!attribute [rw] field_template
+# @!attribute [rw] fieldTemplates
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -429,7 +437,7 @@ TemplateLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] option
+# @!attribute [rw] options
 #   @return [Hash, nil]
 #
 # @!attribute [rw] partner
@@ -444,13 +452,13 @@ TemplateLoadMatch = Struct.new(
 # @!attribute [rw] version
 #   @return [Integer, nil]
 TemplateListMatch = Struct.new(
-  :access_mode,
+  :accessMode,
   :active,
   :client,
-  :field_template,
+  :fieldTemplates,
   :id,
   :name,
-  :option,
+  :options,
   :partner,
   :reference,
   :type,
@@ -460,7 +468,7 @@ TemplateListMatch = Struct.new(
 
 # Request payload for Template#create.
 #
-# @!attribute [rw] access_mode
+# @!attribute [rw] accessMode
 #   @return [Object, nil]
 #
 # @!attribute [rw] active
@@ -469,7 +477,7 @@ TemplateListMatch = Struct.new(
 # @!attribute [rw] client
 #   @return [Hash, nil]
 #
-# @!attribute [rw] field_template
+# @!attribute [rw] fieldTemplates
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -478,7 +486,7 @@ TemplateListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] option
+# @!attribute [rw] options
 #   @return [Hash, nil]
 #
 # @!attribute [rw] partner
@@ -493,13 +501,13 @@ TemplateListMatch = Struct.new(
 # @!attribute [rw] version
 #   @return [Integer, nil]
 TemplateCreateData = Struct.new(
-  :access_mode,
+  :accessMode,
   :active,
   :client,
-  :field_template,
+  :fieldTemplates,
   :id,
   :name,
-  :option,
+  :options,
   :partner,
   :reference,
   :type,
@@ -524,25 +532,25 @@ TemplateRemoveMatch = Struct.new(
 # @!attribute [rw] client
 #   @return [Hash, nil]
 #
-# @!attribute [rw] complete_date
+# @!attribute [rw] completeDate
 #   @return [String, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
-# @!attribute [rw] err_code
+# @!attribute [rw] errCode
 #   @return [String, nil]
 #
-# @!attribute [rw] err_message
+# @!attribute [rw] errMessage
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ip_address
+# @!attribute [rw] ipAddress
 #   @return [String, nil]
 #
-# @!attribute [rw] message_id
+# @!attribute [rw] messageId
 #   @return [String, nil]
 #
 # @!attribute [rw] partner
@@ -554,22 +562,22 @@ TemplateRemoveMatch = Struct.new(
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] template_id
+# @!attribute [rw] templateId
 #   @return [String, nil]
 Transaction = Struct.new(
   :bfid,
   :client,
-  :complete_date,
-  :direct_partner,
-  :err_code,
-  :err_message,
+  :completeDate,
+  :directPartner,
+  :errCode,
+  :errMessage,
   :id,
-  :ip_address,
-  :message_id,
+  :ipAddress,
+  :messageId,
   :partner,
   :reference,
   :success,
-  :template_id,
+  :templateId,
   keyword_init: true
 )
 
@@ -590,25 +598,25 @@ TransactionLoadMatch = Struct.new(
 # @!attribute [rw] client
 #   @return [Hash, nil]
 #
-# @!attribute [rw] complete_date
+# @!attribute [rw] completeDate
 #   @return [String, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
-# @!attribute [rw] err_code
+# @!attribute [rw] errCode
 #   @return [String, nil]
 #
-# @!attribute [rw] err_message
+# @!attribute [rw] errMessage
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ip_address
+# @!attribute [rw] ipAddress
 #   @return [String, nil]
 #
-# @!attribute [rw] message_id
+# @!attribute [rw] messageId
 #   @return [String, nil]
 #
 # @!attribute [rw] partner
@@ -620,28 +628,28 @@ TransactionLoadMatch = Struct.new(
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] template_id
+# @!attribute [rw] templateId
 #   @return [String, nil]
 TransactionListMatch = Struct.new(
   :bfid,
   :client,
-  :complete_date,
-  :direct_partner,
-  :err_code,
-  :err_message,
+  :completeDate,
+  :directPartner,
+  :errCode,
+  :errMessage,
   :id,
-  :ip_address,
-  :message_id,
+  :ipAddress,
+  :messageId,
   :partner,
   :reference,
   :success,
-  :template_id,
+  :templateId,
   keyword_init: true
 )
 
 # UpdateResult entity data model.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] client
@@ -650,22 +658,22 @@ TransactionListMatch = Struct.new(
 # @!attribute [rw] contact
 #   @return [Hash]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] email
 #   @return [String]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String]
 #
 # @!attribute [rw] mid
@@ -686,47 +694,47 @@ TransactionListMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] send_welcome_email
+# @!attribute [rw] sendWelcomeEmail
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] user_name
+# @!attribute [rw] userName
 #   @return [String]
 #
-# @!attribute [rw] user_role
+# @!attribute [rw] userRole
 #   @return [Hash]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 UpdateResult = Struct.new(
-  :billing_id,
+  :billingId,
   :client,
   :contact,
-  :direct_partner,
+  :directPartner,
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :is_active,
-  :last_name,
+  :isActive,
+  :lastName,
   :mid,
   :name,
   :parent,
   :partner,
   :phone,
   :reference,
-  :send_welcome_email,
-  :user_name,
-  :user_role,
-  :verification_phrase,
+  :sendWelcomeEmail,
+  :userName,
+  :userRole,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
 
 # Request payload for UpdateResult#list.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] client
@@ -735,22 +743,22 @@ UpdateResult = Struct.new(
 # @!attribute [rw] contact
 #   @return [Hash, nil]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String, nil]
 #
 # @!attribute [rw] mid
@@ -771,47 +779,47 @@ UpdateResult = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] send_welcome_email
+# @!attribute [rw] sendWelcomeEmail
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] user_name
+# @!attribute [rw] userName
 #   @return [String, nil]
 #
-# @!attribute [rw] user_role
+# @!attribute [rw] userRole
 #   @return [Hash, nil]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 UpdateResultListMatch = Struct.new(
-  :billing_id,
+  :billingId,
   :client,
   :contact,
-  :direct_partner,
+  :directPartner,
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :is_active,
-  :last_name,
+  :isActive,
+  :lastName,
   :mid,
   :name,
   :parent,
   :partner,
   :phone,
   :reference,
-  :send_welcome_email,
-  :user_name,
-  :user_role,
-  :verification_phrase,
+  :sendWelcomeEmail,
+  :userName,
+  :userRole,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
 
 # Request payload for UpdateResult#create.
 #
-# @!attribute [rw] billing_id
+# @!attribute [rw] billingId
 #   @return [String, nil]
 #
 # @!attribute [rw] client
@@ -820,22 +828,22 @@ UpdateResultListMatch = Struct.new(
 # @!attribute [rw] contact
 #   @return [Hash]
 #
-# @!attribute [rw] direct_partner
+# @!attribute [rw] directPartner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] email
 #   @return [String]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String]
 #
 # @!attribute [rw] mid
@@ -856,40 +864,40 @@ UpdateResultListMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] send_welcome_email
+# @!attribute [rw] sendWelcomeEmail
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] user_name
+# @!attribute [rw] userName
 #   @return [String]
 #
-# @!attribute [rw] user_role
+# @!attribute [rw] userRole
 #   @return [Hash]
 #
-# @!attribute [rw] verification_phrase
+# @!attribute [rw] verificationPhrase
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [Integer, nil]
 UpdateResultCreateData = Struct.new(
-  :billing_id,
+  :billingId,
   :client,
   :contact,
-  :direct_partner,
+  :directPartner,
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :is_active,
-  :last_name,
+  :isActive,
+  :lastName,
   :mid,
   :name,
   :parent,
   :partner,
   :phone,
   :reference,
-  :send_welcome_email,
-  :user_name,
-  :user_role,
-  :verification_phrase,
+  :sendWelcomeEmail,
+  :userName,
+  :userRole,
+  :verificationPhrase,
   :version,
   keyword_init: true
 )
@@ -898,8 +906,84 @@ UpdateResultCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] billingId
+#   @return [String, nil]
+#
+# @!attribute [rw] client
+#   @return [Hash, nil]
+#
+# @!attribute [rw] contact
+#   @return [Hash, nil]
+#
+# @!attribute [rw] directPartner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] firstName
+#   @return [String, nil]
+#
+# @!attribute [rw] isActive
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] lastName
+#   @return [String, nil]
+#
+# @!attribute [rw] mid
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parent
+#   @return [Hash, nil]
+#
+# @!attribute [rw] partner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] phone
+#   @return [String, nil]
+#
+# @!attribute [rw] reference
+#   @return [String, nil]
+#
+# @!attribute [rw] sendWelcomeEmail
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] userName
+#   @return [String, nil]
+#
+# @!attribute [rw] userRole
+#   @return [Hash, nil]
+#
+# @!attribute [rw] verificationPhrase
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
 UpdateResultUpdateData = Struct.new(
   :id,
+  :billingId,
+  :client,
+  :contact,
+  :directPartner,
+  :email,
+  :firstName,
+  :isActive,
+  :lastName,
+  :mid,
+  :name,
+  :parent,
+  :partner,
+  :phone,
+  :reference,
+  :sendWelcomeEmail,
+  :userName,
+  :userRole,
+  :verificationPhrase,
+  :version,
   keyword_init: true
 )
 
@@ -914,16 +998,16 @@ UpdateResultUpdateData = Struct.new(
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] is_active
+# @!attribute [rw] isActive
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String, nil]
 #
 # @!attribute [rw] modified
@@ -935,10 +1019,10 @@ UpdateResultUpdateData = Struct.new(
 # @!attribute [rw] phone
 #   @return [String, nil]
 #
-# @!attribute [rw] user_name
+# @!attribute [rw] userName
 #   @return [String, nil]
 #
-# @!attribute [rw] user_role
+# @!attribute [rw] userRole
 #   @return [Hash, nil]
 #
 # @!attribute [rw] version
@@ -947,15 +1031,15 @@ User = Struct.new(
   :client,
   :created,
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :is_active,
-  :last_name,
+  :isActive,
+  :lastName,
   :modified,
   :partner,
   :phone,
-  :user_name,
-  :user_role,
+  :userName,
+  :userRole,
   :version,
   keyword_init: true
 )

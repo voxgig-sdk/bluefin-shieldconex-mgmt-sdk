@@ -8,12 +8,12 @@
 
 /**
  * @typedef {Object} Client
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [mid]
  * @property {string} [modified]
  * @property {string} [name]
@@ -28,12 +28,12 @@
 
 /**
  * @typedef {Object} ClientListMatch
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [mid]
  * @property {string} [modified]
  * @property {string} [name]
@@ -43,12 +43,12 @@
 
 /**
  * @typedef {Object} ClientCreateData
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [mid]
  * @property {string} [modified]
  * @property {string} [name]
@@ -70,20 +70,22 @@
 /**
  * @typedef {Object} CloneCreateData
  * @property {string} template_id
+ * @property {number} [id]
+ * @property {string} [name]
  */
 
 /**
  * @typedef {Object} Partner
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [modified]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {string} [reference]
- * @property {string} [verification_phrase]
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
@@ -94,43 +96,43 @@
 
 /**
  * @typedef {Object} PartnerListMatch
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [modified]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {string} [reference]
- * @property {string} [verification_phrase]
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
 /**
  * @typedef {Object} PartnerCreateData
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [contact]
  * @property {string} [created]
  * @property {number} [id]
- * @property {boolean} [is_active]
+ * @property {boolean} [isActive]
  * @property {string} [modified]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {string} [reference]
- * @property {string} [verification_phrase]
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
 /**
  * @typedef {Object} Template
- * @property {*} [access_mode]
+ * @property {*} [accessMode]
  * @property {boolean} [active]
  * @property {Object} [client]
- * @property {Array} [field_template]
+ * @property {Array} [fieldTemplates]
  * @property {number} [id]
  * @property {string} [name]
- * @property {Object} [option]
+ * @property {Object} [options]
  * @property {Object} [partner]
  * @property {string} [reference]
  * @property {string} [type]
@@ -144,13 +146,13 @@
 
 /**
  * @typedef {Object} TemplateListMatch
- * @property {*} [access_mode]
+ * @property {*} [accessMode]
  * @property {boolean} [active]
  * @property {Object} [client]
- * @property {Array} [field_template]
+ * @property {Array} [fieldTemplates]
  * @property {number} [id]
  * @property {string} [name]
- * @property {Object} [option]
+ * @property {Object} [options]
  * @property {Object} [partner]
  * @property {string} [reference]
  * @property {string} [type]
@@ -159,13 +161,13 @@
 
 /**
  * @typedef {Object} TemplateCreateData
- * @property {*} [access_mode]
+ * @property {*} [accessMode]
  * @property {boolean} [active]
  * @property {Object} [client]
- * @property {Array} [field_template]
+ * @property {Array} [fieldTemplates]
  * @property {number} [id]
  * @property {string} [name]
- * @property {Object} [option]
+ * @property {Object} [options]
  * @property {Object} [partner]
  * @property {string} [reference]
  * @property {string} [type]
@@ -181,17 +183,17 @@
  * @typedef {Object} Transaction
  * @property {string} [bfid]
  * @property {Object} [client]
- * @property {string} [complete_date]
- * @property {Object} [direct_partner]
- * @property {string} [err_code]
- * @property {string} [err_message]
+ * @property {string} [completeDate]
+ * @property {Object} [directPartner]
+ * @property {string} [errCode]
+ * @property {string} [errMessage]
  * @property {number} [id]
- * @property {string} [ip_address]
- * @property {string} [message_id]
+ * @property {string} [ipAddress]
+ * @property {string} [messageId]
  * @property {Object} [partner]
  * @property {string} [reference]
  * @property {boolean} [success]
- * @property {string} [template_id]
+ * @property {string} [templateId]
  */
 
 /**
@@ -203,94 +205,113 @@
  * @typedef {Object} TransactionListMatch
  * @property {string} [bfid]
  * @property {Object} [client]
- * @property {string} [complete_date]
- * @property {Object} [direct_partner]
- * @property {string} [err_code]
- * @property {string} [err_message]
+ * @property {string} [completeDate]
+ * @property {Object} [directPartner]
+ * @property {string} [errCode]
+ * @property {string} [errMessage]
  * @property {number} [id]
- * @property {string} [ip_address]
- * @property {string} [message_id]
+ * @property {string} [ipAddress]
+ * @property {string} [messageId]
  * @property {Object} [partner]
  * @property {string} [reference]
  * @property {boolean} [success]
- * @property {string} [template_id]
+ * @property {string} [templateId]
  */
 
 /**
  * @typedef {Object} UpdateResult
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [client]
  * @property {Object} contact
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {string} email
- * @property {string} first_name
+ * @property {string} firstName
  * @property {number} [id]
- * @property {boolean} [is_active]
- * @property {string} last_name
+ * @property {boolean} [isActive]
+ * @property {string} lastName
  * @property {string} [mid]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {Object} [partner]
  * @property {string} phone
  * @property {string} [reference]
- * @property {boolean} [send_welcome_email]
- * @property {string} user_name
- * @property {Object} user_role
- * @property {string} [verification_phrase]
+ * @property {boolean} [sendWelcomeEmail]
+ * @property {string} userName
+ * @property {Object} userRole
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
 /**
  * @typedef {Object} UpdateResultListMatch
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [client]
  * @property {Object} [contact]
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {string} [email]
- * @property {string} [first_name]
+ * @property {string} [firstName]
  * @property {number} [id]
- * @property {boolean} [is_active]
- * @property {string} [last_name]
+ * @property {boolean} [isActive]
+ * @property {string} [lastName]
  * @property {string} [mid]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {Object} [partner]
  * @property {string} [phone]
  * @property {string} [reference]
- * @property {boolean} [send_welcome_email]
- * @property {string} [user_name]
- * @property {Object} [user_role]
- * @property {string} [verification_phrase]
+ * @property {boolean} [sendWelcomeEmail]
+ * @property {string} [userName]
+ * @property {Object} [userRole]
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
 /**
  * @typedef {Object} UpdateResultCreateData
- * @property {string} [billing_id]
+ * @property {string} [billingId]
  * @property {Object} [client]
  * @property {Object} contact
- * @property {Object} [direct_partner]
+ * @property {Object} [directPartner]
  * @property {string} email
- * @property {string} first_name
+ * @property {string} firstName
  * @property {number} [id]
- * @property {boolean} [is_active]
- * @property {string} last_name
+ * @property {boolean} [isActive]
+ * @property {string} lastName
  * @property {string} [mid]
  * @property {string} [name]
  * @property {Object} [parent]
  * @property {Object} [partner]
  * @property {string} phone
  * @property {string} [reference]
- * @property {boolean} [send_welcome_email]
- * @property {string} user_name
- * @property {Object} user_role
- * @property {string} [verification_phrase]
+ * @property {boolean} [sendWelcomeEmail]
+ * @property {string} userName
+ * @property {Object} userRole
+ * @property {string} [verificationPhrase]
  * @property {number} [version]
  */
 
 /**
  * @typedef {Object} UpdateResultUpdateData
  * @property {string} id
+ * @property {string} [billingId]
+ * @property {Object} [client]
+ * @property {Object} [contact]
+ * @property {Object} [directPartner]
+ * @property {string} [email]
+ * @property {string} [firstName]
+ * @property {boolean} [isActive]
+ * @property {string} [lastName]
+ * @property {string} [mid]
+ * @property {string} [name]
+ * @property {Object} [parent]
+ * @property {Object} [partner]
+ * @property {string} [phone]
+ * @property {string} [reference]
+ * @property {boolean} [sendWelcomeEmail]
+ * @property {string} [userName]
+ * @property {Object} [userRole]
+ * @property {string} [verificationPhrase]
+ * @property {number} [version]
  */
 
 /**
@@ -298,15 +319,15 @@
  * @property {Object} [client]
  * @property {string} [created]
  * @property {string} [email]
- * @property {string} [first_name]
+ * @property {string} [firstName]
  * @property {number} [id]
- * @property {boolean} [is_active]
- * @property {string} [last_name]
+ * @property {boolean} [isActive]
+ * @property {string} [lastName]
  * @property {string} [modified]
  * @property {Object} [partner]
  * @property {string} [phone]
- * @property {string} [user_name]
- * @property {Object} [user_role]
+ * @property {string} [userName]
+ * @property {Object} [userRole]
  * @property {number} [version]
  */
 

@@ -111,12 +111,12 @@ client = BluefinShieldconexMgmt.client(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String.t()` | No |  |
+| `billingId` | `String.t()` | No |  |
 | `contact` | `map()` | No |  |
 | `created` | `String.t()` | No |  |
-| `direct_partner` | `map()` | No |  |
+| `directPartner` | `map()` | No |  |
 | `id` | `integer()` | No |  |
-| `is_active` | `boolean()` | No |  |
+| `isActive` | `boolean()` | No |  |
 | `mid` | `String.t()` | No |  |
 | `modified` | `String.t()` | No |  |
 | `name` | `String.t()` | No |  |
@@ -251,16 +251,16 @@ partner = BluefinShieldconexMgmt.partner(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String.t()` | No |  |
+| `billingId` | `String.t()` | No |  |
 | `contact` | `map()` | No |  |
 | `created` | `String.t()` | No |  |
 | `id` | `integer()` | No |  |
-| `is_active` | `boolean()` | No |  |
+| `isActive` | `boolean()` | No |  |
 | `modified` | `String.t()` | No |  |
 | `name` | `String.t()` | No |  |
 | `parent` | `map()` | No |  |
 | `reference` | `String.t()` | No |  |
-| `verification_phrase` | `String.t()` | No |  |
+| `verificationPhrase` | `String.t()` | No |  |
 | `version` | `integer()` | No |  |
 
 ### Operations
@@ -329,13 +329,13 @@ template = BluefinShieldconexMgmt.template(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `any()` | No |  |
+| `accessMode` | `any()` | No |  |
 | `active` | `boolean()` | No |  |
 | `client` | `map()` | No |  |
-| `field_template` | `list()` | No |  |
+| `fieldTemplates` | `list()` | No |  |
 | `id` | `integer()` | No |  |
 | `name` | `String.t()` | No |  |
-| `option` | `map()` | No |  |
+| `options` | `map()` | No |  |
 | `partner` | `map()` | No |  |
 | `reference` | `String.t()` | No |  |
 | `type` | `String.t()` | No |  |
@@ -417,17 +417,17 @@ transaction = BluefinShieldconexMgmt.transaction(sdk)
 | --- | --- | --- | --- |
 | `bfid` | `String.t()` | No |  |
 | `client` | `map()` | No |  |
-| `complete_date` | `String.t()` | No |  |
-| `direct_partner` | `map()` | No |  |
-| `err_code` | `String.t()` | No |  |
-| `err_message` | `String.t()` | No |  |
+| `completeDate` | `String.t()` | No |  |
+| `directPartner` | `map()` | No |  |
+| `errCode` | `String.t()` | No |  |
+| `errMessage` | `String.t()` | No |  |
 | `id` | `integer()` | No |  |
-| `ip_address` | `String.t()` | No |  |
-| `message_id` | `String.t()` | No |  |
+| `ipAddress` | `String.t()` | No |  |
+| `messageId` | `String.t()` | No |  |
 | `partner` | `map()` | No |  |
 | `reference` | `String.t()` | No |  |
 | `success` | `boolean()` | No |  |
-| `template_id` | `String.t()` | No |  |
+| `templateId` | `String.t()` | No |  |
 
 ### Operations
 
@@ -486,25 +486,25 @@ update_result = BluefinShieldconexMgmt.update_result(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `String.t()` | No |  |
+| `billingId` | `String.t()` | No |  |
 | `client` | `map()` | No |  |
 | `contact` | `map()` | Yes |  |
-| `direct_partner` | `map()` | No |  |
+| `directPartner` | `map()` | No |  |
 | `email` | `String.t()` | Yes |  |
-| `first_name` | `String.t()` | Yes |  |
+| `firstName` | `String.t()` | Yes |  |
 | `id` | `integer()` | No |  |
-| `is_active` | `boolean()` | No |  |
-| `last_name` | `String.t()` | Yes |  |
+| `isActive` | `boolean()` | No |  |
+| `lastName` | `String.t()` | Yes |  |
 | `mid` | `String.t()` | No |  |
 | `name` | `String.t()` | No |  |
 | `parent` | `map()` | No |  |
 | `partner` | `map()` | No |  |
 | `phone` | `String.t()` | Yes |  |
 | `reference` | `String.t()` | No |  |
-| `send_welcome_email` | `boolean()` | No |  |
-| `user_name` | `String.t()` | Yes |  |
-| `user_role` | `map()` | Yes |  |
-| `verification_phrase` | `String.t()` | No |  |
+| `sendWelcomeEmail` | `boolean()` | No |  |
+| `userName` | `String.t()` | Yes |  |
+| `userRole` | `map()` | Yes |  |
+| `verificationPhrase` | `String.t()` | No |  |
 | `version` | `integer()` | No |  |
 
 ### Operations
@@ -517,11 +517,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 record = BluefinShieldconexMgmt.Entity.UpdateResult.create(update_result, BluefinShieldconexMgmt.Helpers.deep(%{
   "contact" => %{},  # map()
   "email" => "example_email",  # String.t()
-  "first_name" => "example_first_name",  # String.t()
-  "last_name" => "example_last_name",  # String.t()
+  "firstName" => "example_firstName",  # String.t()
+  "lastName" => "example_lastName",  # String.t()
   "phone" => "example_phone",  # String.t()
-  "user_name" => "example_user_name",  # String.t()
-  "user_role" => %{},  # map()
+  "userName" => "example_userName",  # String.t()
+  "userRole" => %{},  # map()
 }))
 ```
 
@@ -586,15 +586,15 @@ user = BluefinShieldconexMgmt.user(sdk)
 | `client` | `map()` | No |  |
 | `created` | `String.t()` | No |  |
 | `email` | `String.t()` | No |  |
-| `first_name` | `String.t()` | No |  |
+| `firstName` | `String.t()` | No |  |
 | `id` | `integer()` | No |  |
-| `is_active` | `boolean()` | No |  |
-| `last_name` | `String.t()` | No |  |
+| `isActive` | `boolean()` | No |  |
+| `lastName` | `String.t()` | No |  |
 | `modified` | `String.t()` | No |  |
 | `partner` | `map()` | No |  |
 | `phone` | `String.t()` | No |  |
-| `user_name` | `String.t()` | No |  |
-| `user_role` | `map()` | No |  |
+| `userName` | `String.t()` | No |  |
+| `userRole` | `map()` | No |  |
 | `version` | `integer()` | No |  |
 
 ### Operations

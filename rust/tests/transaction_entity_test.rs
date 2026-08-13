@@ -81,7 +81,7 @@ fn transaction_entity_basic() {
     // The basic flow consumes synthetic IDs from the fixture. In live mode
     // without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only {
-        eprintln!("skip: live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID JSON to run live");
+        eprintln!("skip: live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID JSON to run live");
         return;
     }
     let client = setup.client.clone();
@@ -100,17 +100,16 @@ fn transaction_entity_basic() {
     let transaction_ref01_list = transaction_ref01_ent
         .list(transaction_ref01_match.clone(), Value::Noval)
         .expect("list failed");
-    assert!(
-        matches!(transaction_ref01_list, Value::List(_)),
-        "expected list result to be an array"
-    );
+    // list resolves to one ENTITY per record; the flow asserts on the
+    // records, so map each through data().
+    let transaction_ref01_list = ja(transaction_ref01_list.iter().map(|e| e.data(None)).collect::<Vec<Value>>());
 
     // LOAD
     let transaction_ref01_match_dt0 = jo(vec![("id", getp(&transaction_ref01_data, "id"))]);
     let transaction_ref01_data_dt0_loaded = transaction_ref01_ent
         .load(transaction_ref01_match_dt0.clone(), Value::Noval)
         .expect("load failed");
-    let transaction_ref01_data_dt0_load_result = to_map(&transaction_ref01_data_dt0_loaded);
+    let transaction_ref01_data_dt0_load_result = to_map(&transaction_ref01_data_dt0_loaded.data(None));
     assert!(
         matches!(transaction_ref01_data_dt0_load_result, Value::Map(_)),
         "expected load result to be a map"
@@ -167,27 +166,27 @@ fn transaction_basic_setup(extra: Value) -> EntityTestSetup {
     // Detect ENTID env override before env_override consumes it. When live
     // mode is on without a real override, the basic test runs against
     // synthetic IDs from the fixture and 4xx's.
-    let entid_env_raw = std::env::var("BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID").unwrap_or_default();
+    let entid_env_raw = std::env::var("BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID").unwrap_or_default();
     let idmap_overridden =
         !entid_env_raw.trim().is_empty() && entid_env_raw.trim().starts_with('{');
 
     let env = env_override(jo(vec![
-        ("BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID", idmap.clone()),
-        ("BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value::str("FALSE")),
-        ("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", Value::str("FALSE")),
-        ("BLUEFINSHIELDCONEXMGMT_APIKEY", Value::str("NONE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID", idmap.clone()),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value::str("FALSE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", Value::str("FALSE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_APIKEY", Value::str("NONE")),
     ]));
 
-    let idmap_resolved = match to_map(&getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID")) {
+    let idmap_resolved = match to_map(&getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID")) {
         Value::Map(m) => Value::Map(m),
         _ => to_map(&idmap),
     };
 
-    let live = getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value::str("TRUE");
+    let live = getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value::str("TRUE");
 
     let client = if live {
         let merged = vs::merge(
-            &ja(vec![jo(vec![("apikey", getp(&env, "BLUEFINSHIELDCONEXMGMT_APIKEY"))]), extra]),
+            &ja(vec![jo(vec![("apikey", getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))]), extra]),
             None,
         );
         BluefinShieldconexMgmtSDK::new(to_map(&merged))
@@ -200,7 +199,7 @@ fn transaction_basic_setup(extra: Value) -> EntityTestSetup {
         data: entity_data,
         idmap: idmap_resolved,
         env: env.clone(),
-        explain: getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN") == Value::str("TRUE"),
+        explain: getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN") == Value::str("TRUE"),
         live,
         synthetic_only: live && !idmap_overridden,
         now: now_ms(),

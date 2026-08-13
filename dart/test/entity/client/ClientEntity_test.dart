@@ -87,14 +87,14 @@ test('stream', (t) async {
       final client_ref01_ent = client.Client();
       dynamic client_ref01_data = setup['data']['new']['client']['client_ref01'];
 
-      client_ref01_data = await client_ref01_ent.create(client_ref01_data);
+      client_ref01_data = (await client_ref01_ent.create(client_ref01_data)).data();
       ok(null != client_ref01_data['id']);
 
 
       // LIST
       final client_ref01_match = <String, dynamic>{};
 
-      final client_ref01_list = await client_ref01_ent.list(client_ref01_match);
+      final client_ref01_list = (await client_ref01_ent.list(client_ref01_match)).map((e) => e.data()).toList();
 
       ok(!isempty(select(
           (client_ref01_list as List).map((e) => e.data()).toList(),
@@ -104,7 +104,7 @@ test('stream', (t) async {
       // LOAD
       final client_ref01_match_dt0 = <String, dynamic>{};
       client_ref01_match_dt0['id'] = client_ref01_data['id'];
-      final client_ref01_data_dt0 = await client_ref01_ent.load(client_ref01_match_dt0);
+      final client_ref01_data_dt0 = (await client_ref01_ent.load(client_ref01_match_dt0)).data();
       ok(client_ref01_data_dt0['id'] == client_ref01_data['id']);
 
 
@@ -116,7 +116,7 @@ test('stream', (t) async {
       // LIST
       final client_ref01_match_rt0 = <String, dynamic>{};
 
-      final client_ref01_list_rt0 = await client_ref01_ent.list(client_ref01_match_rt0);
+      final client_ref01_list_rt0 = (await client_ref01_ent.list(client_ref01_match_rt0)).map((e) => e.data()).toList();
 
       ok(isempty(select(
           (client_ref01_list_rt0 as List).map((e) => e.data()).toList(),

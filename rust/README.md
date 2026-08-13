@@ -76,7 +76,7 @@ match client.client(Value::Noval).load(jo(vec![("id", Value::str("example_id"))]
 
 ```rust
 // Create — returns the bare created record
-let created = client.client(Value::Noval).create(jo(vec![("billing_id", Value::str("example_billing_id")), ("contact", Value::empty_map())]), Value::Noval).unwrap();
+let created = client.client(Value::Noval).create(jo(vec![("billingId", Value::str("example_billingId")), ("contact", Value::empty_map())]), Value::Noval).unwrap();
 
 // Remove
 client.client(Value::Noval).remove(jo(vec![("id", getp(&created, "id"))]), Value::Noval).unwrap();
@@ -277,12 +277,12 @@ On error, `ok` is `false` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -308,16 +308,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -328,13 +328,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -350,17 +350,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -370,25 +370,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -402,15 +402,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -439,12 +439,12 @@ Create an instance: `let client = client.client(Value::Noval);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `std::collections::HashMap<String, Value>` |  |
 | `created` | `String` |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -513,16 +513,16 @@ Create an instance: `let partner = client.partner(Value::Noval);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `std::collections::HashMap<String, Value>` |  |
 | `created` | `String` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `std::collections::HashMap<String, Value>` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `i64` |  |
 
 #### Example: Load
@@ -562,13 +562,13 @@ Create an instance: `let template = client.template(Value::Noval);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Value` |  |
+| `accessMode` | `Value` |  |
 | `active` | `bool` |  |
 | `client` | `std::collections::HashMap<String, Value>` |  |
-| `field_template` | `Vec<Value>` |  |
+| `fieldTemplates` | `Vec<Value>` |  |
 | `id` | `i64` |  |
 | `name` | `String` |  |
-| `option` | `std::collections::HashMap<String, Value>` |  |
+| `options` | `std::collections::HashMap<String, Value>` |  |
 | `partner` | `std::collections::HashMap<String, Value>` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -611,17 +611,17 @@ Create an instance: `let transaction = client.transaction(Value::Noval);`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `std::collections::HashMap<String, Value>` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `i64` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `std::collections::HashMap<String, Value>` |  |
 | `reference` | `String` |  |
 | `success` | `bool` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
@@ -652,25 +652,25 @@ Create an instance: `let update_result = client.update_result(Value::Noval);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `std::collections::HashMap<String, Value>` |  |
 | `contact` | `std::collections::HashMap<String, Value>` |  |
-| `direct_partner` | `std::collections::HashMap<String, Value>` |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `std::collections::HashMap<String, Value>` |  |
 | `partner` | `std::collections::HashMap<String, Value>` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `String` |  |
-| `user_role` | `std::collections::HashMap<String, Value>` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `String` |  |
+| `userRole` | `std::collections::HashMap<String, Value>` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `i64` |  |
 
 #### Example: List
@@ -685,11 +685,11 @@ let update_results = client.update_result(Value::Noval).list(Value::Noval, Value
 let update_result = client.update_result(Value::Noval).create(jo(vec![
     ("contact", Value::empty_map()),  // std::collections::HashMap<String, Value>
     ("email", Value::str("example_email")),  // String
-    ("first_name", Value::str("example_first_name")),  // String
-    ("last_name", Value::str("example_last_name")),  // String
+    ("firstName", Value::str("example_firstName")),  // String
+    ("lastName", Value::str("example_lastName")),  // String
     ("phone", Value::str("example_phone")),  // String
-    ("user_name", Value::str("example_user_name")),  // String
-    ("user_role", Value::empty_map()),  // std::collections::HashMap<String, Value>
+    ("userName", Value::str("example_userName")),  // String
+    ("userRole", Value::empty_map()),  // std::collections::HashMap<String, Value>
 ]), Value::Noval).unwrap();
 ```
 
@@ -711,15 +711,15 @@ Create an instance: `let user = client.user(Value::Noval);`
 | `client` | `std::collections::HashMap<String, Value>` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `std::collections::HashMap<String, Value>` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `std::collections::HashMap<String, Value>` |  |
+| `userName` | `String` |  |
+| `userRole` | `std::collections::HashMap<String, Value>` |  |
 | `version` | `i64` |  |
 
 #### Example: Load

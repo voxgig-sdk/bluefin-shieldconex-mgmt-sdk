@@ -6,7 +6,7 @@ main: kit: entity: update_result: {
 
   fields: [
     {
-      name: "billing_id"
+      name: "billingId"
       req: false
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: update_result: {
       type: "`$OBJECT`"
     }
     {
-      name: "direct_partner"
+      name: "directPartner"
       req: false
       type: "`$OBJECT`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: update_result: {
       type: "`$STRING`"
     }
     {
-      name: "first_name"
+      name: "firstName"
       op: {
         list: {
           req: false
@@ -61,12 +61,12 @@ main: kit: entity: update_result: {
       type: "`$INTEGER`"
     }
     {
-      name: "is_active"
+      name: "isActive"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "last_name"
+      name: "lastName"
       op: {
         list: {
           req: false
@@ -121,12 +121,12 @@ main: kit: entity: update_result: {
       type: "`$STRING`"
     }
     {
-      name: "send_welcome_email"
+      name: "sendWelcomeEmail"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "user_name"
+      name: "userName"
       op: {
         list: {
           req: false
@@ -141,7 +141,7 @@ main: kit: entity: update_result: {
       type: "`$STRING`"
     }
     {
-      name: "user_role"
+      name: "userRole"
       op: {
         list: {
           req: false
@@ -156,7 +156,7 @@ main: kit: entity: update_result: {
       type: "`$OBJECT`"
     }
     {
-      name: "verification_phrase"
+      name: "verificationPhrase"
       req: false
       type: "`$STRING`"
     }

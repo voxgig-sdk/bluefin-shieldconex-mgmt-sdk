@@ -38,15 +38,15 @@ static TemplateSetup template__basic_setup(const Value& extra) {
   if (!idmap.is_map()) idmap = vmap();
 
   Value env = env_override(vmap({
-    {"BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID", idmap},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value("FALSE")},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", Value("FALSE")}
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID", idmap},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value("FALSE")},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", Value("FALSE")}
   }));
 
-  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_TEMPLATE_ENTID"));
+  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_TEMPLATE_ENTID"));
   if (!idmap_resolved.is_map()) idmap_resolved = idmap;
 
-  bool live = getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value("TRUE");
+  bool live = getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value("TRUE");
 
   TemplateSetup s;
   s.client = client;
@@ -64,6 +64,7 @@ static void template__entity_instance() {
   auto ent = testsdk->template_();
   ASSERT_EQ(ent->getName(), std::string("template"), "entity name");
 }
+
 
 static void template__entity_stream() {
   // stream() runs the list op through the full pipeline and returns the
@@ -100,7 +101,7 @@ static void template__entity_basic() {
   Value template_ref01_data = Helpers::toMapAny(getp(Struct::getpath(setup.data, {"new", "template"}), "template_ref01"));
   if (!template_ref01_data.is_map()) template_ref01_data = vmap();
   {
-    Value template_ref01_data_result = template_ref01_ent->create(Struct::clone(template_ref01_data), Value::undef());
+    Value template_ref01_data_result = template_ref01_ent->create(Struct::clone(template_ref01_data), Value::undef())->data();
     template_ref01_data = Helpers::toMapAny(template_ref01_data_result);
     if (!template_ref01_data.is_map()) template_ref01_data = vmap();
     ASSERT_TRUE(template_ref01_data.is_map(), "expected create result to be a map");
@@ -109,7 +110,10 @@ static void template__entity_basic() {
 
   // LIST
   Value template_ref01_match = vmap();
-  Value template_ref01_list = template_ref01_ent->list(Struct::clone(template_ref01_match), Value::undef());
+  auto template_ref01_list_ents = template_ref01_ent->list(Struct::clone(template_ref01_match), Value::undef());
+  // list resolves to one ENTITY per record; the flow asserts on the records.
+  Value template_ref01_list = vlist();
+  for (const auto& e : template_ref01_list_ents) { template_ref01_list.as_list()->push_back(e->data()); }
   ASSERT_TRUE(template_ref01_list.is_list(), "expected list result to be an array");
   {
     std::vector<Value> found = Struct::select(entity_list_to_data(template_ref01_list), vmap({{"id", getp(template_ref01_data, "id")}}));
@@ -118,7 +122,7 @@ static void template__entity_basic() {
 
   // LOAD
   Value template_ref01_match_dt0 = vmap({{"id", getp(template_ref01_data, "id")}});
-  Value template_ref01_data_dt0_loaded = template_ref01_ent->load(Struct::clone(template_ref01_match_dt0), Value::undef());
+  Value template_ref01_data_dt0_loaded = template_ref01_ent->load(Struct::clone(template_ref01_match_dt0), Value::undef())->data();
   Value template_ref01_data_dt0_load_result = Helpers::toMapAny(template_ref01_data_dt0_loaded);
   ASSERT_TRUE(template_ref01_data_dt0_load_result.is_map(), "expected load result to be a map");
   ASSERT_EQ_VAL(getp(template_ref01_data_dt0_load_result, "id"), getp(template_ref01_data, "id"), "expected load result id to match");
@@ -131,7 +135,10 @@ static void template__entity_basic() {
 
   // LIST
   Value template_ref01_match_rt0 = vmap();
-  Value template_ref01_list_rt0 = template_ref01_ent->list(Struct::clone(template_ref01_match_rt0), Value::undef());
+  auto template_ref01_list_rt0_ents = template_ref01_ent->list(Struct::clone(template_ref01_match_rt0), Value::undef());
+  // list resolves to one ENTITY per record; the flow asserts on the records.
+  Value template_ref01_list_rt0 = vlist();
+  for (const auto& e : template_ref01_list_rt0_ents) { template_ref01_list_rt0.as_list()->push_back(e->data()); }
   ASSERT_TRUE(template_ref01_list_rt0.is_list(), "expected list result to be an array");
   {
     std::vector<Value> found = Struct::select(entity_list_to_data(template_ref01_list_rt0), vmap({{"id", getp(template_ref01_data, "id")}}));

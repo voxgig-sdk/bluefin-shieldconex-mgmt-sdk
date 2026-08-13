@@ -70,16 +70,16 @@ function user_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["BLUEFINSHIELDCONEXMGMT_TEST_USER_ENTID"] = {},
-    ["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE",
-    ["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE",
+    ["BLUEFIN_SHIELDCONEX_MGMT_TEST_USER_ENTID"] = {},
+    ["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE",
+    ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE",
   })
 
-  local live = env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] == "TRUE"
+  local live = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["BLUEFINSHIELDCONEXMGMT_APIKEY"],
+      apikey = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

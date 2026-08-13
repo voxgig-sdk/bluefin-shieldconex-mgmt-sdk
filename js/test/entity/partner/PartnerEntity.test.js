@@ -30,37 +30,6 @@ describe('PartnerEntity', async () => {
   })
 
 
-  // Feature #4: the entity `stream(action, ...)` method runs the op pipeline
-  // and returns an async iterator over result items. With the streaming
-  // feature active it yields the feature's incremental output; otherwise it
-  // falls back to the materialised list so `stream` always yields.
-  test('stream', async () => {
-    const seed = {
-      entity: {
-        partner: { s1: { id: 's1' }, s2: { id: 's2' }, s3: { id: 's3' } }
-      }
-    }
-
-    // Fallback: streaming inactive -> yields the materialised list items.
-    const base = BluefinShieldconexMgmtSDK.test(seed)
-    const seen = []
-    for await (const item of base.Partner().stream('list')) {
-      seen.push(item)
-    }
-    assert.equal(seen.length, 3)
-
-    // Inbound: streaming active -> yields each item from the feature iterator.
-    if (config.feature && config.feature.streaming) {
-      const sdk = BluefinShieldconexMgmtSDK.test(seed, { feature: { streaming: { active: true } } })
-      const got = []
-      for await (const item of sdk.Partner().stream('list')) {
-        if (Array.isArray(item)) { got.push(...item) } else { got.push(item) }
-      }
-      assert.equal(got.length, 3)
-    }
-  })
-
-
   test('basic', async () => {
 
     const setup = basicSetup()
@@ -75,14 +44,14 @@ describe('PartnerEntity', async () => {
     const partner_ref01_ent = client.Partner()
     let partner_ref01_data = setup.data.new.partner['partner_ref01']
 
-    partner_ref01_data = await partner_ref01_ent.create(partner_ref01_data)
+    partner_ref01_data = (await partner_ref01_ent.create(partner_ref01_data)).data()
     assert(null != partner_ref01_data.id)
 
 
     // LIST
     const partner_ref01_match = {}
 
-    const partner_ref01_list = await partner_ref01_ent.list(partner_ref01_match)
+    const partner_ref01_list = (await partner_ref01_ent.list(partner_ref01_match)).map((e) => e.data())
 
     assert(!isempty(select(partner_ref01_list, { id: partner_ref01_data.id })))
 
@@ -90,7 +59,7 @@ describe('PartnerEntity', async () => {
     // LOAD
     const partner_ref01_match_dt0 = {}
     partner_ref01_match_dt0.id = partner_ref01_data.id
-    const partner_ref01_data_dt0 = await partner_ref01_ent.load(partner_ref01_match_dt0)
+    const partner_ref01_data_dt0 = (await partner_ref01_ent.load(partner_ref01_match_dt0)).data()
     assert(partner_ref01_data_dt0.id === partner_ref01_data.id)
 
 

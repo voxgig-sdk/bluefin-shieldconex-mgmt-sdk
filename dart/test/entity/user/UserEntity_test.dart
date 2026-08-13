@@ -49,7 +49,7 @@ void tests() {
       final user_ref01_ent = client.User();
       final user_ref01_match_dt0 = <String, dynamic>{};
       user_ref01_match_dt0['id'] = user_ref01_data['id'];
-      final user_ref01_data_dt0 = await user_ref01_ent.load(user_ref01_match_dt0);
+      final user_ref01_data_dt0 = (await user_ref01_ent.load(user_ref01_match_dt0)).data();
       ok(user_ref01_data_dt0['id'] == user_ref01_data['id']);
 
 

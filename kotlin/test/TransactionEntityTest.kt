@@ -40,7 +40,7 @@ class TransactionEntityTest {
     }
     Assumptions.assumeFalse(
       setup.syntheticOnly,
-      "live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID JSON to run live",
+      "live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID JSON to run live",
     )
     val client = setup.client
 
@@ -62,7 +62,7 @@ class TransactionEntityTest {
     val transactionRef01MatchDt0 = linkedMapOf<String, Any?>()
     transactionRef01MatchDt0["id"] = transactionRef01Data["id"]
     val transactionRef01DataDt0Loaded = transactionRef01Ent.load(transactionRef01MatchDt0, null)
-    val transactionRef01DataDt0LoadResult = Helpers.toMapAny(transactionRef01DataDt0Loaded) ?: linkedMapOf()
+    val transactionRef01DataDt0LoadResult = Helpers.toMapAny(if (transactionRef01DataDt0Loaded is SdkEntity) transactionRef01DataDt0Loaded.data() else transactionRef01DataDt0Loaded) ?: linkedMapOf()
     assertNotNull(transactionRef01DataDt0LoadResult, "expected load result to be a map")
     assertEquals(transactionRef01Data["id"], transactionRef01DataDt0LoadResult["id"],
         "expected load result id to match")
@@ -132,25 +132,25 @@ class TransactionEntityTest {
           "}]}"))
 
       // Detect ENTID env override before envOverride consumes it.
-      val entidEnvRaw = RunnerSupport.getenv("BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID")
+      val entidEnvRaw = RunnerSupport.getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID")
       val idmapOverridden = entidEnvRaw != null && entidEnvRaw.trim().startsWith("{")
 
       val envm = linkedMapOf<String, Any?>()
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID"] = idmap
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID"] = idmap
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE"
       val env = RunnerSupport.envOverride(envm)
 
-      var idmapResolved = Helpers.toMapAny(env["BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID"])
+      var idmapResolved = Helpers.toMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID"])
       if (idmapResolved == null) {
         idmapResolved = Helpers.toMapAny(idmap) ?: linkedMapOf()
       }
 
-      val live = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"]
+      val live = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"]
       if (live) {
         val liveOpts = linkedMapOf<String, Any?>()
-        liveOpts["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"]
+        liveOpts["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"]
         val mergedOpts = Struct.merge(Struct.jt(liveOpts, extra))
         client = BluefinShieldconexMgmtSDK(Helpers.toMapAny(mergedOpts))
       }
@@ -160,7 +160,7 @@ class TransactionEntityTest {
       setup.data = entityData
       setup.idmap = idmapResolved
       setup.env = env
-      setup.explain = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"]
+      setup.explain = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"]
       setup.live = live
       setup.syntheticOnly = live && !idmapOverridden
       setup.now = System.currentTimeMillis()

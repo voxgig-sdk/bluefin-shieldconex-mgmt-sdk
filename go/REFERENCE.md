@@ -123,12 +123,12 @@ fmt.Println(client_.GetName()) // "client"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `map[string]any` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `map[string]any` | No |  |
+| `directPartner` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -139,12 +139,12 @@ fmt.Println(client_.GetName()) // "client"
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -291,32 +291,32 @@ fmt.Println(partner.GetName()) // "partner"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `map[string]any` | No |  |
 | `created` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `map[string]any` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -393,13 +393,13 @@ fmt.Println(template.GetName()) // "template"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `any` | No |  |
+| `accessMode` | `any` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `map[string]any` | No |  |
-| `field_template` | `[]any` | No |  |
+| `fieldTemplates` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `option` | `map[string]any` | No |  |
+| `options` | `map[string]any` | No |  |
 | `partner` | `map[string]any` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -493,17 +493,17 @@ fmt.Println(transaction.GetName()) // "transaction"
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `map[string]any` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `map[string]any` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `map[string]any` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `map[string]any` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
@@ -566,50 +566,50 @@ fmt.Println(updateResult.GetName()) // "update_result"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `map[string]any` | No |  |
 | `contact` | `map[string]any` | Yes |  |
-| `direct_partner` | `map[string]any` | No |  |
+| `directPartner` | `map[string]any` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `map[string]any` | No |  |
 | `partner` | `map[string]any` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `map[string]any` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `map[string]any` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -634,11 +634,11 @@ Create a new entity with the given data.
 result, err := client.UpdateResult(nil).Create(map[string]any{
     "contact": map[string]any{},
     "email": "example_email",
-    "first_name": "example_first_name",
-    "last_name": "example_last_name",
+    "firstName": "example_firstName",
+    "lastName": "example_lastName",
     "phone": "example_phone",
-    "user_name": "example_user_name",
-    "user_role": map[string]any{},
+    "userName": "example_userName",
+    "userRole": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -699,15 +699,15 @@ fmt.Println(user.GetName()) // "user"
 | `client` | `map[string]any` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `map[string]any` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `map[string]any` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `map[string]any` | No |  |
 | `version` | `int` | No |  |
 
 ### Operations

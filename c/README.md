@@ -82,7 +82,7 @@ if (err) {
 
 ```c
 // Create — returns the bare created record
-voxgig_value* created = client->vt->create(client, cmap(2, "billing_id", v_str("example_billing_id"), "contact", v_map()), NULL, &err);
+voxgig_value* created = client->vt->create(client, cmap(2, "billingId", v_str("example_billingId"), "contact", v_map()), NULL, &err);
 
 // Remove
 client->vt->remove(client, cmap(1, "id", getp(created, "id")), NULL, &err);
@@ -303,12 +303,12 @@ On error, `ok` is `false` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -334,16 +334,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -354,13 +354,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -376,17 +376,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -396,25 +396,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -428,15 +428,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -465,12 +465,12 @@ Create an instance: `Entity* client = bluefinshieldconexmgmt_client(client, NULL
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `char*` |  |
+| `billingId` | `char*` |  |
 | `contact` | `voxgig_value* (map)` |  |
 | `created` | `char*` |  |
-| `direct_partner` | `voxgig_value* (map)` |  |
+| `directPartner` | `voxgig_value* (map)` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `char*` |  |
 | `modified` | `char*` |  |
 | `name` | `char*` |  |
@@ -542,16 +542,16 @@ Create an instance: `Entity* partner = bluefinshieldconexmgmt_partner(client, NU
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `char*` |  |
+| `billingId` | `char*` |  |
 | `contact` | `voxgig_value* (map)` |  |
 | `created` | `char*` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `char*` |  |
 | `name` | `char*` |  |
 | `parent` | `voxgig_value* (map)` |  |
 | `reference` | `char*` |  |
-| `verification_phrase` | `char*` |  |
+| `verificationPhrase` | `char*` |  |
 | `version` | `int64_t` |  |
 
 #### Example: Load
@@ -593,13 +593,13 @@ Create an instance: `Entity* template = bluefinshieldconexmgmt_template(client, 
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `voxgig_value*` |  |
+| `accessMode` | `voxgig_value*` |  |
 | `active` | `bool` |  |
 | `client` | `voxgig_value* (map)` |  |
-| `field_template` | `voxgig_value* (list)` |  |
+| `fieldTemplates` | `voxgig_value* (list)` |  |
 | `id` | `int64_t` |  |
 | `name` | `char*` |  |
-| `option` | `voxgig_value* (map)` |  |
+| `options` | `voxgig_value* (map)` |  |
 | `partner` | `voxgig_value* (map)` |  |
 | `reference` | `char*` |  |
 | `type` | `char*` |  |
@@ -644,17 +644,17 @@ Create an instance: `Entity* transaction = bluefinshieldconexmgmt_transaction(cl
 | --- | --- | --- |
 | `bfid` | `char*` |  |
 | `client` | `voxgig_value* (map)` |  |
-| `complete_date` | `char*` |  |
-| `direct_partner` | `voxgig_value* (map)` |  |
-| `err_code` | `char*` |  |
-| `err_message` | `char*` |  |
+| `completeDate` | `char*` |  |
+| `directPartner` | `voxgig_value* (map)` |  |
+| `errCode` | `char*` |  |
+| `errMessage` | `char*` |  |
 | `id` | `int64_t` |  |
-| `ip_address` | `char*` |  |
-| `message_id` | `char*` |  |
+| `ipAddress` | `char*` |  |
+| `messageId` | `char*` |  |
 | `partner` | `voxgig_value* (map)` |  |
 | `reference` | `char*` |  |
 | `success` | `bool` |  |
-| `template_id` | `char*` |  |
+| `templateId` | `char*` |  |
 
 #### Example: Load
 
@@ -687,25 +687,25 @@ Create an instance: `Entity* update_result = bluefinshieldconexmgmt_update_resul
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `char*` |  |
+| `billingId` | `char*` |  |
 | `client` | `voxgig_value* (map)` |  |
 | `contact` | `voxgig_value* (map)` |  |
-| `direct_partner` | `voxgig_value* (map)` |  |
+| `directPartner` | `voxgig_value* (map)` |  |
 | `email` | `char*` |  |
-| `first_name` | `char*` |  |
+| `firstName` | `char*` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `char*` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `char*` |  |
 | `mid` | `char*` |  |
 | `name` | `char*` |  |
 | `parent` | `voxgig_value* (map)` |  |
 | `partner` | `voxgig_value* (map)` |  |
 | `phone` | `char*` |  |
 | `reference` | `char*` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `char*` |  |
-| `user_role` | `voxgig_value* (map)` |  |
-| `verification_phrase` | `char*` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `char*` |  |
+| `userRole` | `voxgig_value* (map)` |  |
+| `verificationPhrase` | `char*` |  |
 | `version` | `int64_t` |  |
 
 #### Example: List
@@ -722,11 +722,11 @@ Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* update_result_rec = update_result->vt->create(update_result, cmap(7,
     "contact", v_map(),  // voxgig_value* (map)
     "email", v_str("example_email"),  // char*
-    "first_name", v_str("example_first_name"),  // char*
-    "last_name", v_str("example_last_name"),  // char*
+    "firstName", v_str("example_firstName"),  // char*
+    "lastName", v_str("example_lastName"),  // char*
     "phone", v_str("example_phone"),  // char*
-    "user_name", v_str("example_user_name"),  // char*
-    "user_role", v_map())  // voxgig_value* (map)
+    "userName", v_str("example_userName"),  // char*
+    "userRole", v_map())  // voxgig_value* (map)
 , NULL, &err);
 ```
 
@@ -748,15 +748,15 @@ Create an instance: `Entity* user = bluefinshieldconexmgmt_user(client, NULL);`
 | `client` | `voxgig_value* (map)` |  |
 | `created` | `char*` |  |
 | `email` | `char*` |  |
-| `first_name` | `char*` |  |
+| `firstName` | `char*` |  |
 | `id` | `int64_t` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `char*` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `char*` |  |
 | `modified` | `char*` |  |
 | `partner` | `voxgig_value* (map)` |  |
 | `phone` | `char*` |  |
-| `user_name` | `char*` |  |
-| `user_role` | `voxgig_value* (map)` |  |
+| `userName` | `char*` |  |
+| `userRole` | `voxgig_value* (map)` |  |
 | `version` | `int64_t` |  |
 
 #### Example: Load

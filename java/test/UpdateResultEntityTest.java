@@ -47,7 +47,7 @@ public class UpdateResultEntityTest {
     // The basic flow consumes synthetic IDs from the fixture. In live mode
     // without an *_ENTID env override, those IDs hit the live API and 4xx.
     Assumptions.assumeFalse(setup.syntheticOnly,
-        "live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID JSON to run live");
+        "live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID JSON to run live");
     BluefinShieldconexMgmtSDK client = setup.client;
 
     // CREATE
@@ -56,7 +56,7 @@ public class UpdateResultEntityTest {
         Struct.getpath(setup.data, "new.update_result"), "update_result_ref01"));
 
     Object updateResultRef01DataResult = updateResultRef01Ent.create(updateResultRef01Data, null);
-    updateResultRef01Data = Helpers.toMapAny(updateResultRef01DataResult);
+    updateResultRef01Data = Helpers.toMapAny(updateResultRef01DataResult instanceof SdkEntity ? ((SdkEntity) updateResultRef01DataResult).data() : updateResultRef01DataResult);
     assertNotNull(updateResultRef01Data, "expected create result to be a map");
     assertNotNull(updateResultRef01Data.get("id"), "expected created entity to have an id");
 
@@ -77,12 +77,12 @@ public class UpdateResultEntityTest {
     Map<String, Object> updateResultRef01DataUp0Up = new LinkedHashMap<>();
     updateResultRef01DataUp0Up.put("id", updateResultRef01Data.get("id"));
 
-    String updateResultRef01MarkdefUp0Name = "billing_id";
+    String updateResultRef01MarkdefUp0Name = "billingId";
     String updateResultRef01MarkdefUp0Value = "Mark01-update_result_ref01_" + setup.now;
     updateResultRef01DataUp0Up.put(updateResultRef01MarkdefUp0Name, updateResultRef01MarkdefUp0Value);
 
     Object updateResultRef01ResdataUp0Result = updateResultRef01Ent.update(updateResultRef01DataUp0Up, null);
-    Map<String, Object> updateResultRef01ResdataUp0 = Helpers.toMapAny(updateResultRef01ResdataUp0Result);
+    Map<String, Object> updateResultRef01ResdataUp0 = Helpers.toMapAny(updateResultRef01ResdataUp0Result instanceof SdkEntity ? ((SdkEntity) updateResultRef01ResdataUp0Result).data() : updateResultRef01ResdataUp0Result);
     assertNotNull(updateResultRef01ResdataUp0, "expected update result to be a map");
     assertEquals(updateResultRef01DataUp0Up.get("id"), updateResultRef01ResdataUp0.get("id"),
         "expected update result id to match");
@@ -162,26 +162,26 @@ public class UpdateResultEntityTest {
     // mode is on without a real override, the basic test runs against
     // synthetic IDs from the fixture and 4xx's. Surface this so the test
     // can skip.
-    String entidEnvRaw = RunnerSupport.getenv("BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID");
+    String entidEnvRaw = RunnerSupport.getenv("BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID");
     boolean idmapOverridden = entidEnvRaw != null
         && entidEnvRaw.trim().startsWith("{");
 
     Map<String, Object> envm = new LinkedHashMap<>();
-    envm.put("BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID", idmap);
-    envm.put("BLUEFINSHIELDCONEXMGMT_TEST_LIVE", "FALSE");
-    envm.put("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", "FALSE");
-    envm.put("BLUEFINSHIELDCONEXMGMT_APIKEY", "NONE");
+    envm.put("BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID", idmap);
+    envm.put("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", "FALSE");
+    envm.put("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", "FALSE");
+    envm.put("BLUEFIN_SHIELDCONEX_MGMT_APIKEY", "NONE");
     Map<String, Object> env = RunnerSupport.envOverride(envm);
 
-    Map<String, Object> idmapResolved = Helpers.toMapAny(env.get("BLUEFINSHIELDCONEXMGMT_TEST_UPDATE_RESULT_ENTID"));
+    Map<String, Object> idmapResolved = Helpers.toMapAny(env.get("BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID"));
     if (idmapResolved == null) {
       idmapResolved = Helpers.toMapAny(idmap);
     }
 
-    boolean live = "TRUE".equals(env.get("BLUEFINSHIELDCONEXMGMT_TEST_LIVE"));
+    boolean live = "TRUE".equals(env.get("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"));
     if (live) {
       Map<String, Object> liveOpts = new LinkedHashMap<>();
-      liveOpts.put("apikey", env.get("BLUEFINSHIELDCONEXMGMT_APIKEY"));
+      liveOpts.put("apikey", env.get("BLUEFIN_SHIELDCONEX_MGMT_APIKEY"));
       Object mergedOpts = Struct.merge(Struct.jt(liveOpts, extra));
       client = new BluefinShieldconexMgmtSDK(Helpers.toMapAny(mergedOpts));
     }
@@ -191,7 +191,7 @@ public class UpdateResultEntityTest {
     setup.data = entityData;
     setup.idmap = idmapResolved;
     setup.env = env;
-    setup.explain = "TRUE".equals(env.get("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"));
+    setup.explain = "TRUE".equals(env.get("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"));
     setup.live = live;
     setup.syntheticOnly = live && !idmapOverridden;
     setup.now = System.currentTimeMillis();

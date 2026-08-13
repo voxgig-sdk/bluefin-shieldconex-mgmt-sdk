@@ -55,7 +55,7 @@ catch (RuntimeException err) {
 
 ### 3. Load a client
 
-`load()` returns the bare record (as `Object`) and raises on error.
+`load()` returns the ENTITY — call data() for the record — and raises on error.
 
 ```java
 try {
@@ -70,8 +70,8 @@ catch (RuntimeException err) {
 ### 4. Create, update, and remove
 
 ```java
-// Create — returns the bare created record (as Object)
-Object created = client.client(null).create(Map.of("billing_id", "example_billing_id", "contact", Map.of()), null);
+// Create — returns the ENTITY (call data() for the record)
+Object created = client.client(null).create(Map.of("billingId", "example_billingId", "contact", Map.of()), null);
 
 // Remove
 client.client(null).remove(Map.of("id", "example_id"), null);
@@ -152,7 +152,8 @@ Create a mock client for unit testing — no server required:
 ```java
 BluefinShieldconexMgmtSDK client = BluefinShieldconexMgmtSDK.testSDK(null, null);
 
-// Entity ops return the bare record and raise on error.
+// Entity ops return the ENTITY and raises on error;
+// call data() for the record.
 Object partner = client.partner(null).list(null, null);
 // partner holds the mock response record
 System.out.println(partner);
@@ -258,7 +259,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `Map` for single-entity
+Entity operations return the ENTITY (call data() for the record) (a `Map` for single-entity
 ops, an aggregate `List` for `list`) as `Object` and raise on error. Wrap
 calls in `try`/`catch` to handle failures.
 
@@ -280,12 +281,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -311,16 +312,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, load.
@@ -331,13 +332,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -353,17 +354,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: list, load.
 
@@ -373,25 +374,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: create, list, update.
@@ -405,15 +406,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: load.
@@ -442,12 +443,12 @@ Create an instance: `SdkEntity client = client.client(null);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Map<String, Object>` |  |
 | `created` | `String` |  |
-| `direct_partner` | `Map<String, Object>` |  |
+| `directPartner` | `Map<String, Object>` |  |
 | `id` | `Long` |  |
-| `is_active` | `Boolean` |  |
+| `isActive` | `Boolean` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -516,16 +517,16 @@ Create an instance: `SdkEntity partner = client.partner(null);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Map<String, Object>` |  |
 | `created` | `String` |  |
 | `id` | `Long` |  |
-| `is_active` | `Boolean` |  |
+| `isActive` | `Boolean` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Map<String, Object>` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Long` |  |
 
 #### Example: Load
@@ -565,13 +566,13 @@ Create an instance: `SdkEntity template = client.template(null);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Object` |  |
+| `accessMode` | `Object` |  |
 | `active` | `Boolean` |  |
 | `client` | `Map<String, Object>` |  |
-| `field_template` | `List<Object>` |  |
+| `fieldTemplates` | `List<Object>` |  |
 | `id` | `Long` |  |
 | `name` | `String` |  |
-| `option` | `Map<String, Object>` |  |
+| `options` | `Map<String, Object>` |  |
 | `partner` | `Map<String, Object>` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -614,17 +615,17 @@ Create an instance: `SdkEntity transaction = client.transaction(null);`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `Map<String, Object>` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `Map<String, Object>` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `Map<String, Object>` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `Long` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `Map<String, Object>` |  |
 | `reference` | `String` |  |
 | `success` | `Boolean` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
@@ -655,25 +656,25 @@ Create an instance: `SdkEntity updateResult = client.updateResult(null);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `Map<String, Object>` |  |
 | `contact` | `Map<String, Object>` |  |
-| `direct_partner` | `Map<String, Object>` |  |
+| `directPartner` | `Map<String, Object>` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Long` |  |
-| `is_active` | `Boolean` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Boolean` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Map<String, Object>` |  |
 | `partner` | `Map<String, Object>` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `Boolean` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Map<String, Object>` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `Boolean` |  |
+| `userName` | `String` |  |
+| `userRole` | `Map<String, Object>` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Long` |  |
 
 #### Example: List
@@ -688,11 +689,11 @@ Object updateResultList = client.updateResult(null).list(null, null);
 Object updateResult = client.updateResult(null).create(Map.of(
     "contact", Map.of(),  // Map<String, Object>
     "email", "example_email",  // String
-    "first_name", "example_first_name",  // String
-    "last_name", "example_last_name",  // String
+    "firstName", "example_firstName",  // String
+    "lastName", "example_lastName",  // String
     "phone", "example_phone",  // String
-    "user_name", "example_user_name",  // String
-    "user_role", Map.of()  // Map<String, Object>
+    "userName", "example_userName",  // String
+    "userRole", Map.of()  // Map<String, Object>
 ), null);
 ```
 
@@ -714,15 +715,15 @@ Create an instance: `SdkEntity user = client.user(null);`
 | `client` | `Map<String, Object>` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Long` |  |
-| `is_active` | `Boolean` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Boolean` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `Map<String, Object>` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Map<String, Object>` |  |
+| `userName` | `String` |  |
+| `userRole` | `Map<String, Object>` |  |
 | `version` | `Long` |  |
 
 #### Example: Load

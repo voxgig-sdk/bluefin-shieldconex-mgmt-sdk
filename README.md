@@ -34,9 +34,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = BluefinShieldconexMgmtSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = BluefinShieldconexMgmtSDK.test({
+  entity: {
+    partner: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const partners = await client.Partner().list()
-// partners is an array of bare Partner records populated with mock data
+// partners is an array of Partner entities, populated with mock data
+// — call partners[0].data() for the record itself
 console.log(partners)
 ```
 
@@ -177,7 +186,8 @@ System.out.println(partnerList);
 ```js
 const client = BluefinShieldconexMgmtSDK.test()
 const partners = await client.Partner().list()
-// partners is an array of bare entities populated with mock data
+// partners is an array of entities, populated with mock data
+// — call partners[0].data() for the record itself
 console.log(partners)
 ```
 
@@ -194,8 +204,8 @@ println(partnerList)
 ```ocaml
 let () =
   let client = Sdk_client.test () in
-  let result = (Sdk_client.partner client Noval).e_list (empty_map ()) Noval in
-  print_endline (stringify result)
+  let results = (Sdk_client.partner client Noval).e_list (empty_map ()) Noval in
+  List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) results
 ```
 
 ### Perl
@@ -289,7 +299,7 @@ const client = new BluefinShieldconexMgmtSDK({
   apikey: process.env.BLUEFIN_SHIELDCONEX_MGMT_APIKEY,
 })
 
-// List all clients (returns Client[])
+// List all clients (returns ClientEntity[] — .data() for the record)
 const client_s = await client.Client().list()
 for (const client_ of client_s) {
   console.log(client_)
@@ -381,7 +391,7 @@ $client = new BluefinShieldconexMgmtSDK([
 $clients = $client->Client()->list();
 print_r($clients);
 
-// Load a specific client (returns the bare record; throws on error)
+// Load a specific client (returns the ENTITY; call data_get() for the record; throws on error)
 $client = $client->Client()->load(["id" => "example_id"]);
 print_r($client);
 ```
@@ -416,7 +426,7 @@ client = BluefinShieldconexMgmtSDK.new({
 client_s = client.Client.list
 puts client_s
 
-# Load a specific client (returns the bare record; raises on error)
+# Load a specific client (returns the ENTITY; call data_get for the record)
 client_ = client.Client.load({ "id" => "example_id" })
 puts client_
 ```
@@ -577,19 +587,19 @@ main = do
   opts <- jo [("apikey", maybe VNoval VStr mkey)]
   sdk <- Sdk.newSdk opts
 
-  -- List all clients (returns a list Value, raises on error)
+  -- List all clients (one ENTITY per record, raises on error)
   ent <- Sdk.client sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
   clients <- Sdk.eList ent match ctrl
-  print clients
+  mapM_ (\en -> print =<< Sdk.eDataGet en) clients
 
-  -- Load a specific client (returns the record, raises on error)
+  -- Load a specific client (returns the ENTITY, raises on error)
   ent2 <- Sdk.client sdk VNoval
   m <- jo [("id", VStr "example_id")]
   ctrl2 <- emptyMap
   client <- Sdk.eLoad ent2 m ctrl2
-  print client
+  print =<< Sdk.eDataGet client
 ```
 
 ### Java
@@ -652,12 +662,12 @@ open Sdk_helpers
 
 let () =
   let client = Sdk_client.make (jo [("apikey", Str (Sys.getenv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))]) in
-  (* List all client records (returns a List value; raises on error) *)
+  (* List all client records (one ENTITY per record; raises on error) *)
   let clients = (Sdk_client.client client Noval).e_list (empty_map ()) Noval in
-  (match clients with List items -> List.iter (fun r -> print_endline (stringify r)) !items | _ -> ());
-  (* Load a specific client (returns the record; raises on error) *)
+  List.iter (fun e -> print_endline (stringify (e.e_data_get ()))) clients;
+  (* Load a specific client (returns the ENTITY; raises on error) *)
   let client = (Sdk_client.client client Noval).e_load (jo [("id", (Str "example_id"))]) Noval in
-  print_endline (stringify client)
+  print_endline (stringify (client.e_data_get ()))
 ```
 
 ### Perl
@@ -676,7 +686,7 @@ for my $client (@$clients) {
     print "$client->{id}\n";
 }
 
-# Load a specific client (returns the bare record; dies on error)
+# Load a specific client (returns the ENTITY; call data_get for the record; dies on error)
 my $client = $client->Client->load({ 'id' => 'example_id' });
 print "$client->{id}\n";
 ```
@@ -1052,6 +1062,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://portal-cert.shieldconex.com:4010/api/v1](https://portal-cert.shieldconex.com:4010/api/v1)
 

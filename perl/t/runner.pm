@@ -44,8 +44,8 @@ sub getenv {
 
 sub env_override {
   my ($m) = @_;
-  my $live = getenv('BLUEFINSHIELDCONEXMGMT_TEST_LIVE');
-  my $override = getenv('BLUEFINSHIELDCONEXMGMT_TEST_OVERRIDE');
+  my $live = getenv('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE');
+  my $override = getenv('BLUEFIN_SHIELDCONEX_MGMT_TEST_OVERRIDE');
 
   if ((defined $live && 'TRUE' eq $live)
     || (defined $override && 'TRUE' eq $override)) {
@@ -65,8 +65,8 @@ sub env_override {
     }
   }
 
-  my $explain = getenv('BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN');
-  $m->{'BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN'} = $explain if defined $explain && '' ne $explain;
+  my $explain = getenv('BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN');
+  $m->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN'} = $explain if defined $explain && '' ne $explain;
 
   return $m;
 }

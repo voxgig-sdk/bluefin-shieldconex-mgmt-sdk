@@ -88,7 +88,10 @@ clientBasicTest c = do
     ent <- C.client sdk VNoval
     em1 <- emptyMap; em2 <- emptyMap
     lst <- eList ent em1 em2
-    pure (islist lst)
+    -- `list` resolves to one ENTITY per record; the record is reached
+    -- through eDataGet. See AGENTS.md "Entity operations return ENTITIES".
+    ok <- mapM (\en -> ismap <$> eDataGet en) lst
+    pure (all id ok)
   runTest c "client.load" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.client sdk VNoval
@@ -99,26 +102,33 @@ clientBasicTest c = do
       (id0 : _) -> do
         m <- jo [("id", VStr id0)]; ctrl <- emptyMap
         loaded <- eLoad ent m ctrl
-        lid <- getp loaded "id"
-        pure (ismap loaded && vstring lid == id0)
+        ld <- eDataGet loaded
+        lid <- getp ld "id"
+        pure (ismap ld && vstring lid == id0)
   runTest c "client.create" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.client sdk VNoval
     d <- newRefData fixture "client"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
-    pure (ismap created && not (isNoval cid))
+    cd <- eDataGet created
+    cid <- getp cd "id"
+    pure (ismap cd && not (isNoval cid))
   runTest c "client.remove" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.client sdk VNoval
     d <- newRefData fixture "client"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
+    cd <- eDataGet created
+    cid <- getp cd "id"
     rm <- jo [("id", cid)]; ctrl2 <- emptyMap
-    _ <- eRemove ent rm ctrl2
-    pure True
+    -- `remove` resolves to the entity, marked. It KEEPS the data it held.
+    removed <- eRemove ent rm ctrl2
+    gone <- readIORef (eDeleted removed)
+    rd <- eDataGet removed
+    rid <- getp rd "id"
+    pure (gone && vstring rid == vstring cid)
 
 clientDirectTest :: Counters -> IO ()
 clientDirectTest c = runTest c "client.direct" $ do
@@ -207,8 +217,9 @@ cloneBasicTest c = do
     d <- newRefData fixture "clone"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
-    pure (ismap created && not (isNoval cid))
+    cd <- eDataGet created
+    cid <- getp cd "id"
+    pure (ismap cd && not (isNoval cid))
 
 cloneDirectTest :: Counters -> IO ()
 cloneDirectTest c = runTest c "clone.direct" $ do
@@ -245,7 +256,10 @@ partnerBasicTest c = do
     ent <- C.partner sdk VNoval
     em1 <- emptyMap; em2 <- emptyMap
     lst <- eList ent em1 em2
-    pure (islist lst)
+    -- `list` resolves to one ENTITY per record; the record is reached
+    -- through eDataGet. See AGENTS.md "Entity operations return ENTITIES".
+    ok <- mapM (\en -> ismap <$> eDataGet en) lst
+    pure (all id ok)
   runTest c "partner.load" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.partner sdk VNoval
@@ -256,16 +270,18 @@ partnerBasicTest c = do
       (id0 : _) -> do
         m <- jo [("id", VStr id0)]; ctrl <- emptyMap
         loaded <- eLoad ent m ctrl
-        lid <- getp loaded "id"
-        pure (ismap loaded && vstring lid == id0)
+        ld <- eDataGet loaded
+        lid <- getp ld "id"
+        pure (ismap ld && vstring lid == id0)
   runTest c "partner.create" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.partner sdk VNoval
     d <- newRefData fixture "partner"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
-    pure (ismap created && not (isNoval cid))
+    cd <- eDataGet created
+    cid <- getp cd "id"
+    pure (ismap cd && not (isNoval cid))
 
 partnerDirectTest :: Counters -> IO ()
 partnerDirectTest c = runTest c "partner.direct" $ do
@@ -353,7 +369,10 @@ templateBasicTest c = do
     ent <- C.template sdk VNoval
     em1 <- emptyMap; em2 <- emptyMap
     lst <- eList ent em1 em2
-    pure (islist lst)
+    -- `list` resolves to one ENTITY per record; the record is reached
+    -- through eDataGet. See AGENTS.md "Entity operations return ENTITIES".
+    ok <- mapM (\en -> ismap <$> eDataGet en) lst
+    pure (all id ok)
   runTest c "template.load" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.template sdk VNoval
@@ -364,26 +383,33 @@ templateBasicTest c = do
       (id0 : _) -> do
         m <- jo [("id", VStr id0)]; ctrl <- emptyMap
         loaded <- eLoad ent m ctrl
-        lid <- getp loaded "id"
-        pure (ismap loaded && vstring lid == id0)
+        ld <- eDataGet loaded
+        lid <- getp ld "id"
+        pure (ismap ld && vstring lid == id0)
   runTest c "template.create" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.template sdk VNoval
     d <- newRefData fixture "template"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
-    pure (ismap created && not (isNoval cid))
+    cd <- eDataGet created
+    cid <- getp cd "id"
+    pure (ismap cd && not (isNoval cid))
   runTest c "template.remove" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.template sdk VNoval
     d <- newRefData fixture "template"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
+    cd <- eDataGet created
+    cid <- getp cd "id"
     rm <- jo [("id", cid)]; ctrl2 <- emptyMap
-    _ <- eRemove ent rm ctrl2
-    pure True
+    -- `remove` resolves to the entity, marked. It KEEPS the data it held.
+    removed <- eRemove ent rm ctrl2
+    gone <- readIORef (eDeleted removed)
+    rd <- eDataGet removed
+    rid <- getp rd "id"
+    pure (gone && vstring rid == vstring cid)
 
 templateDirectTest :: Counters -> IO ()
 templateDirectTest c = runTest c "template.direct" $ do
@@ -471,7 +497,10 @@ transactionBasicTest c = do
     ent <- C.transaction sdk VNoval
     em1 <- emptyMap; em2 <- emptyMap
     lst <- eList ent em1 em2
-    pure (islist lst)
+    -- `list` resolves to one ENTITY per record; the record is reached
+    -- through eDataGet. See AGENTS.md "Entity operations return ENTITIES".
+    ok <- mapM (\en -> ismap <$> eDataGet en) lst
+    pure (all id ok)
   runTest c "transaction.load" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.transaction sdk VNoval
@@ -482,8 +511,9 @@ transactionBasicTest c = do
       (id0 : _) -> do
         m <- jo [("id", VStr id0)]; ctrl <- emptyMap
         loaded <- eLoad ent m ctrl
-        lid <- getp loaded "id"
-        pure (ismap loaded && vstring lid == id0)
+        ld <- eDataGet loaded
+        lid <- getp ld "id"
+        pure (ismap ld && vstring lid == id0)
 
 transactionDirectTest :: Counters -> IO ()
 transactionDirectTest c = runTest c "transaction.direct" $ do
@@ -571,27 +601,33 @@ update_resultBasicTest c = do
     ent <- C.update_result sdk VNoval
     em1 <- emptyMap; em2 <- emptyMap
     lst <- eList ent em1 em2
-    pure (islist lst)
+    -- `list` resolves to one ENTITY per record; the record is reached
+    -- through eDataGet. See AGENTS.md "Entity operations return ENTITIES".
+    ok <- mapM (\en -> ismap <$> eDataGet en) lst
+    pure (all id ok)
   runTest c "update_result.create" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.update_result sdk VNoval
     d <- newRefData fixture "update_result"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
-    pure (ismap created && not (isNoval cid))
+    cd <- eDataGet created
+    cid <- getp cd "id"
+    pure (ismap cd && not (isNoval cid))
   runTest c "update_result.update" $ do
     sdk <- C.testSdk opts VNoval
     ent <- C.update_result sdk VNoval
     d <- newRefData fixture "update_result"
     ctrl <- emptyMap
     created <- eCreate ent d ctrl
-    cid <- getp created "id"
+    cd <- eDataGet created
+    cid <- getp cd "id"
     upd <- jo [("id", cid), ("0", VStr "UpdatedMark")]
     ctrl2 <- emptyMap
     updated <- eUpdate ent upd ctrl2
-    uv <- getp updated "0"
-    pure (ismap updated && vstring uv == "UpdatedMark")
+    ud <- eDataGet updated
+    uv <- getp ud "0"
+    pure (ismap ud && vstring uv == "UpdatedMark")
 
 update_resultDirectTest :: Counters -> IO ()
 update_resultDirectTest c = runTest c "update_result.direct" $ do
@@ -684,8 +720,9 @@ userBasicTest c = do
       (id0 : _) -> do
         m <- jo [("id", VStr id0)]; ctrl <- emptyMap
         loaded <- eLoad ent m ctrl
-        lid <- getp loaded "id"
-        pure (ismap loaded && vstring lid == id0)
+        ld <- eDataGet loaded
+        lid <- getp ld "id"
+        pure (ismap ld && vstring lid == id0)
 
 userDirectTest :: Counters -> IO ()
 userDirectTest c = runTest c "user.direct" $ do

@@ -6,7 +6,7 @@ main: kit: entity: client: {
 
   fields: [
     {
-      name: "billing_id"
+      name: "billingId"
       req: false
       type: "`$STRING`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: client: {
       type: "`$STRING`"
     }
     {
-      name: "direct_partner"
+      name: "directPartner"
       op: {
         create: {
           req: true
@@ -47,7 +47,7 @@ main: kit: entity: client: {
       type: "`$INTEGER`"
     }
     {
-      name: "is_active"
+      name: "isActive"
       req: false
       type: "`$BOOLEAN`"
     }

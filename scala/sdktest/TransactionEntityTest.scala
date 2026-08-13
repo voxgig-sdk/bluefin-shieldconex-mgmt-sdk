@@ -43,7 +43,7 @@ object TransactionEntityTest {
       val transactionRef01MatchDt0 = new LinkedHashMap[String, Object]()
       transactionRef01MatchDt0.put("id", transactionRef01Data.get("id"))
       val transactionRef01DataDt0Loaded = transactionRef01Ent.load(transactionRef01MatchDt0, null)
-      val transactionRef01DataDt0LoadResult = Helpers.toMapAny(transactionRef01DataDt0Loaded)
+      val transactionRef01DataDt0LoadResult = Helpers.toMapAny(transactionRef01DataDt0Loaded match { case e: SdkEntity => e.data(); case o => o })
       rep.check("transaction.load.map", transactionRef01DataDt0LoadResult != null, "expected load result to be a map")
       rep.eq("transaction.load.id", transactionRef01Data.get("id"), transactionRef01DataDt0LoadResult.get("id"))
     }

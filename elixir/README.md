@@ -87,7 +87,7 @@ end
 client = BluefinShieldconexMgmt.client(sdk)
 
 # Create — returns the bare created record
-created = BluefinShieldconexMgmt.Entity.Client.create(client, H.deep(%{"billing_id" => "example_billing_id", "contact" => %{}}))
+created = BluefinShieldconexMgmt.Entity.Client.create(client, H.deep(%{"billingId" => "example_billingId", "contact" => %{}}))
 
 # Remove
 BluefinShieldconexMgmt.Entity.Client.remove(client, H.deep(%{"id" => Voxgig.Struct.getprop(created, "id")}))
@@ -309,12 +309,12 @@ On error, `ok` is `false` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -340,16 +340,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -360,13 +360,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -382,17 +382,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -402,25 +402,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -434,15 +434,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -474,12 +474,12 @@ Create a handle: `client = BluefinShieldconexMgmt.client(sdk)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String.t()` |  |
+| `billingId` | `String.t()` |  |
 | `contact` | `map()` |  |
 | `created` | `String.t()` |  |
-| `direct_partner` | `map()` |  |
+| `directPartner` | `map()` |  |
 | `id` | `integer()` |  |
-| `is_active` | `boolean()` |  |
+| `isActive` | `boolean()` |  |
 | `mid` | `String.t()` |  |
 | `modified` | `String.t()` |  |
 | `name` | `String.t()` |  |
@@ -552,16 +552,16 @@ Create a handle: `partner = BluefinShieldconexMgmt.partner(sdk)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String.t()` |  |
+| `billingId` | `String.t()` |  |
 | `contact` | `map()` |  |
 | `created` | `String.t()` |  |
 | `id` | `integer()` |  |
-| `is_active` | `boolean()` |  |
+| `isActive` | `boolean()` |  |
 | `modified` | `String.t()` |  |
 | `name` | `String.t()` |  |
 | `parent` | `map()` |  |
 | `reference` | `String.t()` |  |
-| `verification_phrase` | `String.t()` |  |
+| `verificationPhrase` | `String.t()` |  |
 | `version` | `integer()` |  |
 
 #### Example: Load
@@ -604,13 +604,13 @@ Create a handle: `template = BluefinShieldconexMgmt.template(sdk)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `any()` |  |
+| `accessMode` | `any()` |  |
 | `active` | `boolean()` |  |
 | `client` | `map()` |  |
-| `field_template` | `list()` |  |
+| `fieldTemplates` | `list()` |  |
 | `id` | `integer()` |  |
 | `name` | `String.t()` |  |
-| `option` | `map()` |  |
+| `options` | `map()` |  |
 | `partner` | `map()` |  |
 | `reference` | `String.t()` |  |
 | `type` | `String.t()` |  |
@@ -656,17 +656,17 @@ Create a handle: `transaction = BluefinShieldconexMgmt.transaction(sdk)`
 | --- | --- | --- |
 | `bfid` | `String.t()` |  |
 | `client` | `map()` |  |
-| `complete_date` | `String.t()` |  |
-| `direct_partner` | `map()` |  |
-| `err_code` | `String.t()` |  |
-| `err_message` | `String.t()` |  |
+| `completeDate` | `String.t()` |  |
+| `directPartner` | `map()` |  |
+| `errCode` | `String.t()` |  |
+| `errMessage` | `String.t()` |  |
 | `id` | `integer()` |  |
-| `ip_address` | `String.t()` |  |
-| `message_id` | `String.t()` |  |
+| `ipAddress` | `String.t()` |  |
+| `messageId` | `String.t()` |  |
 | `partner` | `map()` |  |
 | `reference` | `String.t()` |  |
 | `success` | `boolean()` |  |
-| `template_id` | `String.t()` |  |
+| `templateId` | `String.t()` |  |
 
 #### Example: Load
 
@@ -699,25 +699,25 @@ Create a handle: `update_result = BluefinShieldconexMgmt.update_result(sdk)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String.t()` |  |
+| `billingId` | `String.t()` |  |
 | `client` | `map()` |  |
 | `contact` | `map()` |  |
-| `direct_partner` | `map()` |  |
+| `directPartner` | `map()` |  |
 | `email` | `String.t()` |  |
-| `first_name` | `String.t()` |  |
+| `firstName` | `String.t()` |  |
 | `id` | `integer()` |  |
-| `is_active` | `boolean()` |  |
-| `last_name` | `String.t()` |  |
+| `isActive` | `boolean()` |  |
+| `lastName` | `String.t()` |  |
 | `mid` | `String.t()` |  |
 | `name` | `String.t()` |  |
 | `parent` | `map()` |  |
 | `partner` | `map()` |  |
 | `phone` | `String.t()` |  |
 | `reference` | `String.t()` |  |
-| `send_welcome_email` | `boolean()` |  |
-| `user_name` | `String.t()` |  |
-| `user_role` | `map()` |  |
-| `verification_phrase` | `String.t()` |  |
+| `sendWelcomeEmail` | `boolean()` |  |
+| `userName` | `String.t()` |  |
+| `userRole` | `map()` |  |
+| `verificationPhrase` | `String.t()` |  |
 | `version` | `integer()` |  |
 
 #### Example: List
@@ -734,11 +734,11 @@ update_result = BluefinShieldconexMgmt.update_result(sdk)
 record = BluefinShieldconexMgmt.Entity.UpdateResult.create(update_result, BluefinShieldconexMgmt.Helpers.deep(%{
   "contact" => %{},  # map()
   "email" => "example_email",  # String.t()
-  "first_name" => "example_first_name",  # String.t()
-  "last_name" => "example_last_name",  # String.t()
+  "firstName" => "example_firstName",  # String.t()
+  "lastName" => "example_lastName",  # String.t()
   "phone" => "example_phone",  # String.t()
-  "user_name" => "example_user_name",  # String.t()
-  "user_role" => %{},  # map()
+  "userName" => "example_userName",  # String.t()
+  "userRole" => %{},  # map()
 }))
 ```
 
@@ -760,15 +760,15 @@ Create a handle: `user = BluefinShieldconexMgmt.user(sdk)`
 | `client` | `map()` |  |
 | `created` | `String.t()` |  |
 | `email` | `String.t()` |  |
-| `first_name` | `String.t()` |  |
+| `firstName` | `String.t()` |  |
 | `id` | `integer()` |  |
-| `is_active` | `boolean()` |  |
-| `last_name` | `String.t()` |  |
+| `isActive` | `boolean()` |  |
+| `lastName` | `String.t()` |  |
 | `modified` | `String.t()` |  |
 | `partner` | `map()` |  |
 | `phone` | `String.t()` |  |
-| `user_name` | `String.t()` |  |
-| `user_role` | `map()` |  |
+| `userName` | `String.t()` |  |
+| `userRole` | `map()` |  |
 | `version` | `integer()` |  |
 
 #### Example: Load

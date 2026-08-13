@@ -74,6 +74,8 @@ public struct Clone {
 /// CloneCreateData is the typed request payload for Clone.create.
 public struct CloneCreateData {
   public var templateId: String
+  public var id: Int?
+  public var name: String?
 }
 
 /// Partner is the typed data model for the partner entity.
@@ -131,10 +133,10 @@ public struct Template {
   public var accessMode: Value?
   public var active: Bool?
   public var client: VMap?
-  public var fieldTemplate: [Value]?
+  public var fieldTemplates: [Value]?
   public var id: Int?
   public var name: String?
-  public var option: VMap?
+  public var options: VMap?
   public var partner: VMap?
   public var reference: String?
   public var type: String?
@@ -151,10 +153,10 @@ public struct TemplateListMatch {
   public var accessMode: Value?
   public var active: Bool?
   public var client: VMap?
-  public var fieldTemplate: [Value]?
+  public var fieldTemplates: [Value]?
   public var id: Int?
   public var name: String?
-  public var option: VMap?
+  public var options: VMap?
   public var partner: VMap?
   public var reference: String?
   public var type: String?
@@ -166,10 +168,10 @@ public struct TemplateCreateData {
   public var accessMode: Value?
   public var active: Bool?
   public var client: VMap?
-  public var fieldTemplate: [Value]?
+  public var fieldTemplates: [Value]?
   public var id: Int?
   public var name: String?
-  public var option: VMap?
+  public var options: VMap?
   public var partner: VMap?
   public var reference: String?
   public var type: String?
@@ -295,6 +297,25 @@ public struct UpdateResultCreateData {
 /// UpdateResultUpdateData is the typed request payload for UpdateResult.update.
 public struct UpdateResultUpdateData {
   public var id: String
+  public var billingId: String?
+  public var client: VMap?
+  public var contact: VMap?
+  public var directPartner: VMap?
+  public var email: String?
+  public var firstName: String?
+  public var isActive: Bool?
+  public var lastName: String?
+  public var mid: String?
+  public var name: String?
+  public var parent: VMap?
+  public var partner: VMap?
+  public var phone: String?
+  public var reference: String?
+  public var sendWelcomeEmail: Bool?
+  public var userName: String?
+  public var userRole: VMap?
+  public var verificationPhrase: String?
+  public var version: Int?
 }
 
 /// User is the typed data model for the user entity.

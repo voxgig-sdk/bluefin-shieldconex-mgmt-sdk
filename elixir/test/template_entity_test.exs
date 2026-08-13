@@ -31,8 +31,15 @@ defmodule BluefinShieldconexMgmt.TemplateEntityTest do
   test "should list records" do
     sdk = mk_sdk()
     ent = BluefinShieldconexMgmt.template(sdk)
+    # The op resolves to one ENTITY per record; the record is reached with
+    # data_get. See AGENTS.md "Entity operations return ENTITIES".
     result = BluefinShieldconexMgmt.Entity.Template.list(ent, S.jm([]))
     assert S.islist(result)
+    if S.size(result) > 0 do
+      Enum.each(0..(S.size(result) - 1), fn i ->
+        assert S.ismap(BluefinShieldconexMgmt.EntityBase.data_get(S.getelem(result, i)))
+      end)
+    end
   end
 
   test "should load an existing record" do
@@ -41,7 +48,8 @@ defmodule BluefinShieldconexMgmt.TemplateEntityTest do
     if id != nil do
       sdk = mk_sdk()
       ent = BluefinShieldconexMgmt.template(sdk)
-      rec = BluefinShieldconexMgmt.Entity.Template.load(ent, S.jm(["id", id]))
+      loaded = BluefinShieldconexMgmt.Entity.Template.load(ent, S.jm(["id", id]))
+      rec = BluefinShieldconexMgmt.EntityBase.data_get(loaded)
       assert S.ismap(rec)
       assert S.getprop(rec, "id") == id
     end
@@ -50,7 +58,8 @@ defmodule BluefinShieldconexMgmt.TemplateEntityTest do
   test "should create then read back" do
     sdk = BluefinShieldconexMgmt.test(S.jm(["entity", S.jm(["template", S.jm([])])]))
     ent = BluefinShieldconexMgmt.template(sdk)
-    made = BluefinShieldconexMgmt.Entity.Template.create(ent, S.jm(["name", "test-create"]))
+    created = BluefinShieldconexMgmt.Entity.Template.create(ent, S.jm(["name", "test-create"]))
+    made = BluefinShieldconexMgmt.EntityBase.data_get(created)
     assert S.ismap(made)
     assert S.getprop(made, "id") != nil
   end

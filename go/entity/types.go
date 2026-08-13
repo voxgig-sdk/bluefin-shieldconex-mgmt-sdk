@@ -6,16 +6,20 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/go/core"
+)
 
 // Client is the typed data model for the client entity.
 type Client struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Mid *string `json:"mid,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -30,12 +34,12 @@ type ClientLoadMatch struct {
 
 // ClientListMatch is the typed request payload for Client.ListTyped.
 type ClientListMatch struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Mid *string `json:"mid,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -45,12 +49,12 @@ type ClientListMatch struct {
 
 // ClientCreateData is the typed request payload for Client.CreateTyped.
 type ClientCreateData struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Mid *string `json:"mid,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -72,20 +76,22 @@ type Clone struct {
 // CloneCreateData is the typed request payload for Clone.CreateTyped.
 type CloneCreateData struct {
 	TemplateId string `json:"template_id"`
+	Id *int `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // Partner is the typed data model for the partner entity.
 type Partner struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
@@ -96,43 +102,43 @@ type PartnerLoadMatch struct {
 
 // PartnerListMatch is the typed request payload for Partner.ListTyped.
 type PartnerListMatch struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
 // PartnerCreateData is the typed request payload for Partner.CreateTyped.
 type PartnerCreateData struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
 // Template is the typed data model for the template entity.
 type Template struct {
-	AccessMode *any `json:"access_mode,omitempty"`
+	AccessMode *any `json:"accessMode,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
-	FieldTemplate *[]any `json:"field_template,omitempty"`
+	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Option *map[string]any `json:"option,omitempty"`
+	Options *map[string]any `json:"options,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -146,13 +152,13 @@ type TemplateLoadMatch struct {
 
 // TemplateListMatch is the typed request payload for Template.ListTyped.
 type TemplateListMatch struct {
-	AccessMode *any `json:"access_mode,omitempty"`
+	AccessMode *any `json:"accessMode,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
-	FieldTemplate *[]any `json:"field_template,omitempty"`
+	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Option *map[string]any `json:"option,omitempty"`
+	Options *map[string]any `json:"options,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -161,13 +167,13 @@ type TemplateListMatch struct {
 
 // TemplateCreateData is the typed request payload for Template.CreateTyped.
 type TemplateCreateData struct {
-	AccessMode *any `json:"access_mode,omitempty"`
+	AccessMode *any `json:"accessMode,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
-	FieldTemplate *[]any `json:"field_template,omitempty"`
+	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Option *map[string]any `json:"option,omitempty"`
+	Options *map[string]any `json:"options,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -183,17 +189,17 @@ type TemplateRemoveMatch struct {
 type Transaction struct {
 	Bfid *string `json:"bfid,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
-	CompleteDate *string `json:"complete_date,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
-	ErrCode *string `json:"err_code,omitempty"`
-	ErrMessage *string `json:"err_message,omitempty"`
+	CompleteDate *string `json:"completeDate,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
+	ErrCode *string `json:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IpAddress *string `json:"ip_address,omitempty"`
-	MessageId *string `json:"message_id,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	Success *bool `json:"success,omitempty"`
-	TemplateId *string `json:"template_id,omitempty"`
+	TemplateId *string `json:"templateId,omitempty"`
 }
 
 // TransactionLoadMatch is the typed request payload for Transaction.LoadTyped.
@@ -205,94 +211,113 @@ type TransactionLoadMatch struct {
 type TransactionListMatch struct {
 	Bfid *string `json:"bfid,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
-	CompleteDate *string `json:"complete_date,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
-	ErrCode *string `json:"err_code,omitempty"`
-	ErrMessage *string `json:"err_message,omitempty"`
+	CompleteDate *string `json:"completeDate,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
+	ErrCode *string `json:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IpAddress *string `json:"ip_address,omitempty"`
-	MessageId *string `json:"message_id,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	Success *bool `json:"success,omitempty"`
-	TemplateId *string `json:"template_id,omitempty"`
+	TemplateId *string `json:"templateId,omitempty"`
 }
 
 // UpdateResult is the typed data model for the update_result entity.
 type UpdateResult struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
 	Contact map[string]any `json:"contact"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Email string `json:"email"`
-	FirstName string `json:"first_name"`
+	FirstName string `json:"firstName"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
-	LastName string `json:"last_name"`
+	IsActive *bool `json:"isActive,omitempty"`
+	LastName string `json:"lastName"`
 	Mid *string `json:"mid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Phone string `json:"phone"`
 	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"send_welcome_email,omitempty"`
-	UserName string `json:"user_name"`
-	UserRole map[string]any `json:"user_role"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	UserName string `json:"userName"`
+	UserRole map[string]any `json:"userRole"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
 // UpdateResultListMatch is the typed request payload for UpdateResult.ListTyped.
 type UpdateResultListMatch struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
 	Mid *string `json:"mid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"send_welcome_email,omitempty"`
-	UserName *string `json:"user_name,omitempty"`
-	UserRole *map[string]any `json:"user_role,omitempty"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	UserRole *map[string]any `json:"userRole,omitempty"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
 // UpdateResultCreateData is the typed request payload for UpdateResult.CreateTyped.
 type UpdateResultCreateData struct {
-	BillingId *string `json:"billing_id,omitempty"`
+	BillingId *string `json:"billingId,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
 	Contact map[string]any `json:"contact"`
-	DirectPartner *map[string]any `json:"direct_partner,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Email string `json:"email"`
-	FirstName string `json:"first_name"`
+	FirstName string `json:"firstName"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
-	LastName string `json:"last_name"`
+	IsActive *bool `json:"isActive,omitempty"`
+	LastName string `json:"lastName"`
 	Mid *string `json:"mid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Phone string `json:"phone"`
 	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"send_welcome_email,omitempty"`
-	UserName string `json:"user_name"`
-	UserRole map[string]any `json:"user_role"`
-	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	UserName string `json:"userName"`
+	UserRole map[string]any `json:"userRole"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
 // UpdateResultUpdateData is the typed request payload for UpdateResult.UpdateTyped.
 type UpdateResultUpdateData struct {
 	Id string `json:"id"`
+	BillingId *string `json:"billingId,omitempty"`
+	Client *map[string]any `json:"client,omitempty"`
+	Contact *map[string]any `json:"contact,omitempty"`
+	DirectPartner *map[string]any `json:"directPartner,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
+	Mid *string `json:"mid,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Parent *map[string]any `json:"parent,omitempty"`
+	Partner *map[string]any `json:"partner,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Reference *string `json:"reference,omitempty"`
+	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	UserRole *map[string]any `json:"userRole,omitempty"`
+	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
+	Version *int `json:"version,omitempty"`
 }
 
 // User is the typed data model for the user entity.
@@ -300,15 +325,15 @@ type User struct {
 	Client *map[string]any `json:"client,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
 	Modified *string `json:"modified,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Phone *string `json:"phone,omitempty"`
-	UserName *string `json:"user_name,omitempty"`
-	UserRole *map[string]any `json:"user_role,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	UserRole *map[string]any `json:"userRole,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
@@ -329,12 +354,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -346,12 +385,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

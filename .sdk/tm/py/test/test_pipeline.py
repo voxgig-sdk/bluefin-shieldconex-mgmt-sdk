@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import BluefinShieldconexMgmtSDK
-from core.error import BluefinShieldconexMgmtError
-from core.result import BluefinShieldconexMgmtResult
-from core.response import BluefinShieldconexMgmtResponse
-from core.spec import BluefinShieldconexMgmtSpec
-from feature.base_feature import BluefinShieldconexMgmtBaseFeature
+from projectname_sdk.core.error import BluefinShieldconexMgmtError
+from projectname_sdk.core.result import BluefinShieldconexMgmtResult
+from projectname_sdk.core.response import BluefinShieldconexMgmtResponse
+from projectname_sdk.core.spec import BluefinShieldconexMgmtSpec
+from projectname_sdk.feature.base_feature import BluefinShieldconexMgmtBaseFeature
 
 
 def _client():

@@ -81,7 +81,7 @@ iterate it directly.
 
 ```clojure
 ;; Create — returns the bare created record (a map)
-(def created (e-client/create (api/client client nil) (vs/jm "billing_id" "example_billing_id" "contact" (vs/jm)) nil))
+(def created (e-client/create (api/client client nil) (vs/jm "billingId" "example_billingId" "contact" (vs/jm)) nil))
 
 ;; Remove
 (e-client/remove (api/client client nil) (vs/jm "id" (vs/getprop created "id")) nil)
@@ -299,12 +299,12 @@ On error, `ok` is `false` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -330,16 +330,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -350,13 +350,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -372,17 +372,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -392,25 +392,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -424,15 +424,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -461,12 +461,12 @@ Create an instance: `(def client (api/client client nil))`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `map` |  |
 | `created` | `string` |  |
-| `direct_partner` | `map` |  |
+| `directPartner` | `map` |  |
 | `id` | `long` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -541,16 +541,16 @@ Create an instance: `(def partner (api/partner client nil))`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `map` |  |
 | `created` | `string` |  |
 | `id` | `long` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `map` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `long` |  |
 
 #### Example: Load
@@ -593,13 +593,13 @@ Create an instance: `(def template (api/template client nil))`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `any` |  |
+| `accessMode` | `any` |  |
 | `active` | `boolean` |  |
 | `client` | `map` |  |
-| `field_template` | `vector` |  |
+| `fieldTemplates` | `vector` |  |
 | `id` | `long` |  |
 | `name` | `string` |  |
-| `option` | `map` |  |
+| `options` | `map` |  |
 | `partner` | `map` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -645,17 +645,17 @@ Create an instance: `(def transaction (api/transaction client nil))`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `map` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `map` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `map` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `long` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `map` |  |
 | `reference` | `string` |  |
 | `success` | `boolean` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
@@ -686,25 +686,25 @@ Create an instance: `(def update_result (api/update_result client nil))`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `map` |  |
 | `contact` | `map` |  |
-| `direct_partner` | `map` |  |
+| `directPartner` | `map` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `long` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `map` |  |
 | `partner` | `map` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `boolean` |  |
-| `user_name` | `string` |  |
-| `user_role` | `map` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `boolean` |  |
+| `userName` | `string` |  |
+| `userRole` | `map` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `long` |  |
 
 #### Example: List
@@ -721,11 +721,11 @@ Create an instance: `(def update_result (api/update_result client nil))`
     (vs/jm
       "contact" (vs/jm)  ;; map
       "email" "example_email"  ;; string
-      "first_name" "example_first_name"  ;; string
-      "last_name" "example_last_name"  ;; string
+      "firstName" "example_firstName"  ;; string
+      "lastName" "example_lastName"  ;; string
       "phone" "example_phone"  ;; string
-      "user_name" "example_user_name"  ;; string
-      "user_role" (vs/jm)  ;; map
+      "userName" "example_userName"  ;; string
+      "userRole" (vs/jm)  ;; map
       )
     nil))
 ```
@@ -748,15 +748,15 @@ Create an instance: `(def user (api/user client nil))`
 | `client` | `map` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `long` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `map` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `map` |  |
+| `userName` | `string` |  |
+| `userRole` | `map` |  |
 | `version` | `long` |  |
 
 #### Example: Load

@@ -6,12 +6,12 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Client {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   mid?: string
   modified?: string
   name?: string
@@ -24,12 +24,12 @@ export interface ClientLoadMatch {
 }
 
 export interface ClientListMatch {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   mid?: string
   modified?: string
   name?: string
@@ -38,12 +38,12 @@ export interface ClientListMatch {
 }
 
 export interface ClientCreateData {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   mid?: string
   modified?: string
   name?: string
@@ -62,19 +62,21 @@ export interface Clone {
 
 export interface CloneCreateData {
   template_id: string
+  id?: number
+  name?: string
 }
 
 export interface Partner {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   modified?: string
   name?: string
   parent?: Record<string, any>
   reference?: string
-  verification_phrase?: string
+  verificationPhrase?: string
   version?: number
 }
 
@@ -83,41 +85,41 @@ export interface PartnerLoadMatch {
 }
 
 export interface PartnerListMatch {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   modified?: string
   name?: string
   parent?: Record<string, any>
   reference?: string
-  verification_phrase?: string
+  verificationPhrase?: string
   version?: number
 }
 
 export interface PartnerCreateData {
-  billing_id?: string
+  billingId?: string
   contact?: Record<string, any>
   created?: string
   id?: number
-  is_active?: boolean
+  isActive?: boolean
   modified?: string
   name?: string
   parent?: Record<string, any>
   reference?: string
-  verification_phrase?: string
+  verificationPhrase?: string
   version?: number
 }
 
 export interface Template {
-  access_mode?: any
+  accessMode?: any
   active?: boolean
   client?: Record<string, any>
-  field_template?: any[]
+  fieldTemplates?: any[]
   id?: number
   name?: string
-  option?: Record<string, any>
+  options?: Record<string, any>
   partner?: Record<string, any>
   reference?: string
   type?: string
@@ -129,13 +131,13 @@ export interface TemplateLoadMatch {
 }
 
 export interface TemplateListMatch {
-  access_mode?: any
+  accessMode?: any
   active?: boolean
   client?: Record<string, any>
-  field_template?: any[]
+  fieldTemplates?: any[]
   id?: number
   name?: string
-  option?: Record<string, any>
+  options?: Record<string, any>
   partner?: Record<string, any>
   reference?: string
   type?: string
@@ -143,13 +145,13 @@ export interface TemplateListMatch {
 }
 
 export interface TemplateCreateData {
-  access_mode?: any
+  accessMode?: any
   active?: boolean
   client?: Record<string, any>
-  field_template?: any[]
+  fieldTemplates?: any[]
   id?: number
   name?: string
-  option?: Record<string, any>
+  options?: Record<string, any>
   partner?: Record<string, any>
   reference?: string
   type?: string
@@ -163,17 +165,17 @@ export interface TemplateRemoveMatch {
 export interface Transaction {
   bfid?: string
   client?: Record<string, any>
-  complete_date?: string
-  direct_partner?: Record<string, any>
-  err_code?: string
-  err_message?: string
+  completeDate?: string
+  directPartner?: Record<string, any>
+  errCode?: string
+  errMessage?: string
   id?: number
-  ip_address?: string
-  message_id?: string
+  ipAddress?: string
+  messageId?: string
   partner?: Record<string, any>
   reference?: string
   success?: boolean
-  template_id?: string
+  templateId?: string
 }
 
 export interface TransactionLoadMatch {
@@ -183,105 +185,124 @@ export interface TransactionLoadMatch {
 export interface TransactionListMatch {
   bfid?: string
   client?: Record<string, any>
-  complete_date?: string
-  direct_partner?: Record<string, any>
-  err_code?: string
-  err_message?: string
+  completeDate?: string
+  directPartner?: Record<string, any>
+  errCode?: string
+  errMessage?: string
   id?: number
-  ip_address?: string
-  message_id?: string
+  ipAddress?: string
+  messageId?: string
   partner?: Record<string, any>
   reference?: string
   success?: boolean
-  template_id?: string
+  templateId?: string
 }
 
 export interface UpdateResult {
-  billing_id?: string
+  billingId?: string
   client?: Record<string, any>
   contact: Record<string, any>
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   email: string
-  first_name: string
+  firstName: string
   id?: number
-  is_active?: boolean
-  last_name: string
+  isActive?: boolean
+  lastName: string
   mid?: string
   name?: string
   parent?: Record<string, any>
   partner?: Record<string, any>
   phone: string
   reference?: string
-  send_welcome_email?: boolean
-  user_name: string
-  user_role: Record<string, any>
-  verification_phrase?: string
+  sendWelcomeEmail?: boolean
+  userName: string
+  userRole: Record<string, any>
+  verificationPhrase?: string
   version?: number
 }
 
 export interface UpdateResultListMatch {
-  billing_id?: string
+  billingId?: string
   client?: Record<string, any>
   contact?: Record<string, any>
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   email?: string
-  first_name?: string
+  firstName?: string
   id?: number
-  is_active?: boolean
-  last_name?: string
+  isActive?: boolean
+  lastName?: string
   mid?: string
   name?: string
   parent?: Record<string, any>
   partner?: Record<string, any>
   phone?: string
   reference?: string
-  send_welcome_email?: boolean
-  user_name?: string
-  user_role?: Record<string, any>
-  verification_phrase?: string
+  sendWelcomeEmail?: boolean
+  userName?: string
+  userRole?: Record<string, any>
+  verificationPhrase?: string
   version?: number
 }
 
 export interface UpdateResultCreateData {
-  billing_id?: string
+  billingId?: string
   client?: Record<string, any>
   contact: Record<string, any>
-  direct_partner?: Record<string, any>
+  directPartner?: Record<string, any>
   email: string
-  first_name: string
+  firstName: string
   id?: number
-  is_active?: boolean
-  last_name: string
+  isActive?: boolean
+  lastName: string
   mid?: string
   name?: string
   parent?: Record<string, any>
   partner?: Record<string, any>
   phone: string
   reference?: string
-  send_welcome_email?: boolean
-  user_name: string
-  user_role: Record<string, any>
-  verification_phrase?: string
+  sendWelcomeEmail?: boolean
+  userName: string
+  userRole: Record<string, any>
+  verificationPhrase?: string
   version?: number
 }
 
 export interface UpdateResultUpdateData {
   id: string
+  billingId?: string
+  client?: Record<string, any>
+  contact?: Record<string, any>
+  directPartner?: Record<string, any>
+  email?: string
+  firstName?: string
+  isActive?: boolean
+  lastName?: string
+  mid?: string
+  name?: string
+  parent?: Record<string, any>
+  partner?: Record<string, any>
+  phone?: string
+  reference?: string
+  sendWelcomeEmail?: boolean
+  userName?: string
+  userRole?: Record<string, any>
+  verificationPhrase?: string
+  version?: number
 }
 
 export interface User {
   client?: Record<string, any>
   created?: string
   email?: string
-  first_name?: string
+  firstName?: string
   id?: number
-  is_active?: boolean
-  last_name?: string
+  isActive?: boolean
+  lastName?: string
   modified?: string
   partner?: Record<string, any>
   phone?: string
-  user_name?: string
-  user_role?: Record<string, any>
+  userName?: string
+  userRole?: Record<string, any>
   version?: number
 }
 

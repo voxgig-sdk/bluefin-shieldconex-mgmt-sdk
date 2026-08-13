@@ -123,12 +123,12 @@ const client = client.client(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `[]const u8` | No |  |
+| `billingId` | `[]const u8` | No |  |
 | `contact` | `Value (object)` | No |  |
 | `created` | `[]const u8` | No |  |
-| `direct_partner` | `Value (object)` | No |  |
+| `directPartner` | `Value (object)` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `[]const u8` | No |  |
 | `modified` | `[]const u8` | No |  |
 | `name` | `[]const u8` | No |  |
@@ -139,12 +139,12 @@ const client = client.client(h.vnull());
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -278,32 +278,32 @@ const partner = client.partner(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `[]const u8` | No |  |
+| `billingId` | `[]const u8` | No |  |
 | `contact` | `Value (object)` | No |  |
 | `created` | `[]const u8` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `[]const u8` | No |  |
 | `name` | `[]const u8` | No |  |
 | `parent` | `Value (object)` | No |  |
 | `reference` | `[]const u8` | No |  |
-| `verification_phrase` | `[]const u8` | No |  |
+| `verificationPhrase` | `[]const u8` | No |  |
 | `version` | `i64` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -373,13 +373,13 @@ const template = client.template(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `Value` | No |  |
+| `accessMode` | `Value` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `Value (object)` | No |  |
-| `field_template` | `Value (array)` | No |  |
+| `fieldTemplates` | `Value (array)` | No |  |
 | `id` | `i64` | No |  |
 | `name` | `[]const u8` | No |  |
-| `option` | `Value (object)` | No |  |
+| `options` | `Value (object)` | No |  |
 | `partner` | `Value (object)` | No |  |
 | `reference` | `[]const u8` | No |  |
 | `type` | `[]const u8` | No |  |
@@ -465,17 +465,17 @@ const transaction = client.transaction(h.vnull());
 | --- | --- | --- | --- |
 | `bfid` | `[]const u8` | No |  |
 | `client` | `Value (object)` | No |  |
-| `complete_date` | `[]const u8` | No |  |
-| `direct_partner` | `Value (object)` | No |  |
-| `err_code` | `[]const u8` | No |  |
-| `err_message` | `[]const u8` | No |  |
+| `completeDate` | `[]const u8` | No |  |
+| `directPartner` | `Value (object)` | No |  |
+| `errCode` | `[]const u8` | No |  |
+| `errMessage` | `[]const u8` | No |  |
 | `id` | `i64` | No |  |
-| `ip_address` | `[]const u8` | No |  |
-| `message_id` | `[]const u8` | No |  |
+| `ipAddress` | `[]const u8` | No |  |
+| `messageId` | `[]const u8` | No |  |
 | `partner` | `Value (object)` | No |  |
 | `reference` | `[]const u8` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `[]const u8` | No |  |
+| `templateId` | `[]const u8` | No |  |
 
 ### Operations
 
@@ -532,50 +532,50 @@ const update_result = client.update_result(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `[]const u8` | No |  |
+| `billingId` | `[]const u8` | No |  |
 | `client` | `Value (object)` | No |  |
 | `contact` | `Value (object)` | Yes |  |
-| `direct_partner` | `Value (object)` | No |  |
+| `directPartner` | `Value (object)` | No |  |
 | `email` | `[]const u8` | Yes |  |
-| `first_name` | `[]const u8` | Yes |  |
+| `firstName` | `[]const u8` | Yes |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `[]const u8` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `[]const u8` | Yes |  |
 | `mid` | `[]const u8` | No |  |
 | `name` | `[]const u8` | No |  |
 | `parent` | `Value (object)` | No |  |
 | `partner` | `Value (object)` | No |  |
 | `phone` | `[]const u8` | Yes |  |
 | `reference` | `[]const u8` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `[]const u8` | Yes |  |
-| `user_role` | `Value (object)` | Yes |  |
-| `verification_phrase` | `[]const u8` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `[]const u8` | Yes |  |
+| `userRole` | `Value (object)` | Yes |  |
+| `verificationPhrase` | `[]const u8` | No |  |
 | `version` | `i64` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -588,11 +588,11 @@ Create a new entity with the given data. `.ok` carries the created entity data.
 switch (client.update_result(h.vnull()).create(h.jo(&.{
     .{ "contact", h.omap() }, // Value (object)
     .{ "email", h.vstr("example_email") }, // []const u8
-    .{ "first_name", h.vstr("example_first_name") }, // []const u8
-    .{ "last_name", h.vstr("example_last_name") }, // []const u8
+    .{ "firstName", h.vstr("example_firstName") }, // []const u8
+    .{ "lastName", h.vstr("example_lastName") }, // []const u8
     .{ "phone", h.vstr("example_phone") }, // []const u8
-    .{ "user_name", h.vstr("example_user_name") }, // []const u8
-    .{ "user_role", h.omap() }, // Value (object)
+    .{ "userName", h.vstr("example_userName") }, // []const u8
+    .{ "userRole", h.omap() }, // Value (object)
 }), h.vnull())) {
     .ok => |result| std.debug.print("{s}\n", .{h.stringify(result)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
@@ -658,15 +658,15 @@ const user = client.user(h.vnull());
 | `client` | `Value (object)` | No |  |
 | `created` | `[]const u8` | No |  |
 | `email` | `[]const u8` | No |  |
-| `first_name` | `[]const u8` | No |  |
+| `firstName` | `[]const u8` | No |  |
 | `id` | `i64` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `[]const u8` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `[]const u8` | No |  |
 | `modified` | `[]const u8` | No |  |
 | `partner` | `Value (object)` | No |  |
 | `phone` | `[]const u8` | No |  |
-| `user_name` | `[]const u8` | No |  |
-| `user_role` | `Value (object)` | No |  |
+| `userName` | `[]const u8` | No |  |
+| `userRole` | `Value (object)` | No |  |
 | `version` | `i64` | No |  |
 
 ### Operations

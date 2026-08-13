@@ -38,15 +38,15 @@ static TransactionSetup transaction_basic_setup(const Value& extra) {
   if (!idmap.is_map()) idmap = vmap();
 
   Value env = env_override(vmap({
-    {"BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID", idmap},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value("FALSE")},
-    {"BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", Value("FALSE")}
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID", idmap},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value("FALSE")},
+    {"BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", Value("FALSE")}
   }));
 
-  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_TRANSACTION_ENTID"));
+  Value idmap_resolved = Helpers::toMapAny(getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_TRANSACTION_ENTID"));
   if (!idmap_resolved.is_map()) idmap_resolved = idmap;
 
-  bool live = getp(env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value("TRUE");
+  bool live = getp(env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value("TRUE");
 
   TransactionSetup s;
   s.client = client;
@@ -64,6 +64,7 @@ static void transaction_entity_instance() {
   auto ent = testsdk->transaction();
   ASSERT_EQ(ent->getName(), std::string("transaction"), "entity name");
 }
+
 
 static void transaction_entity_stream() {
   // stream() runs the list op through the full pipeline and returns the
@@ -110,12 +111,15 @@ static void transaction_entity_basic() {
   // LIST
   auto transaction_ref01_ent = client->transaction();
   Value transaction_ref01_match = vmap();
-  Value transaction_ref01_list = transaction_ref01_ent->list(Struct::clone(transaction_ref01_match), Value::undef());
+  auto transaction_ref01_list_ents = transaction_ref01_ent->list(Struct::clone(transaction_ref01_match), Value::undef());
+  // list resolves to one ENTITY per record; the flow asserts on the records.
+  Value transaction_ref01_list = vlist();
+  for (const auto& e : transaction_ref01_list_ents) { transaction_ref01_list.as_list()->push_back(e->data()); }
   ASSERT_TRUE(transaction_ref01_list.is_list(), "expected list result to be an array");
 
   // LOAD
   Value transaction_ref01_match_dt0 = vmap({{"id", getp(transaction_ref01_data, "id")}});
-  Value transaction_ref01_data_dt0_loaded = transaction_ref01_ent->load(Struct::clone(transaction_ref01_match_dt0), Value::undef());
+  Value transaction_ref01_data_dt0_loaded = transaction_ref01_ent->load(Struct::clone(transaction_ref01_match_dt0), Value::undef())->data();
   Value transaction_ref01_data_dt0_load_result = Helpers::toMapAny(transaction_ref01_data_dt0_loaded);
   ASSERT_TRUE(transaction_ref01_data_dt0_load_result.is_map(), "expected load result to be a map");
   ASSERT_EQ_VAL(getp(transaction_ref01_data_dt0_load_result, "id"), getp(transaction_ref01_data, "id"), "expected load result id to match");

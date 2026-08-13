@@ -7,12 +7,12 @@
 -- edit by hand.
 
 ---@class Client
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
----@field direct_partner? table
+---@field directPartner? table
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field mid? string
 ---@field modified? string
 ---@field name? string
@@ -23,12 +23,12 @@
 ---@field id string
 
 ---@class ClientListMatch
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
----@field direct_partner? table
+---@field directPartner? table
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field mid? string
 ---@field modified? string
 ---@field name? string
@@ -36,12 +36,12 @@
 ---@field version? number
 
 ---@class ClientCreateData
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
----@field direct_partner? table
+---@field directPartner? table
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field mid? string
 ---@field modified? string
 ---@field name? string
@@ -57,57 +57,59 @@
 
 ---@class CloneCreateData
 ---@field template_id string
+---@field id? number
+---@field name? string
 
 ---@class Partner
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field modified? string
 ---@field name? string
 ---@field parent? table
 ---@field reference? string
----@field verification_phrase? string
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class PartnerLoadMatch
 ---@field id string
 
 ---@class PartnerListMatch
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field modified? string
 ---@field name? string
 ---@field parent? table
 ---@field reference? string
----@field verification_phrase? string
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class PartnerCreateData
----@field billing_id? string
+---@field billingId? string
 ---@field contact? table
 ---@field created? string
 ---@field id? number
----@field is_active? boolean
+---@field isActive? boolean
 ---@field modified? string
 ---@field name? string
 ---@field parent? table
 ---@field reference? string
----@field verification_phrase? string
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class Template
----@field access_mode? any
+---@field accessMode? any
 ---@field active? boolean
 ---@field client? table
----@field field_template? table
+---@field fieldTemplates? table
 ---@field id? number
 ---@field name? string
----@field option? table
+---@field options? table
 ---@field partner? table
 ---@field reference? string
 ---@field type? string
@@ -117,26 +119,26 @@
 ---@field id string
 
 ---@class TemplateListMatch
----@field access_mode? any
+---@field accessMode? any
 ---@field active? boolean
 ---@field client? table
----@field field_template? table
+---@field fieldTemplates? table
 ---@field id? number
 ---@field name? string
----@field option? table
+---@field options? table
 ---@field partner? table
 ---@field reference? string
 ---@field type? string
 ---@field version? number
 
 ---@class TemplateCreateData
----@field access_mode? any
+---@field accessMode? any
 ---@field active? boolean
 ---@field client? table
----@field field_template? table
+---@field fieldTemplates? table
 ---@field id? number
 ---@field name? string
----@field option? table
+---@field options? table
 ---@field partner? table
 ---@field reference? string
 ---@field type? string
@@ -148,17 +150,17 @@
 ---@class Transaction
 ---@field bfid? string
 ---@field client? table
----@field complete_date? string
----@field direct_partner? table
----@field err_code? string
----@field err_message? string
+---@field completeDate? string
+---@field directPartner? table
+---@field errCode? string
+---@field errMessage? string
 ---@field id? number
----@field ip_address? string
----@field message_id? string
+---@field ipAddress? string
+---@field messageId? string
 ---@field partner? table
 ---@field reference? string
 ---@field success? boolean
----@field template_id? string
+---@field templateId? string
 
 ---@class TransactionLoadMatch
 ---@field id string
@@ -166,100 +168,119 @@
 ---@class TransactionListMatch
 ---@field bfid? string
 ---@field client? table
----@field complete_date? string
----@field direct_partner? table
----@field err_code? string
----@field err_message? string
+---@field completeDate? string
+---@field directPartner? table
+---@field errCode? string
+---@field errMessage? string
 ---@field id? number
----@field ip_address? string
----@field message_id? string
+---@field ipAddress? string
+---@field messageId? string
 ---@field partner? table
 ---@field reference? string
 ---@field success? boolean
----@field template_id? string
+---@field templateId? string
 
 ---@class UpdateResult
----@field billing_id? string
+---@field billingId? string
 ---@field client? table
 ---@field contact table
----@field direct_partner? table
+---@field directPartner? table
 ---@field email string
----@field first_name string
+---@field firstName string
 ---@field id? number
----@field is_active? boolean
----@field last_name string
+---@field isActive? boolean
+---@field lastName string
 ---@field mid? string
 ---@field name? string
 ---@field parent? table
 ---@field partner? table
 ---@field phone string
 ---@field reference? string
----@field send_welcome_email? boolean
----@field user_name string
----@field user_role table
----@field verification_phrase? string
+---@field sendWelcomeEmail? boolean
+---@field userName string
+---@field userRole table
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class UpdateResultListMatch
----@field billing_id? string
+---@field billingId? string
 ---@field client? table
 ---@field contact? table
----@field direct_partner? table
+---@field directPartner? table
 ---@field email? string
----@field first_name? string
+---@field firstName? string
 ---@field id? number
----@field is_active? boolean
----@field last_name? string
+---@field isActive? boolean
+---@field lastName? string
 ---@field mid? string
 ---@field name? string
 ---@field parent? table
 ---@field partner? table
 ---@field phone? string
 ---@field reference? string
----@field send_welcome_email? boolean
----@field user_name? string
----@field user_role? table
----@field verification_phrase? string
+---@field sendWelcomeEmail? boolean
+---@field userName? string
+---@field userRole? table
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class UpdateResultCreateData
----@field billing_id? string
+---@field billingId? string
 ---@field client? table
 ---@field contact table
----@field direct_partner? table
+---@field directPartner? table
 ---@field email string
----@field first_name string
+---@field firstName string
 ---@field id? number
----@field is_active? boolean
----@field last_name string
+---@field isActive? boolean
+---@field lastName string
 ---@field mid? string
 ---@field name? string
 ---@field parent? table
 ---@field partner? table
 ---@field phone string
 ---@field reference? string
----@field send_welcome_email? boolean
----@field user_name string
----@field user_role table
----@field verification_phrase? string
+---@field sendWelcomeEmail? boolean
+---@field userName string
+---@field userRole table
+---@field verificationPhrase? string
 ---@field version? number
 
 ---@class UpdateResultUpdateData
 ---@field id string
+---@field billingId? string
+---@field client? table
+---@field contact? table
+---@field directPartner? table
+---@field email? string
+---@field firstName? string
+---@field isActive? boolean
+---@field lastName? string
+---@field mid? string
+---@field name? string
+---@field parent? table
+---@field partner? table
+---@field phone? string
+---@field reference? string
+---@field sendWelcomeEmail? boolean
+---@field userName? string
+---@field userRole? table
+---@field verificationPhrase? string
+---@field version? number
 
 ---@class User
 ---@field client? table
 ---@field created? string
 ---@field email? string
----@field first_name? string
+---@field firstName? string
 ---@field id? number
----@field is_active? boolean
----@field last_name? string
+---@field isActive? boolean
+---@field lastName? string
 ---@field modified? string
 ---@field partner? table
 ---@field phone? string
----@field user_name? string
----@field user_role? table
+---@field userName? string
+---@field userRole? table
 ---@field version? number
 
 ---@class UserLoadMatch

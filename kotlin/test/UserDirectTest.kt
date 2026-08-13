@@ -98,24 +98,24 @@ class UserDirectTest {
       val calls = mutableListOf<MutableMap<String, Any?>>()
 
       val envm = linkedMapOf<String, Any?>()
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_USER_ENTID"] = linkedMapOf<String, Any?>()
-      envm["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"] = "FALSE"
-      envm["BLUEFINSHIELDCONEXMGMT_APIKEY"] = "NONE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_USER_ENTID"] = linkedMapOf<String, Any?>()
+      envm["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE"
+      envm["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE"
       val env = RunnerSupport.envOverride(envm)
 
-      val live = "TRUE" == env["BLUEFINSHIELDCONEXMGMT_TEST_LIVE"]
+      val live = "TRUE" == env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"]
 
       val setup = DirectSetup()
       setup.calls = calls
 
       if (live) {
         val mergedOpts = linkedMapOf<String, Any?>()
-        mergedOpts["apikey"] = env["BLUEFINSHIELDCONEXMGMT_APIKEY"]
+        mergedOpts["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"]
         setup.client = BluefinShieldconexMgmtSDK(mergedOpts)
         setup.live = true
 
         var idmap: MutableMap<String, Any?> = linkedMapOf()
-        val entidRaw = env["BLUEFINSHIELDCONEXMGMT_TEST_USER_ENTID"]
+        val entidRaw = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_USER_ENTID"]
         if (entidRaw is String && entidRaw.startsWith("{")) {
           val parsed = Helpers.toMapAny(Json.parseOrNull(entidRaw))
           if (parsed != null) {

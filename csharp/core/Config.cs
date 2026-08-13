@@ -54,7 +54,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "billing_id",
+                            ["name"] = "billingId",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 0,
@@ -91,7 +91,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "direct_partner",
+                            ["name"] = "directPartner",
                             ["op"] = new Dictionary<string, object?>
                             {
                                 ["create"] = new Dictionary<string, object?>
@@ -115,7 +115,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "is_active",
+                            ["name"] = "isActive",
                             ["req"] = false,
                             ["type"] = "`$BOOLEAN`",
                             ["index$"] = 5,
@@ -313,6 +313,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "POST",
                                     ["orig"] = "/clients",
                                     ["parts"] = new List<object?>
@@ -393,6 +394,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/clients",
                                     ["parts"] = new List<object?>
@@ -443,6 +445,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/clients/{id}",
                                     ["parts"] = new List<object?>
@@ -492,6 +495,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "DELETE",
                                     ["orig"] = "/clients/{id}",
                                     ["parts"] = new List<object?>
@@ -571,6 +575,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "POST",
                                     ["orig"] = "/templates/{id}/clone",
                                     ["parts"] = new List<object?>
@@ -622,7 +627,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "billing_id",
+                            ["name"] = "billingId",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 0,
@@ -667,7 +672,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "is_active",
+                            ["name"] = "isActive",
                             ["req"] = false,
                             ["type"] = "`$BOOLEAN`",
                             ["index$"] = 4,
@@ -723,7 +728,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "verification_phrase",
+                            ["name"] = "verificationPhrase",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 9,
@@ -890,6 +895,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "POST",
                                     ["orig"] = "/partners",
                                     ["parts"] = new List<object?>
@@ -971,6 +977,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/partners",
                                     ["parts"] = new List<object?>
@@ -1021,6 +1028,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/partners/{id}",
                                     ["parts"] = new List<object?>
@@ -1058,7 +1066,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "access_mode",
+                            ["name"] = "accessMode",
                             ["req"] = false,
                             ["type"] = "`$ANY`",
                             ["index$"] = 0,
@@ -1082,7 +1090,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "field_template",
+                            ["name"] = "fieldTemplates",
                             ["req"] = false,
                             ["type"] = "`$ARRAY`",
                             ["index$"] = 3,
@@ -1106,7 +1114,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "option",
+                            ["name"] = "options",
                             ["req"] = false,
                             ["type"] = "`$OBJECT`",
                             ["index$"] = 6,
@@ -1315,6 +1323,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "POST",
                                     ["orig"] = "/templates",
                                     ["parts"] = new List<object?>
@@ -1407,6 +1416,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/templates",
                                     ["parts"] = new List<object?>
@@ -1458,6 +1468,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/templates/{id}",
                                     ["parts"] = new List<object?>
@@ -1507,6 +1518,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "DELETE",
                                     ["orig"] = "/templates/{id}",
                                     ["parts"] = new List<object?>
@@ -1560,7 +1572,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "complete_date",
+                            ["name"] = "completeDate",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 2,
@@ -1568,7 +1580,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "direct_partner",
+                            ["name"] = "directPartner",
                             ["req"] = false,
                             ["type"] = "`$OBJECT`",
                             ["index$"] = 3,
@@ -1576,7 +1588,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "err_code",
+                            ["name"] = "errCode",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 4,
@@ -1584,7 +1596,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "err_message",
+                            ["name"] = "errMessage",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 5,
@@ -1600,7 +1612,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "ip_address",
+                            ["name"] = "ipAddress",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 7,
@@ -1608,7 +1620,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "message_id",
+                            ["name"] = "messageId",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 8,
@@ -1640,7 +1652,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "template_id",
+                            ["name"] = "templateId",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 12,
@@ -1765,6 +1777,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/transactions",
                                     ["parts"] = new List<object?>
@@ -1835,6 +1848,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/transactions/{id}",
                                     ["parts"] = new List<object?>
@@ -1873,7 +1887,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "billing_id",
+                            ["name"] = "billingId",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 0,
@@ -1897,7 +1911,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "direct_partner",
+                            ["name"] = "directPartner",
                             ["req"] = false,
                             ["type"] = "`$OBJECT`",
                             ["index$"] = 3,
@@ -1926,7 +1940,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "first_name",
+                            ["name"] = "firstName",
                             ["op"] = new Dictionary<string, object?>
                             {
                                 ["list"] = new Dictionary<string, object?>
@@ -1955,7 +1969,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "is_active",
+                            ["name"] = "isActive",
                             ["req"] = false,
                             ["type"] = "`$BOOLEAN`",
                             ["index$"] = 7,
@@ -1963,7 +1977,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "last_name",
+                            ["name"] = "lastName",
                             ["op"] = new Dictionary<string, object?>
                             {
                                 ["list"] = new Dictionary<string, object?>
@@ -2045,7 +2059,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "send_welcome_email",
+                            ["name"] = "sendWelcomeEmail",
                             ["req"] = false,
                             ["type"] = "`$BOOLEAN`",
                             ["index$"] = 15,
@@ -2053,7 +2067,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "user_name",
+                            ["name"] = "userName",
                             ["op"] = new Dictionary<string, object?>
                             {
                                 ["list"] = new Dictionary<string, object?>
@@ -2074,7 +2088,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "user_role",
+                            ["name"] = "userRole",
                             ["op"] = new Dictionary<string, object?>
                             {
                                 ["list"] = new Dictionary<string, object?>
@@ -2095,7 +2109,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "verification_phrase",
+                            ["name"] = "verificationPhrase",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 18,
@@ -2217,6 +2231,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "POST",
                                     ["orig"] = "/users",
                                     ["parts"] = new List<object?>
@@ -2302,6 +2317,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/users",
                                     ["parts"] = new List<object?>
@@ -2509,6 +2525,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "PATCH",
                                     ["orig"] = "/templates/{id}",
                                     ["parts"] = new List<object?>
@@ -2650,6 +2667,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "PATCH",
                                     ["orig"] = "/partners/{id}",
                                     ["parts"] = new List<object?>
@@ -2783,6 +2801,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "PATCH",
                                     ["orig"] = "/users/{id}",
                                     ["parts"] = new List<object?>
@@ -2907,6 +2926,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "PATCH",
                                     ["orig"] = "/clients/{id}",
                                     ["parts"] = new List<object?>
@@ -2976,7 +2996,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "first_name",
+                            ["name"] = "firstName",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 3,
@@ -2992,7 +3012,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "is_active",
+                            ["name"] = "isActive",
                             ["req"] = false,
                             ["type"] = "`$BOOLEAN`",
                             ["index$"] = 5,
@@ -3000,7 +3020,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "last_name",
+                            ["name"] = "lastName",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 6,
@@ -3032,7 +3052,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "user_name",
+                            ["name"] = "userName",
                             ["req"] = false,
                             ["type"] = "`$STRING`",
                             ["index$"] = 10,
@@ -3040,7 +3060,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["active"] = true,
-                            ["name"] = "user_role",
+                            ["name"] = "userRole",
                             ["req"] = false,
                             ["type"] = "`$OBJECT`",
                             ["index$"] = 11,
@@ -3082,6 +3102,7 @@ public static class SdkConfig
                                             },
                                         },
                                     },
+                                    ["kind"] = "http",
                                     ["method"] = "GET",
                                     ["orig"] = "/users/{id}",
                                     ["parts"] = new List<object?>

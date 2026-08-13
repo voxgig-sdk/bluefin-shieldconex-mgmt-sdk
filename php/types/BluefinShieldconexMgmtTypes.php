@@ -15,12 +15,12 @@ declare(strict_types=1);
 /** Client entity data model. */
 class Client
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $mid = null;
     public ?string $modified = null;
     public ?string $name = null;
@@ -37,12 +37,12 @@ class ClientLoadMatch
 /** Request payload for Client#list. */
 class ClientListMatch
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $mid = null;
     public ?string $modified = null;
     public ?string $name = null;
@@ -53,12 +53,12 @@ class ClientListMatch
 /** Request payload for Client#create. */
 class ClientCreateData
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $mid = null;
     public ?string $modified = null;
     public ?string $name = null;
@@ -83,21 +83,23 @@ class Clone
 class CloneCreateData
 {
     public string $template_id;
+    public ?int $id = null;
+    public ?string $name = null;
 }
 
 /** Partner entity data model. */
 class Partner
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $modified = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?string $reference = null;
-    public ?string $verification_phrase = null;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
@@ -110,45 +112,45 @@ class PartnerLoadMatch
 /** Request payload for Partner#list. */
 class PartnerListMatch
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $modified = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?string $reference = null;
-    public ?string $verification_phrase = null;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
 /** Request payload for Partner#create. */
 class PartnerCreateData
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $contact = null;
     public ?string $created = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
+    public ?bool $isActive = null;
     public ?string $modified = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?string $reference = null;
-    public ?string $verification_phrase = null;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
 /** Template entity data model. */
 class Template
 {
-    public mixed $access_mode = null;
+    public mixed $accessMode = null;
     public ?bool $active = null;
     public ?array $client = null;
-    public ?array $field_template = null;
+    public ?array $fieldTemplates = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $option = null;
+    public ?array $options = null;
     public ?array $partner = null;
     public ?string $reference = null;
     public ?string $type = null;
@@ -164,13 +166,13 @@ class TemplateLoadMatch
 /** Request payload for Template#list. */
 class TemplateListMatch
 {
-    public mixed $access_mode = null;
+    public mixed $accessMode = null;
     public ?bool $active = null;
     public ?array $client = null;
-    public ?array $field_template = null;
+    public ?array $fieldTemplates = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $option = null;
+    public ?array $options = null;
     public ?array $partner = null;
     public ?string $reference = null;
     public ?string $type = null;
@@ -180,13 +182,13 @@ class TemplateListMatch
 /** Request payload for Template#create. */
 class TemplateCreateData
 {
-    public mixed $access_mode = null;
+    public mixed $accessMode = null;
     public ?bool $active = null;
     public ?array $client = null;
-    public ?array $field_template = null;
+    public ?array $fieldTemplates = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $option = null;
+    public ?array $options = null;
     public ?array $partner = null;
     public ?string $reference = null;
     public ?string $type = null;
@@ -204,17 +206,17 @@ class Transaction
 {
     public ?string $bfid = null;
     public ?array $client = null;
-    public ?string $complete_date = null;
-    public ?array $direct_partner = null;
-    public ?string $err_code = null;
-    public ?string $err_message = null;
+    public ?string $completeDate = null;
+    public ?array $directPartner = null;
+    public ?string $errCode = null;
+    public ?string $errMessage = null;
     public ?int $id = null;
-    public ?string $ip_address = null;
-    public ?string $message_id = null;
+    public ?string $ipAddress = null;
+    public ?string $messageId = null;
     public ?array $partner = null;
     public ?string $reference = null;
     public ?bool $success = null;
-    public ?string $template_id = null;
+    public ?string $templateId = null;
 }
 
 /** Request payload for Transaction#load. */
@@ -228,91 +230,91 @@ class TransactionListMatch
 {
     public ?string $bfid = null;
     public ?array $client = null;
-    public ?string $complete_date = null;
-    public ?array $direct_partner = null;
-    public ?string $err_code = null;
-    public ?string $err_message = null;
+    public ?string $completeDate = null;
+    public ?array $directPartner = null;
+    public ?string $errCode = null;
+    public ?string $errMessage = null;
     public ?int $id = null;
-    public ?string $ip_address = null;
-    public ?string $message_id = null;
+    public ?string $ipAddress = null;
+    public ?string $messageId = null;
     public ?array $partner = null;
     public ?string $reference = null;
     public ?bool $success = null;
-    public ?string $template_id = null;
+    public ?string $templateId = null;
 }
 
 /** UpdateResult entity data model. */
 class UpdateResult
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $client = null;
     public array $contact;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public string $email;
-    public string $first_name;
+    public string $firstName;
     public ?int $id = null;
-    public ?bool $is_active = null;
-    public string $last_name;
+    public ?bool $isActive = null;
+    public string $lastName;
     public ?string $mid = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?array $partner = null;
     public string $phone;
     public ?string $reference = null;
-    public ?bool $send_welcome_email = null;
-    public string $user_name;
-    public array $user_role;
-    public ?string $verification_phrase = null;
+    public ?bool $sendWelcomeEmail = null;
+    public string $userName;
+    public array $userRole;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
 /** Request payload for UpdateResult#list. */
 class UpdateResultListMatch
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $client = null;
     public ?array $contact = null;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public ?string $email = null;
-    public ?string $first_name = null;
+    public ?string $firstName = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
-    public ?string $last_name = null;
+    public ?bool $isActive = null;
+    public ?string $lastName = null;
     public ?string $mid = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?array $partner = null;
     public ?string $phone = null;
     public ?string $reference = null;
-    public ?bool $send_welcome_email = null;
-    public ?string $user_name = null;
-    public ?array $user_role = null;
-    public ?string $verification_phrase = null;
+    public ?bool $sendWelcomeEmail = null;
+    public ?string $userName = null;
+    public ?array $userRole = null;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
 /** Request payload for UpdateResult#create. */
 class UpdateResultCreateData
 {
-    public ?string $billing_id = null;
+    public ?string $billingId = null;
     public ?array $client = null;
     public array $contact;
-    public ?array $direct_partner = null;
+    public ?array $directPartner = null;
     public string $email;
-    public string $first_name;
+    public string $firstName;
     public ?int $id = null;
-    public ?bool $is_active = null;
-    public string $last_name;
+    public ?bool $isActive = null;
+    public string $lastName;
     public ?string $mid = null;
     public ?string $name = null;
     public ?array $parent = null;
     public ?array $partner = null;
     public string $phone;
     public ?string $reference = null;
-    public ?bool $send_welcome_email = null;
-    public string $user_name;
-    public array $user_role;
-    public ?string $verification_phrase = null;
+    public ?bool $sendWelcomeEmail = null;
+    public string $userName;
+    public array $userRole;
+    public ?string $verificationPhrase = null;
     public ?int $version = null;
 }
 
@@ -320,6 +322,25 @@ class UpdateResultCreateData
 class UpdateResultUpdateData
 {
     public string $id;
+    public ?string $billingId = null;
+    public ?array $client = null;
+    public ?array $contact = null;
+    public ?array $directPartner = null;
+    public ?string $email = null;
+    public ?string $firstName = null;
+    public ?bool $isActive = null;
+    public ?string $lastName = null;
+    public ?string $mid = null;
+    public ?string $name = null;
+    public ?array $parent = null;
+    public ?array $partner = null;
+    public ?string $phone = null;
+    public ?string $reference = null;
+    public ?bool $sendWelcomeEmail = null;
+    public ?string $userName = null;
+    public ?array $userRole = null;
+    public ?string $verificationPhrase = null;
+    public ?int $version = null;
 }
 
 /** User entity data model. */
@@ -328,15 +349,15 @@ class User
     public ?array $client = null;
     public ?string $created = null;
     public ?string $email = null;
-    public ?string $first_name = null;
+    public ?string $firstName = null;
     public ?int $id = null;
-    public ?bool $is_active = null;
-    public ?string $last_name = null;
+    public ?bool $isActive = null;
+    public ?string $lastName = null;
     public ?string $modified = null;
     public ?array $partner = null;
     public ?string $phone = null;
-    public ?string $user_name = null;
-    public ?array $user_role = null;
+    public ?string $userName = null;
+    public ?array $userRole = null;
     public ?int $version = null;
 }
 

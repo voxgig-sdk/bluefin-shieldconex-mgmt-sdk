@@ -57,44 +57,47 @@ to recover from failures.
 
 ### 2. List client records
 
-`eList ent match ctrl` returns a list `Value` and raises on error.
+`eList ent match ctrl` resolves to one ENTITY per record and raises on
+error. Read a record with `eDataGet`.
 
 ```haskell
   ent <- Sdk.client sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
   clients <- Sdk.eList ent match ctrl
-  print clients
+  mapM_ (\en -> print =<< Sdk.eDataGet en) clients
 ```
 
 ### 3. Load a client
 
-`eLoad ent match ctrl` returns the bare record and raises on error.
+`eLoad ent match ctrl` resolves to the ENTITY and raises on error;
+`eDataGet` gives the record.
 
 ```haskell
   ent2 <- Sdk.client sdk VNoval
   m <- jo [("id", VStr "example_id")]
   ctrl2 <- emptyMap
   client <- Sdk.eLoad ent2 m ctrl2
-  print client
+  print =<< Sdk.eDataGet client
 ```
 
 ### 4. Create, update, and remove
 
 ```haskell
   createEnt <- Sdk.client sdk VNoval
-  d <- jo [("billing_id", VStr "example_billing_id"), ("contact", VNoval)]
+  d <- jo [("billingId", VStr "example_billingId"), ("contact", VNoval)]
   cctrl <- emptyMap
   created <- Sdk.eCreate createEnt d cctrl
-  print created
+  print =<< Sdk.eDataGet created
 ```
 
 ```haskell
   removeEnt <- Sdk.client sdk VNoval
   rm <- jo [("id", VStr "example_id")]
   rctrl <- emptyMap
-  _ <- Sdk.eRemove removeEnt rm rctrl
-  return ()
+  -- Resolves to the entity, marked deleted; it keeps the data it held.
+  removed <- Sdk.eRemove removeEnt rm rctrl
+  print =<< readIORef (Sdk.eDeleted removed)
 ```
 
 
@@ -297,11 +300,11 @@ All entities share the same record interface (fields of the `Entity` type).
 
 | Field | Signature | Description |
 | --- | --- | --- |
-| `eLoad` | `Value -> Value -> IO Value` | Load a single entity by match criteria. Raises on error. |
-| `eList` | `Value -> Value -> IO Value` | List entities matching the criteria. Raises on error. |
-| `eCreate` | `Value -> Value -> IO Value` | Create a new entity. Raises on error. |
-| `eUpdate` | `Value -> Value -> IO Value` | Update an existing entity. Raises on error. |
-| `eRemove` | `Value -> Value -> IO Value` | Remove an entity. Raises on error. |
+| `eLoad` | `Value -> Value -> IO Entity` | Load a single entity by match criteria. Resolves to the entity. Raises on error. |
+| `eList` | `Value -> Value -> IO [Entity]` | List entities matching the criteria. Resolves to one entity per record. Raises on error. |
+| `eCreate` | `Value -> Value -> IO Entity` | Create a new entity. Resolves to the entity. Raises on error. |
+| `eUpdate` | `Value -> Value -> IO Entity` | Update an existing entity. Resolves to the entity. Raises on error. |
+| `eRemove` | `Value -> Value -> IO Entity` | Remove an entity. Resolves to the entity, marked deleted. Raises on error. |
 | `eDataGet` | `IO Value` | Get entity data. |
 | `eDataSet` | `Value -> IO ()` | Set entity data. |
 | `eStream` | `String -> Value -> Value -> IO [Value]` | Run an op as a lazy stream of items. |
@@ -310,9 +313,11 @@ All entities share the same record interface (fields of the `Entity` type).
 
 ### Result shape
 
-Entity operations return the bare result `Value` (a map for single-entity
-ops, a list for `eList`) and raise on error. Wrap calls in
-`Control.Exception.try` to handle failures.
+Entity operations resolve to the ENTITY, not the raw record — `eList` to
+one entity per record — and raise on error. The record is reached through
+`eDataGet`, which returns the entity's data container. `eRemove` resolves to
+the entity marked deleted (`eDeleted`); it keeps the data it held. Wrap calls
+in `Control.Exception.try` to handle failures.
 
 The `direct` escape hatch never raises — it returns a result `Value`
 you branch on via its `ok` field (read with `getp result "ok"`):
@@ -332,12 +337,12 @@ On error, `ok` is `False` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -363,16 +368,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -383,13 +388,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -405,17 +410,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -425,25 +430,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -457,15 +462,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -485,21 +490,21 @@ Create an instance: `client <- Sdk.client sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eCreate ent data ctrl` | Create a new entity with the given data. |
-| `eList ent match ctrl` | List entities, optionally matching the given criteria. |
-| `eLoad ent match ctrl` | Load a single entity by match criteria. |
-| `eRemove ent match ctrl` | Remove the matching entity. |
+| `eCreate ent data ctrl` | Create a new entity with the given data. Resolves to the entity. |
+| `eList ent match ctrl` | List entities, optionally matching the given criteria. Resolves to one entity per record. |
+| `eLoad ent match ctrl` | Load a single entity by match criteria. Resolves to the entity. |
+| `eRemove ent match ctrl` | Remove the matching entity. Resolves to the entity, marked deleted. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Value` |  |
 | `created` | `String` |  |
-| `direct_partner` | `Value` |  |
+| `directPartner` | `Value` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
+| `isActive` | `Bool` |  |
 | `mid` | `String` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
@@ -513,6 +518,8 @@ Create an instance: `client <- Sdk.client sdk VNoval`
   match <- jo [("id", VStr "client_id")]
   ctrl <- emptyMap
   client <- Sdk.eLoad ent match ctrl
+  -- The op resolves to the ENTITY; the record is inside it.
+  clientData <- Sdk.eDataGet client
 ```
 
 #### Example: List
@@ -521,7 +528,9 @@ Create an instance: `client <- Sdk.client sdk VNoval`
   ent <- Sdk.client sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
+  -- One ENTITY per record.
   clients <- Sdk.eList ent match ctrl
+  clientDatas <- mapM Sdk.eDataGet clients
 ```
 
 #### Example: Create
@@ -532,6 +541,7 @@ Create an instance: `client <- Sdk.client sdk VNoval`
     []
   ctrl <- emptyMap
   client <- Sdk.eCreate ent d ctrl
+  clientData <- Sdk.eDataGet client
 ```
 
 
@@ -543,7 +553,7 @@ Create an instance: `clone <- Sdk.clone sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eCreate ent data ctrl` | Create a new entity with the given data. |
+| `eCreate ent data ctrl` | Create a new entity with the given data. Resolves to the entity. |
 
 #### Fields
 
@@ -561,6 +571,7 @@ Create an instance: `clone <- Sdk.clone sdk VNoval`
     ]
   ctrl <- emptyMap
   clone <- Sdk.eCreate ent d ctrl
+  cloneData <- Sdk.eDataGet clone
 ```
 
 
@@ -572,24 +583,24 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eCreate ent data ctrl` | Create a new entity with the given data. |
-| `eList ent match ctrl` | List entities, optionally matching the given criteria. |
-| `eLoad ent match ctrl` | Load a single entity by match criteria. |
+| `eCreate ent data ctrl` | Create a new entity with the given data. Resolves to the entity. |
+| `eList ent match ctrl` | List entities, optionally matching the given criteria. Resolves to one entity per record. |
+| `eLoad ent match ctrl` | Load a single entity by match criteria. Resolves to the entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `contact` | `Value` |  |
 | `created` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
+| `isActive` | `Bool` |  |
 | `modified` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Value` |  |
 | `reference` | `String` |  |
-| `verification_phrase` | `String` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Int` |  |
 
 #### Example: Load
@@ -599,6 +610,8 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
   match <- jo [("id", VStr "partner_id")]
   ctrl <- emptyMap
   partner <- Sdk.eLoad ent match ctrl
+  -- The op resolves to the ENTITY; the record is inside it.
+  partnerData <- Sdk.eDataGet partner
 ```
 
 #### Example: List
@@ -607,7 +620,9 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
   ent <- Sdk.partner sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
+  -- One ENTITY per record.
   partners <- Sdk.eList ent match ctrl
+  partnerDatas <- mapM Sdk.eDataGet partners
 ```
 
 #### Example: Create
@@ -618,6 +633,7 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
     []
   ctrl <- emptyMap
   partner <- Sdk.eCreate ent d ctrl
+  partnerData <- Sdk.eDataGet partner
 ```
 
 
@@ -629,22 +645,22 @@ Create an instance: `template <- Sdk.template sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eCreate ent data ctrl` | Create a new entity with the given data. |
-| `eList ent match ctrl` | List entities, optionally matching the given criteria. |
-| `eLoad ent match ctrl` | Load a single entity by match criteria. |
-| `eRemove ent match ctrl` | Remove the matching entity. |
+| `eCreate ent data ctrl` | Create a new entity with the given data. Resolves to the entity. |
+| `eList ent match ctrl` | List entities, optionally matching the given criteria. Resolves to one entity per record. |
+| `eLoad ent match ctrl` | Load a single entity by match criteria. Resolves to the entity. |
+| `eRemove ent match ctrl` | Remove the matching entity. Resolves to the entity, marked deleted. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Value` |  |
+| `accessMode` | `Value` |  |
 | `active` | `Bool` |  |
 | `client` | `Value` |  |
-| `field_template` | `[Value]` |  |
+| `fieldTemplates` | `[Value]` |  |
 | `id` | `Int` |  |
 | `name` | `String` |  |
-| `option` | `Value` |  |
+| `options` | `Value` |  |
 | `partner` | `Value` |  |
 | `reference` | `String` |  |
 | `type` | `String` |  |
@@ -657,6 +673,8 @@ Create an instance: `template <- Sdk.template sdk VNoval`
   match <- jo [("id", VStr "template_id")]
   ctrl <- emptyMap
   template <- Sdk.eLoad ent match ctrl
+  -- The op resolves to the ENTITY; the record is inside it.
+  templateData <- Sdk.eDataGet template
 ```
 
 #### Example: List
@@ -665,7 +683,9 @@ Create an instance: `template <- Sdk.template sdk VNoval`
   ent <- Sdk.template sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
+  -- One ENTITY per record.
   templates <- Sdk.eList ent match ctrl
+  templateDatas <- mapM Sdk.eDataGet templates
 ```
 
 #### Example: Create
@@ -676,6 +696,7 @@ Create an instance: `template <- Sdk.template sdk VNoval`
     []
   ctrl <- emptyMap
   template <- Sdk.eCreate ent d ctrl
+  templateData <- Sdk.eDataGet template
 ```
 
 
@@ -687,8 +708,8 @@ Create an instance: `transaction <- Sdk.transaction sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eList ent match ctrl` | List entities, optionally matching the given criteria. |
-| `eLoad ent match ctrl` | Load a single entity by match criteria. |
+| `eList ent match ctrl` | List entities, optionally matching the given criteria. Resolves to one entity per record. |
+| `eLoad ent match ctrl` | Load a single entity by match criteria. Resolves to the entity. |
 
 #### Fields
 
@@ -696,17 +717,17 @@ Create an instance: `transaction <- Sdk.transaction sdk VNoval`
 | --- | --- | --- |
 | `bfid` | `String` |  |
 | `client` | `Value` |  |
-| `complete_date` | `String` |  |
-| `direct_partner` | `Value` |  |
-| `err_code` | `String` |  |
-| `err_message` | `String` |  |
+| `completeDate` | `String` |  |
+| `directPartner` | `Value` |  |
+| `errCode` | `String` |  |
+| `errMessage` | `String` |  |
 | `id` | `Int` |  |
-| `ip_address` | `String` |  |
-| `message_id` | `String` |  |
+| `ipAddress` | `String` |  |
+| `messageId` | `String` |  |
 | `partner` | `Value` |  |
 | `reference` | `String` |  |
 | `success` | `Bool` |  |
-| `template_id` | `String` |  |
+| `templateId` | `String` |  |
 
 #### Example: Load
 
@@ -715,6 +736,8 @@ Create an instance: `transaction <- Sdk.transaction sdk VNoval`
   match <- jo [("id", VStr "transaction_id")]
   ctrl <- emptyMap
   transaction <- Sdk.eLoad ent match ctrl
+  -- The op resolves to the ENTITY; the record is inside it.
+  transactionData <- Sdk.eDataGet transaction
 ```
 
 #### Example: List
@@ -723,7 +746,9 @@ Create an instance: `transaction <- Sdk.transaction sdk VNoval`
   ent <- Sdk.transaction sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
+  -- One ENTITY per record.
   transactions <- Sdk.eList ent match ctrl
+  transactionDatas <- mapM Sdk.eDataGet transactions
 ```
 
 
@@ -735,33 +760,33 @@ Create an instance: `update_result <- Sdk.update_result sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eCreate ent data ctrl` | Create a new entity with the given data. |
-| `eList ent match ctrl` | List entities, optionally matching the given criteria. |
-| `eUpdate ent data ctrl` | Update an existing entity. |
+| `eCreate ent data ctrl` | Create a new entity with the given data. Resolves to the entity. |
+| `eList ent match ctrl` | List entities, optionally matching the given criteria. Resolves to one entity per record. |
+| `eUpdate ent data ctrl` | Update an existing entity. Resolves to the entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `String` |  |
+| `billingId` | `String` |  |
 | `client` | `Value` |  |
 | `contact` | `Value` |  |
-| `direct_partner` | `Value` |  |
+| `directPartner` | `Value` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Bool` |  |
+| `lastName` | `String` |  |
 | `mid` | `String` |  |
 | `name` | `String` |  |
 | `parent` | `Value` |  |
 | `partner` | `Value` |  |
 | `phone` | `String` |  |
 | `reference` | `String` |  |
-| `send_welcome_email` | `Bool` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Value` |  |
-| `verification_phrase` | `String` |  |
+| `sendWelcomeEmail` | `Bool` |  |
+| `userName` | `String` |  |
+| `userRole` | `Value` |  |
+| `verificationPhrase` | `String` |  |
 | `version` | `Int` |  |
 
 #### Example: List
@@ -770,7 +795,9 @@ Create an instance: `update_result <- Sdk.update_result sdk VNoval`
   ent <- Sdk.update_result sdk VNoval
   match <- emptyMap
   ctrl <- emptyMap
+  -- One ENTITY per record.
   update_results <- Sdk.eList ent match ctrl
+  update_resultDatas <- mapM Sdk.eDataGet update_results
 ```
 
 #### Example: Create
@@ -780,14 +807,15 @@ Create an instance: `update_result <- Sdk.update_result sdk VNoval`
   d <- jo
     [ ("contact", VNoval)   -- Value
     , ("email", VStr "example_email")   -- String
-    , ("first_name", VStr "example_first_name")   -- String
-    , ("last_name", VStr "example_last_name")   -- String
+    , ("firstName", VStr "example_firstName")   -- String
+    , ("lastName", VStr "example_lastName")   -- String
     , ("phone", VStr "example_phone")   -- String
-    , ("user_name", VStr "example_user_name")   -- String
-    , ("user_role", VNoval)   -- Value
+    , ("userName", VStr "example_userName")   -- String
+    , ("userRole", VNoval)   -- Value
     ]
   ctrl <- emptyMap
   update_result <- Sdk.eCreate ent d ctrl
+  update_resultData <- Sdk.eDataGet update_result
 ```
 
 
@@ -799,7 +827,7 @@ Create an instance: `user <- Sdk.user sdk VNoval`
 
 | Method | Description |
 | --- | --- |
-| `eLoad ent match ctrl` | Load a single entity by match criteria. |
+| `eLoad ent match ctrl` | Load a single entity by match criteria. Resolves to the entity. |
 
 #### Fields
 
@@ -808,15 +836,15 @@ Create an instance: `user <- Sdk.user sdk VNoval`
 | `client` | `Value` |  |
 | `created` | `String` |  |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Int` |  |
-| `is_active` | `Bool` |  |
-| `last_name` | `String` |  |
+| `isActive` | `Bool` |  |
+| `lastName` | `String` |  |
 | `modified` | `String` |  |
 | `partner` | `Value` |  |
 | `phone` | `String` |  |
-| `user_name` | `String` |  |
-| `user_role` | `Value` |  |
+| `userName` | `String` |  |
+| `userRole` | `Value` |  |
 | `version` | `Int` |  |
 
 #### Example: Load
@@ -826,6 +854,8 @@ Create an instance: `user <- Sdk.user sdk VNoval`
   match <- jo [("id", VStr "user_id")]
   ctrl <- emptyMap
   user <- Sdk.eLoad ent match ctrl
+  -- The op resolves to the ENTITY; the record is inside it.
+  userData <- Sdk.eDataGet user
 ```
 
 

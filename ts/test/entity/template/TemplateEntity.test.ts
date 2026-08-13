@@ -26,8 +26,8 @@ import {
 describe('TemplateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BLUEFINSHIELDCONEXMGMT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BLUEFINSHIELDCONEXMGMT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BluefinShieldconexMgmtSDK.test()
@@ -62,14 +62,14 @@ describe('TemplateEntity', async () => {
     const template_ref01_ent = client.Template()
     let template_ref01_data = setup.data.new.template['template_ref01']
 
-    template_ref01_data = await template_ref01_ent.create(template_ref01_data)
+    template_ref01_data = (await template_ref01_ent.create(template_ref01_data)).data()
     assert(null != template_ref01_data.id)
 
 
     // LIST
     const template_ref01_match: any = {}
 
-    const template_ref01_list = await template_ref01_ent.list(template_ref01_match)
+    const template_ref01_list = (await template_ref01_ent.list(template_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(template_ref01_list, { id: template_ref01_data.id })))
 
@@ -77,7 +77,7 @@ describe('TemplateEntity', async () => {
     // LOAD
     const template_ref01_match_dt0: any = {}
     template_ref01_match_dt0.id = template_ref01_data.id
-    const template_ref01_data_dt0 = await template_ref01_ent.load(template_ref01_match_dt0)
+    const template_ref01_data_dt0 = (await template_ref01_ent.load(template_ref01_match_dt0)).data()
     assert(template_ref01_data_dt0.id === template_ref01_data.id)
 
 
@@ -89,7 +89,7 @@ describe('TemplateEntity', async () => {
     // LIST
     const template_ref01_match_rt0: any = {}
 
-    const template_ref01_list_rt0 = await template_ref01_ent.list(template_ref01_match_rt0)
+    const template_ref01_list_rt0 = (await template_ref01_ent.list(template_ref01_match_rt0)).map((e: any) => e.data())
 
     assert(isempty(select(template_ref01_list_rt0, { id: template_ref01_data.id })))
 

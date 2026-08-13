@@ -71,8 +71,8 @@ public static class TestRunner
 
     public static Dictionary<string, object?> EnvOverride(Dictionary<string, object?> m)
     {
-        if (Environment.GetEnvironmentVariable("BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == "TRUE" ||
-            Environment.GetEnvironmentVariable("BLUEFINSHIELDCONEXMGMT_TEST_OVERRIDE") == "TRUE")
+        if (Environment.GetEnvironmentVariable("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == "TRUE" ||
+            Environment.GetEnvironmentVariable("BLUEFIN_SHIELDCONEX_MGMT_TEST_OVERRIDE") == "TRUE")
         {
             foreach (var key in m.Keys.ToList())
             {
@@ -98,10 +98,10 @@ public static class TestRunner
             }
         }
 
-        var explain = Environment.GetEnvironmentVariable("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN");
+        var explain = Environment.GetEnvironmentVariable("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN");
         if (!string.IsNullOrEmpty(explain))
         {
-            m["BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN"] = explain;
+            m["BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN"] = explain;
         }
 
         return m;

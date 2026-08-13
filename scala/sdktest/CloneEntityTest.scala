@@ -39,7 +39,7 @@ object CloneEntityTest {
           Struct.getpath(entityData, "new.clone"), "clone_ref01"))
       cloneRef01Data.put("template_id", idmap.get("template01"))
       val cloneRef01DataResult = cloneRef01Ent.create(cloneRef01Data, null)
-      cloneRef01Data = Helpers.toMapAny(cloneRef01DataResult)
+      cloneRef01Data = Helpers.toMapAny(cloneRef01DataResult match { case e: SdkEntity => e.data(); case o => o })
       rep.check("clone.create.map", cloneRef01Data != null, "expected create result to be a map")
       rep.check("clone.create.id", cloneRef01Data != null && cloneRef01Data.get("id") != null, "expected created entity to have an id")
     }

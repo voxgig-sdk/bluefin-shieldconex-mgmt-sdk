@@ -114,12 +114,12 @@ Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `char*` | No |  |
+| `billingId` | `char*` | No |  |
 | `contact` | `voxgig_value* (map)` | No |  |
 | `created` | `char*` | No |  |
-| `direct_partner` | `voxgig_value* (map)` | No |  |
+| `directPartner` | `voxgig_value* (map)` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `char*` | No |  |
 | `modified` | `char*` | No |  |
 | `name` | `char*` | No |  |
@@ -130,12 +130,12 @@ Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -261,32 +261,32 @@ Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `char*` | No |  |
+| `billingId` | `char*` | No |  |
 | `contact` | `voxgig_value* (map)` | No |  |
 | `created` | `char*` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `char*` | No |  |
 | `name` | `char*` | No |  |
 | `parent` | `voxgig_value* (map)` | No |  |
 | `reference` | `char*` | No |  |
-| `verification_phrase` | `char*` | No |  |
+| `verificationPhrase` | `char*` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -352,13 +352,13 @@ Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `voxgig_value*` | No |  |
+| `accessMode` | `voxgig_value*` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `voxgig_value* (map)` | No |  |
-| `field_template` | `voxgig_value* (list)` | No |  |
+| `fieldTemplates` | `voxgig_value* (list)` | No |  |
 | `id` | `int64_t` | No |  |
 | `name` | `char*` | No |  |
-| `option` | `voxgig_value* (map)` | No |  |
+| `options` | `voxgig_value* (map)` | No |  |
 | `partner` | `voxgig_value* (map)` | No |  |
 | `reference` | `char*` | No |  |
 | `type` | `char*` | No |  |
@@ -438,17 +438,17 @@ Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 | --- | --- | --- | --- |
 | `bfid` | `char*` | No |  |
 | `client` | `voxgig_value* (map)` | No |  |
-| `complete_date` | `char*` | No |  |
-| `direct_partner` | `voxgig_value* (map)` | No |  |
-| `err_code` | `char*` | No |  |
-| `err_message` | `char*` | No |  |
+| `completeDate` | `char*` | No |  |
+| `directPartner` | `voxgig_value* (map)` | No |  |
+| `errCode` | `char*` | No |  |
+| `errMessage` | `char*` | No |  |
 | `id` | `int64_t` | No |  |
-| `ip_address` | `char*` | No |  |
-| `message_id` | `char*` | No |  |
+| `ipAddress` | `char*` | No |  |
+| `messageId` | `char*` | No |  |
 | `partner` | `voxgig_value* (map)` | No |  |
 | `reference` | `char*` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `char*` | No |  |
+| `templateId` | `char*` | No |  |
 
 ### Operations
 
@@ -504,50 +504,50 @@ Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `char*` | No |  |
+| `billingId` | `char*` | No |  |
 | `client` | `voxgig_value* (map)` | No |  |
 | `contact` | `voxgig_value* (map)` | Yes |  |
-| `direct_partner` | `voxgig_value* (map)` | No |  |
+| `directPartner` | `voxgig_value* (map)` | No |  |
 | `email` | `char*` | Yes |  |
-| `first_name` | `char*` | Yes |  |
+| `firstName` | `char*` | Yes |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `char*` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `char*` | Yes |  |
 | `mid` | `char*` | No |  |
 | `name` | `char*` | No |  |
 | `parent` | `voxgig_value* (map)` | No |  |
 | `partner` | `voxgig_value* (map)` | No |  |
 | `phone` | `char*` | Yes |  |
 | `reference` | `char*` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `char*` | Yes |  |
-| `user_role` | `voxgig_value* (map)` | Yes |  |
-| `verification_phrase` | `char*` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `char*` | Yes |  |
+| `userRole` | `voxgig_value* (map)` | Yes |  |
+| `verificationPhrase` | `char*` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -561,11 +561,11 @@ Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 voxgig_value* result = update_result->vt->create(update_result, cmap(7,
     "contact", v_map(),  // voxgig_value* (map)
     "email", v_str("example_email"),  // char*
-    "first_name", v_str("example_first_name"),  // char*
-    "last_name", v_str("example_last_name"),  // char*
+    "firstName", v_str("example_firstName"),  // char*
+    "lastName", v_str("example_lastName"),  // char*
     "phone", v_str("example_phone"),  // char*
-    "user_name", v_str("example_user_name"),  // char*
-    "user_role", v_map())  // voxgig_value* (map)
+    "userName", v_str("example_userName"),  // char*
+    "userRole", v_map())  // voxgig_value* (map)
 , NULL, &err);
 ```
 
@@ -624,15 +624,15 @@ Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 | `client` | `voxgig_value* (map)` | No |  |
 | `created` | `char*` | No |  |
 | `email` | `char*` | No |  |
-| `first_name` | `char*` | No |  |
+| `firstName` | `char*` | No |  |
 | `id` | `int64_t` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `char*` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `char*` | No |  |
 | `modified` | `char*` | No |  |
 | `partner` | `voxgig_value* (map)` | No |  |
 | `phone` | `char*` | No |  |
-| `user_name` | `char*` | No |  |
-| `user_role` | `voxgig_value* (map)` | No |  |
+| `userName` | `char*` | No |  |
+| `userRole` | `voxgig_value* (map)` | No |  |
 | `version` | `int64_t` | No |  |
 
 ### Operations

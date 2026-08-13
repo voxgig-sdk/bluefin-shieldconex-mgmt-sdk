@@ -16,22 +16,22 @@ main: kit: entity: transaction: {
       type: "`$OBJECT`"
     }
     {
-      name: "complete_date"
+      name: "completeDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "direct_partner"
+      name: "directPartner"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "err_code"
+      name: "errCode"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "err_message"
+      name: "errMessage"
       req: false
       type: "`$STRING`"
     }
@@ -41,12 +41,12 @@ main: kit: entity: transaction: {
       type: "`$INTEGER`"
     }
     {
-      name: "ip_address"
+      name: "ipAddress"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "message_id"
+      name: "messageId"
       req: false
       type: "`$STRING`"
     }
@@ -66,7 +66,7 @@ main: kit: entity: transaction: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "template_id"
+      name: "templateId"
       req: false
       type: "`$STRING`"
     }

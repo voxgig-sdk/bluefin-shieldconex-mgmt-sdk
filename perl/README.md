@@ -63,7 +63,7 @@ else {
 
 ### 3. Load a client
 
-`load()` returns the bare record (a `hashref`) and dies on error.
+`load()` returns the ENTITY — call data_get for the record — and dies on error.
 
 ```perl
 my $client = eval { $client->Client->load({ 'id' => 'example_id' }) };
@@ -78,8 +78,8 @@ else {
 ### 4. Create, update, and remove
 
 ```perl
-# Create — returns the bare created record (a hashref)
-my $created = $client->Client->create({ 'billing_id' => 'example_billing_id', 'contact' => {} });
+# Create — returns the ENTITY (call data_get for the record)
+my $created = $client->Client->create({ 'billingId' => 'example_billingId', 'contact' => {} });
 
 # Remove
 $client->Client->remove({ 'id' => $created->{id} });
@@ -162,7 +162,8 @@ Create a mock client for unit testing — no server required:
 ```perl
 my $client = BluefinShieldconexMgmtSDK->test(undef, undef);
 
-# Entity ops return the bare record and die on error.
+# Entity ops return the ENTITY and dies on error;
+# call data_get for the record.
 my $partner = $client->Partner->list();
 # $partner contains the mock response record
 ```
@@ -271,7 +272,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `hashref` for single-entity
+Entity operations return the ENTITY (call data_get for the record) (a `hashref` for single-entity
 ops, an `arrayref` for `list`) and die on error. Wrap calls in
 `eval { ... }` and inspect `$@` to handle failures.
 
@@ -293,12 +294,12 @@ On error, `ok` is false and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -324,16 +325,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -344,13 +345,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -366,17 +367,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -386,25 +387,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -418,15 +419,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -455,12 +456,12 @@ Create an instance: `my $client = $client->Client;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `hashref` |  |
 | `created` | `string` |  |
-| `direct_partner` | `hashref` |  |
+| `directPartner` | `hashref` |  |
 | `id` | `integer` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `mid` | `string` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
@@ -529,16 +530,16 @@ Create an instance: `my $partner = $client->Partner;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `contact` | `hashref` |  |
 | `created` | `string` |  |
 | `id` | `integer` |  |
-| `is_active` | `boolean` |  |
+| `isActive` | `boolean` |  |
 | `modified` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `hashref` |  |
 | `reference` | `string` |  |
-| `verification_phrase` | `string` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `integer` |  |
 
 #### Example: Load
@@ -578,13 +579,13 @@ Create an instance: `my $template = $client->Template;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `scalar` |  |
+| `accessMode` | `scalar` |  |
 | `active` | `boolean` |  |
 | `client` | `hashref` |  |
-| `field_template` | `arrayref` |  |
+| `fieldTemplates` | `arrayref` |  |
 | `id` | `integer` |  |
 | `name` | `string` |  |
-| `option` | `hashref` |  |
+| `options` | `hashref` |  |
 | `partner` | `hashref` |  |
 | `reference` | `string` |  |
 | `type` | `string` |  |
@@ -627,17 +628,17 @@ Create an instance: `my $transaction = $client->Transaction;`
 | --- | --- | --- |
 | `bfid` | `string` |  |
 | `client` | `hashref` |  |
-| `complete_date` | `string` |  |
-| `direct_partner` | `hashref` |  |
-| `err_code` | `string` |  |
-| `err_message` | `string` |  |
+| `completeDate` | `string` |  |
+| `directPartner` | `hashref` |  |
+| `errCode` | `string` |  |
+| `errMessage` | `string` |  |
 | `id` | `integer` |  |
-| `ip_address` | `string` |  |
-| `message_id` | `string` |  |
+| `ipAddress` | `string` |  |
+| `messageId` | `string` |  |
 | `partner` | `hashref` |  |
 | `reference` | `string` |  |
 | `success` | `boolean` |  |
-| `template_id` | `string` |  |
+| `templateId` | `string` |  |
 
 #### Example: Load
 
@@ -668,25 +669,25 @@ Create an instance: `my $update_result = $client->UpdateResult;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `string` |  |
+| `billingId` | `string` |  |
 | `client` | `hashref` |  |
 | `contact` | `hashref` |  |
-| `direct_partner` | `hashref` |  |
+| `directPartner` | `hashref` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `integer` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `mid` | `string` |  |
 | `name` | `string` |  |
 | `parent` | `hashref` |  |
 | `partner` | `hashref` |  |
 | `phone` | `string` |  |
 | `reference` | `string` |  |
-| `send_welcome_email` | `boolean` |  |
-| `user_name` | `string` |  |
-| `user_role` | `hashref` |  |
-| `verification_phrase` | `string` |  |
+| `sendWelcomeEmail` | `boolean` |  |
+| `userName` | `string` |  |
+| `userRole` | `hashref` |  |
+| `verificationPhrase` | `string` |  |
 | `version` | `integer` |  |
 
 #### Example: List
@@ -701,11 +702,11 @@ my $update_results = $client->UpdateResult->list;
 my $update_result = $client->UpdateResult->create({
     'contact' => {},  # hashref
     'email' => 'example_email',  # string
-    'first_name' => 'example_first_name',  # string
-    'last_name' => 'example_last_name',  # string
+    'firstName' => 'example_firstName',  # string
+    'lastName' => 'example_lastName',  # string
     'phone' => 'example_phone',  # string
-    'user_name' => 'example_user_name',  # string
-    'user_role' => {},  # hashref
+    'userName' => 'example_userName',  # string
+    'userRole' => {},  # hashref
 });
 ```
 
@@ -727,15 +728,15 @@ Create an instance: `my $user = $client->User;`
 | `client` | `hashref` |  |
 | `created` | `string` |  |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `integer` |  |
-| `is_active` | `boolean` |  |
-| `last_name` | `string` |  |
+| `isActive` | `boolean` |  |
+| `lastName` | `string` |  |
 | `modified` | `string` |  |
 | `partner` | `hashref` |  |
 | `phone` | `string` |  |
-| `user_name` | `string` |  |
-| `user_role` | `hashref` |  |
+| `userName` | `string` |  |
+| `userRole` | `hashref` |  |
 | `version` | `integer` |  |
 
 #### Example: Load

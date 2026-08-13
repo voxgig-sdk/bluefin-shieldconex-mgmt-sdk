@@ -79,7 +79,7 @@ switch (client.client(h.vnull()).load(h.jo(&.{.{ "id", h.vstr("example_id") }}),
 
 ```zig
 // Create — .ok carries the created record
-switch (client.client(h.vnull()).create(h.jo(&.{.{ "billing_id", h.vstr("example_billing_id") }, .{ "contact", h.omap() }}), h.vnull())) {
+switch (client.client(h.vnull()).create(h.jo(&.{.{ "billingId", h.vstr("example_billingId") }, .{ "contact", h.omap() }}), h.vnull())) {
     .ok => |created| std.debug.print("{s}\n", .{h.stringify(created)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
 }
@@ -288,12 +288,12 @@ On error, `ok` is `false` and `err` carries the error message.
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `mid` |  |
 | `modified` |  |
 | `name` |  |
@@ -319,16 +319,16 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `contact` |  |
 | `created` |  |
 | `id` |  |
-| `is_active` |  |
+| `isActive` |  |
 | `modified` |  |
 | `name` |  |
 | `parent` |  |
 | `reference` |  |
-| `verification_phrase` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Load.
@@ -339,13 +339,13 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `access_mode` |  |
+| `accessMode` |  |
 | `active` |  |
 | `client` |  |
-| `field_template` |  |
+| `fieldTemplates` |  |
 | `id` |  |
 | `name` |  |
-| `option` |  |
+| `options` |  |
 | `partner` |  |
 | `reference` |  |
 | `type` |  |
@@ -361,17 +361,17 @@ API path: `/templates`
 | --- | --- |
 | `bfid` |  |
 | `client` |  |
-| `complete_date` |  |
-| `direct_partner` |  |
-| `err_code` |  |
-| `err_message` |  |
+| `completeDate` |  |
+| `directPartner` |  |
+| `errCode` |  |
+| `errMessage` |  |
 | `id` |  |
-| `ip_address` |  |
-| `message_id` |  |
+| `ipAddress` |  |
+| `messageId` |  |
 | `partner` |  |
 | `reference` |  |
 | `success` |  |
-| `template_id` |  |
+| `templateId` |  |
 
 Operations: List, Load.
 
@@ -381,25 +381,25 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billing_id` |  |
+| `billingId` |  |
 | `client` |  |
 | `contact` |  |
-| `direct_partner` |  |
+| `directPartner` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `mid` |  |
 | `name` |  |
 | `parent` |  |
 | `partner` |  |
 | `phone` |  |
 | `reference` |  |
-| `send_welcome_email` |  |
-| `user_name` |  |
-| `user_role` |  |
-| `verification_phrase` |  |
+| `sendWelcomeEmail` |  |
+| `userName` |  |
+| `userRole` |  |
+| `verificationPhrase` |  |
 | `version` |  |
 
 Operations: Create, List, Update.
@@ -413,15 +413,15 @@ API path: `/users`
 | `client` |  |
 | `created` |  |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `is_active` |  |
-| `last_name` |  |
+| `isActive` |  |
+| `lastName` |  |
 | `modified` |  |
 | `partner` |  |
 | `phone` |  |
-| `user_name` |  |
-| `user_role` |  |
+| `userName` |  |
+| `userRole` |  |
 | `version` |  |
 
 Operations: Load.
@@ -453,12 +453,12 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `[]const u8` |  |
+| `billingId` | `[]const u8` |  |
 | `contact` | `Value (object)` |  |
 | `created` | `[]const u8` |  |
-| `direct_partner` | `Value (object)` |  |
+| `directPartner` | `Value (object)` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `mid` | `[]const u8` |  |
 | `modified` | `[]const u8` |  |
 | `name` | `[]const u8` |  |
@@ -545,16 +545,16 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `[]const u8` |  |
+| `billingId` | `[]const u8` |  |
 | `contact` | `Value (object)` |  |
 | `created` | `[]const u8` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
+| `isActive` | `bool` |  |
 | `modified` | `[]const u8` |  |
 | `name` | `[]const u8` |  |
 | `parent` | `Value (object)` |  |
 | `reference` | `[]const u8` |  |
-| `verification_phrase` | `[]const u8` |  |
+| `verificationPhrase` | `[]const u8` |  |
 | `version` | `i64` |  |
 
 #### Example: Load
@@ -606,13 +606,13 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_mode` | `Value` |  |
+| `accessMode` | `Value` |  |
 | `active` | `bool` |  |
 | `client` | `Value (object)` |  |
-| `field_template` | `Value (array)` |  |
+| `fieldTemplates` | `Value (array)` |  |
 | `id` | `i64` |  |
 | `name` | `[]const u8` |  |
-| `option` | `Value (object)` |  |
+| `options` | `Value (object)` |  |
 | `partner` | `Value (object)` |  |
 | `reference` | `[]const u8` |  |
 | `type` | `[]const u8` |  |
@@ -667,17 +667,17 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 | --- | --- | --- |
 | `bfid` | `[]const u8` |  |
 | `client` | `Value (object)` |  |
-| `complete_date` | `[]const u8` |  |
-| `direct_partner` | `Value (object)` |  |
-| `err_code` | `[]const u8` |  |
-| `err_message` | `[]const u8` |  |
+| `completeDate` | `[]const u8` |  |
+| `directPartner` | `Value (object)` |  |
+| `errCode` | `[]const u8` |  |
+| `errMessage` | `[]const u8` |  |
 | `id` | `i64` |  |
-| `ip_address` | `[]const u8` |  |
-| `message_id` | `[]const u8` |  |
+| `ipAddress` | `[]const u8` |  |
+| `messageId` | `[]const u8` |  |
 | `partner` | `Value (object)` |  |
 | `reference` | `[]const u8` |  |
 | `success` | `bool` |  |
-| `template_id` | `[]const u8` |  |
+| `templateId` | `[]const u8` |  |
 
 #### Example: Load
 
@@ -717,25 +717,25 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing_id` | `[]const u8` |  |
+| `billingId` | `[]const u8` |  |
 | `client` | `Value (object)` |  |
 | `contact` | `Value (object)` |  |
-| `direct_partner` | `Value (object)` |  |
+| `directPartner` | `Value (object)` |  |
 | `email` | `[]const u8` |  |
-| `first_name` | `[]const u8` |  |
+| `firstName` | `[]const u8` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `[]const u8` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `[]const u8` |  |
 | `mid` | `[]const u8` |  |
 | `name` | `[]const u8` |  |
 | `parent` | `Value (object)` |  |
 | `partner` | `Value (object)` |  |
 | `phone` | `[]const u8` |  |
 | `reference` | `[]const u8` |  |
-| `send_welcome_email` | `bool` |  |
-| `user_name` | `[]const u8` |  |
-| `user_role` | `Value (object)` |  |
-| `verification_phrase` | `[]const u8` |  |
+| `sendWelcomeEmail` | `bool` |  |
+| `userName` | `[]const u8` |  |
+| `userRole` | `Value (object)` |  |
+| `verificationPhrase` | `[]const u8` |  |
 | `version` | `i64` |  |
 
 #### Example: List
@@ -753,11 +753,11 @@ switch (client.update_result(h.vnull()).list(h.vnull(), h.vnull())) {
 switch (client.update_result(h.vnull()).create(h.jo(&.{
     .{ "contact", h.omap() }, // Value (object)
     .{ "email", h.vstr("example_email") }, // []const u8
-    .{ "first_name", h.vstr("example_first_name") }, // []const u8
-    .{ "last_name", h.vstr("example_last_name") }, // []const u8
+    .{ "firstName", h.vstr("example_firstName") }, // []const u8
+    .{ "lastName", h.vstr("example_lastName") }, // []const u8
     .{ "phone", h.vstr("example_phone") }, // []const u8
-    .{ "user_name", h.vstr("example_user_name") }, // []const u8
-    .{ "user_role", h.omap() }, // Value (object)
+    .{ "userName", h.vstr("example_userName") }, // []const u8
+    .{ "userRole", h.omap() }, // Value (object)
 }), h.vnull())) {
     .ok => |update_result| std.debug.print("{s}\n", .{h.stringify(update_result)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
@@ -785,15 +785,15 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 | `client` | `Value (object)` |  |
 | `created` | `[]const u8` |  |
 | `email` | `[]const u8` |  |
-| `first_name` | `[]const u8` |  |
+| `firstName` | `[]const u8` |  |
 | `id` | `i64` |  |
-| `is_active` | `bool` |  |
-| `last_name` | `[]const u8` |  |
+| `isActive` | `bool` |  |
+| `lastName` | `[]const u8` |  |
 | `modified` | `[]const u8` |  |
 | `partner` | `Value (object)` |  |
 | `phone` | `[]const u8` |  |
-| `user_name` | `[]const u8` |  |
-| `user_role` | `Value (object)` |  |
+| `userName` | `[]const u8` |  |
+| `userRole` | `Value (object)` |  |
 | `version` | `i64` |  |
 
 #### Example: Load

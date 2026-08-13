@@ -26,8 +26,8 @@ import {
 describe('UserEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BLUEFINSHIELDCONEXMGMT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BLUEFINSHIELDCONEXMGMT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BluefinShieldconexMgmtSDK.test()
@@ -63,7 +63,7 @@ describe('UserEntity', async () => {
     const user_ref01_ent = client.User()
     const user_ref01_match_dt0: any = {}
     user_ref01_match_dt0.id = user_ref01_data.id
-    const user_ref01_data_dt0 = await user_ref01_ent.load(user_ref01_match_dt0)
+    const user_ref01_data_dt0 = (await user_ref01_ent.load(user_ref01_match_dt0)).data()
     assert(user_ref01_data_dt0.id === user_ref01_data.id)
 
 

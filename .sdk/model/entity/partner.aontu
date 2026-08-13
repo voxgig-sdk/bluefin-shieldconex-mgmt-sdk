@@ -6,7 +6,7 @@ main: kit: entity: partner: {
 
   fields: [
     {
-      name: "billing_id"
+      name: "billingId"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: partner: {
       type: "`$INTEGER`"
     }
     {
-      name: "is_active"
+      name: "isActive"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -73,7 +73,7 @@ main: kit: entity: partner: {
       type: "`$STRING`"
     }
     {
-      name: "verification_phrase"
+      name: "verificationPhrase"
       req: false
       type: "`$STRING`"
     }

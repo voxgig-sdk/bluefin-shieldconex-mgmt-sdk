@@ -41,7 +41,7 @@ fn clone_entity_basic() {
     // The basic flow consumes synthetic IDs from the fixture. In live mode
     // without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only {
-        eprintln!("skip: live entity test uses synthetic IDs from fixture — set BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID JSON to run live");
+        eprintln!("skip: live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID JSON to run live");
         return;
     }
     let client = setup.client.clone();
@@ -56,7 +56,7 @@ fn clone_entity_basic() {
     let clone_ref01_data_result = clone_ref01_ent
         .create(clone_ref01_data.clone(), Value::Noval)
         .expect("create failed");
-    let clone_ref01_data = to_map(&clone_ref01_data_result);
+    let clone_ref01_data = to_map(&clone_ref01_data_result.data(None));
     assert!(
         matches!(clone_ref01_data, Value::Map(_)),
         "expected create result to be a map"
@@ -112,27 +112,27 @@ fn clone_basic_setup(extra: Value) -> EntityTestSetup {
     // Detect ENTID env override before env_override consumes it. When live
     // mode is on without a real override, the basic test runs against
     // synthetic IDs from the fixture and 4xx's.
-    let entid_env_raw = std::env::var("BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID").unwrap_or_default();
+    let entid_env_raw = std::env::var("BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID").unwrap_or_default();
     let idmap_overridden =
         !entid_env_raw.trim().is_empty() && entid_env_raw.trim().starts_with('{');
 
     let env = env_override(jo(vec![
-        ("BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID", idmap.clone()),
-        ("BLUEFINSHIELDCONEXMGMT_TEST_LIVE", Value::str("FALSE")),
-        ("BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN", Value::str("FALSE")),
-        ("BLUEFINSHIELDCONEXMGMT_APIKEY", Value::str("NONE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID", idmap.clone()),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE", Value::str("FALSE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN", Value::str("FALSE")),
+        ("BLUEFIN_SHIELDCONEX_MGMT_APIKEY", Value::str("NONE")),
     ]));
 
-    let idmap_resolved = match to_map(&getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_CLONE_ENTID")) {
+    let idmap_resolved = match to_map(&getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID")) {
         Value::Map(m) => Value::Map(m),
         _ => to_map(&idmap),
     };
 
-    let live = getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_LIVE") == Value::str("TRUE");
+    let live = getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE") == Value::str("TRUE");
 
     let client = if live {
         let merged = vs::merge(
-            &ja(vec![jo(vec![("apikey", getp(&env, "BLUEFINSHIELDCONEXMGMT_APIKEY"))]), extra]),
+            &ja(vec![jo(vec![("apikey", getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"))]), extra]),
             None,
         );
         BluefinShieldconexMgmtSDK::new(to_map(&merged))
@@ -145,7 +145,7 @@ fn clone_basic_setup(extra: Value) -> EntityTestSetup {
         data: entity_data,
         idmap: idmap_resolved,
         env: env.clone(),
-        explain: getp(&env, "BLUEFINSHIELDCONEXMGMT_TEST_EXPLAIN") == Value::str("TRUE"),
+        explain: getp(&env, "BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN") == Value::str("TRUE"),
         live,
         synthetic_only: live && !idmap_overridden,
         now: now_ms(),

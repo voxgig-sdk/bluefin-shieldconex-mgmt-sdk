@@ -117,12 +117,12 @@ $client = $client->Client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `array` | No |  |
 | `created` | `string` | No |  |
-| `direct_partner` | `array` | No |  |
+| `directPartner` | `array` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `mid` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -133,12 +133,12 @@ $client = $client->Client();
 
 | Field | load | list | create | remove |
 | --- | --- | --- | --- | --- |
-| `billing_id` | - | - | - | - |
+| `billingId` | - | - | - | - |
 | `contact` | - | Yes | Yes | - |
 | `created` | - | - | - | - |
-| `direct_partner` | - | - | Yes | - |
+| `directPartner` | - | - | Yes | - |
 | `id` | - | - | - | - |
-| `is_active` | - | - | - | - |
+| `isActive` | - | - | - | - |
 | `mid` | - | - | - | - |
 | `modified` | - | - | - | - |
 | `name` | - | - | Yes | - |
@@ -275,32 +275,32 @@ $partner = $client->Partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `contact` | `array` | No |  |
 | `created` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
+| `isActive` | `bool` | No |  |
 | `modified` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `array` | No |  |
 | `reference` | `string` | No |  |
-| `verification_phrase` | `string` | No |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | load | list | create |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `contact` | - | Yes | Yes |
 | `created` | - | - | - |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
+| `isActive` | - | - | - |
 | `modified` | - | - | - |
 | `name` | - | - | Yes |
 | `parent` | - | - | Yes |
 | `reference` | - | - | - |
-| `verification_phrase` | - | - | - |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -370,13 +370,13 @@ $template = $client->Template();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_mode` | `mixed` | No |  |
+| `accessMode` | `mixed` | No |  |
 | `active` | `bool` | No |  |
 | `client` | `array` | No |  |
-| `field_template` | `array` | No |  |
+| `fieldTemplates` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `option` | `array` | No |  |
+| `options` | `array` | No |  |
 | `partner` | `array` | No |  |
 | `reference` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -459,17 +459,17 @@ $transaction = $client->Transaction();
 | --- | --- | --- | --- |
 | `bfid` | `string` | No |  |
 | `client` | `array` | No |  |
-| `complete_date` | `string` | No |  |
-| `direct_partner` | `array` | No |  |
-| `err_code` | `string` | No |  |
-| `err_message` | `string` | No |  |
+| `completeDate` | `string` | No |  |
+| `directPartner` | `array` | No |  |
+| `errCode` | `string` | No |  |
+| `errMessage` | `string` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `string` | No |  |
-| `message_id` | `string` | No |  |
+| `ipAddress` | `string` | No |  |
+| `messageId` | `string` | No |  |
 | `partner` | `array` | No |  |
 | `reference` | `string` | No |  |
 | `success` | `bool` | No |  |
-| `template_id` | `string` | No |  |
+| `templateId` | `string` | No |  |
 
 ### Operations
 
@@ -529,50 +529,50 @@ $update_result = $client->UpdateResult();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing_id` | `string` | No |  |
+| `billingId` | `string` | No |  |
 | `client` | `array` | No |  |
 | `contact` | `array` | Yes |  |
-| `direct_partner` | `array` | No |  |
+| `directPartner` | `array` | No |  |
 | `email` | `string` | Yes |  |
-| `first_name` | `string` | Yes |  |
+| `firstName` | `string` | Yes |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | Yes |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | Yes |  |
 | `mid` | `string` | No |  |
 | `name` | `string` | No |  |
 | `parent` | `array` | No |  |
 | `partner` | `array` | No |  |
 | `phone` | `string` | Yes |  |
 | `reference` | `string` | No |  |
-| `send_welcome_email` | `bool` | No |  |
-| `user_name` | `string` | Yes |  |
-| `user_role` | `array` | Yes |  |
-| `verification_phrase` | `string` | No |  |
+| `sendWelcomeEmail` | `bool` | No |  |
+| `userName` | `string` | Yes |  |
+| `userRole` | `array` | Yes |  |
+| `verificationPhrase` | `string` | No |  |
 | `version` | `int` | No |  |
 
 ### Field Usage by Operation
 
 | Field | list | create | update |
 | --- | --- | --- | --- |
-| `billing_id` | - | - | - |
+| `billingId` | - | - | - |
 | `client` | - | - | - |
 | `contact` | - | - | - |
-| `direct_partner` | - | - | - |
+| `directPartner` | - | - | - |
 | `email` | Yes | - | Yes |
-| `first_name` | Yes | - | Yes |
+| `firstName` | Yes | - | Yes |
 | `id` | - | - | - |
-| `is_active` | - | - | - |
-| `last_name` | Yes | - | Yes |
+| `isActive` | - | - | - |
+| `lastName` | Yes | - | Yes |
 | `mid` | - | - | - |
 | `name` | - | - | - |
 | `parent` | - | - | - |
 | `partner` | - | - | - |
 | `phone` | Yes | - | Yes |
 | `reference` | - | - | - |
-| `send_welcome_email` | - | - | - |
-| `user_name` | Yes | - | Yes |
-| `user_role` | Yes | - | Yes |
-| `verification_phrase` | - | - | - |
+| `sendWelcomeEmail` | - | - | - |
+| `userName` | Yes | - | Yes |
+| `userRole` | Yes | - | Yes |
+| `verificationPhrase` | - | - | - |
 | `version` | - | - | - |
 
 ### Operations
@@ -585,11 +585,11 @@ Create a new entity with the given data. Throws on error.
 $result = $client->UpdateResult()->create([
   "contact" => null, // array
   "email" => null, // string
-  "first_name" => null, // string
-  "last_name" => null, // string
+  "firstName" => null, // string
+  "lastName" => null, // string
   "phone" => null, // string
-  "user_name" => null, // string
-  "user_role" => null, // array
+  "userName" => null, // string
+  "userRole" => null, // array
 ]);
 ```
 
@@ -655,15 +655,15 @@ $user = $client->User();
 | `client` | `array` | No |  |
 | `created` | `string` | No |  |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_active` | `bool` | No |  |
-| `last_name` | `string` | No |  |
+| `isActive` | `bool` | No |  |
+| `lastName` | `string` | No |  |
 | `modified` | `string` | No |  |
 | `partner` | `array` | No |  |
 | `phone` | `string` | No |  |
-| `user_name` | `string` | No |  |
-| `user_role` | `array` | No |  |
+| `userName` | `string` | No |  |
+| `userRole` | `array` | No |  |
 | `version` | `int` | No |  |
 
 ### Operations
