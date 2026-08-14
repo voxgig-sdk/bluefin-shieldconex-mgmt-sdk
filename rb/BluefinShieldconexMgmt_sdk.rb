@@ -28,7 +28,7 @@ class BluefinShieldconexMgmtSDK
     utility = BluefinShieldconexMgmtUtility.new
     @_utility = utility
 
-    config = BluefinShieldconexMgmtConfig.make_config
+    config = BluefinShieldconexMgmtConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

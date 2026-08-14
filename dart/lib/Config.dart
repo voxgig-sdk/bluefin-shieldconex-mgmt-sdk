@@ -58,14 +58,10 @@ class Config {
     'client': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'billingId',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'contact',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -77,19 +73,13 @@ class Config {
               'type': '`\$OBJECT`',
             },
           },
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'created',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'directPartner',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -97,40 +87,25 @@ class Config {
               'type': '`\$OBJECT`',
             },
           },
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 3,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'isActive',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'mid',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'modified',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'name',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -138,23 +113,15 @@ class Config {
               'type': '`\$STRING`',
             },
           },
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'partner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'version',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 10,
         },
       ],
       'name': 'client',
@@ -164,19 +131,15 @@ class Config {
           'name': 'create',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'billing_id',
                     'orig': 'billing_id',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_email',
                     'orig': 'contact_email',
@@ -184,7 +147,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_first_name',
                     'orig': 'contact_first_name',
@@ -192,7 +154,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_is_active',
                     'orig': 'contact_is_active',
@@ -200,7 +161,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_last_name',
                     'orig': 'contact_last_name',
@@ -208,7 +168,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_phone',
                     'orig': 'contact_phone',
@@ -216,7 +175,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_send_welcome_email',
                     'orig': 'contact_send_welcome_email',
@@ -224,7 +182,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_user_name',
                     'orig': 'contact_user_name',
@@ -232,7 +189,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_user_role',
                     'orig': 'contact_user_role',
@@ -240,7 +196,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'direct_partner_id',
                     'orig': 'direct_partner_id',
@@ -248,7 +203,6 @@ class Config {
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'direct_partner_name',
                     'orig': 'direct_partner_name',
@@ -256,7 +210,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
@@ -264,15 +217,12 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'mid',
                     'orig': 'mid',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
@@ -309,21 +259,17 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'create',
         },
         'list': <String, dynamic>{
           'input': 'data',
           'name': 'list',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
@@ -331,21 +277,17 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 0,
                     'kind': 'query',
                     'name': 'skip',
                     'orig': 'skip',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 10,
                     'kind': 'query',
                     'name': 'take',
                     'orig': 'take',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -367,27 +309,22 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'list',
         },
         'load': <String, dynamic>{
           'input': 'data',
           'name': 'load',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -407,27 +344,22 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'load',
         },
         'remove': <String, dynamic>{
           'input': 'data',
           'name': 'remove',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -447,10 +379,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'remove',
         },
       },
       'relations': <String, dynamic>{
@@ -460,18 +390,12 @@ class Config {
     'clone': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'name',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 1,
         },
       ],
       'name': 'clone',
@@ -481,17 +405,14 @@ class Config {
           'name': 'create',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'template_id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -517,10 +438,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'create',
         },
       },
       'relations': <String, dynamic>{
@@ -534,14 +453,10 @@ class Config {
     'partner': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'billingId',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'contact',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -553,40 +468,25 @@ class Config {
               'type': '`\$OBJECT`',
             },
           },
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'created',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 3,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'isActive',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'modified',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'name',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -594,12 +494,9 @@ class Config {
               'type': '`\$STRING`',
             },
           },
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'parent',
           'op': <String, dynamic>{
             'create': <String, dynamic>{
@@ -607,30 +504,19 @@ class Config {
               'type': '`\$OBJECT`',
             },
           },
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'reference',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'verificationPhrase',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'version',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 10,
         },
       ],
       'name': 'partner',
@@ -640,11 +526,9 @@ class Config {
           'name': 'create',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'billing_id',
                     'orig': 'billing_id',
@@ -652,7 +536,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_email',
                     'orig': 'contact_email',
@@ -660,7 +543,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_first_name',
                     'orig': 'contact_first_name',
@@ -668,7 +550,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_is_active',
                     'orig': 'contact_is_active',
@@ -676,7 +557,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_last_name',
                     'orig': 'contact_last_name',
@@ -684,7 +564,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_phone',
                     'orig': 'contact_phone',
@@ -692,7 +571,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_send_welcome_email',
                     'orig': 'contact_send_welcome_email',
@@ -700,7 +578,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_user_name',
                     'orig': 'contact_user_name',
@@ -708,7 +585,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_user_role',
                     'orig': 'contact_user_role',
@@ -716,7 +592,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
@@ -724,7 +599,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
@@ -732,23 +606,18 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'parent_id',
                     'orig': 'parent_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'parent_name',
                     'orig': 'parent_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'reference',
                     'orig': 'reference',
@@ -756,11 +625,9 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'verification_phrase',
                     'orig': 'verification_phrase',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                 ],
@@ -794,43 +661,34 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'create',
         },
         'list': <String, dynamic>{
           'input': 'data',
           'name': 'list',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 0,
                     'kind': 'query',
                     'name': 'skip',
                     'orig': 'skip',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 10,
                     'kind': 'query',
                     'name': 'take',
                     'orig': 'take',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -852,27 +710,22 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'list',
         },
         'load': <String, dynamic>{
           'input': 'data',
           'name': 'load',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -892,10 +745,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'load',
         },
       },
       'relations': <String, dynamic>{
@@ -905,81 +756,53 @@ class Config {
     'template': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'accessMode',
-          'req': false,
           'type': '`\$ANY`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'active',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'client',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'fieldTemplates',
-          'req': false,
           'type': '`\$ARRAY`',
-          'index\$': 3,
+          'union': <String, dynamic>{
+            'branches': 9,
+            'count': 1,
+            'depth': 1,
+          },
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'name',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'options',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'partner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'reference',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'type',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'version',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 10,
         },
       ],
       'name': 'template',
@@ -989,19 +812,15 @@ class Config {
           'name': 'create',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'access_mode',
                     'orig': 'access_mode',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'active',
                     'orig': 'active',
@@ -1009,7 +828,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client_id',
                     'orig': 'client_id',
@@ -1017,7 +835,6 @@ class Config {
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client_name',
                     'orig': 'client_name',
@@ -1025,15 +842,12 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'field_template',
                     'orig': 'field_template',
-                    'reqd': false,
                     'type': '`\$ARRAY`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
@@ -1041,55 +855,42 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_custom_style',
                     'orig': 'options_custom_style',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_custom_style_file',
                     'orig': 'options_custom_style_file',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_domain',
                     'orig': 'options_domain',
-                    'reqd': false,
                     'type': '`\$ARRAY`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_active_from',
                     'orig': 'options_security_active_from',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_active_to',
                     'orig': 'options_security_active_to',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_irreversible',
                     'orig': 'options_security_irreversible',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner_id',
                     'orig': 'partner_id',
@@ -1097,7 +898,6 @@ class Config {
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner_name',
                     'orig': 'partner_name',
@@ -1105,7 +905,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'reference',
                     'orig': 'reference',
@@ -1113,19 +912,15 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'type',
                     'orig': 'type',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'version',
                     'orig': 'version',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -1161,51 +956,40 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'create',
         },
         'list': <String, dynamic>{
           'input': 'data',
           'name': 'list',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client',
                     'orig': 'client',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 0,
                     'kind': 'query',
                     'name': 'skip',
                     'orig': 'skip',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 10,
                     'kind': 'query',
                     'name': 'take',
                     'orig': 'take',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -1228,27 +1012,22 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'list',
         },
         'load': <String, dynamic>{
           'input': 'data',
           'name': 'load',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -1268,27 +1047,22 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'load',
         },
         'remove': <String, dynamic>{
           'input': 'data',
           'name': 'remove',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -1308,10 +1082,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'remove',
         },
       },
       'relations': <String, dynamic>{
@@ -1321,95 +1093,56 @@ class Config {
     'transaction': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'bfid',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'client',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'completeDate',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'directPartner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 3,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'errCode',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'errMessage',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'ipAddress',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'messageId',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'partner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'reference',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 10,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'success',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 11,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'templateId',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 12,
         },
       ],
       'name': 'transaction',
@@ -1419,97 +1152,74 @@ class Config {
           'name': 'list',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client',
                     'orig': 'client',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'date_from',
                     'orig': 'date_from',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'date_to',
                     'orig': 'date_to',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'message_id',
                     'orig': 'message_id',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'paging_mode',
                     'orig': 'paging_mode',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'reference',
                     'orig': 'reference',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 0,
                     'kind': 'query',
                     'name': 'skip',
                     'orig': 'skip',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'success',
                     'orig': 'success',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 10,
                     'kind': 'query',
                     'name': 'take',
                     'orig': 'take',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'transaction_type',
                     'orig': 'transaction_type',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                 ],
@@ -1539,36 +1249,29 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'list',
         },
         'load': <String, dynamic>{
           'input': 'data',
           'name': 'load',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'transaction_type',
                     'orig': 'transaction_type',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                 ],
@@ -1590,10 +1293,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'load',
         },
       },
       'relations': <String, dynamic>{
@@ -1603,204 +1304,139 @@ class Config {
     'update_result': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'billingId',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'client',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'contact',
           'req': true,
           'type': '`\$OBJECT`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'directPartner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 3,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'email',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
           },
           'req': true,
           'type': '`\$STRING`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'firstName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
           },
           'req': true,
           'type': '`\$STRING`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'isActive',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'lastName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
           },
           'req': true,
           'type': '`\$STRING`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'mid',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'name',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 10,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'parent',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 11,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'partner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 12,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'phone',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
           },
           'req': true,
           'type': '`\$STRING`',
-          'index\$': 13,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'reference',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 14,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'sendWelcomeEmail',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 15,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'userName',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$STRING`',
             },
           },
           'req': true,
           'type': '`\$STRING`',
-          'index\$': 16,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'userRole',
           'op': <String, dynamic>{
             'list': <String, dynamic>{
-              'req': false,
               'type': '`\$OBJECT`',
             },
             'update': <String, dynamic>{
-              'req': false,
               'type': '`\$OBJECT`',
             },
           },
           'req': true,
           'type': '`\$OBJECT`',
-          'index\$': 17,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'verificationPhrase',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 18,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'version',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 19,
         },
       ],
       'name': 'update_result',
@@ -1810,19 +1446,15 @@ class Config {
           'name': 'create',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client',
                     'orig': 'client',
-                    'reqd': false,
                     'type': '`\$OBJECT`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'email',
                     'orig': 'email',
@@ -1830,7 +1462,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'first_name',
                     'orig': 'first_name',
@@ -1838,7 +1469,6 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
@@ -1846,7 +1476,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'last_name',
                     'orig': 'last_name',
@@ -1854,15 +1483,12 @@ class Config {
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$OBJECT`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'phone',
                     'orig': 'phone',
@@ -1870,7 +1496,6 @@ class Config {
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'send_welcome_email',
                     'orig': 'send_welcome_email',
@@ -1878,7 +1503,6 @@ class Config {
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'user_role',
                     'orig': 'user_role',
@@ -1886,7 +1510,6 @@ class Config {
                     'type': '`\$OBJECT`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'username',
                     'orig': 'username',
@@ -1919,51 +1542,40 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'create',
         },
         'list': <String, dynamic>{
           'input': 'data',
           'name': 'list',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client',
                     'orig': 'client',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 0,
                     'kind': 'query',
                     'name': 'skip',
                     'orig': 'skip',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'example': 10,
                     'kind': 'query',
                     'name': 'take',
                     'orig': 'take',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -1986,164 +1598,125 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'list',
         },
         'update': <String, dynamic>{
           'input': 'data',
           'name': 'update',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'access_mode',
                     'orig': 'access_mode',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'active',
                     'orig': 'active',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client_id',
                     'orig': 'client_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client_name',
                     'orig': 'client_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'field_template',
                     'orig': 'field_template',
-                    'reqd': false,
                     'type': '`\$ARRAY`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_custom_style',
                     'orig': 'options_custom_style',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_custom_style_file',
                     'orig': 'options_custom_style_file',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_domain',
                     'orig': 'options_domain',
-                    'reqd': false,
                     'type': '`\$ARRAY`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_active_from',
                     'orig': 'options_security_active_from',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_active_to',
                     'orig': 'options_security_active_to',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'options_security_irreversible',
                     'orig': 'options_security_irreversible',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner_id',
                     'orig': 'partner_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner_name',
                     'orig': 'partner_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'reference',
                     'orig': 'reference',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'type',
                     'orig': 'type',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'version',
                     'orig': 'version',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -2181,93 +1754,71 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'billing_id',
                     'orig': 'billing_id',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_id',
                     'orig': 'contact_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'parent_id',
                     'orig': 'parent_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'parent_name',
                     'orig': 'parent_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'reference',
                     'orig': 'reference',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'verification_phrase',
                     'orig': 'verification_phrase',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'version',
                     'orig': 'version',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -2297,93 +1848,71 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 1,
             },
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'client',
                     'orig': 'client',
-                    'reqd': false,
                     'type': '`\$OBJECT`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'email',
                     'orig': 'email',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'first_name',
                     'orig': 'first_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'last_name',
                     'orig': 'last_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'partner',
                     'orig': 'partner',
-                    'reqd': false,
                     'type': '`\$OBJECT`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'phone',
                     'orig': 'phone',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'send_welcome_email',
                     'orig': 'send_welcome_email',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'username',
                     'orig': 'username',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                 ],
@@ -2413,85 +1942,65 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 2,
             },
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
                 'query': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'billing_id',
                     'orig': 'billing_id',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'contact_id',
                     'orig': 'contact_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'direct_partner_id',
                     'orig': 'direct_partner_id',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'direct_partner_name',
                     'orig': 'direct_partner_name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'is_active',
                     'orig': 'is_active',
-                    'reqd': false,
                     'type': '`\$BOOLEAN`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'mid',
                     'orig': 'mid',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'name',
                     'orig': 'name',
-                    'reqd': false,
                     'type': '`\$STRING`',
                   },
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'query',
                     'name': 'version',
                     'orig': 'version',
-                    'reqd': false,
                     'type': '`\$INTEGER`',
                   },
                 ],
@@ -2520,10 +2029,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 3,
             },
           ],
-          'key\$': 'update',
         },
       },
       'relations': <String, dynamic>{
@@ -2533,95 +2040,56 @@ class Config {
     'user': <String, dynamic>{
       'fields': <dynamic>[
         <String, dynamic>{
-          'active': true,
           'name': 'client',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 0,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'created',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 1,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'email',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 2,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'firstName',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 3,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'id',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 4,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'isActive',
-          'req': false,
           'type': '`\$BOOLEAN`',
-          'index\$': 5,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'lastName',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 6,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'modified',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 7,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'partner',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 8,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'phone',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 9,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'userName',
-          'req': false,
           'type': '`\$STRING`',
-          'index\$': 10,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'userRole',
-          'req': false,
           'type': '`\$OBJECT`',
-          'index\$': 11,
         },
         <String, dynamic>{
-          'active': true,
           'name': 'version',
-          'req': false,
           'type': '`\$INTEGER`',
-          'index\$': 12,
         },
       ],
       'name': 'user',
@@ -2631,17 +2099,14 @@ class Config {
           'name': 'load',
           'points': <dynamic>[
             <String, dynamic>{
-              'active': true,
               'args': <String, dynamic>{
                 'params': <dynamic>[
                   <String, dynamic>{
-                    'active': true,
                     'kind': 'param',
                     'name': 'id',
                     'orig': 'id',
                     'reqd': true,
                     'type': '`\$STRING`',
-                    'index\$': 0,
                   },
                 ],
               },
@@ -2661,10 +2126,8 @@ class Config {
                 'req': '`reqdata`',
                 'res': '`body`',
               },
-              'index\$': 0,
             },
           ],
-          'key\$': 'load',
         },
       },
       'relations': <String, dynamic>{

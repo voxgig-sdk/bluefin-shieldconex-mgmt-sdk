@@ -40,7 +40,7 @@ class BluefinShieldconexMgmtSDK
         $utility = new BluefinShieldconexMgmtUtility();
         $this->_utility = $utility;
 
-        $config = BluefinShieldconexMgmtConfig::make_config();
+        $config = BluefinShieldconexMgmtConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

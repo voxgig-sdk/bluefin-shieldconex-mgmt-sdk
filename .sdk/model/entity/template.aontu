@@ -24,6 +24,11 @@ main: kit: entity: template: {
       name: "fieldTemplates"
       req: false
       type: "`$ARRAY`"
+      union: {
+        branches: 9
+        count: 1
+        depth: 1
+      }
     }
     {
       name: "id"

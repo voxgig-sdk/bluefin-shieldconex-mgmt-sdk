@@ -34,13 +34,9 @@ let make_config () : value =
       ("client", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "billingId"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "contact"));
             ("op", (jo [
               ("create", (jo [
@@ -49,71 +45,42 @@ let make_config () : value =
               ("list", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "created"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "directPartner"));
             ("op", (jo [
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (3.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "isActive"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "mid"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "modified"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "name"));
             ("op", (jo [
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$STRING`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "partner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "version"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (10.))) ]) ]));
+            ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "client"));
         ("op", (jo [
           ("create", (jo [
@@ -121,102 +88,85 @@ let make_config () : value =
             ("name", (Str "create"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "billing_id"));
                       ("orig", (Str "billing_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_email"));
                       ("orig", (Str "contact_email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_first_name"));
                       ("orig", (Str "contact_first_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_is_active"));
                       ("orig", (Str "contact_is_active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_last_name"));
                       ("orig", (Str "contact_last_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_phone"));
                       ("orig", (Str "contact_phone"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_send_welcome_email"));
                       ("orig", (Str "contact_send_welcome_email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_user_name"));
                       ("orig", (Str "contact_user_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_user_role"));
                       ("orig", (Str "contact_user_role"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "direct_partner_id"));
                       ("orig", (Str "direct_partner_id"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "direct_partner_name"));
                       ("orig", (Str "direct_partner_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "mid"));
                       ("orig", (Str "mid"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
@@ -245,39 +195,31 @@ let make_config () : value =
                     (Str "name") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "create")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (0.)));
                       ("kind", (Str "query"));
                       ("name", (Str "skip"));
                       ("orig", (Str "skip"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (10.)));
                       ("kind", (Str "query"));
                       ("name", (Str "take"));
                       ("orig", (Str "take"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -291,25 +233,20 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "list")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/clients/{id}"));
@@ -321,25 +258,20 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "load")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("remove", (jo [
             ("input", (Str "data"));
             ("name", (Str "remove"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/clients/{id}"));
@@ -351,25 +283,17 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "remove")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("clone", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "name"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (1.))) ]) ]));
+            ("type", (Str "`$STRING`")) ]) ]));
         ("name", (Str "clone"));
         ("op", (jo [
           ("create", (jo [
@@ -377,17 +301,14 @@ let make_config () : value =
             ("name", (Str "create"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "template_id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/templates/{id}/clone"));
@@ -403,9 +324,7 @@ let make_config () : value =
                     (Str "template_id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "create")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (ja [
             (ja [
@@ -413,13 +332,9 @@ let make_config () : value =
       ("partner", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "billingId"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "contact"));
             ("op", (jo [
               ("create", (jo [
@@ -428,71 +343,42 @@ let make_config () : value =
               ("list", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "created"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (3.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "isActive"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "modified"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "name"));
             ("op", (jo [
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$STRING`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "parent"));
             ("op", (jo [
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "reference"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "verificationPhrase"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "version"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (10.))) ]) ]));
+            ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "partner"));
         ("op", (jo [
           ("create", (jo [
@@ -500,113 +386,94 @@ let make_config () : value =
             ("name", (Str "create"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "billing_id"));
                       ("orig", (Str "billing_id"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_email"));
                       ("orig", (Str "contact_email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_first_name"));
                       ("orig", (Str "contact_first_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_is_active"));
                       ("orig", (Str "contact_is_active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_last_name"));
                       ("orig", (Str "contact_last_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_phone"));
                       ("orig", (Str "contact_phone"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_send_welcome_email"));
                       ("orig", (Str "contact_send_welcome_email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_user_name"));
                       ("orig", (Str "contact_user_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_user_role"));
                       ("orig", (Str "contact_user_role"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "parent_id"));
                       ("orig", (Str "parent_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "parent_name"));
                       ("orig", (Str "parent_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "reference"));
                       ("orig", (Str "reference"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "verification_phrase"));
                       ("orig", (Str "verification_phrase"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
@@ -632,39 +499,30 @@ let make_config () : value =
                     (Str "verification_phrase") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "create")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (0.)));
                       ("kind", (Str "query"));
                       ("name", (Str "skip"));
                       ("orig", (Str "skip"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (10.)));
                       ("kind", (Str "query"));
                       ("name", (Str "take"));
                       ("orig", (Str "take"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -678,25 +536,20 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "list")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/partners/{id}"));
@@ -708,79 +561,48 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "load")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("template", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "accessMode"));
-            ("req", (Bool false));
-            ("type", (Str "`$ANY`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$ANY`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "active"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "client"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "fieldTemplates"));
-            ("req", (Bool false));
             ("type", (Str "`$ARRAY`"));
-            ("index$", (Num (3.))) ]);
+            ("union", (jo [
+              ("branches", (Num (9.)));
+              ("count", (Num (1.)));
+              ("depth", (Num (1.))) ])) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "name"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "options"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "partner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "reference"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "type"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "version"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (10.))) ]) ]));
+            ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "template"));
         ("op", (jo [
           ("create", (jo [
@@ -788,127 +610,99 @@ let make_config () : value =
             ("name", (Str "create"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "access_mode"));
                       ("orig", (Str "access_mode"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "active"));
                       ("orig", (Str "active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client_id"));
                       ("orig", (Str "client_id"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client_name"));
                       ("orig", (Str "client_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "field_template"));
                       ("orig", (Str "field_template"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$ARRAY`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_custom_style"));
                       ("orig", (Str "options_custom_style"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_custom_style_file"));
                       ("orig", (Str "options_custom_style_file"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_domain"));
                       ("orig", (Str "options_domain"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$ARRAY`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_active_from"));
                       ("orig", (Str "options_security_active_from"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_active_to"));
                       ("orig", (Str "options_security_active_to"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_irreversible"));
                       ("orig", (Str "options_security_irreversible"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner_id"));
                       ("orig", (Str "partner_id"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner_name"));
                       ("orig", (Str "partner_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "reference"));
                       ("orig", (Str "reference"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "type"));
                       ("orig", (Str "type"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "version"));
                       ("orig", (Str "version"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
@@ -936,46 +730,35 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "create")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client"));
                       ("orig", (Str "client"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (0.)));
                       ("kind", (Str "query"));
                       ("name", (Str "skip"));
                       ("orig", (Str "skip"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (10.)));
                       ("kind", (Str "query"));
                       ("name", (Str "take"));
                       ("orig", (Str "take"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -990,25 +773,20 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "list")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/templates/{id}"));
@@ -1020,25 +798,20 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "load")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("remove", (jo [
             ("input", (Str "data"));
             ("name", (Str "remove"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/templates/{id}"));
@@ -1050,91 +823,50 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "remove")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("transaction", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "bfid"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "client"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "completeDate"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "directPartner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (3.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "errCode"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "errMessage"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "ipAddress"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "messageId"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "partner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "reference"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (10.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "success"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (11.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "templateId"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (12.))) ]) ]));
+            ("type", (Str "`$STRING`")) ]) ]));
         ("name", (Str "transaction"));
         ("op", (jo [
           ("list", (jo [
@@ -1142,87 +874,64 @@ let make_config () : value =
             ("name", (Str "list"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client"));
                       ("orig", (Str "client"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "date_from"));
                       ("orig", (Str "date_from"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "date_to"));
                       ("orig", (Str "date_to"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "message_id"));
                       ("orig", (Str "message_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "paging_mode"));
                       ("orig", (Str "paging_mode"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "reference"));
                       ("orig", (Str "reference"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (0.)));
                       ("kind", (Str "query"));
                       ("name", (Str "skip"));
                       ("orig", (Str "skip"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "success"));
                       ("orig", (Str "success"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (10.)));
                       ("kind", (Str "query"));
                       ("name", (Str "take"));
                       ("orig", (Str "take"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "transaction_type"));
                       ("orig", (Str "transaction_type"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -1244,32 +953,25 @@ let make_config () : value =
                     (Str "transaction_type") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "list")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ]));
+                      ("type", (Str "`$STRING`")) ]) ]));
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "transaction_type"));
                       ("orig", (Str "transaction_type"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -1283,175 +985,108 @@ let make_config () : value =
                     (Str "transaction_type") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "load")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("update_result", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "billingId"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "client"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "contact"));
             ("req", (Bool true));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "directPartner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (3.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "email"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "firstName"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "isActive"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "lastName"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "mid"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "name"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (10.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "parent"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (11.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "partner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (12.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "phone"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (13.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "reference"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (14.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "sendWelcomeEmail"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (15.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "userName"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (16.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "userRole"));
             ("op", (jo [
               ("list", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$OBJECT`")) ]));
               ("update", (jo [
-                ("req", (Bool false));
                 ("type", (Str "`$OBJECT`")) ])) ]));
             ("req", (Bool true));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (17.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "verificationPhrase"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (18.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "version"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (19.))) ]) ]));
+            ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "update_result"));
         ("op", (jo [
           ("create", (jo [
@@ -1459,74 +1094,61 @@ let make_config () : value =
             ("name", (Str "create"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client"));
                       ("orig", (Str "client"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$OBJECT`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "email"));
                       ("orig", (Str "email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "first_name"));
                       ("orig", (Str "first_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "last_name"));
                       ("orig", (Str "last_name"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$OBJECT`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "phone"));
                       ("orig", (Str "phone"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "send_welcome_email"));
                       ("orig", (Str "send_welcome_email"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "user_role"));
                       ("orig", (Str "user_role"));
                       ("reqd", (Bool true));
                       ("type", (Str "`$OBJECT`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "username"));
                       ("orig", (Str "username"));
@@ -1551,46 +1173,35 @@ let make_config () : value =
                     (Str "username") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "create")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client"));
                       ("orig", (Str "client"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (0.)));
                       ("kind", (Str "query"));
                       ("name", (Str "skip"));
                       ("orig", (Str "skip"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("example", (Num (10.)));
                       ("kind", (Str "query"));
                       ("name", (Str "take"));
                       ("orig", (Str "take"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
@@ -1605,144 +1216,105 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "list")) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ]));
           ("update", (jo [
             ("input", (Str "data"));
             ("name", (Str "update"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ]));
+                      ("type", (Str "`$STRING`")) ]) ]));
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "access_mode"));
                       ("orig", (Str "access_mode"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "active"));
                       ("orig", (Str "active"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client_id"));
                       ("orig", (Str "client_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client_name"));
                       ("orig", (Str "client_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "field_template"));
                       ("orig", (Str "field_template"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$ARRAY`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_custom_style"));
                       ("orig", (Str "options_custom_style"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_custom_style_file"));
                       ("orig", (Str "options_custom_style_file"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_domain"));
                       ("orig", (Str "options_domain"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$ARRAY`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_active_from"));
                       ("orig", (Str "options_security_active_from"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_active_to"));
                       ("orig", (Str "options_security_active_to"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "options_security_irreversible"));
                       ("orig", (Str "options_security_irreversible"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner_id"));
                       ("orig", (Str "partner_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner_name"));
                       ("orig", (Str "partner_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "reference"));
                       ("orig", (Str "reference"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "type"));
                       ("orig", (Str "type"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "version"));
                       ("orig", (Str "version"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
@@ -1772,83 +1344,61 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]);
+                  ("res", (Str "`body`")) ])) ]);
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ]));
+                      ("type", (Str "`$STRING`")) ]) ]));
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "billing_id"));
                       ("orig", (Str "billing_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_id"));
                       ("orig", (Str "contact_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "parent_id"));
                       ("orig", (Str "parent_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "parent_name"));
                       ("orig", (Str "parent_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "reference"));
                       ("orig", (Str "reference"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "verification_phrase"));
                       ("orig", (Str "verification_phrase"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "version"));
                       ("orig", (Str "version"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
@@ -1870,83 +1420,61 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (1.))) ]);
+                  ("res", (Str "`body`")) ])) ]);
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ]));
+                      ("type", (Str "`$STRING`")) ]) ]));
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "client"));
                       ("orig", (Str "client"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$OBJECT`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "email"));
                       ("orig", (Str "email"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "first_name"));
                       ("orig", (Str "first_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "last_name"));
                       ("orig", (Str "last_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "partner"));
                       ("orig", (Str "partner"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$OBJECT`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "phone"));
                       ("orig", (Str "phone"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "send_welcome_email"));
                       ("orig", (Str "send_welcome_email"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "username"));
                       ("orig", (Str "username"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
@@ -1968,76 +1496,56 @@ let make_config () : value =
                     (Str "username") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (2.))) ]);
+                  ("res", (Str "`body`")) ])) ]);
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ]));
+                      ("type", (Str "`$STRING`")) ]) ]));
                   ("query", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "billing_id"));
                       ("orig", (Str "billing_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "contact_id"));
                       ("orig", (Str "contact_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "direct_partner_id"));
                       ("orig", (Str "direct_partner_id"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "direct_partner_name"));
                       ("orig", (Str "direct_partner_name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "is_active"));
                       ("orig", (Str "is_active"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$BOOLEAN`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "mid"));
                       ("orig", (Str "mid"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "name"));
                       ("orig", (Str "name"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$STRING`")) ]);
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "query"));
                       ("name", (Str "version"));
                       ("orig", (Str "version"));
-                      ("reqd", (Bool false));
                       ("type", (Str "`$INTEGER`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
@@ -2058,91 +1566,50 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (3.))) ]) ]));
-            ("key$", (Str "update")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("user", (jo [
         ("fields", (ja [
           (jo [
-            ("active", (Bool true));
             ("name", (Str "client"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (0.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "created"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (1.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "email"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (2.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "firstName"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (3.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "id"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (4.))) ]);
+            ("type", (Str "`$INTEGER`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "isActive"));
-            ("req", (Bool false));
-            ("type", (Str "`$BOOLEAN`"));
-            ("index$", (Num (5.))) ]);
+            ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "lastName"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (6.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "modified"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (7.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "partner"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (8.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "phone"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (9.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "userName"));
-            ("req", (Bool false));
-            ("type", (Str "`$STRING`"));
-            ("index$", (Num (10.))) ]);
+            ("type", (Str "`$STRING`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "userRole"));
-            ("req", (Bool false));
-            ("type", (Str "`$OBJECT`"));
-            ("index$", (Num (11.))) ]);
+            ("type", (Str "`$OBJECT`")) ]);
           (jo [
-            ("active", (Bool true));
             ("name", (Str "version"));
-            ("req", (Bool false));
-            ("type", (Str "`$INTEGER`"));
-            ("index$", (Num (12.))) ]) ]));
+            ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "user"));
         ("op", (jo [
           ("load", (jo [
@@ -2150,17 +1617,14 @@ let make_config () : value =
             ("name", (Str "load"));
             ("points", (ja [
               (jo [
-                ("active", (Bool true));
                 ("args", (jo [
                   ("params", (ja [
                     (jo [
-                      ("active", (Bool true));
                       ("kind", (Str "param"));
                       ("name", (Str "id"));
                       ("orig", (Str "id"));
                       ("reqd", (Bool true));
-                      ("type", (Str "`$STRING`"));
-                      ("index$", (Num (0.))) ]) ])) ]));
+                      ("type", (Str "`$STRING`")) ]) ])) ]));
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/users/{id}"));
@@ -2172,9 +1636,7 @@ let make_config () : value =
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ]));
-                ("index$", (Num (0.))) ]) ]));
-            ("key$", (Str "load")) ])) ]));
+                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ])) ])) ])
 

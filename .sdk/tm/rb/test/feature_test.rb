@@ -15,7 +15,7 @@ require_relative "../BluefinShieldconexMgmt_sdk"
 module BluefinShieldconexMgmtFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = BluefinShieldconexMgmtConfig.make_config["feature"]
+    f = BluefinShieldconexMgmtConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

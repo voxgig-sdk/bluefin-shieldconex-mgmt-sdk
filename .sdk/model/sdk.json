@@ -879,7 +879,12 @@
               "active": true,
               "name": "fieldTemplates",
               "req": false,
-              "type": "`$ARRAY`"
+              "type": "`$ARRAY`",
+              "union": {
+                "branches": 9,
+                "count": 1,
+                "depth": 1
+              }
             },
             {
               "active": true,

@@ -40,7 +40,7 @@ class TransactionEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = BluefinShieldconexMgmtConfig::make_config();
+        $cfg = BluefinShieldconexMgmtConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = BluefinShieldconexMgmtSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

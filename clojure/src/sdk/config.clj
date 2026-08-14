@@ -8,14 +8,9 @@
       "client" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "billingId"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "contact"
             "op" (vs/jm
               "create" (vs/jm
@@ -24,180 +19,133 @@
               "list" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "created"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "directPartner"
             "op" (vs/jm
               "create" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "isActive"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "mid"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "modified"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "name"
             "op" (vs/jm
               "create" (vs/jm
                 "req" true
                 "type" "`$STRING`"))
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "partner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "version"
-            "req" false
             "type" "`$INTEGER`"))
         "name" "client"
         "op" (vs/jm
           "create" (vs/jm
             "input" "data"
-            "key$" "create"
             "name" "create"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "billing_id"
                       "orig" "billing_id"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_email"
                       "orig" "contact_email"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_first_name"
                       "orig" "contact_first_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_is_active"
                       "orig" "contact_is_active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_last_name"
                       "orig" "contact_last_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_phone"
                       "orig" "contact_phone"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_send_welcome_email"
                       "orig" "contact_send_welcome_email"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_user_name"
                       "orig" "contact_user_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_user_role"
                       "orig" "contact_user_role"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "direct_partner_id"
                       "orig" "direct_partner_id"
                       "reqd" true
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "direct_partner_name"
                       "orig" "direct_partner_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "mid"
                       "orig" "mid"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "POST"
                 "orig" "/clients"
@@ -224,37 +172,29 @@
                   "res" "`body`"))))
           "list" (vs/jm
             "input" "data"
-            "key$" "list"
             "name" "list"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "example" 0
                       "kind" "query"
                       "name" "skip"
                       "orig" "skip"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "example" 10
                       "kind" "query"
                       "name" "take"
                       "orig" "take"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/clients"
@@ -270,22 +210,17 @@
                   "res" "`body`"))))
           "load" (vs/jm
             "input" "data"
-            "key$" "load"
             "name" "load"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/clients/{id}"
@@ -300,22 +235,17 @@
                   "res" "`body`"))))
           "remove" (vs/jm
             "input" "data"
-            "key$" "remove"
             "name" "remove"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "DELETE"
                 "orig" "/clients/{id}"
@@ -333,37 +263,26 @@
       "clone" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "name"
-            "req" false
             "type" "`$STRING`"))
         "name" "clone"
         "op" (vs/jm
           "create" (vs/jm
             "input" "data"
-            "key$" "create"
             "name" "create"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "template_id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "POST"
                 "orig" "/templates/{id}/clone"
@@ -387,14 +306,9 @@
       "partner" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "billingId"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "contact"
             "op" (vs/jm
               "create" (vs/jm
@@ -403,187 +317,138 @@
               "list" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "created"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "isActive"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "modified"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "name"
             "op" (vs/jm
               "create" (vs/jm
                 "req" true
                 "type" "`$STRING`"))
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "parent"
             "op" (vs/jm
               "create" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "reference"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "verificationPhrase"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "version"
-            "req" false
             "type" "`$INTEGER`"))
         "name" "partner"
         "op" (vs/jm
           "create" (vs/jm
             "input" "data"
-            "key$" "create"
             "name" "create"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "billing_id"
                       "orig" "billing_id"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_email"
                       "orig" "contact_email"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_first_name"
                       "orig" "contact_first_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_is_active"
                       "orig" "contact_is_active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_last_name"
                       "orig" "contact_last_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_phone"
                       "orig" "contact_phone"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_send_welcome_email"
                       "orig" "contact_send_welcome_email"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_user_name"
                       "orig" "contact_user_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_user_role"
                       "orig" "contact_user_role"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "parent_id"
                       "orig" "parent_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "parent_name"
                       "orig" "parent_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "reference"
                       "orig" "reference"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "verification_phrase"
                       "orig" "verification_phrase"
-                      "reqd" false
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "POST"
                 "orig" "/partners"
@@ -611,37 +476,28 @@
                   "res" "`body`"))))
           "list" (vs/jm
             "input" "data"
-            "key$" "list"
             "name" "list"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "example" 0
                       "kind" "query"
                       "name" "skip"
                       "orig" "skip"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "example" 10
                       "kind" "query"
                       "name" "take"
                       "orig" "take"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/partners"
@@ -657,22 +513,17 @@
                   "res" "`body`"))))
           "load" (vs/jm
             "input" "data"
-            "key$" "load"
             "name" "load"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/partners/{id}"
@@ -690,202 +541,143 @@
       "template" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "accessMode"
-            "req" false
             "type" "`$ANY`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "active"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "client"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "fieldTemplates"
-            "req" false
-            "type" "`$ARRAY`")
+            "type" "`$ARRAY`"
+            "union" (vs/jm
+              "branches" 9
+              "count" 1
+              "depth" 1))
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "name"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "options"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "partner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "reference"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "type"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "version"
-            "req" false
             "type" "`$INTEGER`"))
         "name" "template"
         "op" (vs/jm
           "create" (vs/jm
             "input" "data"
-            "key$" "create"
             "name" "create"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "access_mode"
                       "orig" "access_mode"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "active"
                       "orig" "active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client_id"
                       "orig" "client_id"
                       "reqd" true
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client_name"
                       "orig" "client_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "field_template"
                       "orig" "field_template"
-                      "reqd" false
                       "type" "`$ARRAY`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_custom_style"
                       "orig" "options_custom_style"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_custom_style_file"
                       "orig" "options_custom_style_file"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_domain"
                       "orig" "options_domain"
-                      "reqd" false
                       "type" "`$ARRAY`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_active_from"
                       "orig" "options_security_active_from"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_active_to"
                       "orig" "options_security_active_to"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_irreversible"
                       "orig" "options_security_irreversible"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner_id"
                       "orig" "partner_id"
                       "reqd" true
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner_name"
                       "orig" "partner_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "reference"
                       "orig" "reference"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "type"
                       "orig" "type"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "version"
                       "orig" "version"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "POST"
                 "orig" "/templates"
@@ -915,44 +707,33 @@
                   "res" "`body`"))))
           "list" (vs/jm
             "input" "data"
-            "key$" "list"
             "name" "list"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client"
                       "orig" "client"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "example" 0
                       "kind" "query"
                       "name" "skip"
                       "orig" "skip"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "example" 10
                       "kind" "query"
                       "name" "take"
                       "orig" "take"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/templates"
@@ -969,22 +750,17 @@
                   "res" "`body`"))))
           "load" (vs/jm
             "input" "data"
-            "key$" "load"
             "name" "load"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/templates/{id}"
@@ -999,22 +775,17 @@
                   "res" "`body`"))))
           "remove" (vs/jm
             "input" "data"
-            "key$" "remove"
             "name" "remove"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "DELETE"
                 "orig" "/templates/{id}"
@@ -1032,174 +803,110 @@
       "transaction" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "bfid"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "client"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "completeDate"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "directPartner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "errCode"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "errMessage"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "ipAddress"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "messageId"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "partner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "reference"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 11
             "name" "success"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 12
             "name" "templateId"
-            "req" false
             "type" "`$STRING`"))
         "name" "transaction"
         "op" (vs/jm
           "list" (vs/jm
             "input" "data"
-            "key$" "list"
             "name" "list"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client"
                       "orig" "client"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "date_from"
                       "orig" "date_from"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "date_to"
                       "orig" "date_to"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "message_id"
                       "orig" "message_id"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "paging_mode"
                       "orig" "paging_mode"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "reference"
                       "orig" "reference"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "example" 0
                       "kind" "query"
                       "name" "skip"
                       "orig" "skip"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "success"
                       "orig" "success"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "example" 10
                       "kind" "query"
                       "name" "take"
                       "orig" "take"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "transaction_type"
                       "orig" "transaction_type"
-                      "reqd" false
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/transactions"
@@ -1223,16 +930,12 @@
                   "res" "`body`"))))
           "load" (vs/jm
             "input" "data"
-            "key$" "load"
             "name" "load"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
@@ -1240,13 +943,10 @@
                       "type" "`$STRING`"))
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "transaction_type"
                       "orig" "transaction_type"
-                      "reqd" false
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/transactions/{id}"
@@ -1265,249 +965,169 @@
       "update_result" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "billingId"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "client"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "contact"
             "req" true
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "directPartner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "email"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$STRING`")
               "update" (vs/jm
-                "req" false
                 "type" "`$STRING`"))
             "req" true
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "firstName"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$STRING`")
               "update" (vs/jm
-                "req" false
                 "type" "`$STRING`"))
             "req" true
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "isActive"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "lastName"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$STRING`")
               "update" (vs/jm
-                "req" false
                 "type" "`$STRING`"))
             "req" true
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "mid"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "name"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 11
             "name" "parent"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 12
             "name" "partner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 13
             "name" "phone"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$STRING`")
               "update" (vs/jm
-                "req" false
                 "type" "`$STRING`"))
             "req" true
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 14
             "name" "reference"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 15
             "name" "sendWelcomeEmail"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 16
             "name" "userName"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$STRING`")
               "update" (vs/jm
-                "req" false
                 "type" "`$STRING`"))
             "req" true
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 17
             "name" "userRole"
             "op" (vs/jm
               "list" (vs/jm
-                "req" false
                 "type" "`$OBJECT`")
               "update" (vs/jm
-                "req" false
                 "type" "`$OBJECT`"))
             "req" true
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 18
             "name" "verificationPhrase"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 19
             "name" "version"
-            "req" false
             "type" "`$INTEGER`"))
         "name" "update_result"
         "op" (vs/jm
           "create" (vs/jm
             "input" "data"
-            "key$" "create"
             "name" "create"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client"
                       "orig" "client"
-                      "reqd" false
                       "type" "`$OBJECT`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "email"
                       "orig" "email"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "first_name"
                       "orig" "first_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "last_name"
                       "orig" "last_name"
                       "reqd" true
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$OBJECT`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "phone"
                       "orig" "phone"
                       "reqd" true
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "send_welcome_email"
                       "orig" "send_welcome_email"
                       "reqd" true
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "user_role"
                       "orig" "user_role"
                       "reqd" true
                       "type" "`$OBJECT`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "username"
                       "orig" "username"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "POST"
                 "orig" "/users"
@@ -1530,44 +1150,33 @@
                   "res" "`body`"))))
           "list" (vs/jm
             "input" "data"
-            "key$" "list"
             "name" "list"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client"
                       "orig" "client"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "example" 0
                       "kind" "query"
                       "name" "skip"
                       "orig" "skip"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "example" 10
                       "kind" "query"
                       "name" "take"
                       "orig" "take"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/users"
@@ -1584,16 +1193,12 @@
                   "res" "`body`"))))
           "update" (vs/jm
             "input" "data"
-            "key$" "update"
             "name" "update"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
@@ -1601,125 +1206,90 @@
                       "type" "`$STRING`"))
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "access_mode"
                       "orig" "access_mode"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "active"
                       "orig" "active"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client_id"
                       "orig" "client_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client_name"
                       "orig" "client_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "field_template"
                       "orig" "field_template"
-                      "reqd" false
                       "type" "`$ARRAY`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_custom_style"
                       "orig" "options_custom_style"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_custom_style_file"
                       "orig" "options_custom_style_file"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_domain"
                       "orig" "options_domain"
-                      "reqd" false
                       "type" "`$ARRAY`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_active_from"
                       "orig" "options_security_active_from"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_active_to"
                       "orig" "options_security_active_to"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "options_security_irreversible"
                       "orig" "options_security_irreversible"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner_id"
                       "orig" "partner_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner_name"
                       "orig" "partner_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "reference"
                       "orig" "reference"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "type"
                       "orig" "type"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "version"
                       "orig" "version"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 0
                 "kind" "http"
                 "method" "PATCH"
                 "orig" "/templates/{id}"
@@ -1750,12 +1320,9 @@
                   "req" "`reqdata`"
                   "res" "`body`"))
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
@@ -1763,69 +1330,50 @@
                       "type" "`$STRING`"))
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "billing_id"
                       "orig" "billing_id"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_id"
                       "orig" "contact_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "parent_id"
                       "orig" "parent_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "parent_name"
                       "orig" "parent_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "reference"
                       "orig" "reference"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "verification_phrase"
                       "orig" "verification_phrase"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "version"
                       "orig" "version"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 1
                 "kind" "http"
                 "method" "PATCH"
                 "orig" "/partners/{id}"
@@ -1848,12 +1396,9 @@
                   "req" "`reqdata`"
                   "res" "`body`"))
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
@@ -1861,69 +1406,50 @@
                       "type" "`$STRING`"))
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "client"
                       "orig" "client"
-                      "reqd" false
                       "type" "`$OBJECT`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "email"
                       "orig" "email"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "first_name"
                       "orig" "first_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "last_name"
                       "orig" "last_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "partner"
                       "orig" "partner"
-                      "reqd" false
                       "type" "`$OBJECT`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "phone"
                       "orig" "phone"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "send_welcome_email"
                       "orig" "send_welcome_email"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "username"
                       "orig" "username"
-                      "reqd" false
                       "type" "`$STRING`")))
-                "index$" 2
                 "kind" "http"
                 "method" "PATCH"
                 "orig" "/users/{id}"
@@ -1946,12 +1472,9 @@
                   "req" "`reqdata`"
                   "res" "`body`"))
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
@@ -1959,62 +1482,45 @@
                       "type" "`$STRING`"))
                   "query" (vs/jt
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "billing_id"
                       "orig" "billing_id"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "contact_id"
                       "orig" "contact_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "direct_partner_id"
                       "orig" "direct_partner_id"
-                      "reqd" false
                       "type" "`$INTEGER`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "direct_partner_name"
                       "orig" "direct_partner_name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "is_active"
                       "orig" "is_active"
-                      "reqd" false
                       "type" "`$BOOLEAN`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "mid"
                       "orig" "mid"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "name"
                       "orig" "name"
-                      "reqd" false
                       "type" "`$STRING`")
                     (vs/jm
-                      "active" true
                       "kind" "query"
                       "name" "version"
                       "orig" "version"
-                      "reqd" false
                       "type" "`$INTEGER`")))
-                "index$" 3
                 "kind" "http"
                 "method" "PATCH"
                 "orig" "/clients/{id}"
@@ -2040,103 +1546,59 @@
       "user" (vs/jm
         "fields" (vs/jt
           (vs/jm
-            "active" true
-            "index$" 0
             "name" "client"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 1
             "name" "created"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 2
             "name" "email"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 3
             "name" "firstName"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 4
             "name" "id"
-            "req" false
             "type" "`$INTEGER`")
           (vs/jm
-            "active" true
-            "index$" 5
             "name" "isActive"
-            "req" false
             "type" "`$BOOLEAN`")
           (vs/jm
-            "active" true
-            "index$" 6
             "name" "lastName"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 7
             "name" "modified"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 8
             "name" "partner"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 9
             "name" "phone"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 10
             "name" "userName"
-            "req" false
             "type" "`$STRING`")
           (vs/jm
-            "active" true
-            "index$" 11
             "name" "userRole"
-            "req" false
             "type" "`$OBJECT`")
           (vs/jm
-            "active" true
-            "index$" 12
             "name" "version"
-            "req" false
             "type" "`$INTEGER`"))
         "name" "user"
         "op" (vs/jm
           "load" (vs/jm
             "input" "data"
-            "key$" "load"
             "name" "load"
             "points" (vs/jt
               (vs/jm
-                "active" true
                 "args" (vs/jm
                   "params" (vs/jt
                     (vs/jm
-                      "active" true
-                      "index$" 0
                       "kind" "param"
                       "name" "id"
                       "orig" "id"
                       "reqd" true
                       "type" "`$STRING`")))
-                "index$" 0
                 "kind" "http"
                 "method" "GET"
                 "orig" "/users/{id}"
