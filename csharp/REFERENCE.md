@@ -123,17 +123,17 @@ var client = client.Client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | Billing ID |
 | `contact` | `Dictionary<string, object?>` | No |  |
-| `created` | `string` | No |  |
-| `directPartner` | `Dictionary<string, object?>` | No |  |
-| `id` | `long` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `partner` | `Dictionary<string, object?>` | No |  |
-| `version` | `long` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `id` | `long` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Client's name. |
+| `partner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `version` | `long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -219,8 +219,8 @@ var clone = client.Clone();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `long` | No |  |
-| `name` | `string` | No |  |
+| `id` | `long` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | Name of Template |
 
 ### Operations
 
@@ -266,17 +266,17 @@ var partner = client.Partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
 | `contact` | `Dictionary<string, object?>` | No |  |
-| `created` | `string` | No |  |
-| `id` | `long` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `Dictionary<string, object?>` | No |  |
-| `reference` | `string` | No |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `long` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `long` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -354,17 +354,17 @@ var template = client.Template();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `object?` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `Dictionary<string, object?>` | No |  |
-| `fieldTemplates` | `List<object?>` | No |  |
-| `id` | `long` | No |  |
-| `name` | `string` | No |  |
+| `accessMode` | `object?` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Dictionary<string, object?>` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `List<object?>` | No | Field Template list items |
+| `id` | `long` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | The Template's name. |
 | `options` | `Dictionary<string, object?>` | No |  |
-| `partner` | `Dictionary<string, object?>` | No |  |
-| `reference` | `string` | No |  |
-| `type` | `string` | No |  |
-| `version` | `long` | No |  |
+| `partner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Template's unique reference. |
+| `type` | `string` | No | The Template's type. |
+| `version` | `long` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -434,19 +434,19 @@ var transaction = client.Transaction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `string` | No |  |
-| `client` | `Dictionary<string, object?>` | No |  |
-| `completeDate` | `string` | No |  |
-| `directPartner` | `Dictionary<string, object?>` | No |  |
-| `errCode` | `string` | No |  |
-| `errMessage` | `string` | No |  |
-| `id` | `long` | No |  |
-| `ipAddress` | `string` | No |  |
-| `messageId` | `string` | No |  |
-| `partner` | `Dictionary<string, object?>` | No |  |
-| `reference` | `string` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `string` | No |  |
+| `bfid` | `string` | No | BFID |
+| `client` | `Dictionary<string, object?>` | No | Reference to the associated Client resource. |
+| `completeDate` | `string` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `errCode` | `string` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `long` | No | This resource's unique identifier. |
+| `ipAddress` | `string` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | No | Message ID. |
+| `partner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `string` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -498,26 +498,26 @@ var updateResult = client.UpdateResult();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
-| `client` | `Dictionary<string, object?>` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
+| `client` | `Dictionary<string, object?>` | No | Reference to the associated Client resource. |
 | `contact` | `Dictionary<string, object?>` | Yes |  |
-| `directPartner` | `Dictionary<string, object?>` | No |  |
-| `email` | `string` | Yes |  |
-| `firstName` | `string` | Yes |  |
-| `id` | `long` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `string` | Yes |  |
-| `mid` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `Dictionary<string, object?>` | No |  |
-| `partner` | `Dictionary<string, object?>` | No |  |
-| `phone` | `string` | Yes |  |
-| `reference` | `string` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `string` | Yes |  |
-| `userRole` | `Dictionary<string, object?>` | Yes |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `long` | No |  |
+| `directPartner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `email` | `string` | Yes | The User's email address. |
+| `firstName` | `string` | Yes | The User's name. |
+| `id` | `long` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | Yes | The User's Surname. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `partner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
+| `phone` | `string` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | Yes | The User's unique username. |
+| `userRole` | `Dictionary<string, object?>` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -615,19 +615,19 @@ var user = client.User();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Dictionary<string, object?>` | No |  |
-| `created` | `string` | No |  |
+| `client` | `Dictionary<string, object?>` | No | Reference to the associated Client resource. |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `string` | No |  |
 | `firstName` | `string` | No |  |
-| `id` | `long` | No |  |
+| `id` | `long` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `partner` | `Dictionary<string, object?>` | No |  |
+| `modified` | `string` | No | Last modified timestamp. |
+| `partner` | `Dictionary<string, object?>` | No | Reference to the associated Partner. |
 | `phone` | `string` | No |  |
 | `userName` | `string` | No |  |
-| `userRole` | `Dictionary<string, object?>` | No |  |
-| `version` | `long` | No |  |
+| `userRole` | `Dictionary<string, object?>` | No | Reference to the associated User Role. |
+| `version` | `long` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

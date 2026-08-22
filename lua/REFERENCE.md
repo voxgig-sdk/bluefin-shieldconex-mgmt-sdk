@@ -115,17 +115,17 @@ local client_ = client:Client(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | Billing ID |
 | `contact` | `table` | No |  |
-| `created` | `string` | No |  |
-| `directPartner` | `table` | No |  |
-| `id` | `number` | No |  |
-| `isActive` | `boolean` | No |  |
-| `mid` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `partner` | `table` | No |  |
-| `version` | `number` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `table` | No | Reference to the associated Partner. |
+| `id` | `number` | No | This resource's unique identifier. |
+| `isActive` | `boolean` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Client's name. |
+| `partner` | `table` | No | Reference to the associated Partner. |
+| `version` | `number` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -218,8 +218,8 @@ local clone = client:Clone(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `id` | `number` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | Name of Template |
 
 ### Operations
 
@@ -273,17 +273,17 @@ local partner = client:Partner(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
 | `contact` | `table` | No |  |
-| `created` | `string` | No |  |
-| `id` | `number` | No |  |
-| `isActive` | `boolean` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `table` | No |  |
-| `reference` | `string` | No |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `number` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `number` | No | This resource's unique identifier. |
+| `isActive` | `boolean` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `table` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `number` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -368,17 +368,17 @@ local template = client:Template(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `any` | No |  |
-| `active` | `boolean` | No |  |
-| `client` | `table` | No |  |
-| `fieldTemplates` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `accessMode` | `any` | No | The Template's access mode. |
+| `active` | `boolean` | No | This property indicates if the Template is active or inactive. |
+| `client` | `table` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `table` | No | Field Template list items |
+| `id` | `number` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | The Template's name. |
 | `options` | `table` | No |  |
-| `partner` | `table` | No |  |
-| `reference` | `string` | No |  |
-| `type` | `string` | No |  |
-| `version` | `number` | No |  |
+| `partner` | `table` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Template's unique reference. |
+| `type` | `string` | No | The Template's type. |
+| `version` | `number` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -455,19 +455,19 @@ local transaction = client:Transaction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `string` | No |  |
-| `client` | `table` | No |  |
-| `completeDate` | `string` | No |  |
-| `directPartner` | `table` | No |  |
-| `errCode` | `string` | No |  |
-| `errMessage` | `string` | No |  |
-| `id` | `number` | No |  |
-| `ipAddress` | `string` | No |  |
-| `messageId` | `string` | No |  |
-| `partner` | `table` | No |  |
-| `reference` | `string` | No |  |
-| `success` | `boolean` | No |  |
-| `templateId` | `string` | No |  |
+| `bfid` | `string` | No | BFID |
+| `client` | `table` | No | Reference to the associated Client resource. |
+| `completeDate` | `string` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `table` | No | Reference to the associated Partner. |
+| `errCode` | `string` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `number` | No | This resource's unique identifier. |
+| `ipAddress` | `string` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | No | Message ID. |
+| `partner` | `table` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `boolean` | No | The success indicator. |
+| `templateId` | `string` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -527,26 +527,26 @@ local update_result = client:UpdateResult(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
-| `client` | `table` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
+| `client` | `table` | No | Reference to the associated Client resource. |
 | `contact` | `table` | Yes |  |
-| `directPartner` | `table` | No |  |
-| `email` | `string` | Yes |  |
-| `firstName` | `string` | Yes |  |
-| `id` | `number` | No |  |
-| `isActive` | `boolean` | No |  |
-| `lastName` | `string` | Yes |  |
-| `mid` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `table` | No |  |
-| `partner` | `table` | No |  |
-| `phone` | `string` | Yes |  |
-| `reference` | `string` | No |  |
-| `sendWelcomeEmail` | `boolean` | No |  |
-| `userName` | `string` | Yes |  |
-| `userRole` | `table` | Yes |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `number` | No |  |
+| `directPartner` | `table` | No | Reference to the associated Partner. |
+| `email` | `string` | Yes | The User's email address. |
+| `firstName` | `string` | Yes | The User's name. |
+| `id` | `number` | No | Unique identifier of newly added element. |
+| `isActive` | `boolean` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | Yes | The User's Surname. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `table` | No | Reference to the associated Partner. |
+| `partner` | `table` | No | Reference to the associated Partner. |
+| `phone` | `string` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `boolean` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | Yes | The User's unique username. |
+| `userRole` | `table` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `number` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -650,19 +650,19 @@ local user = client:User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `table` | No |  |
-| `created` | `string` | No |  |
+| `client` | `table` | No | Reference to the associated Client resource. |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `string` | No |  |
 | `firstName` | `string` | No |  |
-| `id` | `number` | No |  |
+| `id` | `number` | No | This resource's unique identifier. |
 | `isActive` | `boolean` | No |  |
 | `lastName` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `partner` | `table` | No |  |
+| `modified` | `string` | No | Last modified timestamp. |
+| `partner` | `table` | No | Reference to the associated Partner. |
 | `phone` | `string` | No |  |
 | `userName` | `string` | No |  |
-| `userRole` | `table` | No |  |
-| `version` | `number` | No |  |
+| `userRole` | `table` | No | Reference to the associated User Role. |
+| `version` | `number` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

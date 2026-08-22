@@ -8,66 +8,79 @@ main: kit: entity: transaction: {
     {
       name: "bfid"
       req: false
+      short: "BFID"
       type: "`$STRING`"
     }
     {
       name: "client"
       req: false
+      short: "Reference to the associated Client resource."
       type: "`$OBJECT`"
     }
     {
       name: "completeDate"
       req: false
+      short: "Timestamp from the beginning of the transaction."
       type: "`$STRING`"
     }
     {
       name: "directPartner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
       name: "errCode"
       req: false
+      short: "The error code that is sent in response to a failed decrypt API call."
       type: "`$STRING`"
     }
     {
       name: "errMessage"
       req: false
+      short: "The error messge that is sent in response to a failed decrypt API call."
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "This resource's unique identifier."
       type: "`$INTEGER`"
     }
     {
       name: "ipAddress"
       req: false
+      short: "The IP address of the http client that makes the decrypt API call."
       type: "`$STRING`"
     }
     {
       name: "messageId"
       req: false
+      short: "Message ID."
       type: "`$STRING`"
     }
     {
       name: "partner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
       name: "reference"
       req: false
+      short: "The reference property that the Client includes in the decrypt API call."
       type: "`$STRING`"
     }
     {
       name: "success"
       req: false
+      short: "The success indicator."
       type: "`$BOOLEAN`"
     }
     {
       name: "templateId"
       req: false
+      short: "The Template's unique identifier."
       type: "`$STRING`"
     }
   ]

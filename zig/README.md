@@ -288,17 +288,17 @@ On error, `ok` is `false` and `err` carries the error message.
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | Billing ID |
 | `contact` |  |
-| `created` |  |
-| `directPartner` |  |
-| `id` |  |
-| `isActive` |  |
-| `mid` |  |
-| `modified` |  |
-| `name` |  |
-| `partner` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | Reference to the associated Partner. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Client account is active or disabled. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | Last modified timestamp. |
+| `name` | The Client's name. |
+| `partner` | Reference to the associated Partner. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -308,8 +308,8 @@ API path: `/clients`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
+| `id` | Unique identifier of newly added element. |
+| `name` | Name of Template |
 
 Operations: Create.
 
@@ -319,17 +319,17 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | The Partner's billing identifier. |
 | `contact` |  |
-| `created` |  |
-| `id` |  |
-| `isActive` |  |
-| `modified` |  |
-| `name` |  |
-| `parent` |  |
-| `reference` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Parter account is active or disabled. |
+| `modified` | Last modified timestamp. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `reference` | The Partner's reference string. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load.
 
@@ -339,17 +339,17 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `accessMode` |  |
-| `active` |  |
-| `client` |  |
-| `fieldTemplates` |  |
-| `id` |  |
-| `name` |  |
+| `accessMode` | The Template's access mode. |
+| `active` | This property indicates if the Template is active or inactive. |
+| `client` | Reference to the associated Client resource. |
+| `fieldTemplates` | Field Template list items |
+| `id` | Unique identifier of newly added element. |
+| `name` | The Template's name. |
 | `options` |  |
-| `partner` |  |
-| `reference` |  |
-| `type` |  |
-| `version` |  |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The Template's unique reference. |
+| `type` | The Template's type. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -359,19 +359,19 @@ API path: `/templates`
 
 | Field | Description |
 | --- | --- |
-| `bfid` |  |
-| `client` |  |
-| `completeDate` |  |
-| `directPartner` |  |
-| `errCode` |  |
-| `errMessage` |  |
-| `id` |  |
-| `ipAddress` |  |
-| `messageId` |  |
-| `partner` |  |
-| `reference` |  |
-| `success` |  |
-| `templateId` |  |
+| `bfid` | BFID |
+| `client` | Reference to the associated Client resource. |
+| `completeDate` | Timestamp from the beginning of the transaction. |
+| `directPartner` | Reference to the associated Partner. |
+| `errCode` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | This resource's unique identifier. |
+| `ipAddress` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | Message ID. |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The reference property that the Client includes in the decrypt API call. |
+| `success` | The success indicator. |
+| `templateId` | The Template's unique identifier. |
 
 Operations: List, Load.
 
@@ -381,26 +381,26 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
-| `client` |  |
+| `billingId` | The Partner's billing identifier. |
+| `client` | Reference to the associated Client resource. |
 | `contact` |  |
-| `directPartner` |  |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `isActive` |  |
-| `lastName` |  |
-| `mid` |  |
-| `name` |  |
-| `parent` |  |
-| `partner` |  |
-| `phone` |  |
-| `reference` |  |
-| `sendWelcomeEmail` |  |
-| `userName` |  |
-| `userRole` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `directPartner` | Reference to the associated Partner. |
+| `email` | The User's email address. |
+| `firstName` | The User's name. |
+| `id` | Unique identifier of newly added element. |
+| `isActive` | This property indicates if the User account is active or disabled. |
+| `lastName` | The User's Surname. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `partner` | Reference to the associated Partner. |
+| `phone` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | The Partner's reference string. |
+| `sendWelcomeEmail` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | The User's unique username. |
+| `userRole` | Reference to the associated User Role. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Update.
 
@@ -410,19 +410,19 @@ API path: `/users`
 
 | Field | Description |
 | --- | --- |
-| `client` |  |
-| `created` |  |
+| `client` | Reference to the associated Client resource. |
+| `created` | Creation timestamp in ISO 8601 format. |
 | `email` |  |
 | `firstName` |  |
-| `id` |  |
+| `id` | This resource's unique identifier. |
 | `isActive` |  |
 | `lastName` |  |
-| `modified` |  |
-| `partner` |  |
+| `modified` | Last modified timestamp. |
+| `partner` | Reference to the associated Partner. |
 | `phone` |  |
 | `userName` |  |
-| `userRole` |  |
-| `version` |  |
+| `userRole` | Reference to the associated User Role. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Load.
 
@@ -453,17 +453,17 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `[]const u8` |  |
+| `billingId` | `[]const u8` | Billing ID |
 | `contact` | `Value (object)` |  |
-| `created` | `[]const u8` |  |
-| `directPartner` | `Value (object)` |  |
-| `id` | `i64` |  |
-| `isActive` | `bool` |  |
-| `mid` | `[]const u8` |  |
-| `modified` | `[]const u8` |  |
-| `name` | `[]const u8` |  |
-| `partner` | `Value (object)` |  |
-| `version` | `i64` |  |
+| `created` | `[]const u8` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Value (object)` | Reference to the associated Partner. |
+| `id` | `i64` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Client account is active or disabled. |
+| `mid` | `[]const u8` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `[]const u8` | Last modified timestamp. |
+| `name` | `[]const u8` | The Client's name. |
+| `partner` | `Value (object)` | Reference to the associated Partner. |
+| `version` | `i64` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -511,8 +511,8 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `i64` |  |
-| `name` | `[]const u8` |  |
+| `id` | `i64` | Unique identifier of newly added element. |
+| `name` | `[]const u8` | Name of Template |
 
 #### Example: Create
 
@@ -545,17 +545,17 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `[]const u8` |  |
+| `billingId` | `[]const u8` | The Partner's billing identifier. |
 | `contact` | `Value (object)` |  |
-| `created` | `[]const u8` |  |
-| `id` | `i64` |  |
-| `isActive` | `bool` |  |
-| `modified` | `[]const u8` |  |
-| `name` | `[]const u8` |  |
-| `parent` | `Value (object)` |  |
-| `reference` | `[]const u8` |  |
-| `verificationPhrase` | `[]const u8` |  |
-| `version` | `i64` |  |
+| `created` | `[]const u8` | Creation timestamp in ISO 8601 format. |
+| `id` | `i64` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Parter account is active or disabled. |
+| `modified` | `[]const u8` | Last modified timestamp. |
+| `name` | `[]const u8` | The Partner's name. |
+| `parent` | `Value (object)` | Reference to the associated Partner. |
+| `reference` | `[]const u8` | The Partner's reference string. |
+| `verificationPhrase` | `[]const u8` | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -606,17 +606,17 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessMode` | `Value` |  |
-| `active` | `bool` |  |
-| `client` | `Value (object)` |  |
-| `fieldTemplates` | `Value (array)` |  |
-| `id` | `i64` |  |
-| `name` | `[]const u8` |  |
+| `accessMode` | `Value` | The Template's access mode. |
+| `active` | `bool` | This property indicates if the Template is active or inactive. |
+| `client` | `Value (object)` | Reference to the associated Client resource. |
+| `fieldTemplates` | `Value (array)` | Field Template list items |
+| `id` | `i64` | Unique identifier of newly added element. |
+| `name` | `[]const u8` | The Template's name. |
 | `options` | `Value (object)` |  |
-| `partner` | `Value (object)` |  |
-| `reference` | `[]const u8` |  |
-| `type` | `[]const u8` |  |
-| `version` | `i64` |  |
+| `partner` | `Value (object)` | Reference to the associated Partner. |
+| `reference` | `[]const u8` | The Template's unique reference. |
+| `type` | `[]const u8` | The Template's type. |
+| `version` | `i64` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -665,19 +665,19 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bfid` | `[]const u8` |  |
-| `client` | `Value (object)` |  |
-| `completeDate` | `[]const u8` |  |
-| `directPartner` | `Value (object)` |  |
-| `errCode` | `[]const u8` |  |
-| `errMessage` | `[]const u8` |  |
-| `id` | `i64` |  |
-| `ipAddress` | `[]const u8` |  |
-| `messageId` | `[]const u8` |  |
-| `partner` | `Value (object)` |  |
-| `reference` | `[]const u8` |  |
-| `success` | `bool` |  |
-| `templateId` | `[]const u8` |  |
+| `bfid` | `[]const u8` | BFID |
+| `client` | `Value (object)` | Reference to the associated Client resource. |
+| `completeDate` | `[]const u8` | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Value (object)` | Reference to the associated Partner. |
+| `errCode` | `[]const u8` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `[]const u8` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `i64` | This resource's unique identifier. |
+| `ipAddress` | `[]const u8` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `[]const u8` | Message ID. |
+| `partner` | `Value (object)` | Reference to the associated Partner. |
+| `reference` | `[]const u8` | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | The success indicator. |
+| `templateId` | `[]const u8` | The Template's unique identifier. |
 
 #### Example: Load
 
@@ -717,26 +717,26 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `[]const u8` |  |
-| `client` | `Value (object)` |  |
+| `billingId` | `[]const u8` | The Partner's billing identifier. |
+| `client` | `Value (object)` | Reference to the associated Client resource. |
 | `contact` | `Value (object)` |  |
-| `directPartner` | `Value (object)` |  |
-| `email` | `[]const u8` |  |
-| `firstName` | `[]const u8` |  |
-| `id` | `i64` |  |
-| `isActive` | `bool` |  |
-| `lastName` | `[]const u8` |  |
-| `mid` | `[]const u8` |  |
-| `name` | `[]const u8` |  |
-| `parent` | `Value (object)` |  |
-| `partner` | `Value (object)` |  |
-| `phone` | `[]const u8` |  |
-| `reference` | `[]const u8` |  |
-| `sendWelcomeEmail` | `bool` |  |
-| `userName` | `[]const u8` |  |
-| `userRole` | `Value (object)` |  |
-| `verificationPhrase` | `[]const u8` |  |
-| `version` | `i64` |  |
+| `directPartner` | `Value (object)` | Reference to the associated Partner. |
+| `email` | `[]const u8` | The User's email address. |
+| `firstName` | `[]const u8` | The User's name. |
+| `id` | `i64` | Unique identifier of newly added element. |
+| `isActive` | `bool` | This property indicates if the User account is active or disabled. |
+| `lastName` | `[]const u8` | The User's Surname. |
+| `mid` | `[]const u8` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `[]const u8` | The Partner's name. |
+| `parent` | `Value (object)` | Reference to the associated Partner. |
+| `partner` | `Value (object)` | Reference to the associated Partner. |
+| `phone` | `[]const u8` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `[]const u8` | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `[]const u8` | The User's unique username. |
+| `userRole` | `Value (object)` | Reference to the associated User Role. |
+| `verificationPhrase` | `[]const u8` | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | The number of times that this resource has been updated. |
 
 #### Example: List
 
@@ -782,19 +782,19 @@ carries the result `Value`, `.err => |e|` carries the branded error.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `client` | `Value (object)` |  |
-| `created` | `[]const u8` |  |
+| `client` | `Value (object)` | Reference to the associated Client resource. |
+| `created` | `[]const u8` | Creation timestamp in ISO 8601 format. |
 | `email` | `[]const u8` |  |
 | `firstName` | `[]const u8` |  |
-| `id` | `i64` |  |
+| `id` | `i64` | This resource's unique identifier. |
 | `isActive` | `bool` |  |
 | `lastName` | `[]const u8` |  |
-| `modified` | `[]const u8` |  |
-| `partner` | `Value (object)` |  |
+| `modified` | `[]const u8` | Last modified timestamp. |
+| `partner` | `Value (object)` | Reference to the associated Partner. |
 | `phone` | `[]const u8` |  |
 | `userName` | `[]const u8` |  |
-| `userRole` | `Value (object)` |  |
-| `version` | `i64` |  |
+| `userRole` | `Value (object)` | Reference to the associated User Role. |
+| `version` | `i64` | The number of times that this resource has been updated. |
 
 #### Example: Load
 

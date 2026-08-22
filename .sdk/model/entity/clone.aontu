@@ -8,11 +8,13 @@ main: kit: entity: clone: {
     {
       name: "id"
       req: false
+      short: "Unique identifier of newly added element."
       type: "`$INTEGER`"
     }
     {
       name: "name"
       req: false
+      short: "Name of Template"
       type: "`$STRING`"
     }
   ]

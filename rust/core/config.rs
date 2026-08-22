@@ -10,6 +10,9 @@ pub fn make_config() -> Value {
     Value::map_of([
         ("main".to_string(), Value::map_of([
             ("name".to_string(), Value::str("BluefinShieldconexMgmt")),
+            ("slug".to_string(), Value::str("bluefin-shieldconex-mgmt")),
+            ("version".to_string(), Value::str("0.0.1")),
+            ("target".to_string(), Value::str("rust")),
         ])),
         ("feature".to_string(), Value::map_of([
             ("test".to_string(), Value::map_of([
@@ -20,6 +23,9 @@ pub fn make_config() -> Value {
         ])),
         ("options".to_string(), Value::map_of([
             ("base".to_string(), Value::str("https://portal-cert.shieldconex.com:4010/api/v1")),
+            ("auth".to_string(), Value::map_of([
+                ("prefix".to_string(), Value::str("Basic")),
+            ])),
             ("headers".to_string(), Value::map_of([
                 ("content-type".to_string(), Value::str("application/json")),
             ])),
@@ -32,15 +38,13 @@ pub fn make_config() -> Value {
                 ("update_result".to_string(), Value::empty_map()),
                 ("user".to_string(), Value::empty_map()),
             ])),
-            ("auth".to_string(), Value::map_of([
-                ("prefix".to_string(), Value::str("Basic")),
-            ])),
         ])),
         ("entity".to_string(), Value::map_of([
             ("client".to_string(), Value::map_of([
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("billingId")),
+                        ("short".to_string(), Value::str("Billing ID")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -59,6 +63,7 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("created")),
+                        ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -69,22 +74,27 @@ pub fn make_config() -> Value {
                                 ("type".to_string(), Value::str("`$OBJECT`")),
                             ])),
                         ])),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("isActive")),
+                        ("short".to_string(), Value::str("This property indicates if the Client account is active or disabled.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("mid")),
+                        ("short".to_string(), Value::str("Some Partners will have an merchant ids on their own software offerings.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("modified")),
+                        ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -95,14 +105,17 @@ pub fn make_config() -> Value {
                                 ("type".to_string(), Value::str("`$STRING`")),
                             ])),
                         ])),
+                        ("short".to_string(), Value::str("The Client's name.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("partner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("version")),
+                        ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
@@ -373,10 +386,12 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("name")),
+                        ("short".to_string(), Value::str("Name of Template")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                 ])),
@@ -436,6 +451,7 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("billingId")),
+                        ("short".to_string(), Value::str("The Partner's billing identifier.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -454,18 +470,22 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("created")),
+                        ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("isActive")),
+                        ("short".to_string(), Value::str("This property indicates if the Parter account is active or disabled.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("modified")),
+                        ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -476,6 +496,7 @@ pub fn make_config() -> Value {
                                 ("type".to_string(), Value::str("`$STRING`")),
                             ])),
                         ])),
+                        ("short".to_string(), Value::str("The Partner's name.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -486,18 +507,22 @@ pub fn make_config() -> Value {
                                 ("type".to_string(), Value::str("`$OBJECT`")),
                             ])),
                         ])),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("reference")),
+                        ("short".to_string(), Value::str("The Partner's reference string.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("verificationPhrase")),
+                        ("short".to_string(), Value::str("The verification phrase is a message that the Partner creates.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("version")),
+                        ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
@@ -739,18 +764,22 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("accessMode")),
+                        ("short".to_string(), Value::str("The Template's access mode.")),
                         ("type".to_string(), Value::str("`$ANY`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("active")),
+                        ("short".to_string(), Value::str("This property indicates if the Template is active or inactive.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("client")),
+                        ("short".to_string(), Value::str("Reference to the associated Client resource.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("fieldTemplates")),
+                        ("short".to_string(), Value::str("Field Template list items")),
                         ("type".to_string(), Value::str("`$ARRAY`")),
                         ("union".to_string(), Value::map_of([
                             ("branches".to_string(), Value::Num(9f64)),
@@ -760,10 +789,12 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("name")),
+                        ("short".to_string(), Value::str("The Template's name.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -772,18 +803,22 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("partner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("reference")),
+                        ("short".to_string(), Value::str("The Template's unique reference.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("type")),
+                        ("short".to_string(), Value::str("The Template's type.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("version")),
+                        ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
@@ -1076,54 +1111,67 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("bfid")),
+                        ("short".to_string(), Value::str("BFID")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("client")),
+                        ("short".to_string(), Value::str("Reference to the associated Client resource.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("completeDate")),
+                        ("short".to_string(), Value::str("Timestamp from the beginning of the transaction.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("directPartner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("errCode")),
+                        ("short".to_string(), Value::str("The error code that is sent in response to a failed decrypt API call.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("errMessage")),
+                        ("short".to_string(), Value::str("The error messge that is sent in response to a failed decrypt API call.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("ipAddress")),
+                        ("short".to_string(), Value::str("The IP address of the http client that makes the decrypt API call.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("messageId")),
+                        ("short".to_string(), Value::str("Message ID.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("partner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("reference")),
+                        ("short".to_string(), Value::str("The reference property that the Client includes in the decrypt API call.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("success")),
+                        ("short".to_string(), Value::str("The success indicator.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("templateId")),
+                        ("short".to_string(), Value::str("The Template's unique identifier.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                 ])),
@@ -1287,10 +1335,12 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("billingId")),
+                        ("short".to_string(), Value::str("The Partner's billing identifier.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("client")),
+                        ("short".to_string(), Value::str("Reference to the associated Client resource.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
@@ -1300,6 +1350,7 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("directPartner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
@@ -1313,6 +1364,7 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("The User's email address.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -1326,14 +1378,17 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("The User's name.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("isActive")),
+                        ("short".to_string(), Value::str("This property indicates if the User account is active or disabled.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
@@ -1347,22 +1402,27 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("The User's Surname.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("mid")),
+                        ("short".to_string(), Value::str("Some Partners will have an merchant ids on their own software offerings.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("name")),
+                        ("short".to_string(), Value::str("The Partner's name.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("parent")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("partner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
@@ -1376,14 +1436,17 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("The User's phone number without dashes, spaces, or brackets (e.g.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("reference")),
+                        ("short".to_string(), Value::str("The Partner's reference string.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("sendWelcomeEmail")),
+                        ("short".to_string(), Value::str("If this property is set to 'true' the newly created user will be sent a welcome email.")),
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
@@ -1397,6 +1460,7 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("The User's unique username.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -1410,14 +1474,17 @@ pub fn make_config() -> Value {
                             ])),
                         ])),
                         ("req".to_string(), Value::Bool(true)),
+                        ("short".to_string(), Value::str("Reference to the associated User Role.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("verificationPhrase")),
+                        ("short".to_string(), Value::str("The verification phrase is a message that the Partner creates.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("version")),
+                        ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
@@ -2023,10 +2090,12 @@ pub fn make_config() -> Value {
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
                         ("name".to_string(), Value::str("client")),
+                        ("short".to_string(), Value::str("Reference to the associated Client resource.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("created")),
+                        ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
@@ -2039,6 +2108,7 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("id")),
+                        ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                     Value::map_of([
@@ -2051,10 +2121,12 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("modified")),
+                        ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("partner")),
+                        ("short".to_string(), Value::str("Reference to the associated Partner.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
@@ -2067,10 +2139,12 @@ pub fn make_config() -> Value {
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("userRole")),
+                        ("short".to_string(), Value::str("Reference to the associated User Role.")),
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
                         ("name".to_string(), Value::str("version")),
+                        ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
@@ -2118,6 +2192,28 @@ pub fn make_config() -> Value {
             ])),
         ])),
     ])
+}
+
+// SHARED CONFIG (sdkgen rung L2).
+//
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client. Above the
+// size threshold make_config re-parses the whole embedded JSON, so this is the
+// difference between parsing the model once and once per client.
+//
+// THREAD-LOCAL, not a global: Value is Rc/RefCell-backed and so is neither
+// Send nor Sync. One config per thread is the widest scope that is sound here,
+// and the clone is an Rc bump, not a deep copy.
+thread_local! {
+    static SHARED_CONFIG: Value = make_config();
+}
+
+/// The per-thread config, built once on first use.
+///
+/// The returned Value SHARES its nodes: treat it as read-only. Callers that
+/// need to mutate should use make_config, which always returns a fresh copy.
+pub fn shared_config() -> Value {
+    SHARED_CONFIG.with(|c| c.clone())
 }
 
 pub fn make_feature(name: &str) -> FeatureRef {

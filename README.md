@@ -8,7 +8,7 @@ This is an unofficial SDK for the Shieldconex Management public API, generated b
 
 Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
-> TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
+> TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
 ## Entities, not endpoints
 
@@ -156,23 +156,6 @@ records = BluefinShieldconexMgmt.Entity.Partner.list(partner, H.deep(%{}))
 IO.inspect(records)
 ```
 
-### Haskell
-
-```haskell
-import qualified SdkClient as Sdk
-import VoxgigStruct (Value (..), emptyMap)
-import SdkHelpers (jo)
-
-main :: IO ()
-main = do
-  sdk <- Sdk.testSdk0
-  ent <- Sdk.partner sdk VNoval
-  arg <- emptyMap
-  ctrl <- emptyMap
-  partners <- Sdk.eList ent arg ctrl
-  print partners
-```
-
 ### Java
 
 ```java
@@ -275,7 +258,6 @@ switch (client.partner(h.vnull()).list(h.vnull(), h.vnull())) {
 | C# | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Dart | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Elixir | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
-| Haskell | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Java | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | JavaScript | `@voxgig-sdk/bluefin-shieldconex-mgmt-js` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Kotlin | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
@@ -312,7 +294,7 @@ See the [TypeScript README](ts/README.md) for the full guide.
 
 | Surface | Path |
 | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig) | `ts/` `py/` `php/` `go/` `rb/` `lua/` `c/` `clojure/` `cpp/` `csharp/` `dart/` `elixir/` `haskell/` `java/` `js/` `kotlin/` `ocaml/` `perl/` `rust/` `scala/` `swift/` `zig/` |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig) | `ts/` `py/` `php/` `go/` `rb/` `lua/` `c/` `clojure/` `cpp/` `csharp/` `dart/` `elixir/` `java/` `js/` `kotlin/` `ocaml/` `perl/` `rust/` `scala/` `swift/` `zig/` |
 | **CLI** | `go-cli/` |
 | **MCP server** | `go-mcp/` |
 
@@ -571,35 +553,6 @@ IO.inspect(records)
 # Load a specific client (returns the record, raises on error)
 record = BluefinShieldconexMgmt.Entity.Client.load(client, H.deep(%{"id" => "example_id"}))
 IO.inspect(record)
-```
-
-### Haskell
-
-```haskell
-import System.Environment (lookupEnv)
-import qualified SdkClient as Sdk
-import VoxgigStruct (Value (..), emptyMap)
-import SdkHelpers (jo)
-
-main :: IO ()
-main = do
-  mkey <- lookupEnv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"
-  opts <- jo [("apikey", maybe VNoval VStr mkey)]
-  sdk <- Sdk.newSdk opts
-
-  -- List all clients (one ENTITY per record, raises on error)
-  ent <- Sdk.client sdk VNoval
-  match <- emptyMap
-  ctrl <- emptyMap
-  clients <- Sdk.eList ent match ctrl
-  mapM_ (\en -> print =<< Sdk.eDataGet en) clients
-
-  -- Load a specific client (returns the ENTITY, raises on error)
-  ent2 <- Sdk.client sdk VNoval
-  m <- jo [("id", VStr "example_id")]
-  ctrl2 <- emptyMap
-  client <- Sdk.eLoad ent2 m ctrl2
-  print =<< Sdk.eDataGet client
 ```
 
 ### Java
@@ -909,22 +862,6 @@ result = BluefinShieldconexMgmt.direct(sdk, BluefinShieldconexMgmt.Helpers.deep(
 }))
 ```
 
-**Haskell:**
-```haskell
-import qualified SdkClient as Sdk
-import qualified SdkFeatures as F
-import VoxgigStruct (Value (..))
-import SdkHelpers (jo)
-
-main :: IO ()
-main = do
-  sdk <- Sdk.newSdk0
-  params <- jo [("id", VStr "example")]
-  args <- jo [("path", VStr "/api/resource/{id}"), ("method", VStr "GET"), ("params", params)]
-  result <- F.direct sdk args
-  print result
-```
-
 **Java:**
 ```java
 Map<String, Object> result = client.direct(Map.of(
@@ -1047,7 +984,6 @@ Pass custom features via the `extend` option at construction time.
 - [C#](csharp/README.md)
 - [Dart](dart/README.md)
 - [Elixir](elixir/README.md)
-- [Haskell](haskell/README.md)
 - [Java](java/README.md)
 - [JavaScript](js/README.md)
 - [Kotlin](kotlin/README.md)

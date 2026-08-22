@@ -8,11 +8,13 @@ main: kit: entity: update_result: {
     {
       name: "billingId"
       req: false
+      short: "The Partner's billing identifier."
       type: "`$STRING`"
     }
     {
       name: "client"
       req: false
+      short: "Reference to the associated Client resource."
       type: "`$OBJECT`"
     }
     {
@@ -23,6 +25,7 @@ main: kit: entity: update_result: {
     {
       name: "directPartner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
@@ -38,6 +41,7 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "The User's email address."
       type: "`$STRING`"
     }
     {
@@ -53,16 +57,19 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "The User's name."
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier of newly added element."
       type: "`$INTEGER`"
     }
     {
       name: "isActive"
       req: false
+      short: "This property indicates if the User account is active or disabled."
       type: "`$BOOLEAN`"
     }
     {
@@ -78,26 +85,31 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "The User's Surname."
       type: "`$STRING`"
     }
     {
       name: "mid"
       req: false
+      short: "Some Partners will have an merchant ids on their own software offerings."
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "The Partner's name."
       type: "`$STRING`"
     }
     {
       name: "parent"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
       name: "partner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
@@ -113,16 +125,19 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "The User's phone number without dashes, spaces, or brackets (e.g."
       type: "`$STRING`"
     }
     {
       name: "reference"
       req: false
+      short: "The Partner's reference string."
       type: "`$STRING`"
     }
     {
       name: "sendWelcomeEmail"
       req: false
+      short: "If this property is set to 'true' the newly created user will be sent a welcome email."
       type: "`$BOOLEAN`"
     }
     {
@@ -138,6 +153,7 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "The User's unique username."
       type: "`$STRING`"
     }
     {
@@ -153,16 +169,19 @@ main: kit: entity: update_result: {
         }
       }
       req: true
+      short: "Reference to the associated User Role."
       type: "`$OBJECT`"
     }
     {
       name: "verificationPhrase"
       req: false
+      short: "The verification phrase is a message that the Partner creates."
       type: "`$STRING`"
     }
     {
       name: "version"
       req: false
+      short: "The number of times that this resource has been updated."
       type: "`$INTEGER`"
     }
   ]

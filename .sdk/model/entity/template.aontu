@@ -8,21 +8,25 @@ main: kit: entity: template: {
     {
       name: "accessMode"
       req: false
+      short: "The Template's access mode."
       type: "`$ANY`"
     }
     {
       name: "active"
       req: false
+      short: "This property indicates if the Template is active or inactive."
       type: "`$BOOLEAN`"
     }
     {
       name: "client"
       req: false
+      short: "Reference to the associated Client resource."
       type: "`$OBJECT`"
     }
     {
       name: "fieldTemplates"
       req: false
+      short: "Field Template list items"
       type: "`$ARRAY`"
       union: {
         branches: 9
@@ -33,11 +37,13 @@ main: kit: entity: template: {
     {
       name: "id"
       req: false
+      short: "Unique identifier of newly added element."
       type: "`$INTEGER`"
     }
     {
       name: "name"
       req: false
+      short: "The Template's name."
       type: "`$STRING`"
     }
     {
@@ -48,21 +54,25 @@ main: kit: entity: template: {
     {
       name: "partner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
       name: "reference"
       req: false
+      short: "The Template's unique reference."
       type: "`$STRING`"
     }
     {
       name: "type"
       req: false
+      short: "The Template's type."
       type: "`$STRING`"
     }
     {
       name: "version"
       req: false
+      short: "The number of times that this resource has been updated."
       type: "`$INTEGER`"
     }
   ]

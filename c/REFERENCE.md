@@ -114,17 +114,17 @@ Entity* client = bluefinshieldconexmgmt_client(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `char*` | No |  |
+| `billingId` | `char*` | No | Billing ID |
 | `contact` | `voxgig_value* (map)` | No |  |
-| `created` | `char*` | No |  |
-| `directPartner` | `voxgig_value* (map)` | No |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `char*` | No |  |
-| `modified` | `char*` | No |  |
-| `name` | `char*` | No |  |
-| `partner` | `voxgig_value* (map)` | No |  |
-| `version` | `int64_t` | No |  |
+| `created` | `char*` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `char*` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `char*` | No | Last modified timestamp. |
+| `name` | `char*` | No | The Client's name. |
+| `partner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -214,8 +214,8 @@ Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int64_t` | No |  |
-| `name` | `char*` | No |  |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `name` | `char*` | No | Name of Template |
 
 ### Operations
 
@@ -261,17 +261,17 @@ Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `char*` | No |  |
+| `billingId` | `char*` | No | The Partner's billing identifier. |
 | `contact` | `voxgig_value* (map)` | No |  |
-| `created` | `char*` | No |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `char*` | No |  |
-| `name` | `char*` | No |  |
-| `parent` | `voxgig_value* (map)` | No |  |
-| `reference` | `char*` | No |  |
-| `verificationPhrase` | `char*` | No |  |
-| `version` | `int64_t` | No |  |
+| `created` | `char*` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `char*` | No | Last modified timestamp. |
+| `name` | `char*` | No | The Partner's name. |
+| `parent` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `reference` | `char*` | No | The Partner's reference string. |
+| `verificationPhrase` | `char*` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -352,17 +352,17 @@ Entity* template = bluefinshieldconexmgmt_template(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `voxgig_value*` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `voxgig_value* (map)` | No |  |
-| `fieldTemplates` | `voxgig_value* (list)` | No |  |
-| `id` | `int64_t` | No |  |
-| `name` | `char*` | No |  |
+| `accessMode` | `voxgig_value*` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `voxgig_value* (map)` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `voxgig_value* (list)` | No | Field Template list items |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `name` | `char*` | No | The Template's name. |
 | `options` | `voxgig_value* (map)` | No |  |
-| `partner` | `voxgig_value* (map)` | No |  |
-| `reference` | `char*` | No |  |
-| `type` | `char*` | No |  |
-| `version` | `int64_t` | No |  |
+| `partner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `reference` | `char*` | No | The Template's unique reference. |
+| `type` | `char*` | No | The Template's type. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -436,19 +436,19 @@ Entity* transaction = bluefinshieldconexmgmt_transaction(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `char*` | No |  |
-| `client` | `voxgig_value* (map)` | No |  |
-| `completeDate` | `char*` | No |  |
-| `directPartner` | `voxgig_value* (map)` | No |  |
-| `errCode` | `char*` | No |  |
-| `errMessage` | `char*` | No |  |
-| `id` | `int64_t` | No |  |
-| `ipAddress` | `char*` | No |  |
-| `messageId` | `char*` | No |  |
-| `partner` | `voxgig_value* (map)` | No |  |
-| `reference` | `char*` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `char*` | No |  |
+| `bfid` | `char*` | No | BFID |
+| `client` | `voxgig_value* (map)` | No | Reference to the associated Client resource. |
+| `completeDate` | `char*` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `errCode` | `char*` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `char*` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `ipAddress` | `char*` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `char*` | No | Message ID. |
+| `partner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `reference` | `char*` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `char*` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -504,26 +504,26 @@ Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `char*` | No |  |
-| `client` | `voxgig_value* (map)` | No |  |
+| `billingId` | `char*` | No | The Partner's billing identifier. |
+| `client` | `voxgig_value* (map)` | No | Reference to the associated Client resource. |
 | `contact` | `voxgig_value* (map)` | Yes |  |
-| `directPartner` | `voxgig_value* (map)` | No |  |
-| `email` | `char*` | Yes |  |
-| `firstName` | `char*` | Yes |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `char*` | Yes |  |
-| `mid` | `char*` | No |  |
-| `name` | `char*` | No |  |
-| `parent` | `voxgig_value* (map)` | No |  |
-| `partner` | `voxgig_value* (map)` | No |  |
-| `phone` | `char*` | Yes |  |
-| `reference` | `char*` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `char*` | Yes |  |
-| `userRole` | `voxgig_value* (map)` | Yes |  |
-| `verificationPhrase` | `char*` | No |  |
-| `version` | `int64_t` | No |  |
+| `directPartner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `email` | `char*` | Yes | The User's email address. |
+| `firstName` | `char*` | Yes | The User's name. |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `char*` | Yes | The User's Surname. |
+| `mid` | `char*` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `char*` | No | The Partner's name. |
+| `parent` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `partner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
+| `phone` | `char*` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `char*` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `char*` | Yes | The User's unique username. |
+| `userRole` | `voxgig_value* (map)` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `char*` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -621,19 +621,19 @@ Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `voxgig_value* (map)` | No |  |
-| `created` | `char*` | No |  |
+| `client` | `voxgig_value* (map)` | No | Reference to the associated Client resource. |
+| `created` | `char*` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `char*` | No |  |
 | `firstName` | `char*` | No |  |
-| `id` | `int64_t` | No |  |
+| `id` | `int64_t` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `char*` | No |  |
-| `modified` | `char*` | No |  |
-| `partner` | `voxgig_value* (map)` | No |  |
+| `modified` | `char*` | No | Last modified timestamp. |
+| `partner` | `voxgig_value* (map)` | No | Reference to the associated Partner. |
 | `phone` | `char*` | No |  |
 | `userName` | `char*` | No |  |
-| `userRole` | `voxgig_value* (map)` | No |  |
-| `version` | `int64_t` | No |  |
+| `userRole` | `voxgig_value* (map)` | No | Reference to the associated User Role. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

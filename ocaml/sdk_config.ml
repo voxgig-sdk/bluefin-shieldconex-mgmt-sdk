@@ -18,6 +18,8 @@ let make_config () : value =
           ("active", (Bool false)) ])) ])) ]));
     ("options", (jo [
       ("base", (Str "https://portal-cert.shieldconex.com:4010/api/v1"));
+      ("auth", (jo [
+        ("prefix", (Str "Basic")) ]));
       ("headers", (jo [
         ("content-type", (Str "application/json")) ]));
       ("entity", (jo [
@@ -27,14 +29,13 @@ let make_config () : value =
         ("template", (empty_map ()));
         ("transaction", (empty_map ()));
         ("update_result", (empty_map ()));
-        ("user", (empty_map ())) ]));
-      ("auth", (jo [
-        ("prefix", (Str "Basic")) ])) ]));
+        ("user", (empty_map ())) ])) ]));
     ("entity", (jo [
       ("client", (jo [
         ("fields", (ja [
           (jo [
             ("name", (Str "billingId"));
+            ("short", (Str "Billing ID"));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "contact"));
@@ -48,6 +49,7 @@ let make_config () : value =
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "created"));
+            ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "directPartner"));
@@ -55,18 +57,23 @@ let make_config () : value =
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "isActive"));
+            ("short", (Str "This property indicates if the Client account is active or disabled."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "mid"));
+            ("short", (Str "Some Partners will have an merchant ids on their own software offerings."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "modified"));
+            ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "name"));
@@ -74,12 +81,15 @@ let make_config () : value =
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$STRING`")) ])) ]));
+            ("short", (Str "The Client's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "partner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "version"));
+            ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "client"));
         ("op", (jo [
@@ -290,9 +300,11 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "name"));
+            ("short", (Str "Name of Template"));
             ("type", (Str "`$STRING`")) ]) ]));
         ("name", (Str "clone"));
         ("op", (jo [
@@ -333,6 +345,7 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "billingId"));
+            ("short", (Str "The Partner's billing identifier."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "contact"));
@@ -346,15 +359,19 @@ let make_config () : value =
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "created"));
+            ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "isActive"));
+            ("short", (Str "This property indicates if the Parter account is active or disabled."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "modified"));
+            ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "name"));
@@ -362,6 +379,7 @@ let make_config () : value =
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$STRING`")) ])) ]));
+            ("short", (Str "The Partner's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "parent"));
@@ -369,15 +387,19 @@ let make_config () : value =
               ("create", (jo [
                 ("req", (Bool true));
                 ("type", (Str "`$OBJECT`")) ])) ]));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "reference"));
+            ("short", (Str "The Partner's reference string."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "verificationPhrase"));
+            ("short", (Str "The verification phrase is a message that the Partner creates."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "version"));
+            ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "partner"));
         ("op", (jo [
@@ -568,15 +590,19 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "accessMode"));
+            ("short", (Str "The Template's access mode."));
             ("type", (Str "`$ANY`")) ]);
           (jo [
             ("name", (Str "active"));
+            ("short", (Str "This property indicates if the Template is active or inactive."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "client"));
+            ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "fieldTemplates"));
+            ("short", (Str "Field Template list items"));
             ("type", (Str "`$ARRAY`"));
             ("union", (jo [
               ("branches", (Num (9.)));
@@ -584,24 +610,30 @@ let make_config () : value =
               ("depth", (Num (1.))) ])) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "name"));
+            ("short", (Str "The Template's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "options"));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "partner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "reference"));
+            ("short", (Str "The Template's unique reference."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "type"));
+            ("short", (Str "The Template's type."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "version"));
+            ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "template"));
         ("op", (jo [
@@ -830,42 +862,55 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "bfid"));
+            ("short", (Str "BFID"));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "client"));
+            ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "completeDate"));
+            ("short", (Str "Timestamp from the beginning of the transaction."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "directPartner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "errCode"));
+            ("short", (Str "The error code that is sent in response to a failed decrypt API call."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "errMessage"));
+            ("short", (Str "The error messge that is sent in response to a failed decrypt API call."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "ipAddress"));
+            ("short", (Str "The IP address of the http client that makes the decrypt API call."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "messageId"));
+            ("short", (Str "Message ID."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "partner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "reference"));
+            ("short", (Str "The reference property that the Client includes in the decrypt API call."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "success"));
+            ("short", (Str "The success indicator."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "templateId"));
+            ("short", (Str "The Template's unique identifier."));
             ("type", (Str "`$STRING`")) ]) ]));
         ("name", (Str "transaction"));
         ("op", (jo [
@@ -992,9 +1037,11 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "billingId"));
+            ("short", (Str "The Partner's billing identifier."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "client"));
+            ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "contact"));
@@ -1002,6 +1049,7 @@ let make_config () : value =
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "directPartner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "email"));
@@ -1011,6 +1059,7 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "The User's email address."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "firstName"));
@@ -1020,12 +1069,15 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "The User's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "isActive"));
+            ("short", (Str "This property indicates if the User account is active or disabled."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "lastName"));
@@ -1035,18 +1087,23 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "The User's Surname."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "mid"));
+            ("short", (Str "Some Partners will have an merchant ids on their own software offerings."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "name"));
+            ("short", (Str "The Partner's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "parent"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "partner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "phone"));
@@ -1056,12 +1113,15 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "The User's phone number without dashes, spaces, or brackets (e.g."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "reference"));
+            ("short", (Str "The Partner's reference string."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "sendWelcomeEmail"));
+            ("short", (Str "If this property is set to 'true' the newly created user will be sent a welcome email."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
             ("name", (Str "userName"));
@@ -1071,6 +1131,7 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$STRING`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "The User's unique username."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "userRole"));
@@ -1080,12 +1141,15 @@ let make_config () : value =
               ("update", (jo [
                 ("type", (Str "`$OBJECT`")) ])) ]));
             ("req", (Bool true));
+            ("short", (Str "Reference to the associated User Role."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "verificationPhrase"));
+            ("short", (Str "The verification phrase is a message that the Partner creates."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "version"));
+            ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "update_result"));
         ("op", (jo [
@@ -1573,9 +1637,11 @@ let make_config () : value =
         ("fields", (ja [
           (jo [
             ("name", (Str "client"));
+            ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "created"));
+            ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "email"));
@@ -1585,6 +1651,7 @@ let make_config () : value =
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "id"));
+            ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
           (jo [
             ("name", (Str "isActive"));
@@ -1594,9 +1661,11 @@ let make_config () : value =
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "modified"));
+            ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "partner"));
+            ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "phone"));
@@ -1606,9 +1675,11 @@ let make_config () : value =
             ("type", (Str "`$STRING`")) ]);
           (jo [
             ("name", (Str "userRole"));
+            ("short", (Str "Reference to the associated User Role."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
             ("name", (Str "version"));
+            ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
         ("name", (Str "user"));
         ("op", (jo [

@@ -120,17 +120,17 @@ SdkEntity client = client.client(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `Map<String, Object>` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `Map<String, Object>` | No |  |
-| `id` | `Long` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `Map<String, Object>` | No |  |
-| `version` | `Long` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `id` | `Long` | No | This resource's unique identifier. |
+| `isActive` | `Boolean` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `version` | `Long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -215,8 +215,8 @@ SdkEntity clone = client.clone(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Long` | No |  |
-| `name` | `String` | No |  |
+| `id` | `Long` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -261,17 +261,17 @@ SdkEntity partner = client.partner(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `Map<String, Object>` | No |  |
-| `created` | `String` | No |  |
-| `id` | `Long` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Map<String, Object>` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Long` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `Long` | No | This resource's unique identifier. |
+| `isActive` | `Boolean` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -348,17 +348,17 @@ SdkEntity template = client.template(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Object` | No |  |
-| `active` | `Boolean` | No |  |
-| `client` | `Map<String, Object>` | No |  |
-| `fieldTemplates` | `List<Object>` | No |  |
-| `id` | `Long` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `Object` | No | The Template's access mode. |
+| `active` | `Boolean` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Map<String, Object>` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `List<Object>` | No | Field Template list items |
+| `id` | `Long` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `Map<String, Object>` | No |  |
-| `partner` | `Map<String, Object>` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `Long` | No |  |
+| `partner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `Long` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -427,19 +427,19 @@ SdkEntity transaction = client.transaction(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `Map<String, Object>` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `Map<String, Object>` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `Long` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `Map<String, Object>` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `Boolean` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `Map<String, Object>` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Long` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Boolean` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -491,26 +491,26 @@ SdkEntity updateResult = client.updateResult(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `Map<String, Object>` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `Map<String, Object>` | No | Reference to the associated Client resource. |
 | `contact` | `Map<String, Object>` | Yes |  |
-| `directPartner` | `Map<String, Object>` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `Long` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Map<String, Object>` | No |  |
-| `partner` | `Map<String, Object>` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `Boolean` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `Map<String, Object>` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Long` | No |  |
+| `directPartner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `Long` | No | Unique identifier of newly added element. |
+| `isActive` | `Boolean` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `partner` | `Map<String, Object>` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `Boolean` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `Map<String, Object>` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Long` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -605,19 +605,19 @@ SdkEntity user = client.user(null);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Map<String, Object>` | No |  |
-| `created` | `String` | No |  |
+| `client` | `Map<String, Object>` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `Long` | No |  |
+| `id` | `Long` | No | This resource's unique identifier. |
 | `isActive` | `Boolean` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `Map<String, Object>` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `Map<String, Object>` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `Map<String, Object>` | No |  |
-| `version` | `Long` | No |  |
+| `userRole` | `Map<String, Object>` | No | Reference to the associated User Role. |
+| `version` | `Long` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

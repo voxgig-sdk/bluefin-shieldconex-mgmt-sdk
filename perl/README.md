@@ -294,17 +294,17 @@ On error, `ok` is false and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | Billing ID |
 | `contact` |  |
-| `created` |  |
-| `directPartner` |  |
-| `id` |  |
-| `isActive` |  |
-| `mid` |  |
-| `modified` |  |
-| `name` |  |
-| `partner` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | Reference to the associated Partner. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Client account is active or disabled. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | Last modified timestamp. |
+| `name` | The Client's name. |
+| `partner` | Reference to the associated Partner. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -314,8 +314,8 @@ API path: `/clients`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
+| `id` | Unique identifier of newly added element. |
+| `name` | Name of Template |
 
 Operations: Create.
 
@@ -325,17 +325,17 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | The Partner's billing identifier. |
 | `contact` |  |
-| `created` |  |
-| `id` |  |
-| `isActive` |  |
-| `modified` |  |
-| `name` |  |
-| `parent` |  |
-| `reference` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Parter account is active or disabled. |
+| `modified` | Last modified timestamp. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `reference` | The Partner's reference string. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load.
 
@@ -345,17 +345,17 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `accessMode` |  |
-| `active` |  |
-| `client` |  |
-| `fieldTemplates` |  |
-| `id` |  |
-| `name` |  |
+| `accessMode` | The Template's access mode. |
+| `active` | This property indicates if the Template is active or inactive. |
+| `client` | Reference to the associated Client resource. |
+| `fieldTemplates` | Field Template list items |
+| `id` | Unique identifier of newly added element. |
+| `name` | The Template's name. |
 | `options` |  |
-| `partner` |  |
-| `reference` |  |
-| `type` |  |
-| `version` |  |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The Template's unique reference. |
+| `type` | The Template's type. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -365,19 +365,19 @@ API path: `/templates`
 
 | Field | Description |
 | --- | --- |
-| `bfid` |  |
-| `client` |  |
-| `completeDate` |  |
-| `directPartner` |  |
-| `errCode` |  |
-| `errMessage` |  |
-| `id` |  |
-| `ipAddress` |  |
-| `messageId` |  |
-| `partner` |  |
-| `reference` |  |
-| `success` |  |
-| `templateId` |  |
+| `bfid` | BFID |
+| `client` | Reference to the associated Client resource. |
+| `completeDate` | Timestamp from the beginning of the transaction. |
+| `directPartner` | Reference to the associated Partner. |
+| `errCode` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | This resource's unique identifier. |
+| `ipAddress` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | Message ID. |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The reference property that the Client includes in the decrypt API call. |
+| `success` | The success indicator. |
+| `templateId` | The Template's unique identifier. |
 
 Operations: List, Load.
 
@@ -387,26 +387,26 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
-| `client` |  |
+| `billingId` | The Partner's billing identifier. |
+| `client` | Reference to the associated Client resource. |
 | `contact` |  |
-| `directPartner` |  |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `isActive` |  |
-| `lastName` |  |
-| `mid` |  |
-| `name` |  |
-| `parent` |  |
-| `partner` |  |
-| `phone` |  |
-| `reference` |  |
-| `sendWelcomeEmail` |  |
-| `userName` |  |
-| `userRole` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `directPartner` | Reference to the associated Partner. |
+| `email` | The User's email address. |
+| `firstName` | The User's name. |
+| `id` | Unique identifier of newly added element. |
+| `isActive` | This property indicates if the User account is active or disabled. |
+| `lastName` | The User's Surname. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `partner` | Reference to the associated Partner. |
+| `phone` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | The Partner's reference string. |
+| `sendWelcomeEmail` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | The User's unique username. |
+| `userRole` | Reference to the associated User Role. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Update.
 
@@ -416,19 +416,19 @@ API path: `/users`
 
 | Field | Description |
 | --- | --- |
-| `client` |  |
-| `created` |  |
+| `client` | Reference to the associated Client resource. |
+| `created` | Creation timestamp in ISO 8601 format. |
 | `email` |  |
 | `firstName` |  |
-| `id` |  |
+| `id` | This resource's unique identifier. |
 | `isActive` |  |
 | `lastName` |  |
-| `modified` |  |
-| `partner` |  |
+| `modified` | Last modified timestamp. |
+| `partner` | Reference to the associated Partner. |
 | `phone` |  |
 | `userName` |  |
-| `userRole` |  |
-| `version` |  |
+| `userRole` | Reference to the associated User Role. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Load.
 
@@ -456,17 +456,17 @@ Create an instance: `my $client = $client->Client;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
+| `billingId` | `string` | Billing ID |
 | `contact` | `hashref` |  |
-| `created` | `string` |  |
-| `directPartner` | `hashref` |  |
-| `id` | `integer` |  |
-| `isActive` | `boolean` |  |
-| `mid` | `string` |  |
-| `modified` | `string` |  |
-| `name` | `string` |  |
-| `partner` | `hashref` |  |
-| `version` | `integer` |  |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `hashref` | Reference to the associated Partner. |
+| `id` | `integer` | This resource's unique identifier. |
+| `isActive` | `boolean` | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | Last modified timestamp. |
+| `name` | `string` | The Client's name. |
+| `partner` | `hashref` | Reference to the associated Partner. |
+| `version` | `integer` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -502,8 +502,8 @@ Create an instance: `my $clone = $client->Clone;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `integer` |  |
-| `name` | `string` |  |
+| `id` | `integer` | Unique identifier of newly added element. |
+| `name` | `string` | Name of Template |
 
 #### Example: Create
 
@@ -530,17 +530,17 @@ Create an instance: `my $partner = $client->Partner;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
+| `billingId` | `string` | The Partner's billing identifier. |
 | `contact` | `hashref` |  |
-| `created` | `string` |  |
-| `id` | `integer` |  |
-| `isActive` | `boolean` |  |
-| `modified` | `string` |  |
-| `name` | `string` |  |
-| `parent` | `hashref` |  |
-| `reference` | `string` |  |
-| `verificationPhrase` | `string` |  |
-| `version` | `integer` |  |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
+| `id` | `integer` | This resource's unique identifier. |
+| `isActive` | `boolean` | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | Last modified timestamp. |
+| `name` | `string` | The Partner's name. |
+| `parent` | `hashref` | Reference to the associated Partner. |
+| `reference` | `string` | The Partner's reference string. |
+| `verificationPhrase` | `string` | The verification phrase is a message that the Partner creates. |
+| `version` | `integer` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -579,17 +579,17 @@ Create an instance: `my $template = $client->Template;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessMode` | `scalar` |  |
-| `active` | `boolean` |  |
-| `client` | `hashref` |  |
-| `fieldTemplates` | `arrayref` |  |
-| `id` | `integer` |  |
-| `name` | `string` |  |
+| `accessMode` | `scalar` | The Template's access mode. |
+| `active` | `boolean` | This property indicates if the Template is active or inactive. |
+| `client` | `hashref` | Reference to the associated Client resource. |
+| `fieldTemplates` | `arrayref` | Field Template list items |
+| `id` | `integer` | Unique identifier of newly added element. |
+| `name` | `string` | The Template's name. |
 | `options` | `hashref` |  |
-| `partner` | `hashref` |  |
-| `reference` | `string` |  |
-| `type` | `string` |  |
-| `version` | `integer` |  |
+| `partner` | `hashref` | Reference to the associated Partner. |
+| `reference` | `string` | The Template's unique reference. |
+| `type` | `string` | The Template's type. |
+| `version` | `integer` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -626,19 +626,19 @@ Create an instance: `my $transaction = $client->Transaction;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bfid` | `string` |  |
-| `client` | `hashref` |  |
-| `completeDate` | `string` |  |
-| `directPartner` | `hashref` |  |
-| `errCode` | `string` |  |
-| `errMessage` | `string` |  |
-| `id` | `integer` |  |
-| `ipAddress` | `string` |  |
-| `messageId` | `string` |  |
-| `partner` | `hashref` |  |
-| `reference` | `string` |  |
-| `success` | `boolean` |  |
-| `templateId` | `string` |  |
+| `bfid` | `string` | BFID |
+| `client` | `hashref` | Reference to the associated Client resource. |
+| `completeDate` | `string` | Timestamp from the beginning of the transaction. |
+| `directPartner` | `hashref` | Reference to the associated Partner. |
+| `errCode` | `string` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `integer` | This resource's unique identifier. |
+| `ipAddress` | `string` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | Message ID. |
+| `partner` | `hashref` | Reference to the associated Partner. |
+| `reference` | `string` | The reference property that the Client includes in the decrypt API call. |
+| `success` | `boolean` | The success indicator. |
+| `templateId` | `string` | The Template's unique identifier. |
 
 #### Example: Load
 
@@ -669,26 +669,26 @@ Create an instance: `my $update_result = $client->UpdateResult;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
-| `client` | `hashref` |  |
+| `billingId` | `string` | The Partner's billing identifier. |
+| `client` | `hashref` | Reference to the associated Client resource. |
 | `contact` | `hashref` |  |
-| `directPartner` | `hashref` |  |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `integer` |  |
-| `isActive` | `boolean` |  |
-| `lastName` | `string` |  |
-| `mid` | `string` |  |
-| `name` | `string` |  |
-| `parent` | `hashref` |  |
-| `partner` | `hashref` |  |
-| `phone` | `string` |  |
-| `reference` | `string` |  |
-| `sendWelcomeEmail` | `boolean` |  |
-| `userName` | `string` |  |
-| `userRole` | `hashref` |  |
-| `verificationPhrase` | `string` |  |
-| `version` | `integer` |  |
+| `directPartner` | `hashref` | Reference to the associated Partner. |
+| `email` | `string` | The User's email address. |
+| `firstName` | `string` | The User's name. |
+| `id` | `integer` | Unique identifier of newly added element. |
+| `isActive` | `boolean` | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | The User's Surname. |
+| `mid` | `string` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | The Partner's name. |
+| `parent` | `hashref` | Reference to the associated Partner. |
+| `partner` | `hashref` | Reference to the associated Partner. |
+| `phone` | `string` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | The Partner's reference string. |
+| `sendWelcomeEmail` | `boolean` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | The User's unique username. |
+| `userRole` | `hashref` | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | The verification phrase is a message that the Partner creates. |
+| `version` | `integer` | The number of times that this resource has been updated. |
 
 #### Example: List
 
@@ -725,19 +725,19 @@ Create an instance: `my $user = $client->User;`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `client` | `hashref` |  |
-| `created` | `string` |  |
+| `client` | `hashref` | Reference to the associated Client resource. |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
 | `email` | `string` |  |
 | `firstName` | `string` |  |
-| `id` | `integer` |  |
+| `id` | `integer` | This resource's unique identifier. |
 | `isActive` | `boolean` |  |
 | `lastName` | `string` |  |
-| `modified` | `string` |  |
-| `partner` | `hashref` |  |
+| `modified` | `string` | Last modified timestamp. |
+| `partner` | `hashref` | Reference to the associated Partner. |
 | `phone` | `string` |  |
 | `userName` | `string` |  |
-| `userRole` | `hashref` |  |
-| `version` | `integer` |  |
+| `userRole` | `hashref` | Reference to the associated User Role. |
+| `version` | `integer` | The number of times that this resource has been updated. |
 
 #### Example: Load
 

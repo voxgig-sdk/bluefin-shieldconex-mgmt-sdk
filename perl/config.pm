@@ -17,7 +17,10 @@ package BluefinShieldconexMgmtConfig;
 my $CONFIG_JSON = <<'END_CONFIG_JSON';
 {
   "main": {
-    "name": "BluefinShieldconexMgmt"
+    "name": "BluefinShieldconexMgmt",
+    "slug": "bluefin-shieldconex-mgmt",
+    "version": "0.0.1",
+    "target": "perl"
   },
   "feature": {
     "test": {
@@ -49,6 +52,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "billingId",
+          "short": "Billing ID",
           "type": "`$STRING`"
         },
         {
@@ -67,6 +71,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "created",
+          "short": "Creation timestamp in ISO 8601 format.",
           "type": "`$STRING`"
         },
         {
@@ -77,22 +82,27 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
               "type": "`$OBJECT`"
             }
           },
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "id",
+          "short": "This resource's unique identifier.",
           "type": "`$INTEGER`"
         },
         {
           "name": "isActive",
+          "short": "This property indicates if the Client account is active or disabled.",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "mid",
+          "short": "Some Partners will have an merchant ids on their own software offerings.",
           "type": "`$STRING`"
         },
         {
           "name": "modified",
+          "short": "Last modified timestamp.",
           "type": "`$STRING`"
         },
         {
@@ -103,14 +113,17 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
               "type": "`$STRING`"
             }
           },
+          "short": "The Client's name.",
           "type": "`$STRING`"
         },
         {
           "name": "partner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "version",
+          "short": "The number of times that this resource has been updated.",
           "type": "`$INTEGER`"
         }
       ],
@@ -381,10 +394,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "id",
+          "short": "Unique identifier of newly added element.",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Name of Template",
           "type": "`$STRING`"
         }
       ],
@@ -444,6 +459,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "billingId",
+          "short": "The Partner's billing identifier.",
           "type": "`$STRING`"
         },
         {
@@ -462,18 +478,22 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "created",
+          "short": "Creation timestamp in ISO 8601 format.",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "This resource's unique identifier.",
           "type": "`$INTEGER`"
         },
         {
           "name": "isActive",
+          "short": "This property indicates if the Parter account is active or disabled.",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "modified",
+          "short": "Last modified timestamp.",
           "type": "`$STRING`"
         },
         {
@@ -484,6 +504,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
               "type": "`$STRING`"
             }
           },
+          "short": "The Partner's name.",
           "type": "`$STRING`"
         },
         {
@@ -494,18 +515,22 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
               "type": "`$OBJECT`"
             }
           },
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "reference",
+          "short": "The Partner's reference string.",
           "type": "`$STRING`"
         },
         {
           "name": "verificationPhrase",
+          "short": "The verification phrase is a message that the Partner creates.",
           "type": "`$STRING`"
         },
         {
           "name": "version",
+          "short": "The number of times that this resource has been updated.",
           "type": "`$INTEGER`"
         }
       ],
@@ -747,18 +772,22 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "accessMode",
+          "short": "The Template's access mode.",
           "type": "`$ANY`"
         },
         {
           "name": "active",
+          "short": "This property indicates if the Template is active or inactive.",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "client",
+          "short": "Reference to the associated Client resource.",
           "type": "`$OBJECT`"
         },
         {
           "name": "fieldTemplates",
+          "short": "Field Template list items",
           "type": "`$ARRAY`",
           "union": {
             "branches": 9,
@@ -768,10 +797,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "id",
+          "short": "Unique identifier of newly added element.",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "The Template's name.",
           "type": "`$STRING`"
         },
         {
@@ -780,18 +811,22 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "partner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "reference",
+          "short": "The Template's unique reference.",
           "type": "`$STRING`"
         },
         {
           "name": "type",
+          "short": "The Template's type.",
           "type": "`$STRING`"
         },
         {
           "name": "version",
+          "short": "The number of times that this resource has been updated.",
           "type": "`$INTEGER`"
         }
       ],
@@ -1084,54 +1119,67 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "bfid",
+          "short": "BFID",
           "type": "`$STRING`"
         },
         {
           "name": "client",
+          "short": "Reference to the associated Client resource.",
           "type": "`$OBJECT`"
         },
         {
           "name": "completeDate",
+          "short": "Timestamp from the beginning of the transaction.",
           "type": "`$STRING`"
         },
         {
           "name": "directPartner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "errCode",
+          "short": "The error code that is sent in response to a failed decrypt API call.",
           "type": "`$STRING`"
         },
         {
           "name": "errMessage",
+          "short": "The error messge that is sent in response to a failed decrypt API call.",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "This resource's unique identifier.",
           "type": "`$INTEGER`"
         },
         {
           "name": "ipAddress",
+          "short": "The IP address of the http client that makes the decrypt API call.",
           "type": "`$STRING`"
         },
         {
           "name": "messageId",
+          "short": "Message ID.",
           "type": "`$STRING`"
         },
         {
           "name": "partner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "reference",
+          "short": "The reference property that the Client includes in the decrypt API call.",
           "type": "`$STRING`"
         },
         {
           "name": "success",
+          "short": "The success indicator.",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "templateId",
+          "short": "The Template's unique identifier.",
           "type": "`$STRING`"
         }
       ],
@@ -1295,10 +1343,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "billingId",
+          "short": "The Partner's billing identifier.",
           "type": "`$STRING`"
         },
         {
           "name": "client",
+          "short": "Reference to the associated Client resource.",
           "type": "`$OBJECT`"
         },
         {
@@ -1308,6 +1358,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "directPartner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
@@ -1321,6 +1372,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "The User's email address.",
           "type": "`$STRING`"
         },
         {
@@ -1334,14 +1386,17 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "The User's name.",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Unique identifier of newly added element.",
           "type": "`$INTEGER`"
         },
         {
           "name": "isActive",
+          "short": "This property indicates if the User account is active or disabled.",
           "type": "`$BOOLEAN`"
         },
         {
@@ -1355,22 +1410,27 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "The User's Surname.",
           "type": "`$STRING`"
         },
         {
           "name": "mid",
+          "short": "Some Partners will have an merchant ids on their own software offerings.",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "The Partner's name.",
           "type": "`$STRING`"
         },
         {
           "name": "parent",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
           "name": "partner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
@@ -1384,14 +1444,17 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "The User's phone number without dashes, spaces, or brackets (e.g.",
           "type": "`$STRING`"
         },
         {
           "name": "reference",
+          "short": "The Partner's reference string.",
           "type": "`$STRING`"
         },
         {
           "name": "sendWelcomeEmail",
+          "short": "If this property is set to 'true' the newly created user will be sent a welcome email.",
           "type": "`$BOOLEAN`"
         },
         {
@@ -1405,6 +1468,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "The User's unique username.",
           "type": "`$STRING`"
         },
         {
@@ -1418,14 +1482,17 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
             }
           },
           "req": true,
+          "short": "Reference to the associated User Role.",
           "type": "`$OBJECT`"
         },
         {
           "name": "verificationPhrase",
+          "short": "The verification phrase is a message that the Partner creates.",
           "type": "`$STRING`"
         },
         {
           "name": "version",
+          "short": "The number of times that this resource has been updated.",
           "type": "`$INTEGER`"
         }
       ],
@@ -2031,10 +2098,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
       "fields": [
         {
           "name": "client",
+          "short": "Reference to the associated Client resource.",
           "type": "`$OBJECT`"
         },
         {
           "name": "created",
+          "short": "Creation timestamp in ISO 8601 format.",
           "type": "`$STRING`"
         },
         {
@@ -2047,6 +2116,7 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "id",
+          "short": "This resource's unique identifier.",
           "type": "`$INTEGER`"
         },
         {
@@ -2059,10 +2129,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "modified",
+          "short": "Last modified timestamp.",
           "type": "`$STRING`"
         },
         {
           "name": "partner",
+          "short": "Reference to the associated Partner.",
           "type": "`$OBJECT`"
         },
         {
@@ -2075,10 +2147,12 @@ my $CONFIG_JSON = <<'END_CONFIG_JSON';
         },
         {
           "name": "userRole",
+          "short": "Reference to the associated User Role.",
           "type": "`$OBJECT`"
         },
         {
           "name": "version",
+          "short": "The number of times that this resource has been updated.",
           "type": "`$INTEGER`"
         }
       ],
@@ -2130,6 +2204,21 @@ END_CONFIG_JSON
 
 sub make_config {
   return Voxgig::Struct::parse_json($CONFIG_JSON);
+}
+
+# SHARED CONFIG (sdkgen rung L2).
+#
+# The SDK reads the config on every request and never writes to it, so one
+# instance is shared by every client rather than rebuilt per client - the
+# difference between parsing the embedded JSON once and once per client.
+#
+# The returned structure is SHARED: treat it as read-only. Callers that need to
+# mutate should use make_config, which always parses a fresh copy.
+my $SHARED_CONFIG;
+
+sub shared_config {
+  $SHARED_CONFIG = make_config() unless defined $SHARED_CONFIG;
+  return $SHARED_CONFIG;
 }
 
 sub make_feature {

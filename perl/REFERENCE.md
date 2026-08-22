@@ -113,17 +113,17 @@ my $client = $client->Client;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | Billing ID |
 | `contact` | `hashref` | No |  |
-| `created` | `string` | No |  |
-| `directPartner` | `hashref` | No |  |
-| `id` | `integer` | No |  |
-| `isActive` | `boolean` | No |  |
-| `mid` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `partner` | `hashref` | No |  |
-| `version` | `integer` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `hashref` | No | Reference to the associated Partner. |
+| `id` | `integer` | No | This resource's unique identifier. |
+| `isActive` | `boolean` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Client's name. |
+| `partner` | `hashref` | No | Reference to the associated Partner. |
+| `version` | `integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -218,8 +218,8 @@ my $clone = $client->Clone;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `integer` | No |  |
-| `name` | `string` | No |  |
+| `id` | `integer` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | Name of Template |
 
 ### Operations
 
@@ -272,17 +272,17 @@ my $partner = $client->Partner;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
 | `contact` | `hashref` | No |  |
-| `created` | `string` | No |  |
-| `id` | `integer` | No |  |
-| `isActive` | `boolean` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `hashref` | No |  |
-| `reference` | `string` | No |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `integer` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `integer` | No | This resource's unique identifier. |
+| `isActive` | `boolean` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `hashref` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -369,17 +369,17 @@ my $template = $client->Template;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `scalar` | No |  |
-| `active` | `boolean` | No |  |
-| `client` | `hashref` | No |  |
-| `fieldTemplates` | `arrayref` | No |  |
-| `id` | `integer` | No |  |
-| `name` | `string` | No |  |
+| `accessMode` | `scalar` | No | The Template's access mode. |
+| `active` | `boolean` | No | This property indicates if the Template is active or inactive. |
+| `client` | `hashref` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `arrayref` | No | Field Template list items |
+| `id` | `integer` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | The Template's name. |
 | `options` | `hashref` | No |  |
-| `partner` | `hashref` | No |  |
-| `reference` | `string` | No |  |
-| `type` | `string` | No |  |
-| `version` | `integer` | No |  |
+| `partner` | `hashref` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Template's unique reference. |
+| `type` | `string` | No | The Template's type. |
+| `version` | `integer` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -458,19 +458,19 @@ my $transaction = $client->Transaction;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `string` | No |  |
-| `client` | `hashref` | No |  |
-| `completeDate` | `string` | No |  |
-| `directPartner` | `hashref` | No |  |
-| `errCode` | `string` | No |  |
-| `errMessage` | `string` | No |  |
-| `id` | `integer` | No |  |
-| `ipAddress` | `string` | No |  |
-| `messageId` | `string` | No |  |
-| `partner` | `hashref` | No |  |
-| `reference` | `string` | No |  |
-| `success` | `boolean` | No |  |
-| `templateId` | `string` | No |  |
+| `bfid` | `string` | No | BFID |
+| `client` | `hashref` | No | Reference to the associated Client resource. |
+| `completeDate` | `string` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `hashref` | No | Reference to the associated Partner. |
+| `errCode` | `string` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `integer` | No | This resource's unique identifier. |
+| `ipAddress` | `string` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | No | Message ID. |
+| `partner` | `hashref` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `boolean` | No | The success indicator. |
+| `templateId` | `string` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -532,26 +532,26 @@ my $update_result = $client->UpdateResult;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
-| `client` | `hashref` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
+| `client` | `hashref` | No | Reference to the associated Client resource. |
 | `contact` | `hashref` | Yes |  |
-| `directPartner` | `hashref` | No |  |
-| `email` | `string` | Yes |  |
-| `firstName` | `string` | Yes |  |
-| `id` | `integer` | No |  |
-| `isActive` | `boolean` | No |  |
-| `lastName` | `string` | Yes |  |
-| `mid` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `hashref` | No |  |
-| `partner` | `hashref` | No |  |
-| `phone` | `string` | Yes |  |
-| `reference` | `string` | No |  |
-| `sendWelcomeEmail` | `boolean` | No |  |
-| `userName` | `string` | Yes |  |
-| `userRole` | `hashref` | Yes |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `integer` | No |  |
+| `directPartner` | `hashref` | No | Reference to the associated Partner. |
+| `email` | `string` | Yes | The User's email address. |
+| `firstName` | `string` | Yes | The User's name. |
+| `id` | `integer` | No | Unique identifier of newly added element. |
+| `isActive` | `boolean` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | Yes | The User's Surname. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `hashref` | No | Reference to the associated Partner. |
+| `partner` | `hashref` | No | Reference to the associated Partner. |
+| `phone` | `string` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `boolean` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | Yes | The User's unique username. |
+| `userRole` | `hashref` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -657,19 +657,19 @@ my $user = $client->User;
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `hashref` | No |  |
-| `created` | `string` | No |  |
+| `client` | `hashref` | No | Reference to the associated Client resource. |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `string` | No |  |
 | `firstName` | `string` | No |  |
-| `id` | `integer` | No |  |
+| `id` | `integer` | No | This resource's unique identifier. |
 | `isActive` | `boolean` | No |  |
 | `lastName` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `partner` | `hashref` | No |  |
+| `modified` | `string` | No | Last modified timestamp. |
+| `partner` | `hashref` | No | Reference to the associated Partner. |
 | `phone` | `string` | No |  |
 | `userName` | `string` | No |  |
-| `userRole` | `hashref` | No |  |
-| `version` | `integer` | No |  |
+| `userRole` | `hashref` | No | Reference to the associated User Role. |
+| `version` | `integer` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

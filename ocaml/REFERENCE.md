@@ -111,17 +111,17 @@ let client = Sdk_client.client client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | Billing ID |
 | `contact` | `value map` | No |  |
-| `created` | `string` | No |  |
-| `directPartner` | `value map` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `partner` | `value map` | No |  |
-| `version` | `int` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `value map` | No | Reference to the associated Partner. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Client's name. |
+| `partner` | `value map` | No | Reference to the associated Partner. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -218,8 +218,8 @@ let clone = Sdk_client.clone client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | Name of Template |
 
 ### Operations
 
@@ -273,17 +273,17 @@ let partner = Sdk_client.partner client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
 | `contact` | `value map` | No |  |
-| `created` | `string` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `value map` | No |  |
-| `reference` | `string` | No |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `int` | No |  |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | No | Last modified timestamp. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `value map` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -371,17 +371,17 @@ let template = Sdk_client.template client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `value` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `value map` | No |  |
-| `fieldTemplates` | `value list` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `accessMode` | `value` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `value map` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `value list` | No | Field Template list items |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `string` | No | The Template's name. |
 | `options` | `value map` | No |  |
-| `partner` | `value map` | No |  |
-| `reference` | `string` | No |  |
-| `type` | `string` | No |  |
-| `version` | `int` | No |  |
+| `partner` | `value map` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The Template's unique reference. |
+| `type` | `string` | No | The Template's type. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -462,19 +462,19 @@ let transaction = Sdk_client.transaction client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `string` | No |  |
-| `client` | `value map` | No |  |
-| `completeDate` | `string` | No |  |
-| `directPartner` | `value map` | No |  |
-| `errCode` | `string` | No |  |
-| `errMessage` | `string` | No |  |
-| `id` | `int` | No |  |
-| `ipAddress` | `string` | No |  |
-| `messageId` | `string` | No |  |
-| `partner` | `value map` | No |  |
-| `reference` | `string` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `string` | No |  |
+| `bfid` | `string` | No | BFID |
+| `client` | `value map` | No | Reference to the associated Client resource. |
+| `completeDate` | `string` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `value map` | No | Reference to the associated Partner. |
+| `errCode` | `string` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `ipAddress` | `string` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | No | Message ID. |
+| `partner` | `value map` | No | Reference to the associated Partner. |
+| `reference` | `string` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `string` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -536,26 +536,26 @@ let update_result = Sdk_client.update_result client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `string` | No |  |
-| `client` | `value map` | No |  |
+| `billingId` | `string` | No | The Partner's billing identifier. |
+| `client` | `value map` | No | Reference to the associated Client resource. |
 | `contact` | `value map` | Yes |  |
-| `directPartner` | `value map` | No |  |
-| `email` | `string` | Yes |  |
-| `firstName` | `string` | Yes |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `string` | Yes |  |
-| `mid` | `string` | No |  |
-| `name` | `string` | No |  |
-| `parent` | `value map` | No |  |
-| `partner` | `value map` | No |  |
-| `phone` | `string` | Yes |  |
-| `reference` | `string` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `string` | Yes |  |
-| `userRole` | `value map` | Yes |  |
-| `verificationPhrase` | `string` | No |  |
-| `version` | `int` | No |  |
+| `directPartner` | `value map` | No | Reference to the associated Partner. |
+| `email` | `string` | Yes | The User's email address. |
+| `firstName` | `string` | Yes | The User's name. |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | Yes | The User's Surname. |
+| `mid` | `string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | No | The Partner's name. |
+| `parent` | `value map` | No | Reference to the associated Partner. |
+| `partner` | `value map` | No | Reference to the associated Partner. |
+| `phone` | `string` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | Yes | The User's unique username. |
+| `userRole` | `value map` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -662,19 +662,19 @@ let user = Sdk_client.user client Noval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `value map` | No |  |
-| `created` | `string` | No |  |
+| `client` | `value map` | No | Reference to the associated Client resource. |
+| `created` | `string` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `string` | No |  |
 | `firstName` | `string` | No |  |
-| `id` | `int` | No |  |
+| `id` | `int` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `string` | No |  |
-| `modified` | `string` | No |  |
-| `partner` | `value map` | No |  |
+| `modified` | `string` | No | Last modified timestamp. |
+| `partner` | `value map` | No | Reference to the associated Partner. |
 | `phone` | `string` | No |  |
 | `userName` | `string` | No |  |
-| `userRole` | `value map` | No |  |
-| `version` | `int` | No |  |
+| `userRole` | `value map` | No | Reference to the associated User Role. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

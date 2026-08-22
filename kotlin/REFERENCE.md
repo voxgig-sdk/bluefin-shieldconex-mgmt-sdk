@@ -120,17 +120,17 @@ val client = client.client(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String?` | No |  |
+| `billingId` | `String?` | No | Billing ID |
 | `contact` | `Map<String, Any?>?` | No |  |
-| `created` | `String?` | No |  |
-| `directPartner` | `Map<String, Any?>?` | No |  |
-| `id` | `Long?` | No |  |
-| `isActive` | `Boolean?` | No |  |
-| `mid` | `String?` | No |  |
-| `modified` | `String?` | No |  |
-| `name` | `String?` | No |  |
-| `partner` | `Map<String, Any?>?` | No |  |
-| `version` | `Long?` | No |  |
+| `created` | `String?` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `id` | `Long?` | No | This resource's unique identifier. |
+| `isActive` | `Boolean?` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String?` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String?` | No | Last modified timestamp. |
+| `name` | `String?` | No | The Client's name. |
+| `partner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `version` | `Long?` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -215,8 +215,8 @@ val clone = client.clone(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Long?` | No |  |
-| `name` | `String?` | No |  |
+| `id` | `Long?` | No | Unique identifier of newly added element. |
+| `name` | `String?` | No | Name of Template |
 
 ### Operations
 
@@ -261,17 +261,17 @@ val partner = client.partner(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String?` | No |  |
+| `billingId` | `String?` | No | The Partner's billing identifier. |
 | `contact` | `Map<String, Any?>?` | No |  |
-| `created` | `String?` | No |  |
-| `id` | `Long?` | No |  |
-| `isActive` | `Boolean?` | No |  |
-| `modified` | `String?` | No |  |
-| `name` | `String?` | No |  |
-| `parent` | `Map<String, Any?>?` | No |  |
-| `reference` | `String?` | No |  |
-| `verificationPhrase` | `String?` | No |  |
-| `version` | `Long?` | No |  |
+| `created` | `String?` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `Long?` | No | This resource's unique identifier. |
+| `isActive` | `Boolean?` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String?` | No | Last modified timestamp. |
+| `name` | `String?` | No | The Partner's name. |
+| `parent` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `reference` | `String?` | No | The Partner's reference string. |
+| `verificationPhrase` | `String?` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Long?` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -348,17 +348,17 @@ val template = client.template(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Any?` | No |  |
-| `active` | `Boolean?` | No |  |
-| `client` | `Map<String, Any?>?` | No |  |
-| `fieldTemplates` | `List<Any?>?` | No |  |
-| `id` | `Long?` | No |  |
-| `name` | `String?` | No |  |
+| `accessMode` | `Any?` | No | The Template's access mode. |
+| `active` | `Boolean?` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Map<String, Any?>?` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `List<Any?>?` | No | Field Template list items |
+| `id` | `Long?` | No | Unique identifier of newly added element. |
+| `name` | `String?` | No | The Template's name. |
 | `options` | `Map<String, Any?>?` | No |  |
-| `partner` | `Map<String, Any?>?` | No |  |
-| `reference` | `String?` | No |  |
-| `type` | `String?` | No |  |
-| `version` | `Long?` | No |  |
+| `partner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `reference` | `String?` | No | The Template's unique reference. |
+| `type` | `String?` | No | The Template's type. |
+| `version` | `Long?` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -427,19 +427,19 @@ val transaction = client.transaction(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String?` | No |  |
-| `client` | `Map<String, Any?>?` | No |  |
-| `completeDate` | `String?` | No |  |
-| `directPartner` | `Map<String, Any?>?` | No |  |
-| `errCode` | `String?` | No |  |
-| `errMessage` | `String?` | No |  |
-| `id` | `Long?` | No |  |
-| `ipAddress` | `String?` | No |  |
-| `messageId` | `String?` | No |  |
-| `partner` | `Map<String, Any?>?` | No |  |
-| `reference` | `String?` | No |  |
-| `success` | `Boolean?` | No |  |
-| `templateId` | `String?` | No |  |
+| `bfid` | `String?` | No | BFID |
+| `client` | `Map<String, Any?>?` | No | Reference to the associated Client resource. |
+| `completeDate` | `String?` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `errCode` | `String?` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String?` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Long?` | No | This resource's unique identifier. |
+| `ipAddress` | `String?` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String?` | No | Message ID. |
+| `partner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `reference` | `String?` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Boolean?` | No | The success indicator. |
+| `templateId` | `String?` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -491,26 +491,26 @@ val updateResult = client.updateResult(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String?` | No |  |
-| `client` | `Map<String, Any?>?` | No |  |
+| `billingId` | `String?` | No | The Partner's billing identifier. |
+| `client` | `Map<String, Any?>?` | No | Reference to the associated Client resource. |
 | `contact` | `Map<String, Any?>?` | Yes |  |
-| `directPartner` | `Map<String, Any?>?` | No |  |
-| `email` | `String?` | Yes |  |
-| `firstName` | `String?` | Yes |  |
-| `id` | `Long?` | No |  |
-| `isActive` | `Boolean?` | No |  |
-| `lastName` | `String?` | Yes |  |
-| `mid` | `String?` | No |  |
-| `name` | `String?` | No |  |
-| `parent` | `Map<String, Any?>?` | No |  |
-| `partner` | `Map<String, Any?>?` | No |  |
-| `phone` | `String?` | Yes |  |
-| `reference` | `String?` | No |  |
-| `sendWelcomeEmail` | `Boolean?` | No |  |
-| `userName` | `String?` | Yes |  |
-| `userRole` | `Map<String, Any?>?` | Yes |  |
-| `verificationPhrase` | `String?` | No |  |
-| `version` | `Long?` | No |  |
+| `directPartner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `email` | `String?` | Yes | The User's email address. |
+| `firstName` | `String?` | Yes | The User's name. |
+| `id` | `Long?` | No | Unique identifier of newly added element. |
+| `isActive` | `Boolean?` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String?` | Yes | The User's Surname. |
+| `mid` | `String?` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String?` | No | The Partner's name. |
+| `parent` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `partner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
+| `phone` | `String?` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String?` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `Boolean?` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String?` | Yes | The User's unique username. |
+| `userRole` | `Map<String, Any?>?` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String?` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Long?` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -605,19 +605,19 @@ val user = client.user(null)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Map<String, Any?>?` | No |  |
-| `created` | `String?` | No |  |
+| `client` | `Map<String, Any?>?` | No | Reference to the associated Client resource. |
+| `created` | `String?` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String?` | No |  |
 | `firstName` | `String?` | No |  |
-| `id` | `Long?` | No |  |
+| `id` | `Long?` | No | This resource's unique identifier. |
 | `isActive` | `Boolean?` | No |  |
 | `lastName` | `String?` | No |  |
-| `modified` | `String?` | No |  |
-| `partner` | `Map<String, Any?>?` | No |  |
+| `modified` | `String?` | No | Last modified timestamp. |
+| `partner` | `Map<String, Any?>?` | No | Reference to the associated Partner. |
 | `phone` | `String?` | No |  |
 | `userName` | `String?` | No |  |
-| `userRole` | `Map<String, Any?>?` | No |  |
-| `version` | `Long?` | No |  |
+| `userRole` | `Map<String, Any?>?` | No | Reference to the associated User Role. |
+| `version` | `Long?` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

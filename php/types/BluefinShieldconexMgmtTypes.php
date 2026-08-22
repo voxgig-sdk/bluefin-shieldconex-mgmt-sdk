@@ -73,7 +73,7 @@ class ClientRemoveMatch
 }
 
 /** Clone entity data model. */
-class Clone
+class CloneType
 {
     public ?int $id = null;
     public ?string $name = null;

@@ -123,17 +123,17 @@ const client = client.client(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `[]const u8` | No |  |
+| `billingId` | `[]const u8` | No | Billing ID |
 | `contact` | `Value (object)` | No |  |
-| `created` | `[]const u8` | No |  |
-| `directPartner` | `Value (object)` | No |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `[]const u8` | No |  |
-| `modified` | `[]const u8` | No |  |
-| `name` | `[]const u8` | No |  |
-| `partner` | `Value (object)` | No |  |
-| `version` | `i64` | No |  |
+| `created` | `[]const u8` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Value (object)` | No | Reference to the associated Partner. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `[]const u8` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `[]const u8` | No | Last modified timestamp. |
+| `name` | `[]const u8` | No | The Client's name. |
+| `partner` | `Value (object)` | No | Reference to the associated Partner. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -229,8 +229,8 @@ const clone = client.clone(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `i64` | No |  |
-| `name` | `[]const u8` | No |  |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `name` | `[]const u8` | No | Name of Template |
 
 ### Operations
 
@@ -278,17 +278,17 @@ const partner = client.partner(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `[]const u8` | No |  |
+| `billingId` | `[]const u8` | No | The Partner's billing identifier. |
 | `contact` | `Value (object)` | No |  |
-| `created` | `[]const u8` | No |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `[]const u8` | No |  |
-| `name` | `[]const u8` | No |  |
-| `parent` | `Value (object)` | No |  |
-| `reference` | `[]const u8` | No |  |
-| `verificationPhrase` | `[]const u8` | No |  |
-| `version` | `i64` | No |  |
+| `created` | `[]const u8` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `[]const u8` | No | Last modified timestamp. |
+| `name` | `[]const u8` | No | The Partner's name. |
+| `parent` | `Value (object)` | No | Reference to the associated Partner. |
+| `reference` | `[]const u8` | No | The Partner's reference string. |
+| `verificationPhrase` | `[]const u8` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -373,17 +373,17 @@ const template = client.template(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Value` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `Value (object)` | No |  |
-| `fieldTemplates` | `Value (array)` | No |  |
-| `id` | `i64` | No |  |
-| `name` | `[]const u8` | No |  |
+| `accessMode` | `Value` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Value (object)` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `Value (array)` | No | Field Template list items |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `name` | `[]const u8` | No | The Template's name. |
 | `options` | `Value (object)` | No |  |
-| `partner` | `Value (object)` | No |  |
-| `reference` | `[]const u8` | No |  |
-| `type` | `[]const u8` | No |  |
-| `version` | `i64` | No |  |
+| `partner` | `Value (object)` | No | Reference to the associated Partner. |
+| `reference` | `[]const u8` | No | The Template's unique reference. |
+| `type` | `[]const u8` | No | The Template's type. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -463,19 +463,19 @@ const transaction = client.transaction(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `[]const u8` | No |  |
-| `client` | `Value (object)` | No |  |
-| `completeDate` | `[]const u8` | No |  |
-| `directPartner` | `Value (object)` | No |  |
-| `errCode` | `[]const u8` | No |  |
-| `errMessage` | `[]const u8` | No |  |
-| `id` | `i64` | No |  |
-| `ipAddress` | `[]const u8` | No |  |
-| `messageId` | `[]const u8` | No |  |
-| `partner` | `Value (object)` | No |  |
-| `reference` | `[]const u8` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `[]const u8` | No |  |
+| `bfid` | `[]const u8` | No | BFID |
+| `client` | `Value (object)` | No | Reference to the associated Client resource. |
+| `completeDate` | `[]const u8` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Value (object)` | No | Reference to the associated Partner. |
+| `errCode` | `[]const u8` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `[]const u8` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `ipAddress` | `[]const u8` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `[]const u8` | No | Message ID. |
+| `partner` | `Value (object)` | No | Reference to the associated Partner. |
+| `reference` | `[]const u8` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `[]const u8` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -532,26 +532,26 @@ const update_result = client.update_result(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `[]const u8` | No |  |
-| `client` | `Value (object)` | No |  |
+| `billingId` | `[]const u8` | No | The Partner's billing identifier. |
+| `client` | `Value (object)` | No | Reference to the associated Client resource. |
 | `contact` | `Value (object)` | Yes |  |
-| `directPartner` | `Value (object)` | No |  |
-| `email` | `[]const u8` | Yes |  |
-| `firstName` | `[]const u8` | Yes |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `[]const u8` | Yes |  |
-| `mid` | `[]const u8` | No |  |
-| `name` | `[]const u8` | No |  |
-| `parent` | `Value (object)` | No |  |
-| `partner` | `Value (object)` | No |  |
-| `phone` | `[]const u8` | Yes |  |
-| `reference` | `[]const u8` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `[]const u8` | Yes |  |
-| `userRole` | `Value (object)` | Yes |  |
-| `verificationPhrase` | `[]const u8` | No |  |
-| `version` | `i64` | No |  |
+| `directPartner` | `Value (object)` | No | Reference to the associated Partner. |
+| `email` | `[]const u8` | Yes | The User's email address. |
+| `firstName` | `[]const u8` | Yes | The User's name. |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `[]const u8` | Yes | The User's Surname. |
+| `mid` | `[]const u8` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `[]const u8` | No | The Partner's name. |
+| `parent` | `Value (object)` | No | Reference to the associated Partner. |
+| `partner` | `Value (object)` | No | Reference to the associated Partner. |
+| `phone` | `[]const u8` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `[]const u8` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `[]const u8` | Yes | The User's unique username. |
+| `userRole` | `Value (object)` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `[]const u8` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -655,19 +655,19 @@ const user = client.user(h.vnull());
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Value (object)` | No |  |
-| `created` | `[]const u8` | No |  |
+| `client` | `Value (object)` | No | Reference to the associated Client resource. |
+| `created` | `[]const u8` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `[]const u8` | No |  |
 | `firstName` | `[]const u8` | No |  |
-| `id` | `i64` | No |  |
+| `id` | `i64` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `[]const u8` | No |  |
-| `modified` | `[]const u8` | No |  |
-| `partner` | `Value (object)` | No |  |
+| `modified` | `[]const u8` | No | Last modified timestamp. |
+| `partner` | `Value (object)` | No | Reference to the associated Partner. |
 | `phone` | `[]const u8` | No |  |
 | `userName` | `[]const u8` | No |  |
-| `userRole` | `Value (object)` | No |  |
-| `version` | `i64` | No |  |
+| `userRole` | `Value (object)` | No | Reference to the associated User Role. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

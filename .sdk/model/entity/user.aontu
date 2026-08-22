@@ -8,11 +8,13 @@ main: kit: entity: user: {
     {
       name: "client"
       req: false
+      short: "Reference to the associated Client resource."
       type: "`$OBJECT`"
     }
     {
       name: "created"
       req: false
+      short: "Creation timestamp in ISO 8601 format."
       type: "`$STRING`"
     }
     {
@@ -28,6 +30,7 @@ main: kit: entity: user: {
     {
       name: "id"
       req: false
+      short: "This resource's unique identifier."
       type: "`$INTEGER`"
     }
     {
@@ -43,11 +46,13 @@ main: kit: entity: user: {
     {
       name: "modified"
       req: false
+      short: "Last modified timestamp."
       type: "`$STRING`"
     }
     {
       name: "partner"
       req: false
+      short: "Reference to the associated Partner."
       type: "`$OBJECT`"
     }
     {
@@ -63,11 +68,13 @@ main: kit: entity: user: {
     {
       name: "userRole"
       req: false
+      short: "Reference to the associated User Role."
       type: "`$OBJECT`"
     }
     {
       name: "version"
       req: false
+      short: "The number of times that this resource has been updated."
       type: "`$INTEGER`"
     }
   ]

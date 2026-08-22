@@ -112,17 +112,17 @@ client_ = client.Client()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `str` | No |  |
+| `billingId` | `str` | No | Billing ID |
 | `contact` | `dict` | No |  |
-| `created` | `str` | No |  |
-| `directPartner` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `str` | No |  |
-| `modified` | `str` | No |  |
-| `name` | `str` | No |  |
-| `partner` | `dict` | No |  |
-| `version` | `int` | No |  |
+| `created` | `str` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `dict` | No | Reference to the associated Partner. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `str` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `str` | No | Last modified timestamp. |
+| `name` | `str` | No | The Client's name. |
+| `partner` | `dict` | No | Reference to the associated Partner. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -216,8 +216,8 @@ clone = client.Clone()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `str` | No | Name of Template |
 
 ### Operations
 
@@ -270,17 +270,17 @@ partner = client.Partner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `str` | No |  |
+| `billingId` | `str` | No | The Partner's billing identifier. |
 | `contact` | `dict` | No |  |
-| `created` | `str` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `str` | No |  |
-| `name` | `str` | No |  |
-| `parent` | `dict` | No |  |
-| `reference` | `str` | No |  |
-| `verificationPhrase` | `str` | No |  |
-| `version` | `int` | No |  |
+| `created` | `str` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `str` | No | Last modified timestamp. |
+| `name` | `str` | No | The Partner's name. |
+| `parent` | `dict` | No | Reference to the associated Partner. |
+| `reference` | `str` | No | The Partner's reference string. |
+| `verificationPhrase` | `str` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -366,17 +366,17 @@ template = client.Template()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Any` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `dict` | No |  |
-| `fieldTemplates` | `list` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
+| `accessMode` | `Any` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `dict` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `list` | No | Field Template list items |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `str` | No | The Template's name. |
 | `options` | `dict` | No |  |
-| `partner` | `dict` | No |  |
-| `reference` | `str` | No |  |
-| `type` | `str` | No |  |
-| `version` | `int` | No |  |
+| `partner` | `dict` | No | Reference to the associated Partner. |
+| `reference` | `str` | No | The Template's unique reference. |
+| `type` | `str` | No | The Template's type. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -454,19 +454,19 @@ transaction = client.Transaction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `str` | No |  |
-| `client` | `dict` | No |  |
-| `completeDate` | `str` | No |  |
-| `directPartner` | `dict` | No |  |
-| `errCode` | `str` | No |  |
-| `errMessage` | `str` | No |  |
-| `id` | `int` | No |  |
-| `ipAddress` | `str` | No |  |
-| `messageId` | `str` | No |  |
-| `partner` | `dict` | No |  |
-| `reference` | `str` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `str` | No |  |
+| `bfid` | `str` | No | BFID |
+| `client` | `dict` | No | Reference to the associated Client resource. |
+| `completeDate` | `str` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `dict` | No | Reference to the associated Partner. |
+| `errCode` | `str` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `str` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `ipAddress` | `str` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `str` | No | Message ID. |
+| `partner` | `dict` | No | Reference to the associated Partner. |
+| `reference` | `str` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `str` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -527,26 +527,26 @@ update_result = client.UpdateResult()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `str` | No |  |
-| `client` | `dict` | No |  |
+| `billingId` | `str` | No | The Partner's billing identifier. |
+| `client` | `dict` | No | Reference to the associated Client resource. |
 | `contact` | `dict` | Yes |  |
-| `directPartner` | `dict` | No |  |
-| `email` | `str` | Yes |  |
-| `firstName` | `str` | Yes |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `str` | Yes |  |
-| `mid` | `str` | No |  |
-| `name` | `str` | No |  |
-| `parent` | `dict` | No |  |
-| `partner` | `dict` | No |  |
-| `phone` | `str` | Yes |  |
-| `reference` | `str` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `str` | Yes |  |
-| `userRole` | `dict` | Yes |  |
-| `verificationPhrase` | `str` | No |  |
-| `version` | `int` | No |  |
+| `directPartner` | `dict` | No | Reference to the associated Partner. |
+| `email` | `str` | Yes | The User's email address. |
+| `firstName` | `str` | Yes | The User's name. |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `str` | Yes | The User's Surname. |
+| `mid` | `str` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `str` | No | The Partner's name. |
+| `parent` | `dict` | No | Reference to the associated Partner. |
+| `partner` | `dict` | No | Reference to the associated Partner. |
+| `phone` | `str` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `str` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `str` | Yes | The User's unique username. |
+| `userRole` | `dict` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `str` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -651,19 +651,19 @@ user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `dict` | No |  |
-| `created` | `str` | No |  |
+| `client` | `dict` | No | Reference to the associated Client resource. |
+| `created` | `str` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `str` | No |  |
 | `firstName` | `str` | No |  |
-| `id` | `int` | No |  |
+| `id` | `int` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `str` | No |  |
-| `modified` | `str` | No |  |
-| `partner` | `dict` | No |  |
+| `modified` | `str` | No | Last modified timestamp. |
+| `partner` | `dict` | No | Reference to the associated Partner. |
 | `phone` | `str` | No |  |
 | `userName` | `str` | No |  |
-| `userRole` | `dict` | No |  |
-| `version` | `int` | No |  |
+| `userRole` | `dict` | No | Reference to the associated User Role. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

@@ -20,6 +20,9 @@ pub fn make_config() Value {
         }) },
         .{ "options", h.jo(&.{
             .{ "base", h.vstr("https://portal-cert.shieldconex.com:4010/api/v1") },
+            .{ "auth", h.jo(&.{
+                .{ "prefix", h.vstr("Basic") },
+            }) },
             .{ "headers", h.jo(&.{
                 .{ "content-type", h.vstr("application/json") },
             }) },
@@ -32,15 +35,13 @@ pub fn make_config() Value {
                 .{ "update_result", h.omap() },
                 .{ "user", h.omap() },
             }) },
-            .{ "auth", h.jo(&.{
-                .{ "prefix", h.vstr("Basic") },
-            }) },
         }) },
         .{ "entity", h.jo(&.{
             .{ "client", h.jo(&.{
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("billingId") },
+                        .{ "short", h.vstr("Billing ID") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -59,6 +60,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("created") },
+                        .{ "short", h.vstr("Creation timestamp in ISO 8601 format.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -69,22 +71,27 @@ pub fn make_config() Value {
                                 .{ "type", h.vstr("`$OBJECT`") },
                             }) },
                         }) },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("This resource's unique identifier.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("isActive") },
+                        .{ "short", h.vstr("This property indicates if the Client account is active or disabled.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("mid") },
+                        .{ "short", h.vstr("Some Partners will have an merchant ids on their own software offerings.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("modified") },
+                        .{ "short", h.vstr("Last modified timestamp.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -95,14 +102,17 @@ pub fn make_config() Value {
                                 .{ "type", h.vstr("`$STRING`") },
                             }) },
                         }) },
+                        .{ "short", h.vstr("The Client's name.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("partner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("version") },
+                        .{ "short", h.vstr("The number of times that this resource has been updated.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                 }) },
@@ -373,10 +383,12 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("Unique identifier of newly added element.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("name") },
+                        .{ "short", h.vstr("Name of Template") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                 }) },
@@ -436,6 +448,7 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("billingId") },
+                        .{ "short", h.vstr("The Partner's billing identifier.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -454,18 +467,22 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("created") },
+                        .{ "short", h.vstr("Creation timestamp in ISO 8601 format.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("This resource's unique identifier.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("isActive") },
+                        .{ "short", h.vstr("This property indicates if the Parter account is active or disabled.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("modified") },
+                        .{ "short", h.vstr("Last modified timestamp.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -476,6 +493,7 @@ pub fn make_config() Value {
                                 .{ "type", h.vstr("`$STRING`") },
                             }) },
                         }) },
+                        .{ "short", h.vstr("The Partner's name.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -486,18 +504,22 @@ pub fn make_config() Value {
                                 .{ "type", h.vstr("`$OBJECT`") },
                             }) },
                         }) },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("reference") },
+                        .{ "short", h.vstr("The Partner's reference string.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("verificationPhrase") },
+                        .{ "short", h.vstr("The verification phrase is a message that the Partner creates.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("version") },
+                        .{ "short", h.vstr("The number of times that this resource has been updated.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                 }) },
@@ -739,18 +761,22 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("accessMode") },
+                        .{ "short", h.vstr("The Template's access mode.") },
                         .{ "type", h.vstr("`$ANY`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("active") },
+                        .{ "short", h.vstr("This property indicates if the Template is active or inactive.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("client") },
+                        .{ "short", h.vstr("Reference to the associated Client resource.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("fieldTemplates") },
+                        .{ "short", h.vstr("Field Template list items") },
                         .{ "type", h.vstr("`$ARRAY`") },
                         .{ "union", h.jo(&.{
                             .{ "branches", h.vnum(9) },
@@ -760,10 +786,12 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("Unique identifier of newly added element.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("name") },
+                        .{ "short", h.vstr("The Template's name.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -772,18 +800,22 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("partner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("reference") },
+                        .{ "short", h.vstr("The Template's unique reference.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("type") },
+                        .{ "short", h.vstr("The Template's type.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("version") },
+                        .{ "short", h.vstr("The number of times that this resource has been updated.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                 }) },
@@ -1076,54 +1108,67 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("bfid") },
+                        .{ "short", h.vstr("BFID") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("client") },
+                        .{ "short", h.vstr("Reference to the associated Client resource.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("completeDate") },
+                        .{ "short", h.vstr("Timestamp from the beginning of the transaction.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("directPartner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("errCode") },
+                        .{ "short", h.vstr("The error code that is sent in response to a failed decrypt API call.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("errMessage") },
+                        .{ "short", h.vstr("The error messge that is sent in response to a failed decrypt API call.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("This resource's unique identifier.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("ipAddress") },
+                        .{ "short", h.vstr("The IP address of the http client that makes the decrypt API call.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("messageId") },
+                        .{ "short", h.vstr("Message ID.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("partner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("reference") },
+                        .{ "short", h.vstr("The reference property that the Client includes in the decrypt API call.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("success") },
+                        .{ "short", h.vstr("The success indicator.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("templateId") },
+                        .{ "short", h.vstr("The Template's unique identifier.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                 }) },
@@ -1287,10 +1332,12 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("billingId") },
+                        .{ "short", h.vstr("The Partner's billing identifier.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("client") },
+                        .{ "short", h.vstr("Reference to the associated Client resource.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
@@ -1300,6 +1347,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("directPartner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
@@ -1313,6 +1361,7 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("The User's email address.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -1326,14 +1375,17 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("The User's name.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("Unique identifier of newly added element.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("isActive") },
+                        .{ "short", h.vstr("This property indicates if the User account is active or disabled.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
@@ -1347,22 +1399,27 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("The User's Surname.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("mid") },
+                        .{ "short", h.vstr("Some Partners will have an merchant ids on their own software offerings.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("name") },
+                        .{ "short", h.vstr("The Partner's name.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("parent") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("partner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
@@ -1376,14 +1433,17 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("The User's phone number without dashes, spaces, or brackets (e.g.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("reference") },
+                        .{ "short", h.vstr("The Partner's reference string.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("sendWelcomeEmail") },
+                        .{ "short", h.vstr("If this property is set to 'true' the newly created user will be sent a welcome email.") },
                         .{ "type", h.vstr("`$BOOLEAN`") },
                     }),
                     h.jo(&.{
@@ -1397,6 +1457,7 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("The User's unique username.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -1410,14 +1471,17 @@ pub fn make_config() Value {
                             }) },
                         }) },
                         .{ "req", h.vbool(true) },
+                        .{ "short", h.vstr("Reference to the associated User Role.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("verificationPhrase") },
+                        .{ "short", h.vstr("The verification phrase is a message that the Partner creates.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("version") },
+                        .{ "short", h.vstr("The number of times that this resource has been updated.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                 }) },
@@ -2023,10 +2087,12 @@ pub fn make_config() Value {
                 .{ "fields", h.ja(&.{
                     h.jo(&.{
                         .{ "name", h.vstr("client") },
+                        .{ "short", h.vstr("Reference to the associated Client resource.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("created") },
+                        .{ "short", h.vstr("Creation timestamp in ISO 8601 format.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
@@ -2039,6 +2105,7 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("id") },
+                        .{ "short", h.vstr("This resource's unique identifier.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                     h.jo(&.{
@@ -2051,10 +2118,12 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("modified") },
+                        .{ "short", h.vstr("Last modified timestamp.") },
                         .{ "type", h.vstr("`$STRING`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("partner") },
+                        .{ "short", h.vstr("Reference to the associated Partner.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
@@ -2067,10 +2136,12 @@ pub fn make_config() Value {
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("userRole") },
+                        .{ "short", h.vstr("Reference to the associated User Role.") },
                         .{ "type", h.vstr("`$OBJECT`") },
                     }),
                     h.jo(&.{
                         .{ "name", h.vstr("version") },
+                        .{ "short", h.vstr("The number of times that this resource has been updated.") },
                         .{ "type", h.vstr("`$INTEGER`") },
                     }),
                 }) },
@@ -2118,6 +2189,28 @@ pub fn make_config() Value {
             }) },
         }) },
     });
+}
+
+// SHARED CONFIG (sdkgen rung L2).
+//
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client. Above the
+// size threshold make_config re-parses the whole embedded JSON, so this is the
+// difference between parsing the model once and once per client.
+//
+// Value nodes are arena-allocated and reference-stable, so the shared value is
+// genuinely one structure, not a copy.
+var shared_config_val: ?Value = null;
+
+/// The process-wide config, built once on first use.
+///
+/// The returned Value SHARES its nodes: treat it as read-only. Callers that
+/// need to mutate should use make_config, which always returns a fresh copy.
+pub fn shared_config() Value {
+    if (shared_config_val) |c| return c;
+    const c = make_config();
+    shared_config_val = c;
+    return c;
 }
 
 pub fn make_feature(name: []const u8) Feature {

@@ -118,17 +118,17 @@ client_ = client.Client
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `Hash` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `Hash` | No |  |
-| `id` | `Integer` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `Hash` | No |  |
-| `version` | `Integer` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Hash` | No | Reference to the associated Partner. |
+| `id` | `Integer` | No | This resource's unique identifier. |
+| `isActive` | `Boolean` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `Hash` | No | Reference to the associated Partner. |
+| `version` | `Integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -221,8 +221,8 @@ clone = client.Clone
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `id` | `Integer` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -276,17 +276,17 @@ partner = client.Partner
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `Hash` | No |  |
-| `created` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Hash` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Integer` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `Integer` | No | This resource's unique identifier. |
+| `isActive` | `Boolean` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Hash` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -371,17 +371,17 @@ template = client.Template
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Object` | No |  |
-| `active` | `Boolean` | No |  |
-| `client` | `Hash` | No |  |
-| `fieldTemplates` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `Object` | No | The Template's access mode. |
+| `active` | `Boolean` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Hash` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `Array` | No | Field Template list items |
+| `id` | `Integer` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `Hash` | No |  |
-| `partner` | `Hash` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `Integer` | No |  |
+| `partner` | `Hash` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `Integer` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -458,19 +458,19 @@ transaction = client.Transaction
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `Hash` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `Hash` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `Hash` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `Boolean` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `Hash` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Hash` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Integer` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `Hash` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Boolean` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -530,26 +530,26 @@ update_result = client.UpdateResult
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `Hash` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `Hash` | No | Reference to the associated Client resource. |
 | `contact` | `Hash` | Yes |  |
-| `directPartner` | `Hash` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `Integer` | No |  |
-| `isActive` | `Boolean` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Hash` | No |  |
-| `partner` | `Hash` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `Boolean` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `Hash` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Integer` | No |  |
+| `directPartner` | `Hash` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `Integer` | No | Unique identifier of newly added element. |
+| `isActive` | `Boolean` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Hash` | No | Reference to the associated Partner. |
+| `partner` | `Hash` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `Boolean` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `Hash` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Integer` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -653,19 +653,19 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Hash` | No |  |
-| `created` | `String` | No |  |
+| `client` | `Hash` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `Integer` | No |  |
+| `id` | `Integer` | No | This resource's unique identifier. |
 | `isActive` | `Boolean` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `Hash` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `Hash` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `Hash` | No |  |
-| `version` | `Integer` | No |  |
+| `userRole` | `Hash` | No | Reference to the associated User Role. |
+| `version` | `Integer` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

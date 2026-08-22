@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "BluefinShieldconexMgmt",
+			"slug": "bluefin-shieldconex-mgmt",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -42,6 +45,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "billingId",
+						"short": "Billing ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -60,6 +64,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "created",
+						"short": "Creation timestamp in ISO 8601 format.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -70,22 +75,27 @@ func MakeConfig() map[string]any {
 								"type": "`$OBJECT`",
 							},
 						},
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "This resource's unique identifier.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "isActive",
+						"short": "This property indicates if the Client account is active or disabled.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "mid",
+						"short": "Some Partners will have an merchant ids on their own software offerings.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "modified",
+						"short": "Last modified timestamp.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -96,14 +106,17 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "The Client's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "partner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "The number of times that this resource has been updated.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -374,10 +387,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier of newly added element.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of Template",
 						"type": "`$STRING`",
 					},
 				},
@@ -437,6 +452,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "billingId",
+						"short": "The Partner's billing identifier.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -455,18 +471,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "created",
+						"short": "Creation timestamp in ISO 8601 format.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "This resource's unique identifier.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "isActive",
+						"short": "This property indicates if the Parter account is active or disabled.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "modified",
+						"short": "Last modified timestamp.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -477,6 +497,7 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "The Partner's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -487,18 +508,22 @@ func MakeConfig() map[string]any {
 								"type": "`$OBJECT`",
 							},
 						},
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reference",
+						"short": "The Partner's reference string.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "verificationPhrase",
+						"short": "The verification phrase is a message that the Partner creates.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "The number of times that this resource has been updated.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -740,18 +765,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "accessMode",
+						"short": "The Template's access mode.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "active",
+						"short": "This property indicates if the Template is active or inactive.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "client",
+						"short": "Reference to the associated Client resource.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "fieldTemplates",
+						"short": "Field Template list items",
 						"type": "`$ARRAY`",
 						"union": map[string]any{
 							"branches": 9,
@@ -761,10 +790,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier of newly added element.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The Template's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -773,18 +804,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "partner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reference",
+						"short": "The Template's unique reference.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The Template's type.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "The number of times that this resource has been updated.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -1077,54 +1112,67 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "bfid",
+						"short": "BFID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "client",
+						"short": "Reference to the associated Client resource.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "completeDate",
+						"short": "Timestamp from the beginning of the transaction.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "directPartner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "errCode",
+						"short": "The error code that is sent in response to a failed decrypt API call.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "errMessage",
+						"short": "The error messge that is sent in response to a failed decrypt API call.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "This resource's unique identifier.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "ipAddress",
+						"short": "The IP address of the http client that makes the decrypt API call.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "messageId",
+						"short": "Message ID.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "partner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reference",
+						"short": "The reference property that the Client includes in the decrypt API call.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "success",
+						"short": "The success indicator.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "templateId",
+						"short": "The Template's unique identifier.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1288,10 +1336,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "billingId",
+						"short": "The Partner's billing identifier.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "client",
+						"short": "Reference to the associated Client resource.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -1301,6 +1351,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "directPartner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -1314,6 +1365,7 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "The User's email address.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1327,14 +1379,17 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "The User's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier of newly added element.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "isActive",
+						"short": "This property indicates if the User account is active or disabled.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
@@ -1348,22 +1403,27 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "The User's Surname.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "mid",
+						"short": "Some Partners will have an merchant ids on their own software offerings.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The Partner's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "parent",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "partner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -1377,14 +1437,17 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "The User's phone number without dashes, spaces, or brackets (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reference",
+						"short": "The Partner's reference string.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "sendWelcomeEmail",
+						"short": "If this property is set to 'true' the newly created user will be sent a welcome email.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
@@ -1398,6 +1461,7 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "The User's unique username.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1411,14 +1475,17 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "Reference to the associated User Role.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "verificationPhrase",
+						"short": "The verification phrase is a message that the Partner creates.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "The number of times that this resource has been updated.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -2024,10 +2091,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "client",
+						"short": "Reference to the associated Client resource.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "created",
+						"short": "Creation timestamp in ISO 8601 format.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2040,6 +2109,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "id",
+						"short": "This resource's unique identifier.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -2052,10 +2122,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "modified",
+						"short": "Last modified timestamp.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "partner",
+						"short": "Reference to the associated Partner.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -2068,10 +2140,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "userRole",
+						"short": "Reference to the associated User Role.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "The number of times that this resource has been updated.",
 						"type": "`$INTEGER`",
 					},
 				},

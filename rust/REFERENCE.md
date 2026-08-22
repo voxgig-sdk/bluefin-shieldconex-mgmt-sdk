@@ -123,17 +123,17 @@ let client = client.client(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `std::collections::HashMap<String, Value>` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `std::collections::HashMap<String, Value>` | No |  |
-| `version` | `i64` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -222,8 +222,8 @@ let clone = client.clone(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `i64` | No |  |
-| `name` | `String` | No |  |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -268,17 +268,17 @@ let partner = client.partner(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `std::collections::HashMap<String, Value>` | No |  |
-| `created` | `String` | No |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `std::collections::HashMap<String, Value>` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `i64` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -359,17 +359,17 @@ let template = client.template(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Value` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `std::collections::HashMap<String, Value>` | No |  |
-| `fieldTemplates` | `Vec<Value>` | No |  |
-| `id` | `i64` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `Value` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `Vec<Value>` | No | Field Template list items |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `std::collections::HashMap<String, Value>` | No |  |
-| `partner` | `std::collections::HashMap<String, Value>` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `i64` | No |  |
+| `partner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -442,19 +442,19 @@ let transaction = client.transaction(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `std::collections::HashMap<String, Value>` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `i64` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `std::collections::HashMap<String, Value>` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `i64` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -510,26 +510,26 @@ let update_result = client.update_result(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `std::collections::HashMap<String, Value>` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Client resource. |
 | `contact` | `std::collections::HashMap<String, Value>` | Yes |  |
-| `directPartner` | `std::collections::HashMap<String, Value>` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `i64` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `std::collections::HashMap<String, Value>` | No |  |
-| `partner` | `std::collections::HashMap<String, Value>` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `std::collections::HashMap<String, Value>` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `i64` | No |  |
+| `directPartner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `i64` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `partner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `std::collections::HashMap<String, Value>` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -629,19 +629,19 @@ let user = client.user(Value::Noval);
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `std::collections::HashMap<String, Value>` | No |  |
-| `created` | `String` | No |  |
+| `client` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `i64` | No |  |
+| `id` | `i64` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `std::collections::HashMap<String, Value>` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `std::collections::HashMap<String, Value>` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `std::collections::HashMap<String, Value>` | No |  |
-| `version` | `i64` | No |  |
+| `userRole` | `std::collections::HashMap<String, Value>` | No | Reference to the associated User Role. |
+| `version` | `i64` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

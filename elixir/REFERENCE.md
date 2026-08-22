@@ -111,17 +111,17 @@ client = BluefinShieldconexMgmt.client(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String.t()` | No |  |
+| `billingId` | `String.t()` | No | Billing ID |
 | `contact` | `map()` | No |  |
-| `created` | `String.t()` | No |  |
-| `directPartner` | `map()` | No |  |
-| `id` | `integer()` | No |  |
-| `isActive` | `boolean()` | No |  |
-| `mid` | `String.t()` | No |  |
-| `modified` | `String.t()` | No |  |
-| `name` | `String.t()` | No |  |
-| `partner` | `map()` | No |  |
-| `version` | `integer()` | No |  |
+| `created` | `String.t()` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `map()` | No | Reference to the associated Partner. |
+| `id` | `integer()` | No | This resource's unique identifier. |
+| `isActive` | `boolean()` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String.t()` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String.t()` | No | Last modified timestamp. |
+| `name` | `String.t()` | No | The Client's name. |
+| `partner` | `map()` | No | Reference to the associated Partner. |
+| `version` | `integer()` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -197,8 +197,8 @@ clone = BluefinShieldconexMgmt.clone(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `integer()` | No |  |
-| `name` | `String.t()` | No |  |
+| `id` | `integer()` | No | Unique identifier of newly added element. |
+| `name` | `String.t()` | No | Name of Template |
 
 ### Operations
 
@@ -251,17 +251,17 @@ partner = BluefinShieldconexMgmt.partner(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String.t()` | No |  |
+| `billingId` | `String.t()` | No | The Partner's billing identifier. |
 | `contact` | `map()` | No |  |
-| `created` | `String.t()` | No |  |
-| `id` | `integer()` | No |  |
-| `isActive` | `boolean()` | No |  |
-| `modified` | `String.t()` | No |  |
-| `name` | `String.t()` | No |  |
-| `parent` | `map()` | No |  |
-| `reference` | `String.t()` | No |  |
-| `verificationPhrase` | `String.t()` | No |  |
-| `version` | `integer()` | No |  |
+| `created` | `String.t()` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `integer()` | No | This resource's unique identifier. |
+| `isActive` | `boolean()` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String.t()` | No | Last modified timestamp. |
+| `name` | `String.t()` | No | The Partner's name. |
+| `parent` | `map()` | No | Reference to the associated Partner. |
+| `reference` | `String.t()` | No | The Partner's reference string. |
+| `verificationPhrase` | `String.t()` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `integer()` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -329,17 +329,17 @@ template = BluefinShieldconexMgmt.template(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `any()` | No |  |
-| `active` | `boolean()` | No |  |
-| `client` | `map()` | No |  |
-| `fieldTemplates` | `list()` | No |  |
-| `id` | `integer()` | No |  |
-| `name` | `String.t()` | No |  |
+| `accessMode` | `any()` | No | The Template's access mode. |
+| `active` | `boolean()` | No | This property indicates if the Template is active or inactive. |
+| `client` | `map()` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `list()` | No | Field Template list items |
+| `id` | `integer()` | No | Unique identifier of newly added element. |
+| `name` | `String.t()` | No | The Template's name. |
 | `options` | `map()` | No |  |
-| `partner` | `map()` | No |  |
-| `reference` | `String.t()` | No |  |
-| `type` | `String.t()` | No |  |
-| `version` | `integer()` | No |  |
+| `partner` | `map()` | No | Reference to the associated Partner. |
+| `reference` | `String.t()` | No | The Template's unique reference. |
+| `type` | `String.t()` | No | The Template's type. |
+| `version` | `integer()` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -415,19 +415,19 @@ transaction = BluefinShieldconexMgmt.transaction(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String.t()` | No |  |
-| `client` | `map()` | No |  |
-| `completeDate` | `String.t()` | No |  |
-| `directPartner` | `map()` | No |  |
-| `errCode` | `String.t()` | No |  |
-| `errMessage` | `String.t()` | No |  |
-| `id` | `integer()` | No |  |
-| `ipAddress` | `String.t()` | No |  |
-| `messageId` | `String.t()` | No |  |
-| `partner` | `map()` | No |  |
-| `reference` | `String.t()` | No |  |
-| `success` | `boolean()` | No |  |
-| `templateId` | `String.t()` | No |  |
+| `bfid` | `String.t()` | No | BFID |
+| `client` | `map()` | No | Reference to the associated Client resource. |
+| `completeDate` | `String.t()` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `map()` | No | Reference to the associated Partner. |
+| `errCode` | `String.t()` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String.t()` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `integer()` | No | This resource's unique identifier. |
+| `ipAddress` | `String.t()` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String.t()` | No | Message ID. |
+| `partner` | `map()` | No | Reference to the associated Partner. |
+| `reference` | `String.t()` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `boolean()` | No | The success indicator. |
+| `templateId` | `String.t()` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -486,26 +486,26 @@ update_result = BluefinShieldconexMgmt.update_result(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String.t()` | No |  |
-| `client` | `map()` | No |  |
+| `billingId` | `String.t()` | No | The Partner's billing identifier. |
+| `client` | `map()` | No | Reference to the associated Client resource. |
 | `contact` | `map()` | Yes |  |
-| `directPartner` | `map()` | No |  |
-| `email` | `String.t()` | Yes |  |
-| `firstName` | `String.t()` | Yes |  |
-| `id` | `integer()` | No |  |
-| `isActive` | `boolean()` | No |  |
-| `lastName` | `String.t()` | Yes |  |
-| `mid` | `String.t()` | No |  |
-| `name` | `String.t()` | No |  |
-| `parent` | `map()` | No |  |
-| `partner` | `map()` | No |  |
-| `phone` | `String.t()` | Yes |  |
-| `reference` | `String.t()` | No |  |
-| `sendWelcomeEmail` | `boolean()` | No |  |
-| `userName` | `String.t()` | Yes |  |
-| `userRole` | `map()` | Yes |  |
-| `verificationPhrase` | `String.t()` | No |  |
-| `version` | `integer()` | No |  |
+| `directPartner` | `map()` | No | Reference to the associated Partner. |
+| `email` | `String.t()` | Yes | The User's email address. |
+| `firstName` | `String.t()` | Yes | The User's name. |
+| `id` | `integer()` | No | Unique identifier of newly added element. |
+| `isActive` | `boolean()` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String.t()` | Yes | The User's Surname. |
+| `mid` | `String.t()` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String.t()` | No | The Partner's name. |
+| `parent` | `map()` | No | Reference to the associated Partner. |
+| `partner` | `map()` | No | Reference to the associated Partner. |
+| `phone` | `String.t()` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String.t()` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `boolean()` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String.t()` | Yes | The User's unique username. |
+| `userRole` | `map()` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String.t()` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `integer()` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -583,19 +583,19 @@ user = BluefinShieldconexMgmt.user(sdk)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `map()` | No |  |
-| `created` | `String.t()` | No |  |
+| `client` | `map()` | No | Reference to the associated Client resource. |
+| `created` | `String.t()` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String.t()` | No |  |
 | `firstName` | `String.t()` | No |  |
-| `id` | `integer()` | No |  |
+| `id` | `integer()` | No | This resource's unique identifier. |
 | `isActive` | `boolean()` | No |  |
 | `lastName` | `String.t()` | No |  |
-| `modified` | `String.t()` | No |  |
-| `partner` | `map()` | No |  |
+| `modified` | `String.t()` | No | Last modified timestamp. |
+| `partner` | `map()` | No | Reference to the associated Partner. |
 | `phone` | `String.t()` | No |  |
 | `userName` | `String.t()` | No |  |
-| `userRole` | `map()` | No |  |
-| `version` | `integer()` | No |  |
+| `userRole` | `map()` | No | Reference to the associated User Role. |
+| `version` | `integer()` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

@@ -6,7 +6,7 @@ The Golang SDK for the BluefinShieldconexMgmt API — an entity-oriented client 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Client(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `c`, `clojure`, `cpp`, `csharp`, `dart`, `elixir`, `go-cli`, `go-mcp`, `java`, `js`, `kotlin`, `lua`, `ocaml`, `perl`, `php`, `py`, `rb`, `rust`, `scala`, `swift`, `ts`, `zig` — see
 > the [top-level README](../README.md).
 
 
@@ -297,17 +297,17 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"billingId"` |  |
+| `"billingId"` | Billing ID |
 | `"contact"` |  |
-| `"created"` |  |
-| `"directPartner"` |  |
-| `"id"` |  |
-| `"isActive"` |  |
-| `"mid"` |  |
-| `"modified"` |  |
-| `"name"` |  |
-| `"partner"` |  |
-| `"version"` |  |
+| `"created"` | Creation timestamp in ISO 8601 format. |
+| `"directPartner"` | Reference to the associated Partner. |
+| `"id"` | This resource's unique identifier. |
+| `"isActive"` | This property indicates if the Client account is active or disabled. |
+| `"mid"` | Some Partners will have an merchant ids on their own software offerings. |
+| `"modified"` | Last modified timestamp. |
+| `"name"` | The Client's name. |
+| `"partner"` | Reference to the associated Partner. |
+| `"version"` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -317,8 +317,8 @@ API path: `/clients`
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
-| `"name"` |  |
+| `"id"` | Unique identifier of newly added element. |
+| `"name"` | Name of Template |
 
 Operations: Create.
 
@@ -328,17 +328,17 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `"billingId"` |  |
+| `"billingId"` | The Partner's billing identifier. |
 | `"contact"` |  |
-| `"created"` |  |
-| `"id"` |  |
-| `"isActive"` |  |
-| `"modified"` |  |
-| `"name"` |  |
-| `"parent"` |  |
-| `"reference"` |  |
-| `"verificationPhrase"` |  |
-| `"version"` |  |
+| `"created"` | Creation timestamp in ISO 8601 format. |
+| `"id"` | This resource's unique identifier. |
+| `"isActive"` | This property indicates if the Parter account is active or disabled. |
+| `"modified"` | Last modified timestamp. |
+| `"name"` | The Partner's name. |
+| `"parent"` | Reference to the associated Partner. |
+| `"reference"` | The Partner's reference string. |
+| `"verificationPhrase"` | The verification phrase is a message that the Partner creates. |
+| `"version"` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load.
 
@@ -348,17 +348,17 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `"accessMode"` |  |
-| `"active"` |  |
-| `"client"` |  |
-| `"fieldTemplates"` |  |
-| `"id"` |  |
-| `"name"` |  |
+| `"accessMode"` | The Template's access mode. |
+| `"active"` | This property indicates if the Template is active or inactive. |
+| `"client"` | Reference to the associated Client resource. |
+| `"fieldTemplates"` | Field Template list items |
+| `"id"` | Unique identifier of newly added element. |
+| `"name"` | The Template's name. |
 | `"options"` |  |
-| `"partner"` |  |
-| `"reference"` |  |
-| `"type"` |  |
-| `"version"` |  |
+| `"partner"` | Reference to the associated Partner. |
+| `"reference"` | The Template's unique reference. |
+| `"type"` | The Template's type. |
+| `"version"` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -368,19 +368,19 @@ API path: `/templates`
 
 | Field | Description |
 | --- | --- |
-| `"bfid"` |  |
-| `"client"` |  |
-| `"completeDate"` |  |
-| `"directPartner"` |  |
-| `"errCode"` |  |
-| `"errMessage"` |  |
-| `"id"` |  |
-| `"ipAddress"` |  |
-| `"messageId"` |  |
-| `"partner"` |  |
-| `"reference"` |  |
-| `"success"` |  |
-| `"templateId"` |  |
+| `"bfid"` | BFID |
+| `"client"` | Reference to the associated Client resource. |
+| `"completeDate"` | Timestamp from the beginning of the transaction. |
+| `"directPartner"` | Reference to the associated Partner. |
+| `"errCode"` | The error code that is sent in response to a failed decrypt API call. |
+| `"errMessage"` | The error messge that is sent in response to a failed decrypt API call. |
+| `"id"` | This resource's unique identifier. |
+| `"ipAddress"` | The IP address of the http client that makes the decrypt API call. |
+| `"messageId"` | Message ID. |
+| `"partner"` | Reference to the associated Partner. |
+| `"reference"` | The reference property that the Client includes in the decrypt API call. |
+| `"success"` | The success indicator. |
+| `"templateId"` | The Template's unique identifier. |
 
 Operations: List, Load.
 
@@ -390,26 +390,26 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `"billingId"` |  |
-| `"client"` |  |
+| `"billingId"` | The Partner's billing identifier. |
+| `"client"` | Reference to the associated Client resource. |
 | `"contact"` |  |
-| `"directPartner"` |  |
-| `"email"` |  |
-| `"firstName"` |  |
-| `"id"` |  |
-| `"isActive"` |  |
-| `"lastName"` |  |
-| `"mid"` |  |
-| `"name"` |  |
-| `"parent"` |  |
-| `"partner"` |  |
-| `"phone"` |  |
-| `"reference"` |  |
-| `"sendWelcomeEmail"` |  |
-| `"userName"` |  |
-| `"userRole"` |  |
-| `"verificationPhrase"` |  |
-| `"version"` |  |
+| `"directPartner"` | Reference to the associated Partner. |
+| `"email"` | The User's email address. |
+| `"firstName"` | The User's name. |
+| `"id"` | Unique identifier of newly added element. |
+| `"isActive"` | This property indicates if the User account is active or disabled. |
+| `"lastName"` | The User's Surname. |
+| `"mid"` | Some Partners will have an merchant ids on their own software offerings. |
+| `"name"` | The Partner's name. |
+| `"parent"` | Reference to the associated Partner. |
+| `"partner"` | Reference to the associated Partner. |
+| `"phone"` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `"reference"` | The Partner's reference string. |
+| `"sendWelcomeEmail"` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `"userName"` | The User's unique username. |
+| `"userRole"` | Reference to the associated User Role. |
+| `"verificationPhrase"` | The verification phrase is a message that the Partner creates. |
+| `"version"` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Update.
 
@@ -419,19 +419,19 @@ API path: `/users`
 
 | Field | Description |
 | --- | --- |
-| `"client"` |  |
-| `"created"` |  |
+| `"client"` | Reference to the associated Client resource. |
+| `"created"` | Creation timestamp in ISO 8601 format. |
 | `"email"` |  |
 | `"firstName"` |  |
-| `"id"` |  |
+| `"id"` | This resource's unique identifier. |
 | `"isActive"` |  |
 | `"lastName"` |  |
-| `"modified"` |  |
-| `"partner"` |  |
+| `"modified"` | Last modified timestamp. |
+| `"partner"` | Reference to the associated Partner. |
 | `"phone"` |  |
 | `"userName"` |  |
-| `"userRole"` |  |
-| `"version"` |  |
+| `"userRole"` | Reference to the associated User Role. |
+| `"version"` | The number of times that this resource has been updated. |
 
 Operations: Load.
 
@@ -459,17 +459,17 @@ Create an instance: `client_ := client.Client(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
+| `billingId` | `string` | Billing ID |
 | `contact` | `map[string]any` |  |
-| `created` | `string` |  |
-| `directPartner` | `map[string]any` |  |
-| `id` | `int` |  |
-| `isActive` | `bool` |  |
-| `mid` | `string` |  |
-| `modified` | `string` |  |
-| `name` | `string` |  |
-| `partner` | `map[string]any` |  |
-| `version` | `int` |  |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `map[string]any` | Reference to the associated Partner. |
+| `id` | `int` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Client account is active or disabled. |
+| `mid` | `string` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `string` | Last modified timestamp. |
+| `name` | `string` | The Client's name. |
+| `partner` | `map[string]any` | Reference to the associated Partner. |
+| `version` | `int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -517,8 +517,8 @@ Create an instance: `clone := client.Clone(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `string` |  |
+| `id` | `int` | Unique identifier of newly added element. |
+| `name` | `string` | Name of Template |
 
 #### Example: Create
 
@@ -549,17 +549,17 @@ Create an instance: `partner := client.Partner(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
+| `billingId` | `string` | The Partner's billing identifier. |
 | `contact` | `map[string]any` |  |
-| `created` | `string` |  |
-| `id` | `int` |  |
-| `isActive` | `bool` |  |
-| `modified` | `string` |  |
-| `name` | `string` |  |
-| `parent` | `map[string]any` |  |
-| `reference` | `string` |  |
-| `verificationPhrase` | `string` |  |
-| `version` | `int` |  |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
+| `id` | `int` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Parter account is active or disabled. |
+| `modified` | `string` | Last modified timestamp. |
+| `name` | `string` | The Partner's name. |
+| `parent` | `map[string]any` | Reference to the associated Partner. |
+| `reference` | `string` | The Partner's reference string. |
+| `verificationPhrase` | `string` | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -610,17 +610,17 @@ Create an instance: `template := client.Template(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessMode` | `any` |  |
-| `active` | `bool` |  |
-| `client` | `map[string]any` |  |
-| `fieldTemplates` | `[]any` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
+| `accessMode` | `any` | The Template's access mode. |
+| `active` | `bool` | This property indicates if the Template is active or inactive. |
+| `client` | `map[string]any` | Reference to the associated Client resource. |
+| `fieldTemplates` | `[]any` | Field Template list items |
+| `id` | `int` | Unique identifier of newly added element. |
+| `name` | `string` | The Template's name. |
 | `options` | `map[string]any` |  |
-| `partner` | `map[string]any` |  |
-| `reference` | `string` |  |
-| `type` | `string` |  |
-| `version` | `int` |  |
+| `partner` | `map[string]any` | Reference to the associated Partner. |
+| `reference` | `string` | The Template's unique reference. |
+| `type` | `string` | The Template's type. |
+| `version` | `int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -669,19 +669,19 @@ Create an instance: `transaction := client.Transaction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bfid` | `string` |  |
-| `client` | `map[string]any` |  |
-| `completeDate` | `string` |  |
-| `directPartner` | `map[string]any` |  |
-| `errCode` | `string` |  |
-| `errMessage` | `string` |  |
-| `id` | `int` |  |
-| `ipAddress` | `string` |  |
-| `messageId` | `string` |  |
-| `partner` | `map[string]any` |  |
-| `reference` | `string` |  |
-| `success` | `bool` |  |
-| `templateId` | `string` |  |
+| `bfid` | `string` | BFID |
+| `client` | `map[string]any` | Reference to the associated Client resource. |
+| `completeDate` | `string` | Timestamp from the beginning of the transaction. |
+| `directPartner` | `map[string]any` | Reference to the associated Partner. |
+| `errCode` | `string` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `string` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int` | This resource's unique identifier. |
+| `ipAddress` | `string` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `string` | Message ID. |
+| `partner` | `map[string]any` | Reference to the associated Partner. |
+| `reference` | `string` | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | The success indicator. |
+| `templateId` | `string` | The Template's unique identifier. |
 
 #### Example: Load
 
@@ -720,26 +720,26 @@ Create an instance: `updateResult := client.UpdateResult(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `string` |  |
-| `client` | `map[string]any` |  |
+| `billingId` | `string` | The Partner's billing identifier. |
+| `client` | `map[string]any` | Reference to the associated Client resource. |
 | `contact` | `map[string]any` |  |
-| `directPartner` | `map[string]any` |  |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `int` |  |
-| `isActive` | `bool` |  |
-| `lastName` | `string` |  |
-| `mid` | `string` |  |
-| `name` | `string` |  |
-| `parent` | `map[string]any` |  |
-| `partner` | `map[string]any` |  |
-| `phone` | `string` |  |
-| `reference` | `string` |  |
-| `sendWelcomeEmail` | `bool` |  |
-| `userName` | `string` |  |
-| `userRole` | `map[string]any` |  |
-| `verificationPhrase` | `string` |  |
-| `version` | `int` |  |
+| `directPartner` | `map[string]any` | Reference to the associated Partner. |
+| `email` | `string` | The User's email address. |
+| `firstName` | `string` | The User's name. |
+| `id` | `int` | Unique identifier of newly added element. |
+| `isActive` | `bool` | This property indicates if the User account is active or disabled. |
+| `lastName` | `string` | The User's Surname. |
+| `mid` | `string` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `string` | The Partner's name. |
+| `parent` | `map[string]any` | Reference to the associated Partner. |
+| `partner` | `map[string]any` | Reference to the associated Partner. |
+| `phone` | `string` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `string` | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `string` | The User's unique username. |
+| `userRole` | `map[string]any` | Reference to the associated User Role. |
+| `verificationPhrase` | `string` | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | The number of times that this resource has been updated. |
 
 #### Example: List
 
@@ -784,19 +784,19 @@ Create an instance: `user := client.User(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `client` | `map[string]any` |  |
-| `created` | `string` |  |
+| `client` | `map[string]any` | Reference to the associated Client resource. |
+| `created` | `string` | Creation timestamp in ISO 8601 format. |
 | `email` | `string` |  |
 | `firstName` | `string` |  |
-| `id` | `int` |  |
+| `id` | `int` | This resource's unique identifier. |
 | `isActive` | `bool` |  |
 | `lastName` | `string` |  |
-| `modified` | `string` |  |
-| `partner` | `map[string]any` |  |
+| `modified` | `string` | Last modified timestamp. |
+| `partner` | `map[string]any` | Reference to the associated Partner. |
 | `phone` | `string` |  |
 | `userName` | `string` |  |
-| `userRole` | `map[string]any` |  |
-| `version` | `int` |  |
+| `userRole` | `map[string]any` | Reference to the associated User Role. |
+| `version` | `int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 

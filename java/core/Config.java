@@ -14,6 +14,27 @@ public final class Config {
     return (Map<String, Object>) Json.parse(configJson());
   }
 
+  // SHARED CONFIG (sdkgen rung L2).
+  //
+  // The SDK reads the config on every request and never writes to it, so one
+  // instance is shared by every client rather than rebuilt per client - the
+  // difference between parsing the embedded JSON once and once per client.
+  //
+  // Initialization-on-demand holder: the JLS guarantees the class initializer
+  // runs once, lazily, and safely under concurrency, with no locking on the
+  // read path.
+  private static final class SharedHolder {
+    static final Map<String, Object> VALUE = makeConfig();
+  }
+
+  // The process-wide config, built once on first use.
+  //
+  // The returned map is SHARED: treat it as read-only. Callers that need to
+  // mutate should use makeConfig, which always parses a fresh copy.
+  public static Map<String, Object> sharedConfig() {
+    return SharedHolder.VALUE;
+  }
+
   public static Feature makeFeature(String name) {
     switch (name) {
       case "test":
@@ -27,7 +48,10 @@ public final class Config {
     StringBuilder b = new StringBuilder();
     b.append("{");
     b.append(" \"main\": {");
-    b.append("  \"name\": \"BluefinShieldconexMgmt\"");
+    b.append("  \"name\": \"BluefinShieldconexMgmt\",");
+    b.append("  \"slug\": \"bluefin-shieldconex-mgmt\",");
+    b.append("  \"version\": \"0.0.1\",");
+    b.append("  \"target\": \"java\"");
     b.append(" },");
     b.append(" \"feature\": {");
     b.append("  \"test\": {");
@@ -59,6 +83,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"billingId\",");
+    b.append("     \"short\": \"Billing ID\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -77,6 +102,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"created\",");
+    b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -87,22 +113,27 @@ public final class Config {
     b.append("       \"type\": \"`$OBJECT`\"");
     b.append("      }");
     b.append("     },");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"isActive\",");
+    b.append("     \"short\": \"This property indicates if the Client account is active or disabled.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"mid\",");
+    b.append("     \"short\": \"Some Partners will have an merchant ids on their own software offerings.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"modified\",");
+    b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -113,14 +144,17 @@ public final class Config {
     b.append("       \"type\": \"`$STRING`\"");
     b.append("      }");
     b.append("     },");
+    b.append("     \"short\": \"The Client's name.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"partner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"version\",");
+    b.append("     \"short\": \"The number of times that this resource has been updated.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
@@ -391,10 +425,12 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"name\",");
+    b.append("     \"short\": \"Name of Template\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    }");
     b.append("   ],");
@@ -454,6 +490,7 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"billingId\",");
+    b.append("     \"short\": \"The Partner's billing identifier.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -472,18 +509,22 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"created\",");
+    b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"isActive\",");
+    b.append("     \"short\": \"This property indicates if the Parter account is active or disabled.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"modified\",");
+    b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -494,6 +535,7 @@ public final class Config {
     b.append("       \"type\": \"`$STRING`\"");
     b.append("      }");
     b.append("     },");
+    b.append("     \"short\": \"The Partner's name.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -504,18 +546,22 @@ public final class Config {
     b.append("       \"type\": \"`$OBJECT`\"");
     b.append("      }");
     b.append("     },");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"reference\",");
+    b.append("     \"short\": \"The Partner's reference string.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"verificationPhrase\",");
+    b.append("     \"short\": \"The verification phrase is a message that the Partner creates.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"version\",");
+    b.append("     \"short\": \"The number of times that this resource has been updated.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
@@ -757,18 +803,22 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"accessMode\",");
+    b.append("     \"short\": \"The Template's access mode.\",");
     b.append("     \"type\": \"`$ANY`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"active\",");
+    b.append("     \"short\": \"This property indicates if the Template is active or inactive.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"client\",");
+    b.append("     \"short\": \"Reference to the associated Client resource.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"fieldTemplates\",");
+    b.append("     \"short\": \"Field Template list items\",");
     b.append("     \"type\": \"`$ARRAY`\",");
     b.append("     \"union\": {");
     b.append("      \"branches\": 9,");
@@ -778,10 +828,12 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"name\",");
+    b.append("     \"short\": \"The Template's name.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -790,18 +842,22 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"partner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"reference\",");
+    b.append("     \"short\": \"The Template's unique reference.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"type\",");
+    b.append("     \"short\": \"The Template's type.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"version\",");
+    b.append("     \"short\": \"The number of times that this resource has been updated.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
@@ -1094,54 +1150,67 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"bfid\",");
+    b.append("     \"short\": \"BFID\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"client\",");
+    b.append("     \"short\": \"Reference to the associated Client resource.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"completeDate\",");
+    b.append("     \"short\": \"Timestamp from the beginning of the transaction.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"directPartner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"errCode\",");
+    b.append("     \"short\": \"The error code that is sent in response to a failed decrypt API call.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"errMessage\",");
+    b.append("     \"short\": \"The error messge that is sent in response to a failed decrypt API call.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"ipAddress\",");
+    b.append("     \"short\": \"The IP address of the http client that makes the decrypt API call.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"messageId\",");
+    b.append("     \"short\": \"Message ID.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"partner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"reference\",");
+    b.append("     \"short\": \"The reference property that the Client includes in the decrypt API call.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"success\",");
+    b.append("     \"short\": \"The success indicator.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"templateId\",");
+    b.append("     \"short\": \"The Template's unique identifier.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    }");
     b.append("   ],");
@@ -1305,10 +1374,12 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"billingId\",");
+    b.append("     \"short\": \"The Partner's billing identifier.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"client\",");
+    b.append("     \"short\": \"Reference to the associated Client resource.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
@@ -1318,6 +1389,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"directPartner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
@@ -1331,6 +1403,7 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"The User's email address.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -1344,14 +1417,17 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"The User's name.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"isActive\",");
+    b.append("     \"short\": \"This property indicates if the User account is active or disabled.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
@@ -1365,22 +1441,27 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"The User's Surname.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"mid\",");
+    b.append("     \"short\": \"Some Partners will have an merchant ids on their own software offerings.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"name\",");
+    b.append("     \"short\": \"The Partner's name.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"parent\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"partner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
@@ -1394,14 +1475,17 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"The User's phone number without dashes, spaces, or brackets (e.g.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"reference\",");
+    b.append("     \"short\": \"The Partner's reference string.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"sendWelcomeEmail\",");
+    b.append("     \"short\": \"If this property is set to 'true' the newly created user will be sent a welcome email.\",");
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
@@ -1415,6 +1499,7 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"The User's unique username.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -1428,14 +1513,17 @@ public final class Config {
     b.append("      }");
     b.append("     },");
     b.append("     \"req\": true,");
+    b.append("     \"short\": \"Reference to the associated User Role.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"verificationPhrase\",");
+    b.append("     \"short\": \"The verification phrase is a message that the Partner creates.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"version\",");
+    b.append("     \"short\": \"The number of times that this resource has been updated.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
@@ -2041,10 +2129,12 @@ public final class Config {
     b.append("   \"fields\": [");
     b.append("    {");
     b.append("     \"name\": \"client\",");
+    b.append("     \"short\": \"Reference to the associated Client resource.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"created\",");
+    b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
@@ -2057,6 +2147,7 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"id\",");
+    b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    },");
     b.append("    {");
@@ -2069,10 +2160,12 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"modified\",");
+    b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"partner\",");
+    b.append("     \"short\": \"Reference to the associated Partner.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
@@ -2085,10 +2178,12 @@ public final class Config {
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"userRole\",");
+    b.append("     \"short\": \"Reference to the associated User Role.\",");
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
     b.append("     \"name\": \"version\",");
+    b.append("     \"short\": \"The number of times that this resource has been updated.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");

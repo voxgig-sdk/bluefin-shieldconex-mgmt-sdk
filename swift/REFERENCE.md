@@ -119,17 +119,17 @@ let client = client.Client()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `VMap` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `VMap` | No |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `VMap` | No |  |
-| `version` | `Int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `VMap` | No | Reference to the associated Partner. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `isActive` | `Bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `VMap` | No | Reference to the associated Partner. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -214,8 +214,8 @@ let clone = client.Clone()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Int` | No |  |
-| `name` | `String` | No |  |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -260,17 +260,17 @@ let partner = client.Partner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `VMap` | No |  |
-| `created` | `String` | No |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `VMap` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `isActive` | `Bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `VMap` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -347,17 +347,17 @@ let template = client.Template()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Value` | No |  |
-| `active` | `Bool` | No |  |
-| `client` | `VMap` | No |  |
-| `fieldTemplates` | `[Value]` | No |  |
-| `id` | `Int` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `Value` | No | The Template's access mode. |
+| `active` | `Bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `VMap` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `[Value]` | No | Field Template list items |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `VMap` | No |  |
-| `partner` | `VMap` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `partner` | `VMap` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -426,19 +426,19 @@ let transaction = client.Transaction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `VMap` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `VMap` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `Int` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `VMap` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `Bool` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `VMap` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `VMap` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `VMap` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Bool` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -490,26 +490,26 @@ let updateResult = client.UpdateResult()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `VMap` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `VMap` | No | Reference to the associated Client resource. |
 | `contact` | `VMap` | Yes |  |
-| `directPartner` | `VMap` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `VMap` | No |  |
-| `partner` | `VMap` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `Bool` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `VMap` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `directPartner` | `VMap` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `isActive` | `Bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `VMap` | No | Reference to the associated Partner. |
+| `partner` | `VMap` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `Bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `VMap` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -604,19 +604,19 @@ let user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `VMap` | No |  |
-| `created` | `String` | No |  |
+| `client` | `VMap` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `Int` | No |  |
+| `id` | `Int` | No | This resource's unique identifier. |
 | `isActive` | `Bool` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `VMap` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `VMap` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `VMap` | No |  |
-| `version` | `Int` | No |  |
+| `userRole` | `VMap` | No | Reference to the associated User Role. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

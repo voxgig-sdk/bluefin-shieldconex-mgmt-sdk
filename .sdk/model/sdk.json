@@ -20,9 +20,11 @@
         ],
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "repr": "auto"
       },
       "contributor": {},
+      "docs": {},
       "entity": {
         "client": {
           "active": true,
@@ -34,6 +36,7 @@
               "active": true,
               "name": "billingId",
               "req": false,
+              "short": "Billing ID",
               "type": "`$STRING`"
             },
             {
@@ -56,6 +59,7 @@
               "active": true,
               "name": "created",
               "req": false,
+              "short": "Creation timestamp in ISO 8601 format.",
               "type": "`$STRING`"
             },
             {
@@ -68,30 +72,35 @@
                 }
               },
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "This resource's unique identifier.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "isActive",
               "req": false,
+              "short": "This property indicates if the Client account is active or disabled.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "mid",
               "req": false,
+              "short": "Some Partners will have an merchant ids on their own software offerings.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "modified",
               "req": false,
+              "short": "Last modified timestamp.",
               "type": "`$STRING`"
             },
             {
@@ -104,18 +113,21 @@
                 }
               },
               "req": false,
+              "short": "The Client's name.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "partner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "The number of times that this resource has been updated.",
               "type": "`$INTEGER`"
             }
           ],
@@ -423,12 +435,14 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier of newly added element.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of Template",
               "type": "`$STRING`"
             }
           ],
@@ -500,6 +514,7 @@
               "active": true,
               "name": "billingId",
               "req": false,
+              "short": "The Partner's billing identifier.",
               "type": "`$STRING`"
             },
             {
@@ -522,24 +537,28 @@
               "active": true,
               "name": "created",
               "req": false,
+              "short": "Creation timestamp in ISO 8601 format.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "This resource's unique identifier.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "isActive",
               "req": false,
+              "short": "This property indicates if the Parter account is active or disabled.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "modified",
               "req": false,
+              "short": "Last modified timestamp.",
               "type": "`$STRING`"
             },
             {
@@ -552,6 +571,7 @@
                 }
               },
               "req": false,
+              "short": "The Partner's name.",
               "type": "`$STRING`"
             },
             {
@@ -564,24 +584,28 @@
                 }
               },
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reference",
               "req": false,
+              "short": "The Partner's reference string.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "verificationPhrase",
               "req": false,
+              "short": "The verification phrase is a message that the Partner creates.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "The number of times that this resource has been updated.",
               "type": "`$INTEGER`"
             }
           ],
@@ -861,24 +885,28 @@
               "active": true,
               "name": "accessMode",
               "req": false,
+              "short": "The Template's access mode.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "active",
               "req": false,
+              "short": "This property indicates if the Template is active or inactive.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "client",
               "req": false,
+              "short": "Reference to the associated Client resource.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "fieldTemplates",
               "req": false,
+              "short": "Field Template list items",
               "type": "`$ARRAY`",
               "union": {
                 "branches": 9,
@@ -890,12 +918,14 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier of newly added element.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The Template's name.",
               "type": "`$STRING`"
             },
             {
@@ -908,24 +938,28 @@
               "active": true,
               "name": "partner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reference",
               "req": false,
+              "short": "The Template's unique reference.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The Template's type.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "The number of times that this resource has been updated.",
               "type": "`$INTEGER`"
             }
           ],
@@ -1269,78 +1303,91 @@
               "active": true,
               "name": "bfid",
               "req": false,
+              "short": "BFID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "client",
               "req": false,
+              "short": "Reference to the associated Client resource.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "completeDate",
               "req": false,
+              "short": "Timestamp from the beginning of the transaction.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "directPartner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "errCode",
               "req": false,
+              "short": "The error code that is sent in response to a failed decrypt API call.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "errMessage",
               "req": false,
+              "short": "The error messge that is sent in response to a failed decrypt API call.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "This resource's unique identifier.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "ipAddress",
               "req": false,
+              "short": "The IP address of the http client that makes the decrypt API call.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "messageId",
               "req": false,
+              "short": "Message ID.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "partner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reference",
               "req": false,
+              "short": "The reference property that the Client includes in the decrypt API call.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "success",
               "req": false,
+              "short": "The success indicator.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "templateId",
               "req": false,
+              "short": "The Template's unique identifier.",
               "type": "`$STRING`"
             }
           ],
@@ -1541,12 +1588,14 @@
               "active": true,
               "name": "billingId",
               "req": false,
+              "short": "The Partner's billing identifier.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "client",
               "req": false,
+              "short": "Reference to the associated Client resource.",
               "type": "`$OBJECT`"
             },
             {
@@ -1559,6 +1608,7 @@
               "active": true,
               "name": "directPartner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
@@ -1575,6 +1625,7 @@
                 }
               },
               "req": true,
+              "short": "The User's email address.",
               "type": "`$STRING`"
             },
             {
@@ -1591,18 +1642,21 @@
                 }
               },
               "req": true,
+              "short": "The User's name.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier of newly added element.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "isActive",
               "req": false,
+              "short": "This property indicates if the User account is active or disabled.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -1619,30 +1673,35 @@
                 }
               },
               "req": true,
+              "short": "The User's Surname.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "mid",
               "req": false,
+              "short": "Some Partners will have an merchant ids on their own software offerings.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The Partner's name.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "parent",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "partner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
@@ -1659,18 +1718,21 @@
                 }
               },
               "req": true,
+              "short": "The User's phone number without dashes, spaces, or brackets (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reference",
               "req": false,
+              "short": "The Partner's reference string.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sendWelcomeEmail",
               "req": false,
+              "short": "If this property is set to 'true' the newly created user will be sent a welcome email.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -1687,6 +1749,7 @@
                 }
               },
               "req": true,
+              "short": "The User's unique username.",
               "type": "`$STRING`"
             },
             {
@@ -1703,18 +1766,21 @@
                 }
               },
               "req": true,
+              "short": "Reference to the associated User Role.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "verificationPhrase",
               "req": false,
+              "short": "The verification phrase is a message that the Partner creates.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "The number of times that this resource has been updated.",
               "type": "`$INTEGER`"
             }
           ],
@@ -2446,12 +2512,14 @@
               "active": true,
               "name": "client",
               "req": false,
+              "short": "Reference to the associated Client resource.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "Creation timestamp in ISO 8601 format.",
               "type": "`$STRING`"
             },
             {
@@ -2470,6 +2538,7 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "This resource's unique identifier.",
               "type": "`$INTEGER`"
             },
             {
@@ -2488,12 +2557,14 @@
               "active": true,
               "name": "modified",
               "req": false,
+              "short": "Last modified timestamp.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "partner",
               "req": false,
+              "short": "Reference to the associated Partner.",
               "type": "`$OBJECT`"
             },
             {
@@ -2512,12 +2583,14 @@
               "active": true,
               "name": "userRole",
               "req": false,
+              "short": "Reference to the associated User Role.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "The number of times that this resource has been updated.",
               "type": "`$INTEGER`"
             }
           ],
@@ -2573,6 +2646,7 @@
       "feature": {
         "test": {
           "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
@@ -2633,6 +2707,8 @@
             }
           },
           "name": "test",
+          "origname": "",
+          "package": "@voxgig/sdkgen",
           "target": {
             "c": {
               "deps": {}
@@ -2659,9 +2735,6 @@
               "deps": {}
             },
             "go-mcp": {
-              "deps": {}
-            },
-            "haskell": {
               "deps": {}
             },
             "java": {
@@ -3145,6 +3218,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3164,12 +3238,14 @@
             "path": ""
           },
           "name": "c",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3203,6 +3279,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": ";"
           },
@@ -3219,12 +3296,14 @@
             "path": ""
           },
           "name": "clojure",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3258,6 +3337,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3276,12 +3356,14 @@
             "path": ""
           },
           "name": "cpp",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3334,12 +3416,14 @@
             "path": ""
           },
           "name": "csharp",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3373,6 +3457,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3389,12 +3474,14 @@
             "path": ""
           },
           "name": "dart",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3428,6 +3515,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -3444,12 +3532,14 @@
             "path": ""
           },
           "name": "elixir",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3483,6 +3573,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3501,12 +3592,14 @@
             "path": ""
           },
           "name": "go",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3540,6 +3633,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3556,12 +3650,14 @@
             "path": ""
           },
           "name": "go-cli",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -3611,6 +3707,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3627,12 +3724,14 @@
             "path": ""
           },
           "name": "go-mcp",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -3676,84 +3775,13 @@
           },
           "title": "Go MCP server"
         },
-        "haskell": {
-          "active": true,
-          "author": {
-            "name": "",
-            "url": ""
-          },
-          "comment": {
-            "line": "--"
-          },
-          "deps": {},
-          "ext": "hs",
-          "feature": {
-            "fullset": [],
-            "trim": false
-          },
-          "module": {
-            "goversion": "",
-            "name": "bluefin-shieldconex-mgmt",
-            "package": "",
-            "path": ""
-          },
-          "name": "haskell",
-          "output": {
-            "adopt": false,
-            "path": "",
-            "repo": "",
-            "sdkrel": ""
-          },
-          "phase": {
-            "agentguide": {
-              "active": true
-            },
-            "entity": {
-              "active": false
-            },
-            "feature": {
-              "active": false
-            },
-            "readme": {
-              "active": true
-            },
-            "test": {
-              "active": true
-            }
-          },
-          "publish": {
-            "registry": {
-              "active": false,
-              "name": "hackage",
-              "package": "",
-              "state": "pending",
-              "url": "https://hackage.haskell.org",
-              "vault": {
-                "alias": "hackage",
-                "env": "HACKAGE_TOKEN",
-                "recipe": ""
-              }
-            },
-            "tag": {
-              "active": true,
-              "prefix": "",
-              "vault": {
-                "alias": "github",
-                "recipe": "github"
-              },
-              "via": "port"
-            },
-            "version": "0.0.1"
-          },
-          "srcfeature": false,
-          "title": "Haskell"
-        },
         "java": {
           "active": true,
           "author": {
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3772,12 +3800,14 @@
             "path": ""
           },
           "name": "java",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3811,6 +3841,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3833,12 +3864,14 @@
             "path": ""
           },
           "name": "js",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3871,6 +3904,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -3889,12 +3923,14 @@
             "path": ""
           },
           "name": "kotlin",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3928,6 +3964,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "--"
           },
@@ -3950,12 +3987,14 @@
             "path": ""
           },
           "name": "lua",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -3989,6 +4028,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -4005,12 +4045,14 @@
             "path": ""
           },
           "name": "ocaml",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4044,6 +4086,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -4060,12 +4103,14 @@
             "path": ""
           },
           "name": "perl",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4099,6 +4144,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -4115,12 +4161,14 @@
             "path": ""
           },
           "name": "php",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4154,6 +4202,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -4176,12 +4225,14 @@
             "path": ""
           },
           "name": "py",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4215,6 +4266,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -4242,12 +4294,14 @@
             "path": ""
           },
           "name": "rb",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4281,6 +4335,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -4305,12 +4360,14 @@
             "path": ""
           },
           "name": "rust",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4344,6 +4401,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -4360,12 +4418,14 @@
             "path": ""
           },
           "name": "scala",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4418,12 +4478,14 @@
             "path": ""
           },
           "name": "swift",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4490,12 +4552,14 @@
             "path": ""
           },
           "name": "ts",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -4528,6 +4592,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -4544,12 +4609,14 @@
             "path": ""
           },
           "name": "zig",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,

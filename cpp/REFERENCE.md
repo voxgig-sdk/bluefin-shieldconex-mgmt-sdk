@@ -115,17 +115,17 @@ auto client = client->client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `std::string` | No |  |
+| `billingId` | `std::string` | No | Billing ID |
 | `contact` | `std::map<std::string, Value>` | No |  |
-| `created` | `std::string` | No |  |
-| `directPartner` | `std::map<std::string, Value>` | No |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `std::string` | No |  |
-| `modified` | `std::string` | No |  |
-| `name` | `std::string` | No |  |
-| `partner` | `std::map<std::string, Value>` | No |  |
-| `version` | `int64_t` | No |  |
+| `created` | `std::string` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `std::string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `std::string` | No | Last modified timestamp. |
+| `name` | `std::string` | No | The Client's name. |
+| `partner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -212,8 +212,8 @@ auto clone = client->clone();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int64_t` | No |  |
-| `name` | `std::string` | No |  |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `name` | `std::string` | No | Name of Template |
 
 ### Operations
 
@@ -258,17 +258,17 @@ auto partner = client->partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `std::string` | No |  |
+| `billingId` | `std::string` | No | The Partner's billing identifier. |
 | `contact` | `std::map<std::string, Value>` | No |  |
-| `created` | `std::string` | No |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `std::string` | No |  |
-| `name` | `std::string` | No |  |
-| `parent` | `std::map<std::string, Value>` | No |  |
-| `reference` | `std::string` | No |  |
-| `verificationPhrase` | `std::string` | No |  |
-| `version` | `int64_t` | No |  |
+| `created` | `std::string` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `std::string` | No | Last modified timestamp. |
+| `name` | `std::string` | No | The Partner's name. |
+| `parent` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `reference` | `std::string` | No | The Partner's reference string. |
+| `verificationPhrase` | `std::string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -347,17 +347,17 @@ auto template_ = client->template_();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Value` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `std::map<std::string, Value>` | No |  |
-| `fieldTemplates` | `std::vector<Value>` | No |  |
-| `id` | `int64_t` | No |  |
-| `name` | `std::string` | No |  |
+| `accessMode` | `Value` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `std::map<std::string, Value>` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `std::vector<Value>` | No | Field Template list items |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `name` | `std::string` | No | The Template's name. |
 | `options` | `std::map<std::string, Value>` | No |  |
-| `partner` | `std::map<std::string, Value>` | No |  |
-| `reference` | `std::string` | No |  |
-| `type` | `std::string` | No |  |
-| `version` | `int64_t` | No |  |
+| `partner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `reference` | `std::string` | No | The Template's unique reference. |
+| `type` | `std::string` | No | The Template's type. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -428,19 +428,19 @@ auto transaction = client->transaction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `std::string` | No |  |
-| `client` | `std::map<std::string, Value>` | No |  |
-| `completeDate` | `std::string` | No |  |
-| `directPartner` | `std::map<std::string, Value>` | No |  |
-| `errCode` | `std::string` | No |  |
-| `errMessage` | `std::string` | No |  |
-| `id` | `int64_t` | No |  |
-| `ipAddress` | `std::string` | No |  |
-| `messageId` | `std::string` | No |  |
-| `partner` | `std::map<std::string, Value>` | No |  |
-| `reference` | `std::string` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `std::string` | No |  |
+| `bfid` | `std::string` | No | BFID |
+| `client` | `std::map<std::string, Value>` | No | Reference to the associated Client resource. |
+| `completeDate` | `std::string` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `errCode` | `std::string` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `std::string` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int64_t` | No | This resource's unique identifier. |
+| `ipAddress` | `std::string` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `std::string` | No | Message ID. |
+| `partner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `reference` | `std::string` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `std::string` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -494,26 +494,26 @@ auto update_result = client->update_result();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `std::string` | No |  |
-| `client` | `std::map<std::string, Value>` | No |  |
+| `billingId` | `std::string` | No | The Partner's billing identifier. |
+| `client` | `std::map<std::string, Value>` | No | Reference to the associated Client resource. |
 | `contact` | `std::map<std::string, Value>` | Yes |  |
-| `directPartner` | `std::map<std::string, Value>` | No |  |
-| `email` | `std::string` | Yes |  |
-| `firstName` | `std::string` | Yes |  |
-| `id` | `int64_t` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `std::string` | Yes |  |
-| `mid` | `std::string` | No |  |
-| `name` | `std::string` | No |  |
-| `parent` | `std::map<std::string, Value>` | No |  |
-| `partner` | `std::map<std::string, Value>` | No |  |
-| `phone` | `std::string` | Yes |  |
-| `reference` | `std::string` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `std::string` | Yes |  |
-| `userRole` | `std::map<std::string, Value>` | Yes |  |
-| `verificationPhrase` | `std::string` | No |  |
-| `version` | `int64_t` | No |  |
+| `directPartner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `email` | `std::string` | Yes | The User's email address. |
+| `firstName` | `std::string` | Yes | The User's name. |
+| `id` | `int64_t` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `std::string` | Yes | The User's Surname. |
+| `mid` | `std::string` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `std::string` | No | The Partner's name. |
+| `parent` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `partner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
+| `phone` | `std::string` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `std::string` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `std::string` | Yes | The User's unique username. |
+| `userRole` | `std::map<std::string, Value>` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `std::string` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -611,19 +611,19 @@ auto user = client->user();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `std::map<std::string, Value>` | No |  |
-| `created` | `std::string` | No |  |
+| `client` | `std::map<std::string, Value>` | No | Reference to the associated Client resource. |
+| `created` | `std::string` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `std::string` | No |  |
 | `firstName` | `std::string` | No |  |
-| `id` | `int64_t` | No |  |
+| `id` | `int64_t` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `std::string` | No |  |
-| `modified` | `std::string` | No |  |
-| `partner` | `std::map<std::string, Value>` | No |  |
+| `modified` | `std::string` | No | Last modified timestamp. |
+| `partner` | `std::map<std::string, Value>` | No | Reference to the associated Partner. |
 | `phone` | `std::string` | No |  |
 | `userName` | `std::string` | No |  |
-| `userRole` | `std::map<std::string, Value>` | No |  |
-| `version` | `int64_t` | No |  |
+| `userRole` | `std::map<std::string, Value>` | No | Reference to the associated User Role. |
+| `version` | `int64_t` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

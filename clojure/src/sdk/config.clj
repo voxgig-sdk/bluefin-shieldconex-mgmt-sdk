@@ -9,6 +9,7 @@
         "fields" (vs/jt
           (vs/jm
             "name" "billingId"
+            "short" "Billing ID"
             "type" "`$STRING`")
           (vs/jm
             "name" "contact"
@@ -22,6 +23,7 @@
             "type" "`$OBJECT`")
           (vs/jm
             "name" "created"
+            "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
           (vs/jm
             "name" "directPartner"
@@ -29,18 +31,23 @@
               "create" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "id"
+            "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "isActive"
+            "short" "This property indicates if the Client account is active or disabled."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "mid"
+            "short" "Some Partners will have an merchant ids on their own software offerings."
             "type" "`$STRING`")
           (vs/jm
             "name" "modified"
+            "short" "Last modified timestamp."
             "type" "`$STRING`")
           (vs/jm
             "name" "name"
@@ -48,12 +55,15 @@
               "create" (vs/jm
                 "req" true
                 "type" "`$STRING`"))
+            "short" "The Client's name."
             "type" "`$STRING`")
           (vs/jm
             "name" "partner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "version"
+            "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
         "name" "client"
         "op" (vs/jm
@@ -264,9 +274,11 @@
         "fields" (vs/jt
           (vs/jm
             "name" "id"
+            "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "name"
+            "short" "Name of Template"
             "type" "`$STRING`"))
         "name" "clone"
         "op" (vs/jm
@@ -307,6 +319,7 @@
         "fields" (vs/jt
           (vs/jm
             "name" "billingId"
+            "short" "The Partner's billing identifier."
             "type" "`$STRING`")
           (vs/jm
             "name" "contact"
@@ -320,15 +333,19 @@
             "type" "`$OBJECT`")
           (vs/jm
             "name" "created"
+            "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
           (vs/jm
             "name" "id"
+            "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "isActive"
+            "short" "This property indicates if the Parter account is active or disabled."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "modified"
+            "short" "Last modified timestamp."
             "type" "`$STRING`")
           (vs/jm
             "name" "name"
@@ -336,6 +353,7 @@
               "create" (vs/jm
                 "req" true
                 "type" "`$STRING`"))
+            "short" "The Partner's name."
             "type" "`$STRING`")
           (vs/jm
             "name" "parent"
@@ -343,15 +361,19 @@
               "create" (vs/jm
                 "req" true
                 "type" "`$OBJECT`"))
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "reference"
+            "short" "The Partner's reference string."
             "type" "`$STRING`")
           (vs/jm
             "name" "verificationPhrase"
+            "short" "The verification phrase is a message that the Partner creates."
             "type" "`$STRING`")
           (vs/jm
             "name" "version"
+            "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
         "name" "partner"
         "op" (vs/jm
@@ -542,15 +564,19 @@
         "fields" (vs/jt
           (vs/jm
             "name" "accessMode"
+            "short" "The Template's access mode."
             "type" "`$ANY`")
           (vs/jm
             "name" "active"
+            "short" "This property indicates if the Template is active or inactive."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "client"
+            "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "fieldTemplates"
+            "short" "Field Template list items"
             "type" "`$ARRAY`"
             "union" (vs/jm
               "branches" 9
@@ -558,24 +584,30 @@
               "depth" 1))
           (vs/jm
             "name" "id"
+            "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "name"
+            "short" "The Template's name."
             "type" "`$STRING`")
           (vs/jm
             "name" "options"
             "type" "`$OBJECT`")
           (vs/jm
             "name" "partner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "reference"
+            "short" "The Template's unique reference."
             "type" "`$STRING`")
           (vs/jm
             "name" "type"
+            "short" "The Template's type."
             "type" "`$STRING`")
           (vs/jm
             "name" "version"
+            "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
         "name" "template"
         "op" (vs/jm
@@ -804,42 +836,55 @@
         "fields" (vs/jt
           (vs/jm
             "name" "bfid"
+            "short" "BFID"
             "type" "`$STRING`")
           (vs/jm
             "name" "client"
+            "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "completeDate"
+            "short" "Timestamp from the beginning of the transaction."
             "type" "`$STRING`")
           (vs/jm
             "name" "directPartner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "errCode"
+            "short" "The error code that is sent in response to a failed decrypt API call."
             "type" "`$STRING`")
           (vs/jm
             "name" "errMessage"
+            "short" "The error messge that is sent in response to a failed decrypt API call."
             "type" "`$STRING`")
           (vs/jm
             "name" "id"
+            "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "ipAddress"
+            "short" "The IP address of the http client that makes the decrypt API call."
             "type" "`$STRING`")
           (vs/jm
             "name" "messageId"
+            "short" "Message ID."
             "type" "`$STRING`")
           (vs/jm
             "name" "partner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "reference"
+            "short" "The reference property that the Client includes in the decrypt API call."
             "type" "`$STRING`")
           (vs/jm
             "name" "success"
+            "short" "The success indicator."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "templateId"
+            "short" "The Template's unique identifier."
             "type" "`$STRING`"))
         "name" "transaction"
         "op" (vs/jm
@@ -966,9 +1011,11 @@
         "fields" (vs/jt
           (vs/jm
             "name" "billingId"
+            "short" "The Partner's billing identifier."
             "type" "`$STRING`")
           (vs/jm
             "name" "client"
+            "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "contact"
@@ -976,6 +1023,7 @@
             "type" "`$OBJECT`")
           (vs/jm
             "name" "directPartner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "email"
@@ -985,6 +1033,7 @@
               "update" (vs/jm
                 "type" "`$STRING`"))
             "req" true
+            "short" "The User's email address."
             "type" "`$STRING`")
           (vs/jm
             "name" "firstName"
@@ -994,12 +1043,15 @@
               "update" (vs/jm
                 "type" "`$STRING`"))
             "req" true
+            "short" "The User's name."
             "type" "`$STRING`")
           (vs/jm
             "name" "id"
+            "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "isActive"
+            "short" "This property indicates if the User account is active or disabled."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "lastName"
@@ -1009,18 +1061,23 @@
               "update" (vs/jm
                 "type" "`$STRING`"))
             "req" true
+            "short" "The User's Surname."
             "type" "`$STRING`")
           (vs/jm
             "name" "mid"
+            "short" "Some Partners will have an merchant ids on their own software offerings."
             "type" "`$STRING`")
           (vs/jm
             "name" "name"
+            "short" "The Partner's name."
             "type" "`$STRING`")
           (vs/jm
             "name" "parent"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "partner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "phone"
@@ -1030,12 +1087,15 @@
               "update" (vs/jm
                 "type" "`$STRING`"))
             "req" true
+            "short" "The User's phone number without dashes, spaces, or brackets (e.g."
             "type" "`$STRING`")
           (vs/jm
             "name" "reference"
+            "short" "The Partner's reference string."
             "type" "`$STRING`")
           (vs/jm
             "name" "sendWelcomeEmail"
+            "short" "If this property is set to 'true' the newly created user will be sent a welcome email."
             "type" "`$BOOLEAN`")
           (vs/jm
             "name" "userName"
@@ -1045,6 +1105,7 @@
               "update" (vs/jm
                 "type" "`$STRING`"))
             "req" true
+            "short" "The User's unique username."
             "type" "`$STRING`")
           (vs/jm
             "name" "userRole"
@@ -1054,12 +1115,15 @@
               "update" (vs/jm
                 "type" "`$OBJECT`"))
             "req" true
+            "short" "Reference to the associated User Role."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "verificationPhrase"
+            "short" "The verification phrase is a message that the Partner creates."
             "type" "`$STRING`")
           (vs/jm
             "name" "version"
+            "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
         "name" "update_result"
         "op" (vs/jm
@@ -1547,9 +1611,11 @@
         "fields" (vs/jt
           (vs/jm
             "name" "client"
+            "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "created"
+            "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
           (vs/jm
             "name" "email"
@@ -1559,6 +1625,7 @@
             "type" "`$STRING`")
           (vs/jm
             "name" "id"
+            "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
           (vs/jm
             "name" "isActive"
@@ -1568,9 +1635,11 @@
             "type" "`$STRING`")
           (vs/jm
             "name" "modified"
+            "short" "Last modified timestamp."
             "type" "`$STRING`")
           (vs/jm
             "name" "partner"
+            "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "phone"
@@ -1580,9 +1649,11 @@
             "type" "`$STRING`")
           (vs/jm
             "name" "userRole"
+            "short" "Reference to the associated User Role."
             "type" "`$OBJECT`")
           (vs/jm
             "name" "version"
+            "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
         "name" "user"
         "op" (vs/jm

@@ -111,17 +111,17 @@ final client_ = client.Client();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `Map<String, dynamic>` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `Map<String, dynamic>` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `Map<String, dynamic>` | No |  |
-| `version` | `int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -208,8 +208,8 @@ final clone = client.Clone();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `String` | No |  |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -254,17 +254,17 @@ final partner = client.Partner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `Map<String, dynamic>` | No |  |
-| `created` | `String` | No |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Map<String, dynamic>` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `isActive` | `bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -343,17 +343,17 @@ final template = client.Template();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `dynamic` | No |  |
-| `active` | `bool` | No |  |
-| `client` | `Map<String, dynamic>` | No |  |
-| `fieldTemplates` | `List<dynamic>` | No |  |
-| `id` | `int` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `dynamic` | No | The Template's access mode. |
+| `active` | `bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Map<String, dynamic>` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `List<dynamic>` | No | Field Template list items |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `Map<String, dynamic>` | No |  |
-| `partner` | `Map<String, dynamic>` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `int` | No |  |
+| `partner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -424,19 +424,19 @@ final transaction = client.Transaction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `Map<String, dynamic>` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `Map<String, dynamic>` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `int` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `Map<String, dynamic>` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `bool` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `Map<String, dynamic>` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -490,26 +490,26 @@ final update_result = client.UpdateResult();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `Map<String, dynamic>` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `Map<String, dynamic>` | No | Reference to the associated Client resource. |
 | `contact` | `Map<String, dynamic>` | Yes |  |
-| `directPartner` | `Map<String, dynamic>` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `int` | No |  |
-| `isActive` | `bool` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Map<String, dynamic>` | No |  |
-| `partner` | `Map<String, dynamic>` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `bool` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `Map<String, dynamic>` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `int` | No |  |
+| `directPartner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `int` | No | Unique identifier of newly added element. |
+| `isActive` | `bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `partner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `Map<String, dynamic>` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -607,19 +607,19 @@ final user = client.User();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Map<String, dynamic>` | No |  |
-| `created` | `String` | No |  |
+| `client` | `Map<String, dynamic>` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `int` | No |  |
+| `id` | `int` | No | This resource's unique identifier. |
 | `isActive` | `bool` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `Map<String, dynamic>` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `Map<String, dynamic>` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `Map<String, dynamic>` | No |  |
-| `version` | `int` | No |  |
+| `userRole` | `Map<String, dynamic>` | No | Reference to the associated User Role. |
+| `version` | `int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 

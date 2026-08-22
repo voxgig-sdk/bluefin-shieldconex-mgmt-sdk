@@ -12,6 +12,9 @@ public static class SdkConfig
             ["main"] = new Dictionary<string, object?>
             {
                 ["name"] = "BluefinShieldconexMgmt",
+                ["slug"] = "bluefin-shieldconex-mgmt",
+                ["version"] = "0.0.1",
+                ["target"] = "csharp",
             },
             ["feature"] = new Dictionary<string, object?>
             {
@@ -54,6 +57,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "billingId",
+                            ["short"] = "Billing ID",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -77,6 +81,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "created",
+                            ["short"] = "Creation timestamp in ISO 8601 format.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -90,26 +95,31 @@ public static class SdkConfig
                                     ["type"] = "`$OBJECT`",
                                 },
                             },
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "This resource's unique identifier.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "isActive",
+                            ["short"] = "This property indicates if the Client account is active or disabled.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "mid",
+                            ["short"] = "Some Partners will have an merchant ids on their own software offerings.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "modified",
+                            ["short"] = "Last modified timestamp.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -123,16 +133,19 @@ public static class SdkConfig
                                     ["type"] = "`$STRING`",
                                 },
                             },
+                            ["short"] = "The Client's name.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "partner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "version",
+                            ["short"] = "The number of times that this resource has been updated.",
                             ["type"] = "`$INTEGER`",
                         },
                     },
@@ -463,11 +476,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "Unique identifier of newly added element.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "name",
+                            ["short"] = "Name of Template",
                             ["type"] = "`$STRING`",
                         },
                     },
@@ -546,6 +561,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "billingId",
+                            ["short"] = "The Partner's billing identifier.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -569,21 +585,25 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "created",
+                            ["short"] = "Creation timestamp in ISO 8601 format.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "This resource's unique identifier.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "isActive",
+                            ["short"] = "This property indicates if the Parter account is active or disabled.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "modified",
+                            ["short"] = "Last modified timestamp.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -597,6 +617,7 @@ public static class SdkConfig
                                     ["type"] = "`$STRING`",
                                 },
                             },
+                            ["short"] = "The Partner's name.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -610,21 +631,25 @@ public static class SdkConfig
                                     ["type"] = "`$OBJECT`",
                                 },
                             },
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "reference",
+                            ["short"] = "The Partner's reference string.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "verificationPhrase",
+                            ["short"] = "The verification phrase is a message that the Partner creates.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "version",
+                            ["short"] = "The number of times that this resource has been updated.",
                             ["type"] = "`$INTEGER`",
                         },
                     },
@@ -917,21 +942,25 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "accessMode",
+                            ["short"] = "The Template's access mode.",
                             ["type"] = "`$ANY`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "active",
+                            ["short"] = "This property indicates if the Template is active or inactive.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "client",
+                            ["short"] = "Reference to the associated Client resource.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "fieldTemplates",
+                            ["short"] = "Field Template list items",
                             ["type"] = "`$ARRAY`",
                             ["union"] = new Dictionary<string, object?>
                             {
@@ -943,11 +972,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "Unique identifier of newly added element.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "name",
+                            ["short"] = "The Template's name.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -958,21 +989,25 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "partner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "reference",
+                            ["short"] = "The Template's unique reference.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "type",
+                            ["short"] = "The Template's type.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "version",
+                            ["short"] = "The number of times that this resource has been updated.",
                             ["type"] = "`$INTEGER`",
                         },
                     },
@@ -1329,66 +1364,79 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "bfid",
+                            ["short"] = "BFID",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "client",
+                            ["short"] = "Reference to the associated Client resource.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "completeDate",
+                            ["short"] = "Timestamp from the beginning of the transaction.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "directPartner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "errCode",
+                            ["short"] = "The error code that is sent in response to a failed decrypt API call.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "errMessage",
+                            ["short"] = "The error messge that is sent in response to a failed decrypt API call.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "This resource's unique identifier.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "ipAddress",
+                            ["short"] = "The IP address of the http client that makes the decrypt API call.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "messageId",
+                            ["short"] = "Message ID.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "partner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "reference",
+                            ["short"] = "The reference property that the Client includes in the decrypt API call.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "success",
+                            ["short"] = "The success indicator.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "templateId",
+                            ["short"] = "The Template's unique identifier.",
                             ["type"] = "`$STRING`",
                         },
                     },
@@ -1589,11 +1637,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "billingId",
+                            ["short"] = "The Partner's billing identifier.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "client",
+                            ["short"] = "Reference to the associated Client resource.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
@@ -1605,6 +1655,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "directPartner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
@@ -1622,6 +1673,7 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "The User's email address.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -1639,16 +1691,19 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "The User's name.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "Unique identifier of newly added element.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "isActive",
+                            ["short"] = "This property indicates if the User account is active or disabled.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
@@ -1666,26 +1721,31 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "The User's Surname.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "mid",
+                            ["short"] = "Some Partners will have an merchant ids on their own software offerings.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "name",
+                            ["short"] = "The Partner's name.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "parent",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "partner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
@@ -1703,16 +1763,19 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "The User's phone number without dashes, spaces, or brackets (e.g.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "reference",
+                            ["short"] = "The Partner's reference string.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "sendWelcomeEmail",
+                            ["short"] = "If this property is set to 'true' the newly created user will be sent a welcome email.",
                             ["type"] = "`$BOOLEAN`",
                         },
                         new Dictionary<string, object?>
@@ -1730,6 +1793,7 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "The User's unique username.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -1747,16 +1811,19 @@ public static class SdkConfig
                                 },
                             },
                             ["req"] = true,
+                            ["short"] = "Reference to the associated User Role.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "verificationPhrase",
+                            ["short"] = "The verification phrase is a message that the Partner creates.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "version",
+                            ["short"] = "The number of times that this resource has been updated.",
                             ["type"] = "`$INTEGER`",
                         },
                     },
@@ -2480,11 +2547,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "client",
+                            ["short"] = "Reference to the associated Client resource.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "created",
+                            ["short"] = "Creation timestamp in ISO 8601 format.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
@@ -2500,6 +2569,7 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "id",
+                            ["short"] = "This resource's unique identifier.",
                             ["type"] = "`$INTEGER`",
                         },
                         new Dictionary<string, object?>
@@ -2515,11 +2585,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "modified",
+                            ["short"] = "Last modified timestamp.",
                             ["type"] = "`$STRING`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "partner",
+                            ["short"] = "Reference to the associated Partner.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
@@ -2535,11 +2607,13 @@ public static class SdkConfig
                         new Dictionary<string, object?>
                         {
                             ["name"] = "userRole",
+                            ["short"] = "Reference to the associated User Role.",
                             ["type"] = "`$OBJECT`",
                         },
                         new Dictionary<string, object?>
                         {
                             ["name"] = "version",
+                            ["short"] = "The number of times that this resource has been updated.",
                             ["type"] = "`$INTEGER`",
                         },
                     },
@@ -2599,6 +2673,18 @@ public static class SdkConfig
                 },
             },
         };
+    }
+
+    private static readonly Lazy<Dictionary<string, object?>> SharedConfigVal =
+        new(MakeConfig);
+
+    // The process-wide config, built once on first use.
+    //
+    // The returned dictionary is SHARED: treat it as read-only. Callers that
+    // need to mutate should use MakeConfig, which always returns a fresh copy.
+    public static Dictionary<string, object?> SharedConfig()
+    {
+        return SharedConfigVal.Value;
     }
 
     public static Feature.BaseFeature MakeFeature(string name)

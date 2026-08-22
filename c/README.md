@@ -303,17 +303,17 @@ On error, `ok` is `false` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | Billing ID |
 | `contact` |  |
-| `created` |  |
-| `directPartner` |  |
-| `id` |  |
-| `isActive` |  |
-| `mid` |  |
-| `modified` |  |
-| `name` |  |
-| `partner` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | Reference to the associated Partner. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Client account is active or disabled. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | Last modified timestamp. |
+| `name` | The Client's name. |
+| `partner` | Reference to the associated Partner. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -323,8 +323,8 @@ API path: `/clients`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
+| `id` | Unique identifier of newly added element. |
+| `name` | Name of Template |
 
 Operations: Create.
 
@@ -334,17 +334,17 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | The Partner's billing identifier. |
 | `contact` |  |
-| `created` |  |
-| `id` |  |
-| `isActive` |  |
-| `modified` |  |
-| `name` |  |
-| `parent` |  |
-| `reference` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Parter account is active or disabled. |
+| `modified` | Last modified timestamp. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `reference` | The Partner's reference string. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load.
 
@@ -354,17 +354,17 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `accessMode` |  |
-| `active` |  |
-| `client` |  |
-| `fieldTemplates` |  |
-| `id` |  |
-| `name` |  |
+| `accessMode` | The Template's access mode. |
+| `active` | This property indicates if the Template is active or inactive. |
+| `client` | Reference to the associated Client resource. |
+| `fieldTemplates` | Field Template list items |
+| `id` | Unique identifier of newly added element. |
+| `name` | The Template's name. |
 | `options` |  |
-| `partner` |  |
-| `reference` |  |
-| `type` |  |
-| `version` |  |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The Template's unique reference. |
+| `type` | The Template's type. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -374,19 +374,19 @@ API path: `/templates`
 
 | Field | Description |
 | --- | --- |
-| `bfid` |  |
-| `client` |  |
-| `completeDate` |  |
-| `directPartner` |  |
-| `errCode` |  |
-| `errMessage` |  |
-| `id` |  |
-| `ipAddress` |  |
-| `messageId` |  |
-| `partner` |  |
-| `reference` |  |
-| `success` |  |
-| `templateId` |  |
+| `bfid` | BFID |
+| `client` | Reference to the associated Client resource. |
+| `completeDate` | Timestamp from the beginning of the transaction. |
+| `directPartner` | Reference to the associated Partner. |
+| `errCode` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | This resource's unique identifier. |
+| `ipAddress` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | Message ID. |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The reference property that the Client includes in the decrypt API call. |
+| `success` | The success indicator. |
+| `templateId` | The Template's unique identifier. |
 
 Operations: List, Load.
 
@@ -396,26 +396,26 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
-| `client` |  |
+| `billingId` | The Partner's billing identifier. |
+| `client` | Reference to the associated Client resource. |
 | `contact` |  |
-| `directPartner` |  |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `isActive` |  |
-| `lastName` |  |
-| `mid` |  |
-| `name` |  |
-| `parent` |  |
-| `partner` |  |
-| `phone` |  |
-| `reference` |  |
-| `sendWelcomeEmail` |  |
-| `userName` |  |
-| `userRole` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `directPartner` | Reference to the associated Partner. |
+| `email` | The User's email address. |
+| `firstName` | The User's name. |
+| `id` | Unique identifier of newly added element. |
+| `isActive` | This property indicates if the User account is active or disabled. |
+| `lastName` | The User's Surname. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `partner` | Reference to the associated Partner. |
+| `phone` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | The Partner's reference string. |
+| `sendWelcomeEmail` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | The User's unique username. |
+| `userRole` | Reference to the associated User Role. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Update.
 
@@ -425,19 +425,19 @@ API path: `/users`
 
 | Field | Description |
 | --- | --- |
-| `client` |  |
-| `created` |  |
+| `client` | Reference to the associated Client resource. |
+| `created` | Creation timestamp in ISO 8601 format. |
 | `email` |  |
 | `firstName` |  |
-| `id` |  |
+| `id` | This resource's unique identifier. |
 | `isActive` |  |
 | `lastName` |  |
-| `modified` |  |
-| `partner` |  |
+| `modified` | Last modified timestamp. |
+| `partner` | Reference to the associated Partner. |
 | `phone` |  |
 | `userName` |  |
-| `userRole` |  |
-| `version` |  |
+| `userRole` | Reference to the associated User Role. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Load.
 
@@ -465,17 +465,17 @@ Create an instance: `Entity* client = bluefinshieldconexmgmt_client(client, NULL
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `char*` |  |
+| `billingId` | `char*` | Billing ID |
 | `contact` | `voxgig_value* (map)` |  |
-| `created` | `char*` |  |
-| `directPartner` | `voxgig_value* (map)` |  |
-| `id` | `int64_t` |  |
-| `isActive` | `bool` |  |
-| `mid` | `char*` |  |
-| `modified` | `char*` |  |
-| `name` | `char*` |  |
-| `partner` | `voxgig_value* (map)` |  |
-| `version` | `int64_t` |  |
+| `created` | `char*` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `id` | `int64_t` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Client account is active or disabled. |
+| `mid` | `char*` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `char*` | Last modified timestamp. |
+| `name` | `char*` | The Client's name. |
+| `partner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `version` | `int64_t` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -513,8 +513,8 @@ Create an instance: `Entity* clone = bluefinshieldconexmgmt_clone(client, NULL);
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int64_t` |  |
-| `name` | `char*` |  |
+| `id` | `int64_t` | Unique identifier of newly added element. |
+| `name` | `char*` | Name of Template |
 
 #### Example: Create
 
@@ -542,17 +542,17 @@ Create an instance: `Entity* partner = bluefinshieldconexmgmt_partner(client, NU
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `char*` |  |
+| `billingId` | `char*` | The Partner's billing identifier. |
 | `contact` | `voxgig_value* (map)` |  |
-| `created` | `char*` |  |
-| `id` | `int64_t` |  |
-| `isActive` | `bool` |  |
-| `modified` | `char*` |  |
-| `name` | `char*` |  |
-| `parent` | `voxgig_value* (map)` |  |
-| `reference` | `char*` |  |
-| `verificationPhrase` | `char*` |  |
-| `version` | `int64_t` |  |
+| `created` | `char*` | Creation timestamp in ISO 8601 format. |
+| `id` | `int64_t` | This resource's unique identifier. |
+| `isActive` | `bool` | This property indicates if the Parter account is active or disabled. |
+| `modified` | `char*` | Last modified timestamp. |
+| `name` | `char*` | The Partner's name. |
+| `parent` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `reference` | `char*` | The Partner's reference string. |
+| `verificationPhrase` | `char*` | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -593,17 +593,17 @@ Create an instance: `Entity* template = bluefinshieldconexmgmt_template(client, 
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessMode` | `voxgig_value*` |  |
-| `active` | `bool` |  |
-| `client` | `voxgig_value* (map)` |  |
-| `fieldTemplates` | `voxgig_value* (list)` |  |
-| `id` | `int64_t` |  |
-| `name` | `char*` |  |
+| `accessMode` | `voxgig_value*` | The Template's access mode. |
+| `active` | `bool` | This property indicates if the Template is active or inactive. |
+| `client` | `voxgig_value* (map)` | Reference to the associated Client resource. |
+| `fieldTemplates` | `voxgig_value* (list)` | Field Template list items |
+| `id` | `int64_t` | Unique identifier of newly added element. |
+| `name` | `char*` | The Template's name. |
 | `options` | `voxgig_value* (map)` |  |
-| `partner` | `voxgig_value* (map)` |  |
-| `reference` | `char*` |  |
-| `type` | `char*` |  |
-| `version` | `int64_t` |  |
+| `partner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `reference` | `char*` | The Template's unique reference. |
+| `type` | `char*` | The Template's type. |
+| `version` | `int64_t` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -642,19 +642,19 @@ Create an instance: `Entity* transaction = bluefinshieldconexmgmt_transaction(cl
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bfid` | `char*` |  |
-| `client` | `voxgig_value* (map)` |  |
-| `completeDate` | `char*` |  |
-| `directPartner` | `voxgig_value* (map)` |  |
-| `errCode` | `char*` |  |
-| `errMessage` | `char*` |  |
-| `id` | `int64_t` |  |
-| `ipAddress` | `char*` |  |
-| `messageId` | `char*` |  |
-| `partner` | `voxgig_value* (map)` |  |
-| `reference` | `char*` |  |
-| `success` | `bool` |  |
-| `templateId` | `char*` |  |
+| `bfid` | `char*` | BFID |
+| `client` | `voxgig_value* (map)` | Reference to the associated Client resource. |
+| `completeDate` | `char*` | Timestamp from the beginning of the transaction. |
+| `directPartner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `errCode` | `char*` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `char*` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `int64_t` | This resource's unique identifier. |
+| `ipAddress` | `char*` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `char*` | Message ID. |
+| `partner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `reference` | `char*` | The reference property that the Client includes in the decrypt API call. |
+| `success` | `bool` | The success indicator. |
+| `templateId` | `char*` | The Template's unique identifier. |
 
 #### Example: Load
 
@@ -687,26 +687,26 @@ Create an instance: `Entity* update_result = bluefinshieldconexmgmt_update_resul
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `char*` |  |
-| `client` | `voxgig_value* (map)` |  |
+| `billingId` | `char*` | The Partner's billing identifier. |
+| `client` | `voxgig_value* (map)` | Reference to the associated Client resource. |
 | `contact` | `voxgig_value* (map)` |  |
-| `directPartner` | `voxgig_value* (map)` |  |
-| `email` | `char*` |  |
-| `firstName` | `char*` |  |
-| `id` | `int64_t` |  |
-| `isActive` | `bool` |  |
-| `lastName` | `char*` |  |
-| `mid` | `char*` |  |
-| `name` | `char*` |  |
-| `parent` | `voxgig_value* (map)` |  |
-| `partner` | `voxgig_value* (map)` |  |
-| `phone` | `char*` |  |
-| `reference` | `char*` |  |
-| `sendWelcomeEmail` | `bool` |  |
-| `userName` | `char*` |  |
-| `userRole` | `voxgig_value* (map)` |  |
-| `verificationPhrase` | `char*` |  |
-| `version` | `int64_t` |  |
+| `directPartner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `email` | `char*` | The User's email address. |
+| `firstName` | `char*` | The User's name. |
+| `id` | `int64_t` | Unique identifier of newly added element. |
+| `isActive` | `bool` | This property indicates if the User account is active or disabled. |
+| `lastName` | `char*` | The User's Surname. |
+| `mid` | `char*` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `char*` | The Partner's name. |
+| `parent` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `partner` | `voxgig_value* (map)` | Reference to the associated Partner. |
+| `phone` | `char*` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `char*` | The Partner's reference string. |
+| `sendWelcomeEmail` | `bool` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `char*` | The User's unique username. |
+| `userRole` | `voxgig_value* (map)` | Reference to the associated User Role. |
+| `verificationPhrase` | `char*` | The verification phrase is a message that the Partner creates. |
+| `version` | `int64_t` | The number of times that this resource has been updated. |
 
 #### Example: List
 
@@ -745,19 +745,19 @@ Create an instance: `Entity* user = bluefinshieldconexmgmt_user(client, NULL);`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `client` | `voxgig_value* (map)` |  |
-| `created` | `char*` |  |
+| `client` | `voxgig_value* (map)` | Reference to the associated Client resource. |
+| `created` | `char*` | Creation timestamp in ISO 8601 format. |
 | `email` | `char*` |  |
 | `firstName` | `char*` |  |
-| `id` | `int64_t` |  |
+| `id` | `int64_t` | This resource's unique identifier. |
 | `isActive` | `bool` |  |
 | `lastName` | `char*` |  |
-| `modified` | `char*` |  |
-| `partner` | `voxgig_value* (map)` |  |
+| `modified` | `char*` | Last modified timestamp. |
+| `partner` | `voxgig_value* (map)` | Reference to the associated Partner. |
 | `phone` | `char*` |  |
 | `userName` | `char*` |  |
-| `userRole` | `voxgig_value* (map)` |  |
-| `version` | `int64_t` |  |
+| `userRole` | `voxgig_value* (map)` | Reference to the associated User Role. |
+| `version` | `int64_t` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
