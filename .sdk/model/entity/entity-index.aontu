@@ -1,9 +1,0 @@
-# Entity Models
-
-@"client.aontu"
-@"clone.aontu"
-@"partner.aontu"
-@"template.aontu"
-@"transaction.aontu"
-@"update_result.aontu"
-@"user.aontu"

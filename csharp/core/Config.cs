@@ -13,7 +13,7 @@ public static class SdkConfig
             {
                 ["name"] = "BluefinShieldconexMgmt",
                 ["slug"] = "bluefin-shieldconex-mgmt",
-                ["version"] = "0.0.1",
+                ["version"] = "0.1.1",
                 ["target"] = "csharp",
             },
             ["feature"] = new Dictionary<string, object?>
@@ -368,7 +368,7 @@ public static class SdkConfig
                                     ["transform"] = new Dictionary<string, object?>
                                     {
                                         ["req"] = "`reqdata`",
-                                        ["res"] = "`body`",
+                                        ["res"] = "`body.data`",
                                     },
                                 },
                             },
@@ -879,7 +879,7 @@ public static class SdkConfig
                                     ["transform"] = new Dictionary<string, object?>
                                     {
                                         ["req"] = "`reqdata`",
-                                        ["res"] = "`body`",
+                                        ["res"] = "`body.data`",
                                     },
                                 },
                             },
@@ -1256,7 +1256,7 @@ public static class SdkConfig
                                     ["transform"] = new Dictionary<string, object?>
                                     {
                                         ["req"] = "`reqdata`",
-                                        ["res"] = "`body`",
+                                        ["res"] = "`body.data`",
                                     },
                                 },
                             },
@@ -1563,7 +1563,7 @@ public static class SdkConfig
                                     ["transform"] = new Dictionary<string, object?>
                                     {
                                         ["req"] = "`reqdata`",
-                                        ["res"] = "`body`",
+                                        ["res"] = "`body.data`",
                                     },
                                 },
                             },
@@ -2017,7 +2017,7 @@ public static class SdkConfig
                                     ["transform"] = new Dictionary<string, object?>
                                     {
                                         ["req"] = "`reqdata`",
-                                        ["res"] = "`body`",
+                                        ["res"] = "`body.data`",
                                     },
                                 },
                             },

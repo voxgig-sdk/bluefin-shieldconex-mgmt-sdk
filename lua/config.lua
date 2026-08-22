@@ -8,7 +8,7 @@ local function make_config()
     main = {
       name = "BluefinShieldconexMgmt",
       slug = "bluefin-shieldconex-mgmt",
-      version = "0.0.1",
+      version = "0.1.1",
       target = "lua",
     },
     feature = {
@@ -299,7 +299,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
               },
             },
@@ -712,7 +712,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
               },
             },
@@ -1024,7 +1024,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
               },
             },
@@ -1274,7 +1274,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
               },
             },
@@ -1642,7 +1642,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
               },
             },

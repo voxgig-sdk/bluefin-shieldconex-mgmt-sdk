@@ -217,7 +217,7 @@
                     "take"))
                 "transform" (vs/jm
                   "req" "`reqdata`"
-                  "res" "`body`"))))
+                  "res" "`body.data`"))))
           "load" (vs/jm
             "input" "data"
             "name" "load"
@@ -532,7 +532,7 @@
                     "take"))
                 "transform" (vs/jm
                   "req" "`reqdata`"
-                  "res" "`body`"))))
+                  "res" "`body.data`"))))
           "load" (vs/jm
             "input" "data"
             "name" "load"
@@ -779,7 +779,7 @@
                     "take"))
                 "transform" (vs/jm
                   "req" "`reqdata`"
-                  "res" "`body`"))))
+                  "res" "`body.data`"))))
           "load" (vs/jm
             "input" "data"
             "name" "load"
@@ -972,7 +972,7 @@
                     "transaction_type"))
                 "transform" (vs/jm
                   "req" "`reqdata`"
-                  "res" "`body`"))))
+                  "res" "`body.data`"))))
           "load" (vs/jm
             "input" "data"
             "name" "load"
@@ -1254,7 +1254,7 @@
                     "take"))
                 "transform" (vs/jm
                   "req" "`reqdata`"
-                  "res" "`body`"))))
+                  "res" "`body.data`"))))
           "update" (vs/jm
             "input" "data"
             "name" "update"

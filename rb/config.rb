@@ -20,7 +20,7 @@ module BluefinShieldconexMgmtConfig
       "main" => {
         "name" => "BluefinShieldconexMgmt",
         "slug" => "bluefin-shieldconex-mgmt",
-        "version" => "0.0.1",
+        "version" => "0.1.1",
         "target" => "rb",
       },
       "feature" => {
@@ -311,7 +311,7 @@ module BluefinShieldconexMgmtConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                 },
               ],
@@ -724,7 +724,7 @@ module BluefinShieldconexMgmtConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                 },
               ],
@@ -1036,7 +1036,7 @@ module BluefinShieldconexMgmtConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                 },
               ],
@@ -1286,7 +1286,7 @@ module BluefinShieldconexMgmtConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                 },
               ],
@@ -1654,7 +1654,7 @@ module BluefinShieldconexMgmtConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                 },
               ],

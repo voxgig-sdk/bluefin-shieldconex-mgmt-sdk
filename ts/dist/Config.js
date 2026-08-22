@@ -21,7 +21,7 @@ class Config {
     main = {
         name: 'BluefinShieldconexMgmt',
         slug: "bluefin-shieldconex-mgmt",
-        version: "0.0.1",
+        version: "0.1.1",
         target: "ts",
     };
     feature = {
@@ -312,7 +312,7 @@ class Config {
                             },
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body`"
+                                "res": "`body.data`"
                             }
                         }
                     ]
@@ -725,7 +725,7 @@ class Config {
                             },
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body`"
+                                "res": "`body.data`"
                             }
                         }
                     ]
@@ -1037,7 +1037,7 @@ class Config {
                             },
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body`"
+                                "res": "`body.data`"
                             }
                         }
                     ]
@@ -1287,7 +1287,7 @@ class Config {
                             },
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body`"
+                                "res": "`body.data`"
                             }
                         }
                     ]
@@ -1655,7 +1655,7 @@ class Config {
                             },
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body`"
+                                "res": "`body.data`"
                             }
                         }
                     ]

@@ -9,7 +9,7 @@ defmodule BluefinShieldconexMgmt.Config do
       "main" => %{
         "name" => "BluefinShieldconexMgmt",
         "slug" => "bluefin-shieldconex-mgmt",
-        "version" => "0.0.1",
+        "version" => "0.1.1",
         "target" => "elixir"
       },
       "feature" => %{
@@ -300,7 +300,7 @@ defmodule BluefinShieldconexMgmt.Config do
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
-                    "res" => "`body`"
+                    "res" => "`body.data`"
                   }
                 }
               ]
@@ -713,7 +713,7 @@ defmodule BluefinShieldconexMgmt.Config do
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
-                    "res" => "`body`"
+                    "res" => "`body.data`"
                   }
                 }
               ]
@@ -1025,7 +1025,7 @@ defmodule BluefinShieldconexMgmt.Config do
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
-                    "res" => "`body`"
+                    "res" => "`body.data`"
                   }
                 }
               ]
@@ -1275,7 +1275,7 @@ defmodule BluefinShieldconexMgmt.Config do
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
-                    "res" => "`body`"
+                    "res" => "`body.data`"
                   }
                 }
               ]
@@ -1643,7 +1643,7 @@ defmodule BluefinShieldconexMgmt.Config do
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
-                    "res" => "`body`"
+                    "res" => "`body.data`"
                   }
                 }
               ]

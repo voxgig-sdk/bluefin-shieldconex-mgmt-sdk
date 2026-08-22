@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicClientFlow.aontu"
-@"BasicCloneFlow.aontu"
-@"BasicPartnerFlow.aontu"
-@"BasicTemplateFlow.aontu"
-@"BasicTransactionFlow.aontu"
-@"BasicUpdateResultFlow.aontu"
-@"BasicUserFlow.aontu"

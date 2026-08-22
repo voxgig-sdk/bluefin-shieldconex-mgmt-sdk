@@ -34,7 +34,7 @@ class BluefinShieldconexMgmtConfig
             "main" => [
                 "name" => "BluefinShieldconexMgmt",
                 "slug" => "bluefin-shieldconex-mgmt",
-                "version" => "0.0.1",
+                "version" => "0.1.1",
                 "target" => "php",
             ],
             "feature" => [
@@ -325,7 +325,7 @@ class BluefinShieldconexMgmtConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                 ],
               ],
@@ -738,7 +738,7 @@ class BluefinShieldconexMgmtConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                 ],
               ],
@@ -1050,7 +1050,7 @@ class BluefinShieldconexMgmtConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                 ],
               ],
@@ -1300,7 +1300,7 @@ class BluefinShieldconexMgmtConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                 ],
               ],
@@ -1668,7 +1668,7 @@ class BluefinShieldconexMgmtConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                 ],
               ],
