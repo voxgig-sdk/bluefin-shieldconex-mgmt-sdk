@@ -5,7 +5,7 @@
 
 import java.util.{ArrayList, LinkedHashMap, List => JList, Map => JMap}
 
-import voxgig.bluefinshieldconexmgmtsdk.core.{Helpers, BluefinShieldconexMgmtSDK}
+import voxgig.bluefinshieldconexmgmtsdk.core.{Helpers, SdkEntity, BluefinShieldconexMgmtSDK}
 import voxgig.bluefinshieldconexmgmtsdk.utility.struct.Struct
 
 object ClientEntityTest {
