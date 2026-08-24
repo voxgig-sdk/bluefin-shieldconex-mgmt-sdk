@@ -16,7 +16,7 @@ use bluefin_shieldconex_mgmt_sdk::{test_sdk, Entity, BluefinShieldconexMgmtEntit
 #[test]
 fn clone_entity_instance() {
     let testsdk = test_sdk(Value::Noval, Value::Noval);
-    let ent = testsdk.clone(Value::Noval);
+    let ent = testsdk.clone_(Value::Noval);
     assert_eq!(ent.get_name(), "clone");
 }
 
@@ -46,7 +46,7 @@ fn clone_entity_basic() {
     }
     let client = setup.client.clone();
     // CREATE
-    let clone_ref01_ent = client.clone(Value::Noval);
+    let clone_ref01_ent = client.clone_(Value::Noval);
     let clone_ref01_data = to_map(&getp(
         &getpath(&["new", "clone"], &setup.data),
         "clone_ref01",

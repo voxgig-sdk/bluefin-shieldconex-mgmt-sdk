@@ -50,7 +50,7 @@ let client = test_sdk(Value::Noval, Value::Noval);
 Create a new `ClientEntity` instance. Pass `Value::Noval` for no
 initial options.
 
-#### `clone(entopts: Value) -> Rc<CloneEntity>`
+#### `clone_(entopts: Value) -> Rc<CloneEntity>`
 
 Create a new `CloneEntity` instance. Pass `Value::Noval` for no
 initial options.
@@ -215,7 +215,7 @@ Return the entity name.
 ## CloneEntity
 
 ```rust
-let clone = client.clone(Value::Noval);
+let clone = client.clone_(Value::Noval);
 ```
 
 ### Fields
@@ -232,7 +232,7 @@ let clone = client.clone(Value::Noval);
 Create a new entity with the given data. Returns the created entity data on `Ok` and `Err` on failure.
 
 ```rust
-let result = client.clone(Value::Noval).create(jo(vec![
+let result = client.clone_(Value::Noval).create(jo(vec![
     ("template_id", Value::str("example_template_id")),  // String
 ]), Value::Noval).unwrap();
 ```

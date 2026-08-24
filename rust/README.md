@@ -230,7 +230,7 @@ Creates a test-mode client with mock transport. Both arguments may be
 | `prepare` | `(fetchargs: Value) -> Result<Value, BluefinShieldconexMgmtError>` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs: Value) -> Result<Value, BluefinShieldconexMgmtError>` | Build and send an HTTP request. `Ok` is a result map (branch on `ok`). |
 | `client` | `(entopts: Value) -> Rc<ClientEntity>` | Create a Client entity instance. |
-| `clone` | `(entopts: Value) -> Rc<CloneEntity>` | Create a Clone entity instance. |
+| `clone_` | `(entopts: Value) -> Rc<CloneEntity>` | Create a Clone entity instance. |
 | `partner` | `(entopts: Value) -> Rc<PartnerEntity>` | Create a Partner entity instance. |
 | `template` | `(entopts: Value) -> Rc<TemplateEntity>` | Create a Template entity instance. |
 | `transaction` | `(entopts: Value) -> Rc<TransactionEntity>` | Create a Transaction entity instance. |
@@ -473,7 +473,7 @@ let client = client.client(Value::Noval).create(jo(vec![
 
 ### Clone
 
-Create an instance: `let clone = client.clone(Value::Noval);`
+Create an instance: `let clone = client.clone_(Value::Noval);`
 
 #### Operations
 
@@ -491,7 +491,7 @@ Create an instance: `let clone = client.clone(Value::Noval);`
 #### Example: Create
 
 ```rust
-let clone = client.clone(Value::Noval).create(jo(vec![
+let clone = client.clone_(Value::Noval).create(jo(vec![
     ("template_id", Value::str("example_template_id")),  // String
 ]), Value::Noval).unwrap();
 ```
