@@ -368,7 +368,7 @@ impl BluefinShieldconexMgmtSDK {
     }
 
     /// Clone entity bound to this client.
-    pub fn clone(self: &Rc<Self>, entopts: Value) -> Rc<crate::entity::clone::CloneEntity> {
+    pub fn clone_(self: &Rc<Self>, entopts: Value) -> Rc<crate::entity::clone::CloneEntity> {
         crate::entity::clone::CloneEntity::new(self, entopts)
     }
 
