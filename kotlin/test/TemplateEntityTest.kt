@@ -31,7 +31,7 @@ class TemplateEntityTest {
     val setup = templateBasicSetup(null)
     // Per-op sdk-test-control.json skip.
     val mode = if (setup.live) "live" else "unit"
-    for (op in arrayOf("create", "list", "load", "remove")) {
+    for (op in arrayOf<String>("create", "list", "load", "remove")) {
       val reason = RunnerSupport.skipReason("entityOp", "template.$op", mode)
       Assumptions.assumeTrue(
         reason == null,
