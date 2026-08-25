@@ -42,6 +42,7 @@ class BluefinShieldconexMgmtConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

@@ -11,11 +11,15 @@ open Sdk_features
 let make_config () : value =
   (jo [
     ("main", (jo [
-      ("name", (Str "BluefinShieldconexMgmt")) ]));
+      ("name", (Str "BluefinShieldconexMgmt"));
+      ("slug", (Str "bluefin-shieldconex-mgmt"));
+      ("version", (Str "0.1.1"));
+      ("target", (Str "ocaml")) ]));
     ("feature", (jo [
       ("test", (jo [
         ("options", (jo [
-          ("active", (Bool false)) ])) ])) ]));
+          ("active", (Bool false)) ]));
+        ("transport", (Str "base")) ])) ]));
     ("options", (jo [
       ("base", (Str "https://portal-cert.shieldconex.com:4010/api/v1"));
       ("auth", (jo [

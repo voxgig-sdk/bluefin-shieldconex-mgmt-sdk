@@ -827,16 +827,16 @@ generated for editor documentation.
 ```
 swift/
 ├── Package.swift                     -- SwiftPM manifest (zero runtime deps)
-├── Sources/ProjectNameSDK/
+├── Sources/BluefinShieldconexMgmtSdk/
 │   ├── core/                         -- Main client, config, entity base, error type
 │   ├── entity/                       -- Generated entity clients
 │   ├── feature/                      -- Built-in features (Base, Test, Log, ...)
 │   ├── utility/                      -- Utility functions
 │   └── Struct/                       -- Vendored Voxgig Struct port
-└── Tests/ProjectNameSDKTests/        -- Test suites (XCTest)
+└── Tests/BluefinShieldconexMgmtSdkTests/    -- Test suites (XCTest)
 ```
 
-The main client class (`BluefinShieldconexMgmtSDK`, under `Sources/ProjectNameSDK/core`)
+The main client class (`BluefinShieldconexMgmtSDK`, under `Sources/BluefinShieldconexMgmtSdk/core`)
 exposes the entity accessors. Reference entity or utility types directly only
 when needed. The SDK is dependency-free: JSON parsing is the vendored
 `Struct/JSON.swift`, HTTP transport is Foundation's `URLSession`, and the
