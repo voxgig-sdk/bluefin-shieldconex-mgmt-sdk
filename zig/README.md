@@ -79,7 +79,7 @@ switch (client.client(h.vnull()).load(h.jo(&.{.{ "id", h.vstr("example_id") }}),
 
 ```zig
 // Create — .ok carries the created record
-switch (client.client(h.vnull()).create(h.jo(&.{.{ "billingId", h.vstr("example_billingId") }, .{ "contact", h.omap() }}), h.vnull())) {
+switch (client.client(h.vnull()).create(h.jo(&.{.{ "contact_email", h.vstr("example_contact_email") }, .{ "contact_first_name", h.vstr("example_contact_first_name") }, .{ "contact_is_active", h.vbool(true) }, .{ "contact_last_name", h.vstr("example_contact_last_name") }, .{ "contact_phone", h.vstr("example_contact_phone") }, .{ "contact_send_welcome_email", h.vbool(true) }, .{ "contact_user_name", h.vstr("example_contact_user_name") }, .{ "contact_user_role", h.vstr("example_contact_user_role") }, .{ "direct_partner_id", h.vnum(1) }, .{ "direct_partner_name", h.vstr("example_direct_partner_name") }, .{ "is_active", h.vbool(true) }, .{ "name", h.vstr("example_name") }}), h.vnull())) {
     .ok => |created| std.debug.print("{s}\n", .{h.stringify(created)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
 }
@@ -487,6 +487,18 @@ switch (client.client(h.vnull()).list(h.vnull(), h.vnull())) {
 
 ```zig
 switch (client.client(h.vnull()).create(h.jo(&.{
+    .{ "contact_email", h.vstr("example_contact_email") }, // []const u8
+    .{ "contact_first_name", h.vstr("example_contact_first_name") }, // []const u8
+    .{ "contact_is_active", h.vbool(true) }, // bool
+    .{ "contact_last_name", h.vstr("example_contact_last_name") }, // []const u8
+    .{ "contact_phone", h.vstr("example_contact_phone") }, // []const u8
+    .{ "contact_send_welcome_email", h.vbool(true) }, // bool
+    .{ "contact_user_name", h.vstr("example_contact_user_name") }, // []const u8
+    .{ "contact_user_role", h.vstr("example_contact_user_role") }, // []const u8
+    .{ "direct_partner_id", h.vnum(1) }, // i64
+    .{ "direct_partner_name", h.vstr("example_direct_partner_name") }, // []const u8
+    .{ "is_active", h.vbool(true) }, // bool
+    .{ "name", h.vstr("example_name") }, // []const u8
 }), h.vnull())) {
     .ok => |client| std.debug.print("{s}\n", .{h.stringify(client)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
@@ -579,6 +591,18 @@ switch (client.partner(h.vnull()).list(h.vnull(), h.vnull())) {
 
 ```zig
 switch (client.partner(h.vnull()).create(h.jo(&.{
+    .{ "billing_id", h.vstr("example_billing_id") }, // []const u8
+    .{ "contact_email", h.vstr("example_contact_email") }, // []const u8
+    .{ "contact_first_name", h.vstr("example_contact_first_name") }, // []const u8
+    .{ "contact_is_active", h.vbool(true) }, // bool
+    .{ "contact_last_name", h.vstr("example_contact_last_name") }, // []const u8
+    .{ "contact_phone", h.vstr("example_contact_phone") }, // []const u8
+    .{ "contact_send_welcome_email", h.vbool(true) }, // bool
+    .{ "contact_user_name", h.vstr("example_contact_user_name") }, // []const u8
+    .{ "contact_user_role", h.vstr("example_contact_user_role") }, // []const u8
+    .{ "is_active", h.vbool(true) }, // bool
+    .{ "name", h.vstr("example_name") }, // []const u8
+    .{ "reference", h.vstr("example_reference") }, // []const u8
 }), h.vnull())) {
     .ok => |partner| std.debug.print("{s}\n", .{h.stringify(partner)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
@@ -640,6 +664,13 @@ switch (client.template(h.vnull()).list(h.vnull(), h.vnull())) {
 
 ```zig
 switch (client.template(h.vnull()).create(h.jo(&.{
+    .{ "active", h.vbool(true) }, // bool
+    .{ "client_id", h.vnum(1) }, // i64
+    .{ "client_name", h.vstr("example_client_name") }, // []const u8
+    .{ "name", h.vstr("example_name") }, // []const u8
+    .{ "partner_id", h.vnum(1) }, // i64
+    .{ "partner_name", h.vstr("example_partner_name") }, // []const u8
+    .{ "reference", h.vstr("example_reference") }, // []const u8
 }), h.vnull())) {
     .ok => |template| std.debug.print("{s}\n", .{h.stringify(template)}),
     .err => |e| std.debug.print("create failed: {s}\n", .{e.msg}),
@@ -751,11 +782,17 @@ switch (client.update_result(h.vnull()).list(h.vnull(), h.vnull())) {
 
 ```zig
 switch (client.update_result(h.vnull()).create(h.jo(&.{
-    .{ "contact", h.omap() }, // Value (object)
     .{ "email", h.vstr("example_email") }, // []const u8
+    .{ "first_name", h.vstr("example_first_name") }, // []const u8
+    .{ "is_active", h.vbool(true) }, // bool
+    .{ "last_name", h.vstr("example_last_name") }, // []const u8
+    .{ "phone", h.vnum(1) }, // i64
+    .{ "send_welcome_email", h.vbool(true) }, // bool
+    .{ "user_role", h.omap() }, // Value (object)
+    .{ "username", h.vstr("example_username") }, // []const u8
+    .{ "contact", h.omap() }, // Value (object)
     .{ "firstName", h.vstr("example_firstName") }, // []const u8
     .{ "lastName", h.vstr("example_lastName") }, // []const u8
-    .{ "phone", h.vstr("example_phone") }, // []const u8
     .{ "userName", h.vstr("example_userName") }, // []const u8
     .{ "userRole", h.omap() }, // Value (object)
 }), h.vnull())) {
@@ -804,6 +841,176 @@ switch (client.user(h.vnull()).load(h.jo(&.{.{ "id", h.vstr("user_id") }}), h.vn
     .err => |e| std.debug.print("load failed: {s}\n", .{e.msg}),
 }
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -862,7 +1069,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

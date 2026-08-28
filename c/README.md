@@ -82,7 +82,7 @@ if (err) {
 
 ```c
 // Create — returns the bare created record
-voxgig_value* created = client->vt->create(client, cmap(2, "billingId", v_str("example_billingId"), "contact", v_map()), NULL, &err);
+voxgig_value* created = client->vt->create(client, cmap(12, "contact_email", v_str("example_contact_email"), "contact_first_name", v_str("example_contact_first_name"), "contact_is_active", v_bool(true), "contact_last_name", v_str("example_contact_last_name"), "contact_phone", v_str("example_contact_phone"), "contact_send_welcome_email", v_bool(true), "contact_user_name", v_str("example_contact_user_name"), "contact_user_role", v_str("example_contact_user_role"), "direct_partner_id", v_num(1), "direct_partner_name", v_str("example_direct_partner_name"), "is_active", v_bool(true), "name", v_str("example_name")), NULL, &err);
 
 // Remove
 client->vt->remove(client, cmap(1, "id", getp(created, "id")), NULL, &err);
@@ -495,7 +495,20 @@ voxgig_value* clients = client->vt->list(client, NULL, NULL, &err);
 
 ```c
 Entity* client = bluefinshieldconexmgmt_client(client, NULL);
-voxgig_value* client_rec = client->vt->create(client, NULL, NULL, &err);
+voxgig_value* client_rec = client->vt->create(client, cmap(12,
+    "contact_email", v_str("example_contact_email"),  // char*
+    "contact_first_name", v_str("example_contact_first_name"),  // char*
+    "contact_is_active", v_bool(true),  // bool
+    "contact_last_name", v_str("example_contact_last_name"),  // char*
+    "contact_phone", v_str("example_contact_phone"),  // char*
+    "contact_send_welcome_email", v_bool(true),  // bool
+    "contact_user_name", v_str("example_contact_user_name"),  // char*
+    "contact_user_role", v_str("example_contact_user_role"),  // char*
+    "direct_partner_id", v_num(1),  // int64_t
+    "direct_partner_name", v_str("example_direct_partner_name"),  // char*
+    "is_active", v_bool(true),  // bool
+    "name", v_str("example_name"))  // char*
+, NULL, &err);
 ```
 
 
@@ -572,7 +585,20 @@ voxgig_value* partners = partner->vt->list(partner, NULL, NULL, &err);
 
 ```c
 Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
-voxgig_value* partner_rec = partner->vt->create(partner, NULL, NULL, &err);
+voxgig_value* partner_rec = partner->vt->create(partner, cmap(12,
+    "billing_id", v_str("example_billing_id"),  // char*
+    "contact_email", v_str("example_contact_email"),  // char*
+    "contact_first_name", v_str("example_contact_first_name"),  // char*
+    "contact_is_active", v_bool(true),  // bool
+    "contact_last_name", v_str("example_contact_last_name"),  // char*
+    "contact_phone", v_str("example_contact_phone"),  // char*
+    "contact_send_welcome_email", v_bool(true),  // bool
+    "contact_user_name", v_str("example_contact_user_name"),  // char*
+    "contact_user_role", v_str("example_contact_user_role"),  // char*
+    "is_active", v_bool(true),  // bool
+    "name", v_str("example_name"),  // char*
+    "reference", v_str("example_reference"))  // char*
+, NULL, &err);
 ```
 
 
@@ -623,7 +649,15 @@ voxgig_value* templates = template->vt->list(template, NULL, NULL, &err);
 
 ```c
 Entity* template = bluefinshieldconexmgmt_template(client, NULL);
-voxgig_value* template_rec = template->vt->create(template, NULL, NULL, &err);
+voxgig_value* template_rec = template->vt->create(template, cmap(7,
+    "active", v_bool(true),  // bool
+    "client_id", v_num(1),  // int64_t
+    "client_name", v_str("example_client_name"),  // char*
+    "name", v_str("example_name"),  // char*
+    "partner_id", v_num(1),  // int64_t
+    "partner_name", v_str("example_partner_name"),  // char*
+    "reference", v_str("example_reference"))  // char*
+, NULL, &err);
 ```
 
 
@@ -719,12 +753,18 @@ voxgig_value* update_results = update_result->vt->list(update_result, NULL, NULL
 
 ```c
 Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
-voxgig_value* update_result_rec = update_result->vt->create(update_result, cmap(7,
-    "contact", v_map(),  // voxgig_value* (map)
+voxgig_value* update_result_rec = update_result->vt->create(update_result, cmap(13,
     "email", v_str("example_email"),  // char*
+    "first_name", v_str("example_first_name"),  // char*
+    "is_active", v_bool(true),  // bool
+    "last_name", v_str("example_last_name"),  // char*
+    "phone", v_num(1),  // int64_t
+    "send_welcome_email", v_bool(true),  // bool
+    "user_role", v_map(),  // voxgig_value* (map)
+    "username", v_str("example_username"),  // char*
+    "contact", v_map(),  // voxgig_value* (map)
     "firstName", v_str("example_firstName"),  // char*
     "lastName", v_str("example_lastName"),  // char*
-    "phone", v_str("example_phone"),  // char*
     "userName", v_str("example_userName"),  // char*
     "userRole", v_map())  // voxgig_value* (map)
 , NULL, &err);
@@ -765,6 +805,176 @@ Create an instance: `Entity* user = bluefinshieldconexmgmt_user(client, NULL);`
 Entity* user = bluefinshieldconexmgmt_user(client, NULL);
 voxgig_value* user_rec = user->vt->load(user, cmap(1, "id", v_str("user_id")), NULL, &err);
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -823,7 +1033,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

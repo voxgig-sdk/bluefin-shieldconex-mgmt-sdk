@@ -141,6 +141,7 @@ function directSetup(mockres?: any) {
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID': {},
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE': 'FALSE',
     'BLUEFIN_SHIELDCONEX_MGMT_APIKEY': 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_SECRET': 'NONE',
   })
 
   const live = 'TRUE' === env.BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE
@@ -148,6 +149,7 @@ function directSetup(mockres?: any) {
   if (live) {
     const client = new BluefinShieldconexMgmtSDK({
       apikey: env.BLUEFIN_SHIELDCONEX_MGMT_APIKEY,
+      secret: env.BLUEFIN_SHIELDCONEX_MGMT_SECRET,
     })
 
     let idmap: any = env['BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID']

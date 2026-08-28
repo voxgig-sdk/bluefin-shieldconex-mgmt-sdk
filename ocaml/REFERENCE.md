@@ -147,6 +147,18 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 
 ```ocaml
 let result = (Sdk_client.client client Noval).e_create (jo [
+    ("contact_email", (Str "example_contact_email"));  (* string *)
+    ("contact_first_name", (Str "example_contact_first_name"));  (* string *)
+    ("contact_is_active", (Bool true));  (* bool *)
+    ("contact_last_name", (Str "example_contact_last_name"));  (* string *)
+    ("contact_phone", (Str "example_contact_phone"));  (* string *)
+    ("contact_send_welcome_email", (Bool true));  (* bool *)
+    ("contact_user_name", (Str "example_contact_user_name"));  (* string *)
+    ("contact_user_role", (Str "example_contact_user_role"));  (* string *)
+    ("direct_partner_id", (Num 1.));  (* int *)
+    ("direct_partner_name", (Str "example_direct_partner_name"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("name", (Str "example_name"));  (* string *)
 ]) Noval
 let result_data = result.e_data_get ()
 ```
@@ -309,6 +321,18 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 
 ```ocaml
 let result = (Sdk_client.partner client Noval).e_create (jo [
+    ("billing_id", (Str "example_billing_id"));  (* string *)
+    ("contact_email", (Str "example_contact_email"));  (* string *)
+    ("contact_first_name", (Str "example_contact_first_name"));  (* string *)
+    ("contact_is_active", (Bool true));  (* bool *)
+    ("contact_last_name", (Str "example_contact_last_name"));  (* string *)
+    ("contact_phone", (Str "example_contact_phone"));  (* string *)
+    ("contact_send_welcome_email", (Bool true));  (* bool *)
+    ("contact_user_name", (Str "example_contact_user_name"));  (* string *)
+    ("contact_user_role", (Str "example_contact_user_role"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("name", (Str "example_name"));  (* string *)
+    ("reference", (Str "example_reference"));  (* string *)
 ]) Noval
 let result_data = result.e_data_get ()
 ```
@@ -391,6 +415,13 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 
 ```ocaml
 let result = (Sdk_client.template client Noval).e_create (jo [
+    ("active", (Bool true));  (* bool *)
+    ("client_id", (Num 1.));  (* int *)
+    ("client_name", (Str "example_client_name"));  (* string *)
+    ("name", (Str "example_name"));  (* string *)
+    ("partner_id", (Num 1.));  (* int *)
+    ("partner_name", (Str "example_partner_name"));  (* string *)
+    ("reference", (Str "example_reference"));  (* string *)
 ]) Noval
 let result_data = result.e_data_get ()
 ```
@@ -590,11 +621,17 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 
 ```ocaml
 let result = (Sdk_client.update_result client Noval).e_create (jo [
-    ("contact", (empty_map ()));  (* value map *)
     ("email", (Str "example_email"));  (* string *)
+    ("first_name", (Str "example_first_name"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("last_name", (Str "example_last_name"));  (* string *)
+    ("phone", (Num 1.));  (* int *)
+    ("send_welcome_email", (Bool true));  (* bool *)
+    ("user_role", (empty_map ()));  (* value map *)
+    ("username", (Str "example_username"));  (* string *)
+    ("contact", (empty_map ()));  (* value map *)
     ("firstName", (Str "example_firstName"));  (* string *)
     ("lastName", (Str "example_lastName"));  (* string *)
-    ("phone", (Str "example_phone"));  (* string *)
     ("userName", (Str "example_userName"));  (* string *)
     ("userRole", (empty_map ()));  (* value map *)
 ]) Noval
@@ -720,7 +757,17 @@ The entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
+| `audit` | 0.0.1 | Structured audit trail of operations |
+| `clienttrack` | 0.0.1 | Client identity and per-request correlation headers |
+| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
+| `log` | 0.0.1 | Structured request and response logging |
+| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
+| `paging` | 0.0.1 | Pagination signals for list operations |
+| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
+| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
+| `telemetry` | 0.0.1 | Distributed tracing spans with W3C trace-context propagation |
 | `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+| `timeout` | 0.0.1 | Per-request timeout with transport abort |
 
 
 Features are activated via the `feature` option:
@@ -728,8 +775,350 @@ Features are activated via the `feature` option:
 ```ocaml
 let client = Sdk_client.make (jo [
     ("feature", jo [
+        ("audit", jo [("active", Bool true)]);
+        ("clienttrack", jo [("active", Bool true)]);
+        ("idempotency", jo [("active", Bool true)]);
+        ("log", jo [("active", Bool true)]);
+        ("metrics", jo [("active", Bool true)]);
+        ("paging", jo [("active", Bool true)]);
+        ("ratelimit", jo [("active", Bool true)]);
+        ("retry", jo [("active", Bool true)]);
+        ("telemetry", jo [("active", Bool true)]);
         ("test", jo [("active", Bool true)]);
+        ("timeout", jo [("active", Bool true)]);
     ]);
 ])
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### Ordering
+
+`ratelimit`, `retry`, `timeout` wrap the transport. Each
+wraps whatever is already installed, so **activation order is nesting order**:
+a feature activated later sits OUTSIDE one activated earlier, and sees the call
+first.
+
+That decides behaviour, not just sequence: a feature that short-circuits the
+call, such as a cache serving a hit, stops every feature nested inside it from
+ever seeing that call.
+
+`audit`, `clienttrack`, `idempotency`, `log`, `metrics`, `paging`, `telemetry`, `test` attach to pipeline hooks
+rather than the transport, so their order does not affect what they observe.
+
+#### `audit`
+
+Structured audit trail of operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.audit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `clienttrack`
+
+Client identity and per-request correlation headers.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.clienttrack.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `idempotency`
+
+Idempotency keys for safe retries of mutating operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.idempotency.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `log`
+
+Structured request and response logging.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.log.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `metrics`
+
+Statistics capture: per-operation counters and latency.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.metrics.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `paging`
+
+Pagination signals for list operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.paging.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `ratelimit`
+
+Client-side rate limiting via a token bucket.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.ratelimit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `retry`
+
+Automatic retry of transient failures with exponential backoff.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.retry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `telemetry`
+
+Distributed tracing spans with W3C trace-context propagation.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.telemetry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `timeout`
+
+Per-request timeout with transport abort.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.timeout.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
 

@@ -70,7 +70,7 @@ func main() {
     fmt.Println(client_)
 
     // Create a client_.
-    created, err := client.Client(nil).Create(map[string]any{"billingId": "example_billingId", "contact": map[string]any{}}, nil)
+    created, err := client.Client(nil).Create(map[string]any{"contact_email": "example_contact_email", "contact_first_name": "example_contact_first_name", "contact_is_active": true, "contact_last_name": "example_contact_last_name", "contact_phone": "example_contact_phone", "contact_send_welcome_email": true, "contact_user_name": "example_contact_user_name", "contact_user_role": "example_contact_user_role", "direct_partner_id": 1, "direct_partner_name": "example_direct_partner_name", "is_active": true, "name": "example_name"}, nil)
     if err != nil {
         panic(err)
     }
@@ -495,6 +495,18 @@ fmt.Println(client_s) // the array of records
 
 ```go
 result, err := client.Client(nil).Create(map[string]any{
+    "contact_email": "example_contact_email",
+    "contact_first_name": "example_contact_first_name",
+    "contact_is_active": true,
+    "contact_last_name": "example_contact_last_name",
+    "contact_phone": "example_contact_phone",
+    "contact_send_welcome_email": true,
+    "contact_user_name": "example_contact_user_name",
+    "contact_user_role": "example_contact_user_role",
+    "direct_partner_id": 1,
+    "direct_partner_name": "example_direct_partner_name",
+    "is_active": true,
+    "name": "example_name",
 }, nil)
 if err != nil {
     panic(err)
@@ -585,6 +597,18 @@ fmt.Println(partners) // the array of records
 
 ```go
 result, err := client.Partner(nil).Create(map[string]any{
+    "billing_id": "example_billing_id",
+    "contact_email": "example_contact_email",
+    "contact_first_name": "example_contact_first_name",
+    "contact_is_active": true,
+    "contact_last_name": "example_contact_last_name",
+    "contact_phone": "example_contact_phone",
+    "contact_send_welcome_email": true,
+    "contact_user_name": "example_contact_user_name",
+    "contact_user_role": "example_contact_user_role",
+    "is_active": true,
+    "name": "example_name",
+    "reference": "example_reference",
 }, nil)
 if err != nil {
     panic(err)
@@ -646,6 +670,13 @@ fmt.Println(templates) // the array of records
 
 ```go
 result, err := client.Template(nil).Create(map[string]any{
+    "active": true,
+    "client_id": 1,
+    "client_name": "example_client_name",
+    "name": "example_name",
+    "partner_id": 1,
+    "partner_name": "example_partner_name",
+    "reference": "example_reference",
 }, nil)
 if err != nil {
     panic(err)
@@ -755,11 +786,17 @@ fmt.Println(updateResults) // the array of records
 
 ```go
 result, err := client.UpdateResult(nil).Create(map[string]any{
-    "contact": map[string]any{},
     "email": "example_email",
+    "first_name": "example_first_name",
+    "is_active": true,
+    "last_name": "example_last_name",
+    "phone": 1,
+    "send_welcome_email": true,
+    "user_role": map[string]any{},
+    "username": "example_username",
+    "contact": map[string]any{},
     "firstName": "example_firstName",
     "lastName": "example_lastName",
-    "phone": "example_phone",
     "userName": "example_userName",
     "userRole": map[string]any{},
 }, nil)
@@ -807,6 +844,176 @@ if err != nil {
 }
 fmt.Println(user) // the loaded record
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -865,7 +1072,17 @@ stage names.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

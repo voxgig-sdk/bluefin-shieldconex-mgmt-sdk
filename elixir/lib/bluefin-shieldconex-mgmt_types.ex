@@ -45,17 +45,9 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Client list.
 
   Members:
-    * `"billingId"` — String.t() (optional)
-    * `"contact"` — map() (optional)
-    * `"created"` — String.t() (optional)
-    * `"directPartner"` — map() (optional)
-    * `"id"` — integer() (optional)
-    * `"isActive"` — boolean() (optional)
-    * `"mid"` — String.t() (optional)
-    * `"modified"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
-    * `"partner"` — map() (optional)
-    * `"version"` — integer() (optional)
+    * `"partner"` — String.t() (required)
+    * `"skip"` — integer() (optional)
+    * `"take"` — integer() (optional)
   """
   @type client_list_match :: %{optional(String.t()) => any()}
 
@@ -63,15 +55,27 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Client create.
 
   Members:
+    * `"billing_id"` — String.t() (optional)
+    * `"contact_email"` — String.t() (required)
+    * `"contact_first_name"` — String.t() (required)
+    * `"contact_is_active"` — boolean() (required)
+    * `"contact_last_name"` — String.t() (required)
+    * `"contact_phone"` — String.t() (required)
+    * `"contact_send_welcome_email"` — boolean() (required)
+    * `"contact_user_name"` — String.t() (required)
+    * `"contact_user_role"` — String.t() (required)
+    * `"direct_partner_id"` — integer() (required)
+    * `"direct_partner_name"` — String.t() (required)
+    * `"is_active"` — boolean() (required)
+    * `"mid"` — String.t() (optional)
+    * `"name"` — String.t() (required)
     * `"billingId"` — String.t() (optional)
     * `"contact"` — map() (optional)
     * `"created"` — String.t() (optional)
     * `"directPartner"` — map() (optional)
     * `"id"` — integer() (optional)
     * `"isActive"` — boolean() (optional)
-    * `"mid"` — String.t() (optional)
     * `"modified"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
     * `"partner"` — map() (optional)
     * `"version"` — integer() (optional)
   """
@@ -134,17 +138,9 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Partner list.
 
   Members:
-    * `"billingId"` — String.t() (optional)
-    * `"contact"` — map() (optional)
-    * `"created"` — String.t() (optional)
-    * `"id"` — integer() (optional)
-    * `"isActive"` — boolean() (optional)
-    * `"modified"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
-    * `"parent"` — map() (optional)
-    * `"reference"` — String.t() (optional)
-    * `"verificationPhrase"` — String.t() (optional)
-    * `"version"` — integer() (optional)
+    * `"partner"` — String.t() (optional)
+    * `"skip"` — integer() (optional)
+    * `"take"` — integer() (optional)
   """
   @type partner_list_match :: %{optional(String.t()) => any()}
 
@@ -152,15 +148,28 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Partner create.
 
   Members:
+    * `"billing_id"` — String.t() (required)
+    * `"contact_email"` — String.t() (required)
+    * `"contact_first_name"` — String.t() (required)
+    * `"contact_is_active"` — boolean() (required)
+    * `"contact_last_name"` — String.t() (required)
+    * `"contact_phone"` — String.t() (required)
+    * `"contact_send_welcome_email"` — boolean() (required)
+    * `"contact_user_name"` — String.t() (required)
+    * `"contact_user_role"` — String.t() (required)
+    * `"is_active"` — boolean() (required)
+    * `"name"` — String.t() (required)
+    * `"parent_id"` — integer() (optional)
+    * `"parent_name"` — String.t() (optional)
+    * `"reference"` — String.t() (required)
+    * `"verification_phrase"` — String.t() (optional)
     * `"billingId"` — String.t() (optional)
     * `"contact"` — map() (optional)
     * `"created"` — String.t() (optional)
     * `"id"` — integer() (optional)
     * `"isActive"` — boolean() (optional)
     * `"modified"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
     * `"parent"` — map() (optional)
-    * `"reference"` — String.t() (optional)
     * `"verificationPhrase"` — String.t() (optional)
     * `"version"` — integer() (optional)
   """
@@ -196,17 +205,10 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Template list.
 
   Members:
-    * `"accessMode"` — any() (optional)
-    * `"active"` — boolean() (optional)
-    * `"client"` — map() (optional)
-    * `"fieldTemplates"` — list() (optional)
-    * `"id"` — integer() (optional)
-    * `"name"` — String.t() (optional)
-    * `"options"` — map() (optional)
-    * `"partner"` — map() (optional)
-    * `"reference"` — String.t() (optional)
-    * `"type"` — String.t() (optional)
-    * `"version"` — integer() (optional)
+    * `"client"` — String.t() (optional)
+    * `"partner"` — String.t() (optional)
+    * `"skip"` — integer() (optional)
+    * `"take"` — integer() (optional)
   """
   @type template_list_match :: %{optional(String.t()) => any()}
 
@@ -214,17 +216,29 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Template create.
 
   Members:
+    * `"access_mode"` — String.t() (optional)
+    * `"active"` — boolean() (required)
+    * `"client_id"` — integer() (required)
+    * `"client_name"` — String.t() (required)
+    * `"field_template"` — list() (optional)
+    * `"name"` — String.t() (required)
+    * `"options_custom_style"` — String.t() (optional)
+    * `"options_custom_style_file"` — String.t() (optional)
+    * `"options_domain"` — list() (optional)
+    * `"options_security_active_from"` — String.t() (optional)
+    * `"options_security_active_to"` — String.t() (optional)
+    * `"options_security_irreversible"` — boolean() (optional)
+    * `"partner_id"` — integer() (required)
+    * `"partner_name"` — String.t() (required)
+    * `"reference"` — String.t() (required)
+    * `"type"` — String.t() (optional)
+    * `"version"` — integer() (optional)
     * `"accessMode"` — any() (optional)
-    * `"active"` — boolean() (optional)
     * `"client"` — map() (optional)
     * `"fieldTemplates"` — list() (optional)
     * `"id"` — integer() (optional)
-    * `"name"` — String.t() (optional)
     * `"options"` — map() (optional)
     * `"partner"` — map() (optional)
-    * `"reference"` — String.t() (optional)
-    * `"type"` — String.t() (optional)
-    * `"version"` — integer() (optional)
   """
   @type template_create_data :: %{optional(String.t()) => any()}
 
@@ -261,6 +275,7 @@ defmodule BluefinShieldconexMgmt.Types do
 
   Members:
     * `"id"` — String.t() (required)
+    * `"transaction_type"` — String.t() (optional)
   """
   @type transaction_load_match :: %{optional(String.t()) => any()}
 
@@ -268,19 +283,17 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for Transaction list.
 
   Members:
-    * `"bfid"` — String.t() (optional)
-    * `"client"` — map() (optional)
-    * `"completeDate"` — String.t() (optional)
-    * `"directPartner"` — map() (optional)
-    * `"errCode"` — String.t() (optional)
-    * `"errMessage"` — String.t() (optional)
-    * `"id"` — integer() (optional)
-    * `"ipAddress"` — String.t() (optional)
-    * `"messageId"` — String.t() (optional)
-    * `"partner"` — map() (optional)
+    * `"client"` — String.t() (optional)
+    * `"date_from"` — String.t() (optional)
+    * `"date_to"` — String.t() (optional)
+    * `"message_id"` — String.t() (optional)
+    * `"paging_mode"` — String.t() (optional)
+    * `"partner"` — String.t() (optional)
     * `"reference"` — String.t() (optional)
+    * `"skip"` — integer() (optional)
     * `"success"` — boolean() (optional)
-    * `"templateId"` — String.t() (optional)
+    * `"take"` — integer() (optional)
+    * `"transaction_type"` — String.t() (optional)
   """
   @type transaction_list_match :: %{optional(String.t()) => any()}
 
@@ -315,26 +328,10 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for UpdateResult list.
 
   Members:
-    * `"billingId"` — String.t() (optional)
-    * `"client"` — map() (optional)
-    * `"contact"` — map() (optional)
-    * `"directPartner"` — map() (optional)
-    * `"email"` — String.t() (optional)
-    * `"firstName"` — String.t() (optional)
-    * `"id"` — integer() (optional)
-    * `"isActive"` — boolean() (optional)
-    * `"lastName"` — String.t() (optional)
-    * `"mid"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
-    * `"parent"` — map() (optional)
-    * `"partner"` — map() (optional)
-    * `"phone"` — String.t() (optional)
-    * `"reference"` — String.t() (optional)
-    * `"sendWelcomeEmail"` — boolean() (optional)
-    * `"userName"` — String.t() (optional)
-    * `"userRole"` — map() (optional)
-    * `"verificationPhrase"` — String.t() (optional)
-    * `"version"` — integer() (optional)
+    * `"client"` — String.t() (optional)
+    * `"partner"` — String.t() (optional)
+    * `"skip"` — integer() (optional)
+    * `"take"` — integer() (optional)
   """
   @type update_result_list_match :: %{optional(String.t()) => any()}
 
@@ -342,11 +339,19 @@ defmodule BluefinShieldconexMgmt.Types do
   Request payload for UpdateResult create.
 
   Members:
-    * `"billingId"` — String.t() (optional)
     * `"client"` — map() (optional)
+    * `"email"` — String.t() (required)
+    * `"first_name"` — String.t() (required)
+    * `"is_active"` — boolean() (required)
+    * `"last_name"` — String.t() (required)
+    * `"partner"` — map() (optional)
+    * `"phone"` — integer() (required)
+    * `"send_welcome_email"` — boolean() (required)
+    * `"user_role"` — map() (required)
+    * `"username"` — String.t() (required)
+    * `"billingId"` — String.t() (optional)
     * `"contact"` — map() (required)
     * `"directPartner"` — map() (optional)
-    * `"email"` — String.t() (required)
     * `"firstName"` — String.t() (required)
     * `"id"` — integer() (optional)
     * `"isActive"` — boolean() (optional)
@@ -354,8 +359,6 @@ defmodule BluefinShieldconexMgmt.Types do
     * `"mid"` — String.t() (optional)
     * `"name"` — String.t() (optional)
     * `"parent"` — map() (optional)
-    * `"partner"` — map() (optional)
-    * `"phone"` — String.t() (required)
     * `"reference"` — String.t() (optional)
     * `"sendWelcomeEmail"` — boolean() (optional)
     * `"userName"` — String.t() (required)
@@ -370,25 +373,51 @@ defmodule BluefinShieldconexMgmt.Types do
 
   Members:
     * `"id"` — String.t() (required)
-    * `"billingId"` — String.t() (optional)
+    * `"access_mode"` — String.t() (optional)
+    * `"active"` — boolean() (optional)
+    * `"client_id"` — integer() (optional)
+    * `"client_name"` — String.t() (optional)
+    * `"field_template"` — list() (optional)
+    * `"name"` — String.t() (optional)
+    * `"options_custom_style"` — String.t() (optional)
+    * `"options_custom_style_file"` — String.t() (optional)
+    * `"options_domain"` — list() (optional)
+    * `"options_security_active_from"` — String.t() (optional)
+    * `"options_security_active_to"` — String.t() (optional)
+    * `"options_security_irreversible"` — boolean() (optional)
+    * `"partner_id"` — integer() (optional)
+    * `"partner_name"` — String.t() (optional)
+    * `"reference"` — String.t() (optional)
+    * `"type"` — String.t() (optional)
+    * `"version"` — integer() (optional)
+    * `"billing_id"` — String.t() (optional)
+    * `"contact_id"` — integer() (optional)
+    * `"is_active"` — boolean() (optional)
+    * `"parent_id"` — integer() (optional)
+    * `"parent_name"` — String.t() (optional)
+    * `"verification_phrase"` — String.t() (optional)
     * `"client"` — map() (optional)
+    * `"email"` — String.t() (optional)
+    * `"first_name"` — String.t() (optional)
+    * `"last_name"` — String.t() (optional)
+    * `"partner"` — map() (optional)
+    * `"phone"` — integer() (optional)
+    * `"send_welcome_email"` — boolean() (optional)
+    * `"username"` — String.t() (optional)
+    * `"direct_partner_id"` — integer() (optional)
+    * `"direct_partner_name"` — String.t() (optional)
+    * `"mid"` — String.t() (optional)
+    * `"billingId"` — String.t() (optional)
     * `"contact"` — map() (optional)
     * `"directPartner"` — map() (optional)
-    * `"email"` — String.t() (optional)
     * `"firstName"` — String.t() (optional)
     * `"isActive"` — boolean() (optional)
     * `"lastName"` — String.t() (optional)
-    * `"mid"` — String.t() (optional)
-    * `"name"` — String.t() (optional)
     * `"parent"` — map() (optional)
-    * `"partner"` — map() (optional)
-    * `"phone"` — String.t() (optional)
-    * `"reference"` — String.t() (optional)
     * `"sendWelcomeEmail"` — boolean() (optional)
     * `"userName"` — String.t() (optional)
     * `"userRole"` — map() (optional)
     * `"verificationPhrase"` — String.t() (optional)
-    * `"version"` — integer() (optional)
   """
   @type update_result_update_data :: %{optional(String.t()) => any()}
 

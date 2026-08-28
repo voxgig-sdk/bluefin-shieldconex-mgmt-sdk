@@ -150,7 +150,20 @@ Create a new entity with the given data. Returns the created entity data and set
 
 ```c
 Entity* client = bluefinshieldconexmgmt_client(client, NULL);
-voxgig_value* result = client->vt->create(client, NULL, NULL, &err);
+voxgig_value* result = client->vt->create(client, cmap(12,
+    "contact_email", v_str("example_contact_email"),  // char*
+    "contact_first_name", v_str("example_contact_first_name"),  // char*
+    "contact_is_active", v_bool(true),  // bool
+    "contact_last_name", v_str("example_contact_last_name"),  // char*
+    "contact_phone", v_str("example_contact_phone"),  // char*
+    "contact_send_welcome_email", v_bool(true),  // bool
+    "contact_user_name", v_str("example_contact_user_name"),  // char*
+    "contact_user_role", v_str("example_contact_user_role"),  // char*
+    "direct_partner_id", v_num(1),  // int64_t
+    "direct_partner_name", v_str("example_direct_partner_name"),  // char*
+    "is_active", v_bool(true),  // bool
+    "name", v_str("example_name"))  // char*
+, NULL, &err);
 ```
 
 #### `vt->list(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err)`
@@ -297,7 +310,20 @@ Create a new entity with the given data. Returns the created entity data and set
 
 ```c
 Entity* partner = bluefinshieldconexmgmt_partner(client, NULL);
-voxgig_value* result = partner->vt->create(partner, NULL, NULL, &err);
+voxgig_value* result = partner->vt->create(partner, cmap(12,
+    "billing_id", v_str("example_billing_id"),  // char*
+    "contact_email", v_str("example_contact_email"),  // char*
+    "contact_first_name", v_str("example_contact_first_name"),  // char*
+    "contact_is_active", v_bool(true),  // bool
+    "contact_last_name", v_str("example_contact_last_name"),  // char*
+    "contact_phone", v_str("example_contact_phone"),  // char*
+    "contact_send_welcome_email", v_bool(true),  // bool
+    "contact_user_name", v_str("example_contact_user_name"),  // char*
+    "contact_user_role", v_str("example_contact_user_role"),  // char*
+    "is_active", v_bool(true),  // bool
+    "name", v_str("example_name"),  // char*
+    "reference", v_str("example_reference"))  // char*
+, NULL, &err);
 ```
 
 #### `vt->list(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err)`
@@ -372,7 +398,15 @@ Create a new entity with the given data. Returns the created entity data and set
 
 ```c
 Entity* template = bluefinshieldconexmgmt_template(client, NULL);
-voxgig_value* result = template->vt->create(template, NULL, NULL, &err);
+voxgig_value* result = template->vt->create(template, cmap(7,
+    "active", v_bool(true),  // bool
+    "client_id", v_num(1),  // int64_t
+    "client_name", v_str("example_client_name"),  // char*
+    "name", v_str("example_name"),  // char*
+    "partner_id", v_num(1),  // int64_t
+    "partner_name", v_str("example_partner_name"),  // char*
+    "reference", v_str("example_reference"))  // char*
+, NULL, &err);
 ```
 
 #### `vt->list(Entity* e, voxgig_value* reqmatch, voxgig_value* ctrl, PNError** err)`
@@ -558,12 +592,18 @@ Create a new entity with the given data. Returns the created entity data and set
 
 ```c
 Entity* update_result = bluefinshieldconexmgmt_update_result(client, NULL);
-voxgig_value* result = update_result->vt->create(update_result, cmap(7,
-    "contact", v_map(),  // voxgig_value* (map)
+voxgig_value* result = update_result->vt->create(update_result, cmap(13,
     "email", v_str("example_email"),  // char*
+    "first_name", v_str("example_first_name"),  // char*
+    "is_active", v_bool(true),  // bool
+    "last_name", v_str("example_last_name"),  // char*
+    "phone", v_num(1),  // int64_t
+    "send_welcome_email", v_bool(true),  // bool
+    "user_role", v_map(),  // voxgig_value* (map)
+    "username", v_str("example_username"),  // char*
+    "contact", v_map(),  // voxgig_value* (map)
     "firstName", v_str("example_firstName"),  // char*
     "lastName", v_str("example_lastName"),  // char*
-    "phone", v_str("example_phone"),  // char*
     "userName", v_str("example_userName"),  // char*
     "userRole", v_map())  // voxgig_value* (map)
 , NULL, &err);
@@ -671,15 +711,367 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
+| `audit` | 0.0.1 | Structured audit trail of operations |
+| `clienttrack` | 0.0.1 | Client identity and per-request correlation headers |
+| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
+| `log` | 0.0.1 | Structured request and response logging |
+| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
+| `paging` | 0.0.1 | Pagination signals for list operations |
+| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
+| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
+| `telemetry` | 0.0.1 | Distributed tracing spans with W3C trace-context propagation |
 | `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+| `timeout` | 0.0.1 | Per-request timeout with transport abort |
 
 
 Features are activated via the `feature` option:
 
 ```c
 BluefinShieldconexMgmtSDK* client = bluefinshieldconexmgmt_sdk_new(cmap(1,
-    "feature", cmap(1,
-        "test", cmap(1, "active", v_bool(true)))
+    "feature", cmap(11,
+        "audit", cmap(1, "active", v_bool(true)),
+        "clienttrack", cmap(1, "active", v_bool(true)),
+        "idempotency", cmap(1, "active", v_bool(true)),
+        "log", cmap(1, "active", v_bool(true)),
+        "metrics", cmap(1, "active", v_bool(true)),
+        "paging", cmap(1, "active", v_bool(true)),
+        "ratelimit", cmap(1, "active", v_bool(true)),
+        "retry", cmap(1, "active", v_bool(true)),
+        "telemetry", cmap(1, "active", v_bool(true)),
+        "test", cmap(1, "active", v_bool(true)),
+        "timeout", cmap(1, "active", v_bool(true)))
 ));
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### Ordering
+
+`ratelimit`, `retry`, `timeout` wrap the transport. Each
+wraps whatever is already installed, so **activation order is nesting order**:
+a feature activated later sits OUTSIDE one activated earlier, and sees the call
+first.
+
+That decides behaviour, not just sequence: a feature that short-circuits the
+call, such as a cache serving a hit, stops every feature nested inside it from
+ever seeing that call.
+
+`audit`, `clienttrack`, `idempotency`, `log`, `metrics`, `paging`, `telemetry`, `test` attach to pipeline hooks
+rather than the transport, so their order does not affect what they observe.
+
+#### `audit`
+
+Structured audit trail of operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.audit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `clienttrack`
+
+Client identity and per-request correlation headers.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.clienttrack.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `idempotency`
+
+Idempotency keys for safe retries of mutating operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.idempotency.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `log`
+
+Structured request and response logging.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.log.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `metrics`
+
+Statistics capture: per-operation counters and latency.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.metrics.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `paging`
+
+Pagination signals for list operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.paging.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `ratelimit`
+
+Client-side rate limiting via a token bucket.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.ratelimit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `retry`
+
+Automatic retry of transient failures with exponential backoff.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.retry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `telemetry`
+
+Distributed tracing spans with W3C trace-context propagation.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.telemetry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `timeout`
+
+Per-request timeout with transport abort.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.timeout.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
 

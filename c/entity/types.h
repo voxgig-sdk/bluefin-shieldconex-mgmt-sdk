@@ -36,30 +36,34 @@ typedef struct {
 
 // ClientListMatch is the typed request payload for Client.list.
 typedef struct {
-  char*billingid;  // optional
-  voxgig_value*contact;  // optional
-  char*created;  // optional
-  voxgig_value*directpartner;  // optional
-  int64_t id;  // optional
-  bool isactive;  // optional
-  char*mid;  // optional
-  char*modified;  // optional
-  char*name;  // optional
-  voxgig_value*partner;  // optional
-  int64_t version;  // optional
+  char*partner;
+  int64_t skip;  // optional
+  int64_t take;  // optional
 } ClientListMatch;
 
 // ClientCreateData is the typed request payload for Client.create.
 typedef struct {
+  char*billing_id;  // optional
+  char*contact_email;
+  char*contact_first_name;
+  bool contact_is_active;
+  char*contact_last_name;
+  char*contact_phone;
+  bool contact_send_welcome_email;
+  char*contact_user_name;
+  char*contact_user_role;
+  int64_t direct_partner_id;
+  char*direct_partner_name;
+  bool is_active;
+  char*mid;  // optional
+  char*name;
   char*billingid;  // optional
   voxgig_value*contact;  // optional
   char*created;  // optional
   voxgig_value*directpartner;  // optional
   int64_t id;  // optional
   bool isactive;  // optional
-  char*mid;  // optional
   char*modified;  // optional
-  char*name;  // optional
   voxgig_value*partner;  // optional
   int64_t version;  // optional
 } ClientCreateData;
@@ -104,30 +108,35 @@ typedef struct {
 
 // PartnerListMatch is the typed request payload for Partner.list.
 typedef struct {
-  char*billingid;  // optional
-  voxgig_value*contact;  // optional
-  char*created;  // optional
-  int64_t id;  // optional
-  bool isactive;  // optional
-  char*modified;  // optional
-  char*name;  // optional
-  voxgig_value*parent;  // optional
-  char*reference;  // optional
-  char*verificationphrase;  // optional
-  int64_t version;  // optional
+  char*partner;  // optional
+  int64_t skip;  // optional
+  int64_t take;  // optional
 } PartnerListMatch;
 
 // PartnerCreateData is the typed request payload for Partner.create.
 typedef struct {
+  char*billing_id;
+  char*contact_email;
+  char*contact_first_name;
+  bool contact_is_active;
+  char*contact_last_name;
+  char*contact_phone;
+  bool contact_send_welcome_email;
+  char*contact_user_name;
+  char*contact_user_role;
+  bool is_active;
+  char*name;
+  int64_t parent_id;  // optional
+  char*parent_name;  // optional
+  char*reference;
+  char*verification_phrase;  // optional
   char*billingid;  // optional
   voxgig_value*contact;  // optional
   char*created;  // optional
   int64_t id;  // optional
   bool isactive;  // optional
   char*modified;  // optional
-  char*name;  // optional
   voxgig_value*parent;  // optional
-  char*reference;  // optional
   char*verificationphrase;  // optional
   int64_t version;  // optional
 } PartnerCreateData;
@@ -154,32 +163,37 @@ typedef struct {
 
 // TemplateListMatch is the typed request payload for Template.list.
 typedef struct {
-  voxgig_value*accessmode;  // optional
-  bool active;  // optional
-  voxgig_value*client;  // optional
-  voxgig_value*fieldtemplates;  // optional
-  int64_t id;  // optional
-  char*name;  // optional
-  voxgig_value*options;  // optional
-  voxgig_value*partner;  // optional
-  char*reference;  // optional
-  char*type;  // optional
-  int64_t version;  // optional
+  char*client;  // optional
+  char*partner;  // optional
+  int64_t skip;  // optional
+  int64_t take;  // optional
 } TemplateListMatch;
 
 // TemplateCreateData is the typed request payload for Template.create.
 typedef struct {
+  char*access_mode;  // optional
+  bool active;
+  int64_t client_id;
+  char*client_name;
+  voxgig_value*field_template;  // optional
+  char*name;
+  char*options_custom_style;  // optional
+  char*options_custom_style_file;  // optional
+  voxgig_value*options_domain;  // optional
+  char*options_security_active_from;  // optional
+  char*options_security_active_to;  // optional
+  bool options_security_irreversible;  // optional
+  int64_t partner_id;
+  char*partner_name;
+  char*reference;
+  char*type;  // optional
+  int64_t version;  // optional
   voxgig_value*accessmode;  // optional
-  bool active;  // optional
   voxgig_value*client;  // optional
   voxgig_value*fieldtemplates;  // optional
   int64_t id;  // optional
-  char*name;  // optional
   voxgig_value*options;  // optional
   voxgig_value*partner;  // optional
-  char*reference;  // optional
-  char*type;  // optional
-  int64_t version;  // optional
 } TemplateCreateData;
 
 // TemplateRemoveMatch is the typed request payload for Template.remove.
@@ -207,23 +221,22 @@ typedef struct {
 // TransactionLoadMatch is the typed request payload for Transaction.load.
 typedef struct {
   char*id;
+  char*transaction_type;  // optional
 } TransactionLoadMatch;
 
 // TransactionListMatch is the typed request payload for Transaction.list.
 typedef struct {
-  char*bfid;  // optional
-  voxgig_value*client;  // optional
-  char*completedate;  // optional
-  voxgig_value*directpartner;  // optional
-  char*errcode;  // optional
-  char*errmessage;  // optional
-  int64_t id;  // optional
-  char*ipaddress;  // optional
-  char*messageid;  // optional
-  voxgig_value*partner;  // optional
+  char*client;  // optional
+  char*date_from;  // optional
+  char*date_to;  // optional
+  char*message_id;  // optional
+  char*paging_mode;  // optional
+  char*partner;  // optional
   char*reference;  // optional
+  int64_t skip;  // optional
   bool success;  // optional
-  char*templateid;  // optional
+  int64_t take;  // optional
+  char*transaction_type;  // optional
 } TransactionListMatch;
 
 // UpdateResult is the typed data model for the update_result entity.
@@ -252,35 +265,27 @@ typedef struct {
 
 // UpdateResultListMatch is the typed request payload for UpdateResult.list.
 typedef struct {
-  char*billingid;  // optional
-  voxgig_value*client;  // optional
-  voxgig_value*contact;  // optional
-  voxgig_value*directpartner;  // optional
-  char*email;  // optional
-  char*firstname;  // optional
-  int64_t id;  // optional
-  bool isactive;  // optional
-  char*lastname;  // optional
-  char*mid;  // optional
-  char*name;  // optional
-  voxgig_value*parent;  // optional
-  voxgig_value*partner;  // optional
-  char*phone;  // optional
-  char*reference;  // optional
-  bool sendwelcomeemail;  // optional
-  char*username;  // optional
-  voxgig_value*userrole;  // optional
-  char*verificationphrase;  // optional
-  int64_t version;  // optional
+  char*client;  // optional
+  char*partner;  // optional
+  int64_t skip;  // optional
+  int64_t take;  // optional
 } UpdateResultListMatch;
 
 // UpdateResultCreateData is the typed request payload for UpdateResult.create.
 typedef struct {
-  char*billingid;  // optional
   voxgig_value*client;  // optional
+  char*email;
+  char*first_name;
+  bool is_active;
+  char*last_name;
+  voxgig_value*partner;  // optional
+  int64_t phone;
+  bool send_welcome_email;
+  voxgig_value*user_role;
+  char*username;
+  char*billingid;  // optional
   voxgig_value*contact;
   voxgig_value*directpartner;  // optional
-  char*email;
   char*firstname;
   int64_t id;  // optional
   bool isactive;  // optional
@@ -288,11 +293,8 @@ typedef struct {
   char*mid;  // optional
   char*name;  // optional
   voxgig_value*parent;  // optional
-  voxgig_value*partner;  // optional
-  char*phone;
   char*reference;  // optional
   bool sendwelcomeemail;  // optional
-  char*username;
   voxgig_value*userrole;
   char*verificationphrase;  // optional
   int64_t version;  // optional
@@ -301,25 +303,50 @@ typedef struct {
 // UpdateResultUpdateData is the typed request payload for UpdateResult.update.
 typedef struct {
   char*id;
-  char*billingid;  // optional
+  char*access_mode;  // optional
+  bool active;  // optional
+  int64_t client_id;  // optional
+  char*client_name;  // optional
+  voxgig_value*field_template;  // optional
+  char*name;  // optional
+  char*options_custom_style;  // optional
+  char*options_custom_style_file;  // optional
+  voxgig_value*options_domain;  // optional
+  char*options_security_active_from;  // optional
+  char*options_security_active_to;  // optional
+  bool options_security_irreversible;  // optional
+  int64_t partner_id;  // optional
+  char*partner_name;  // optional
+  char*reference;  // optional
+  char*type;  // optional
+  int64_t version;  // optional
+  char*billing_id;  // optional
+  int64_t contact_id;  // optional
+  bool is_active;  // optional
+  int64_t parent_id;  // optional
+  char*parent_name;  // optional
+  char*verification_phrase;  // optional
   voxgig_value*client;  // optional
+  char*email;  // optional
+  char*first_name;  // optional
+  char*last_name;  // optional
+  voxgig_value*partner;  // optional
+  int64_t phone;  // optional
+  bool send_welcome_email;  // optional
+  char*username;  // optional
+  int64_t direct_partner_id;  // optional
+  char*direct_partner_name;  // optional
+  char*mid;  // optional
+  char*billingid;  // optional
   voxgig_value*contact;  // optional
   voxgig_value*directpartner;  // optional
-  char*email;  // optional
   char*firstname;  // optional
   bool isactive;  // optional
   char*lastname;  // optional
-  char*mid;  // optional
-  char*name;  // optional
   voxgig_value*parent;  // optional
-  voxgig_value*partner;  // optional
-  char*phone;  // optional
-  char*reference;  // optional
   bool sendwelcomeemail;  // optional
-  char*username;  // optional
   voxgig_value*userrole;  // optional
   char*verificationphrase;  // optional
-  int64_t version;  // optional
 } UpdateResultUpdateData;
 
 // User is the typed data model for the user entity.

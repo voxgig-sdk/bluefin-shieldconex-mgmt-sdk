@@ -24,29 +24,33 @@ export interface ClientLoadMatch {
 }
 
 export interface ClientListMatch {
-  billingId?: string
-  contact?: Record<string, any>
-  created?: string
-  directPartner?: Record<string, any>
-  id?: number
-  isActive?: boolean
-  mid?: string
-  modified?: string
-  name?: string
-  partner?: Record<string, any>
-  version?: number
+  partner: string
+  skip?: number
+  take?: number
 }
 
 export interface ClientCreateData {
+  billing_id?: string
+  contact_email: string
+  contact_first_name: string
+  contact_is_active: boolean
+  contact_last_name: string
+  contact_phone: string
+  contact_send_welcome_email: boolean
+  contact_user_name: string
+  contact_user_role: string
+  direct_partner_id: number
+  direct_partner_name: string
+  is_active: boolean
+  mid?: string
+  name: string
   billingId?: string
   contact?: Record<string, any>
   created?: string
   directPartner?: Record<string, any>
   id?: number
   isActive?: boolean
-  mid?: string
   modified?: string
-  name?: string
   partner?: Record<string, any>
   version?: number
 }
@@ -85,29 +89,34 @@ export interface PartnerLoadMatch {
 }
 
 export interface PartnerListMatch {
-  billingId?: string
-  contact?: Record<string, any>
-  created?: string
-  id?: number
-  isActive?: boolean
-  modified?: string
-  name?: string
-  parent?: Record<string, any>
-  reference?: string
-  verificationPhrase?: string
-  version?: number
+  partner?: string
+  skip?: number
+  take?: number
 }
 
 export interface PartnerCreateData {
+  billing_id: string
+  contact_email: string
+  contact_first_name: string
+  contact_is_active: boolean
+  contact_last_name: string
+  contact_phone: string
+  contact_send_welcome_email: boolean
+  contact_user_name: string
+  contact_user_role: string
+  is_active: boolean
+  name: string
+  parent_id?: number
+  parent_name?: string
+  reference: string
+  verification_phrase?: string
   billingId?: string
   contact?: Record<string, any>
   created?: string
   id?: number
   isActive?: boolean
   modified?: string
-  name?: string
   parent?: Record<string, any>
-  reference?: string
   verificationPhrase?: string
   version?: number
 }
@@ -131,31 +140,36 @@ export interface TemplateLoadMatch {
 }
 
 export interface TemplateListMatch {
-  accessMode?: any
-  active?: boolean
-  client?: Record<string, any>
-  fieldTemplates?: any[]
-  id?: number
-  name?: string
-  options?: Record<string, any>
-  partner?: Record<string, any>
-  reference?: string
-  type?: string
-  version?: number
+  client?: string
+  partner?: string
+  skip?: number
+  take?: number
 }
 
 export interface TemplateCreateData {
+  access_mode?: string
+  active: boolean
+  client_id: number
+  client_name: string
+  field_template?: any[]
+  name: string
+  options_custom_style?: string
+  options_custom_style_file?: string
+  options_domain?: any[]
+  options_security_active_from?: string
+  options_security_active_to?: string
+  options_security_irreversible?: boolean
+  partner_id: number
+  partner_name: string
+  reference: string
+  type?: string
+  version?: number
   accessMode?: any
-  active?: boolean
   client?: Record<string, any>
   fieldTemplates?: any[]
   id?: number
-  name?: string
   options?: Record<string, any>
   partner?: Record<string, any>
-  reference?: string
-  type?: string
-  version?: number
 }
 
 export interface TemplateRemoveMatch {
@@ -180,22 +194,21 @@ export interface Transaction {
 
 export interface TransactionLoadMatch {
   id: string
+  transaction_type?: string
 }
 
 export interface TransactionListMatch {
-  bfid?: string
-  client?: Record<string, any>
-  completeDate?: string
-  directPartner?: Record<string, any>
-  errCode?: string
-  errMessage?: string
-  id?: number
-  ipAddress?: string
-  messageId?: string
-  partner?: Record<string, any>
+  client?: string
+  date_from?: string
+  date_to?: string
+  message_id?: string
+  paging_mode?: string
+  partner?: string
   reference?: string
+  skip?: number
   success?: boolean
-  templateId?: string
+  take?: number
+  transaction_type?: string
 }
 
 export interface UpdateResult {
@@ -222,34 +235,26 @@ export interface UpdateResult {
 }
 
 export interface UpdateResultListMatch {
-  billingId?: string
-  client?: Record<string, any>
-  contact?: Record<string, any>
-  directPartner?: Record<string, any>
-  email?: string
-  firstName?: string
-  id?: number
-  isActive?: boolean
-  lastName?: string
-  mid?: string
-  name?: string
-  parent?: Record<string, any>
-  partner?: Record<string, any>
-  phone?: string
-  reference?: string
-  sendWelcomeEmail?: boolean
-  userName?: string
-  userRole?: Record<string, any>
-  verificationPhrase?: string
-  version?: number
+  client?: string
+  partner?: string
+  skip?: number
+  take?: number
 }
 
 export interface UpdateResultCreateData {
-  billingId?: string
   client?: Record<string, any>
+  email: string
+  first_name: string
+  is_active: boolean
+  last_name: string
+  partner?: Record<string, any>
+  phone: number
+  send_welcome_email: boolean
+  user_role: Record<string, any>
+  username: string
+  billingId?: string
   contact: Record<string, any>
   directPartner?: Record<string, any>
-  email: string
   firstName: string
   id?: number
   isActive?: boolean
@@ -257,8 +262,6 @@ export interface UpdateResultCreateData {
   mid?: string
   name?: string
   parent?: Record<string, any>
-  partner?: Record<string, any>
-  phone: string
   reference?: string
   sendWelcomeEmail?: boolean
   userName: string
@@ -269,25 +272,51 @@ export interface UpdateResultCreateData {
 
 export interface UpdateResultUpdateData {
   id: string
-  billingId?: string
+  access_mode?: string
+  active?: boolean
+  client_id?: number
+  client_name?: string
+  field_template?: any[]
+  name?: string
+  options_custom_style?: string
+  options_custom_style_file?: string
+  options_domain?: any[]
+  options_security_active_from?: string
+  options_security_active_to?: string
+  options_security_irreversible?: boolean
+  partner_id?: number
+  partner_name?: string
+  reference?: string
+  type?: string
+  version?: number
+  billing_id?: string
+  contact_id?: number
+  is_active?: boolean
+  parent_id?: number
+  parent_name?: string
+  verification_phrase?: string
   client?: Record<string, any>
+  email?: string
+  first_name?: string
+  last_name?: string
+  partner?: Record<string, any>
+  phone?: number
+  send_welcome_email?: boolean
+  username?: string
+  direct_partner_id?: number
+  direct_partner_name?: string
+  mid?: string
+  billingId?: string
   contact?: Record<string, any>
   directPartner?: Record<string, any>
-  email?: string
   firstName?: string
   isActive?: boolean
   lastName?: string
-  mid?: string
-  name?: string
   parent?: Record<string, any>
-  partner?: Record<string, any>
-  phone?: string
-  reference?: string
   sendWelcomeEmail?: boolean
   userName?: string
   userRole?: Record<string, any>
   verificationPhrase?: string
-  version?: number
 }
 
 export interface User {

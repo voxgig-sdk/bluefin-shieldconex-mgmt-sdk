@@ -152,6 +152,18 @@ Create a new entity with the given data. Returns the created entity data and rai
 (def result
   (e-client/create (api/client client nil)
     (vs/jm
+      "contact_email" "example_contact_email"  ;; string
+      "contact_first_name" "example_contact_first_name"  ;; string
+      "contact_is_active" true  ;; boolean
+      "contact_last_name" "example_contact_last_name"  ;; string
+      "contact_phone" "example_contact_phone"  ;; string
+      "contact_send_welcome_email" true  ;; boolean
+      "contact_user_name" "example_contact_user_name"  ;; string
+      "contact_user_role" "example_contact_user_role"  ;; string
+      "direct_partner_id" 1  ;; long
+      "direct_partner_name" "example_direct_partner_name"  ;; string
+      "is_active" true  ;; boolean
+      "name" "example_name"  ;; string
       )
     nil))
 ```
@@ -323,6 +335,18 @@ Create a new entity with the given data. Returns the created entity data and rai
 (def result
   (e-partner/create (api/partner client nil)
     (vs/jm
+      "billing_id" "example_billing_id"  ;; string
+      "contact_email" "example_contact_email"  ;; string
+      "contact_first_name" "example_contact_first_name"  ;; string
+      "contact_is_active" true  ;; boolean
+      "contact_last_name" "example_contact_last_name"  ;; string
+      "contact_phone" "example_contact_phone"  ;; string
+      "contact_send_welcome_email" true  ;; boolean
+      "contact_user_name" "example_contact_user_name"  ;; string
+      "contact_user_role" "example_contact_user_role"  ;; string
+      "is_active" true  ;; boolean
+      "name" "example_name"  ;; string
+      "reference" "example_reference"  ;; string
       )
     nil))
 ```
@@ -409,6 +433,13 @@ Create a new entity with the given data. Returns the created entity data and rai
 (def result
   (e-template/create (api/template client nil)
     (vs/jm
+      "active" true  ;; boolean
+      "client_id" 1  ;; long
+      "client_name" "example_client_name"  ;; string
+      "name" "example_name"  ;; string
+      "partner_id" 1  ;; long
+      "partner_name" "example_partner_name"  ;; string
+      "reference" "example_reference"  ;; string
       )
     nil))
 ```
@@ -613,11 +644,17 @@ Create a new entity with the given data. Returns the created entity data and rai
 (def result
   (e-update_result/create (api/update_result client nil)
     (vs/jm
-      "contact" (vs/jm)  ;; map
       "email" "example_email"  ;; string
+      "first_name" "example_first_name"  ;; string
+      "is_active" true  ;; boolean
+      "last_name" "example_last_name"  ;; string
+      "phone" 1  ;; long
+      "send_welcome_email" true  ;; boolean
+      "user_role" (vs/jm)  ;; map
+      "username" "example_username"  ;; string
+      "contact" (vs/jm)  ;; map
       "firstName" "example_firstName"  ;; string
       "lastName" "example_lastName"  ;; string
-      "phone" "example_phone"  ;; string
       "userName" "example_userName"  ;; string
       "userRole" (vs/jm)  ;; map
       )
@@ -749,7 +786,17 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
+| `audit` | 0.0.1 | Structured audit trail of operations |
+| `clienttrack` | 0.0.1 | Client identity and per-request correlation headers |
+| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
+| `log` | 0.0.1 | Structured request and response logging |
+| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
+| `paging` | 0.0.1 | Pagination signals for list operations |
+| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
+| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
+| `telemetry` | 0.0.1 | Distributed tracing spans with W3C trace-context propagation |
 | `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+| `timeout` | 0.0.1 | Per-request timeout with transport abort |
 
 
 Features are activated via the `feature` option:
@@ -759,7 +806,349 @@ Features are activated via the `feature` option:
   (api/make-sdk
     (vs/jm "feature"
       (vs/jm
+        "audit" (vs/jm "active" true)
+        "clienttrack" (vs/jm "active" true)
+        "idempotency" (vs/jm "active" true)
+        "log" (vs/jm "active" true)
+        "metrics" (vs/jm "active" true)
+        "paging" (vs/jm "active" true)
+        "ratelimit" (vs/jm "active" true)
+        "retry" (vs/jm "active" true)
+        "telemetry" (vs/jm "active" true)
         "test" (vs/jm "active" true)
+        "timeout" (vs/jm "active" true)
         ))))
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### Ordering
+
+`ratelimit`, `retry`, `timeout` wrap the transport. Each
+wraps whatever is already installed, so **activation order is nesting order**:
+a feature activated later sits OUTSIDE one activated earlier, and sees the call
+first.
+
+That decides behaviour, not just sequence: a feature that short-circuits the
+call, such as a cache serving a hit, stops every feature nested inside it from
+ever seeing that call.
+
+`audit`, `clienttrack`, `idempotency`, `log`, `metrics`, `paging`, `telemetry`, `test` attach to pipeline hooks
+rather than the transport, so their order does not affect what they observe.
+
+#### `audit`
+
+Structured audit trail of operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.audit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `clienttrack`
+
+Client identity and per-request correlation headers.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.clienttrack.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `idempotency`
+
+Idempotency keys for safe retries of mutating operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.idempotency.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `log`
+
+Structured request and response logging.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.log.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `metrics`
+
+Statistics capture: per-operation counters and latency.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.metrics.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `paging`
+
+Pagination signals for list operations.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.paging.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `ratelimit`
+
+Client-side rate limiting via a token bucket.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.ratelimit.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `retry`
+
+Automatic retry of transient failures with exponential backoff.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.retry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `telemetry`
+
+Distributed tracing spans with W3C trace-context propagation.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.telemetry.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
+
+#### `timeout`
+
+Per-request timeout with transport abort.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.timeout.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Wraps the transport: its place in the activation order decides what it
+  sees. See [Ordering](#ordering) above.
+- Inactive by default: leaving it out costs nothing at runtime.
 

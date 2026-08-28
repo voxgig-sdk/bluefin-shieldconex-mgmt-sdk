@@ -32,30 +32,32 @@ public struct ClientLoadMatch {
 
 /// ClientListMatch is the typed request payload for Client.list.
 public struct ClientListMatch {
-  public var billingId: String?
-  public var contact: VMap?
-  public var created: String?
-  public var directPartner: VMap?
-  public var id: Int?
-  public var isActive: Bool?
-  public var mid: String?
-  public var modified: String?
-  public var name: String?
-  public var partner: VMap?
-  public var version: Int?
+  public var partner: String
+  public var skip: Int?
+  public var take: Int?
 }
 
 /// ClientCreateData is the typed request payload for Client.create.
 public struct ClientCreateData {
   public var billingId: String?
+  public var contactEmail: String
+  public var contactFirstName: String
+  public var contactIsActive: Bool
+  public var contactLastName: String
+  public var contactPhone: String
+  public var contactSendWelcomeEmail: Bool
+  public var contactUserName: String
+  public var contactUserRole: String
+  public var directPartnerId: Int
+  public var directPartnerName: String
+  public var isActive: Bool
+  public var mid: String?
+  public var name: String
   public var contact: VMap?
   public var created: String?
   public var directPartner: VMap?
   public var id: Int?
-  public var isActive: Bool?
-  public var mid: String?
   public var modified: String?
-  public var name: String?
   public var partner: VMap?
   public var version: Int?
 }
@@ -100,31 +102,33 @@ public struct PartnerLoadMatch {
 
 /// PartnerListMatch is the typed request payload for Partner.list.
 public struct PartnerListMatch {
-  public var billingId: String?
-  public var contact: VMap?
-  public var created: String?
-  public var id: Int?
-  public var isActive: Bool?
-  public var modified: String?
-  public var name: String?
-  public var parent: VMap?
-  public var reference: String?
-  public var verificationPhrase: String?
-  public var version: Int?
+  public var partner: String?
+  public var skip: Int?
+  public var take: Int?
 }
 
 /// PartnerCreateData is the typed request payload for Partner.create.
 public struct PartnerCreateData {
-  public var billingId: String?
+  public var billingId: String
+  public var contactEmail: String
+  public var contactFirstName: String
+  public var contactIsActive: Bool
+  public var contactLastName: String
+  public var contactPhone: String
+  public var contactSendWelcomeEmail: Bool
+  public var contactUserName: String
+  public var contactUserRole: String
+  public var isActive: Bool
+  public var name: String
+  public var parentId: Int?
+  public var parentName: String?
+  public var reference: String
+  public var verificationPhrase: String?
   public var contact: VMap?
   public var created: String?
   public var id: Int?
-  public var isActive: Bool?
   public var modified: String?
-  public var name: String?
   public var parent: VMap?
-  public var reference: String?
-  public var verificationPhrase: String?
   public var version: Int?
 }
 
@@ -150,32 +154,36 @@ public struct TemplateLoadMatch {
 
 /// TemplateListMatch is the typed request payload for Template.list.
 public struct TemplateListMatch {
-  public var accessMode: Value?
-  public var active: Bool?
-  public var client: VMap?
-  public var fieldTemplates: [Value]?
-  public var id: Int?
-  public var name: String?
-  public var options: VMap?
-  public var partner: VMap?
-  public var reference: String?
-  public var type: String?
-  public var version: Int?
+  public var client: String?
+  public var partner: String?
+  public var skip: Int?
+  public var take: Int?
 }
 
 /// TemplateCreateData is the typed request payload for Template.create.
 public struct TemplateCreateData {
-  public var accessMode: Value?
-  public var active: Bool?
+  public var accessMode: String?
+  public var active: Bool
+  public var clientId: Int
+  public var clientName: String
+  public var fieldTemplate: [Value]?
+  public var name: String
+  public var optionsCustomStyle: String?
+  public var optionsCustomStyleFile: String?
+  public var optionsDomain: [Value]?
+  public var optionsSecurityActiveFrom: String?
+  public var optionsSecurityActiveTo: String?
+  public var optionsSecurityIrreversible: Bool?
+  public var partnerId: Int
+  public var partnerName: String
+  public var reference: String
+  public var type: String?
+  public var version: Int?
   public var client: VMap?
   public var fieldTemplates: [Value]?
   public var id: Int?
-  public var name: String?
   public var options: VMap?
   public var partner: VMap?
-  public var reference: String?
-  public var type: String?
-  public var version: Int?
 }
 
 /// TemplateRemoveMatch is the typed request payload for Template.remove.
@@ -203,23 +211,22 @@ public struct Transaction {
 /// TransactionLoadMatch is the typed request payload for Transaction.load.
 public struct TransactionLoadMatch {
   public var id: String
+  public var transactionType: String?
 }
 
 /// TransactionListMatch is the typed request payload for Transaction.list.
 public struct TransactionListMatch {
-  public var bfid: String?
-  public var client: VMap?
-  public var completeDate: String?
-  public var directPartner: VMap?
-  public var errCode: String?
-  public var errMessage: String?
-  public var id: Int?
-  public var ipAddress: String?
+  public var client: String?
+  public var dateFrom: String?
+  public var dateTo: String?
   public var messageId: String?
-  public var partner: VMap?
+  public var pagingMode: String?
+  public var partner: String?
   public var reference: String?
+  public var skip: Int?
   public var success: Bool?
-  public var templateId: String?
+  public var take: Int?
+  public var transactionType: String?
 }
 
 /// UpdateResult is the typed data model for the update_result entity.
@@ -248,48 +255,33 @@ public struct UpdateResult {
 
 /// UpdateResultListMatch is the typed request payload for UpdateResult.list.
 public struct UpdateResultListMatch {
-  public var billingId: String?
-  public var client: VMap?
-  public var contact: VMap?
-  public var directPartner: VMap?
-  public var email: String?
-  public var firstName: String?
-  public var id: Int?
-  public var isActive: Bool?
-  public var lastName: String?
-  public var mid: String?
-  public var name: String?
-  public var parent: VMap?
-  public var partner: VMap?
-  public var phone: String?
-  public var reference: String?
-  public var sendWelcomeEmail: Bool?
-  public var userName: String?
-  public var userRole: VMap?
-  public var verificationPhrase: String?
-  public var version: Int?
+  public var client: String?
+  public var partner: String?
+  public var skip: Int?
+  public var take: Int?
 }
 
 /// UpdateResultCreateData is the typed request payload for UpdateResult.create.
 public struct UpdateResultCreateData {
-  public var billingId: String?
   public var client: VMap?
-  public var contact: VMap
-  public var directPartner: VMap?
   public var email: String
   public var firstName: String
-  public var id: Int?
-  public var isActive: Bool?
+  public var isActive: Bool
   public var lastName: String
+  public var partner: VMap?
+  public var phone: Int
+  public var sendWelcomeEmail: Bool
+  public var userRole: VMap
+  public var username: String
+  public var billingId: String?
+  public var contact: VMap
+  public var directPartner: VMap?
+  public var id: Int?
   public var mid: String?
   public var name: String?
   public var parent: VMap?
-  public var partner: VMap?
-  public var phone: String
   public var reference: String?
-  public var sendWelcomeEmail: Bool?
   public var userName: String
-  public var userRole: VMap
   public var verificationPhrase: String?
   public var version: Int?
 }
@@ -297,25 +289,45 @@ public struct UpdateResultCreateData {
 /// UpdateResultUpdateData is the typed request payload for UpdateResult.update.
 public struct UpdateResultUpdateData {
   public var id: String
+  public var accessMode: String?
+  public var active: Bool?
+  public var clientId: Int?
+  public var clientName: String?
+  public var fieldTemplate: [Value]?
+  public var name: String?
+  public var optionsCustomStyle: String?
+  public var optionsCustomStyleFile: String?
+  public var optionsDomain: [Value]?
+  public var optionsSecurityActiveFrom: String?
+  public var optionsSecurityActiveTo: String?
+  public var optionsSecurityIrreversible: Bool?
+  public var partnerId: Int?
+  public var partnerName: String?
+  public var reference: String?
+  public var type: String?
+  public var version: Int?
   public var billingId: String?
+  public var contactId: Int?
+  public var isActive: Bool?
+  public var parentId: Int?
+  public var parentName: String?
+  public var verificationPhrase: String?
   public var client: VMap?
-  public var contact: VMap?
-  public var directPartner: VMap?
   public var email: String?
   public var firstName: String?
-  public var isActive: Bool?
   public var lastName: String?
-  public var mid: String?
-  public var name: String?
-  public var parent: VMap?
   public var partner: VMap?
-  public var phone: String?
-  public var reference: String?
+  public var phone: Int?
   public var sendWelcomeEmail: Bool?
+  public var username: String?
+  public var directPartnerId: Int?
+  public var directPartnerName: String?
+  public var mid: String?
+  public var contact: VMap?
+  public var directPartner: VMap?
+  public var parent: VMap?
   public var userName: String?
   public var userRole: VMap?
-  public var verificationPhrase: String?
-  public var version: Int?
 }
 
 /// User is the typed data model for the user entity.

@@ -68,7 +68,7 @@ record.
 
 ```ocaml
 (* Create — resolves to the ENTITY; e_data_get gives the record *)
-let created = (Sdk_client.client client Noval).e_create (jo [("billingId", (Str "example_billingId")); ("contact", (empty_map ()))]) Noval in
+let created = (Sdk_client.client client Noval).e_create (jo [("contact_email", (Str "example_contact_email")); ("contact_first_name", (Str "example_contact_first_name")); ("contact_is_active", (Bool true)); ("contact_last_name", (Str "example_contact_last_name")); ("contact_phone", (Str "example_contact_phone")); ("contact_send_welcome_email", (Bool true)); ("contact_user_name", (Str "example_contact_user_name")); ("contact_user_role", (Str "example_contact_user_role")); ("direct_partner_id", (Num 1.)); ("direct_partner_name", (Str "example_direct_partner_name")); ("is_active", (Bool true)); ("name", (Str "example_name"))]) Noval in
 print_endline (stringify (created.e_data_get ()));
 
 (* Remove — resolves to the entity, marked deleted; it keeps its data *)
@@ -473,6 +473,18 @@ let client_datas = List.map (fun e -> e.e_data_get ()) clients
 
 ```ocaml
 let client = (Sdk_client.client client Noval).e_create (jo [
+    ("contact_email", (Str "example_contact_email"));  (* string *)
+    ("contact_first_name", (Str "example_contact_first_name"));  (* string *)
+    ("contact_is_active", (Bool true));  (* bool *)
+    ("contact_last_name", (Str "example_contact_last_name"));  (* string *)
+    ("contact_phone", (Str "example_contact_phone"));  (* string *)
+    ("contact_send_welcome_email", (Bool true));  (* bool *)
+    ("contact_user_name", (Str "example_contact_user_name"));  (* string *)
+    ("contact_user_role", (Str "example_contact_user_role"));  (* string *)
+    ("direct_partner_id", (Num 1.));  (* int *)
+    ("direct_partner_name", (Str "example_direct_partner_name"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("name", (Str "example_name"));  (* string *)
 ]) Noval
 let client_data = client.e_data_get ()
 ```
@@ -553,6 +565,18 @@ let partner_datas = List.map (fun e -> e.e_data_get ()) partners
 
 ```ocaml
 let partner = (Sdk_client.partner client Noval).e_create (jo [
+    ("billing_id", (Str "example_billing_id"));  (* string *)
+    ("contact_email", (Str "example_contact_email"));  (* string *)
+    ("contact_first_name", (Str "example_contact_first_name"));  (* string *)
+    ("contact_is_active", (Bool true));  (* bool *)
+    ("contact_last_name", (Str "example_contact_last_name"));  (* string *)
+    ("contact_phone", (Str "example_contact_phone"));  (* string *)
+    ("contact_send_welcome_email", (Bool true));  (* bool *)
+    ("contact_user_name", (Str "example_contact_user_name"));  (* string *)
+    ("contact_user_role", (Str "example_contact_user_role"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("name", (Str "example_name"));  (* string *)
+    ("reference", (Str "example_reference"));  (* string *)
 ]) Noval
 let partner_data = partner.e_data_get ()
 ```
@@ -607,6 +631,13 @@ let template_datas = List.map (fun e -> e.e_data_get ()) templates
 
 ```ocaml
 let template = (Sdk_client.template client Noval).e_create (jo [
+    ("active", (Bool true));  (* bool *)
+    ("client_id", (Num 1.));  (* int *)
+    ("client_name", (Str "example_client_name"));  (* string *)
+    ("name", (Str "example_name"));  (* string *)
+    ("partner_id", (Num 1.));  (* int *)
+    ("partner_name", (Str "example_partner_name"));  (* string *)
+    ("reference", (Str "example_reference"));  (* string *)
 ]) Noval
 let template_data = template.e_data_get ()
 ```
@@ -707,11 +738,17 @@ let update_result_datas = List.map (fun e -> e.e_data_get ()) update_results
 
 ```ocaml
 let update_result = (Sdk_client.update_result client Noval).e_create (jo [
-    ("contact", (empty_map ()));  (* value map *)
     ("email", (Str "example_email"));  (* string *)
+    ("first_name", (Str "example_first_name"));  (* string *)
+    ("is_active", (Bool true));  (* bool *)
+    ("last_name", (Str "example_last_name"));  (* string *)
+    ("phone", (Num 1.));  (* int *)
+    ("send_welcome_email", (Bool true));  (* bool *)
+    ("user_role", (empty_map ()));  (* value map *)
+    ("username", (Str "example_username"));  (* string *)
+    ("contact", (empty_map ()));  (* value map *)
     ("firstName", (Str "example_firstName"));  (* string *)
     ("lastName", (Str "example_lastName"));  (* string *)
-    ("phone", (Str "example_phone"));  (* string *)
     ("userName", (Str "example_userName"));  (* string *)
     ("userRole", (empty_map ()));  (* value map *)
 ]) Noval
@@ -754,6 +791,176 @@ Create an instance: `let user = Sdk_client.user client Noval`
 let user = (Sdk_client.user client Noval).e_load (jo [("id", (Str "user_id"))]) Noval
 let user_data = user.e_data_get ()
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -812,7 +1019,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

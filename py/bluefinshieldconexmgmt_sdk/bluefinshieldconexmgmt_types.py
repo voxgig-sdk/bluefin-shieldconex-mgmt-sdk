@@ -34,30 +34,40 @@ class ClientLoadMatch(TypedDict):
     id: str
 
 
-class ClientListMatch(TypedDict, total=False):
+class ClientListMatchRequired(TypedDict):
+    partner: str
+
+
+class ClientListMatch(ClientListMatchRequired, total=False):
+    skip: int
+    take: int
+
+
+class ClientCreateDataRequired(TypedDict):
+    contact_email: str
+    contact_first_name: str
+    contact_is_active: bool
+    contact_last_name: str
+    contact_phone: str
+    contact_send_welcome_email: bool
+    contact_user_name: str
+    contact_user_role: str
+    direct_partner_id: int
+    direct_partner_name: str
+    is_active: bool
+    name: str
+
+
+class ClientCreateData(ClientCreateDataRequired, total=False):
+    billing_id: str
+    mid: str
     billingId: str
     contact: dict
     created: str
     directPartner: dict
     id: int
     isActive: bool
-    mid: str
     modified: str
-    name: str
-    partner: dict
-    version: int
-
-
-class ClientCreateData(TypedDict, total=False):
-    billingId: str
-    contact: dict
-    created: str
-    directPartner: dict
-    id: int
-    isActive: bool
-    mid: str
-    modified: str
-    name: str
     partner: dict
     version: int
 
@@ -99,29 +109,37 @@ class PartnerLoadMatch(TypedDict):
 
 
 class PartnerListMatch(TypedDict, total=False):
+    partner: str
+    skip: int
+    take: int
+
+
+class PartnerCreateDataRequired(TypedDict):
+    billing_id: str
+    contact_email: str
+    contact_first_name: str
+    contact_is_active: bool
+    contact_last_name: str
+    contact_phone: str
+    contact_send_welcome_email: bool
+    contact_user_name: str
+    contact_user_role: str
+    is_active: bool
+    name: str
+    reference: str
+
+
+class PartnerCreateData(PartnerCreateDataRequired, total=False):
+    parent_id: int
+    parent_name: str
+    verification_phrase: str
     billingId: str
     contact: dict
     created: str
     id: int
     isActive: bool
     modified: str
-    name: str
     parent: dict
-    reference: str
-    verificationPhrase: str
-    version: int
-
-
-class PartnerCreateData(TypedDict, total=False):
-    billingId: str
-    contact: dict
-    created: str
-    id: int
-    isActive: bool
-    modified: str
-    name: str
-    parent: dict
-    reference: str
     verificationPhrase: str
     version: int
 
@@ -145,31 +163,39 @@ class TemplateLoadMatch(TypedDict):
 
 
 class TemplateListMatch(TypedDict, total=False):
-    accessMode: Any
+    client: str
+    partner: str
+    skip: int
+    take: int
+
+
+class TemplateCreateDataRequired(TypedDict):
     active: bool
+    client_id: int
+    client_name: str
+    name: str
+    partner_id: int
+    partner_name: str
+    reference: str
+
+
+class TemplateCreateData(TemplateCreateDataRequired, total=False):
+    access_mode: str
+    field_template: list
+    options_custom_style: str
+    options_custom_style_file: str
+    options_domain: list
+    options_security_active_from: str
+    options_security_active_to: str
+    options_security_irreversible: bool
+    type: str
+    version: int
+    accessMode: Any
     client: dict
     fieldTemplates: list
     id: int
-    name: str
     options: dict
     partner: dict
-    reference: str
-    type: str
-    version: int
-
-
-class TemplateCreateData(TypedDict, total=False):
-    accessMode: Any
-    active: bool
-    client: dict
-    fieldTemplates: list
-    id: int
-    name: str
-    options: dict
-    partner: dict
-    reference: str
-    type: str
-    version: int
 
 
 class TemplateRemoveMatch(TypedDict):
@@ -192,24 +218,26 @@ class Transaction(TypedDict, total=False):
     templateId: str
 
 
-class TransactionLoadMatch(TypedDict):
+class TransactionLoadMatchRequired(TypedDict):
     id: str
 
 
+class TransactionLoadMatch(TransactionLoadMatchRequired, total=False):
+    transaction_type: str
+
+
 class TransactionListMatch(TypedDict, total=False):
-    bfid: str
-    client: dict
-    completeDate: str
-    directPartner: dict
-    errCode: str
-    errMessage: str
-    id: int
-    ipAddress: str
-    messageId: str
-    partner: dict
+    client: str
+    date_from: str
+    date_to: str
+    message_id: str
+    paging_mode: str
+    partner: str
     reference: str
+    skip: int
     success: bool
-    templateId: str
+    take: int
+    transaction_type: str
 
 
 class UpdateResultRequired(TypedDict):
@@ -239,48 +267,38 @@ class UpdateResult(UpdateResultRequired, total=False):
 
 
 class UpdateResultListMatch(TypedDict, total=False):
-    billingId: str
-    client: dict
-    contact: dict
-    directPartner: dict
-    email: str
-    firstName: str
-    id: int
-    isActive: bool
-    lastName: str
-    mid: str
-    name: str
-    parent: dict
-    partner: dict
-    phone: str
-    reference: str
-    sendWelcomeEmail: bool
-    userName: str
-    userRole: dict
-    verificationPhrase: str
-    version: int
+    client: str
+    partner: str
+    skip: int
+    take: int
 
 
 class UpdateResultCreateDataRequired(TypedDict):
-    contact: dict
     email: str
+    first_name: str
+    is_active: bool
+    last_name: str
+    phone: int
+    send_welcome_email: bool
+    user_role: dict
+    username: str
+    contact: dict
     firstName: str
     lastName: str
-    phone: str
     userName: str
     userRole: dict
 
 
 class UpdateResultCreateData(UpdateResultCreateDataRequired, total=False):
-    billingId: str
     client: dict
+    partner: dict
+    billingId: str
     directPartner: dict
     id: int
     isActive: bool
     mid: str
     name: str
     parent: dict
-    partner: dict
     reference: str
     sendWelcomeEmail: bool
     verificationPhrase: str
@@ -292,25 +310,51 @@ class UpdateResultUpdateDataRequired(TypedDict):
 
 
 class UpdateResultUpdateData(UpdateResultUpdateDataRequired, total=False):
-    billingId: str
+    access_mode: str
+    active: bool
+    client_id: int
+    client_name: str
+    field_template: list
+    name: str
+    options_custom_style: str
+    options_custom_style_file: str
+    options_domain: list
+    options_security_active_from: str
+    options_security_active_to: str
+    options_security_irreversible: bool
+    partner_id: int
+    partner_name: str
+    reference: str
+    type: str
+    version: int
+    billing_id: str
+    contact_id: int
+    is_active: bool
+    parent_id: int
+    parent_name: str
+    verification_phrase: str
     client: dict
+    email: str
+    first_name: str
+    last_name: str
+    partner: dict
+    phone: int
+    send_welcome_email: bool
+    username: str
+    direct_partner_id: int
+    direct_partner_name: str
+    mid: str
+    billingId: str
     contact: dict
     directPartner: dict
-    email: str
     firstName: str
     isActive: bool
     lastName: str
-    mid: str
-    name: str
     parent: dict
-    partner: dict
-    phone: str
-    reference: str
     sendWelcomeEmail: bool
     userName: str
     userRole: dict
     verificationPhrase: str
-    version: int
 
 
 class User(TypedDict, total=False):

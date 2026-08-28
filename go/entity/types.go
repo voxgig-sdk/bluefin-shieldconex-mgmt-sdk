@@ -34,30 +34,34 @@ type ClientLoadMatch struct {
 
 // ClientListMatch is the typed request payload for Client.ListTyped.
 type ClientListMatch struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Contact *map[string]any `json:"contact,omitempty"`
-	Created *string `json:"created,omitempty"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	Mid *string `json:"mid,omitempty"`
-	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Version *int `json:"version,omitempty"`
+	Partner string `json:"partner"`
+	Skip *int `json:"skip,omitempty"`
+	Take *int `json:"take,omitempty"`
 }
 
 // ClientCreateData is the typed request payload for Client.CreateTyped.
 type ClientCreateData struct {
-	BillingId *string `json:"billingId,omitempty"`
+	BillingId *string `json:"billing_id,omitempty"`
+	ContactEmail string `json:"contact_email"`
+	ContactFirstName string `json:"contact_first_name"`
+	ContactIsActive bool `json:"contact_is_active"`
+	ContactLastName string `json:"contact_last_name"`
+	ContactPhone string `json:"contact_phone"`
+	ContactSendWelcomeEmail bool `json:"contact_send_welcome_email"`
+	ContactUserName string `json:"contact_user_name"`
+	ContactUserRole string `json:"contact_user_role"`
+	DirectPartnerId int `json:"direct_partner_id"`
+	DirectPartnerName string `json:"direct_partner_name"`
+	IsActive bool `json:"is_active"`
+	Mid *string `json:"mid,omitempty"`
+	Name string `json:"name"`
+	BillingId2 *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
 	DirectPartner *map[string]any `json:"directPartner,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	Mid *string `json:"mid,omitempty"`
+	IsActive2 *bool `json:"isActive,omitempty"`
 	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
@@ -102,31 +106,36 @@ type PartnerLoadMatch struct {
 
 // PartnerListMatch is the typed request payload for Partner.ListTyped.
 type PartnerListMatch struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Contact *map[string]any `json:"contact,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parent *map[string]any `json:"parent,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
-	Version *int `json:"version,omitempty"`
+	Partner *string `json:"partner,omitempty"`
+	Skip *int `json:"skip,omitempty"`
+	Take *int `json:"take,omitempty"`
 }
 
 // PartnerCreateData is the typed request payload for Partner.CreateTyped.
 type PartnerCreateData struct {
-	BillingId *string `json:"billingId,omitempty"`
+	BillingId string `json:"billing_id"`
+	ContactEmail string `json:"contact_email"`
+	ContactFirstName string `json:"contact_first_name"`
+	ContactIsActive bool `json:"contact_is_active"`
+	ContactLastName string `json:"contact_last_name"`
+	ContactPhone string `json:"contact_phone"`
+	ContactSendWelcomeEmail bool `json:"contact_send_welcome_email"`
+	ContactUserName string `json:"contact_user_name"`
+	ContactUserRole string `json:"contact_user_role"`
+	IsActive bool `json:"is_active"`
+	Name string `json:"name"`
+	ParentId *int `json:"parent_id,omitempty"`
+	ParentName *string `json:"parent_name,omitempty"`
+	Reference string `json:"reference"`
+	VerificationPhrase *string `json:"verification_phrase,omitempty"`
+	BillingId2 *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
+	IsActive2 *bool `json:"isActive,omitempty"`
 	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
+	VerificationPhrase2 *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
 
@@ -152,32 +161,37 @@ type TemplateLoadMatch struct {
 
 // TemplateListMatch is the typed request payload for Template.ListTyped.
 type TemplateListMatch struct {
-	AccessMode *any `json:"accessMode,omitempty"`
-	Active *bool `json:"active,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Options *map[string]any `json:"options,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Version *int `json:"version,omitempty"`
+	Client *string `json:"client,omitempty"`
+	Partner *string `json:"partner,omitempty"`
+	Skip *int `json:"skip,omitempty"`
+	Take *int `json:"take,omitempty"`
 }
 
 // TemplateCreateData is the typed request payload for Template.CreateTyped.
 type TemplateCreateData struct {
-	AccessMode *any `json:"accessMode,omitempty"`
-	Active *bool `json:"active,omitempty"`
+	AccessMode *string `json:"access_mode,omitempty"`
+	Active bool `json:"active"`
+	ClientId int `json:"client_id"`
+	ClientName string `json:"client_name"`
+	FieldTemplate *[]any `json:"field_template,omitempty"`
+	Name string `json:"name"`
+	OptionsCustomStyle *string `json:"options_custom_style,omitempty"`
+	OptionsCustomStyleFile *string `json:"options_custom_style_file,omitempty"`
+	OptionsDomain *[]any `json:"options_domain,omitempty"`
+	OptionsSecurityActiveFrom *string `json:"options_security_active_from,omitempty"`
+	OptionsSecurityActiveTo *string `json:"options_security_active_to,omitempty"`
+	OptionsSecurityIrreversible *bool `json:"options_security_irreversible,omitempty"`
+	PartnerId int `json:"partner_id"`
+	PartnerName string `json:"partner_name"`
+	Reference string `json:"reference"`
+	Type *string `json:"type,omitempty"`
+	Version *int `json:"version,omitempty"`
+	AccessMode2 *any `json:"accessMode,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
 	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Options *map[string]any `json:"options,omitempty"`
 	Partner *map[string]any `json:"partner,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // TemplateRemoveMatch is the typed request payload for Template.RemoveTyped.
@@ -205,23 +219,22 @@ type Transaction struct {
 // TransactionLoadMatch is the typed request payload for Transaction.LoadTyped.
 type TransactionLoadMatch struct {
 	Id string `json:"id"`
+	TransactionType *string `json:"transaction_type,omitempty"`
 }
 
 // TransactionListMatch is the typed request payload for Transaction.ListTyped.
 type TransactionListMatch struct {
-	Bfid *string `json:"bfid,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	CompleteDate *string `json:"completeDate,omitempty"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	ErrCode *string `json:"errCode,omitempty"`
-	ErrMessage *string `json:"errMessage,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IpAddress *string `json:"ipAddress,omitempty"`
-	MessageId *string `json:"messageId,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
+	Client *string `json:"client,omitempty"`
+	DateFrom *string `json:"date_from,omitempty"`
+	DateTo *string `json:"date_to,omitempty"`
+	MessageId *string `json:"message_id,omitempty"`
+	PagingMode *string `json:"paging_mode,omitempty"`
+	Partner *string `json:"partner,omitempty"`
 	Reference *string `json:"reference,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 	Success *bool `json:"success,omitempty"`
-	TemplateId *string `json:"templateId,omitempty"`
+	Take *int `json:"take,omitempty"`
+	TransactionType *string `json:"transaction_type,omitempty"`
 }
 
 // UpdateResult is the typed data model for the update_result entity.
@@ -250,48 +263,38 @@ type UpdateResult struct {
 
 // UpdateResultListMatch is the typed request payload for UpdateResult.ListTyped.
 type UpdateResultListMatch struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	Contact *map[string]any `json:"contact,omitempty"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"firstName,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	LastName *string `json:"lastName,omitempty"`
-	Mid *string `json:"mid,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parent *map[string]any `json:"parent,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
-	UserName *string `json:"userName,omitempty"`
-	UserRole *map[string]any `json:"userRole,omitempty"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
-	Version *int `json:"version,omitempty"`
+	Client *string `json:"client,omitempty"`
+	Partner *string `json:"partner,omitempty"`
+	Skip *int `json:"skip,omitempty"`
+	Take *int `json:"take,omitempty"`
 }
 
 // UpdateResultCreateData is the typed request payload for UpdateResult.CreateTyped.
 type UpdateResultCreateData struct {
-	BillingId *string `json:"billingId,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
+	Email string `json:"email"`
+	FirstName string `json:"first_name"`
+	IsActive bool `json:"is_active"`
+	LastName string `json:"last_name"`
+	Partner *map[string]any `json:"partner,omitempty"`
+	Phone int `json:"phone"`
+	SendWelcomeEmail bool `json:"send_welcome_email"`
+	UserRole map[string]any `json:"user_role"`
+	Username string `json:"username"`
+	BillingId *string `json:"billingId,omitempty"`
 	Contact map[string]any `json:"contact"`
 	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Email string `json:"email"`
-	FirstName string `json:"firstName"`
+	FirstName2 string `json:"firstName"`
 	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	LastName string `json:"lastName"`
+	IsActive2 *bool `json:"isActive,omitempty"`
+	LastName2 string `json:"lastName"`
 	Mid *string `json:"mid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Phone string `json:"phone"`
 	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	SendWelcomeEmail2 *bool `json:"sendWelcomeEmail,omitempty"`
 	UserName string `json:"userName"`
-	UserRole map[string]any `json:"userRole"`
+	UserRole2 map[string]any `json:"userRole"`
 	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
 	Version *int `json:"version,omitempty"`
 }
@@ -299,25 +302,51 @@ type UpdateResultCreateData struct {
 // UpdateResultUpdateData is the typed request payload for UpdateResult.UpdateTyped.
 type UpdateResultUpdateData struct {
 	Id string `json:"id"`
-	BillingId *string `json:"billingId,omitempty"`
+	AccessMode *string `json:"access_mode,omitempty"`
+	Active *bool `json:"active,omitempty"`
+	ClientId *int `json:"client_id,omitempty"`
+	ClientName *string `json:"client_name,omitempty"`
+	FieldTemplate *[]any `json:"field_template,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OptionsCustomStyle *string `json:"options_custom_style,omitempty"`
+	OptionsCustomStyleFile *string `json:"options_custom_style_file,omitempty"`
+	OptionsDomain *[]any `json:"options_domain,omitempty"`
+	OptionsSecurityActiveFrom *string `json:"options_security_active_from,omitempty"`
+	OptionsSecurityActiveTo *string `json:"options_security_active_to,omitempty"`
+	OptionsSecurityIrreversible *bool `json:"options_security_irreversible,omitempty"`
+	PartnerId *int `json:"partner_id,omitempty"`
+	PartnerName *string `json:"partner_name,omitempty"`
+	Reference *string `json:"reference,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Version *int `json:"version,omitempty"`
+	BillingId *string `json:"billing_id,omitempty"`
+	ContactId *int `json:"contact_id,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
+	ParentId *int `json:"parent_id,omitempty"`
+	ParentName *string `json:"parent_name,omitempty"`
+	VerificationPhrase *string `json:"verification_phrase,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
+	LastName *string `json:"last_name,omitempty"`
+	Partner *map[string]any `json:"partner,omitempty"`
+	Phone *int `json:"phone,omitempty"`
+	SendWelcomeEmail *bool `json:"send_welcome_email,omitempty"`
+	Username *string `json:"username,omitempty"`
+	DirectPartnerId *int `json:"direct_partner_id,omitempty"`
+	DirectPartnerName *string `json:"direct_partner_name,omitempty"`
+	Mid *string `json:"mid,omitempty"`
+	BillingId2 *string `json:"billingId,omitempty"`
 	Contact *map[string]any `json:"contact,omitempty"`
 	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"firstName,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	LastName *string `json:"lastName,omitempty"`
-	Mid *string `json:"mid,omitempty"`
-	Name *string `json:"name,omitempty"`
+	FirstName2 *string `json:"firstName,omitempty"`
+	IsActive2 *bool `json:"isActive,omitempty"`
+	LastName2 *string `json:"lastName,omitempty"`
 	Parent *map[string]any `json:"parent,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
+	SendWelcomeEmail2 *bool `json:"sendWelcomeEmail,omitempty"`
 	UserName *string `json:"userName,omitempty"`
 	UserRole *map[string]any `json:"userRole,omitempty"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
-	Version *int `json:"version,omitempty"`
+	VerificationPhrase2 *string `json:"verificationPhrase,omitempty"`
 }
 
 // User is the typed data model for the user entity.

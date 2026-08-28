@@ -73,7 +73,7 @@ catch {
 
 ```scala
 // Create — returns the ENTITY (call data() for the record)
-val created = client.client(null).create(java.util.Map.of("billingId", "example_billingId", "contact", java.util.Map.of()), null)
+val created = client.client(null).create(java.util.Map.of("contact_email", "example_contact_email", "contact_first_name", "example_contact_first_name", "contact_is_active", true, "contact_last_name", "example_contact_last_name", "contact_phone", "example_contact_phone", "contact_send_welcome_email", true, "contact_user_name", "example_contact_user_name", "contact_user_role", "example_contact_user_role", "direct_partner_id", 1L, "direct_partner_name", "example_direct_partner_name", "is_active", true, "name", "example_name"), null)
 
 // Remove
 client.client(null).remove(java.util.Map.of("id", "example_id"), null)
@@ -472,6 +472,18 @@ val clientList = client.client(null).list(null, null)
 
 ```scala
 val client = client.client(null).create(java.util.Map.of(
+    "contact_email", "example_contact_email",  // String
+    "contact_first_name", "example_contact_first_name",  // String
+    "contact_is_active", true,  // java.lang.Boolean
+    "contact_last_name", "example_contact_last_name",  // String
+    "contact_phone", "example_contact_phone",  // String
+    "contact_send_welcome_email", true,  // java.lang.Boolean
+    "contact_user_name", "example_contact_user_name",  // String
+    "contact_user_role", "example_contact_user_role",  // String
+    "direct_partner_id", 1L,  // java.lang.Long
+    "direct_partner_name", "example_direct_partner_name",  // String
+    "is_active", true,  // java.lang.Boolean
+    "name", "example_name"  // String
 ), null)
 ```
 
@@ -546,6 +558,18 @@ val partnerList = client.partner(null).list(null, null)
 
 ```scala
 val partner = client.partner(null).create(java.util.Map.of(
+    "billing_id", "example_billing_id",  // String
+    "contact_email", "example_contact_email",  // String
+    "contact_first_name", "example_contact_first_name",  // String
+    "contact_is_active", true,  // java.lang.Boolean
+    "contact_last_name", "example_contact_last_name",  // String
+    "contact_phone", "example_contact_phone",  // String
+    "contact_send_welcome_email", true,  // java.lang.Boolean
+    "contact_user_name", "example_contact_user_name",  // String
+    "contact_user_role", "example_contact_user_role",  // String
+    "is_active", true,  // java.lang.Boolean
+    "name", "example_name",  // String
+    "reference", "example_reference"  // String
 ), null)
 ```
 
@@ -595,6 +619,13 @@ val templateList = client.template(null).list(null, null)
 
 ```scala
 val template = client.template(null).create(java.util.Map.of(
+    "active", true,  // java.lang.Boolean
+    "client_id", 1L,  // java.lang.Long
+    "client_name", "example_client_name",  // String
+    "name", "example_name",  // String
+    "partner_id", 1L,  // java.lang.Long
+    "partner_name", "example_partner_name",  // String
+    "reference", "example_reference"  // String
 ), null)
 ```
 
@@ -688,11 +719,17 @@ val updateResultList = client.updateResult(null).list(null, null)
 
 ```scala
 val updateResult = client.updateResult(null).create(java.util.Map.of(
-    "contact", java.util.Map.of(),  // java.util.Map[String, Object]
     "email", "example_email",  // String
+    "first_name", "example_first_name",  // String
+    "is_active", true,  // java.lang.Boolean
+    "last_name", "example_last_name",  // String
+    "phone", 1L,  // java.lang.Long
+    "send_welcome_email", true,  // java.lang.Boolean
+    "user_role", java.util.Map.of(),  // java.util.Map[String, Object]
+    "username", "example_username",  // String
+    "contact", java.util.Map.of(),  // java.util.Map[String, Object]
     "firstName", "example_firstName",  // String
     "lastName", "example_lastName",  // String
-    "phone", "example_phone",  // String
     "userName", "example_userName",  // String
     "userRole", java.util.Map.of()  // java.util.Map[String, Object]
 ), null)
@@ -732,6 +769,176 @@ Create an instance: `val user = client.user(null)`
 ```scala
 val user = client.user(null).load(java.util.Map.of("id", "user_id"), null)
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -790,7 +997,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

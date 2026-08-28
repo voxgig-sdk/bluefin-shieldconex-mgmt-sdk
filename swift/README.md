@@ -85,7 +85,7 @@ catch {
 
 ```swift
 // Create — returns the ENTITY (call data() for the record)
-let created = try client.Client().create(VMap([("billingId", .string("example_billingId")), ("contact", .map(VMap()))]), nil)
+let created = try client.Client().create(VMap([("contact_email", .string("example_contact_email")), ("contact_first_name", .string("example_contact_first_name")), ("contact_is_active", .bool(true)), ("contact_last_name", .string("example_contact_last_name")), ("contact_phone", .string("example_contact_phone")), ("contact_send_welcome_email", .bool(true)), ("contact_user_name", .string("example_contact_user_name")), ("contact_user_role", .string("example_contact_user_role")), ("direct_partner_id", .int(1)), ("direct_partner_name", .string("example_direct_partner_name")), ("is_active", .bool(true)), ("name", .string("example_name"))]), nil)
 
 // Remove
 _ = try client.Client().remove(VMap([("id", .string("example_id"))]), nil)
@@ -487,6 +487,18 @@ let clientList = try client.Client().list(nil, nil)
 
 ```swift
 let client = try client.Client().create(VMap([
+    ("contact_email", .string("example_contact_email")),  // String
+    ("contact_first_name", .string("example_contact_first_name")),  // String
+    ("contact_is_active", .bool(true)),  // Bool
+    ("contact_last_name", .string("example_contact_last_name")),  // String
+    ("contact_phone", .string("example_contact_phone")),  // String
+    ("contact_send_welcome_email", .bool(true)),  // Bool
+    ("contact_user_name", .string("example_contact_user_name")),  // String
+    ("contact_user_role", .string("example_contact_user_role")),  // String
+    ("direct_partner_id", .int(1)),  // Int
+    ("direct_partner_name", .string("example_direct_partner_name")),  // String
+    ("is_active", .bool(true)),  // Bool
+    ("name", .string("example_name"))  // String
 ]), nil)
 ```
 
@@ -561,6 +573,18 @@ let partnerList = try client.Partner().list(nil, nil)
 
 ```swift
 let partner = try client.Partner().create(VMap([
+    ("billing_id", .string("example_billing_id")),  // String
+    ("contact_email", .string("example_contact_email")),  // String
+    ("contact_first_name", .string("example_contact_first_name")),  // String
+    ("contact_is_active", .bool(true)),  // Bool
+    ("contact_last_name", .string("example_contact_last_name")),  // String
+    ("contact_phone", .string("example_contact_phone")),  // String
+    ("contact_send_welcome_email", .bool(true)),  // Bool
+    ("contact_user_name", .string("example_contact_user_name")),  // String
+    ("contact_user_role", .string("example_contact_user_role")),  // String
+    ("is_active", .bool(true)),  // Bool
+    ("name", .string("example_name")),  // String
+    ("reference", .string("example_reference"))  // String
 ]), nil)
 ```
 
@@ -610,6 +634,13 @@ let templateList = try client.Template().list(nil, nil)
 
 ```swift
 let template = try client.Template().create(VMap([
+    ("active", .bool(true)),  // Bool
+    ("client_id", .int(1)),  // Int
+    ("client_name", .string("example_client_name")),  // String
+    ("name", .string("example_name")),  // String
+    ("partner_id", .int(1)),  // Int
+    ("partner_name", .string("example_partner_name")),  // String
+    ("reference", .string("example_reference"))  // String
 ]), nil)
 ```
 
@@ -703,11 +734,17 @@ let updateResultList = try client.UpdateResult().list(nil, nil)
 
 ```swift
 let updateResult = try client.UpdateResult().create(VMap([
-    ("contact", .map(VMap())),  // VMap
     ("email", .string("example_email")),  // String
+    ("first_name", .string("example_first_name")),  // String
+    ("is_active", .bool(true)),  // Bool
+    ("last_name", .string("example_last_name")),  // String
+    ("phone", .int(1)),  // Int
+    ("send_welcome_email", .bool(true)),  // Bool
+    ("user_role", .map(VMap())),  // VMap
+    ("username", .string("example_username")),  // String
+    ("contact", .map(VMap())),  // VMap
     ("firstName", .string("example_firstName")),  // String
     ("lastName", .string("example_lastName")),  // String
-    ("phone", .string("example_phone")),  // String
     ("userName", .string("example_userName")),  // String
     ("userRole", .map(VMap()))  // VMap
 ]), nil)
@@ -747,6 +784,176 @@ Create an instance: `let user = client.User()`
 ```swift
 let user = try client.User().load(VMap([("id", .string("user_id"))]), nil)
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -805,7 +1012,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.
