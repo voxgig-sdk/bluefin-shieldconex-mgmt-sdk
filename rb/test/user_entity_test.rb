@@ -85,7 +85,7 @@ def user_basic_setup(extra)
     "BLUEFIN_SHIELDCONEX_MGMT_TEST_USER_ENTID" => idmap,
     "BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE" => "FALSE",
     "BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN" => "FALSE",
-    "BLUEFIN_SHIELDCONEX_MGMT_APIKEY" => "NONE",
+    "BLUEFIN_SHIELDCONEX_MGMT_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -96,6 +96,9 @@ def user_basic_setup(extra)
 
   if env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
       },

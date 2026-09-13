@@ -85,7 +85,7 @@ error. Read a record with `eDataGet`.
 
 ```haskell
   createEnt <- Sdk.client sdk VNoval
-  d <- jo [("billingId", VStr "example_billingId"), ("contact", VNoval)]
+  d <- jo [("contact_email", VStr "example_contact_email"), ("contact_first_name", VStr "example_contact_first_name"), ("contact_is_active", VBool True), ("contact_last_name", VStr "example_contact_last_name"), ("contact_phone", VStr "example_contact_phone"), ("contact_send_welcome_email", VBool True), ("contact_user_name", VStr "example_contact_user_name"), ("contact_user_role", VStr "example_contact_user_role"), ("direct_partner_id", VNum 1), ("direct_partner_name", VStr "example_direct_partner_name"), ("is_active", VBool True), ("name", VStr "example_name")]
   cctrl <- emptyMap
   created <- Sdk.eCreate createEnt d cctrl
   print =<< Sdk.eDataGet created
@@ -337,17 +337,17 @@ On error, `ok` is `False` and `err` carries the error value.
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | Billing ID |
 | `contact` |  |
-| `created` |  |
-| `directPartner` |  |
-| `id` |  |
-| `isActive` |  |
-| `mid` |  |
-| `modified` |  |
-| `name` |  |
-| `partner` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | Reference to the associated Partner. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Client account is active or disabled. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | Last modified timestamp. |
+| `name` | The Client's name. |
+| `partner` | Reference to the associated Partner. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -357,8 +357,8 @@ API path: `/clients`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
+| `id` | Unique identifier of newly added element. |
+| `name` | Name of Template |
 
 Operations: Create.
 
@@ -368,17 +368,17 @@ API path: `/templates/{id}/clone`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
+| `billingId` | The Partner's billing identifier. |
 | `contact` |  |
-| `created` |  |
-| `id` |  |
-| `isActive` |  |
-| `modified` |  |
-| `name` |  |
-| `parent` |  |
-| `reference` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `created` | Creation timestamp in ISO 8601 format. |
+| `id` | This resource's unique identifier. |
+| `isActive` | This property indicates if the Parter account is active or disabled. |
+| `modified` | Last modified timestamp. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `reference` | The Partner's reference string. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load.
 
@@ -388,17 +388,17 @@ API path: `/partners`
 
 | Field | Description |
 | --- | --- |
-| `accessMode` |  |
-| `active` |  |
-| `client` |  |
-| `fieldTemplates` |  |
-| `id` |  |
-| `name` |  |
+| `accessMode` | The Template's access mode. |
+| `active` | This property indicates if the Template is active or inactive. |
+| `client` | Reference to the associated Client resource. |
+| `fieldTemplates` | Field Template list items |
+| `id` | Unique identifier of newly added element. |
+| `name` | The Template's name. |
 | `options` |  |
-| `partner` |  |
-| `reference` |  |
-| `type` |  |
-| `version` |  |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The Template's unique reference. |
+| `type` | The Template's type. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Load, Remove.
 
@@ -408,19 +408,19 @@ API path: `/templates`
 
 | Field | Description |
 | --- | --- |
-| `bfid` |  |
-| `client` |  |
-| `completeDate` |  |
-| `directPartner` |  |
-| `errCode` |  |
-| `errMessage` |  |
-| `id` |  |
-| `ipAddress` |  |
-| `messageId` |  |
-| `partner` |  |
-| `reference` |  |
-| `success` |  |
-| `templateId` |  |
+| `bfid` | BFID |
+| `client` | Reference to the associated Client resource. |
+| `completeDate` | Timestamp from the beginning of the transaction. |
+| `directPartner` | Reference to the associated Partner. |
+| `errCode` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | This resource's unique identifier. |
+| `ipAddress` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | Message ID. |
+| `partner` | Reference to the associated Partner. |
+| `reference` | The reference property that the Client includes in the decrypt API call. |
+| `success` | The success indicator. |
+| `templateId` | The Template's unique identifier. |
 
 Operations: List, Load.
 
@@ -430,26 +430,26 @@ API path: `/transactions`
 
 | Field | Description |
 | --- | --- |
-| `billingId` |  |
-| `client` |  |
+| `billingId` | The Partner's billing identifier. |
+| `client` | Reference to the associated Client resource. |
 | `contact` |  |
-| `directPartner` |  |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `isActive` |  |
-| `lastName` |  |
-| `mid` |  |
-| `name` |  |
-| `parent` |  |
-| `partner` |  |
-| `phone` |  |
-| `reference` |  |
-| `sendWelcomeEmail` |  |
-| `userName` |  |
-| `userRole` |  |
-| `verificationPhrase` |  |
-| `version` |  |
+| `directPartner` | Reference to the associated Partner. |
+| `email` | The User's email address. |
+| `firstName` | The User's name. |
+| `id` | Unique identifier of newly added element. |
+| `isActive` | This property indicates if the User account is active or disabled. |
+| `lastName` | The User's Surname. |
+| `mid` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | The Partner's name. |
+| `parent` | Reference to the associated Partner. |
+| `partner` | Reference to the associated Partner. |
+| `phone` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | The Partner's reference string. |
+| `sendWelcomeEmail` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | The User's unique username. |
+| `userRole` | Reference to the associated User Role. |
+| `verificationPhrase` | The verification phrase is a message that the Partner creates. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Create, List, Update.
 
@@ -459,19 +459,19 @@ API path: `/users`
 
 | Field | Description |
 | --- | --- |
-| `client` |  |
-| `created` |  |
+| `client` | Reference to the associated Client resource. |
+| `created` | Creation timestamp in ISO 8601 format. |
 | `email` |  |
 | `firstName` |  |
-| `id` |  |
+| `id` | This resource's unique identifier. |
 | `isActive` |  |
 | `lastName` |  |
-| `modified` |  |
-| `partner` |  |
+| `modified` | Last modified timestamp. |
+| `partner` | Reference to the associated Partner. |
 | `phone` |  |
 | `userName` |  |
-| `userRole` |  |
-| `version` |  |
+| `userRole` | Reference to the associated User Role. |
+| `version` | The number of times that this resource has been updated. |
 
 Operations: Load.
 
@@ -499,17 +499,17 @@ Create an instance: `client <- Sdk.client sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `String` |  |
+| `billingId` | `String` | Billing ID |
 | `contact` | `Value` |  |
-| `created` | `String` |  |
-| `directPartner` | `Value` |  |
-| `id` | `Int` |  |
-| `isActive` | `Bool` |  |
-| `mid` | `String` |  |
-| `modified` | `String` |  |
-| `name` | `String` |  |
-| `partner` | `Value` |  |
-| `version` | `Int` |  |
+| `created` | `String` | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Value` | Reference to the associated Partner. |
+| `id` | `Int` | This resource's unique identifier. |
+| `isActive` | `Bool` | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | Last modified timestamp. |
+| `name` | `String` | The Client's name. |
+| `partner` | `Value` | Reference to the associated Partner. |
+| `version` | `Int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -538,7 +538,19 @@ Create an instance: `client <- Sdk.client sdk VNoval`
 ```haskell
   ent <- Sdk.client sdk VNoval
   d <- jo
-    []
+    [ ("contact_email", VStr "example_contact_email")   -- String
+    , ("contact_first_name", VStr "example_contact_first_name")   -- String
+    , ("contact_is_active", VBool True)   -- Bool
+    , ("contact_last_name", VStr "example_contact_last_name")   -- String
+    , ("contact_phone", VStr "example_contact_phone")   -- String
+    , ("contact_send_welcome_email", VBool True)   -- Bool
+    , ("contact_user_name", VStr "example_contact_user_name")   -- String
+    , ("contact_user_role", VStr "example_contact_user_role")   -- String
+    , ("direct_partner_id", VNum 1)   -- Int
+    , ("direct_partner_name", VStr "example_direct_partner_name")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("name", VStr "example_name")   -- String
+    ]
   ctrl <- emptyMap
   client <- Sdk.eCreate ent d ctrl
   clientData <- Sdk.eDataGet client
@@ -559,8 +571,8 @@ Create an instance: `clone <- Sdk.clone sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `Int` |  |
-| `name` | `String` |  |
+| `id` | `Int` | Unique identifier of newly added element. |
+| `name` | `String` | Name of Template |
 
 #### Example: Create
 
@@ -591,17 +603,17 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `String` |  |
+| `billingId` | `String` | The Partner's billing identifier. |
 | `contact` | `Value` |  |
-| `created` | `String` |  |
-| `id` | `Int` |  |
-| `isActive` | `Bool` |  |
-| `modified` | `String` |  |
-| `name` | `String` |  |
-| `parent` | `Value` |  |
-| `reference` | `String` |  |
-| `verificationPhrase` | `String` |  |
-| `version` | `Int` |  |
+| `created` | `String` | Creation timestamp in ISO 8601 format. |
+| `id` | `Int` | This resource's unique identifier. |
+| `isActive` | `Bool` | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | Last modified timestamp. |
+| `name` | `String` | The Partner's name. |
+| `parent` | `Value` | Reference to the associated Partner. |
+| `reference` | `String` | The Partner's reference string. |
+| `verificationPhrase` | `String` | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -630,7 +642,19 @@ Create an instance: `partner <- Sdk.partner sdk VNoval`
 ```haskell
   ent <- Sdk.partner sdk VNoval
   d <- jo
-    []
+    [ ("billing_id", VStr "example_billing_id")   -- String
+    , ("contact_email", VStr "example_contact_email")   -- String
+    , ("contact_first_name", VStr "example_contact_first_name")   -- String
+    , ("contact_is_active", VBool True)   -- Bool
+    , ("contact_last_name", VStr "example_contact_last_name")   -- String
+    , ("contact_phone", VStr "example_contact_phone")   -- String
+    , ("contact_send_welcome_email", VBool True)   -- Bool
+    , ("contact_user_name", VStr "example_contact_user_name")   -- String
+    , ("contact_user_role", VStr "example_contact_user_role")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("name", VStr "example_name")   -- String
+    , ("reference", VStr "example_reference")   -- String
+    ]
   ctrl <- emptyMap
   partner <- Sdk.eCreate ent d ctrl
   partnerData <- Sdk.eDataGet partner
@@ -654,17 +678,17 @@ Create an instance: `template <- Sdk.template sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accessMode` | `Value` |  |
-| `active` | `Bool` |  |
-| `client` | `Value` |  |
-| `fieldTemplates` | `[Value]` |  |
-| `id` | `Int` |  |
-| `name` | `String` |  |
+| `accessMode` | `Value` | The Template's access mode. |
+| `active` | `Bool` | This property indicates if the Template is active or inactive. |
+| `client` | `Value` | Reference to the associated Client resource. |
+| `fieldTemplates` | `[Value]` | Field Template list items |
+| `id` | `Int` | Unique identifier of newly added element. |
+| `name` | `String` | The Template's name. |
 | `options` | `Value` |  |
-| `partner` | `Value` |  |
-| `reference` | `String` |  |
-| `type` | `String` |  |
-| `version` | `Int` |  |
+| `partner` | `Value` | Reference to the associated Partner. |
+| `reference` | `String` | The Template's unique reference. |
+| `type` | `String` | The Template's type. |
+| `version` | `Int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -693,7 +717,14 @@ Create an instance: `template <- Sdk.template sdk VNoval`
 ```haskell
   ent <- Sdk.template sdk VNoval
   d <- jo
-    []
+    [ ("active", VBool True)   -- Bool
+    , ("client_id", VNum 1)   -- Int
+    , ("client_name", VStr "example_client_name")   -- String
+    , ("name", VStr "example_name")   -- String
+    , ("partner_id", VNum 1)   -- Int
+    , ("partner_name", VStr "example_partner_name")   -- String
+    , ("reference", VStr "example_reference")   -- String
+    ]
   ctrl <- emptyMap
   template <- Sdk.eCreate ent d ctrl
   templateData <- Sdk.eDataGet template
@@ -715,19 +746,19 @@ Create an instance: `transaction <- Sdk.transaction sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bfid` | `String` |  |
-| `client` | `Value` |  |
-| `completeDate` | `String` |  |
-| `directPartner` | `Value` |  |
-| `errCode` | `String` |  |
-| `errMessage` | `String` |  |
-| `id` | `Int` |  |
-| `ipAddress` | `String` |  |
-| `messageId` | `String` |  |
-| `partner` | `Value` |  |
-| `reference` | `String` |  |
-| `success` | `Bool` |  |
-| `templateId` | `String` |  |
+| `bfid` | `String` | BFID |
+| `client` | `Value` | Reference to the associated Client resource. |
+| `completeDate` | `String` | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Value` | Reference to the associated Partner. |
+| `errCode` | `String` | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Int` | This resource's unique identifier. |
+| `ipAddress` | `String` | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | Message ID. |
+| `partner` | `Value` | Reference to the associated Partner. |
+| `reference` | `String` | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Bool` | The success indicator. |
+| `templateId` | `String` | The Template's unique identifier. |
 
 #### Example: Load
 
@@ -768,26 +799,26 @@ Create an instance: `update_result <- Sdk.update_result sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billingId` | `String` |  |
-| `client` | `Value` |  |
+| `billingId` | `String` | The Partner's billing identifier. |
+| `client` | `Value` | Reference to the associated Client resource. |
 | `contact` | `Value` |  |
-| `directPartner` | `Value` |  |
-| `email` | `String` |  |
-| `firstName` | `String` |  |
-| `id` | `Int` |  |
-| `isActive` | `Bool` |  |
-| `lastName` | `String` |  |
-| `mid` | `String` |  |
-| `name` | `String` |  |
-| `parent` | `Value` |  |
-| `partner` | `Value` |  |
-| `phone` | `String` |  |
-| `reference` | `String` |  |
-| `sendWelcomeEmail` | `Bool` |  |
-| `userName` | `String` |  |
-| `userRole` | `Value` |  |
-| `verificationPhrase` | `String` |  |
-| `version` | `Int` |  |
+| `directPartner` | `Value` | Reference to the associated Partner. |
+| `email` | `String` | The User's email address. |
+| `firstName` | `String` | The User's name. |
+| `id` | `Int` | Unique identifier of newly added element. |
+| `isActive` | `Bool` | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | The User's Surname. |
+| `mid` | `String` | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | The Partner's name. |
+| `parent` | `Value` | Reference to the associated Partner. |
+| `partner` | `Value` | Reference to the associated Partner. |
+| `phone` | `String` | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | The Partner's reference string. |
+| `sendWelcomeEmail` | `Bool` | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | The User's unique username. |
+| `userRole` | `Value` | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | The number of times that this resource has been updated. |
 
 #### Example: List
 
@@ -805,11 +836,17 @@ Create an instance: `update_result <- Sdk.update_result sdk VNoval`
 ```haskell
   ent <- Sdk.update_result sdk VNoval
   d <- jo
-    [ ("contact", VNoval)   -- Value
-    , ("email", VStr "example_email")   -- String
+    [ ("email", VStr "example_email")   -- String
+    , ("first_name", VStr "example_first_name")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("last_name", VStr "example_last_name")   -- String
+    , ("phone", VNum 1)   -- Int
+    , ("send_welcome_email", VBool True)   -- Bool
+    , ("user_role", VNoval)   -- Value
+    , ("username", VStr "example_username")   -- String
+    , ("contact", VNoval)   -- Value
     , ("firstName", VStr "example_firstName")   -- String
     , ("lastName", VStr "example_lastName")   -- String
-    , ("phone", VStr "example_phone")   -- String
     , ("userName", VStr "example_userName")   -- String
     , ("userRole", VNoval)   -- Value
     ]
@@ -833,19 +870,19 @@ Create an instance: `user <- Sdk.user sdk VNoval`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `client` | `Value` |  |
-| `created` | `String` |  |
+| `client` | `Value` | Reference to the associated Client resource. |
+| `created` | `String` | Creation timestamp in ISO 8601 format. |
 | `email` | `String` |  |
 | `firstName` | `String` |  |
-| `id` | `Int` |  |
+| `id` | `Int` | This resource's unique identifier. |
 | `isActive` | `Bool` |  |
 | `lastName` | `String` |  |
-| `modified` | `String` |  |
-| `partner` | `Value` |  |
+| `modified` | `String` | Last modified timestamp. |
+| `partner` | `Value` | Reference to the associated Partner. |
 | `phone` | `String` |  |
 | `userName` | `String` |  |
-| `userRole` | `Value` |  |
-| `version` | `Int` |  |
+| `userRole` | `Value` | Reference to the associated User Role. |
+| `version` | `Int` | The number of times that this resource has been updated. |
 
 #### Example: Load
 
@@ -857,6 +894,176 @@ Create an instance: `user <- Sdk.user sdk VNoval`
   -- The op resolves to the ENTITY; the record is inside it.
   userData <- Sdk.eDataGet user
 ```
+
+## Features
+
+This SDK ships 11 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`audit`](#audit) | Structured audit trail of operations |
+| [`clienttrack`](#clienttrack) | Client identity and per-request correlation headers |
+| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
+| [`log`](#log) | Structured request and response logging |
+| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
+| [`paging`](#paging) | Pagination signals for list operations |
+| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
+| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
+| [`telemetry`](#telemetry) | Distributed tracing spans with W3C trace-context propagation |
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+| [`timeout`](#timeout) | Per-request timeout with transport abort |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### audit
+
+Structured audit trail of operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `actor` | `'anonymous'` |
+| `max` | `1000` |
+
+Set `feature.audit.active` to enable it, then override any of the options above.
+
+### clienttrack
+
+Client identity and per-request correlation headers.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `clientVersion` | `'0.0.1'` |
+
+Set `feature.clienttrack.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency keys for safe retries of mutating operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### log
+
+Structured request and response logging.
+
+| Option | Default |
+|---|---|
+| `active` | `true` |
+
+Set `feature.log.active` to enable it, then override any of the options above.
+
+### metrics
+
+Statistics capture: per-operation counters and latency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Pagination signals for list operations.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Client-side rate limiting via a token bucket.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Automatic retry of transient failures with exponential backoff.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### telemetry
+
+Distributed tracing spans with W3C trace-context propagation.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.telemetry.active` to enable it, then override any of the options above.
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Per-request timeout with transport abort.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
 
 
 ## Open types
@@ -915,7 +1122,17 @@ a function that receives the context.
 
 The SDK ships with built-in features:
 
+- **AuditFeature**: Structured audit trail of operations
+- **ClienttrackFeature**: Client identity and per-request correlation headers
+- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
+- **LogFeature**: Structured request and response logging
+- **MetricsFeature**: Statistics capture: per-operation counters and latency
+- **PagingFeature**: Pagination signals for list operations
+- **RatelimitFeature**: Client-side rate limiting via a token bucket
+- **RetryFeature**: Automatic retry of transient failures with exponential backoff
+- **TelemetryFeature**: Distributed tracing spans with W3C trace-context propagation
 - **TestFeature**: In-memory mock transport for testing without a live server
+- **TimeoutFeature**: Per-request timeout with transport abort
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

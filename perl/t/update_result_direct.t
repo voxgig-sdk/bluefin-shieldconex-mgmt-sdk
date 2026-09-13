@@ -72,13 +72,17 @@ sub update_result_direct_setup {
   my $env = BluefinShieldconexMgmtTestRunner::env_override({
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_UPDATE_RESULT_ENTID' => {},
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE' => 'FALSE',
-    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY' => 'NONE',
+    'BLUEFIN_SHIELDCONEX_MGMT_APIKEY' => '',
   });
 
   my $live = ((($env->{'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE'}) || '') eq 'TRUE') ? 1 : 0;
 
   if ($live) {
+    # live_client_options() FIRST so the generated fields below win:
+    # sdk-test-control.json's test.client.options adds to the live client,
+    # it does not redirect it (a later key wins in a Perl hash literal).
     my $client = BluefinShieldconexMgmtSDK->new({
+      %{ BluefinShieldconexMgmtTestRunner::live_client_options() },
       'apikey' => $env->{'BLUEFIN_SHIELDCONEX_MGMT_APIKEY'},
     });
     return {

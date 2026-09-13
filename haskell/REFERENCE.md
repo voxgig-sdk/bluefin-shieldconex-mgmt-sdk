@@ -117,17 +117,17 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | Billing ID |
 | `contact` | `Value` | No |  |
-| `created` | `String` | No |  |
-| `directPartner` | `Value` | No |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `mid` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `partner` | `Value` | No |  |
-| `version` | `Int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `directPartner` | `Value` | No | Reference to the associated Partner. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `isActive` | `Bool` | No | This property indicates if the Client account is active or disabled. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Client's name. |
+| `partner` | `Value` | No | Reference to the associated Partner. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -154,7 +154,19 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 ```haskell
   ent <- Sdk.client sdk VNoval
   d <- jo
-    []
+    [ ("contact_email", VStr "example_contact_email")   -- String
+    , ("contact_first_name", VStr "example_contact_first_name")   -- String
+    , ("contact_is_active", VBool True)   -- Bool
+    , ("contact_last_name", VStr "example_contact_last_name")   -- String
+    , ("contact_phone", VStr "example_contact_phone")   -- String
+    , ("contact_send_welcome_email", VBool True)   -- Bool
+    , ("contact_user_name", VStr "example_contact_user_name")   -- String
+    , ("contact_user_role", VStr "example_contact_user_role")   -- String
+    , ("direct_partner_id", VNum 1)   -- Int
+    , ("direct_partner_name", VStr "example_direct_partner_name")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("name", VStr "example_name")   -- String
+    ]
   ctrl <- emptyMap
   result <- Sdk.eCreate ent d ctrl   -- the ENTITY
   d2 <- Sdk.eDataGet result
@@ -229,8 +241,8 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Int` | No |  |
-| `name` | `String` | No |  |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | Name of Template |
 
 ### Operations
 
@@ -283,17 +295,17 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
 | `contact` | `Value` | No |  |
-| `created` | `String` | No |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `modified` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Value` | No |  |
-| `reference` | `String` | No |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `isActive` | `Bool` | No | This property indicates if the Parter account is active or disabled. |
+| `modified` | `String` | No | Last modified timestamp. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Value` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -320,7 +332,19 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 ```haskell
   ent <- Sdk.partner sdk VNoval
   d <- jo
-    []
+    [ ("billing_id", VStr "example_billing_id")   -- String
+    , ("contact_email", VStr "example_contact_email")   -- String
+    , ("contact_first_name", VStr "example_contact_first_name")   -- String
+    , ("contact_is_active", VBool True)   -- Bool
+    , ("contact_last_name", VStr "example_contact_last_name")   -- String
+    , ("contact_phone", VStr "example_contact_phone")   -- String
+    , ("contact_send_welcome_email", VBool True)   -- Bool
+    , ("contact_user_name", VStr "example_contact_user_name")   -- String
+    , ("contact_user_role", VStr "example_contact_user_role")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("name", VStr "example_name")   -- String
+    , ("reference", VStr "example_reference")   -- String
+    ]
   ctrl <- emptyMap
   result <- Sdk.eCreate ent d ctrl   -- the ENTITY
   d2 <- Sdk.eDataGet result
@@ -384,17 +408,17 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accessMode` | `Value` | No |  |
-| `active` | `Bool` | No |  |
-| `client` | `Value` | No |  |
-| `fieldTemplates` | `[Value]` | No |  |
-| `id` | `Int` | No |  |
-| `name` | `String` | No |  |
+| `accessMode` | `Value` | No | The Template's access mode. |
+| `active` | `Bool` | No | This property indicates if the Template is active or inactive. |
+| `client` | `Value` | No | Reference to the associated Client resource. |
+| `fieldTemplates` | `[Value]` | No | Field Template list items |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `name` | `String` | No | The Template's name. |
 | `options` | `Value` | No |  |
-| `partner` | `Value` | No |  |
-| `reference` | `String` | No |  |
-| `type` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `partner` | `Value` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The Template's unique reference. |
+| `type` | `String` | No | The Template's type. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -405,7 +429,14 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 ```haskell
   ent <- Sdk.template sdk VNoval
   d <- jo
-    []
+    [ ("active", VBool True)   -- Bool
+    , ("client_id", VNum 1)   -- Int
+    , ("client_name", VStr "example_client_name")   -- String
+    , ("name", VStr "example_name")   -- String
+    , ("partner_id", VNum 1)   -- Int
+    , ("partner_name", VStr "example_partner_name")   -- String
+    , ("reference", VStr "example_reference")   -- String
+    ]
   ctrl <- emptyMap
   result <- Sdk.eCreate ent d ctrl   -- the ENTITY
   d2 <- Sdk.eDataGet result
@@ -480,19 +511,19 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bfid` | `String` | No |  |
-| `client` | `Value` | No |  |
-| `completeDate` | `String` | No |  |
-| `directPartner` | `Value` | No |  |
-| `errCode` | `String` | No |  |
-| `errMessage` | `String` | No |  |
-| `id` | `Int` | No |  |
-| `ipAddress` | `String` | No |  |
-| `messageId` | `String` | No |  |
-| `partner` | `Value` | No |  |
-| `reference` | `String` | No |  |
-| `success` | `Bool` | No |  |
-| `templateId` | `String` | No |  |
+| `bfid` | `String` | No | BFID |
+| `client` | `Value` | No | Reference to the associated Client resource. |
+| `completeDate` | `String` | No | Timestamp from the beginning of the transaction. |
+| `directPartner` | `Value` | No | Reference to the associated Partner. |
+| `errCode` | `String` | No | The error code that is sent in response to a failed decrypt API call. |
+| `errMessage` | `String` | No | The error messge that is sent in response to a failed decrypt API call. |
+| `id` | `Int` | No | This resource's unique identifier. |
+| `ipAddress` | `String` | No | The IP address of the http client that makes the decrypt API call. |
+| `messageId` | `String` | No | Message ID. |
+| `partner` | `Value` | No | Reference to the associated Partner. |
+| `reference` | `String` | No | The reference property that the Client includes in the decrypt API call. |
+| `success` | `Bool` | No | The success indicator. |
+| `templateId` | `String` | No | The Template's unique identifier. |
 
 ### Operations
 
@@ -554,26 +585,26 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billingId` | `String` | No |  |
-| `client` | `Value` | No |  |
+| `billingId` | `String` | No | The Partner's billing identifier. |
+| `client` | `Value` | No | Reference to the associated Client resource. |
 | `contact` | `Value` | Yes |  |
-| `directPartner` | `Value` | No |  |
-| `email` | `String` | Yes |  |
-| `firstName` | `String` | Yes |  |
-| `id` | `Int` | No |  |
-| `isActive` | `Bool` | No |  |
-| `lastName` | `String` | Yes |  |
-| `mid` | `String` | No |  |
-| `name` | `String` | No |  |
-| `parent` | `Value` | No |  |
-| `partner` | `Value` | No |  |
-| `phone` | `String` | Yes |  |
-| `reference` | `String` | No |  |
-| `sendWelcomeEmail` | `Bool` | No |  |
-| `userName` | `String` | Yes |  |
-| `userRole` | `Value` | Yes |  |
-| `verificationPhrase` | `String` | No |  |
-| `version` | `Int` | No |  |
+| `directPartner` | `Value` | No | Reference to the associated Partner. |
+| `email` | `String` | Yes | The User's email address. |
+| `firstName` | `String` | Yes | The User's name. |
+| `id` | `Int` | No | Unique identifier of newly added element. |
+| `isActive` | `Bool` | No | This property indicates if the User account is active or disabled. |
+| `lastName` | `String` | Yes | The User's Surname. |
+| `mid` | `String` | No | Some Partners will have an merchant ids on their own software offerings. |
+| `name` | `String` | No | The Partner's name. |
+| `parent` | `Value` | No | Reference to the associated Partner. |
+| `partner` | `Value` | No | Reference to the associated Partner. |
+| `phone` | `String` | Yes | The User's phone number without dashes, spaces, or brackets (e.g. |
+| `reference` | `String` | No | The Partner's reference string. |
+| `sendWelcomeEmail` | `Bool` | No | If this property is set to 'true' the newly created user will be sent a welcome email. |
+| `userName` | `String` | Yes | The User's unique username. |
+| `userRole` | `Value` | Yes | Reference to the associated User Role. |
+| `verificationPhrase` | `String` | No | The verification phrase is a message that the Partner creates. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Field Usage by Operation
 
@@ -609,11 +640,17 @@ Create a new entity with the given data. Resolves to the ENTITY (read the record
 ```haskell
   ent <- Sdk.update_result sdk VNoval
   d <- jo
-    [ ("contact", VNoval)   -- Value
-    , ("email", VStr "example_email")   -- String
+    [ ("email", VStr "example_email")   -- String
+    , ("first_name", VStr "example_first_name")   -- String
+    , ("is_active", VBool True)   -- Bool
+    , ("last_name", VStr "example_last_name")   -- String
+    , ("phone", VNum 1)   -- Int
+    , ("send_welcome_email", VBool True)   -- Bool
+    , ("user_role", VNoval)   -- Value
+    , ("username", VStr "example_username")   -- String
+    , ("contact", VNoval)   -- Value
     , ("firstName", VStr "example_firstName")   -- String
     , ("lastName", VStr "example_lastName")   -- String
-    , ("phone", VStr "example_phone")   -- String
     , ("userName", VStr "example_userName")   -- String
     , ("userRole", VNoval)   -- Value
     ]
@@ -683,19 +720,19 @@ The entity name.
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `client` | `Value` | No |  |
-| `created` | `String` | No |  |
+| `client` | `Value` | No | Reference to the associated Client resource. |
+| `created` | `String` | No | Creation timestamp in ISO 8601 format. |
 | `email` | `String` | No |  |
 | `firstName` | `String` | No |  |
-| `id` | `Int` | No |  |
+| `id` | `Int` | No | This resource's unique identifier. |
 | `isActive` | `Bool` | No |  |
 | `lastName` | `String` | No |  |
-| `modified` | `String` | No |  |
-| `partner` | `Value` | No |  |
+| `modified` | `String` | No | Last modified timestamp. |
+| `partner` | `Value` | No | Reference to the associated Partner. |
 | `phone` | `String` | No |  |
 | `userName` | `String` | No |  |
-| `userRole` | `Value` | No |  |
-| `version` | `Int` | No |  |
+| `userRole` | `Value` | No | Reference to the associated User Role. |
+| `version` | `Int` | No | The number of times that this resource has been updated. |
 
 ### Operations
 
@@ -739,7 +776,17 @@ The entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
+| `audit` | 0.0.1 | Structured audit trail of operations |
+| `clienttrack` | 0.0.1 | Client identity and per-request correlation headers |
+| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
+| `log` | 0.0.1 | Structured request and response logging |
+| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
+| `paging` | 0.0.1 | Pagination signals for list operations |
+| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
+| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
+| `telemetry` | 0.0.1 | Distributed tracing spans with W3C trace-context propagation |
 | `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+| `timeout` | 0.0.1 | Per-request timeout with transport abort |
 
 
 Features are activated via the `feature` option:
@@ -747,7 +794,17 @@ Features are activated via the `feature` option:
 ```haskell
   active <- jo [("active", VBool True)]
   featureCfg <- jo
-    [ ("test", active)
+    [ ("audit", active)
+    , ("clienttrack", active)
+    , ("idempotency", active)
+    , ("log", active)
+    , ("metrics", active)
+    , ("paging", active)
+    , ("ratelimit", active)
+    , ("retry", active)
+    , ("telemetry", active)
+    , ("test", active)
+    , ("timeout", active)
     ]
   opts <- jo [("feature", featureCfg)]
   client <- Sdk.newSdk opts

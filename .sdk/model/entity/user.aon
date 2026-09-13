@@ -12,6 +12,7 @@ main: kit: entity: user: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "Creation timestamp in ISO 8601 format."
@@ -28,6 +29,7 @@ main: kit: entity: user: {
       type: "`$STRING`"
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "This resource's unique identifier."
@@ -44,6 +46,7 @@ main: kit: entity: user: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "modified"
       req: false
       short: "Last modified timestamp."
@@ -103,9 +106,13 @@ main: kit: entity: user: {
           }
           method: "GET"
           orig: "/users/{id}"
-          parts: [
-            "users"
-            "{id}"
+          segments: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

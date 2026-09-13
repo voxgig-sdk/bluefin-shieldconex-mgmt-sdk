@@ -127,6 +127,7 @@ let make_config () : value =
                 ("type", (Str "`$OBJECT`")) ])) ]));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "created"));
             ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
@@ -139,6 +140,7 @@ let make_config () : value =
             ("short", (Str "Reference to the associated Partner."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -151,6 +153,7 @@ let make_config () : value =
             ("short", (Str "Some Partners will have an merchant ids on their own software offerings."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "modified"));
             ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
@@ -170,6 +173,9 @@ let make_config () : value =
             ("name", (Str "version"));
             ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "client"));
         ("op", (jo [
           ("create", (jo [
@@ -264,8 +270,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/clients"));
-                ("parts", (ja [
-                  (Str "clients") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "clients")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "billing_id");
@@ -284,7 +291,9 @@ let make_config () : value =
                     (Str "name") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "clients") ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
@@ -313,8 +322,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/clients"));
-                ("parts", (ja [
-                  (Str "clients") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "clients")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "partner");
@@ -322,7 +332,9 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body.data`")) ])) ]) ])) ]));
+                  ("res", (Str "`body.data`")) ]));
+                ("parts", (ja [
+                  (Str "clients") ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
@@ -339,15 +351,20 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/clients/{id}"));
-                ("parts", (ja [
-                  (Str "clients");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "clients")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "clients");
+                  (Str "{id}") ])) ]) ])) ]));
           ("remove", (jo [
             ("input", (Str "data"));
             ("name", (Str "remove"));
@@ -364,20 +381,26 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/clients/{id}"));
-                ("parts", (ja [
-                  (Str "clients");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "clients")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "clients");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("clone", (jo [
         ("fields", (ja [
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -385,6 +408,9 @@ let make_config () : value =
             ("name", (Str "name"));
             ("short", (Str "Name of Template"));
             ("type", (Str "`$STRING`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "clone"));
         ("op", (jo [
           ("create", (jo [
@@ -403,19 +429,26 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/templates/{id}/clone"));
-                ("parts", (ja [
-                  (Str "templates");
-                  (Str "{template_id}");
-                  (Str "clone") ]));
                 ("rename", (jo [
                   ("param", (jo [
                     ("id", (Str "template_id")) ])) ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]);
+                  (jo [
+                    ("var", (Str "template_id")) ]);
+                  (jo [
+                    ("lit", (Str "clone")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "template_id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "templates");
+                  (Str "{template_id}");
+                  (Str "clone") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (ja [
             (ja [
@@ -437,10 +470,12 @@ let make_config () : value =
                 ("type", (Str "`$OBJECT`")) ])) ]));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "created"));
             ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -449,6 +484,7 @@ let make_config () : value =
             ("short", (Str "This property indicates if the Parter account is active or disabled."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "modified"));
             ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
@@ -480,6 +516,9 @@ let make_config () : value =
             ("name", (Str "version"));
             ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "partner"));
         ("op", (jo [
           ("create", (jo [
@@ -579,8 +618,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/partners"));
-                ("parts", (ja [
-                  (Str "partners") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "partners")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "billing_id");
@@ -600,7 +640,9 @@ let make_config () : value =
                     (Str "verification_phrase") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "partners") ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
@@ -628,8 +670,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/partners"));
-                ("parts", (ja [
-                  (Str "partners") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "partners")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "partner");
@@ -637,7 +680,9 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body.data`")) ])) ]) ])) ]));
+                  ("res", (Str "`body.data`")) ]));
+                ("parts", (ja [
+                  (Str "partners") ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
@@ -654,15 +699,20 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/partners/{id}"));
-                ("parts", (ja [
-                  (Str "partners");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "partners")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "partners");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("template", (jo [
@@ -688,6 +738,7 @@ let make_config () : value =
               ("count", (Num (1.)));
               ("depth", (Num (1.))) ])) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -714,6 +765,9 @@ let make_config () : value =
             ("name", (Str "version"));
             ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "template"));
         ("op", (jo [
           ("create", (jo [
@@ -818,8 +872,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/templates"));
-                ("parts", (ja [
-                  (Str "templates") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "access_mode");
@@ -841,7 +896,9 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "templates") ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
@@ -874,8 +931,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/templates"));
-                ("parts", (ja [
-                  (Str "templates") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "client");
@@ -884,7 +942,9 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body.data`")) ])) ]) ])) ]));
+                  ("res", (Str "`body.data`")) ]));
+                ("parts", (ja [
+                  (Str "templates") ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
@@ -901,15 +961,20 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/templates/{id}"));
-                ("parts", (ja [
-                  (Str "templates");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "templates");
+                  (Str "{id}") ])) ]) ])) ]));
           ("remove", (jo [
             ("input", (Str "data"));
             ("name", (Str "remove"));
@@ -926,15 +991,20 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "DELETE"));
                 ("orig", (Str "/templates/{id}"));
-                ("parts", (ja [
-                  (Str "templates");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "templates");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("transaction", (jo [
@@ -948,6 +1018,7 @@ let make_config () : value =
             ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "completeDate"));
             ("short", (Str "Timestamp from the beginning of the transaction."));
             ("type", (Str "`$STRING`")) ]);
@@ -964,6 +1035,7 @@ let make_config () : value =
             ("short", (Str "The error messge that is sent in response to a failed decrypt API call."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -988,9 +1060,13 @@ let make_config () : value =
             ("short", (Str "The success indicator."));
             ("type", (Str "`$BOOLEAN`")) ]);
           (jo [
+            ("format", (Str "int32"));
             ("name", (Str "templateId"));
             ("short", (Str "The Template's unique identifier."));
             ("type", (Str "`$STRING`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "transaction"));
         ("op", (jo [
           ("list", (jo [
@@ -1060,8 +1136,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/transactions"));
-                ("parts", (ja [
-                  (Str "transactions") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "transactions")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "client");
@@ -1077,7 +1154,9 @@ let make_config () : value =
                     (Str "transaction_type") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body.data`")) ])) ]) ])) ]));
+                  ("res", (Str "`body.data`")) ]));
+                ("parts", (ja [
+                  (Str "transactions") ])) ]) ])) ]));
           ("load", (jo [
             ("input", (Str "data"));
             ("name", (Str "load"));
@@ -1100,16 +1179,21 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/transactions/{id}"));
-                ("parts", (ja [
-                  (Str "transactions");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "transactions")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id");
                     (Str "transaction_type") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "transactions");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("update_result", (jo [
@@ -1151,6 +1235,7 @@ let make_config () : value =
             ("short", (Str "The User's name."));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "Unique identifier of newly added element."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -1230,6 +1315,9 @@ let make_config () : value =
             ("name", (Str "version"));
             ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "update_result"));
         ("op", (jo [
           ("create", (jo [
@@ -1300,8 +1388,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "POST"));
                 ("orig", (Str "/users"));
-                ("parts", (ja [
-                  (Str "users") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "users")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "client");
@@ -1316,7 +1405,9 @@ let make_config () : value =
                     (Str "username") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "users") ])) ]) ])) ]));
           ("list", (jo [
             ("input", (Str "data"));
             ("name", (Str "list"));
@@ -1349,8 +1440,9 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/users"));
-                ("parts", (ja [
-                  (Str "users") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "users")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "client");
@@ -1359,7 +1451,9 @@ let make_config () : value =
                     (Str "take") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body.data`")) ])) ]) ])) ]));
+                  ("res", (Str "`body.data`")) ]));
+                ("parts", (ja [
+                  (Str "users") ])) ]) ])) ]));
           ("update", (jo [
             ("input", (Str "data"));
             ("name", (Str "update"));
@@ -1462,9 +1556,11 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/templates/{id}"));
-                ("parts", (ja [
-                  (Str "templates");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "templates")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "access_mode");
@@ -1487,7 +1583,10 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]);
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "templates");
+                  (Str "{id}") ])) ]);
               (jo [
                 ("args", (jo [
                   ("params", (ja [
@@ -1546,9 +1645,11 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/partners/{id}"));
-                ("parts", (ja [
-                  (Str "partners");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "partners")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "billing_id");
@@ -1563,7 +1664,10 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]);
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "partners");
+                  (Str "{id}") ])) ]);
               (jo [
                 ("args", (jo [
                   ("params", (ja [
@@ -1622,9 +1726,11 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/users/{id}"));
-                ("parts", (ja [
-                  (Str "users");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "users")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "client");
@@ -1639,7 +1745,10 @@ let make_config () : value =
                     (Str "username") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]);
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "users");
+                  (Str "{id}") ])) ]);
               (jo [
                 ("args", (jo [
                   ("params", (ja [
@@ -1693,9 +1802,11 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "PATCH"));
                 ("orig", (Str "/clients/{id}"));
-                ("parts", (ja [
-                  (Str "clients");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "clients")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "billing_id");
@@ -1709,7 +1820,10 @@ let make_config () : value =
                     (Str "version") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "clients");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ]));
       ("user", (jo [
@@ -1719,6 +1833,7 @@ let make_config () : value =
             ("short", (Str "Reference to the associated Client resource."));
             ("type", (Str "`$OBJECT`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "created"));
             ("short", (Str "Creation timestamp in ISO 8601 format."));
             ("type", (Str "`$STRING`")) ]);
@@ -1729,6 +1844,7 @@ let make_config () : value =
             ("name", (Str "firstName"));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "int64"));
             ("name", (Str "id"));
             ("short", (Str "This resource's unique identifier."));
             ("type", (Str "`$INTEGER`")) ]);
@@ -1739,6 +1855,7 @@ let make_config () : value =
             ("name", (Str "lastName"));
             ("type", (Str "`$STRING`")) ]);
           (jo [
+            ("format", (Str "date-time"));
             ("name", (Str "modified"));
             ("short", (Str "Last modified timestamp."));
             ("type", (Str "`$STRING`")) ]);
@@ -1760,6 +1877,9 @@ let make_config () : value =
             ("name", (Str "version"));
             ("short", (Str "The number of times that this resource has been updated."));
             ("type", (Str "`$INTEGER`")) ]) ]));
+        ("id", (jo [
+          ("field", (Str "id"));
+          ("name", (Str "id")) ]));
         ("name", (Str "user"));
         ("op", (jo [
           ("load", (jo [
@@ -1778,17 +1898,26 @@ let make_config () : value =
                 ("kind", (Str "http"));
                 ("method", (Str "GET"));
                 ("orig", (Str "/users/{id}"));
-                ("parts", (ja [
-                  (Str "users");
-                  (Str "{id}") ]));
+                ("segments", (ja [
+                  (jo [
+                    ("lit", (Str "users")) ]);
+                  (jo [
+                    ("var", (Str "id")) ]) ]));
                 ("select", (jo [
                   ("exist", (ja [
                     (Str "id") ])) ]));
                 ("transform", (jo [
                   ("req", (Str "`reqdata`"));
-                  ("res", (Str "`body`")) ])) ]) ])) ])) ]));
+                  ("res", (Str "`body`")) ]));
+                ("parts", (ja [
+                  (Str "users");
+                  (Str "{id}") ])) ]) ])) ])) ]));
         ("relations", (jo [
           ("ancestors", (empty_list ())) ])) ])) ])) ])
+
+(* The plugin definitions the model selected, per feature: none - no
+ * plugin-bearing feature is active in this SDK. *)
+let feature_plugins (_name : string) = []
 
 let make_feature (name : string) : feature =
   match name with

@@ -6,6 +6,7 @@ main: kit: entity: clone: {
 
   fields: [
     {
+      format: "int64"
       name: "id"
       req: false
       short: "Unique identifier of newly added element."
@@ -43,16 +44,22 @@ main: kit: entity: clone: {
           }
           method: "POST"
           orig: "/templates/{id}/clone"
-          parts: [
-            "templates"
-            "{template_id}"
-            "clone"
-          ]
           rename: {
             param: {
               id: "template_id"
             }
           }
+          segments: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "template_id"
+            }
+            {
+              lit: "clone"
+            }
+          ]
           select: {
             exist: [
               "template_id"

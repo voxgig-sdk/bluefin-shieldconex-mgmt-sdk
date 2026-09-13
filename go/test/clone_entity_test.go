@@ -52,7 +52,7 @@ func TestCloneEntity(t *testing.T) {
 		// CREATE
 		cloneRef01Ent := client.Clone(nil)
 		cloneRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "clone"}, setup.data), "clone_ref01"))
+			vs.GetPath(setup.data, []any{"new", "clone"}), "clone_ref01"))
 		cloneRef01Data["template_id"] = setup.idmap["template01"]
 
 		cloneRef01DataResult, err := cloneRef01Ent.Create(cloneRef01Data, nil)
@@ -94,7 +94,7 @@ func cloneBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"clone01", "clone02", "clone03", "template01", "template02", "template03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -114,7 +114,7 @@ func cloneBasicSetup(extra map[string]any) *entityTestSetup {
 		"BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID": idmap,
 		"BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE":      "FALSE",
 		"BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN":   "FALSE",
-		"BLUEFIN_SHIELDCONEX_MGMT_APIKEY":         "NONE",
+		"BLUEFIN_SHIELDCONEX_MGMT_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID"])
@@ -123,11 +123,23 @@ func cloneBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewBluefinShieldconexMgmtSDK(core.ToMapAny(mergedOpts))
 	}

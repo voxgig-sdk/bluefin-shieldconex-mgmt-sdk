@@ -22,6 +22,7 @@
                 "type" "`$OBJECT`"))
             "type" "`$OBJECT`")
           (vs/jm
+            "format" "date-time"
             "name" "created"
             "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
@@ -34,6 +35,7 @@
             "short" "Reference to the associated Partner."
             "type" "`$OBJECT`")
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
@@ -46,6 +48,7 @@
             "short" "Some Partners will have an merchant ids on their own software offerings."
             "type" "`$STRING`")
           (vs/jm
+            "format" "date-time"
             "name" "modified"
             "short" "Last modified timestamp."
             "type" "`$STRING`")
@@ -65,6 +68,9 @@
             "name" "version"
             "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "client"
         "op" (vs/jm
           "create" (vs/jm
@@ -161,6 +167,9 @@
                 "orig" "/clients"
                 "parts" (vs/jt
                   "clients")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "clients"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "billing_id"
@@ -210,6 +219,9 @@
                 "orig" "/clients"
                 "parts" (vs/jt
                   "clients")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "clients"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "partner"
@@ -237,6 +249,11 @@
                 "parts" (vs/jt
                   "clients"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "clients")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -262,6 +279,11 @@
                 "parts" (vs/jt
                   "clients"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "clients")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -273,6 +295,7 @@
       "clone" (vs/jm
         "fields" (vs/jt
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
@@ -280,6 +303,9 @@
             "name" "name"
             "short" "Name of Template"
             "type" "`$STRING`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "clone"
         "op" (vs/jm
           "create" (vs/jm
@@ -305,6 +331,13 @@
                 "rename" (vs/jm
                   "param" (vs/jm
                     "id" "template_id"))
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates")
+                  (vs/jm
+                    "var" "template_id")
+                  (vs/jm
+                    "lit" "clone"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "template_id"))
@@ -332,10 +365,12 @@
                 "type" "`$OBJECT`"))
             "type" "`$OBJECT`")
           (vs/jm
+            "format" "date-time"
             "name" "created"
             "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
@@ -344,6 +379,7 @@
             "short" "This property indicates if the Parter account is active or disabled."
             "type" "`$BOOLEAN`")
           (vs/jm
+            "format" "date-time"
             "name" "modified"
             "short" "Last modified timestamp."
             "type" "`$STRING`")
@@ -375,6 +411,9 @@
             "name" "version"
             "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "partner"
         "op" (vs/jm
           "create" (vs/jm
@@ -476,6 +515,9 @@
                 "orig" "/partners"
                 "parts" (vs/jt
                   "partners")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "partners"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "billing_id"
@@ -525,6 +567,9 @@
                 "orig" "/partners"
                 "parts" (vs/jt
                   "partners")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "partners"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "partner"
@@ -552,6 +597,11 @@
                 "parts" (vs/jt
                   "partners"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "partners")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -583,6 +633,7 @@
               "count" 1
               "depth" 1))
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
@@ -609,6 +660,9 @@
             "name" "version"
             "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "template"
         "op" (vs/jm
           "create" (vs/jm
@@ -715,6 +769,9 @@
                 "orig" "/templates"
                 "parts" (vs/jt
                   "templates")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "access_mode"
@@ -771,6 +828,9 @@
                 "orig" "/templates"
                 "parts" (vs/jt
                   "templates")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "client"
@@ -799,6 +859,11 @@
                 "parts" (vs/jt
                   "templates"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -824,6 +889,11 @@
                 "parts" (vs/jt
                   "templates"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -843,6 +913,7 @@
             "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
+            "format" "date-time"
             "name" "completeDate"
             "short" "Timestamp from the beginning of the transaction."
             "type" "`$STRING`")
@@ -859,6 +930,7 @@
             "short" "The error messge that is sent in response to a failed decrypt API call."
             "type" "`$STRING`")
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
@@ -883,9 +955,13 @@
             "short" "The success indicator."
             "type" "`$BOOLEAN`")
           (vs/jm
+            "format" "int32"
             "name" "templateId"
             "short" "The Template's unique identifier."
             "type" "`$STRING`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "transaction"
         "op" (vs/jm
           "list" (vs/jm
@@ -957,6 +1033,9 @@
                 "orig" "/transactions"
                 "parts" (vs/jt
                   "transactions")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "transactions"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "client"
@@ -998,6 +1077,11 @@
                 "parts" (vs/jt
                   "transactions"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "transactions")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"
@@ -1046,6 +1130,7 @@
             "short" "The User's name."
             "type" "`$STRING`")
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "Unique identifier of newly added element."
             "type" "`$INTEGER`")
@@ -1125,6 +1210,9 @@
             "name" "version"
             "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "update_result"
         "op" (vs/jm
           "create" (vs/jm
@@ -1197,6 +1285,9 @@
                 "orig" "/users"
                 "parts" (vs/jt
                   "users")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "users"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "client"
@@ -1246,6 +1337,9 @@
                 "orig" "/users"
                 "parts" (vs/jt
                   "users")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "users"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "client"
@@ -1360,6 +1454,11 @@
                 "parts" (vs/jt
                   "templates"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "templates")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "access_mode"
@@ -1444,6 +1543,11 @@
                 "parts" (vs/jt
                   "partners"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "partners")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "billing_id"
@@ -1520,6 +1624,11 @@
                 "parts" (vs/jt
                   "users"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "users")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "client"
@@ -1591,6 +1700,11 @@
                 "parts" (vs/jt
                   "clients"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "clients")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "billing_id"
@@ -1614,6 +1728,7 @@
             "short" "Reference to the associated Client resource."
             "type" "`$OBJECT`")
           (vs/jm
+            "format" "date-time"
             "name" "created"
             "short" "Creation timestamp in ISO 8601 format."
             "type" "`$STRING`")
@@ -1624,6 +1739,7 @@
             "name" "firstName"
             "type" "`$STRING`")
           (vs/jm
+            "format" "int64"
             "name" "id"
             "short" "This resource's unique identifier."
             "type" "`$INTEGER`")
@@ -1634,6 +1750,7 @@
             "name" "lastName"
             "type" "`$STRING`")
           (vs/jm
+            "format" "date-time"
             "name" "modified"
             "short" "Last modified timestamp."
             "type" "`$STRING`")
@@ -1655,6 +1772,9 @@
             "name" "version"
             "short" "The number of times that this resource has been updated."
             "type" "`$INTEGER`"))
+        "id" (vs/jm
+          "field" "id"
+          "name" "id")
         "name" "user"
         "op" (vs/jm
           "load" (vs/jm
@@ -1676,6 +1796,11 @@
                 "parts" (vs/jt
                   "users"
                   "{id}")
+                "segments" (vs/jt
+                  (vs/jm
+                    "lit" "users")
+                  (vs/jm
+                    "var" "id"))
                 "select" (vs/jm
                   "exist" (vs/jt
                     "id"))
@@ -1783,3 +1908,9 @@
         "user" (vs/jm))
       "headers" (vs/jm
         "content-type" "application/json"))))
+
+(def feature-plugins
+  {})
+
+(def feature-extra
+  {})

@@ -61,6 +61,7 @@ main: kit: entity: update_result: {
       type: "`$STRING`"
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "Unique identifier of newly added element."
@@ -273,8 +274,10 @@ main: kit: entity: update_result: {
           }
           method: "POST"
           orig: "/users"
-          parts: [
-            "users"
+          segments: [
+            {
+              lit: "users"
+            }
           ]
           select: {
             exist: [
@@ -337,8 +340,10 @@ main: kit: entity: update_result: {
           }
           method: "GET"
           orig: "/users"
-          parts: [
-            "users"
+          segments: [
+            {
+              lit: "users"
+            }
           ]
           select: {
             exist: [
@@ -493,9 +498,13 @@ main: kit: entity: update_result: {
           }
           method: "PATCH"
           orig: "/templates/{id}"
-          parts: [
-            "templates"
-            "{id}"
+          segments: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -603,9 +612,13 @@ main: kit: entity: update_result: {
           }
           method: "PATCH"
           orig: "/partners/{id}"
-          parts: [
-            "partners"
-            "{id}"
+          segments: [
+            {
+              lit: "partners"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -705,9 +718,13 @@ main: kit: entity: update_result: {
           }
           method: "PATCH"
           orig: "/users/{id}"
-          parts: [
-            "users"
-            "{id}"
+          segments: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -800,9 +817,13 @@ main: kit: entity: update_result: {
           }
           method: "PATCH"
           orig: "/clients/{id}"
-          parts: [
-            "clients"
-            "{id}"
+          segments: [
+            {
+              lit: "clients"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

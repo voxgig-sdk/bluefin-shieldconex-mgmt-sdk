@@ -1,5 +1,6 @@
 package voxgig.bluefinshieldconexmgmtsdk.core;
 
+import java.util.List;
 import java.util.Map;
 
 import voxgig.bluefinshieldconexmgmtsdk.utility.Json;
@@ -61,6 +62,18 @@ public final class Config {
         return new voxgig.bluefinshieldconexmgmtsdk.feature.TimeoutFeature();
       default:
         return new voxgig.bluefinshieldconexmgmtsdk.feature.BaseFeature();
+    }
+  }
+
+  /**
+   * The plugin definitions the model selected for one feature's chain, as
+   * List&lt;Object&gt; so core never names a vendored type. Empty for a
+   * feature whose model declares no active plugin group.
+   */
+  public static List<Object> featurePlugins(String name) {
+    switch (name) {
+      default:
+        return List.of();
     }
   }
 
@@ -219,6 +232,7 @@ public final class Config {
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"created\",");
     b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -235,6 +249,7 @@ public final class Config {
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -250,6 +265,7 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"modified\",");
     b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -276,6 +292,10 @@ public final class Config {
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"client\",");
     b.append("   \"op\": {");
     b.append("    \"create\": {");
@@ -386,8 +406,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/clients\",");
-    b.append("       \"parts\": [");
-    b.append("        \"clients\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"clients\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -410,7 +432,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"clients\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -447,8 +472,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/clients\",");
-    b.append("       \"parts\": [");
-    b.append("        \"clients\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"clients\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -460,7 +487,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body.data`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"clients\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -483,9 +513,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/clients/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"clients\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"clients\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -495,7 +529,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"clients\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -518,9 +556,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"DELETE\",");
     b.append("       \"orig\": \"/clients/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"clients\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"clients\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -530,7 +572,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"clients\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -542,6 +588,7 @@ public final class Config {
     b.append("  \"clone\": {");
     b.append("   \"fields\": [");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -552,6 +599,10 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"clone\",");
     b.append("   \"op\": {");
     b.append("    \"create\": {");
@@ -573,16 +624,22 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/templates/{id}/clone\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\",");
-    b.append("        \"{template_id}\",");
-    b.append("        \"clone\"");
-    b.append("       ],");
     b.append("       \"rename\": {");
     b.append("        \"param\": {");
     b.append("         \"id\": \"template_id\"");
     b.append("        }");
     b.append("       },");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"template_id\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"lit\": \"clone\"");
+    b.append("        }");
+    b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
     b.append("         \"template_id\"");
@@ -591,7 +648,12 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\",");
+    b.append("        \"{template_id}\",");
+    b.append("        \"clone\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -626,11 +688,13 @@ public final class Config {
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"created\",");
     b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -641,6 +705,7 @@ public final class Config {
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"modified\",");
     b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -683,6 +748,10 @@ public final class Config {
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"partner\",");
     b.append("   \"op\": {");
     b.append("    \"create\": {");
@@ -799,8 +868,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/partners\",");
-    b.append("       \"parts\": [");
-    b.append("        \"partners\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"partners\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -824,7 +895,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"partners\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -860,8 +934,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/partners\",");
-    b.append("       \"parts\": [");
-    b.append("        \"partners\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"partners\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -873,7 +949,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body.data`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"partners\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -896,9 +975,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/partners/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"partners\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"partners\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -908,7 +991,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"partners\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -945,6 +1032,7 @@ public final class Config {
     b.append("     }");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -979,6 +1067,10 @@ public final class Config {
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"template\",");
     b.append("   \"op\": {");
     b.append("    \"create\": {");
@@ -1102,8 +1194,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/templates\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1129,7 +1223,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1171,8 +1268,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/templates\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1185,7 +1284,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body.data`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1208,9 +1310,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/templates/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1220,7 +1326,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1243,9 +1353,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"DELETE\",");
     b.append("       \"orig\": \"/templates/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1255,7 +1369,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -1277,6 +1395,7 @@ public final class Config {
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"completeDate\",");
     b.append("     \"short\": \"Timestamp from the beginning of the transaction.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -1297,6 +1416,7 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -1327,11 +1447,16 @@ public final class Config {
     b.append("     \"type\": \"`$BOOLEAN`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int32\",");
     b.append("     \"name\": \"templateId\",");
     b.append("     \"short\": \"The Template's unique identifier.\",");
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"transaction\",");
     b.append("   \"op\": {");
     b.append("    \"list\": {");
@@ -1414,8 +1539,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/transactions\",");
-    b.append("       \"parts\": [");
-    b.append("        \"transactions\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"transactions\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1435,7 +1562,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body.data`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"transactions\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1466,9 +1596,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/transactions/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"transactions\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"transactions\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1479,7 +1613,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"transactions\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -1539,6 +1677,7 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"Unique identifier of newly added element.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -1645,6 +1784,10 @@ public final class Config {
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"update_result\",");
     b.append("   \"op\": {");
     b.append("    \"create\": {");
@@ -1727,8 +1870,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"POST\",");
     b.append("       \"orig\": \"/users\",");
-    b.append("       \"parts\": [");
-    b.append("        \"users\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"users\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1747,7 +1892,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"users\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1789,8 +1937,10 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/users\",");
-    b.append("       \"parts\": [");
-    b.append("        \"users\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"users\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1803,7 +1953,10 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body.data`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"users\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    },");
@@ -1930,9 +2083,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/templates/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"templates\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"templates\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -1959,7 +2116,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"templates\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      },");
     b.append("      {");
     b.append("       \"args\": {");
@@ -2032,9 +2193,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/partners/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"partners\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"partners\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -2053,7 +2218,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"partners\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      },");
     b.append("      {");
     b.append("       \"args\": {");
@@ -2126,9 +2295,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/users/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"users\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"users\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -2147,7 +2320,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"users\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      },");
     b.append("      {");
     b.append("       \"args\": {");
@@ -2214,9 +2391,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"PATCH\",");
     b.append("       \"orig\": \"/clients/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"clients\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"clients\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -2234,7 +2415,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"clients\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");
@@ -2251,6 +2436,7 @@ public final class Config {
     b.append("     \"type\": \"`$OBJECT`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"created\",");
     b.append("     \"short\": \"Creation timestamp in ISO 8601 format.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -2264,6 +2450,7 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"int64\",");
     b.append("     \"name\": \"id\",");
     b.append("     \"short\": \"This resource's unique identifier.\",");
     b.append("     \"type\": \"`$INTEGER`\"");
@@ -2277,6 +2464,7 @@ public final class Config {
     b.append("     \"type\": \"`$STRING`\"");
     b.append("    },");
     b.append("    {");
+    b.append("     \"format\": \"date-time\",");
     b.append("     \"name\": \"modified\",");
     b.append("     \"short\": \"Last modified timestamp.\",");
     b.append("     \"type\": \"`$STRING`\"");
@@ -2305,6 +2493,10 @@ public final class Config {
     b.append("     \"type\": \"`$INTEGER`\"");
     b.append("    }");
     b.append("   ],");
+    b.append("   \"id\": {");
+    b.append("    \"field\": \"id\",");
+    b.append("    \"name\": \"id\"");
+    b.append("   },");
     b.append("   \"name\": \"user\",");
     b.append("   \"op\": {");
     b.append("    \"load\": {");
@@ -2326,9 +2518,13 @@ public final class Config {
     b.append("       \"kind\": \"http\",");
     b.append("       \"method\": \"GET\",");
     b.append("       \"orig\": \"/users/{id}\",");
-    b.append("       \"parts\": [");
-    b.append("        \"users\",");
-    b.append("        \"{id}\"");
+    b.append("       \"segments\": [");
+    b.append("        {");
+    b.append("         \"lit\": \"users\"");
+    b.append("        },");
+    b.append("        {");
+    b.append("         \"var\": \"id\"");
+    b.append("        }");
     b.append("       ],");
     b.append("       \"select\": {");
     b.append("        \"exist\": [");
@@ -2338,7 +2534,11 @@ public final class Config {
     b.append("       \"transform\": {");
     b.append("        \"req\": \"`reqdata`\",");
     b.append("        \"res\": \"`body`\"");
-    b.append("       }");
+    b.append("       },");
+    b.append("       \"parts\": [");
+    b.append("        \"users\",");
+    b.append("        \"{id}\"");
+    b.append("       ]");
     b.append("      }");
     b.append("     ]");
     b.append("    }");

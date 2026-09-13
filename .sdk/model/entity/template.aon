@@ -35,6 +35,7 @@ main: kit: entity: template: {
       }
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "Unique identifier of newly added element."
@@ -213,8 +214,10 @@ main: kit: entity: template: {
           }
           method: "POST"
           orig: "/templates"
-          parts: [
-            "templates"
+          segments: [
+            {
+              lit: "templates"
+            }
           ]
           select: {
             exist: [
@@ -284,8 +287,10 @@ main: kit: entity: template: {
           }
           method: "GET"
           orig: "/templates"
-          parts: [
-            "templates"
+          segments: [
+            {
+              lit: "templates"
+            }
           ]
           select: {
             exist: [
@@ -319,9 +324,13 @@ main: kit: entity: template: {
           }
           method: "GET"
           orig: "/templates/{id}"
-          parts: [
-            "templates"
-            "{id}"
+          segments: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -352,9 +361,13 @@ main: kit: entity: template: {
           }
           method: "DELETE"
           orig: "/templates/{id}"
-          parts: [
-            "templates"
-            "{id}"
+          segments: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

@@ -18,6 +18,7 @@ main: kit: entity: transaction: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "completeDate"
       req: false
       short: "Timestamp from the beginning of the transaction."
@@ -42,6 +43,7 @@ main: kit: entity: transaction: {
       type: "`$STRING`"
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "This resource's unique identifier."
@@ -78,6 +80,7 @@ main: kit: entity: transaction: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "int32"
       name: "templateId"
       req: false
       short: "The Template's unique identifier."
@@ -181,8 +184,10 @@ main: kit: entity: transaction: {
           }
           method: "GET"
           orig: "/transactions"
-          parts: [
-            "transactions"
+          segments: [
+            {
+              lit: "transactions"
+            }
           ]
           select: {
             exist: [
@@ -232,9 +237,13 @@ main: kit: entity: transaction: {
           }
           method: "GET"
           orig: "/transactions/{id}"
-          parts: [
-            "transactions"
-            "{id}"
+          segments: [
+            {
+              lit: "transactions"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

@@ -183,6 +183,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'Creation timestamp in ISO 8601 format.',
               'type' => '`$STRING`',
@@ -199,6 +200,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'This resource\'s unique identifier.',
               'type' => '`$INTEGER`',
@@ -214,6 +216,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'modified',
               'short' => 'Last modified timestamp.',
               'type' => '`$STRING`',
@@ -239,6 +242,10 @@ class BluefinShieldconexMgmtConfig
               'short' => 'The number of times that this resource has been updated.',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'client',
           'op' => [
@@ -350,8 +357,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/clients',
-                  'parts' => [
-                    'clients',
+                  'segments' => [
+                    [
+                      'lit' => 'clients',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -374,6 +383,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'clients',
                   ],
                 ],
               ],
@@ -411,8 +423,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/clients',
-                  'parts' => [
-                    'clients',
+                  'segments' => [
+                    [
+                      'lit' => 'clients',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -424,6 +438,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'clients',
                   ],
                 ],
               ],
@@ -447,9 +464,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/clients/{id}',
-                  'parts' => [
-                    'clients',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'clients',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -459,6 +480,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'clients',
+                    '{id}',
                   ],
                 ],
               ],
@@ -482,9 +507,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/clients/{id}',
-                  'parts' => [
-                    'clients',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'clients',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -494,6 +523,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'clients',
+                    '{id}',
                   ],
                 ],
               ],
@@ -506,6 +539,7 @@ class BluefinShieldconexMgmtConfig
         'clone' => [
           'fields' => [
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'Unique identifier of newly added element.',
               'type' => '`$INTEGER`',
@@ -515,6 +549,10 @@ class BluefinShieldconexMgmtConfig
               'short' => 'Name of Template',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'clone',
           'op' => [
@@ -537,14 +575,20 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/templates/{id}/clone',
-                  'parts' => [
-                    'templates',
-                    '{template_id}',
-                    'clone',
-                  ],
                   'rename' => [
                     'param' => [
                       'id' => 'template_id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
+                    [
+                      'var' => 'template_id',
+                    ],
+                    [
+                      'lit' => 'clone',
                     ],
                   ],
                   'select' => [
@@ -555,6 +599,11 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'templates',
+                    '{template_id}',
+                    'clone',
                   ],
                 ],
               ],
@@ -590,11 +639,13 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'Creation timestamp in ISO 8601 format.',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'This resource\'s unique identifier.',
               'type' => '`$INTEGER`',
@@ -605,6 +656,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'modified',
               'short' => 'Last modified timestamp.',
               'type' => '`$STRING`',
@@ -646,6 +698,10 @@ class BluefinShieldconexMgmtConfig
               'short' => 'The number of times that this resource has been updated.',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'partner',
           'op' => [
@@ -763,8 +819,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/partners',
-                  'parts' => [
-                    'partners',
+                  'segments' => [
+                    [
+                      'lit' => 'partners',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -788,6 +846,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'partners',
                   ],
                 ],
               ],
@@ -824,8 +885,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/partners',
-                  'parts' => [
-                    'partners',
+                  'segments' => [
+                    [
+                      'lit' => 'partners',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -837,6 +900,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'partners',
                   ],
                 ],
               ],
@@ -860,9 +926,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/partners/{id}',
-                  'parts' => [
-                    'partners',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'partners',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -872,6 +942,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'partners',
+                    '{id}',
                   ],
                 ],
               ],
@@ -909,6 +983,7 @@ class BluefinShieldconexMgmtConfig
               ],
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'Unique identifier of newly added element.',
               'type' => '`$INTEGER`',
@@ -942,6 +1017,10 @@ class BluefinShieldconexMgmtConfig
               'short' => 'The number of times that this resource has been updated.',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'template',
           'op' => [
@@ -1066,8 +1145,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/templates',
-                  'parts' => [
-                    'templates',
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1093,6 +1174,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'templates',
                   ],
                 ],
               ],
@@ -1135,8 +1219,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/templates',
-                  'parts' => [
-                    'templates',
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1149,6 +1235,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'templates',
                   ],
                 ],
               ],
@@ -1172,9 +1261,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/templates/{id}',
-                  'parts' => [
-                    'templates',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1184,6 +1277,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'templates',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1207,9 +1304,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/templates/{id}',
-                  'parts' => [
-                    'templates',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1219,6 +1320,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'templates',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1241,6 +1346,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'completeDate',
               'short' => 'Timestamp from the beginning of the transaction.',
               'type' => '`$STRING`',
@@ -1261,6 +1367,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'This resource\'s unique identifier.',
               'type' => '`$INTEGER`',
@@ -1291,10 +1398,15 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'int32',
               'name' => 'templateId',
               'short' => 'The Template\'s unique identifier.',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'transaction',
           'op' => [
@@ -1378,8 +1490,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/transactions',
-                  'parts' => [
-                    'transactions',
+                  'segments' => [
+                    [
+                      'lit' => 'transactions',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1399,6 +1513,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'transactions',
                   ],
                 ],
               ],
@@ -1430,9 +1547,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/transactions/{id}',
-                  'parts' => [
-                    'transactions',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'transactions',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1443,6 +1564,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'transactions',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1503,6 +1628,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'Unique identifier of newly added element.',
               'type' => '`$INTEGER`',
@@ -1609,6 +1735,10 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'update_result',
           'op' => [
             'create' => [
@@ -1691,8 +1821,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/users',
-                  'parts' => [
-                    'users',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1711,6 +1843,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'users',
                   ],
                 ],
               ],
@@ -1753,8 +1888,10 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/users',
-                  'parts' => [
-                    'users',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1767,6 +1904,9 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'users',
                   ],
                 ],
               ],
@@ -1894,9 +2034,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/templates/{id}',
-                  'parts' => [
-                    'templates',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'templates',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1923,6 +2067,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'templates',
+                    '{id}',
                   ],
                 ],
                 [
@@ -1996,9 +2144,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/partners/{id}',
-                  'parts' => [
-                    'partners',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'partners',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -2017,6 +2169,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'partners',
+                    '{id}',
                   ],
                 ],
                 [
@@ -2090,9 +2246,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/users/{id}',
-                  'parts' => [
-                    'users',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -2111,6 +2271,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'users',
+                    '{id}',
                   ],
                 ],
                 [
@@ -2178,9 +2342,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/clients/{id}',
-                  'parts' => [
-                    'clients',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'clients',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -2199,6 +2367,10 @@ class BluefinShieldconexMgmtConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'clients',
+                    '{id}',
+                  ],
                 ],
               ],
             ],
@@ -2215,6 +2387,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'Creation timestamp in ISO 8601 format.',
               'type' => '`$STRING`',
@@ -2228,6 +2401,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int64',
               'name' => 'id',
               'short' => 'This resource\'s unique identifier.',
               'type' => '`$INTEGER`',
@@ -2241,6 +2415,7 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'modified',
               'short' => 'Last modified timestamp.',
               'type' => '`$STRING`',
@@ -2269,6 +2444,10 @@ class BluefinShieldconexMgmtConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'user',
           'op' => [
             'load' => [
@@ -2290,9 +2469,13 @@ class BluefinShieldconexMgmtConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/users/{id}',
-                  'parts' => [
-                    'users',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -2302,6 +2485,10 @@ class BluefinShieldconexMgmtConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'users',
+                    '{id}',
                   ],
                 ],
               ],

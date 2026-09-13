@@ -1,16 +1,30 @@
 // BluefinShieldconexMgmt SDK client.
+//
+// SDK TYPES ARE MODULE-QUALIFIED IN THIS FILE (`BluefinShieldconexMgmtSdk.VMap`, not
+// `VMap`), and only in this file. MainEntity_swift emits one accessor PER
+// ENTITY into this class body, named after the entity - `Utility()`,
+// `Spec()`, `Value()` for an API with entities of those names - and inside
+// a class body a METHOD of that name shadows the TYPE for every unqualified
+// use: `utility = Utility()` then reads as a call to the accessor, and
+// `-> Utility` as a return type that does not exist. The entity TYPE is
+// already renamed on such a collision (swiftSafeTypeName), but the accessor
+// keeps the entity's own name, which is the public API. Qualifying by
+// module - the generated module is <Name>Sdk, so `BluefinShieldconexMgmtSdk.` lands as
+// `<Name>Sdk.` - is the one spelling a method cannot shadow. The shared
+// fixture's `utility` entity is what found this; every other swift file is
+// outside this class and unaffected.
 
 import Foundation
 
 public final class BluefinShieldconexMgmtSDK {
   public var mode = "live"
-  private var options: VMap = VMap()
-  private let utility: Utility
+  private var options: BluefinShieldconexMgmtSdk.VMap = BluefinShieldconexMgmtSdk.VMap()
+  private let utility: BluefinShieldconexMgmtSdk.Utility
   public var features: [BaseFeature] = []
-  private var rootctx: Context!
+  private var rootctx: BluefinShieldconexMgmtSdk.Context!
 
-  public init(_ optionsIn: VMap? = nil) {
-    utility = Utility()
+  public init(_ optionsIn: BluefinShieldconexMgmtSdk.VMap? = nil) {
+    utility = BluefinShieldconexMgmtSdk.Utility()
 
     // The process-wide config (sdkgen rung L2): read-only on the request path,
     // so every client shares one rather than rebuilding it.
@@ -20,7 +34,7 @@ public final class BluefinShieldconexMgmtSDK {
       "client": self,
       "utility": utility,
       "config": config,
-      "shared": VMap(),
+      "shared": BluefinShieldconexMgmtSdk.VMap(),
     ]
     if let o = optionsIn { ctxmap["options"] = o }
 
@@ -39,7 +53,7 @@ public final class BluefinShieldconexMgmtSDK {
     // feature installs the base mock transport and the transport features
     // (retry/cache/netsim/proxy/ratelimit) wrap whatever is current, so `test`
     // must be added before them to sit at the base of the chain.
-    let featureOpts = gp(options, "feature").asMap ?? VMap()
+    let featureOpts = gp(options, "feature").asMap ?? BluefinShieldconexMgmtSdk.VMap()
     if let featureOrder = gpath(options, "__derived__", "featureorder").asList {
       for fnameVal in featureOrder.items {
         let fname = fnameVal.asString ?? ""
@@ -67,24 +81,24 @@ public final class BluefinShieldconexMgmtSDK {
     utility.featureHook(rootctx, "PostConstruct")
   }
 
-  public func optionsMap() -> VMap {
-    return clone(.map(options)).asMap ?? VMap()
+  public func optionsMap() -> BluefinShieldconexMgmtSdk.VMap {
+    return clone(.map(options)).asMap ?? BluefinShieldconexMgmtSdk.VMap()
   }
 
-  public func getUtility() -> Utility {
-    return Utility.copy(utility)
+  public func getUtility() -> BluefinShieldconexMgmtSdk.Utility {
+    return BluefinShieldconexMgmtSdk.Utility.copy(utility)
   }
 
-  public func getRootCtx() -> Context {
+  public func getRootCtx() -> BluefinShieldconexMgmtSdk.Context {
     return rootctx
   }
 
-  public func prepare(_ fetchargsIn: VMap?) throws -> VMap {
+  public func prepare(_ fetchargsIn: BluefinShieldconexMgmtSdk.VMap?) throws -> BluefinShieldconexMgmtSdk.VMap {
     let utility = self.utility
 
-    let fetchargs = fetchargsIn ?? VMap()
+    let fetchargs = fetchargsIn ?? BluefinShieldconexMgmtSdk.VMap()
 
-    let ctrl = gp(fetchargs, "ctrl").asMap ?? VMap()
+    let ctrl = gp(fetchargs, "ctrl").asMap ?? BluefinShieldconexMgmtSdk.VMap()
 
     let ctx = utility.makeContext(["opname": "prepare", "ctrl": ctrl], rootctx)
 
@@ -94,8 +108,8 @@ public final class BluefinShieldconexMgmtSDK {
     var method = gp(fetchargs, "method").asString ?? ""
     if method == "" { method = "GET" }
 
-    let pathParams = gp(fetchargs, "params").asMap ?? VMap()
-    let query = gp(fetchargs, "query").asMap ?? VMap()
+    let pathParams = gp(fetchargs, "params").asMap ?? BluefinShieldconexMgmtSdk.VMap()
+    let query = gp(fetchargs, "query").asMap ?? BluefinShieldconexMgmtSdk.VMap()
 
     let headers = utility.prepareHeaders(ctx)
 
@@ -103,7 +117,7 @@ public final class BluefinShieldconexMgmtSDK {
     let prefix = gp(options, "prefix").asString ?? ""
     let suffix = gp(options, "suffix").asString ?? ""
 
-    let specmap = VMap()
+    let specmap = BluefinShieldconexMgmtSdk.VMap()
     specmap.entries["base"] = .string(basev)
     specmap.entries["prefix"] = .string(prefix)
     specmap.entries["suffix"] = .string(suffix)
@@ -114,7 +128,7 @@ public final class BluefinShieldconexMgmtSDK {
     specmap.entries["headers"] = .map(headers)
     specmap.entries["body"] = gp(fetchargs, "body")
     specmap.entries["step"] = .string("start")
-    ctx.spec = Spec(specmap)
+    ctx.spec = BluefinShieldconexMgmtSdk.Spec(specmap)
 
     // Merge user-provided headers.
     if let uhm = gp(fetchargs, "headers").asMap {
@@ -131,7 +145,7 @@ public final class BluefinShieldconexMgmtSDK {
   // Raw endpoint access is operator-controllable, like every entity op.
   // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
   // either one reaches the same endpoint.
-  public func direct(_ fetchargsIn: VMap?) -> VMap {
+  public func direct(_ fetchargsIn: BluefinShieldconexMgmtSdk.VMap?) -> BluefinShieldconexMgmtSdk.VMap {
     if !opAllowed("direct") {
       return opDenied("direct")
     }
@@ -145,9 +159,9 @@ public final class BluefinShieldconexMgmtSDK {
     return allow.contains(op)
   }
 
-  private func opDenied(_ op: String) -> VMap {
+  private func opDenied(_ op: String) -> BluefinShieldconexMgmtSdk.VMap {
     let allow = gpath(options, "allow", "op").asString ?? ""
-    let r = VMap()
+    let r = BluefinShieldconexMgmtSdk.VMap()
     r.entries["ok"] = .bool(false)
     r.entries["err"] = .nat(BluefinShieldconexMgmtError(
       op + "_allow",
@@ -160,38 +174,38 @@ public final class BluefinShieldconexMgmtSDK {
   // its own allow.op token first. Private, rather than a flag on fetchargs:
   // a caller-supplied marker would let anyone opt straight back out of the
   // gate by passing it.
-  private func rawRequest(_ fetchargsIn: VMap?) -> VMap {
+  private func rawRequest(_ fetchargsIn: BluefinShieldconexMgmtSdk.VMap?) -> BluefinShieldconexMgmtSdk.VMap {
     let utility = self.utility
 
-    let fetchdef: VMap
+    let fetchdef: BluefinShieldconexMgmtSdk.VMap
     do {
       fetchdef = try prepare(fetchargsIn)
     } catch {
-      let r = VMap()
+      let r = BluefinShieldconexMgmtSdk.VMap()
       r.entries["ok"] = .bool(false)
       r.entries["err"] = .nat(error)
       return r
     }
 
-    let fetchargs = fetchargsIn ?? VMap()
-    let ctrl = gp(fetchargs, "ctrl").asMap ?? VMap()
+    let fetchargs = fetchargsIn ?? BluefinShieldconexMgmtSdk.VMap()
+    let ctrl = gp(fetchargs, "ctrl").asMap ?? BluefinShieldconexMgmtSdk.VMap()
 
     let ctx = utility.makeContext(["opname": "direct", "ctrl": ctrl], rootctx)
 
     let url = gp(fetchdef, "url").asString ?? ""
 
-    let fetched: Value
+    let fetched: BluefinShieldconexMgmtSdk.Value
     do {
       fetched = try utility.fetcher(ctx, url, fetchdef)
     } catch {
-      let r = VMap()
+      let r = BluefinShieldconexMgmtSdk.VMap()
       r.entries["ok"] = .bool(false)
       r.entries["err"] = .nat(error)
       return r
     }
 
     if isNil(fetched) {
-      let r = VMap()
+      let r = BluefinShieldconexMgmtSdk.VMap()
       r.entries["ok"] = .bool(false)
       r.entries["err"] = .nat(ctx.makeError("direct_no_response", "response: undefined"))
       return r
@@ -209,12 +223,12 @@ public final class BluefinShieldconexMgmtSDK {
       }
       let noBody = status == 204 || status == 304 || contentLength == "0"
 
-      var jsonData: Value = .noval
-      if !noBody, let jf = gp(fm, "json").asNative as? NativeCall0 {
+      var jsonData: BluefinShieldconexMgmtSdk.Value = .noval
+      if !noBody, let jf = gp(fm, "json").asNative as? BluefinShieldconexMgmtSdk.NativeCall0 {
         jsonData = jf()
       }
 
-      let r = VMap()
+      let r = BluefinShieldconexMgmtSdk.VMap()
       r.entries["ok"] = .bool(status >= 200 && status < 300)
       r.entries["status"] = .int(Int64(status))
       r.entries["headers"] = headers
@@ -222,7 +236,7 @@ public final class BluefinShieldconexMgmtSDK {
       return r
     }
 
-    let r = VMap()
+    let r = BluefinShieldconexMgmtSdk.VMap()
     r.entries["ok"] = .bool(false)
     r.entries["err"] = .nat(ctx.makeError("direct_invalid", "invalid response type"))
     return r
@@ -240,24 +254,24 @@ public final class BluefinShieldconexMgmtSDK {
   // NOTE: like direct, this bypasses the feature pipeline — no retry,
   // ratelimit or paging features apply.
   public func graphql(
-    _ query: String, _ variables: VMap? = nil, _ ctrl: VMap? = nil
-  ) -> VMap {
+    _ query: String, _ variables: BluefinShieldconexMgmtSdk.VMap? = nil, _ ctrl: BluefinShieldconexMgmtSdk.VMap? = nil
+  ) -> BluefinShieldconexMgmtSdk.VMap {
     if !opAllowed("graphql") {
       return opDenied("graphql")
     }
 
-    let headers = VMap()
+    let headers = BluefinShieldconexMgmtSdk.VMap()
     headers.entries["content-type"] = .string("application/json")
 
-    let body = VMap()
+    let body = BluefinShieldconexMgmtSdk.VMap()
     body.entries["query"] = .string(query)
-    body.entries["variables"] = .map(variables ?? VMap())
+    body.entries["variables"] = .map(variables ?? BluefinShieldconexMgmtSdk.VMap())
 
-    let fetchargs = VMap()
+    let fetchargs = BluefinShieldconexMgmtSdk.VMap()
     fetchargs.entries["method"] = .string("POST")
     fetchargs.entries["headers"] = .map(headers)
     fetchargs.entries["body"] = .map(body)
-    fetchargs.entries["ctrl"] = .map(ctrl ?? VMap())
+    fetchargs.entries["ctrl"] = .map(ctrl ?? BluefinShieldconexMgmtSdk.VMap())
 
     let res = rawRequest(fetchargs)
 
@@ -333,10 +347,10 @@ public final class BluefinShieldconexMgmtSDK {
   }
 
 
-  public static func testSDK(_ testoptsIn: VMap?, _ sdkoptsIn: VMap?) -> BluefinShieldconexMgmtSDK {
-    let sdkopts = clone(.map(sdkoptsIn ?? VMap())).asMap ?? VMap()
+  public static func testSDK(_ testoptsIn: BluefinShieldconexMgmtSdk.VMap?, _ sdkoptsIn: BluefinShieldconexMgmtSdk.VMap?) -> BluefinShieldconexMgmtSDK {
+    let sdkopts = clone(.map(sdkoptsIn ?? BluefinShieldconexMgmtSdk.VMap())).asMap ?? BluefinShieldconexMgmtSdk.VMap()
 
-    let testopts = clone(.map(testoptsIn ?? VMap())).asMap ?? VMap()
+    let testopts = clone(.map(testoptsIn ?? BluefinShieldconexMgmtSdk.VMap())).asMap ?? BluefinShieldconexMgmtSdk.VMap()
     testopts.entries["active"] = .bool(true)
 
     _ = setpath(.map(sdkopts), jtp("feature", "test"), .map(testopts))

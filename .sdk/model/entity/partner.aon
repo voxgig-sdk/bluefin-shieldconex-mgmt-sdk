@@ -27,12 +27,14 @@ main: kit: entity: partner: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "Creation timestamp in ISO 8601 format."
       type: "`$STRING`"
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "This resource's unique identifier."
@@ -45,6 +47,7 @@ main: kit: entity: partner: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "modified"
       req: false
       short: "Last modified timestamp."
@@ -216,8 +219,10 @@ main: kit: entity: partner: {
           }
           method: "POST"
           orig: "/partners"
-          parts: [
-            "partners"
+          segments: [
+            {
+              lit: "partners"
+            }
           ]
           select: {
             exist: [
@@ -278,8 +283,10 @@ main: kit: entity: partner: {
           }
           method: "GET"
           orig: "/partners"
-          parts: [
-            "partners"
+          segments: [
+            {
+              lit: "partners"
+            }
           ]
           select: {
             exist: [
@@ -312,9 +319,13 @@ main: kit: entity: partner: {
           }
           method: "GET"
           orig: "/partners/{id}"
-          parts: [
-            "partners"
-            "{id}"
+          segments: [
+            {
+              lit: "partners"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

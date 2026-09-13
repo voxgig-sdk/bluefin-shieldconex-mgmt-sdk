@@ -161,6 +161,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("created")),
                         ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -177,6 +178,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -192,6 +194,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("modified")),
                         ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -217,6 +220,10 @@ pub fn make_config() -> Value {
                         ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
+                ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
                 ])),
                 ("name".to_string(), Value::str("client")),
                 ("op".to_string(), Value::map_of([
@@ -328,8 +335,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("POST")),
                                 ("orig".to_string(), Value::str("/clients")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("clients"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clients")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -352,6 +361,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("clients"),
                                 ])),
                             ]),
                         ])),
@@ -389,8 +401,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/clients")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("clients"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clients")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -402,6 +416,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body.data`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("clients"),
                                 ])),
                             ]),
                         ])),
@@ -425,9 +442,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/clients/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("clients"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clients")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -437,6 +458,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("clients"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -460,9 +485,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("DELETE")),
                                 ("orig".to_string(), Value::str("/clients/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("clients"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clients")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -472,6 +501,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("clients"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -484,6 +517,7 @@ pub fn make_config() -> Value {
             ("clone".to_string(), Value::map_of([
                 ("fields".to_string(), Value::list(vec![
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -493,6 +527,10 @@ pub fn make_config() -> Value {
                         ("short".to_string(), Value::str("Name of Template")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
+                ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
                 ])),
                 ("name".to_string(), Value::str("clone")),
                 ("op".to_string(), Value::map_of([
@@ -515,15 +553,21 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("POST")),
                                 ("orig".to_string(), Value::str("/templates/{id}/clone")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
-                                    Value::str("{template_id}"),
-                                    Value::str("clone"),
-                                ])),
                                 ("rename".to_string(), Value::map_of([
                                     ("param".to_string(), Value::map_of([
                                         ("id".to_string(), Value::str("template_id")),
                                     ])),
+                                ])),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("template_id")),
+                                    ]),
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clone")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -533,6 +577,11 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
+                                    Value::str("{template_id}"),
+                                    Value::str("clone"),
                                 ])),
                             ]),
                         ])),
@@ -568,11 +617,13 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("created")),
                         ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -583,6 +634,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("modified")),
                         ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -624,6 +676,10 @@ pub fn make_config() -> Value {
                         ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
+                ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
                 ])),
                 ("name".to_string(), Value::str("partner")),
                 ("op".to_string(), Value::map_of([
@@ -741,8 +797,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("POST")),
                                 ("orig".to_string(), Value::str("/partners")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("partners"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("partners")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -766,6 +824,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("partners"),
                                 ])),
                             ]),
                         ])),
@@ -802,8 +863,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/partners")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("partners"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("partners")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -815,6 +878,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body.data`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("partners"),
                                 ])),
                             ]),
                         ])),
@@ -838,9 +904,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/partners/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("partners"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("partners")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -850,6 +920,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("partners"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -887,6 +961,7 @@ pub fn make_config() -> Value {
                         ])),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -920,6 +995,10 @@ pub fn make_config() -> Value {
                         ("short".to_string(), Value::str("The number of times that this resource has been updated.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
+                ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
                 ])),
                 ("name".to_string(), Value::str("template")),
                 ("op".to_string(), Value::map_of([
@@ -1044,8 +1123,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("POST")),
                                 ("orig".to_string(), Value::str("/templates")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1071,6 +1152,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
                                 ])),
                             ]),
                         ])),
@@ -1113,8 +1197,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/templates")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1127,6 +1213,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body.data`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
                                 ])),
                             ]),
                         ])),
@@ -1150,9 +1239,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/templates/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1162,6 +1255,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -1185,9 +1282,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("DELETE")),
                                 ("orig".to_string(), Value::str("/templates/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1197,6 +1298,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -1219,6 +1324,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("completeDate")),
                         ("short".to_string(), Value::str("Timestamp from the beginning of the transaction.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -1239,6 +1345,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -1269,10 +1376,15 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$BOOLEAN`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int32")),
                         ("name".to_string(), Value::str("templateId")),
                         ("short".to_string(), Value::str("The Template's unique identifier.")),
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
+                ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
                 ])),
                 ("name".to_string(), Value::str("transaction")),
                 ("op".to_string(), Value::map_of([
@@ -1356,8 +1468,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/transactions")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("transactions"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("transactions")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1377,6 +1491,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body.data`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("transactions"),
                                 ])),
                             ]),
                         ])),
@@ -1408,9 +1525,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/transactions/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("transactions"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("transactions")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1421,6 +1542,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("transactions"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),
@@ -1481,6 +1606,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("Unique identifier of newly added element.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -1587,6 +1713,10 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
+                ])),
                 ("name".to_string(), Value::str("update_result")),
                 ("op".to_string(), Value::map_of([
                     ("create".to_string(), Value::map_of([
@@ -1669,8 +1799,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("POST")),
                                 ("orig".to_string(), Value::str("/users")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("users"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("users")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1689,6 +1821,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("users"),
                                 ])),
                             ]),
                         ])),
@@ -1731,8 +1866,10 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/users")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("users"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("users")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1745,6 +1882,9 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body.data`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("users"),
                                 ])),
                             ]),
                         ])),
@@ -1872,9 +2012,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("PATCH")),
                                 ("orig".to_string(), Value::str("/templates/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("templates"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("templates")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1901,6 +2045,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("templates"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                             Value::map_of([
@@ -1974,9 +2122,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("PATCH")),
                                 ("orig".to_string(), Value::str("/partners/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("partners"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("partners")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -1995,6 +2147,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("partners"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                             Value::map_of([
@@ -2068,9 +2224,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("PATCH")),
                                 ("orig".to_string(), Value::str("/users/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("users"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("users")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -2089,6 +2249,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("users"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                             Value::map_of([
@@ -2156,9 +2320,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("PATCH")),
                                 ("orig".to_string(), Value::str("/clients/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("clients"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("clients")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -2177,6 +2345,10 @@ pub fn make_config() -> Value {
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
                                 ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("clients"),
+                                    Value::str("{id}"),
+                                ])),
                             ]),
                         ])),
                     ])),
@@ -2193,6 +2365,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$OBJECT`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("created")),
                         ("short".to_string(), Value::str("Creation timestamp in ISO 8601 format.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -2206,6 +2379,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("int64")),
                         ("name".to_string(), Value::str("id")),
                         ("short".to_string(), Value::str("This resource's unique identifier.")),
                         ("type".to_string(), Value::str("`$INTEGER`")),
@@ -2219,6 +2393,7 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$STRING`")),
                     ]),
                     Value::map_of([
+                        ("format".to_string(), Value::str("date-time")),
                         ("name".to_string(), Value::str("modified")),
                         ("short".to_string(), Value::str("Last modified timestamp.")),
                         ("type".to_string(), Value::str("`$STRING`")),
@@ -2247,6 +2422,10 @@ pub fn make_config() -> Value {
                         ("type".to_string(), Value::str("`$INTEGER`")),
                     ]),
                 ])),
+                ("id".to_string(), Value::map_of([
+                    ("field".to_string(), Value::str("id")),
+                    ("name".to_string(), Value::str("id")),
+                ])),
                 ("name".to_string(), Value::str("user")),
                 ("op".to_string(), Value::map_of([
                     ("load".to_string(), Value::map_of([
@@ -2268,9 +2447,13 @@ pub fn make_config() -> Value {
                                 ("kind".to_string(), Value::str("http")),
                                 ("method".to_string(), Value::str("GET")),
                                 ("orig".to_string(), Value::str("/users/{id}")),
-                                ("parts".to_string(), Value::list(vec![
-                                    Value::str("users"),
-                                    Value::str("{id}"),
+                                ("segments".to_string(), Value::list(vec![
+                                    Value::map_of([
+                                        ("lit".to_string(), Value::str("users")),
+                                    ]),
+                                    Value::map_of([
+                                        ("var".to_string(), Value::str("id")),
+                                    ]),
                                 ])),
                                 ("select".to_string(), Value::map_of([
                                     ("exist".to_string(), Value::list(vec![
@@ -2280,6 +2463,10 @@ pub fn make_config() -> Value {
                                 ("transform".to_string(), Value::map_of([
                                     ("req".to_string(), Value::str("`reqdata`")),
                                     ("res".to_string(), Value::str("`body`")),
+                                ])),
+                                ("parts".to_string(), Value::list(vec![
+                                    Value::str("users"),
+                                    Value::str("{id}"),
                                 ])),
                             ]),
                         ])),

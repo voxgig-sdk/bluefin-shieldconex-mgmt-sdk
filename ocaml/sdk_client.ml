@@ -71,3 +71,15 @@ let update_result (client : sdk_client) (entopts : value) : entity_obj =
 (* User entity bound to a client:  user client entopts *)
 let user (client : sdk_client) (entopts : value) : entity_obj =
   Sdk_entity_user.make client entopts
+
+(* Entity by name (None for a name this SDK did not generate). *)
+let entity (client : sdk_client) (name : string) (entopts : value) : entity_obj option =
+  match name with
+  | "client" -> Some (Sdk_entity_client.make client entopts)
+  | "clone" -> Some (Sdk_entity_clone.make client entopts)
+  | "partner" -> Some (Sdk_entity_partner.make client entopts)
+  | "template" -> Some (Sdk_entity_template.make client entopts)
+  | "transaction" -> Some (Sdk_entity_transaction.make client entopts)
+  | "update_result" -> Some (Sdk_entity_update_result.make client entopts)
+  | "user" -> Some (Sdk_entity_user.make client entopts)
+  | _ -> None

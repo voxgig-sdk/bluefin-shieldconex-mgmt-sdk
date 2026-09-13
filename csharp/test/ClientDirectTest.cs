@@ -176,17 +176,25 @@ public class ClientDirectTest
         {
             ["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID"] = new Dictionary<string, object?>(),
             ["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"] = "FALSE",
-            ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "NONE",
+            ["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"] = "",
         });
 
         var live = Equals(env["BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE"], "TRUE");
 
         if (live)
         {
-            var liveClient = new BluefinShieldconexMgmtSDK(new Dictionary<string, object?>
+            // sdk-test-control.json's test.client.options goes UNDER the
+            // generated fields: it adds to the live client, it does not
+            // redirect it, so the generated entries overwrite it here.
+            var liveOpts = TestRunner.LiveClientOptions();
+            foreach (var _kv in new Dictionary<string, object?>
             {
                 ["apikey"] = env["BLUEFIN_SHIELDCONEX_MGMT_APIKEY"],
-            });
+            })
+            {
+                liveOpts[_kv.Key] = _kv.Value;
+            }
+            var liveClient = new BluefinShieldconexMgmtSDK(liveOpts);
 
             var idmap = new Dictionary<string, object?>();
             var entidRaw = env["BLUEFIN_SHIELDCONEX_MGMT_TEST_CLIENT_ENTID"];

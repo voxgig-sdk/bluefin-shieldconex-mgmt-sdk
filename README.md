@@ -8,7 +8,7 @@ This is an unofficial SDK for the Shieldconex Management public API, generated b
 
 Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
-> TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
+> TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, Lean, OCaml, Perl, Rust, Scala, Swift, Zig SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
 > **Features:** `audit`, `clienttrack`, `idempotency`, `log`, `metrics`, `paging`, `ratelimit`, `retry`, `telemetry`, `test`, `timeout` — opt-in,
 > inactive until switched on, and configured per client. See the Features
@@ -160,6 +160,23 @@ records = BluefinShieldconexMgmt.Entity.Partner.list(partner, H.deep(%{}))
 IO.inspect(records)
 ```
 
+### Haskell
+
+```haskell
+import qualified SdkClient as Sdk
+import VoxgigStruct (Value (..), emptyMap)
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  sdk <- Sdk.testSdk0
+  ent <- Sdk.partner sdk VNoval
+  arg <- emptyMap
+  ctrl <- emptyMap
+  partners <- Sdk.eList ent arg ctrl
+  print partners
+```
+
 ### Java
 
 ```java
@@ -185,6 +202,19 @@ val client = BluefinShieldconexMgmtSDK.testSDK(null, null)
 val partnerList = client.partner(null).list(null, null)
 println(partnerList)
 ```
+
+### Lean
+
+```bash
+cd lean
+lake build
+lake exe omnismoke      # the vendored @voxgig/omni corpus engine itself
+lake exe primary        # shared corpus: request-shaping utilities
+lake exe feature        # the feature catalog (retry, cache, rbac, netsim, …)
+lake exe structcorpus   # shared corpus: the vendored struct model
+lake exe runner         # entity behaviour (offline; add SDK_TEST_BASE for live)
+```
+
 
 ### OCaml
 
@@ -262,9 +292,11 @@ switch (client.partner(h.vnull()).list(h.vnull(), h.vnull())) {
 | C# | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Dart | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Elixir | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Haskell | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Java | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | JavaScript | `@voxgig-sdk/bluefin-shieldconex-mgmt-js` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Kotlin | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
+| Lean | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | OCaml | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Perl | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
 | Rust | `voxgig-sdk-bluefin-shieldconex-mgmt` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk/releases) |
@@ -299,7 +331,7 @@ See the [TypeScript README](ts/README.md) for the full guide.
 
 | Surface | Path |
 | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Java, JavaScript, Kotlin, OCaml, Perl, Rust, Scala, Swift, Zig) | `ts/` `py/` `php/` `go/` `rb/` `lua/` `c/` `clojure/` `cpp/` `csharp/` `dart/` `elixir/` `java/` `js/` `kotlin/` `ocaml/` `perl/` `rust/` `scala/` `swift/` `zig/` |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua, C, Clojure, C++, C#, Dart, Elixir, Haskell, Java, JavaScript, Kotlin, Lean, OCaml, Perl, Rust, Scala, Swift, Zig) | `ts/` `py/` `php/` `go/` `rb/` `lua/` `c/` `clojure/` `cpp/` `csharp/` `dart/` `elixir/` `haskell/` `java/` `js/` `kotlin/` `lean/` `ocaml/` `perl/` `rust/` `scala/` `swift/` `zig/` |
 | **CLI** | `go-cli/` |
 | **MCP server** | `go-mcp/` |
 
@@ -560,6 +592,35 @@ record = BluefinShieldconexMgmt.Entity.Client.load(client, H.deep(%{"id" => "exa
 IO.inspect(record)
 ```
 
+### Haskell
+
+```haskell
+import System.Environment (lookupEnv)
+import qualified SdkClient as Sdk
+import VoxgigStruct (Value (..), emptyMap)
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  mkey <- lookupEnv "BLUEFIN_SHIELDCONEX_MGMT_APIKEY"
+  opts <- jo [("apikey", maybe VNoval VStr mkey)]
+  sdk <- Sdk.newSdk opts
+
+  -- List all clients (one ENTITY per record, raises on error)
+  ent <- Sdk.client sdk VNoval
+  match <- emptyMap
+  ctrl <- emptyMap
+  clients <- Sdk.eList ent match ctrl
+  mapM_ (\en -> print =<< Sdk.eDataGet en) clients
+
+  -- Load a specific client (returns the ENTITY, raises on error)
+  ent2 <- Sdk.client sdk VNoval
+  m <- jo [("id", VStr "example_id")]
+  ctrl2 <- emptyMap
+  client <- Sdk.eLoad ent2 m ctrl2
+  print =<< Sdk.eDataGet client
+```
+
 ### Java
 
 ```java
@@ -611,6 +672,23 @@ println(clientList)
 val client = client.client(null).load(mutableMapOf<String, Any?>("id" to "example_id"), null)
 println(client)
 ```
+
+### Lean
+
+```lean
+import SdkClient
+open VoxgigStruct
+
+def main : IO Unit := do
+  let ctx ← mkCtx
+  (do
+    let sdk ← Sdk.newSdk (← emptyMap)
+    IO.println s!"client ready"
+  ).run ctx
+```
+
+Build it with `cd lean && lake build`.
+
 
 ### OCaml
 
@@ -867,6 +945,22 @@ result = BluefinShieldconexMgmt.direct(sdk, BluefinShieldconexMgmt.Helpers.deep(
 }))
 ```
 
+**Haskell:**
+```haskell
+import qualified SdkClient as Sdk
+import qualified SdkFeatures as F
+import VoxgigStruct (Value (..))
+import SdkHelpers (jo)
+
+main :: IO ()
+main = do
+  sdk <- Sdk.newSdk0
+  params <- jo [("id", VStr "example")]
+  args <- jo [("path", VStr "/api/resource/{id}"), ("method", VStr "GET"), ("params", params)]
+  result <- F.direct sdk args
+  print result
+```
+
 **Java:**
 ```java
 Map<String, Object> result = client.direct(Map.of(
@@ -894,6 +988,13 @@ val result = client.direct(mutableMapOf<String, Any?>(
     "path" to "/api/resource/{id}",
     "method" to "GET",
     "params" to mapOf("id" to "example")))
+```
+
+For Lean, point the client at another server with the `base` option,
+and run the entity suite against it with `SDK_TEST_BASE`:
+
+```bash
+cd lean && SDK_TEST_BASE=http://localhost:8901 lake exe runner
 ```
 
 **OCaml:**
@@ -992,7 +1093,7 @@ customizable without forking any upstream tool:
 
 - **The model** (`.sdk/model/`) declares everything this project owns:
   package names, versions, active features, per-target settings. It is
-  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  written in [aontu](https://aontu.dev), a JSON-based
   specification language designed for building ontologies: easy to edit
   by hand, and files unify rather than override, so small declarations
   compose into one model. Regeneration re-reads it every time.
@@ -1025,9 +1126,11 @@ The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 - [C#](csharp/README.md)
 - [Dart](dart/README.md)
 - [Elixir](elixir/README.md)
+- [Haskell](haskell/README.md)
 - [Java](java/README.md)
 - [JavaScript](js/README.md)
 - [Kotlin](kotlin/README.md)
+- [Lean](lean/README.md)
 - [OCaml](ocaml/README.md)
 - [Perl](perl/README.md)
 - [Rust](rust/README.md)
