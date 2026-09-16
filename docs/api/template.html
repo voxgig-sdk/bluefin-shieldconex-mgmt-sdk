@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Template | Shieldconex Management Api</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Shieldconex Management Api<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk">voxgig-sdk/bluefin-shieldconex-mgmt-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Shieldconex Management Api</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/client.html">Client</a>
+<a href="../api/clone.html">Clone</a>
+<a href="../api/partner.html">Partner</a>
+<a aria-current="page" href="../api/template.html">Template</a><div class="nav-sections"><a class="nav-section" href="#post-templates">POST /templates</a>
+<a class="nav-section" href="#get-templates">GET /templates</a>
+<a class="nav-section" href="#get-templatesid">GET /templates/{id}</a>
+<a class="nav-section" href="#delete-templatesid">DELETE /templates/{id}</a></div>
+<a href="../api/transaction.html">Transaction</a>
+<a href="../api/update_result.html">UpdateResult</a>
+<a href="../api/user.html">User</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/c.html">C</a>
+<a href="../sdks/clojure.html">Clojure</a>
+<a href="../sdks/cpp.html">C++</a>
+<a href="../sdks/csharp.html">C#</a>
+<a href="../sdks/dart.html">Dart</a>
+<a href="../sdks/elixir.html">Elixir</a>
+<a href="../sdks/go.html">Golang</a>
+<a href="../sdks/haskell.html">Haskell</a>
+<a href="../sdks/java.html">Java</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/kotlin.html">Kotlin</a>
+<a href="../sdks/lean.html">Lean</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/ocaml.html">OCaml</a>
+<a href="../sdks/perl.html">Perl</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/rust.html">Rust</a>
+<a href="../sdks/scala.html">Scala</a>
+<a href="../sdks/swift.html">Swift</a>
+<a href="../sdks/ts.html">TypeScript</a>
+<a href="../sdks/zig.html">Zig</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/audit.html">Structured audit trail of operations</a>
+<a href="../features/clienttrack.html">Client identity and per-request correlation headers</a>
+<a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/log.html">Structured request and response logging</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/telemetry.html">Distributed tracing spans with W3C trace-context propagation</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="template">Template</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-templates"><code>/templates</code></a></td>
+<td><code>create</code></td>
+<td>Template create response</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-templates"><code>/templates</code></a></td>
+<td><code>list</code></td>
+<td>Templates list</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-templatesid"><code>/templates/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Template details</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-templatesid"><code>/templates/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Template has been deleted successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accessMode</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td>The Template's access mode.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the Template is active or inactive.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource.</td>
+</tr>
+<tr>
+<td><code>fieldTemplates</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Field Template list items</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Unique identifier of newly added element.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Template's name.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Template's unique reference.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Template's type.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-templates" class="operation" data-method="post"><code>POST</code> /templates</h3>
+<p>Operation ID: <code>create-template</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>name</code> | <code>query</code> | <code>string</code> | Yes | The system name of the template. Should not include spaces or special characters except underscores. |
+| <code>reference</code> | <code>query</code> | <code>string</code> | Yes | A reference identifier for the template. |
+| <code>active</code> | <code>query</code> | <code>boolean</code> | Yes | Indicates if the template is published. Once set to true, the template is no longer editable.&quot; |
+| <code>version</code> | <code>query</code> | <code>integer (int32)</code> | No | Version number of the template. |
+| <code>partner.id</code> | <code>query</code> | <code>integer (int32)</code> | Yes | The ID of the partner associated with this template. |
+| <code>partner.name</code> | <code>query</code> | <code>string</code> | Yes | The name of the partner associated with this template. |
+| <code>client.id</code> | <code>query</code> | <code>integer (int32)</code> | Yes | The ID of the client associated with this template. |
+| <code>client.name</code> | <code>query</code> | <code>string</code> | Yes | The name of the client associated with this template. |
+| <code>fieldTemplates</code> | <code>query</code> | <code>array of object</code> | No |  |
+| <code>type</code> | <code>query</code> | <code>enum: userDefined, preDefined</code> | No | Specifies if the template type is user-defined or pre-defined. |
+| <code>accessMode</code> | <code>query</code> | <code>enum: specific, general</code> | No | Access mode of the template, for example, specific to certain domains. |
+| <code>options.customStyles</code> | <code>query</code> | <code>string</code> | No | Custom styles applied to the iFrame. Should be in CSS format. |
+| <code>options.customStyleFile</code> | <code>query</code> | <code>string</code> | No | File path to custom style file for the iFrame. |
+| <code>options.domains</code> | <code>query</code> | <code>array of string</code> | No | List of allowed domains for the template. |
+| <code>options.security.irreversible</code> | <code>query</code> | <code>boolean</code> | No | Indicates if tokens generated by the template are irreversible. |
+| <code>options.security.active.from</code> | <code>query</code> | <code>string (ISO 8601)</code> | No | The duration from the time of tokenization until the token can be detokenized. This is specified in ISO 8601 format. |
+| <code>options.security.active.to</code> | <code>query</code> | <code>string (date-time)</code> | No | The duration from the time of tokenization (not the time of activation) until the token can no longer be detokenized. This is specified in ISO 8601 format. Should be greater than the 'active from' setting. If not the token will be effectively irreversible. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object</code>.</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-template-create-response" class="status" data-status="2xx">200: Template create response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of newly added element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="409-invalid-data" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-templates" class="operation" data-method="get"><code>GET</code> /templates</h3>
+<p>Operation ID: <code>list-templates</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>partner</code> | <code>query</code> | <code>string</code> | No | Filter the list by Partner. The parameter value can be either a Partner ID or Name. |
+| <code>client</code> | <code>query</code> | <code>string</code> | No | Filter the list by Client. The parameter value can be either a Client ID or Name. |
+| <code>take</code> | <code>query</code> | <code>integer (int32)</code> | No | The number of entries to include in the list. |
+| <code>skip</code> | <code>query</code> | <code>integer (int32)</code> | No | The number of results to skip before listing entries. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-templates-list" class="status" data-status="2xx">200: Templates list</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Template list items</td>
+</tr>
+<tr>
+<td><code>data[].accessMode</code></td>
+<td><code>enum: specific, restricted, unrestricted</code></td>
+<td>No</td>
+<td>The Template's access mode. TODO provide description</td>
+</tr>
+<tr>
+<td><code>data[].active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the Template is active or inactive. In the UI this is referred to as published and when set to true the template cannot be modified.</td>
+</tr>
+<tr>
+<td><code>data[].client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>data[].client.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Client's ID.</td>
+</tr>
+<tr>
+<td><code>data[].client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Client's name.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>This resource's unique identifier.</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Template's name.</td>
+</tr>
+<tr>
+<td><code>data[].partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>data[].partner.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>data[].partner.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>data[].reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Template's unique reference.</td>
+</tr>
+<tr>
+<td><code>data[].type</code></td>
+<td><code>enum: userDefined, templatePayConexTokenPayments, templatePayConexTokenization, templateMyChartCardTransaction, templateMyChartAchTransaction</code></td>
+<td>No</td>
+<td>The Template's type. TODO provide description</td>
+</tr>
+<tr>
+<td><code>data[].version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Total number of Templates available</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="409-invalid-data-1" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-1" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-templatesid" class="operation" data-method="get"><code>GET</code> /templates/{id}</h3>
+<p>Operation ID: <code>get-template</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The Template's unique identifier. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-template-details" class="status" data-status="2xx">200: Template details</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>This resource's unique identifier.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="500-internal-server-error-2" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-templatesid" class="operation" data-method="delete"><code>DELETE</code> /templates/{id}</h3>
+<p>Operation ID: <code>delete-template</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The Template's unique identifier. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-template-has-been-deleted-successfully" class="status" data-status="2xx">200: Template has been deleted successfully</h5>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-invalid-data-2" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-3" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

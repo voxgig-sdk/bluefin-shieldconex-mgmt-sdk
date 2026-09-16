@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { BluefinShieldconexMgmtSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('CloneEntity', async () => {
 
     const live = 'TRUE' === process.env.BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE
     for (const op of ['create']) {
-      if (maybeSkipControl(t, 'entityOp', 'clone.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'clone.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"int64","name":"id","req":false,"short":"Unique identifier of newly added element.","type":"`$INTEGER`","index$":0},{"active":true,"name":"name","req":false,"short":"Name of Template","type":"`$STRING`","index$":1}],"id":{"field":"id","name":"id"},"name":"clone","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"template_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"POST /templates/{id}/clone","json":"{\"operationId\":\"clone-template\",\"parameters\":[{\"description\":\"The Template's unique identifier.\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maxLength\":20,\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"name\":{\"description\":\"Name of Template\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Template to be created.\",\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Unique identifier of newly added element.\",\"format\":\"int64\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Template create response\",\"headers\":{\"X-RateLimit-Limit\":{\"description\":\"Request limit per hour.\",\"schema\":{\"type\":\"integer\"}},\"X-RateLimit-Remaining\":{\"description\":\"The number of requests left for the time window.\",\"schema\":{\"type\":\"integer\"}},\"X-RateLimit-Reset\":{\"description\":\"The UTC date/time at which the current rate limit window resets.\",\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}}}},\"401\":{\"content\":{},\"description\":\"Unauthorized\"},\"403\":{\"content\":{},\"description\":\"Forbidden\"},\"409\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"\",\"properties\":{\"errorCode\":{\"type\":\"integer\"},\"errors\":{\"properties\":{\"[attribute name]\":{\"description\":\"\",\"properties\":{\"attribute\":{\"description\":\"Invalid attribute name\",\"type\":\"string\"},\"errorCode\":{\"description\":\"Error code\",\"type\":\"integer\"},\"message\":{\"description\":\"Invalid attribute description\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"message\":{\"type\":\"string\"},\"success\":{\"default\":false,\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Invalid data\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"\",\"properties\":{\"errorCode\":{\"type\":\"integer\"},\"message\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"basic\":[]}],\"securitySchemes\":{\"basic\":{\"scheme\":\"basic\",\"type\":\"http\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/templates/{id}/clone","rename":{"param":{"id":"template_id"}},"segments":[{"lit":"templates"},{"var":"template_id"},{"lit":"clone"}],"select":{"exist":["template_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[["template"]]},"key$":"clone","name__orig":"clone","Name":"Clone","name_":"clone","name-":"clone","NAME":"CLONE","index$":1}, {"active":true,"entity":"clone","key$":"BasicCloneFlow","kind":"basic","name":"BasicCloneFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"clone_ref01"},"match":{"template_id":"template01"},"op":"create","spec":[],"valid":[],"index$":0}]}, 'Clone')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID': idmap,
     'BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE': 'FALSE',
@@ -129,7 +121,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.BLUEFIN_SHIELDCONEX_MGMT_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['BLUEFIN_SHIELDCONEX_MGMT_TEST_CLONE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new BluefinShieldconexMgmtSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -143,7 +141,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -156,7 +155,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.BLUEFIN_SHIELDCONEX_MGMT_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

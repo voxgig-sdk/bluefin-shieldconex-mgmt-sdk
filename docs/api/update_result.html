@@ -1,0 +1,1500 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UpdateResult | Shieldconex Management Api</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Shieldconex Management Api<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bluefin-shieldconex-mgmt-sdk">voxgig-sdk/bluefin-shieldconex-mgmt-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Shieldconex Management Api</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/client.html">Client</a>
+<a href="../api/clone.html">Clone</a>
+<a href="../api/partner.html">Partner</a>
+<a href="../api/template.html">Template</a>
+<a href="../api/transaction.html">Transaction</a>
+<a aria-current="page" href="../api/update_result.html">UpdateResult</a><div class="nav-sections"><a class="nav-section" href="#post-users">POST /users</a>
+<a class="nav-section" href="#get-users">GET /users</a>
+<a class="nav-section" href="#patch-templatesid">PATCH /templates/{id}</a>
+<a class="nav-section" href="#patch-partnersid">PATCH /partners/{id}</a>
+<a class="nav-section" href="#patch-usersid">PATCH /users/{id}</a>
+<a class="nav-section" href="#patch-clientsid">PATCH /clients/{id}</a></div>
+<a href="../api/user.html">User</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/c.html">C</a>
+<a href="../sdks/clojure.html">Clojure</a>
+<a href="../sdks/cpp.html">C++</a>
+<a href="../sdks/csharp.html">C#</a>
+<a href="../sdks/dart.html">Dart</a>
+<a href="../sdks/elixir.html">Elixir</a>
+<a href="../sdks/go.html">Golang</a>
+<a href="../sdks/haskell.html">Haskell</a>
+<a href="../sdks/java.html">Java</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/kotlin.html">Kotlin</a>
+<a href="../sdks/lean.html">Lean</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/ocaml.html">OCaml</a>
+<a href="../sdks/perl.html">Perl</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/rust.html">Rust</a>
+<a href="../sdks/scala.html">Scala</a>
+<a href="../sdks/swift.html">Swift</a>
+<a href="../sdks/ts.html">TypeScript</a>
+<a href="../sdks/zig.html">Zig</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/audit.html">Structured audit trail of operations</a>
+<a href="../features/clienttrack.html">Client identity and per-request correlation headers</a>
+<a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/log.html">Structured request and response logging</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/telemetry.html">Distributed tracing spans with W3C trace-context propagation</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="updateresult">UpdateResult</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-users"><code>/users</code></a></td>
+<td><code>create</code></td>
+<td>User create response</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-users"><code>/users</code></a></td>
+<td><code>list</code></td>
+<td>Users list</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-templatesid"><code>/templates/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Template update response</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-partnersid"><code>/partners/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Partner update response</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-usersid"><code>/users/{id}</code></a></td>
+<td><code>update</code></td>
+<td>User update response</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-clientsid"><code>/clients/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Client update response</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>billingId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's billing identifier.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource.</td>
+</tr>
+<tr>
+<td><code>contact</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>directPartner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's email address.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's name.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Unique identifier of newly added element.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the User account is active or disabled.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's Surname.</td>
+</tr>
+<tr>
+<td><code>mid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Some Partners will have an merchant ids on their own software offerings.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's name.</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner.</td>
+</tr>
+<tr>
+<td><code>partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's phone number without dashes, spaces, or brackets (for example</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's reference string.</td>
+</tr>
+<tr>
+<td><code>sendWelcomeEmail</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If this property is set to 'true' the newly created user will be sent a welcome email.</td>
+</tr>
+<tr>
+<td><code>userName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's unique username.</td>
+</tr>
+<tr>
+<td><code>userRole</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Reference to the associated User Role.</td>
+</tr>
+<tr>
+<td><code>verificationPhrase</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The verification phrase is a message that the Partner creates.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-users" class="operation" data-method="post"><code>POST</code> /users</h3>
+<p>Operation ID: <code>create-user</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>username</code> | <code>query</code> | <code>string</code> | Yes | The unique Username used to login. |
+| <code>firstName</code> | <code>query</code> | <code>string</code> | Yes | The user's first name. |
+| <code>lastName</code> | <code>query</code> | <code>string</code> | Yes | The user's last name. |
+| <code>email</code> | <code>query</code> | <code>string</code> | Yes | The user's email address. |
+| <code>phone</code> | <code>query</code> | <code>integer</code> | Yes | The user's phone number. Must be a valid phone number. |
+| <code>partner</code> | <code>query</code> | <code>object</code> | No | The partner under which the user should be created. Required for creating users that have the Partner-level roles. |
+| <code>client</code> | <code>query</code> | <code>object</code> | No | The partner under which the user should be created. Required for creating users that have the Client-level roles. |
+| <code>userRole</code> | <code>query</code> | <code>object</code> | Yes | The role the user will be created with. Cannot be a higher permission level than the role creating it. |
+| <code>isActive</code> | <code>query</code> | <code>boolean</code> | Yes | The activation status of the user being created. Only active users are able to access ShieldConex. |
+| <code>sendWelcomeEmail</code> | <code>query</code> | <code>boolean</code> | Yes | When this flag is set to true, the new user will recieve a welcome email upon successful creation of a user. It is recommended to set this to true only for active users. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Client's ID.</td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Client's name.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's email address.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's name.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's Surname.</td>
+</tr>
+<tr>
+<td><code>partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>partner.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>partner.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's phone number without dashes, spaces, or brackets (for example +14155552671).</td>
+</tr>
+<tr>
+<td><code>sendWelcomeEmail</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If this property is set to 'true' the newly created user will be sent a welcome email.</td>
+</tr>
+<tr>
+<td><code>userName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The User's unique username.</td>
+</tr>
+<tr>
+<td><code>userRole</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Reference to the associated User Role.</td>
+</tr>
+<tr>
+<td><code>userRole.name</code></td>
+<td><code>enum: System Admin, System User, Partner Supervisor, Partner User, Client Admin, Client User</code></td>
+<td>No</td>
+<td>Role name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-user-create-response" class="status" data-status="2xx">200: User create response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of newly added element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="409-invalid-data" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-users" class="operation" data-method="get"><code>GET</code> /users</h3>
+<p>Operation ID: <code>list-users</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>partner</code> | <code>query</code> | <code>string</code> | No | Filter the list by Partner. The parameter value can be either the Partner's ID or Name. This parameter is only available to System and Parner-level roles. Similarly, the partner will not be returned in the response for Client-level roles. |
+| <code>client</code> | <code>query</code> | <code>string</code> | No | Filter the list by Client. The parameter value can be either the Client's ID or Name. |
+| <code>take</code> | <code>query</code> | <code>integer (int32)</code> | No | The number of entries to include in the list. |
+| <code>skip</code> | <code>query</code> | <code>integer (int32)</code> | No | The number of results to skip before listing entries. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-users-list" class="status" data-status="2xx">200: Users list</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>User list items</td>
+</tr>
+<tr>
+<td><code>data[].client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>data[].client.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Client's ID.</td>
+</tr>
+<tr>
+<td><code>data[].client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Client's name.</td>
+</tr>
+<tr>
+<td><code>data[].email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's email address.</td>
+</tr>
+<tr>
+<td><code>data[].firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's name.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>This resource's unique identifier.</td>
+</tr>
+<tr>
+<td><code>data[].isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive.</td>
+</tr>
+<tr>
+<td><code>data[].lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's Surname.</td>
+</tr>
+<tr>
+<td><code>data[].partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>data[].partner.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>data[].partner.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>data[].phone</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's phone number without dashes, spaces, or brackets.</td>
+</tr>
+<tr>
+<td><code>data[].userName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's unique username.</td>
+</tr>
+<tr>
+<td><code>data[].userRole</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated User Role.</td>
+</tr>
+<tr>
+<td><code>data[].userRole.name</code></td>
+<td><code>enum: System Admin, System User, Partner Supervisor, Partner User, Client Admin, Client User</code></td>
+<td>No</td>
+<td>Role name.</td>
+</tr>
+<tr>
+<td><code>data[].version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Total number of users available</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="409-invalid-data-1" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-1" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-templatesid" class="operation" data-method="patch"><code>PATCH</code> /templates/{id}</h3>
+<p>Operation ID: <code>update-template</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The Template's unique identifier. |
+| <code>name</code> | <code>query</code> | <code>string</code> | No | The system name of the template. Should not include spaces or special characters except underscores. |
+| <code>reference</code> | <code>query</code> | <code>string</code> | No | A reference identifier for the template. |
+| <code>active</code> | <code>query</code> | <code>boolean</code> | No | Indicates if the template is published. Once set to true, the template is no longer editable.&quot; |
+| <code>version</code> | <code>query</code> | <code>integer (int32)</code> | No | Version number of the template. |
+| <code>partner.id</code> | <code>query</code> | <code>integer (int32)</code> | No | The ID of the partner associated with this template. |
+| <code>partner.name</code> | <code>query</code> | <code>string</code> | No | The name of the partner associated with this template. |
+| <code>client.id</code> | <code>query</code> | <code>integer (int32)</code> | No | The ID of the client associated with this template. |
+| <code>client.name</code> | <code>query</code> | <code>string</code> | No | The name of the client associated with this template. |
+| <code>fieldTemplates</code> | <code>query</code> | <code>array of object</code> | No |  |
+| <code>type</code> | <code>query</code> | <code>enum: userDefined, preDefined</code> | No | Specifies if the template type is user-defined or pre-defined. |
+| <code>accessMode</code> | <code>query</code> | <code>enum: specific, general</code> | No | Access mode of the template, for example, specific to certain domains. |
+| <code>options.customStyles</code> | <code>query</code> | <code>string</code> | No | Custom styles applied to the iFrame. Should be in CSS format. |
+| <code>options.customStyleFile</code> | <code>query</code> | <code>string</code> | No | File path to custom style file for the iFrame. |
+| <code>options.domains</code> | <code>query</code> | <code>array of string</code> | No | List of allowed domains for the template. |
+| <code>options.security.irreversible</code> | <code>query</code> | <code>boolean</code> | No | Indicates if tokens generated by the template are irreversible. |
+| <code>options.security.active.from</code> | <code>query</code> | <code>string (ISO 8601)</code> | No | The duration from the time of tokenization until the token can be detokenized. This is specified in ISO 8601 format. |
+| <code>options.security.active.to</code> | <code>query</code> | <code>string (date-time)</code> | No | The duration from the time of tokenization (not the time of activation) until the token can no longer be detokenized. This is specified in ISO 8601 format. Should be greater than the 'active from' setting. If not the token will be effectively irreversible. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-template-update-response" class="status" data-status="2xx">200: Template update response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of updated element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-invalid-data-2" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-2" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="patch-partnersid" class="operation" data-method="patch"><code>PATCH</code> /partners/{id}</h3>
+<p>Operation ID: <code>update-partner</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | Partner id. |
+| <code>name</code> | <code>query</code> | <code>string</code> | No | The name of the partner. |
+| <code>reference</code> | <code>query</code> | <code>string</code> | No | A reference identifier for the partner. |
+| <code>billingId</code> | <code>query</code> | <code>string</code> | No | Billing identifier associated with the partner. |
+| <code>verificationPhrase</code> | <code>query</code> | <code>string</code> | No | Verification phrase for security purposes. |
+| <code>isActive</code> | <code>query</code> | <code>boolean</code> | No | Indicates if the partner is active. |
+| <code>version</code> | <code>query</code> | <code>integer (int32)</code> | No | Version number for the partner record. |
+| <code>parent.id</code> | <code>query</code> | <code>integer (int32)</code> | No | Identifier of the parent partner entity. |
+| <code>parent.name</code> | <code>query</code> | <code>string</code> | No | Name of the parent partner entity. |
+| <code>contact.id</code> | <code>query</code> | <code>integer (int32)</code> | No | Identifier of the contact person for the partner. |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>billingId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's billing identifier.</td>
+</tr>
+<tr>
+<td><code>contact</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contact.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>User Id</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the Parter account is active or disabled.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's name.</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>parent.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>parent.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Partner's reference string. This reference is used in to identify the Partner on the Decryption APIs. It equates to the Partner ID.</td>
+</tr>
+<tr>
+<td><code>verificationPhrase</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The verification phrase is a message that the Partner creates. It can be used as a mechanism to authorize a partner when they initiate communication over the phone.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-partner-update-response" class="status" data-status="2xx">200: Partner update response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of updated element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-invalid-data-3" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-3" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="patch-usersid" class="operation" data-method="patch"><code>PATCH</code> /users/{id}</h3>
+<p>Operation ID: <code>update-user</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the User to update. |
+| <code>username</code> | <code>query</code> | <code>string</code> | No | The unique Username used to login. |
+| <code>firstName</code> | <code>query</code> | <code>string</code> | No | The user's first name. |
+| <code>lastName</code> | <code>query</code> | <code>string</code> | No | The user's last name. |
+| <code>email</code> | <code>query</code> | <code>string</code> | No | The user's email address. |
+| <code>phone</code> | <code>query</code> | <code>integer</code> | No | The user's phone number. Must be a valid phone number. |
+| <code>partner</code> | <code>query</code> | <code>object</code> | No | The partner under which the user should be created. Required for creating users that have the Partner-level roles. |
+| <code>client</code> | <code>query</code> | <code>object</code> | No | The partner under which the user should be created. Required for creating users that have the Client-level roles. |
+| <code>isActive</code> | <code>query</code> | <code>boolean</code> | No | The activation status of the user being created. Only active users are able to access ShieldConex. |
+| <code>sendWelcomeEmail</code> | <code>query</code> | <code>boolean</code> | No | When this flag is set to true, the new user will recieve a welcome email upon successful creation of a user. It is recommended to set this to true only for active users. |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Client resource. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Client's ID.</td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Client's name.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's email address.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's name.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the User account is active or disabled. Once a user has logged into the system, their account cannot be deleted. As an alternative, their account can be set to inactive.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's Surname.</td>
+</tr>
+<tr>
+<td><code>partner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>partner.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>partner.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's phone number without dashes, spaces, or brackets (for example +14155552671).</td>
+</tr>
+<tr>
+<td><code>sendWelcomeEmail</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If this property is set to 'true' the newly created user will be sent a welcome email.</td>
+</tr>
+<tr>
+<td><code>userName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The User's unique username.</td>
+</tr>
+<tr>
+<td><code>userRole</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated User Role.</td>
+</tr>
+<tr>
+<td><code>userRole.name</code></td>
+<td><code>enum: System Admin, System User, Partner Supervisor, Partner User, Client Admin, Client User</code></td>
+<td>No</td>
+<td>Role name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-user-update-response" class="status" data-status="2xx">200: User update response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of updated element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-invalid-data-4" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-4" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="patch-clientsid" class="operation" data-method="patch"><code>PATCH</code> /clients/{id}</h3>
+<p>Operation ID: <code>update-client</code>.</p>
+<p>Authentication: basic token (<code>basic</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The Client's unique identifier. |
+| <code>name</code> | <code>query</code> | <code>string</code> | No | The name of the client. |
+| <code>billingId</code> | <code>query</code> | <code>string</code> | No | The billing identifier associated with the client. |
+| <code>mid</code> | <code>query</code> | <code>string</code> | No | The Merchant ID (MID) for the client. |
+| <code>isActive</code> | <code>query</code> | <code>boolean</code> | No | Indicates whether the client is active. |
+| <code>version</code> | <code>query</code> | <code>integer (int32)</code> | No | The version of the client record. |
+| <code>directPartner.id</code> | <code>query</code> | <code>integer (int32)</code> | No | The identifier of the direct partner associated with the client. |
+| <code>directPartner.name</code> | <code>query</code> | <code>string</code> | No | The name of the direct partner associated with the client. |
+| <code>contact.id</code> | <code>query</code> | <code>integer (int32)</code> | No | The identifier of the contact associated with the client. |</p>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>billingId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Billing ID</td>
+</tr>
+<tr>
+<td><code>contact</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contact.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>User Id</td>
+</tr>
+<tr>
+<td><code>directPartner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Reference to the associated Partner. When used for POST and PATCH API calls, the reference can contain either the ID or Name. With GET API calls, both properties are populated.</td>
+</tr>
+<tr>
+<td><code>directPartner.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The referenced Partner's ID.</td>
+</tr>
+<tr>
+<td><code>directPartner.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The referenced Partner's name.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This property indicates if the Client account is active or disabled. It is not possible to delete Clients, however their account can be set to inactive.</td>
+</tr>
+<tr>
+<td><code>mid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Some Partners will have an merchant ids on their own software offerings. This is an open field that allows those Partner associate a Client resource with their Merchant Identifier.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Client's name.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of times that this resource has been updated.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-client-update-response" class="status" data-status="2xx">200: Client update response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier of updated element.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="409-invalid-data-5" class="status" data-status="4xx">409: Invalid data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name]</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].attribute</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute name</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td><code>errors.[attribute name].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Invalid attribute description</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-internal-server-error-5" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

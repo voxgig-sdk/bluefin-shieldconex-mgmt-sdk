@@ -3,6 +3,7 @@
 from bluefinshieldconexmgmt_sdk.feature.base_feature import BluefinShieldconexMgmtBaseFeature
 from bluefinshieldconexmgmt_sdk.feature.audit_feature import BluefinShieldconexMgmtAuditFeature
 from bluefinshieldconexmgmt_sdk.feature.clienttrack_feature import BluefinShieldconexMgmtClienttrackFeature
+from bluefinshieldconexmgmt_sdk.feature.debug_feature import BluefinShieldconexMgmtDebugFeature
 from bluefinshieldconexmgmt_sdk.feature.idempotency_feature import BluefinShieldconexMgmtIdempotencyFeature
 from bluefinshieldconexmgmt_sdk.feature.log_feature import BluefinShieldconexMgmtLogFeature
 from bluefinshieldconexmgmt_sdk.feature.metrics_feature import BluefinShieldconexMgmtMetricsFeature
@@ -18,6 +19,7 @@ _FEATURES = {
     "base": lambda: BluefinShieldconexMgmtBaseFeature(),
     "audit": lambda: BluefinShieldconexMgmtAuditFeature(),
     "clienttrack": lambda: BluefinShieldconexMgmtClienttrackFeature(),
+    "debug": lambda: BluefinShieldconexMgmtDebugFeature(),
     "idempotency": lambda: BluefinShieldconexMgmtIdempotencyFeature(),
     "log": lambda: BluefinShieldconexMgmtLogFeature(),
     "metrics": lambda: BluefinShieldconexMgmtMetricsFeature(),

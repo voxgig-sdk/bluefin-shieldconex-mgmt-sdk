@@ -11,6 +11,7 @@ BEGIN { $__dir = File::Basename::dirname(Cwd::abs_path(__FILE__)) }
 require(Cwd::abs_path("$__dir/feature/base_feature.pm"));
 require(Cwd::abs_path("$__dir/feature/audit_feature.pm"));
 require(Cwd::abs_path("$__dir/feature/clienttrack_feature.pm"));
+require(Cwd::abs_path("$__dir/feature/debug_feature.pm"));
 require(Cwd::abs_path("$__dir/feature/idempotency_feature.pm"));
 require(Cwd::abs_path("$__dir/feature/log_feature.pm"));
 require(Cwd::abs_path("$__dir/feature/metrics_feature.pm"));
@@ -29,6 +30,7 @@ sub make_feature {
   return BluefinShieldconexMgmtBaseFeature->new if 'base' eq $name;
   return BluefinShieldconexMgmtAuditFeature->new if 'audit' eq $name;
   return BluefinShieldconexMgmtClienttrackFeature->new if 'clienttrack' eq $name;
+  return BluefinShieldconexMgmtDebugFeature->new if 'debug' eq $name;
   return BluefinShieldconexMgmtIdempotencyFeature->new if 'idempotency' eq $name;
   return BluefinShieldconexMgmtLogFeature->new if 'log' eq $name;
   return BluefinShieldconexMgmtMetricsFeature->new if 'metrics' eq $name;
