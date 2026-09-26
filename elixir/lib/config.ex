@@ -220,11 +220,14 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "billingId",
-              "short" => "Billing ID",
-              "type" => "`$STRING`"
+              "title" => "Billing Id",
+              "type" => "`$STRING`",
+              "short" => "Billing ID"
             },
             %{
               "name" => "contact",
+              "title" => "Contact",
+              "type" => "`$OBJECT`",
               "op" => %{
                 "create" => %{
                   "req" => true,
@@ -234,68 +237,76 @@ defmodule BluefinShieldconexMgmt.Config do
                   "req" => true,
                   "type" => "`$OBJECT`"
                 }
-              },
-              "type" => "`$OBJECT`"
+              }
             },
             %{
-              "format" => "date-time",
               "name" => "created",
+              "title" => "Created",
+              "type" => "`$STRING`",
               "short" => "Creation timestamp in ISO 8601 format.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "directPartner",
+              "title" => "Direct Partner",
+              "type" => "`$OBJECT`",
               "op" => %{
                 "create" => %{
                   "req" => true,
                   "type" => "`$OBJECT`"
                 }
               },
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "short" => "Reference to the associated Partner."
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "This resource's unique identifier.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "isActive",
-              "short" => "This property indicates if the Client account is active or disabled.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Is Active",
+              "type" => "`$BOOLEAN`",
+              "short" => "This property indicates if the Client account is active or disabled."
             },
             %{
               "name" => "mid",
-              "short" => "Some Partners will have an merchant ids on their own software offerings.",
-              "type" => "`$STRING`"
+              "title" => "Mid",
+              "type" => "`$STRING`",
+              "short" => "Some Partners will have an merchant ids on their own software offerings."
             },
             %{
-              "format" => "date-time",
               "name" => "modified",
+              "title" => "Modified",
+              "type" => "`$STRING`",
               "short" => "Last modified timestamp.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "name",
+              "title" => "Name",
+              "type" => "`$STRING`",
               "op" => %{
                 "create" => %{
                   "req" => true,
                   "type" => "`$STRING`"
                 }
               },
-              "short" => "The Client's name.",
-              "type" => "`$STRING`"
+              "short" => "The Client's name."
             },
             %{
               "name" => "partner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "version",
-              "short" => "The number of times that this resource has been updated.",
-              "type" => "`$INTEGER`"
+              "title" => "Version",
+              "type" => "`$INTEGER`",
+              "short" => "The number of times that this resource has been updated."
             }
           ],
           "id" => %{
@@ -309,106 +320,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "create",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "billing_id",
-                        "orig" => "billing_id",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_email",
-                        "orig" => "contact_email",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_first_name",
-                        "orig" => "contact_first_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_is_active",
-                        "orig" => "contact_is_active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_last_name",
-                        "orig" => "contact_last_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_phone",
-                        "orig" => "contact_phone",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_send_welcome_email",
-                        "orig" => "contact_send_welcome_email",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_user_name",
-                        "orig" => "contact_user_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_user_role",
-                        "orig" => "contact_user_role",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "direct_partner_id",
-                        "orig" => "direct_partner_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "direct_partner_name",
-                        "orig" => "direct_partner_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "mid",
-                        "orig" => "mid",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/clients",
@@ -417,6 +328,114 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "clients"
                     }
                   ],
+                  "parts" => [
+                    "clients"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "billing_id",
+                        "orig" => "billing_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "contact_email",
+                        "orig" => "contact_email",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_first_name",
+                        "orig" => "contact_first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_is_active",
+                        "orig" => "contact_is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_last_name",
+                        "orig" => "contact_last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_phone",
+                        "orig" => "contact_phone",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_send_welcome_email",
+                        "orig" => "contact_send_welcome_email",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_user_name",
+                        "orig" => "contact_user_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_user_role",
+                        "orig" => "contact_user_role",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "direct_partner_id",
+                        "orig" => "direct_partner_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "direct_partner_name",
+                        "orig" => "direct_partner_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "mid",
+                        "orig" => "mid",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "billing_id",
@@ -434,14 +453,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "mid",
                       "name"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "clients"
-                  ]
+                  }
                 }
               ]
             },
@@ -450,31 +462,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "list",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "skip",
-                        "orig" => "skip",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "take",
-                        "orig" => "take",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/clients",
@@ -483,20 +470,46 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "clients"
                     }
                   ],
+                  "parts" => [
+                    "clients"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "skip",
+                        "orig" => "skip",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0
+                      },
+                      %{
+                        "name" => "take",
+                        "orig" => "take",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "partner",
                       "skip",
                       "take"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`"
-                  },
-                  "parts" => [
-                    "clients"
-                  ]
+                  }
                 }
               ]
             },
@@ -505,17 +518,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "load",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/clients/{id}",
@@ -527,19 +529,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "clients",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "clients",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             },
@@ -548,17 +562,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "remove",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/clients/{id}",
@@ -570,19 +573,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "clients",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "clients",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             }
@@ -594,15 +609,17 @@ defmodule BluefinShieldconexMgmt.Config do
         "clone" => %{
           "fields" => [
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "Unique identifier of newly added element.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "name",
-              "short" => "Name of Template",
-              "type" => "`$STRING`"
+              "title" => "Name",
+              "type" => "`$STRING`",
+              "short" => "Name of Template"
             }
           ],
           "id" => %{
@@ -616,25 +633,9 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "create",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "template_id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/templates/{id}/clone",
-                  "rename" => %{
-                    "param" => %{
-                      "id" => "template_id"
-                    }
-                  },
                   "segments" => [
                     %{
                       "lit" => "templates"
@@ -646,20 +647,36 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "clone"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "template_id"
-                    ]
+                  "parts" => [
+                    "templates",
+                    "{template_id}",
+                    "clone"
+                  ],
+                  "rename" => %{
+                    "param" => %{
+                      "id" => "template_id"
+                    }
                   },
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "templates",
-                    "{template_id}",
-                    "clone"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "template_id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "template_id"
+                    ]
+                  }
                 }
               ]
             }
@@ -667,7 +684,7 @@ defmodule BluefinShieldconexMgmt.Config do
           "relations" => %{
             "ancestors" => [
               [
-                "template"
+                "$.main.kit.entity.template"
               ]
             ]
           }
@@ -676,11 +693,14 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "billingId",
-              "short" => "The Partner's billing identifier.",
-              "type" => "`$STRING`"
+              "title" => "Billing Id",
+              "type" => "`$STRING`",
+              "short" => "The Partner's billing identifier."
             },
             %{
               "name" => "contact",
+              "title" => "Contact",
+              "type" => "`$OBJECT`",
               "op" => %{
                 "create" => %{
                   "req" => true,
@@ -690,68 +710,76 @@ defmodule BluefinShieldconexMgmt.Config do
                   "req" => true,
                   "type" => "`$OBJECT`"
                 }
-              },
-              "type" => "`$OBJECT`"
+              }
             },
             %{
-              "format" => "date-time",
               "name" => "created",
+              "title" => "Created",
+              "type" => "`$STRING`",
               "short" => "Creation timestamp in ISO 8601 format.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "This resource's unique identifier.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "isActive",
-              "short" => "This property indicates if the Parter account is active or disabled.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Is Active",
+              "type" => "`$BOOLEAN`",
+              "short" => "This property indicates if the Parter account is active or disabled."
             },
             %{
-              "format" => "date-time",
               "name" => "modified",
+              "title" => "Modified",
+              "type" => "`$STRING`",
               "short" => "Last modified timestamp.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "name",
+              "title" => "Name",
+              "type" => "`$STRING`",
               "op" => %{
                 "create" => %{
                   "req" => true,
                   "type" => "`$STRING`"
                 }
               },
-              "short" => "The Partner's name.",
-              "type" => "`$STRING`"
+              "short" => "The Partner's name."
             },
             %{
               "name" => "parent",
+              "title" => "Parent",
+              "type" => "`$OBJECT`",
               "op" => %{
                 "create" => %{
                   "req" => true,
                   "type" => "`$OBJECT`"
                 }
               },
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "reference",
-              "short" => "The Partner's reference string.",
-              "type" => "`$STRING`"
+              "title" => "Reference",
+              "type" => "`$STRING`",
+              "short" => "The Partner's reference string."
             },
             %{
               "name" => "verificationPhrase",
-              "short" => "The verification phrase is a message that the Partner creates.",
-              "type" => "`$STRING`"
+              "title" => "Verification Phrase",
+              "type" => "`$STRING`",
+              "short" => "The verification phrase is a message that the Partner creates."
             },
             %{
               "name" => "version",
-              "short" => "The number of times that this resource has been updated.",
-              "type" => "`$INTEGER`"
+              "title" => "Version",
+              "type" => "`$INTEGER`",
+              "short" => "The number of times that this resource has been updated."
             }
           ],
           "id" => %{
@@ -765,112 +793,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "create",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "billing_id",
-                        "orig" => "billing_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_email",
-                        "orig" => "contact_email",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_first_name",
-                        "orig" => "contact_first_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_is_active",
-                        "orig" => "contact_is_active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_last_name",
-                        "orig" => "contact_last_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_phone",
-                        "orig" => "contact_phone",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_send_welcome_email",
-                        "orig" => "contact_send_welcome_email",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_user_name",
-                        "orig" => "contact_user_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_user_role",
-                        "orig" => "contact_user_role",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "parent_id",
-                        "orig" => "parent_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "parent_name",
-                        "orig" => "parent_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "reference",
-                        "orig" => "reference",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "verification_phrase",
-                        "orig" => "verification_phrase",
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/partners",
@@ -879,6 +801,120 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "partners"
                     }
                   ],
+                  "parts" => [
+                    "partners"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "billing_id",
+                        "orig" => "billing_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_email",
+                        "orig" => "contact_email",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_first_name",
+                        "orig" => "contact_first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_is_active",
+                        "orig" => "contact_is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_last_name",
+                        "orig" => "contact_last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_phone",
+                        "orig" => "contact_phone",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_send_welcome_email",
+                        "orig" => "contact_send_welcome_email",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_user_name",
+                        "orig" => "contact_user_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "contact_user_role",
+                        "orig" => "contact_user_role",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "parent_id",
+                        "orig" => "parent_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "parent_name",
+                        "orig" => "parent_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "reference",
+                        "orig" => "reference",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "verification_phrase",
+                        "orig" => "verification_phrase",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "billing_id",
@@ -897,14 +933,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "reference",
                       "verification_phrase"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "partners"
-                  ]
+                  }
                 }
               ]
             },
@@ -913,30 +942,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "list",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "skip",
-                        "orig" => "skip",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "take",
-                        "orig" => "take",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/partners",
@@ -945,20 +950,45 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "partners"
                     }
                   ],
+                  "parts" => [
+                    "partners"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "skip",
+                        "orig" => "skip",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0
+                      },
+                      %{
+                        "name" => "take",
+                        "orig" => "take",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "partner",
                       "skip",
                       "take"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`"
-                  },
-                  "parts" => [
-                    "partners"
-                  ]
+                  }
                 }
               ]
             },
@@ -967,17 +997,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "load",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/partners/{id}",
@@ -989,19 +1008,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "partners",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "partners",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             }
@@ -1014,63 +1045,69 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "accessMode",
-              "short" => "The Template's access mode.",
-              "type" => "`$ANY`"
+              "title" => "Access Mode",
+              "type" => "`$ANY`",
+              "short" => "The Template's access mode."
             },
             %{
               "name" => "active",
-              "short" => "This property indicates if the Template is active or inactive.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Active",
+              "type" => "`$BOOLEAN`",
+              "short" => "This property indicates if the Template is active or inactive."
             },
             %{
               "name" => "client",
-              "short" => "Reference to the associated Client resource.",
-              "type" => "`$OBJECT`"
+              "title" => "Client",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Client resource."
             },
             %{
               "name" => "fieldTemplates",
-              "short" => "Field Template list items",
+              "title" => "Field Templates",
               "type" => "`$ARRAY`",
-              "union" => %{
-                "branches" => 9,
-                "count" => 1,
-                "depth" => 1
-              }
+              "short" => "Field Template list items"
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "Unique identifier of newly added element.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "name",
-              "short" => "The Template's name.",
-              "type" => "`$STRING`"
+              "title" => "Name",
+              "type" => "`$STRING`",
+              "short" => "The Template's name."
             },
             %{
               "name" => "options",
+              "title" => "Options",
               "type" => "`$OBJECT`"
             },
             %{
               "name" => "partner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "reference",
-              "short" => "The Template's unique reference.",
-              "type" => "`$STRING`"
+              "title" => "Reference",
+              "type" => "`$STRING`",
+              "short" => "The Template's unique reference."
             },
             %{
               "name" => "type",
-              "short" => "The Template's type.",
-              "type" => "`$STRING`"
+              "title" => "Type",
+              "type" => "`$STRING`",
+              "short" => "The Template's type."
             },
             %{
               "name" => "version",
-              "short" => "The number of times that this resource has been updated.",
-              "type" => "`$INTEGER`"
+              "title" => "Version",
+              "type" => "`$INTEGER`",
+              "short" => "The number of times that this resource has been updated."
             }
           ],
           "id" => %{
@@ -1084,119 +1121,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "create",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "access_mode",
-                        "orig" => "access_mode",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "active",
-                        "orig" => "active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "client_id",
-                        "orig" => "client_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "client_name",
-                        "orig" => "client_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "field_template",
-                        "orig" => "field_template",
-                        "type" => "`$ARRAY`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_custom_style",
-                        "orig" => "options_custom_style",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_custom_style_file",
-                        "orig" => "options_custom_style_file",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_domain",
-                        "orig" => "options_domain",
-                        "type" => "`$ARRAY`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_active_from",
-                        "orig" => "options_security_active_from",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_active_to",
-                        "orig" => "options_security_active_to",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_irreversible",
-                        "orig" => "options_security_irreversible",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner_id",
-                        "orig" => "partner_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner_name",
-                        "orig" => "partner_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "reference",
-                        "orig" => "reference",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "type",
-                        "orig" => "type",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "version",
-                        "orig" => "version",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/templates",
@@ -1205,6 +1129,127 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "templates"
                     }
                   ],
+                  "parts" => [
+                    "templates"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "access_mode",
+                        "orig" => "access_mode",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "active",
+                        "orig" => "active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "client_id",
+                        "orig" => "client_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "client_name",
+                        "orig" => "client_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "field_template",
+                        "orig" => "field_template",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "options_custom_style",
+                        "orig" => "options_custom_style",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_custom_style_file",
+                        "orig" => "options_custom_style_file",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_domain",
+                        "orig" => "options_domain",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_active_from",
+                        "orig" => "options_security_active_from",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_active_to",
+                        "orig" => "options_security_active_to",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_irreversible",
+                        "orig" => "options_security_irreversible",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner_id",
+                        "orig" => "partner_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "partner_name",
+                        "orig" => "partner_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "reference",
+                        "orig" => "reference",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "type",
+                        "orig" => "type",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "version",
+                        "orig" => "version",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "access_mode",
@@ -1225,14 +1270,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "type",
                       "version"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "templates"
-                  ]
+                  }
                 }
               ]
             },
@@ -1241,36 +1279,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "list",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "client",
-                        "orig" => "client",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "skip",
-                        "orig" => "skip",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "take",
-                        "orig" => "take",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/templates",
@@ -1279,6 +1287,44 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "templates"
                     }
                   ],
+                  "parts" => [
+                    "templates"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "client",
+                        "orig" => "client",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "skip",
+                        "orig" => "skip",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0
+                      },
+                      %{
+                        "name" => "take",
+                        "orig" => "take",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "client",
@@ -1286,14 +1332,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "skip",
                       "take"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`"
-                  },
-                  "parts" => [
-                    "templates"
-                  ]
+                  }
                 }
               ]
             },
@@ -1302,17 +1341,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "load",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/templates/{id}",
@@ -1324,19 +1352,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "templates",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "templates",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             },
@@ -1345,17 +1385,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "remove",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/templates/{id}",
@@ -1367,19 +1396,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "templates",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "templates",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             }
@@ -1392,71 +1433,84 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "bfid",
-              "short" => "BFID",
-              "type" => "`$STRING`"
+              "title" => "Bfid",
+              "type" => "`$STRING`",
+              "short" => "BFID"
             },
             %{
               "name" => "client",
-              "short" => "Reference to the associated Client resource.",
-              "type" => "`$OBJECT`"
+              "title" => "Client",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Client resource."
             },
             %{
-              "format" => "date-time",
               "name" => "completeDate",
+              "title" => "Complete Date",
+              "type" => "`$STRING`",
               "short" => "Timestamp from the beginning of the transaction.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "directPartner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Direct Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "errCode",
-              "short" => "The error code that is sent in response to a failed decrypt API call.",
-              "type" => "`$STRING`"
+              "title" => "Err Code",
+              "type" => "`$STRING`",
+              "short" => "The error code that is sent in response to a failed decrypt API call."
             },
             %{
               "name" => "errMessage",
-              "short" => "The error messge that is sent in response to a failed decrypt API call.",
-              "type" => "`$STRING`"
+              "title" => "Err Message",
+              "type" => "`$STRING`",
+              "short" => "The error messge that is sent in response to a failed decrypt API call."
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "This resource's unique identifier.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "ipAddress",
-              "short" => "The IP address of the http client that makes the decrypt API call.",
-              "type" => "`$STRING`"
+              "title" => "Ip Address",
+              "type" => "`$STRING`",
+              "short" => "The IP address of the http client that makes the decrypt API call."
             },
             %{
               "name" => "messageId",
-              "short" => "Message ID.",
-              "type" => "`$STRING`"
+              "title" => "Message Id",
+              "type" => "`$STRING`",
+              "short" => "Message ID."
             },
             %{
               "name" => "partner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "reference",
-              "short" => "The reference property that the Client includes in the decrypt API call.",
-              "type" => "`$STRING`"
+              "title" => "Reference",
+              "type" => "`$STRING`",
+              "short" => "The reference property that the Client includes in the decrypt API call."
             },
             %{
               "name" => "success",
-              "short" => "The success indicator.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Success",
+              "type" => "`$BOOLEAN`",
+              "short" => "The success indicator."
             },
             %{
-              "format" => "int32",
               "name" => "templateId",
+              "title" => "Template Id",
+              "type" => "`$STRING`",
               "short" => "The Template's unique identifier.",
-              "type" => "`$STRING`"
+              "format" => "int32"
             }
           ],
           "id" => %{
@@ -1470,78 +1524,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "list",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "client",
-                        "orig" => "client",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "date_from",
-                        "orig" => "date_from",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "date_to",
-                        "orig" => "date_to",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "message_id",
-                        "orig" => "message_id",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "paging_mode",
-                        "orig" => "paging_mode",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "reference",
-                        "orig" => "reference",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "skip",
-                        "orig" => "skip",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "success",
-                        "orig" => "success",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "take",
-                        "orig" => "take",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "transaction_type",
-                        "orig" => "transaction_type",
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/transactions",
@@ -1550,6 +1532,86 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "transactions"
                     }
                   ],
+                  "parts" => [
+                    "transactions"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "client",
+                        "orig" => "client",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "date_from",
+                        "orig" => "date_from",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "date_to",
+                        "orig" => "date_to",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "message_id",
+                        "orig" => "message_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "paging_mode",
+                        "orig" => "paging_mode",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "reference",
+                        "orig" => "reference",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "skip",
+                        "orig" => "skip",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0
+                      },
+                      %{
+                        "name" => "success",
+                        "orig" => "success",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "take",
+                        "orig" => "take",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10
+                      },
+                      %{
+                        "name" => "transaction_type",
+                        "orig" => "transaction_type",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "client",
@@ -1564,14 +1626,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "take",
                       "transaction_type"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`"
-                  },
-                  "parts" => [
-                    "transactions"
-                  ]
+                  }
                 }
               ]
             },
@@ -1580,25 +1635,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "load",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ],
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "transaction_type",
-                        "orig" => "transaction_type",
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/transactions/{id}",
@@ -1610,20 +1646,40 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
+                  "parts" => [
+                    "transactions",
+                    "{id}"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ],
+                    "query" => [
+                      %{
+                        "name" => "transaction_type",
+                        "orig" => "transaction_type",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "id",
                       "transaction_type"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "transactions",
-                    "{id}"
-                  ]
+                  }
                 }
               ]
             }
@@ -1636,26 +1692,33 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "billingId",
-              "short" => "The Partner's billing identifier.",
-              "type" => "`$STRING`"
+              "title" => "Billing Id",
+              "type" => "`$STRING`",
+              "short" => "The Partner's billing identifier."
             },
             %{
               "name" => "client",
-              "short" => "Reference to the associated Client resource.",
-              "type" => "`$OBJECT`"
+              "title" => "Client",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Client resource."
             },
             %{
               "name" => "contact",
-              "req" => true,
-              "type" => "`$OBJECT`"
+              "title" => "Contact",
+              "type" => "`$OBJECT`",
+              "req" => true
             },
             %{
               "name" => "directPartner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Direct Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "email",
+              "title" => "Email",
+              "type" => "`$STRING`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$STRING`"
@@ -1664,12 +1727,13 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$STRING`"
                 }
               },
-              "req" => true,
-              "short" => "The User's email address.",
-              "type" => "`$STRING`"
+              "short" => "The User's email address."
             },
             %{
               "name" => "firstName",
+              "title" => "First Name",
+              "type" => "`$STRING`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$STRING`"
@@ -1678,23 +1742,26 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$STRING`"
                 }
               },
-              "req" => true,
-              "short" => "The User's name.",
-              "type" => "`$STRING`"
+              "short" => "The User's name."
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "Unique identifier of newly added element.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "isActive",
-              "short" => "This property indicates if the User account is active or disabled.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Is Active",
+              "type" => "`$BOOLEAN`",
+              "short" => "This property indicates if the User account is active or disabled."
             },
             %{
               "name" => "lastName",
+              "title" => "Last Name",
+              "type" => "`$STRING`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$STRING`"
@@ -1703,32 +1770,37 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$STRING`"
                 }
               },
-              "req" => true,
-              "short" => "The User's Surname.",
-              "type" => "`$STRING`"
+              "short" => "The User's Surname."
             },
             %{
               "name" => "mid",
-              "short" => "Some Partners will have an merchant ids on their own software offerings.",
-              "type" => "`$STRING`"
+              "title" => "Mid",
+              "type" => "`$STRING`",
+              "short" => "Some Partners will have an merchant ids on their own software offerings."
             },
             %{
               "name" => "name",
-              "short" => "The Partner's name.",
-              "type" => "`$STRING`"
+              "title" => "Name",
+              "type" => "`$STRING`",
+              "short" => "The Partner's name."
             },
             %{
               "name" => "parent",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Parent",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "partner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "phone",
+              "title" => "Phone",
+              "type" => "`$STRING`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$STRING`"
@@ -1737,22 +1809,25 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$STRING`"
                 }
               },
-              "req" => true,
-              "short" => "The User's phone number without dashes, spaces, or brackets (e.g.",
-              "type" => "`$STRING`"
+              "short" => "The User's phone number without dashes, spaces, or brackets (e.g."
             },
             %{
               "name" => "reference",
-              "short" => "The Partner's reference string.",
-              "type" => "`$STRING`"
+              "title" => "Reference",
+              "type" => "`$STRING`",
+              "short" => "The Partner's reference string."
             },
             %{
               "name" => "sendWelcomeEmail",
-              "short" => "If this property is set to 'true' the newly created user will be sent a welcome email.",
-              "type" => "`$BOOLEAN`"
+              "title" => "Send Welcome Email",
+              "type" => "`$BOOLEAN`",
+              "short" => "If this property is set to 'true' the newly created user will be sent a welcome email."
             },
             %{
               "name" => "userName",
+              "title" => "User Name",
+              "type" => "`$STRING`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$STRING`"
@@ -1761,12 +1836,13 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$STRING`"
                 }
               },
-              "req" => true,
-              "short" => "The User's unique username.",
-              "type" => "`$STRING`"
+              "short" => "The User's unique username."
             },
             %{
               "name" => "userRole",
+              "title" => "User Role",
+              "type" => "`$OBJECT`",
+              "req" => true,
               "op" => %{
                 "list" => %{
                   "type" => "`$OBJECT`"
@@ -1775,19 +1851,19 @@ defmodule BluefinShieldconexMgmt.Config do
                   "type" => "`$OBJECT`"
                 }
               },
-              "req" => true,
-              "short" => "Reference to the associated User Role.",
-              "type" => "`$OBJECT`"
+              "short" => "Reference to the associated User Role."
             },
             %{
               "name" => "verificationPhrase",
-              "short" => "The verification phrase is a message that the Partner creates.",
-              "type" => "`$STRING`"
+              "title" => "Verification Phrase",
+              "type" => "`$STRING`",
+              "short" => "The verification phrase is a message that the Partner creates."
             },
             %{
               "name" => "version",
-              "short" => "The number of times that this resource has been updated.",
-              "type" => "`$INTEGER`"
+              "title" => "Version",
+              "type" => "`$INTEGER`",
+              "short" => "The number of times that this resource has been updated."
             }
           ],
           "id" => %{
@@ -1801,78 +1877,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "create",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "client",
-                        "orig" => "client",
-                        "type" => "`$OBJECT`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "email",
-                        "orig" => "email",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "first_name",
-                        "orig" => "first_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "last_name",
-                        "orig" => "last_name",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$OBJECT`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "phone",
-                        "orig" => "phone",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "send_welcome_email",
-                        "orig" => "send_welcome_email",
-                        "reqd" => true,
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "user_role",
-                        "orig" => "user_role",
-                        "reqd" => true,
-                        "type" => "`$OBJECT`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "username",
-                        "orig" => "username",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/users",
@@ -1881,6 +1885,86 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "users"
                     }
                   ],
+                  "parts" => [
+                    "users"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "client",
+                        "orig" => "client",
+                        "type" => "`$OBJECT`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "email",
+                        "orig" => "email",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "first_name",
+                        "orig" => "first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "last_name",
+                        "orig" => "last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$OBJECT`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "phone",
+                        "orig" => "phone",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "send_welcome_email",
+                        "orig" => "send_welcome_email",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "user_role",
+                        "orig" => "user_role",
+                        "type" => "`$OBJECT`",
+                        "kind" => "query",
+                        "reqd" => true
+                      },
+                      %{
+                        "name" => "username",
+                        "orig" => "username",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "client",
@@ -1894,14 +1978,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "user_role",
                       "username"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "users"
-                  ]
+                  }
                 }
               ]
             },
@@ -1910,36 +1987,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "list",
               "points" => [
                 %{
-                  "args" => %{
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "client",
-                        "orig" => "client",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "skip",
-                        "orig" => "skip",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "take",
-                        "orig" => "take",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users",
@@ -1948,6 +1995,44 @@ defmodule BluefinShieldconexMgmt.Config do
                       "lit" => "users"
                     }
                   ],
+                  "parts" => [
+                    "users"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`"
+                  },
+                  "args" => %{
+                    "query" => [
+                      %{
+                        "name" => "client",
+                        "orig" => "client",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "skip",
+                        "orig" => "skip",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0
+                      },
+                      %{
+                        "name" => "take",
+                        "orig" => "take",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "client",
@@ -1955,14 +2040,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "skip",
                       "take"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`"
-                  },
-                  "parts" => [
-                    "users"
-                  ]
+                  }
                 }
               ]
             },
@@ -1971,121 +2049,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "update",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ],
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "access_mode",
-                        "orig" => "access_mode",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "active",
-                        "orig" => "active",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "client_id",
-                        "orig" => "client_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "client_name",
-                        "orig" => "client_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "field_template",
-                        "orig" => "field_template",
-                        "type" => "`$ARRAY`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_custom_style",
-                        "orig" => "options_custom_style",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_custom_style_file",
-                        "orig" => "options_custom_style_file",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_domain",
-                        "orig" => "options_domain",
-                        "type" => "`$ARRAY`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_active_from",
-                        "orig" => "options_security_active_from",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_active_to",
-                        "orig" => "options_security_active_to",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "options_security_irreversible",
-                        "orig" => "options_security_irreversible",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner_id",
-                        "orig" => "partner_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner_name",
-                        "orig" => "partner_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "reference",
-                        "orig" => "reference",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "type",
-                        "orig" => "type",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "version",
-                        "orig" => "version",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/templates/{id}",
@@ -2097,6 +2060,130 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
+                  "parts" => [
+                    "templates",
+                    "{id}"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ],
+                    "query" => [
+                      %{
+                        "name" => "access_mode",
+                        "orig" => "access_mode",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "active",
+                        "orig" => "active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "client_id",
+                        "orig" => "client_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "client_name",
+                        "orig" => "client_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "field_template",
+                        "orig" => "field_template",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_custom_style",
+                        "orig" => "options_custom_style",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_custom_style_file",
+                        "orig" => "options_custom_style_file",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_domain",
+                        "orig" => "options_domain",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_active_from",
+                        "orig" => "options_security_active_from",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_active_to",
+                        "orig" => "options_security_active_to",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "options_security_irreversible",
+                        "orig" => "options_security_irreversible",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner_id",
+                        "orig" => "partner_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner_name",
+                        "orig" => "partner_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "reference",
+                        "orig" => "reference",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "type",
+                        "orig" => "type",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "version",
+                        "orig" => "version",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "access_mode",
@@ -2118,84 +2205,9 @@ defmodule BluefinShieldconexMgmt.Config do
                       "type",
                       "version"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "templates",
-                    "{id}"
-                  ]
+                  }
                 },
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ],
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "billing_id",
-                        "orig" => "billing_id",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_id",
-                        "orig" => "contact_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "parent_id",
-                        "orig" => "parent_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "parent_name",
-                        "orig" => "parent_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "reference",
-                        "orig" => "reference",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "verification_phrase",
-                        "orig" => "verification_phrase",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "version",
-                        "orig" => "version",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/partners/{id}",
@@ -2207,6 +2219,82 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
+                  "parts" => [
+                    "partners",
+                    "{id}"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ],
+                    "query" => [
+                      %{
+                        "name" => "billing_id",
+                        "orig" => "billing_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "contact_id",
+                        "orig" => "contact_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "parent_id",
+                        "orig" => "parent_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "parent_name",
+                        "orig" => "parent_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "reference",
+                        "orig" => "reference",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "verification_phrase",
+                        "orig" => "verification_phrase",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "version",
+                        "orig" => "version",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "billing_id",
@@ -2220,84 +2308,9 @@ defmodule BluefinShieldconexMgmt.Config do
                       "verification_phrase",
                       "version"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "partners",
-                    "{id}"
-                  ]
+                  }
                 },
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ],
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "client",
-                        "orig" => "client",
-                        "type" => "`$OBJECT`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "email",
-                        "orig" => "email",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "first_name",
-                        "orig" => "first_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "last_name",
-                        "orig" => "last_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "partner",
-                        "orig" => "partner",
-                        "type" => "`$OBJECT`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "phone",
-                        "orig" => "phone",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "send_welcome_email",
-                        "orig" => "send_welcome_email",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "username",
-                        "orig" => "username",
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/users/{id}",
@@ -2309,6 +2322,82 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
+                  "parts" => [
+                    "users",
+                    "{id}"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ],
+                    "query" => [
+                      %{
+                        "name" => "client",
+                        "orig" => "client",
+                        "type" => "`$OBJECT`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "email",
+                        "orig" => "email",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "first_name",
+                        "orig" => "first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "last_name",
+                        "orig" => "last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "partner",
+                        "orig" => "partner",
+                        "type" => "`$OBJECT`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "phone",
+                        "orig" => "phone",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "send_welcome_email",
+                        "orig" => "send_welcome_email",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "username",
+                        "orig" => "username",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "client",
@@ -2322,78 +2411,9 @@ defmodule BluefinShieldconexMgmt.Config do
                       "send_welcome_email",
                       "username"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "users",
-                    "{id}"
-                  ]
+                  }
                 },
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ],
-                    "query" => [
-                      %{
-                        "kind" => "query",
-                        "name" => "billing_id",
-                        "orig" => "billing_id",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "contact_id",
-                        "orig" => "contact_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "direct_partner_id",
-                        "orig" => "direct_partner_id",
-                        "type" => "`$INTEGER`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "direct_partner_name",
-                        "orig" => "direct_partner_name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "is_active",
-                        "orig" => "is_active",
-                        "type" => "`$BOOLEAN`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "mid",
-                        "orig" => "mid",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`"
-                      },
-                      %{
-                        "kind" => "query",
-                        "name" => "version",
-                        "orig" => "version",
-                        "type" => "`$INTEGER`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/clients/{id}",
@@ -2405,6 +2425,76 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
+                  "parts" => [
+                    "clients",
+                    "{id}"
+                  ],
+                  "rename" => %{},
+                  "transform" => %{
+                    "req" => "`reqdata`",
+                    "res" => "`body`"
+                  },
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ],
+                    "query" => [
+                      %{
+                        "name" => "billing_id",
+                        "orig" => "billing_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "contact_id",
+                        "orig" => "contact_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "direct_partner_id",
+                        "orig" => "direct_partner_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "direct_partner_name",
+                        "orig" => "direct_partner_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "is_active",
+                        "orig" => "is_active",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "mid",
+                        "orig" => "mid",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query"
+                      },
+                      %{
+                        "name" => "version",
+                        "orig" => "version",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query"
+                      }
+                    ]
+                  },
                   "select" => %{
                     "exist" => [
                       "billing_id",
@@ -2417,15 +2507,7 @@ defmodule BluefinShieldconexMgmt.Config do
                       "name",
                       "version"
                     ]
-                  },
-                  "transform" => %{
-                    "req" => "`reqdata`",
-                    "res" => "`body`"
-                  },
-                  "parts" => [
-                    "clients",
-                    "{id}"
-                  ]
+                  }
                 }
               ]
             }
@@ -2438,65 +2520,78 @@ defmodule BluefinShieldconexMgmt.Config do
           "fields" => [
             %{
               "name" => "client",
-              "short" => "Reference to the associated Client resource.",
-              "type" => "`$OBJECT`"
+              "title" => "Client",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Client resource."
             },
             %{
-              "format" => "date-time",
               "name" => "created",
+              "title" => "Created",
+              "type" => "`$STRING`",
               "short" => "Creation timestamp in ISO 8601 format.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "email",
+              "title" => "Email",
               "type" => "`$STRING`"
             },
             %{
               "name" => "firstName",
+              "title" => "First Name",
               "type" => "`$STRING`"
             },
             %{
-              "format" => "int64",
               "name" => "id",
+              "title" => "Id",
+              "type" => "`$INTEGER`",
               "short" => "This resource's unique identifier.",
-              "type" => "`$INTEGER`"
+              "format" => "int64"
             },
             %{
               "name" => "isActive",
+              "title" => "Is Active",
               "type" => "`$BOOLEAN`"
             },
             %{
               "name" => "lastName",
+              "title" => "Last Name",
               "type" => "`$STRING`"
             },
             %{
-              "format" => "date-time",
               "name" => "modified",
+              "title" => "Modified",
+              "type" => "`$STRING`",
               "short" => "Last modified timestamp.",
-              "type" => "`$STRING`"
+              "format" => "date-time"
             },
             %{
               "name" => "partner",
-              "short" => "Reference to the associated Partner.",
-              "type" => "`$OBJECT`"
+              "title" => "Partner",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated Partner."
             },
             %{
               "name" => "phone",
+              "title" => "Phone",
               "type" => "`$STRING`"
             },
             %{
               "name" => "userName",
+              "title" => "User Name",
               "type" => "`$STRING`"
             },
             %{
               "name" => "userRole",
-              "short" => "Reference to the associated User Role.",
-              "type" => "`$OBJECT`"
+              "title" => "User Role",
+              "type" => "`$OBJECT`",
+              "short" => "Reference to the associated User Role."
             },
             %{
               "name" => "version",
-              "short" => "The number of times that this resource has been updated.",
-              "type" => "`$INTEGER`"
+              "title" => "Version",
+              "type" => "`$INTEGER`",
+              "short" => "The number of times that this resource has been updated."
             }
           ],
           "id" => %{
@@ -2510,17 +2605,6 @@ defmodule BluefinShieldconexMgmt.Config do
               "name" => "load",
               "points" => [
                 %{
-                  "args" => %{
-                    "params" => [
-                      %{
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`"
-                      }
-                    ]
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users/{id}",
@@ -2532,19 +2616,31 @@ defmodule BluefinShieldconexMgmt.Config do
                       "var" => "id"
                     }
                   ],
-                  "select" => %{
-                    "exist" => [
-                      "id"
-                    ]
-                  },
+                  "parts" => [
+                    "users",
+                    "{id}"
+                  ],
+                  "rename" => %{},
                   "transform" => %{
                     "req" => "`reqdata`",
                     "res" => "`body`"
                   },
-                  "parts" => [
-                    "users",
-                    "{id}"
-                  ]
+                  "args" => %{
+                    "params" => [
+                      %{
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true
+                      }
+                    ]
+                  },
+                  "select" => %{
+                    "exist" => [
+                      "id"
+                    ]
+                  }
                 }
               ]
             }

@@ -247,11 +247,14 @@ def make_config():
         "fields": [
           {
             "name": "billingId",
-            "short": "Billing ID",
+            "title": "Billing Id",
             "type": "`$STRING`",
+            "short": "Billing ID",
           },
           {
             "name": "contact",
+            "title": "Contact",
+            "type": "`$OBJECT`",
             "op": {
               "create": {
                 "req": True,
@@ -262,16 +265,18 @@ def make_config():
                 "type": "`$OBJECT`",
               },
             },
-            "type": "`$OBJECT`",
           },
           {
-            "format": "date-time",
             "name": "created",
-            "short": "Creation timestamp in ISO 8601 format.",
+            "title": "Created",
             "type": "`$STRING`",
+            "short": "Creation timestamp in ISO 8601 format.",
+            "format": "date-time",
           },
           {
             "name": "directPartner",
+            "title": "Direct Partner",
+            "type": "`$OBJECT`",
             "op": {
               "create": {
                 "req": True,
@@ -279,32 +284,37 @@ def make_config():
               },
             },
             "short": "Reference to the associated Partner.",
-            "type": "`$OBJECT`",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "This resource's unique identifier.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "This resource's unique identifier.",
+            "format": "int64",
           },
           {
             "name": "isActive",
-            "short": "This property indicates if the Client account is active or disabled.",
+            "title": "Is Active",
             "type": "`$BOOLEAN`",
+            "short": "This property indicates if the Client account is active or disabled.",
           },
           {
             "name": "mid",
-            "short": "Some Partners will have an merchant ids on their own software offerings.",
+            "title": "Mid",
             "type": "`$STRING`",
+            "short": "Some Partners will have an merchant ids on their own software offerings.",
           },
           {
-            "format": "date-time",
             "name": "modified",
-            "short": "Last modified timestamp.",
+            "title": "Modified",
             "type": "`$STRING`",
+            "short": "Last modified timestamp.",
+            "format": "date-time",
           },
           {
             "name": "name",
+            "title": "Name",
+            "type": "`$STRING`",
             "op": {
               "create": {
                 "req": True,
@@ -312,17 +322,18 @@ def make_config():
               },
             },
             "short": "The Client's name.",
-            "type": "`$STRING`",
           },
           {
             "name": "partner",
-            "short": "Reference to the associated Partner.",
+            "title": "Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "version",
-            "short": "The number of times that this resource has been updated.",
+            "title": "Version",
             "type": "`$INTEGER`",
+            "short": "The number of times that this resource has been updated.",
           },
         ],
         "id": {
@@ -336,106 +347,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "billing_id",
-                      "orig": "billing_id",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_email",
-                      "orig": "contact_email",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_first_name",
-                      "orig": "contact_first_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_is_active",
-                      "orig": "contact_is_active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_last_name",
-                      "orig": "contact_last_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_phone",
-                      "orig": "contact_phone",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_send_welcome_email",
-                      "orig": "contact_send_welcome_email",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_user_name",
-                      "orig": "contact_user_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_user_role",
-                      "orig": "contact_user_role",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "direct_partner_id",
-                      "orig": "direct_partner_id",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "direct_partner_name",
-                      "orig": "direct_partner_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "mid",
-                      "orig": "mid",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "POST",
                 "orig": "/clients",
@@ -444,6 +355,114 @@ def make_config():
                     "lit": "clients",
                   },
                 ],
+                "parts": [
+                  "clients",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "billing_id",
+                      "orig": "billing_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "contact_email",
+                      "orig": "contact_email",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_first_name",
+                      "orig": "contact_first_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_is_active",
+                      "orig": "contact_is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_last_name",
+                      "orig": "contact_last_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_phone",
+                      "orig": "contact_phone",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_send_welcome_email",
+                      "orig": "contact_send_welcome_email",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_user_name",
+                      "orig": "contact_user_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_user_role",
+                      "orig": "contact_user_role",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "direct_partner_id",
+                      "orig": "direct_partner_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "direct_partner_name",
+                      "orig": "direct_partner_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "mid",
+                      "orig": "mid",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "billing_id",
@@ -462,13 +481,6 @@ def make_config():
                     "name",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "clients",
-                ],
               },
             ],
           },
@@ -477,31 +489,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "take",
-                      "orig": "take",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/clients",
@@ -510,6 +497,39 @@ def make_config():
                     "lit": "clients",
                   },
                 ],
+                "parts": [
+                  "clients",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "take",
+                      "orig": "take",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "partner",
@@ -517,13 +537,6 @@ def make_config():
                     "take",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "clients",
-                ],
               },
             ],
           },
@@ -532,17 +545,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/clients/{id}",
@@ -554,19 +556,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "clients",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "clients",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -575,17 +589,6 @@ def make_config():
             "name": "remove",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/clients/{id}",
@@ -597,19 +600,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "clients",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "clients",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -621,15 +636,17 @@ def make_config():
       "clone": {
         "fields": [
           {
-            "format": "int64",
             "name": "id",
-            "short": "Unique identifier of newly added element.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Unique identifier of newly added element.",
+            "format": "int64",
           },
           {
             "name": "name",
-            "short": "Name of Template",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of Template",
           },
         ],
         "id": {
@@ -643,25 +660,9 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "template_id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "POST",
                 "orig": "/templates/{id}/clone",
-                "rename": {
-                  "param": {
-                    "id": "template_id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "templates",
@@ -673,20 +674,36 @@ def make_config():
                     "lit": "clone",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "template_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "templates",
                   "{template_id}",
                   "clone",
                 ],
+                "rename": {
+                  "param": {
+                    "id": "template_id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "template_id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "template_id",
+                  ],
+                },
               },
             ],
           },
@@ -694,7 +711,7 @@ def make_config():
         "relations": {
           "ancestors": [
             [
-              "template",
+              "$.main.kit.entity.template",
             ],
           ],
         },
@@ -703,11 +720,14 @@ def make_config():
         "fields": [
           {
             "name": "billingId",
-            "short": "The Partner's billing identifier.",
+            "title": "Billing Id",
             "type": "`$STRING`",
+            "short": "The Partner's billing identifier.",
           },
           {
             "name": "contact",
+            "title": "Contact",
+            "type": "`$OBJECT`",
             "op": {
               "create": {
                 "req": True,
@@ -718,33 +738,38 @@ def make_config():
                 "type": "`$OBJECT`",
               },
             },
-            "type": "`$OBJECT`",
           },
           {
-            "format": "date-time",
             "name": "created",
-            "short": "Creation timestamp in ISO 8601 format.",
+            "title": "Created",
             "type": "`$STRING`",
+            "short": "Creation timestamp in ISO 8601 format.",
+            "format": "date-time",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "This resource's unique identifier.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "This resource's unique identifier.",
+            "format": "int64",
           },
           {
             "name": "isActive",
-            "short": "This property indicates if the Parter account is active or disabled.",
+            "title": "Is Active",
             "type": "`$BOOLEAN`",
+            "short": "This property indicates if the Parter account is active or disabled.",
           },
           {
-            "format": "date-time",
             "name": "modified",
-            "short": "Last modified timestamp.",
+            "title": "Modified",
             "type": "`$STRING`",
+            "short": "Last modified timestamp.",
+            "format": "date-time",
           },
           {
             "name": "name",
+            "title": "Name",
+            "type": "`$STRING`",
             "op": {
               "create": {
                 "req": True,
@@ -752,10 +777,11 @@ def make_config():
               },
             },
             "short": "The Partner's name.",
-            "type": "`$STRING`",
           },
           {
             "name": "parent",
+            "title": "Parent",
+            "type": "`$OBJECT`",
             "op": {
               "create": {
                 "req": True,
@@ -763,22 +789,24 @@ def make_config():
               },
             },
             "short": "Reference to the associated Partner.",
-            "type": "`$OBJECT`",
           },
           {
             "name": "reference",
-            "short": "The Partner's reference string.",
+            "title": "Reference",
             "type": "`$STRING`",
+            "short": "The Partner's reference string.",
           },
           {
             "name": "verificationPhrase",
-            "short": "The verification phrase is a message that the Partner creates.",
+            "title": "Verification Phrase",
             "type": "`$STRING`",
+            "short": "The verification phrase is a message that the Partner creates.",
           },
           {
             "name": "version",
-            "short": "The number of times that this resource has been updated.",
+            "title": "Version",
             "type": "`$INTEGER`",
+            "short": "The number of times that this resource has been updated.",
           },
         ],
         "id": {
@@ -792,112 +820,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "billing_id",
-                      "orig": "billing_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_email",
-                      "orig": "contact_email",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_first_name",
-                      "orig": "contact_first_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_is_active",
-                      "orig": "contact_is_active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_last_name",
-                      "orig": "contact_last_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_phone",
-                      "orig": "contact_phone",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_send_welcome_email",
-                      "orig": "contact_send_welcome_email",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_user_name",
-                      "orig": "contact_user_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_user_role",
-                      "orig": "contact_user_role",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "parent_id",
-                      "orig": "parent_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "parent_name",
-                      "orig": "parent_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "reference",
-                      "orig": "reference",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "verification_phrase",
-                      "orig": "verification_phrase",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "POST",
                 "orig": "/partners",
@@ -906,6 +828,120 @@ def make_config():
                     "lit": "partners",
                   },
                 ],
+                "parts": [
+                  "partners",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "billing_id",
+                      "orig": "billing_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_email",
+                      "orig": "contact_email",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_first_name",
+                      "orig": "contact_first_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_is_active",
+                      "orig": "contact_is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_last_name",
+                      "orig": "contact_last_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_phone",
+                      "orig": "contact_phone",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_send_welcome_email",
+                      "orig": "contact_send_welcome_email",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_user_name",
+                      "orig": "contact_user_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "contact_user_role",
+                      "orig": "contact_user_role",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "parent_id",
+                      "orig": "parent_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "parent_name",
+                      "orig": "parent_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "reference",
+                      "orig": "reference",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "verification_phrase",
+                      "orig": "verification_phrase",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "billing_id",
@@ -925,13 +961,6 @@ def make_config():
                     "verification_phrase",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "partners",
-                ],
               },
             ],
           },
@@ -940,30 +969,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "take",
-                      "orig": "take",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/partners",
@@ -972,6 +977,38 @@ def make_config():
                     "lit": "partners",
                   },
                 ],
+                "parts": [
+                  "partners",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "take",
+                      "orig": "take",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "partner",
@@ -979,13 +1016,6 @@ def make_config():
                     "take",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "partners",
-                ],
               },
             ],
           },
@@ -994,17 +1024,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/partners/{id}",
@@ -1016,19 +1035,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "partners",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "partners",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -1041,63 +1072,69 @@ def make_config():
         "fields": [
           {
             "name": "accessMode",
-            "short": "The Template's access mode.",
+            "title": "Access Mode",
             "type": "`$ANY`",
+            "short": "The Template's access mode.",
           },
           {
             "name": "active",
-            "short": "This property indicates if the Template is active or inactive.",
+            "title": "Active",
             "type": "`$BOOLEAN`",
+            "short": "This property indicates if the Template is active or inactive.",
           },
           {
             "name": "client",
-            "short": "Reference to the associated Client resource.",
+            "title": "Client",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Client resource.",
           },
           {
             "name": "fieldTemplates",
-            "short": "Field Template list items",
+            "title": "Field Templates",
             "type": "`$ARRAY`",
-            "union": {
-              "branches": 9,
-              "count": 1,
-              "depth": 1,
-            },
+            "short": "Field Template list items",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "Unique identifier of newly added element.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Unique identifier of newly added element.",
+            "format": "int64",
           },
           {
             "name": "name",
-            "short": "The Template's name.",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "The Template's name.",
           },
           {
             "name": "options",
+            "title": "Options",
             "type": "`$OBJECT`",
           },
           {
             "name": "partner",
-            "short": "Reference to the associated Partner.",
+            "title": "Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "reference",
-            "short": "The Template's unique reference.",
+            "title": "Reference",
             "type": "`$STRING`",
+            "short": "The Template's unique reference.",
           },
           {
             "name": "type",
-            "short": "The Template's type.",
+            "title": "Type",
             "type": "`$STRING`",
+            "short": "The Template's type.",
           },
           {
             "name": "version",
-            "short": "The number of times that this resource has been updated.",
+            "title": "Version",
             "type": "`$INTEGER`",
+            "short": "The number of times that this resource has been updated.",
           },
         ],
         "id": {
@@ -1111,119 +1148,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "access_mode",
-                      "orig": "access_mode",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "active",
-                      "orig": "active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "client_id",
-                      "orig": "client_id",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "client_name",
-                      "orig": "client_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "field_template",
-                      "orig": "field_template",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_custom_style",
-                      "orig": "options_custom_style",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_custom_style_file",
-                      "orig": "options_custom_style_file",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_domain",
-                      "orig": "options_domain",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_active_from",
-                      "orig": "options_security_active_from",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_active_to",
-                      "orig": "options_security_active_to",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_irreversible",
-                      "orig": "options_security_irreversible",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner_id",
-                      "orig": "partner_id",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner_name",
-                      "orig": "partner_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "reference",
-                      "orig": "reference",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "type",
-                      "orig": "type",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "version",
-                      "orig": "version",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "POST",
                 "orig": "/templates",
@@ -1232,6 +1156,127 @@ def make_config():
                     "lit": "templates",
                   },
                 ],
+                "parts": [
+                  "templates",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "access_mode",
+                      "orig": "access_mode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "active",
+                      "orig": "active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "client_id",
+                      "orig": "client_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "client_name",
+                      "orig": "client_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "field_template",
+                      "orig": "field_template",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "options_custom_style",
+                      "orig": "options_custom_style",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_custom_style_file",
+                      "orig": "options_custom_style_file",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_domain",
+                      "orig": "options_domain",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_active_from",
+                      "orig": "options_security_active_from",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_active_to",
+                      "orig": "options_security_active_to",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_irreversible",
+                      "orig": "options_security_irreversible",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner_id",
+                      "orig": "partner_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "partner_name",
+                      "orig": "partner_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "reference",
+                      "orig": "reference",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "type",
+                      "orig": "type",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "version",
+                      "orig": "version",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "access_mode",
@@ -1253,13 +1298,6 @@ def make_config():
                     "version",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "templates",
-                ],
               },
             ],
           },
@@ -1268,36 +1306,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "client",
-                      "orig": "client",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "take",
-                      "orig": "take",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/templates",
@@ -1306,6 +1314,44 @@ def make_config():
                     "lit": "templates",
                   },
                 ],
+                "parts": [
+                  "templates",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "client",
+                      "orig": "client",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "take",
+                      "orig": "take",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "client",
@@ -1314,13 +1360,6 @@ def make_config():
                     "take",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "templates",
-                ],
               },
             ],
           },
@@ -1329,17 +1368,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/templates/{id}",
@@ -1351,19 +1379,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "templates",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "templates",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -1372,17 +1412,6 @@ def make_config():
             "name": "remove",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/templates/{id}",
@@ -1394,19 +1423,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "templates",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "templates",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -1419,71 +1460,84 @@ def make_config():
         "fields": [
           {
             "name": "bfid",
-            "short": "BFID",
+            "title": "Bfid",
             "type": "`$STRING`",
+            "short": "BFID",
           },
           {
             "name": "client",
-            "short": "Reference to the associated Client resource.",
+            "title": "Client",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Client resource.",
           },
           {
-            "format": "date-time",
             "name": "completeDate",
-            "short": "Timestamp from the beginning of the transaction.",
+            "title": "Complete Date",
             "type": "`$STRING`",
+            "short": "Timestamp from the beginning of the transaction.",
+            "format": "date-time",
           },
           {
             "name": "directPartner",
-            "short": "Reference to the associated Partner.",
+            "title": "Direct Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "errCode",
-            "short": "The error code that is sent in response to a failed decrypt API call.",
+            "title": "Err Code",
             "type": "`$STRING`",
+            "short": "The error code that is sent in response to a failed decrypt API call.",
           },
           {
             "name": "errMessage",
-            "short": "The error messge that is sent in response to a failed decrypt API call.",
+            "title": "Err Message",
             "type": "`$STRING`",
+            "short": "The error messge that is sent in response to a failed decrypt API call.",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "This resource's unique identifier.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "This resource's unique identifier.",
+            "format": "int64",
           },
           {
             "name": "ipAddress",
-            "short": "The IP address of the http client that makes the decrypt API call.",
+            "title": "Ip Address",
             "type": "`$STRING`",
+            "short": "The IP address of the http client that makes the decrypt API call.",
           },
           {
             "name": "messageId",
-            "short": "Message ID.",
+            "title": "Message Id",
             "type": "`$STRING`",
+            "short": "Message ID.",
           },
           {
             "name": "partner",
-            "short": "Reference to the associated Partner.",
+            "title": "Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "reference",
-            "short": "The reference property that the Client includes in the decrypt API call.",
+            "title": "Reference",
             "type": "`$STRING`",
+            "short": "The reference property that the Client includes in the decrypt API call.",
           },
           {
             "name": "success",
-            "short": "The success indicator.",
+            "title": "Success",
             "type": "`$BOOLEAN`",
+            "short": "The success indicator.",
           },
           {
-            "format": "int32",
             "name": "templateId",
-            "short": "The Template's unique identifier.",
+            "title": "Template Id",
             "type": "`$STRING`",
+            "short": "The Template's unique identifier.",
+            "format": "int32",
           },
         ],
         "id": {
@@ -1497,78 +1551,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "client",
-                      "orig": "client",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "date_from",
-                      "orig": "date_from",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "date_to",
-                      "orig": "date_to",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "message_id",
-                      "orig": "message_id",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "paging_mode",
-                      "orig": "paging_mode",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "reference",
-                      "orig": "reference",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "success",
-                      "orig": "success",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "take",
-                      "orig": "take",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "transaction_type",
-                      "orig": "transaction_type",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/transactions",
@@ -1577,6 +1559,86 @@ def make_config():
                     "lit": "transactions",
                   },
                 ],
+                "parts": [
+                  "transactions",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "client",
+                      "orig": "client",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "date_from",
+                      "orig": "date_from",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "date_to",
+                      "orig": "date_to",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "message_id",
+                      "orig": "message_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "paging_mode",
+                      "orig": "paging_mode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "reference",
+                      "orig": "reference",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "success",
+                      "orig": "success",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "take",
+                      "orig": "take",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "transaction_type",
+                      "orig": "transaction_type",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "client",
@@ -1592,13 +1654,6 @@ def make_config():
                     "transaction_type",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "transactions",
-                ],
               },
             ],
           },
@@ -1607,25 +1662,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "transaction_type",
-                      "orig": "transaction_type",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/transactions/{id}",
@@ -1637,20 +1673,40 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "transactions",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "transaction_type",
+                      "orig": "transaction_type",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                     "transaction_type",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "transactions",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -1663,26 +1719,33 @@ def make_config():
         "fields": [
           {
             "name": "billingId",
-            "short": "The Partner's billing identifier.",
+            "title": "Billing Id",
             "type": "`$STRING`",
+            "short": "The Partner's billing identifier.",
           },
           {
             "name": "client",
-            "short": "Reference to the associated Client resource.",
+            "title": "Client",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Client resource.",
           },
           {
             "name": "contact",
-            "req": True,
+            "title": "Contact",
             "type": "`$OBJECT`",
+            "req": True,
           },
           {
             "name": "directPartner",
-            "short": "Reference to the associated Partner.",
+            "title": "Direct Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "email",
+            "title": "Email",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$STRING`",
@@ -1691,12 +1754,13 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "The User's email address.",
-            "type": "`$STRING`",
           },
           {
             "name": "firstName",
+            "title": "First Name",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$STRING`",
@@ -1705,23 +1769,26 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "The User's name.",
-            "type": "`$STRING`",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "Unique identifier of newly added element.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Unique identifier of newly added element.",
+            "format": "int64",
           },
           {
             "name": "isActive",
-            "short": "This property indicates if the User account is active or disabled.",
+            "title": "Is Active",
             "type": "`$BOOLEAN`",
+            "short": "This property indicates if the User account is active or disabled.",
           },
           {
             "name": "lastName",
+            "title": "Last Name",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$STRING`",
@@ -1730,32 +1797,37 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "The User's Surname.",
-            "type": "`$STRING`",
           },
           {
             "name": "mid",
-            "short": "Some Partners will have an merchant ids on their own software offerings.",
+            "title": "Mid",
             "type": "`$STRING`",
+            "short": "Some Partners will have an merchant ids on their own software offerings.",
           },
           {
             "name": "name",
-            "short": "The Partner's name.",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "The Partner's name.",
           },
           {
             "name": "parent",
-            "short": "Reference to the associated Partner.",
+            "title": "Parent",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "partner",
-            "short": "Reference to the associated Partner.",
+            "title": "Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "phone",
+            "title": "Phone",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$STRING`",
@@ -1764,22 +1836,25 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "The User's phone number without dashes, spaces, or brackets (e.g.",
-            "type": "`$STRING`",
           },
           {
             "name": "reference",
-            "short": "The Partner's reference string.",
+            "title": "Reference",
             "type": "`$STRING`",
+            "short": "The Partner's reference string.",
           },
           {
             "name": "sendWelcomeEmail",
-            "short": "If this property is set to 'true' the newly created user will be sent a welcome email.",
+            "title": "Send Welcome Email",
             "type": "`$BOOLEAN`",
+            "short": "If this property is set to 'true' the newly created user will be sent a welcome email.",
           },
           {
             "name": "userName",
+            "title": "User Name",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$STRING`",
@@ -1788,12 +1863,13 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "The User's unique username.",
-            "type": "`$STRING`",
           },
           {
             "name": "userRole",
+            "title": "User Role",
+            "type": "`$OBJECT`",
+            "req": True,
             "op": {
               "list": {
                 "type": "`$OBJECT`",
@@ -1802,19 +1878,19 @@ def make_config():
                 "type": "`$OBJECT`",
               },
             },
-            "req": True,
             "short": "Reference to the associated User Role.",
-            "type": "`$OBJECT`",
           },
           {
             "name": "verificationPhrase",
-            "short": "The verification phrase is a message that the Partner creates.",
+            "title": "Verification Phrase",
             "type": "`$STRING`",
+            "short": "The verification phrase is a message that the Partner creates.",
           },
           {
             "name": "version",
-            "short": "The number of times that this resource has been updated.",
+            "title": "Version",
             "type": "`$INTEGER`",
+            "short": "The number of times that this resource has been updated.",
           },
         ],
         "id": {
@@ -1828,78 +1904,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "client",
-                      "orig": "client",
-                      "type": "`$OBJECT`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "email",
-                      "orig": "email",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "first_name",
-                      "orig": "first_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "last_name",
-                      "orig": "last_name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$OBJECT`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "phone",
-                      "orig": "phone",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "send_welcome_email",
-                      "orig": "send_welcome_email",
-                      "reqd": True,
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "user_role",
-                      "orig": "user_role",
-                      "reqd": True,
-                      "type": "`$OBJECT`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "username",
-                      "orig": "username",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "POST",
                 "orig": "/users",
@@ -1908,6 +1912,86 @@ def make_config():
                     "lit": "users",
                   },
                 ],
+                "parts": [
+                  "users",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "client",
+                      "orig": "client",
+                      "type": "`$OBJECT`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "email",
+                      "orig": "email",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "first_name",
+                      "orig": "first_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "last_name",
+                      "orig": "last_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$OBJECT`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "phone",
+                      "orig": "phone",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "send_welcome_email",
+                      "orig": "send_welcome_email",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "user_role",
+                      "orig": "user_role",
+                      "type": "`$OBJECT`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "username",
+                      "orig": "username",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "client",
@@ -1922,13 +2006,6 @@ def make_config():
                     "username",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "users",
-                ],
               },
             ],
           },
@@ -1937,36 +2014,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "client",
-                      "orig": "client",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "take",
-                      "orig": "take",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/users",
@@ -1975,6 +2022,44 @@ def make_config():
                     "lit": "users",
                   },
                 ],
+                "parts": [
+                  "users",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "client",
+                      "orig": "client",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "take",
+                      "orig": "take",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "client",
@@ -1983,13 +2068,6 @@ def make_config():
                     "take",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "users",
-                ],
               },
             ],
           },
@@ -1998,121 +2076,6 @@ def make_config():
             "name": "update",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "access_mode",
-                      "orig": "access_mode",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "active",
-                      "orig": "active",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "client_id",
-                      "orig": "client_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "client_name",
-                      "orig": "client_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "field_template",
-                      "orig": "field_template",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_custom_style",
-                      "orig": "options_custom_style",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_custom_style_file",
-                      "orig": "options_custom_style_file",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_domain",
-                      "orig": "options_domain",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_active_from",
-                      "orig": "options_security_active_from",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_active_to",
-                      "orig": "options_security_active_to",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "options_security_irreversible",
-                      "orig": "options_security_irreversible",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner_id",
-                      "orig": "partner_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner_name",
-                      "orig": "partner_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "reference",
-                      "orig": "reference",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "type",
-                      "orig": "type",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "version",
-                      "orig": "version",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/templates/{id}",
@@ -2124,6 +2087,130 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "templates",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "access_mode",
+                      "orig": "access_mode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "active",
+                      "orig": "active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "client_id",
+                      "orig": "client_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "client_name",
+                      "orig": "client_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "field_template",
+                      "orig": "field_template",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_custom_style",
+                      "orig": "options_custom_style",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_custom_style_file",
+                      "orig": "options_custom_style_file",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_domain",
+                      "orig": "options_domain",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_active_from",
+                      "orig": "options_security_active_from",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_active_to",
+                      "orig": "options_security_active_to",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "options_security_irreversible",
+                      "orig": "options_security_irreversible",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner_id",
+                      "orig": "partner_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner_name",
+                      "orig": "partner_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "reference",
+                      "orig": "reference",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "type",
+                      "orig": "type",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "version",
+                      "orig": "version",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "access_mode",
@@ -2146,83 +2233,8 @@ def make_config():
                     "version",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "templates",
-                  "{id}",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "billing_id",
-                      "orig": "billing_id",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_id",
-                      "orig": "contact_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "parent_id",
-                      "orig": "parent_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "parent_name",
-                      "orig": "parent_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "reference",
-                      "orig": "reference",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "verification_phrase",
-                      "orig": "verification_phrase",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "version",
-                      "orig": "version",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/partners/{id}",
@@ -2234,6 +2246,82 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "partners",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "billing_id",
+                      "orig": "billing_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "contact_id",
+                      "orig": "contact_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "parent_id",
+                      "orig": "parent_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "parent_name",
+                      "orig": "parent_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "reference",
+                      "orig": "reference",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "verification_phrase",
+                      "orig": "verification_phrase",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "version",
+                      "orig": "version",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "billing_id",
@@ -2248,83 +2336,8 @@ def make_config():
                     "version",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "partners",
-                  "{id}",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "client",
-                      "orig": "client",
-                      "type": "`$OBJECT`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "email",
-                      "orig": "email",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "first_name",
-                      "orig": "first_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "last_name",
-                      "orig": "last_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "partner",
-                      "orig": "partner",
-                      "type": "`$OBJECT`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "phone",
-                      "orig": "phone",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "send_welcome_email",
-                      "orig": "send_welcome_email",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "username",
-                      "orig": "username",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/users/{id}",
@@ -2336,6 +2349,82 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "users",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "client",
+                      "orig": "client",
+                      "type": "`$OBJECT`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "email",
+                      "orig": "email",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "first_name",
+                      "orig": "first_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "last_name",
+                      "orig": "last_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "partner",
+                      "orig": "partner",
+                      "type": "`$OBJECT`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "phone",
+                      "orig": "phone",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "send_welcome_email",
+                      "orig": "send_welcome_email",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "username",
+                      "orig": "username",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "client",
@@ -2350,77 +2439,8 @@ def make_config():
                     "username",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "users",
-                  "{id}",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "billing_id",
-                      "orig": "billing_id",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "contact_id",
-                      "orig": "contact_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "direct_partner_id",
-                      "orig": "direct_partner_id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "direct_partner_name",
-                      "orig": "direct_partner_name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "is_active",
-                      "orig": "is_active",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "mid",
-                      "orig": "mid",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "version",
-                      "orig": "version",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/clients/{id}",
@@ -2432,6 +2452,76 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "clients",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "billing_id",
+                      "orig": "billing_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "contact_id",
+                      "orig": "contact_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "direct_partner_id",
+                      "orig": "direct_partner_id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "direct_partner_name",
+                      "orig": "direct_partner_name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "is_active",
+                      "orig": "is_active",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "mid",
+                      "orig": "mid",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "version",
+                      "orig": "version",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "billing_id",
@@ -2445,14 +2535,6 @@ def make_config():
                     "version",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "clients",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -2465,65 +2547,78 @@ def make_config():
         "fields": [
           {
             "name": "client",
-            "short": "Reference to the associated Client resource.",
+            "title": "Client",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Client resource.",
           },
           {
-            "format": "date-time",
             "name": "created",
-            "short": "Creation timestamp in ISO 8601 format.",
+            "title": "Created",
             "type": "`$STRING`",
+            "short": "Creation timestamp in ISO 8601 format.",
+            "format": "date-time",
           },
           {
             "name": "email",
+            "title": "Email",
             "type": "`$STRING`",
           },
           {
             "name": "firstName",
+            "title": "First Name",
             "type": "`$STRING`",
           },
           {
-            "format": "int64",
             "name": "id",
-            "short": "This resource's unique identifier.",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "This resource's unique identifier.",
+            "format": "int64",
           },
           {
             "name": "isActive",
+            "title": "Is Active",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "lastName",
+            "title": "Last Name",
             "type": "`$STRING`",
           },
           {
-            "format": "date-time",
             "name": "modified",
-            "short": "Last modified timestamp.",
+            "title": "Modified",
             "type": "`$STRING`",
+            "short": "Last modified timestamp.",
+            "format": "date-time",
           },
           {
             "name": "partner",
-            "short": "Reference to the associated Partner.",
+            "title": "Partner",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated Partner.",
           },
           {
             "name": "phone",
+            "title": "Phone",
             "type": "`$STRING`",
           },
           {
             "name": "userName",
+            "title": "User Name",
             "type": "`$STRING`",
           },
           {
             "name": "userRole",
-            "short": "Reference to the associated User Role.",
+            "title": "User Role",
             "type": "`$OBJECT`",
+            "short": "Reference to the associated User Role.",
           },
           {
             "name": "version",
-            "short": "The number of times that this resource has been updated.",
+            "title": "Version",
             "type": "`$INTEGER`",
+            "short": "The number of times that this resource has been updated.",
           },
         ],
         "id": {
@@ -2537,17 +2632,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/users/{id}",
@@ -2559,19 +2643,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "users",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "users",
-                  "{id}",
-                ],
               },
             ],
           },

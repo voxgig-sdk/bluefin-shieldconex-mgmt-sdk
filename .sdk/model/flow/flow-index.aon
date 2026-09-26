@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicClientFlow.aon"
-@"BasicCloneFlow.aon"
-@"BasicPartnerFlow.aon"
-@"BasicTemplateFlow.aon"
-@"BasicTransactionFlow.aon"
-@"BasicUpdateResultFlow.aon"
-@"BasicUserFlow.aon"

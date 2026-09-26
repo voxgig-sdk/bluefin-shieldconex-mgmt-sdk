@@ -1,0 +1,89 @@
+# Entity: clone
+
+main: kit: entity: clone: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier of newly added element."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of Template"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "clone"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /templates/{id}/clone"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "template_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/templates/{id}/clone"
+          q: {
+            exist: [
+              "template_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "template_id"
+            }
+          }
+          s: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "template_id"
+            }
+            {
+              lit: "clone"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.template")]
+  ]
+
+}

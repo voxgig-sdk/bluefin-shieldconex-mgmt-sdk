@@ -1,0 +1,288 @@
+# Entity: transaction
+
+main: kit: entity: transaction: {
+
+  alias: field: {}
+
+  fields: {
+    bfid: {
+      h: "Bfid"
+      n: "bfid"
+      r: false
+      sh: "BFID"
+      t: "`$STRING`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: false
+      sh: "Reference to the associated Client resource."
+      t: "`$OBJECT`"
+    }
+    completeDate: {
+      fo: "date-time"
+      h: "Complete Date"
+      n: "completeDate"
+      r: false
+      sh: "Timestamp from the beginning of the transaction."
+      t: "`$STRING`"
+    }
+    directPartner: {
+      h: "Direct Partner"
+      n: "directPartner"
+      r: false
+      sh: "Reference to the associated Partner."
+      t: "`$OBJECT`"
+    }
+    errCode: {
+      h: "Err Code"
+      n: "errCode"
+      r: false
+      sh: "The error code that is sent in response to a failed decrypt API call."
+      t: "`$STRING`"
+    }
+    errMessage: {
+      h: "Err Message"
+      n: "errMessage"
+      r: false
+      sh: "The error messge that is sent in response to a failed decrypt API call."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "This resource's unique identifier."
+      t: "`$INTEGER`"
+    }
+    ipAddress: {
+      h: "Ip Address"
+      n: "ipAddress"
+      r: false
+      sh: "The IP address of the http client that makes the decrypt API call."
+      t: "`$STRING`"
+    }
+    messageId: {
+      h: "Message Id"
+      n: "messageId"
+      r: false
+      sh: "Message ID."
+      t: "`$STRING`"
+    }
+    partner: {
+      h: "Partner"
+      n: "partner"
+      r: false
+      sh: "Reference to the associated Partner."
+      t: "`$OBJECT`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: false
+      sh: "The reference property that the Client includes in the decrypt API call."
+      t: "`$STRING`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      sh: "The success indicator."
+      t: "`$BOOLEAN`"
+    }
+    templateId: {
+      fo: "int32"
+      h: "Template Id"
+      n: "templateId"
+      r: false
+      sh: "The Template's unique identifier."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "transaction"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /transactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "client"
+                or: "client"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "date_from"
+                or: "date_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "date_to"
+                or: "date_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "message_id"
+                or: "message_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "paging_mode"
+                or: "paging_mode"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "partner"
+                or: "partner"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "reference"
+                or: "reference"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "skip"
+                or: "skip"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "success"
+                or: "success"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "take"
+                or: "take"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "transaction_type"
+                or: "transaction_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transactions"
+          q: {
+            exist: [
+              "client"
+              "date_from"
+              "date_to"
+              "message_id"
+              "paging_mode"
+              "partner"
+              "reference"
+              "skip"
+              "success"
+              "take"
+              "transaction_type"
+            ]
+          }
+          s: [
+            {
+              lit: "transactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /transactions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "transaction_type"
+                or: "transaction_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transactions/{id}"
+          q: {
+            exist: [
+              "id"
+              "transaction_type"
+            ]
+          }
+          s: [
+            {
+              lit: "transactions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

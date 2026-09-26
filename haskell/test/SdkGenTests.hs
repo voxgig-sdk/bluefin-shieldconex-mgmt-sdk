@@ -647,11 +647,11 @@ update_resultBasicTest c = do
     created <- eCreate ent d ctrl
     cd <- eDataGet created
     cid <- getp cd "id"
-    upd <- jo [("id", cid), ("0", VStr "UpdatedMark")]
+    upd <- jo [("id", cid), ("billingId", VStr "UpdatedMark")]
     ctrl2 <- emptyMap
     updated <- eUpdate ent upd ctrl2
     ud <- eDataGet updated
-    uv <- getp ud "0"
+    uv <- getp ud "billingId"
     pure (ismap ud && vstring uv == "UpdatedMark")
 
 update_resultDirectTest :: Counters -> IO ()

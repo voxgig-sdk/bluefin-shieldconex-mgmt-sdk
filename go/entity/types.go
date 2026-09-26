@@ -1,7 +1,7 @@
 // Typed models for the BluefinShieldconexMgmt SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,17 +14,6 @@ import (
 
 // Client is the typed data model for the client entity.
 type Client struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Contact *map[string]any `json:"contact,omitempty"`
-	Created *string `json:"created,omitempty"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	Mid *string `json:"mid,omitempty"`
-	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // ClientLoadMatch is the typed request payload for Client.LoadTyped.
@@ -73,8 +62,6 @@ type ClientRemoveMatch struct {
 
 // Clone is the typed data model for the clone entity.
 type Clone struct {
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // CloneCreateData is the typed request payload for Clone.CreateTyped.
@@ -86,17 +73,6 @@ type CloneCreateData struct {
 
 // Partner is the typed data model for the partner entity.
 type Partner struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Contact *map[string]any `json:"contact,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	Modified *string `json:"modified,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parent *map[string]any `json:"parent,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // PartnerLoadMatch is the typed request payload for Partner.LoadTyped.
@@ -141,17 +117,6 @@ type PartnerCreateData struct {
 
 // Template is the typed data model for the template entity.
 type Template struct {
-	AccessMode *any `json:"accessMode,omitempty"`
-	Active *bool `json:"active,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	FieldTemplates *[]any `json:"fieldTemplates,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Options *map[string]any `json:"options,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // TemplateLoadMatch is the typed request payload for Template.LoadTyped.
@@ -201,19 +166,6 @@ type TemplateRemoveMatch struct {
 
 // Transaction is the typed data model for the transaction entity.
 type Transaction struct {
-	Bfid *string `json:"bfid,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	CompleteDate *string `json:"completeDate,omitempty"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	ErrCode *string `json:"errCode,omitempty"`
-	ErrMessage *string `json:"errMessage,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IpAddress *string `json:"ipAddress,omitempty"`
-	MessageId *string `json:"messageId,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	TemplateId *string `json:"templateId,omitempty"`
 }
 
 // TransactionLoadMatch is the typed request payload for Transaction.LoadTyped.
@@ -239,26 +191,6 @@ type TransactionListMatch struct {
 
 // UpdateResult is the typed data model for the update_result entity.
 type UpdateResult struct {
-	BillingId *string `json:"billingId,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	Contact map[string]any `json:"contact"`
-	DirectPartner *map[string]any `json:"directPartner,omitempty"`
-	Email string `json:"email"`
-	FirstName string `json:"firstName"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	LastName string `json:"lastName"`
-	Mid *string `json:"mid,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parent *map[string]any `json:"parent,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Phone string `json:"phone"`
-	Reference *string `json:"reference,omitempty"`
-	SendWelcomeEmail *bool `json:"sendWelcomeEmail,omitempty"`
-	UserName string `json:"userName"`
-	UserRole map[string]any `json:"userRole"`
-	VerificationPhrase *string `json:"verificationPhrase,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // UpdateResultListMatch is the typed request payload for UpdateResult.ListTyped.
@@ -351,19 +283,6 @@ type UpdateResultUpdateData struct {
 
 // User is the typed data model for the user entity.
 type User struct {
-	Client *map[string]any `json:"client,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"firstName,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	LastName *string `json:"lastName,omitempty"`
-	Modified *string `json:"modified,omitempty"`
-	Partner *map[string]any `json:"partner,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	UserName *string `json:"userName,omitempty"`
-	UserRole *map[string]any `json:"userRole,omitempty"`
-	Version *int `json:"version,omitempty"`
 }
 
 // UserLoadMatch is the typed request payload for User.LoadTyped.

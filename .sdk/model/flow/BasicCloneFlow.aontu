@@ -1,0 +1,22 @@
+# BasicCloneFlow
+
+main: kit: flow: BasicCloneFlow:
+{
+  entity: "clone",
+  kind: "basic",
+  name: "BasicCloneFlow",
+  step: [
+    {
+      i: {
+        ref: "clone_ref01"
+      }
+
+      m: {
+        template_id: "template01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCloneFlow"
+}

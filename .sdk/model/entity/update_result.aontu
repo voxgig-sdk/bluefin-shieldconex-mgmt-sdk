@@ -1,0 +1,902 @@
+# Entity: update_result
+
+main: kit: entity: update_result: {
+
+  alias: field: {}
+
+  fields: {
+    billingId: {
+      h: "Billing Id"
+      n: "billingId"
+      r: false
+      sh: "The Partner's billing identifier."
+      t: "`$STRING`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: false
+      sh: "Reference to the associated Client resource."
+      t: "`$OBJECT`"
+    }
+    contact: {
+      h: "Contact"
+      n: "contact"
+      r: true
+      t: "`$OBJECT`"
+    }
+    directPartner: {
+      h: "Direct Partner"
+      n: "directPartner"
+      r: false
+      sh: "Reference to the associated Partner."
+      t: "`$OBJECT`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The User's email address."
+      t: "`$STRING`"
+    }
+    firstName: {
+      h: "First Name"
+      n: "firstName"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The User's name."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier of newly added element."
+      t: "`$INTEGER`"
+    }
+    isActive: {
+      h: "Is Active"
+      n: "isActive"
+      r: false
+      sh: "This property indicates if the User account is active or disabled."
+      t: "`$BOOLEAN`"
+    }
+    lastName: {
+      h: "Last Name"
+      n: "lastName"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The User's Surname."
+      t: "`$STRING`"
+    }
+    mid: {
+      h: "Mid"
+      n: "mid"
+      r: false
+      sh: "Some Partners will have an merchant ids on their own software offerings."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The Partner's name."
+      t: "`$STRING`"
+    }
+    parent: {
+      h: "Parent"
+      n: "parent"
+      r: false
+      sh: "Reference to the associated Partner."
+      t: "`$OBJECT`"
+    }
+    partner: {
+      h: "Partner"
+      n: "partner"
+      r: false
+      sh: "Reference to the associated Partner."
+      t: "`$OBJECT`"
+    }
+    phone: {
+      h: "Phone"
+      n: "phone"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The User's phone number without dashes, spaces, or brackets (e.g."
+      t: "`$STRING`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: false
+      sh: "The Partner's reference string."
+      t: "`$STRING`"
+    }
+    sendWelcomeEmail: {
+      h: "Send Welcome Email"
+      n: "sendWelcomeEmail"
+      r: false
+      sh: "If this property is set to 'true' the newly created user will be sent a welcome email."
+      t: "`$BOOLEAN`"
+    }
+    userName: {
+      h: "User Name"
+      n: "userName"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The User's unique username."
+      t: "`$STRING`"
+    }
+    userRole: {
+      h: "User Role"
+      n: "userRole"
+      op: {
+        list: {
+          req: false
+          type: "`$OBJECT`"
+        }
+        update: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
+      r: true
+      sh: "Reference to the associated User Role."
+      t: "`$OBJECT`"
+    }
+    verificationPhrase: {
+      h: "Verification Phrase"
+      n: "verificationPhrase"
+      r: false
+      sh: "The verification phrase is a message that the Partner creates."
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "The number of times that this resource has been updated."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "update_result"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /users"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "client"
+                or: "client"
+                r: false
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "email"
+                or: "email"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "first_name"
+                or: "first_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "is_active"
+                or: "is_active"
+                r: true
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "last_name"
+                or: "last_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "partner"
+                or: "partner"
+                r: false
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "phone"
+                or: "phone"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "send_welcome_email"
+                or: "send_welcome_email"
+                r: true
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "user_role"
+                or: "user_role"
+                r: true
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/users"
+          q: {
+            exist: [
+              "client"
+              "email"
+              "first_name"
+              "is_active"
+              "last_name"
+              "partner"
+              "phone"
+              "send_welcome_email"
+              "user_role"
+              "username"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "client"
+                or: "client"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "partner"
+                or: "partner"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "skip"
+                or: "skip"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "take"
+                or: "take"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users"
+          q: {
+            exist: [
+              "client"
+              "partner"
+              "skip"
+              "take"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /templates/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "access_mode"
+                or: "access_mode"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "client_id"
+                or: "client_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "client_name"
+                or: "client_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field_template"
+                or: "field_template"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "options_custom_style"
+                or: "options_custom_style"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "options_custom_style_file"
+                or: "options_custom_style_file"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "options_domain"
+                or: "options_domain"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "options_security_active_from"
+                or: "options_security_active_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "options_security_active_to"
+                or: "options_security_active_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "options_security_irreversible"
+                or: "options_security_irreversible"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "partner_id"
+                or: "partner_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "partner_name"
+                or: "partner_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "reference"
+                or: "reference"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/templates/{id}"
+          q: {
+            exist: [
+              "access_mode"
+              "active"
+              "client_id"
+              "client_name"
+              "field_template"
+              "id"
+              "name"
+              "options_custom_style"
+              "options_custom_style_file"
+              "options_domain"
+              "options_security_active_from"
+              "options_security_active_to"
+              "options_security_irreversible"
+              "partner_id"
+              "partner_name"
+              "reference"
+              "type"
+              "version"
+            ]
+          }
+          s: [
+            {
+              lit: "templates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /partners/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "billing_id"
+                or: "billing_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "contact_id"
+                or: "contact_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "is_active"
+                or: "is_active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "parent_id"
+                or: "parent_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "parent_name"
+                or: "parent_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "reference"
+                or: "reference"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "verification_phrase"
+                or: "verification_phrase"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/partners/{id}"
+          q: {
+            exist: [
+              "billing_id"
+              "contact_id"
+              "id"
+              "is_active"
+              "name"
+              "parent_id"
+              "parent_name"
+              "reference"
+              "verification_phrase"
+              "version"
+            ]
+          }
+          s: [
+            {
+              lit: "partners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /users/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "client"
+                or: "client"
+                r: false
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "email"
+                or: "email"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "first_name"
+                or: "first_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "is_active"
+                or: "is_active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "last_name"
+                or: "last_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "partner"
+                or: "partner"
+                r: false
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "phone"
+                or: "phone"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "send_welcome_email"
+                or: "send_welcome_email"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "username"
+                or: "username"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/users/{id}"
+          q: {
+            exist: [
+              "client"
+              "email"
+              "first_name"
+              "id"
+              "is_active"
+              "last_name"
+              "partner"
+              "phone"
+              "send_welcome_email"
+              "username"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /clients/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "billing_id"
+                or: "billing_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "contact_id"
+                or: "contact_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "direct_partner_id"
+                or: "direct_partner_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "direct_partner_name"
+                or: "direct_partner_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "is_active"
+                or: "is_active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "mid"
+                or: "mid"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/clients/{id}"
+          q: {
+            exist: [
+              "billing_id"
+              "contact_id"
+              "direct_partner_id"
+              "direct_partner_name"
+              "id"
+              "is_active"
+              "mid"
+              "name"
+              "version"
+            ]
+          }
+          s: [
+            {
+              lit: "clients"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
